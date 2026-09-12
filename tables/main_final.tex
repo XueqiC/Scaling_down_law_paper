@@ -258,6 +258,6 @@ Distillation\newline Frozen $E$ / $E$ / joint & 270M; 6 pools $U=200$; $T$ 50/10
 Distillation\newline Frozen $E$ / $E$ / joint & 1B; 6 pools $U=200$; $T$ 50/100/200k & $0.057$\newline $0.049$\newline $0.463$ & $F_2(L_0)$ $0.031$\newline $F_1(L_0)$ $0.046$\newline $T$-only $0.386$ & $-0.026$\newline $-0.002$\newline $-0.077$ & same\newline same\newline same & \emph{before test}\newline Seen student; new pools; 2Wiki QA \\
 \bottomrule
 \end{tabular}
-\caption{\scriptsize Frozen candidates and delivered rules. MAE in nats per token; stacks: math/code/QA. Strongest: lowest pooled test MAE among all predictors frozen in that round except the candidate (hindsight ranking). Gain = alternative minus candidate; negative = alternative better. Delivered rules fixed after a test are retrospective for it. Frozen D = surface/median/zero.}
+\caption{\scriptsize Frozen candidates and delivered rules. MAE in nats per token; stacks: math/code/QA. Strongest: lowest pooled test MAE among the round's other frozen predictors, a diagnostic minimum that selection favours; the registered comparison is primary. Gain = alternative minus candidate; negative = alternative better. Delivered rules fixed after a test are retrospective for it. Frozen D = surface/median/zero.}
 \label{tab:main_final}
 \end{table}
