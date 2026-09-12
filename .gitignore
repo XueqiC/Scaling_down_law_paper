@@ -1,0 +1,13 @@
+# LaTeX build artifacts (Overleaf and tectonic build their own)
+main.aux
+main.bbl
+main.blg
+main.log
+main.out
+main.pdf
+main.fls
+main.fdb_latexmk
+main.synctex.gz
+*.synctex*
+# PNG previews of the figures are local only; LaTeX uses the PDFs
+figs/*.png
