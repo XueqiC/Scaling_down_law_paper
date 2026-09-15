@@ -3,7 +3,7 @@
 
 Every test below scores predictions frozen before measurement on three kinds of novelty: settings
 outside the fitted set, states of new sizes or stages, and evaluation distributions beyond the probe
-set. Table~\ref{tab:main_prediction_v2} gives each relation's error against its development-stage
+set. Table~\ref{tab:main-prediction-v2} gives each relation's error against its development-stage
 baseline with its status; Fig.~\ref{fig:generalization} shows the same comparison per row; per-cell
 results and earlier tests are in Appendix~\ref{sec:app_results}. Errors are MAE in nats per token.
 
@@ -19,7 +19,7 @@ development states are predicted best by the piecewise interpolation for math an
 interpolation for code (0.17 against 0.22). For distillation, at six
 new pools and three new budgets every selected form beats zero change and the gain over the
 development-designated baseline is detected for code on both students (0.004 and 0.005 nats) and for
-QA on the 270M only (Table~\ref{tab:main_prediction_v2}).
+QA on the 270M only (Table~\ref{tab:main-prediction-v2}).
 
 \subsection{Transfer across Model Sizes and Training Stages}
 \label{sec:unseen_states}
