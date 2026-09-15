@@ -2,8 +2,9 @@
 
 V96 definition: Measured delta2-delta1 divided by log(1+T2/D_U2)-log(1+T1/D_U1). T2 differs from T1: these are observed-endpoint diagnostics, not the exact fixed-T falsification statistic.
 V100 exact_nonzero_budget_pairs=0
-fig5_a.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+Figure 5 artist overrides to shared defaults: individual dyads 0.8 pt, alpha 0.35, no markers; per-band medians 2.5 pt, alpha 1, with 9 pt capability-filled markers and 1.2 pt white edges. Saved budget bands group individual raw ratios; both x and y are medians within each student/capability/tolerance/band. Circle/solid = 1%; triangle/dashed = 0.3%.
+fig5_a.pdf: 2.7 x 1.8 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig5_b.pdf: 2.7 x 1.8 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
 
 ## Inputs (SHA-256)
 
@@ -20,6 +21,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:code:e80dbf3c3adc",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41"
@@ -39,6 +41,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/0/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/0/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/0/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/0/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/30/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/32/points/4"
@@ -52,6 +55,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:code:e80dbf3c3adc",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -71,6 +75,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/1/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/1/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/1/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/1/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/30/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/33/points/4"
@@ -84,6 +89,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:code:e80dbf3c3adc",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -103,6 +109,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/2/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/2/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/2/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/2/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/30/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/34/points/4"
@@ -116,6 +123,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:math:3816ece4b994",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41"
@@ -135,6 +143,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/3/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/3/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/3/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/3/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/8/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/10/points/4"
@@ -148,6 +157,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:math:3816ece4b994",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -167,6 +177,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/4/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/4/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/4/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/4/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/8/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/11/points/4"
@@ -180,6 +191,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:math:3816ece4b994",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -199,6 +211,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/5/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/5/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/5/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/5/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/8/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/12/points/4"
@@ -212,6 +225,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:qa:075005b82489",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41"
@@ -231,6 +245,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/6/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/6/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/6/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/6/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/52/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/54/points/4"
@@ -244,6 +259,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:qa:075005b82489",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -263,6 +279,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/7/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/7/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/7/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/7/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/52/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/55/points/4"
@@ -276,6 +293,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:qa:075005b82489",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -295,6 +313,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/8/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/8/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/8/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/8/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/52/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/56/points/4"
@@ -308,6 +327,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@19:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:code:e80dbf3c3adc",
     "contrast": "132->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -327,6 +347,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/9/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/9/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/9/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/9/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/30/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/33/points/1"
@@ -340,6 +361,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@19:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:math:3816ece4b994",
     "contrast": "132->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -359,6 +381,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/10/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/10/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/10/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/10/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/8/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/11/points/1"
@@ -372,6 +395,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@19:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:qa:075005b82489",
     "contrast": "132->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -391,6 +415,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/11/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/11/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/11/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/11/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/52/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/55/points/1"
@@ -404,6 +429,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@39:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@37:code:e80dbf3c3adc",
     "contrast": "132->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -423,6 +449,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/12/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/12/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/12/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/12/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/30/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/34/points/2"
@@ -436,6 +463,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@39:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@37:math:3816ece4b994",
     "contrast": "132->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -455,6 +483,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/13/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/13/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/13/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/13/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/8/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/12/points/2"
@@ -468,6 +497,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@39:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@37:qa:075005b82489",
     "contrast": "132->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -487,6 +517,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/14/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/14/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/14/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/14/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/52/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/56/points/2"
@@ -500,6 +531,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:code:e80dbf3c3adc",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -519,6 +551,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/15/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/15/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/15/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/15/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/31/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/33/points/4"
@@ -532,6 +565,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@143:code:e80dbf3c3adc",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -551,6 +585,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/16/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/16/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/16/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/16/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/31/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/35/points/4"
@@ -564,6 +599,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:math:3816ece4b994",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -583,6 +619,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/17/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/17/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/17/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/17/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/9/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/11/points/4"
@@ -596,6 +633,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@143:math:3816ece4b994",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -615,6 +653,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/18/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/18/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/18/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/18/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/9/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/13/points/4"
@@ -628,6 +667,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:qa:075005b82489",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -647,6 +687,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/19/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/19/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/19/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/19/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/53/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/55/points/4"
@@ -660,6 +701,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@143:qa:075005b82489",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -679,6 +721,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/20/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/20/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/20/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/20/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/53/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/57/points/4"
@@ -692,6 +735,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52@38:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@37:code:e80dbf3c3adc",
     "contrast": "132->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -711,6 +755,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/21/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/21/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/21/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/21/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/31/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/34/points/2"
@@ -724,6 +769,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52@38:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@37:math:3816ece4b994",
     "contrast": "132->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -743,6 +789,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/22/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/22/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/22/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/22/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/9/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/12/points/2"
@@ -756,6 +803,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52@38:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@37:qa:075005b82489",
     "contrast": "132->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -775,6 +823,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/23/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/23/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/23/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/23/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/53/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/56/points/2"
@@ -788,6 +837,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:code:e80dbf3c3adc",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -807,6 +857,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/24/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/24/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/24/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/24/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/32/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/34/points/4"
@@ -820,6 +871,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:math:3816ece4b994",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -839,6 +891,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/25/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/25/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/25/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/25/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/10/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/12/points/4"
@@ -852,6 +905,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:qa:075005b82489",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -871,6 +925,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/26/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/26/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/26/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/26/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/54/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/56/points/4"
@@ -884,6 +939,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@36:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@36:code:e80dbf3c3adc",
     "contrast": "198->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -903,6 +959,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/27/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/27/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/27/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/27/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/32/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/35/points/2"
@@ -916,6 +973,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@36:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@36:math:3816ece4b994",
     "contrast": "198->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -935,6 +993,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/28/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/28/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/28/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/28/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/10/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/13/points/2"
@@ -948,6 +1007,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@36:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@36:qa:075005b82489",
     "contrast": "198->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -967,6 +1027,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/29/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/29/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/29/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/29/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/54/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/57/points/2"
@@ -980,6 +1041,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@73:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@72:code:e80dbf3c3adc",
     "contrast": "198->594",
+    "band": "100k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -999,6 +1061,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/30/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/30/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/30/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/30/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/32/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/35/points/3"
@@ -1012,6 +1075,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@73:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@72:math:3816ece4b994",
     "contrast": "198->594",
+    "band": "100k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -1031,6 +1095,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/31/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/31/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/31/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/31/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/10/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/13/points/3"
@@ -1044,6 +1109,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@73:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@72:qa:075005b82489",
     "contrast": "198->594",
+    "band": "100k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -1063,6 +1129,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/32/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/32/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/32/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/32/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/54/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/57/points/3"
@@ -1076,6 +1143,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:code:e80dbf3c3adc",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -1095,6 +1163,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/33/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/33/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/33/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/33/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/33/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/34/points/4"
@@ -1108,6 +1177,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:math:3816ece4b994",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -1127,6 +1197,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/34/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/34/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/34/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/34/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/11/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/12/points/4"
@@ -1140,6 +1211,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:qa:075005b82489",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -1159,6 +1231,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/35/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/35/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/35/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/35/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/55/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/56/points/4"
@@ -1172,6 +1245,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@72:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@72:code:e80dbf3c3adc",
     "contrast": "198->594",
+    "band": "100k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -1191,6 +1265,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/36/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/36/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/36/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/36/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/33/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/35/points/3"
@@ -1204,6 +1279,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@72:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@72:math:3816ece4b994",
     "contrast": "198->594",
+    "band": "100k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -1223,6 +1299,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/37/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/37/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/37/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/37/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/11/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/13/points/3"
@@ -1236,6 +1313,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@72:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@72:qa:075005b82489",
     "contrast": "198->594",
+    "band": "100k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -1255,6 +1333,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/38/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/38/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/38/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/38/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/55/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/57/points/3"
@@ -1268,6 +1347,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:code:e80dbf3c3adc",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1287,6 +1367,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/39/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/39/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/39/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/39/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/28/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/30/points/14"
@@ -1300,6 +1381,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1319,6 +1401,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/40/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/40/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/40/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/40/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/28/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/32/points/4"
@@ -1332,6 +1415,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1351,6 +1435,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/41/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/41/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/41/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/41/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/28/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/33/points/4"
@@ -1364,6 +1449,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:code:e80dbf3c3adc",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1383,6 +1469,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/42/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/42/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/42/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/42/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/28/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/34/points/4"
@@ -1396,6 +1483,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:math:3816ece4b994",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1415,6 +1503,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/43/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/43/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/43/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/43/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/6/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/8/points/14"
@@ -1428,6 +1517,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1447,6 +1537,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/44/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/44/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/44/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/44/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/6/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/10/points/4"
@@ -1460,6 +1551,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1479,6 +1571,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/45/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/45/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/45/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/45/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/6/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/11/points/4"
@@ -1492,6 +1585,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:math:3816ece4b994",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1511,6 +1605,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/46/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/46/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/46/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/46/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/6/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/12/points/4"
@@ -1524,6 +1619,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:qa:075005b82489",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1543,6 +1639,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/47/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/47/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/47/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/47/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/50/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/52/points/14"
@@ -1556,6 +1653,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:qa:075005b82489",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1575,6 +1673,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/48/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/48/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/48/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/48/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/50/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/54/points/4"
@@ -1588,6 +1687,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:qa:075005b82489",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1607,6 +1707,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/49/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/49/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/49/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/49/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/50/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/55/points/4"
@@ -1620,6 +1721,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:qa:075005b82489",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1639,6 +1741,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/50/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/50/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/50/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/50/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/50/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/56/points/4"
@@ -1652,6 +1755,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@19:code:e80dbf3c3adc",
     "contrast": "66->132",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1671,6 +1775,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/51/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/51/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/51/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/51/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/28/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/30/points/1"
@@ -1684,6 +1789,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1703,6 +1809,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/52/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/52/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/52/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/52/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/28/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/33/points/1"
@@ -1716,6 +1823,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@19:math:3816ece4b994",
     "contrast": "66->132",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1735,6 +1843,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/53/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/53/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/53/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/53/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/6/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/8/points/1"
@@ -1748,6 +1857,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1767,6 +1877,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/54/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/54/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/54/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/54/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/6/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/11/points/1"
@@ -1780,6 +1891,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@19:qa:075005b82489",
     "contrast": "66->132",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1799,6 +1911,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/55/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/55/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/55/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/55/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/50/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/52/points/1"
@@ -1812,6 +1925,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:qa:075005b82489",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1831,6 +1945,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/56/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/56/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/56/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/56/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/50/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/55/points/1"
@@ -1844,6 +1959,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@38:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1863,6 +1979,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/57/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/57/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/57/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/57/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/28/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/33/points/2"
@@ -1876,6 +1993,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@38:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1895,6 +2013,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/58/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/58/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/58/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/58/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/6/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/11/points/2"
@@ -1908,6 +2027,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@38:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:qa:075005b82489",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -1927,6 +2047,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/59/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/59/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/59/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/59/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/50/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/55/points/2"
@@ -1940,6 +2061,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:code:e80dbf3c3adc",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -1959,6 +2081,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/60/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/60/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/60/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/60/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/29/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/30/points/14"
@@ -1972,6 +2095,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:code:e80dbf3c3adc",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -1991,6 +2115,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/61/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/61/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/61/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/61/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/29/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/31/points/14"
@@ -2004,6 +2129,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2023,6 +2149,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/62/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/62/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/62/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/62/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/29/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/32/points/4"
@@ -2036,6 +2163,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2055,6 +2183,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/63/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/63/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/63/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/63/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/29/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/33/points/4"
@@ -2068,6 +2197,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:code:e80dbf3c3adc",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2087,6 +2217,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/64/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/64/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/64/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/64/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/29/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/34/points/4"
@@ -2100,6 +2231,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:math:3816ece4b994",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2119,6 +2251,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/65/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/65/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/65/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/65/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/7/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/8/points/14"
@@ -2132,6 +2265,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:math:3816ece4b994",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2151,6 +2285,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/66/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/66/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/66/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/66/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/7/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/9/points/14"
@@ -2164,6 +2299,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2183,6 +2319,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/67/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/67/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/67/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/67/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/7/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/10/points/4"
@@ -2196,6 +2333,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2215,6 +2353,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/68/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/68/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/68/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/68/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/7/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/11/points/4"
@@ -2228,6 +2367,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:math:3816ece4b994",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2247,6 +2387,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/69/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/69/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/69/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/69/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/7/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/12/points/4"
@@ -2260,6 +2401,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:qa:075005b82489",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2279,6 +2421,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/70/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/70/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/70/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/70/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/51/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/52/points/14"
@@ -2292,6 +2435,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:qa:075005b82489",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2311,6 +2455,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/71/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/71/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/71/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/71/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/51/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/53/points/14"
@@ -2324,6 +2469,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:qa:075005b82489",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2343,6 +2489,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/72/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/72/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/72/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/72/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/51/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/54/points/4"
@@ -2356,6 +2503,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:qa:075005b82489",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2375,6 +2523,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/73/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/73/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/73/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/73/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/51/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/55/points/4"
@@ -2388,6 +2537,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:qa:075005b82489",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2407,6 +2557,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/74/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/74/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/74/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/74/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/51/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/56/points/4"
@@ -2420,6 +2571,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@19:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@18:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2439,6 +2591,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/75/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/75/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/75/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/75/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/29/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/32/points/1"
@@ -2452,6 +2605,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@19:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@18:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2471,6 +2625,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/76/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/76/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/76/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/76/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/7/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/10/points/1"
@@ -2484,6 +2639,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@19:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@18:qa:075005b82489",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2503,6 +2659,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/77/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/77/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/77/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/77/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/51/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/54/points/1"
@@ -2516,6 +2673,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@38:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2535,6 +2693,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/78/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/78/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/78/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/78/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/29/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/33/points/2"
@@ -2548,6 +2707,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@38:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2567,6 +2727,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/79/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/79/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/79/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/79/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/7/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/11/points/2"
@@ -2580,6 +2741,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@38:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:qa:075005b82489",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -2599,6 +2761,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/80/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/80/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/80/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/80/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/51/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/55/points/2"
@@ -2612,6 +2775,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:code:e80dbf3c3adc",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41"
@@ -2631,6 +2795,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/207/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/207/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/207/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/207/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/30/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/32/points/4"
@@ -2644,6 +2809,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:code:e80dbf3c3adc",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -2663,6 +2829,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/208/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/208/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/208/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/208/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/30/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/34/points/4"
@@ -2676,6 +2843,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:math:3816ece4b994",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41"
@@ -2695,6 +2863,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/209/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/209/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/209/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/209/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/8/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/10/points/4"
@@ -2708,6 +2877,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:math:3816ece4b994",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -2727,6 +2897,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/210/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/210/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/210/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/210/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/8/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/12/points/4"
@@ -2740,6 +2911,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:qa:075005b82489",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41"
@@ -2759,6 +2931,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/211/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/211/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/211/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/211/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/52/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/54/points/4"
@@ -2772,6 +2945,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:qa:075005b82489",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -2791,6 +2965,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/212/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/212/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/212/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/212/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/52/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/56/points/4"
@@ -2804,6 +2979,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:code:e80dbf3c3adc",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -2823,6 +2999,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/213/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/213/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/213/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/213/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/32/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/34/points/4"
@@ -2836,6 +3013,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:math:3816ece4b994",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -2855,6 +3033,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/214/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/214/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/214/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/214/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/10/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/12/points/4"
@@ -2868,6 +3047,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:qa:075005b82489",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -2887,6 +3067,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/215/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/215/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/215/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/215/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/54/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/56/points/4"
@@ -2900,6 +3081,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:code:e80dbf3c3adc",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -2919,6 +3101,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/216/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/216/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/216/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/216/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/28/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/30/points/14"
@@ -2932,6 +3115,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -2951,6 +3135,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/217/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/217/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/217/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/217/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/28/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/32/points/4"
@@ -2964,6 +3149,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:code:e80dbf3c3adc",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -2983,6 +3169,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/218/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/218/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/218/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/218/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/28/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/34/points/4"
@@ -2996,6 +3183,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:math:3816ece4b994",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -3015,6 +3203,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/219/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/219/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/219/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/219/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/6/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/8/points/14"
@@ -3028,6 +3217,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -3047,6 +3237,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/220/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/220/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/220/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/220/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/6/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/10/points/4"
@@ -3060,6 +3251,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:math:3816ece4b994",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -3079,6 +3271,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/221/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/221/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/221/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/221/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/6/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/12/points/4"
@@ -3092,6 +3285,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:qa:075005b82489",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -3111,6 +3305,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/222/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/222/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/222/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/222/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/50/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/52/points/14"
@@ -3124,6 +3319,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:qa:075005b82489",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -3143,6 +3339,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/223/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/223/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/223/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/223/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/50/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/54/points/4"
@@ -3156,6 +3353,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:qa:075005b82489",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -3175,6 +3373,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/224/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/224/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/224/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/224/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/50/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/56/points/4"
@@ -3188,6 +3387,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -3207,6 +3407,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/225/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/225/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/225/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/225/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/28/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/33/points/1"
@@ -3220,6 +3421,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -3239,6 +3441,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/226/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/226/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/226/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/226/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/6/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/11/points/1"
@@ -3252,6 +3455,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:qa:075005b82489",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -3271,6 +3475,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/227/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/227/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/227/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/227/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/50/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/55/points/1"
@@ -3284,6 +3489,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@38:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -3303,6 +3509,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/228/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/228/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/228/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/228/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/28/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/33/points/2"
@@ -3316,6 +3523,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@38:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -3335,6 +3543,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/229/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/229/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/229/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/229/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/6/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/11/points/2"
@@ -3348,6 +3557,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@38:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:qa:075005b82489",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -3367,6 +3577,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/230/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/230/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/230/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/230/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/50/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/55/points/2"
@@ -3380,6 +3591,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:code:e80dbf3c3adc->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -3399,6 +3611,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/231/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/231/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/231/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/231/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/29/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/33/points/4"
@@ -3412,6 +3625,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:math:3816ece4b994->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -3431,6 +3645,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/232/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/232/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/232/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/232/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/7/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/11/points/4"
@@ -3444,6 +3659,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:qa:075005b82489->gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:qa:075005b82489",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -3463,6 +3679,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/233/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/233/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/233/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/233/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/51/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/55/points/4"
@@ -3476,6 +3693,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:code:e80dbf3c3adc",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41"
@@ -3495,6 +3713,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/126/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/126/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/126/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/126/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/38/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/40/points/4"
@@ -3508,6 +3727,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:code:e80dbf3c3adc",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -3527,6 +3747,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/127/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/127/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/127/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/127/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/38/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/41/points/4"
@@ -3540,6 +3761,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:code:e80dbf3c3adc",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -3559,6 +3781,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/128/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/128/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/128/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/128/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/38/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/42/points/4"
@@ -3572,6 +3795,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:math:3816ece4b994",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41"
@@ -3591,6 +3815,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/129/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/129/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/129/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/129/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/16/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/18/points/4"
@@ -3604,6 +3829,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:math:3816ece4b994",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -3623,6 +3849,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/130/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/130/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/130/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/130/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/16/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/19/points/4"
@@ -3636,6 +3863,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:math:3816ece4b994",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -3655,6 +3883,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/131/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/131/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/131/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/131/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/16/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/20/points/4"
@@ -3668,6 +3897,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:qa:075005b82489",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41"
@@ -3687,6 +3917,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/132/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/132/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/132/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/132/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/60/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/62/points/4"
@@ -3700,6 +3931,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:qa:075005b82489",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -3719,6 +3951,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/133/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/133/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/133/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/133/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/60/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/63/points/4"
@@ -3732,6 +3965,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:qa:075005b82489",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -3751,6 +3985,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/134/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/134/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/134/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/134/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/60/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/64/points/4"
@@ -3764,6 +3999,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@19:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:code:e80dbf3c3adc",
     "contrast": "132->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -3783,6 +4019,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/135/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/135/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/135/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/135/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/38/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/41/points/1"
@@ -3796,6 +4033,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@19:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:math:3816ece4b994",
     "contrast": "132->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -3815,6 +4053,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/136/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/136/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/136/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/136/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/16/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/19/points/1"
@@ -3828,6 +4067,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@19:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:qa:075005b82489",
     "contrast": "132->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -3847,6 +4087,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/137/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/137/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/137/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/137/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/60/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/63/points/1"
@@ -3860,6 +4101,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@39:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@37:code:e80dbf3c3adc",
     "contrast": "132->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -3879,6 +4121,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/138/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/138/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/138/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/138/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/38/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/42/points/2"
@@ -3892,6 +4135,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@39:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@37:math:3816ece4b994",
     "contrast": "132->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -3911,6 +4155,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/139/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/139/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/139/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/139/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/16/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/20/points/2"
@@ -3924,6 +4169,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@39:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@37:qa:075005b82489",
     "contrast": "132->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -3943,6 +4189,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/140/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/140/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/140/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/140/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/60/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/64/points/2"
@@ -3956,6 +4203,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:code:e80dbf3c3adc",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -3975,6 +4223,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/141/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/141/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/141/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/141/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/39/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/41/points/4"
@@ -3988,6 +4237,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@143:code:e80dbf3c3adc",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -4007,6 +4257,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/142/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/142/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/142/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/142/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/39/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/43/points/4"
@@ -4020,6 +4271,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:math:3816ece4b994",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -4039,6 +4291,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/143/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/143/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/143/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/143/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/17/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/19/points/4"
@@ -4052,6 +4305,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@143:math:3816ece4b994",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -4071,6 +4325,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/144/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/144/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/144/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/144/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/17/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/21/points/4"
@@ -4084,6 +4339,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:qa:075005b82489",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42"
@@ -4103,6 +4359,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/145/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/145/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/145/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/145/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/61/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/63/points/4"
@@ -4116,6 +4373,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@143:qa:075005b82489",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -4135,6 +4393,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/146/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/146/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/146/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/146/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/61/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/65/points/4"
@@ -4148,6 +4407,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52@38:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@37:code:e80dbf3c3adc",
     "contrast": "132->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -4167,6 +4427,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/147/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/147/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/147/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/147/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/39/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/42/points/2"
@@ -4180,6 +4441,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52@38:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@37:math:3816ece4b994",
     "contrast": "132->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -4199,6 +4461,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/148/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/148/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/148/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/148/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/17/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/20/points/2"
@@ -4212,6 +4475,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52@38:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@37:qa:075005b82489",
     "contrast": "132->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -4231,6 +4495,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/149/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/149/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/149/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/149/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/61/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/64/points/2"
@@ -4244,6 +4509,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:code:e80dbf3c3adc",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -4263,6 +4529,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/150/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/150/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/150/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/150/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/40/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/42/points/4"
@@ -4276,6 +4543,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:math:3816ece4b994",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -4295,6 +4563,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/151/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/151/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/151/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/151/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/18/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/20/points/4"
@@ -4308,6 +4577,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:qa:075005b82489",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -4327,6 +4597,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/152/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/152/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/152/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/152/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/62/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/64/points/4"
@@ -4340,6 +4611,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@36:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@36:code:e80dbf3c3adc",
     "contrast": "198->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -4359,6 +4631,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/153/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/153/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/153/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/153/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/40/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/43/points/2"
@@ -4372,6 +4645,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@36:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@36:math:3816ece4b994",
     "contrast": "198->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -4391,6 +4665,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/154/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/154/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/154/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/154/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/18/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/21/points/2"
@@ -4404,6 +4679,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@36:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@36:qa:075005b82489",
     "contrast": "198->594",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -4423,6 +4699,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/155/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/155/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/155/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/155/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/62/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/65/points/2"
@@ -4436,6 +4713,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@73:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@72:code:e80dbf3c3adc",
     "contrast": "198->594",
+    "band": "100k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -4455,6 +4733,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/156/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/156/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/156/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/156/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/40/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/43/points/3"
@@ -4468,6 +4747,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@73:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@72:math:3816ece4b994",
     "contrast": "198->594",
+    "band": "100k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -4487,6 +4767,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/157/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/157/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/157/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/157/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/18/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/21/points/3"
@@ -4500,6 +4781,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@73:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@72:qa:075005b82489",
     "contrast": "198->594",
+    "band": "100k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -4519,6 +4801,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/158/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/158/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/158/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/158/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/62/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/65/points/3"
@@ -4532,6 +4815,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:code:e80dbf3c3adc",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -4551,6 +4835,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/159/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/159/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/159/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/159/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/41/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/42/points/4"
@@ -4564,6 +4849,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:math:3816ece4b994",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -4583,6 +4869,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/160/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/160/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/160/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/160/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/19/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/20/points/4"
@@ -4596,6 +4883,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:qa:075005b82489",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -4615,6 +4903,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/161/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/161/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/161/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/161/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/63/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/64/points/4"
@@ -4628,6 +4917,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@72:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@72:code:e80dbf3c3adc",
     "contrast": "198->594",
+    "band": "100k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -4647,6 +4937,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/162/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/162/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/162/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/162/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/41/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/43/points/3"
@@ -4660,6 +4951,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@72:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@72:math:3816ece4b994",
     "contrast": "198->594",
+    "band": "100k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -4679,6 +4971,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/163/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/163/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/163/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/163/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/19/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/21/points/3"
@@ -4692,6 +4985,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@72:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42@72:qa:075005b82489",
     "contrast": "198->594",
+    "band": "100k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42"
@@ -4711,6 +5005,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/164/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/164/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/164/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/164/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/63/points/3",
       "results/v100-critical-region/summary.json#/raw_response_curves/65/points/3"
@@ -4724,6 +5019,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:code:e80dbf3c3adc",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -4743,6 +5039,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/165/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/165/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/165/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/165/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/36/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/38/points/14"
@@ -4756,6 +5053,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -4775,6 +5073,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/166/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/166/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/166/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/166/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/36/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/40/points/4"
@@ -4788,6 +5087,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -4807,6 +5107,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/167/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/167/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/167/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/167/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/36/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/41/points/4"
@@ -4820,6 +5121,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:code:e80dbf3c3adc",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -4839,6 +5141,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/168/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/168/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/168/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/168/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/36/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/42/points/4"
@@ -4852,6 +5155,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:math:3816ece4b994",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -4871,6 +5175,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/169/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/169/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/169/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/169/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/14/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/16/points/14"
@@ -4884,6 +5189,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -4903,6 +5209,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/170/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/170/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/170/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/170/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/14/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/18/points/4"
@@ -4916,6 +5223,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -4935,6 +5243,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/171/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/171/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/171/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/171/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/14/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/19/points/4"
@@ -4948,6 +5257,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:math:3816ece4b994",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -4967,6 +5277,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/172/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/172/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/172/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/172/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/14/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/20/points/4"
@@ -4980,6 +5291,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:qa:075005b82489",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -4999,6 +5311,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/173/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/173/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/173/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/173/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/58/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/60/points/14"
@@ -5012,6 +5325,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:qa:075005b82489",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -5031,6 +5345,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/174/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/174/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/174/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/174/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/58/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/62/points/4"
@@ -5044,6 +5359,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:qa:075005b82489",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -5063,6 +5379,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/175/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/175/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/175/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/175/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/58/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/63/points/4"
@@ -5076,6 +5393,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:qa:075005b82489",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -5095,6 +5413,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/176/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/176/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/176/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/176/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/58/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/64/points/4"
@@ -5108,6 +5427,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@19:code:e80dbf3c3adc",
     "contrast": "66->132",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -5127,6 +5447,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/177/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/177/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/177/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/177/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/36/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/38/points/1"
@@ -5140,6 +5461,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -5159,6 +5481,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/178/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/178/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/178/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/178/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/36/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/41/points/1"
@@ -5172,6 +5495,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@19:math:3816ece4b994",
     "contrast": "66->132",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -5191,6 +5515,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/179/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/179/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/179/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/179/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/14/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/16/points/1"
@@ -5204,6 +5529,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -5223,6 +5549,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/180/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/180/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/180/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/180/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/14/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/19/points/1"
@@ -5236,6 +5563,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@19:qa:075005b82489",
     "contrast": "66->132",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -5255,6 +5583,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/181/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/181/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/181/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/181/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/58/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/60/points/1"
@@ -5268,6 +5597,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:qa:075005b82489",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -5287,6 +5617,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/182/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/182/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/182/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/182/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/58/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/63/points/1"
@@ -5300,6 +5631,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@38:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -5319,6 +5651,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/183/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/183/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/183/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/183/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/36/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/41/points/2"
@@ -5332,6 +5665,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@38:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -5351,6 +5685,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/184/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/184/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/184/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/184/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/14/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/19/points/2"
@@ -5364,6 +5699,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@38:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:qa:075005b82489",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -5383,6 +5719,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/185/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/185/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/185/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/185/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/58/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/63/points/2"
@@ -5396,6 +5733,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:code:e80dbf3c3adc",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5415,6 +5753,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/186/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/186/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/186/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/186/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/37/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/38/points/14"
@@ -5428,6 +5767,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:code:e80dbf3c3adc",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5447,6 +5787,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/187/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/187/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/187/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/187/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/37/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/39/points/14"
@@ -5460,6 +5801,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5479,6 +5821,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/188/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/188/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/188/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/188/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/37/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/40/points/4"
@@ -5492,6 +5835,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5511,6 +5855,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/189/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/189/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/189/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/189/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/37/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/41/points/4"
@@ -5524,6 +5869,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:code:e80dbf3c3adc",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5543,6 +5889,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/190/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/190/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/190/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/190/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/37/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/42/points/4"
@@ -5556,6 +5903,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:math:3816ece4b994",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5575,6 +5923,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/191/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/191/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/191/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/191/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/15/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/16/points/14"
@@ -5588,6 +5937,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:math:3816ece4b994",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5607,6 +5957,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/192/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/192/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/192/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/192/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/15/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/17/points/14"
@@ -5620,6 +5971,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5639,6 +5991,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/193/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/193/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/193/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/193/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/15/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/18/points/4"
@@ -5652,6 +6005,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5671,6 +6025,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/194/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/194/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/194/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/194/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/15/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/19/points/4"
@@ -5684,6 +6039,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:math:3816ece4b994",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5703,6 +6059,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/195/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/195/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/195/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/195/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/15/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/20/points/4"
@@ -5716,6 +6073,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:qa:075005b82489",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5735,6 +6093,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/196/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/196/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/196/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/196/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/59/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/60/points/14"
@@ -5748,6 +6107,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52@144:qa:075005b82489",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5767,6 +6127,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/197/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/197/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/197/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/197/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/59/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/61/points/14"
@@ -5780,6 +6141,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:qa:075005b82489",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5799,6 +6161,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/198/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/198/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/198/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/198/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/59/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/62/points/4"
@@ -5812,6 +6175,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:qa:075005b82489",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5831,6 +6195,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/199/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/199/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/199/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/199/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/59/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/63/points/4"
@@ -5844,6 +6209,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:qa:075005b82489",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5863,6 +6229,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/200/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/200/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/200/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/200/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/59/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/64/points/4"
@@ -5876,6 +6243,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@19:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@18:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5895,6 +6263,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/201/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/201/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/201/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/201/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/37/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/40/points/1"
@@ -5908,6 +6277,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@19:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@18:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5927,6 +6297,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/202/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/202/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/202/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/202/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/15/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/18/points/1"
@@ -5940,6 +6311,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@19:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@18:qa:075005b82489",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5959,6 +6331,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/203/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/203/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/203/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/203/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/59/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/62/points/1"
@@ -5972,6 +6345,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@38:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -5991,6 +6365,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/204/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/204/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/204/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/204/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/37/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/41/points/2"
@@ -6004,6 +6379,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@38:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -6023,6 +6399,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/205/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/205/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/205/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/205/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/15/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/19/points/2"
@@ -6036,6 +6413,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.01,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@38:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:qa:075005b82489",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -6055,6 +6433,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/206/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/206/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/206/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/206/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/59/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/63/points/2"
@@ -6068,6 +6447,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:code:e80dbf3c3adc",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41"
@@ -6087,6 +6467,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/252/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/252/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/252/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/252/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/38/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/40/points/4"
@@ -6100,6 +6481,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:code:e80dbf3c3adc",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -6119,6 +6501,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/253/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/253/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/253/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/253/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/38/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/42/points/4"
@@ -6132,6 +6515,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:math:3816ece4b994",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41"
@@ -6151,6 +6535,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/254/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/254/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/254/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/254/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/16/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/18/points/4"
@@ -6164,6 +6549,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:math:3816ece4b994",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -6183,6 +6569,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/255/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/255/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/255/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/255/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/16/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/20/points/4"
@@ -6196,6 +6583,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:qa:075005b82489",
     "contrast": "132->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41"
@@ -6215,6 +6603,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/256/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/256/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/256/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/256/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/60/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/62/points/4"
@@ -6228,6 +6617,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:qa:075005b82489",
     "contrast": "132->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -6247,6 +6637,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/257/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/257/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/257/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/257/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/60/points/14",
       "results/v100-critical-region/summary.json#/raw_response_curves/64/points/4"
@@ -6260,6 +6651,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:code:e80dbf3c3adc",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -6279,6 +6671,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/258/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/258/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/258/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/258/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/40/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/42/points/4"
@@ -6292,6 +6685,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:math:3816ece4b994",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -6311,6 +6705,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/259/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/259/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/259/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/259/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/18/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/20/points/4"
@@ -6324,6 +6719,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:qa:075005b82489",
     "contrast": "198->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41"
@@ -6343,6 +6739,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/260/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/260/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/260/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/260/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/62/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/64/points/4"
@@ -6356,6 +6753,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:code:e80dbf3c3adc",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -6375,6 +6773,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/261/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/261/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/261/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/261/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/36/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/38/points/14"
@@ -6388,6 +6787,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -6407,6 +6807,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/262/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/262/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/262/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/262/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/36/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/40/points/4"
@@ -6420,6 +6821,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:code:e80dbf3c3adc",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -6439,6 +6841,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/263/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/263/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/263/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/263/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/36/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/42/points/4"
@@ -6452,6 +6855,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:math:3816ece4b994",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -6471,6 +6875,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/264/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/264/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/264/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/264/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/14/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/16/points/14"
@@ -6484,6 +6889,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -6503,6 +6909,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/265/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/265/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/265/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/265/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/14/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/18/points/4"
@@ -6516,6 +6923,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:math:3816ece4b994",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -6535,6 +6943,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/266/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/266/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/266/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/266/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/14/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/20/points/4"
@@ -6548,6 +6957,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51@144:qa:075005b82489",
     "contrast": "66->132",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -6567,6 +6977,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/267/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/267/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/267/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/267/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/58/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/60/points/14"
@@ -6580,6 +6991,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41@144:qa:075005b82489",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -6599,6 +7011,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/268/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/268/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/268/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/268/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/58/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/62/points/4"
@@ -6612,6 +7025,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@152:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41@142:qa:075005b82489",
     "contrast": "66->594",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -6631,6 +7045,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/269/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/269/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/269/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/269/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/58/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/64/points/4"
@@ -6644,6 +7059,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -6663,6 +7079,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/270/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/270/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/270/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/270/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/36/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/41/points/1"
@@ -6676,6 +7093,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -6695,6 +7113,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/271/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/271/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/271/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/271/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/14/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/19/points/1"
@@ -6708,6 +7127,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@19:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@18:qa:075005b82489",
     "contrast": "66->198",
+    "band": "25k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -6727,6 +7147,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/272/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/272/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/272/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/272/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/58/points/1",
       "results/v100-critical-region/summary.json#/raw_response_curves/63/points/1"
@@ -6740,6 +7161,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@38:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -6759,6 +7181,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/273/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/273/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/273/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/273/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/36/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/41/points/2"
@@ -6772,6 +7195,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@38:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -6791,6 +7215,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/274/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/274/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/274/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/274/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/14/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/19/points/2"
@@ -6804,6 +7229,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41@38:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@36:qa:075005b82489",
     "contrast": "66->198",
+    "band": "50k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41"
@@ -6823,6 +7249,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/275/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/275/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/275/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/275/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/58/points/2",
       "results/v100-critical-region/summary.json#/raw_response_curves/63/points/2"
@@ -6836,6 +7263,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:code:e80dbf3c3adc->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:code:e80dbf3c3adc",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -6855,6 +7283,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/276/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/276/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/276/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/276/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/37/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/41/points/4"
@@ -6868,6 +7297,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:math:3816ece4b994->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:math:3816ece4b994",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -6887,6 +7317,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/277/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/277/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/277/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/277/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/15/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/19/points/4"
@@ -6900,6 +7331,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "tolerance": 0.003,
     "pair_id": "I2_size:gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42@151:qa:075005b82489->gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42@143:qa:075005b82489",
     "contrast": "66->198",
+    "band": "200k",
     "trajectory_clusters": [
       "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
       "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42"
@@ -6919,6 +7351,7 @@ fig5_b.pdf: 2.7 x 2.05 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt,
     "effect_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/278/measured_effect",
     "bracket_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/278/reuse_bracket",
     "tolerance_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/278/tolerance",
+    "band_source": "results/v100-critical-region/summary.json#/fixed_budget/endpoint_ratios/278/band",
     "endpoint_sources": [
       "results/v100-critical-region/summary.json#/raw_response_curves/59/points/4",
       "results/v100-critical-region/summary.json#/raw_response_curves/63/points/4"
