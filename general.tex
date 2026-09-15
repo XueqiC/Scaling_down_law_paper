@@ -17,16 +17,13 @@ the same cells; a point below its baseline marks a cell where the relation earne
 \subsection{Prediction at Unseen Compression Settings}
 \label{sec:unseen_settings}
 
-On three Pythia checkpoints that entered no fit, at densities inside the fitted range, the frozen
-pruning power form reaches 0.24, 0.24 and 0.68 nats for math, code and QA against 0.23, 0.22 and 0.68
-for the per-density regression and 0.28, 0.21 and 0.22 for the median curve: it matches the
-regression on math with a quarter of the parameters, trails the median on code, and loses QA to
-every source-free curve; at $d=0.55$, outside the range, every source-conditioned form fails by 0.6
-to 4.5 nats. In grouped quantization, with predictions frozen after development on all 54 cells,
-unseen group sizes 32 and 512 on the development states are predicted best by the piecewise
-interpolation for math and code (0.07 and 0.12 nats), while on a state absent from the fit the
-median is best for math and QA (0.13) and the interpolation for code (0.17 against 0.22); the
-per-channel predictor's one unseen setting is worse than a per-bit constant. For distillation, at six
+On three Pythia checkpoints that entered no fit, the frozen pruning power form matches the
+per-density regression on math with a quarter of the parameters (0.24 against 0.23 nats), trails the
+median on code, and loses QA to every source-free curve (0.68 against 0.22); at $d=0.55$, outside
+the range, every source-conditioned form fails by 0.6 to 4.5 nats. In grouped quantization, with predictions frozen on all 54 cells, unseen group sizes on the
+development states are predicted best by the piecewise interpolation for math and code (0.07 and
+0.12 nats), and on a state absent from the fit by the median for math and QA (0.13) and the
+interpolation for code (0.17 against 0.22). For distillation, at six
 new pools of $U{=}200$ and three new budgets every selected form beats zero change, the gain over the
 development-designated baseline is detected for code on both students (0.004 and 0.005 nats) and for
 QA on the 270M student only, and the four corner budgets of the rectangle test landed on their

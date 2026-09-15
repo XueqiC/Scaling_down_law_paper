@@ -62,14 +62,14 @@ Intervals remain attached to their estimand: A2 primary_mae_interval is an error
 - Cell (4, 5): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/rows/36/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/39/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/42/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/45/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/48/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/51/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/54/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/57/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/60/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/37/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/40/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/43/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/46/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/49/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/52/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/55/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/58/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/61/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/38/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/41/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/44/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/47/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/50/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/53/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/56/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/59/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/62/absolute_errors/median`
 - Cell (4, 6): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`
 - Cell (5, 0): `results/a2-curvature-interaction/summary.json#/decision_table/18/target`; `results/a2-curvature-interaction/summary.json#/decision_table/6/target`; `results/a2-curvature-interaction/summary.json#/decision_table/54/target`
-- Cell (5, 1): `results/a2-curvature-interaction/summary.json#/protocol/structures`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_log/fit/nominal_parameters`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/nominal_parameters`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_int/fit/nominal_parameters`
+- Cell (5, 1): `results/a2-curvature-interaction/summary.json#/protocol/structures`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_log`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_log/fit/nominal_parameters`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_curv`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/nominal_parameters`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_int`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_int/fit/nominal_parameters`
 - Cell (5, 2): `results/a2-curvature-interaction/summary.json#/protocol/descriptors`; `results/a2-curvature-interaction/summary.json#/protocol/descriptor_calibration_cost`
 - Cell (5, 3): `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_log/fit/standardizer/students`; `results/a2-curvature-interaction/summary.json#/protocol/largest_budget`; `results/a2-curvature-interaction/summary.json#/decision_table/6/distribution`; `results/a2-curvature-interaction/summary.json#/decision_table/18/distribution`; `results/a2-curvature-interaction/summary.json#/decision_table/54/distribution`
 - Cell (5, 4): `results/a2-curvature-interaction/summary.json#/decision_table/18/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/18/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/18/primary_mae_interval/1`; `results/a2-curvature-interaction/summary.json#/decision_table/6/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/6/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/6/primary_mae_interval/1`; `results/a2-curvature-interaction/summary.json#/decision_table/54/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/54/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/54/primary_mae_interval/1`
 - Cell (5, 5): `results/a2-curvature-interaction/summary.json#/decision_table/18/inner_selected_baselines`; `results/a2-curvature-interaction/summary.json#/decision_table/18/baseline_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/6/inner_selected_baselines`; `results/a2-curvature-interaction/summary.json#/decision_table/6/baseline_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/54/inner_selected_baselines`; `results/a2-curvature-interaction/summary.json#/decision_table/54/baseline_mae`
 - Cell (5, 6): `results/a2-curvature-interaction/summary.json#/protocol/secondary`; `results/a2-curvature-interaction/summary.json#/protocol/previous_F_int`
 - Cell (6, 0): `results/a2-curvature-interaction/summary.json#/decision_table/14/target`; `results/a2-curvature-interaction/summary.json#/decision_table/2/target`; `results/a2-curvature-interaction/summary.json#/decision_table/50/target`
-- Cell (6, 1): `results/a2-curvature-interaction/summary.json#/protocol/structures`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_log/fit/nominal_parameters`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/nominal_parameters`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_int/fit/nominal_parameters`
+- Cell (6, 1): `results/a2-curvature-interaction/summary.json#/protocol/structures`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_log`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_log/fit/nominal_parameters`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_curv`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/nominal_parameters`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_int`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_int/fit/nominal_parameters`
 - Cell (6, 2): `results/a2-curvature-interaction/summary.json#/protocol/descriptors`; `results/a2-curvature-interaction/summary.json#/protocol/descriptor_calibration_cost`
 - Cell (6, 3): `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/standardizer/students`; `results/a2-curvature-interaction/summary.json#/protocol/I_U`; `results/a2-curvature-interaction/summary.json#/decision_table/2/distribution`; `results/a2-curvature-interaction/summary.json#/decision_table/14/distribution`; `results/a2-curvature-interaction/summary.json#/decision_table/26/distribution`; `results/a2-curvature-interaction/summary.json#/decision_table/38/distribution`; `results/a2-curvature-interaction/summary.json#/decision_table/50/distribution`; `results/a2-curvature-interaction/summary.json#/decision_table/62/distribution`
 - Cell (6, 4): `results/a2-curvature-interaction/summary.json#/decision_table/14/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/14/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/14/primary_mae_interval/1`; `results/a2-curvature-interaction/summary.json#/decision_table/2/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/2/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/2/primary_mae_interval/1`; `results/a2-curvature-interaction/summary.json#/decision_table/50/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/50/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/50/primary_mae_interval/1`
@@ -813,14 +813,23 @@ Intervals remain attached to their estimand: A2 primary_mae_interval is an error
         ],
         "op": "identity",
         "format": null
-      }
+      },
+      "\nSurface: ",
+      {
+        "sources": [
+          "results/v55-quant-group/register.json#/candidate_definitions/low_order_2d"
+        ],
+        "op": "identity",
+        "format": null
+      },
+      "\nMedian per config; zero response"
     ],
     "context": [
       "results/v55-quant-group/register.json#/candidate_definitions/low_order_2d",
       "results/v69-quant-confirm/develop.json#/models"
     ],
     "note": "Surface is phi.[a0+a1*u+a2*v+a3*u*v+a4*u^2]; median is per configuration; zero is identically zero.",
-    "rendered": "math: low\\_order\\_2d; parameters 20\\newline code: median; parameters 9\\newline qa: zero; parameters 0"
+    "rendered": "math: low\\_order\\_2d; parameters 20\\newline code: median; parameters 9\\newline qa: zero; parameters 0\\newline Surface: phi.[a0 + a1*u + a2*v + a3*u*v + a4*u\\textasciicircum{}2]; coefficients ordered by term then phi\\newline Median per config; zero response"
   },
   {
     "row": 3,
@@ -1184,14 +1193,23 @@ Intervals remain attached to their estimand: A2 primary_mae_interval is an error
         ],
         "op": "identity",
         "format": null
-      }
+      },
+      "\nSurface: ",
+      {
+        "sources": [
+          "results/v55-quant-group/register.json#/candidate_definitions/low_order_2d"
+        ],
+        "op": "identity",
+        "format": null
+      },
+      "\nMedian per config; zero response"
     ],
     "context": [
       "results/v55-quant-group/register.json#/candidate_definitions/low_order_2d",
       "results/v69-quant-confirm/develop.json#/models"
     ],
     "note": "Surface is phi.[a0+a1*u+a2*v+a3*u*v+a4*u^2]; median is per configuration; zero is identically zero.",
-    "rendered": "math: low\\_order\\_2d; parameters 20\\newline code: median; parameters 9\\newline qa: zero; parameters 0"
+    "rendered": "math: low\\_order\\_2d; parameters 20\\newline code: median; parameters 9\\newline qa: zero; parameters 0\\newline Surface: phi.[a0 + a1*u + a2*v + a3*u*v + a4*u\\textasciicircum{}2]; coefficients ordered by term then phi\\newline Median per config; zero response"
   },
   {
     "row": 4,
@@ -1446,15 +1464,16 @@ Intervals remain attached to their estimand: A2 primary_mae_interval is an error
     "row": 5,
     "column": 1,
     "parts": [
-      "Fold-selected ",
+      "Fold-selected:\n",
+      "F_log: ",
       {
         "sources": [
-          "results/a2-curvature-interaction/summary.json#/protocol/structures"
+          "results/a2-curvature-interaction/summary.json#/protocol/structures/F_log"
         ],
-        "op": "keys",
+        "op": "identity",
         "format": null
       },
-      "; nominal parameters ",
+      "; parameters ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_log/fit/nominal_parameters"
@@ -1462,7 +1481,16 @@ Intervals remain attached to their estimand: A2 primary_mae_interval is an error
         "op": "identity",
         "format": null
       },
-      "/",
+      "\n",
+      "F_curv: ",
+      {
+        "sources": [
+          "results/a2-curvature-interaction/summary.json#/protocol/structures/F_curv"
+        ],
+        "op": "identity",
+        "format": null
+      },
+      "; parameters ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/nominal_parameters"
@@ -1470,7 +1498,16 @@ Intervals remain attached to their estimand: A2 primary_mae_interval is an error
         "op": "identity",
         "format": null
       },
-      "/",
+      "\n",
+      "F_int: ",
+      {
+        "sources": [
+          "results/a2-curvature-interaction/summary.json#/protocol/structures/F_int"
+        ],
+        "op": "identity",
+        "format": null
+      },
+      "; parameters ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_int/fit/nominal_parameters"
@@ -1483,7 +1520,7 @@ Intervals remain attached to their estimand: A2 primary_mae_interval is an error
       "results/a2-curvature-interaction/summary.json#/protocol/structures"
     ],
     "note": "Forms and parameter counts are per structure, not summed over folds.",
-    "rendered": "Fold-selected F\\_log, F\\_curv, F\\_int; nominal parameters 4/5/5"
+    "rendered": "Fold-selected:\\newline F\\_log: (a+a\\_prime*z)*u+(b+b\\_prime*z)*v; parameters 4\\newline F\\_curv: (a+a\\_prime*z)*u+(b+b\\_prime*z)*h\\_p(E); parameters 5\\newline F\\_int: (a+a\\_prime*z)*u+(b+b\\_prime*z)*v+k*u*v; parameters 5"
   },
   {
     "row": 5,
@@ -1709,15 +1746,16 @@ Intervals remain attached to their estimand: A2 primary_mae_interval is an error
     "row": 6,
     "column": 1,
     "parts": [
-      "Fold-selected ",
+      "Fold-selected:\n",
+      "F_log: ",
       {
         "sources": [
-          "results/a2-curvature-interaction/summary.json#/protocol/structures"
+          "results/a2-curvature-interaction/summary.json#/protocol/structures/F_log"
         ],
-        "op": "keys",
+        "op": "identity",
         "format": null
       },
-      "; nominal parameters ",
+      "; parameters ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_log/fit/nominal_parameters"
@@ -1725,7 +1763,16 @@ Intervals remain attached to their estimand: A2 primary_mae_interval is an error
         "op": "identity",
         "format": null
       },
-      "/",
+      "\n",
+      "F_curv: ",
+      {
+        "sources": [
+          "results/a2-curvature-interaction/summary.json#/protocol/structures/F_curv"
+        ],
+        "op": "identity",
+        "format": null
+      },
+      "; parameters ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/nominal_parameters"
@@ -1733,7 +1780,16 @@ Intervals remain attached to their estimand: A2 primary_mae_interval is an error
         "op": "identity",
         "format": null
       },
-      "/",
+      "\n",
+      "F_int: ",
+      {
+        "sources": [
+          "results/a2-curvature-interaction/summary.json#/protocol/structures/F_int"
+        ],
+        "op": "identity",
+        "format": null
+      },
+      "; parameters ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_int/fit/nominal_parameters"
@@ -1746,7 +1802,7 @@ Intervals remain attached to their estimand: A2 primary_mae_interval is an error
       "results/a2-curvature-interaction/summary.json#/protocol/structures"
     ],
     "note": "Forms and parameter counts are per structure, not summed over folds.",
-    "rendered": "Fold-selected F\\_log, F\\_curv, F\\_int; nominal parameters 4/5/5"
+    "rendered": "Fold-selected:\\newline F\\_log: (a+a\\_prime*z)*u+(b+b\\_prime*z)*v; parameters 4\\newline F\\_curv: (a+a\\_prime*z)*u+(b+b\\_prime*z)*h\\_p(E); parameters 5\\newline F\\_int: (a+a\\_prime*z)*u+(b+b\\_prime*z)*v+k*u*v; parameters 5"
   },
   {
     "row": 6,
@@ -1979,7 +2035,7 @@ Intervals remain attached to their estimand: A2 primary_mae_interval is an error
         "sources": [
           "results/v70-distill-confirm/freeze.json#/selected/math/method"
         ],
-        "op": "identity",
+        "op": "v70_form",
         "format": null
       },
       "; parameters ",
@@ -1996,7 +2052,7 @@ Intervals remain attached to their estimand: A2 primary_mae_interval is an error
         "sources": [
           "results/v70-distill-confirm/freeze.json#/selected/code/method"
         ],
-        "op": "identity",
+        "op": "v70_form",
         "format": null
       },
       "; parameters ",
@@ -2013,7 +2069,7 @@ Intervals remain attached to their estimand: A2 primary_mae_interval is an error
         "sources": [
           "results/v70-distill-confirm/freeze.json#/selected/qa/method"
         ],
-        "op": "identity",
+        "op": "v70_form",
         "format": null
       },
       "; parameters ",
@@ -2023,14 +2079,15 @@ Intervals remain attached to their estimand: A2 primary_mae_interval is an error
         ],
         "op": "identity",
         "format": null
-      }
+      },
+      "\nu=log(1+T/T_ref)"
     ],
     "context": [
       "results/v70-distill-confirm/freeze.json#/models",
       "results/v70-distill-confirm/freeze.json#/reference_rule"
     ],
-    "note": "E is zero-anchored log reuse; joint combines budget and reuse with stored T_star. Counts include T_star.",
-    "rendered": "math: E; parameters 1\\newline code: E; parameters 1\\newline qa: joint; parameters 3"
+    "note": "E and joint are the frozen V50/V70 design identifiers. E has one coefficient; joint has three coefficients on u, u*u, u*log(D_U/D_ref). T_star is null, not fitted, for these selected forms.",
+    "rendered": "math: a log(1+E); parameters 1\\newline code: a log(1+E); parameters 1\\newline qa: u(a+b u+q log(D\\_U/D\\_ref)); parameters 3\\newline u=log(1+T/T\\_ref)"
   },
   {
     "row": 7,
