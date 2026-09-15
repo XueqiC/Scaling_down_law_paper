@@ -3,13 +3,16 @@
 
 Every test below scores predictions frozen before measurement on three kinds of unseen object: settings outside the fitted set, states of new sizes or stages, and the three capabilities across both. Table~\ref{tab:main_final} lists, per arm, the frozen candidate, the strongest of all predictors frozen in that round, and the delivered rule with when it was fixed; Fig.~\ref{fig:confirm} shows the candidate's error differences, failures included; earlier tests are in Appendix~\ref{sec:app_results}. Errors are MAE in nats per token.
 
-\input{tables/main_final}
 
-\begin{figure}[!t]
+\begin{figure}[t]
 \centering
-\includegraphics[width=0.9\textwidth]{figs/frozen_candidates.pdf}
-\caption{Frozen candidate evaluation, matching Table~\ref{tab:main_final}. Bars show MAE of the strongest frozen alternative minus MAE of the frozen candidate, separately for math, code, and QA; negative gains are retained. Strongest means the lowest pooled test MAE among all predictors recorded in that round's frozen comparison, excluding the candidate. Endpoint labels are candidate/alternative MAE in nats per token. Hollow diamonds show the delivered rule's gain against the same alternative when its method differs from the candidate. Pruning and quantization delivery was fixed after these tests and is retrospective here; distillation delivery equals the candidate and was fixed before test. Quantization candidates are frozen D: surface/median/zero.}
-\label{fig:confirm}
+\includegraphics[width=\textwidth]{figs/generalization.pdf}
+\caption{Generalization of the frozen relations, separated by the kind of novelty. \textbf{A}: new
+configurations of seen states. \textbf{B}: new sources or students; the 4B distillation student is a
+development student in the final round and is drawn as such. \textbf{C}: new evaluation
+distributions. Each row compares the relation's error with the development-selected baseline's on
+the same cells; a point below its baseline marks a cell where the relation earned its range.}
+\label{fig:generalization}
 \end{figure}
 \subsection{Prediction at Unseen Compression Settings}
 \label{sec:unseen_settings}
