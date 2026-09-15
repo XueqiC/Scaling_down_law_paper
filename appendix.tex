@@ -3,113 +3,90 @@
 \subsection{Probes and loss computation}
 \label{sec:app_probes}
 
-The primary probes draw from MATH-500 \citep{hendrycks2021math,lightman2023verify}, MBPP
-\citep{austin2021program}, and 2WikiMultihopQA \citep{ho2020constructing}; the secondary benchmarks of the measurement
-checks are GSM8K \citep{cobbe2021gsm8k}, SVAMP \citep{patel2021svamp}, HumanEval \citep{chen2021codex}, HotpotQA
-\citep{yang2018hotpotqa}, TriviaQA \citep{joshi2017triviaqa}, and MuSiQue \citep{trivedi2022musique}. Models: Pythia
-\citep{biderman2023pythia}, Gemma 3 \citep{gemma2025gemma3}, Qwen3 \citep{qwen2025qwen3}; LoRA adapters \citep{hu2022lora}.
-The size-and-stage panel design follows the observational use of released checkpoints \citep{ruan2024observational,polo2024tinybenchmarks}.
-Each capability is measured on a fixed probe set of prompt--reference
-pairs drawn once, with a fixed seed, from held-out benchmark splits that
-are disjoint from each training and recovery source used in the paper.
-The primary measurement benchmarks are MATH-500 for mathematical
-reasoning, MBPP for code generation, and 2WikiMultihopQA for multi-hop
-question answering. For each capability we draw 128 probes and split
-them by index parity into an estimation half, used only for gradient
-and Fisher statistics, and a measurement half of 64 probes on which
-each reported loss is computed, so that mechanism statistics and
-evaluations do not share sampling noise. Secondary benchmarks used for the measurement checks below are
-GSM8K, HumanEval, and HotpotQA on the pruning panel (no training
-involved) and SVAMP, HumanEval, and TriviaQA where distilled models are
-scored, chosen to exclude the benchmarks from which the distillation
-traces were derived; a sample-level audit found no overlap between any
-measurement probe and any training pool. The measurement half is 64
-probes per capability for every result in the paper except where a
-512-probe re-measurement is stated.
+Each capability is measured on a fixed probe set of prompt and reference pairs, drawn once with a
+fixed seed from held-out benchmark splits that are disjoint from every training and recovery source
+used in the paper. The primary benchmarks are MATH-500 \citep{hendrycks2021math,lightman2023verify}
+for mathematical reasoning, MBPP \citep{austin2021program} for code generation, and 2WikiMultihopQA
+\citep{ho2020constructing} for multi-hop question answering. For each capability we draw 128 probes
+and split them by index parity into an estimation half, used only for gradient and Fisher
+statistics, and a measurement half of 64 probes on which every reported loss is computed, so that
+mechanism statistics and evaluations do not share sampling noise. Every result in the paper uses the
+64-probe measurement half unless a 512-probe re-measurement is stated.
 
+The secondary benchmarks of the measurement checks (Appendix~\ref{sec:app_measure}) are GSM8K
+\citep{cobbe2021gsm8k}, HumanEval \citep{chen2021codex} and HotpotQA \citep{yang2018hotpotqa} on the
+pruning panel, where no training is involved, and SVAMP \citep{patel2021svamp}, HumanEval and
+TriviaQA \citep{joshi2017triviaqa} where distilled models are scored, chosen so that no benchmark
+from which distillation traces were derived is used to score a distilled model; MuSiQue
+\citep{trivedi2022musique} serves as a second multi-hop distribution. A sample-level audit found no
+overlap between any measurement probe and any training pool. The models are Pythia
+\citep{biderman2023pythia}, Gemma 3 \citep{gemma2025gemma3} and Qwen3 \citep{qwen2025qwen3}, adapted
+with LoRA \citep{hu2022lora}; the size-and-stage panel follows the observational use of released
+checkpoints \citep{ruan2024observational,polo2024tinybenchmarks}.
 
 \subsection{Compression protocols}
 \label{sec:app_compress}
-\paragraph{Pruning.} Global magnitude pruning removes the smallest
-weights across all transformer matrices (attention and MLP projections;
-embeddings, output head, biases, and norms are excluded) to a target
-retained density $\dens$. The global threshold is estimated from a
-seeded sample of absolute weights so that the same procedure scales to
-30B-parameter models; each density is applied to the same dense
-reference weights, which are held on the CPU for the largest models so
-that a single 80~GB device suffices.
 
-\paragraph{Quantization.} Weights are fake-quantized per output channel
-with symmetric round-to-nearest at bit-width $\bits$, using the integer
-range $[-(2^{\bits-1}-1),\,2^{\bits-1}-1]$ and a per-channel scale set
-by the channel's maximum absolute value; activations are left in
-bfloat16. The dense weights are restored between bit-widths. The quantizer is
-\texttt{fake\_quantize\_per\_output\_channel} in the released code:
-$q_{\max}=2^{\bits-1}-1$ is the largest positive integer, integers are
-clamped to $[-q_{\max},q_{\max}]$ ($2^{\bits}-1$ values), and the
-scale is the channel's maximum absolute weight divided by $q_{\max}$.
-With a fixed clipping range the step size from 4 to 5 bits shrinks by
-$7/15$, so the squared step ratio is $(7/15)^2\approx0.22$; in general
-the squared step ratio between adjacent bit-widths is
-$(q_{\max}(\bits)/q_{\max}(\bits+1))^2$, not a constant $1/4$. A
-squared step ratio becomes a loss ratio only under assumptions about
-the error distribution and the local response that we do not test, so
-the fixed $4^{-\bits}$ shape is one candidate among others rather than a
-derived reference. Nominal storage ratios are computed from bit-widths;
-no memory or latency was measured.
+\paragraph{Pruning.} Global magnitude pruning removes the smallest weights across all transformer
+matrices (attention and MLP projections; embeddings, output head, biases and norms are excluded) to
+a target retained density $\dens$. The global threshold is estimated from a seeded sample of
+absolute weights, which lets the same procedure scale to 30B-parameter models, and each density is
+applied to the same dense reference weights.
 
-\paragraph{Distillation.} Students are fine-tuned on black-box teacher
-traces (a frontier API teacher answering GSM8K, HotpotQA, and CodeAlpaca
-prompts; 600 traces per domain) under the full-trace recipe, with
-strict LoRA adapters of rank 16 and scaling 32 on the query, key, value,
-output, gate, up, and down projections, AdamW at learning rate
-$10^{-4}$, an effective batch of 16 sequences, and a cosine schedule
-with 3\% warmup. A run aborts if the adapter library is unavailable and does not fall
-back to full fine-tuning silently, and the actual
-training mode and trainable parameter count are recorded in each
-manifest. Token accounting distinguishes processed tokens (all input
-tokens seen, including repetitions), unique pool tokens, and supervised
-completion tokens. The data pool of $U$ examples per domain is either
-the first $U$ rows of the trace file (the historical protocol) or a
-random sample drawn with a pool-sampling seed that is independent of the
-training seed; pools are identified by the sorted hashes of their
-samples and pairwise overlaps are reported. The historical schedule
-spanned a fixed number of epochs, so its cosine horizon varied with
-pool size; the controlled matrix of \S\ref{sec:law_distill} uses a schedule
-defined on the same absolute processed-token budget for each pool, and
-the two protocols are kept apart in fitting.
+\paragraph{Per-channel quantization.} Weights are fake-quantized per output channel with symmetric
+round-to-nearest at bit-width $\bits$: integers are clamped to $[-q_{\max},q_{\max}]$ with
+$q_{\max}=2^{\bits-1}-1$, the per-channel scale is the channel's maximum absolute weight divided by
+$q_{\max}$, and activations stay in bfloat16. The dense weights are restored between bit-widths.
+Because the clipping range is fixed, the step size from 4 to 5 bits shrinks by $7/15$ and the
+squared step ratio between adjacent bit-widths is $(q_{\max}(\bits)/q_{\max}(\bits+1))^2$ rather
+than a constant $1/4$; a squared step ratio becomes a loss ratio only under assumptions about the
+error distribution and the local response that we do not test, so the $4^{-\bits}$ shape is one
+candidate among others rather than a derived reference. Nominal storage ratios are computed from
+bit-widths; no memory or latency was measured.
 
+\paragraph{Grouped quantization.} The grouped variant (\S\ref{sec:law_quant}) splits each row of a
+weight matrix into contiguous groups of $g$ input weights, pads the last group with zeros, which do
+not affect the group maximum, and applies the same symmetric round-to-nearest with
+$q_{\max}=2^{b-1}-1$ per group; $g$ equal to the row width reproduces the per-channel quantizer
+exactly. The configurations are $b\in\{3,4,5\}$ and $g\in\{64,128,256\}$, with nominal storage
+computed from $b$ and $g$.
 
-
-\paragraph{Grouped quantizer.} The grouped variant (\S\ref{sec:law_quant}) splits each row of a weight matrix into
-contiguous groups of $g$ input weights, pads the last group with zeros (which do not affect the group's absmax), and
-applies the same symmetric round-to-nearest with $q_{\max}=2^{b-1}-1$ per group; $g$ equal to the row width reproduces
-the per-channel quantizer bit-exactly (verified by a unit test). Configurations are $b\in\{3,4,5\}$ and
-$g\in\{64,128,256\}$; nominal storage is computed from $b$ and $g$, and no memory or latency was measured.
+\paragraph{Distillation.} Students are fine-tuned on black-box teacher traces, a frontier API teacher
+answering GSM8K, HotpotQA and CodeAlpaca prompts with 600 traces per domain, under the full-trace
+recipe: LoRA adapters of rank 16 and scaling 32 on the query, key, value, output, gate, up and down
+projections, AdamW at learning rate $10^{-4}$ unless stated, an effective batch of 16 sequences, and
+a cosine schedule with 3\% warmup. The training mode and the trainable parameter count are recorded
+in each run manifest. Token accounting distinguishes processed tokens (every input token seen,
+including repetitions), unique pool tokens, and supervised completion tokens. The data pool of $U$
+examples per domain is either the first $U$ rows of the trace file, the historical protocol, or a
+random sample drawn with a pool-sampling seed independent of the training seed; pools are
+identified by the sorted hashes of their samples and pairwise overlaps are reported. The historical
+schedule spanned a fixed number of epochs, so its cosine horizon varied with pool size; the
+controlled matrix of \S\ref{sec:law_distill} uses a schedule defined on the same absolute
+processed-token budget for every pool, and the two protocols are never mixed in a fit.
 
 \subsection{The controlled Pythia panel}
 \label{sec:app_pythia}
-The panel uses the public Pythia checkpoints at sizes 160M, 410M, and
-1.4B and pretraining steps 16{,}000, 64{,}000, and 143{,}000, which
-correspond to 33.6B, 134.2B, and 299.9B processed tokens at the
-published batch of $1024\times2048$ tokens per step. The size
-coordinate $N_0$ counts transformer-matrix parameters only (the query,
-key, value, output, and MLP matrices of each layer), computed from the
-architecture configuration, and the training-tokens coordinate is
-$D_0=\text{step}\times 2{,}097{,}152$. Each checkpoint's weight identity
-was verified before use: the 2.8B revisions published for different
-steps were found to load identical weights and were excluded, and an
-integrity guard now rejects any pair of nominally different checkpoints
-with identical measured panels. New sources added for the prospective
-tests (Pythia-1B at steps 32{,}000, 96{,}000, and 112{,}000;
-Pythia-6.9B at 32{,}000 and 112{,}000) were confirmed to have not
-entered any fit or model selection before their predictions were
-frozen.
 
-\FloatBarrier
-The three checkpoints of the confirmation panel (410M@48k, 1.4B@112k, 6.9B@80k) were verified as distinct weights
-before use: their model-shard hashes differ from every other cached revision of the same size, and their dense
-capability vectors differ from those of the neighbouring stages.
+The panel uses the public Pythia checkpoints at sizes 160M, 410M and 1.4B and pretraining steps
+16{,}000, 64{,}000 and 143{,}000, which correspond to 33.6B, 134.2B and 299.9B processed tokens at
+the published batch of $1024\times2048$ tokens per step. The size coordinate $N_0$ counts
+transformer-matrix parameters only (the query, key, value, output and MLP matrices of each layer),
+computed from the architecture configuration, and the training-token coordinate is
+$D_0=\text{step}\times2{,}097{,}152$. The sources added for the prospective tests (Pythia-1B at
+steps 32{,}000, 96{,}000 and 112{,}000; Pythia-6.9B at 32{,}000 and 112{,}000; 410M at 48{,}000;
+1.4B at 112{,}000; 6.9B at 80{,}000) entered no fit or model selection before their predictions
+were frozen.
+
+\paragraph{Weight identity.} The weight identity of every checkpoint was verified before use.
+SHA-256 hashes of the safetensors blobs of all 23 Pythia revisions used (30 unique blobs) show that
+every revision with pruning or quantization measurements resolves to a distinct weight set, with one
+exception: the Pythia-2.8B revisions published for steps 16k, 64k and 143k load identical learned
+parameters. Those revisions were excluded from the panel, and the 2.8B repeatability check
+(Appendix~\ref{sec:app_results}) is therefore one state measured twice. The three checkpoints of the
+pruning confirmation panel (410M at 48k, 1.4B at 112k, 6.9B at 80k) have shard hashes that differ
+from every other revision of the same size, and their dense capability vectors differ from those of
+the neighbouring stages.
 
 \begin{table}[H]
 \centering\footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.15}
@@ -173,13 +150,6 @@ which for Gemma-3-4B includes 0.42B vision and projector parameters
 and counts tied embeddings twice; these frozen covariates are reported
 as recorded and not recomputed.
 
-\paragraph{Weight identity of Pythia revisions.} Streamed SHA-256
-hashes of the safetensors blobs loaded for all 23 cached Pythia
-revisions (30 unique blobs) show that every revision with pruning or
-quantization measurements resolves to a distinct weight set, with one
-exception: the cached Pythia-2.8B revisions tagged step 16k, 64k, and
-143k carry identical learned parameters, so the 2.8B repeatability
-check (Appendix~\ref{sec:app_results}) is one state measured twice.
 \input{tables/model_arch}
 
 
@@ -196,9 +166,14 @@ constants in the register files listed in Appendix~\ref{sec:app_registration}.
 \section{Alternative Functional Forms and Model Selection}
 \label{sec:app_forms}
 \subsection{Pruning: expanded development set and the selection rule}
+Table~\ref{tab:v53_loso} reports the leave-one-source-out comparison of the pruning candidates on the
+expanded seventeen-state development set, under the pre-committed rule that selected the delivered
+form.
 \input{tables/v53_loso}
 \FloatBarrier
 \subsection{Grouped quantization: leave-one-state-out on six states}
+Table~\ref{tab:v55_loso} reports the leave-one-state-out comparison of the grouped-quantization
+candidates on the six development states.
 \input{tables/v55_loso}
 
 The low-order surface tested for grouped quantization is
@@ -244,7 +219,7 @@ weights.
 Retrospectively, fitted on all 48 development points and scored on
 the 52 test points (nine unseen-pool trajectories and four held-out
 student trajectories at the development pools; predictions specified
-after the frozen matrix, origin R), the second form of
+after the frozen matrix and therefore retrospective), the second form of
 Eq.~\ref{eq:kdforms} has the lowest error of every form on the 270M
 unseen-pool trajectories (0.022, 0.020, and 0.316 nats for math, code,
 and QA against 0.060, 0.047, and 0.862 for the frozen constant) and is
@@ -289,9 +264,8 @@ per-setting regression of the pruning response on $(N_0,D_0,L_{0,c})$
 lowers the error from 0.413, 0.516, and 0.500 nats to 0.253, 0.292,
 and 0.806 for math, code, and QA; adding $L_{0,c}$ to $(N_0,D_0)$ has
 intervals above zero for math and code, adding $D_0$ does not
-(Fig.~\ref{fig:inputs}A). The source-conditioned forms below use the
-three inputs per capability, and every arm also carries a source-free
-relation for the cases where the source inputs add nothing.
+(Fig.~\ref{fig:inputs}A). The source-conditioned forms of \S\ref{sec:laws} use the three inputs per capability, and every
+arm also carries a source-free relation for the cases where the source inputs add nothing.
 
 \subsection{Selection and boundary of the delivered relations}
 \label{sec:app_selbound}
@@ -490,10 +464,10 @@ the source regression rises to 0.339 while the median curve stays at
 0.193, which accounts for most of the aggregate gap. Under protocol B at
 112k the power and A2 forms are ahead of strength-only at $d=0.55$
 (0.96 and 1.00 against 1.33), but with errors near one nat the ordering
-carries little practical value. The pair cost 22 A100 minutes.
+carries little practical value.
 
 The 6.9B pair, a size extrapolation of about five times, was measured
-under the same freeze (36 A100 minutes, reference model on CPU). Its
+under the same freeze. Its
 dense anchors are math 1.27, code 1.30 and QA 5.11 at 32k, and 1.11,
 1.21 and 5.09 at 112k. Per capability under protocol A at 112k, the
 source regression reaches 0.23 (math), 0.19 (code) and 0.96 (QA)
@@ -627,7 +601,7 @@ under distillation on SVAMP lies within that probe's noise.
 probe is drawn from 2WikiMultihopQA; the teacher pool's QA traces come
 from HotpotQA, a related but distinct multi-hop set. We therefore scored every trajectory
 of the uniform distillation protocol at its final checkpoint, the
-early P3 checkpoints, and the three dense students on 128 MuSiQue
+early checkpoints of the pool study, and the three dense students on 128 MuSiQue
 answerable-dev questions \citep{trivedi2022musique} with the
 supporting paragraphs supplied, under the same template, context
 condition, and probe seed as the primary probe
@@ -725,14 +699,13 @@ invariant.
 14 models. Int8 and int6 stay within $0.01$ nats of dense. Int4
 damages small models (Gemma-3-270M $+2.0$, $+2.4$, $+0.9$) and barely
 touches large ones (Gemma-3-27B $+0.33$, $+0.23$, $-0.67$); a QA
-improvement under int4 recurs in five models and clears the noise
-screen. Int3 collapses 12 of the 14 models by $4.6$ to $28$ nats;
+improvement under int4 recurs in five models and exceeds the measurement-noise floor. Int3 collapses 12 of the 14 models by $4.6$ to $28$ nats;
 OLMo-3-7B loses $2.8$ to $4.7$ and OLMo-3-32B only $0.4$ to $1.2$, so
 the collapse is common but not universal, and OLMo-3 is the robust
 series under both interventions. Within the tested bit-widths a learned
 exponential $q_c e^{-kb}$ fits held-out bits better than the fixed
-$q_c4^{-b}$ shape (pooled MAE $6.7$ against $7.6$ nats), which says the
-fixed base is wrong for this quantizer and nothing more; the squared
+$q_c4^{-b}$ shape (pooled MAE $6.7$ against $7.6$ nats), which shows only
+that the fixed base does not describe this quantizer; the squared
 step-size ratio between 4 and 5 bits is $(7/15)^2\approx0.22$
 (Appendix~\ref{sec:app_details}), and a loss ratio would follow only
 under error-distribution assumptions we do not test.
@@ -768,9 +741,9 @@ ability-space observation of a Qwen3 14B peak. A mid-scale robustness
 peak is a reproducible pattern of scaling-down.
 \paragraph{A candidate predictor that was retired.} The
 top-concentration statistic $\kappa_c$ tracked robustness within the
-Qwen3 ladder and was pre-registered as a predictor; the full grid
-retires it (cross-family inversion: OLMo, the most robust family,
-has the lowest concentration; within-Gemma top-end violation).
+Qwen3 ladder and was pre-registered as a predictor. The full grid retires it: across families the
+ordering inverts, since OLMo, the most robust family, has the lowest concentration, and within
+Gemma-3 the largest size violates the within-family trend.
 \paragraph{Matched-size panel ($\sim$30B).} At matched scale the
 family coefficient dominates: $\Delta\Lc{\text{math}}$ at $\dens=0.7$
 spans $+0.02$ (OLMo-3-32B), $+0.17$ (Muse-30B), $+0.68$ (Gemma4-31B),
@@ -790,11 +763,10 @@ shared across benchmarks, signatures of same-capability benchmarks are
 positively aligned (cosine $+0.36$ to $+0.45$) while signatures of
 different capabilities are \emph{anti-aligned} ($-0.23$ to $-0.25$),
 in each of the ten models from five series for which the block analysis was run
-(Figs.~\ref{fig:blocks}--\ref{fig:blocks_olmo3_7b}); the C4 control sits between blocks.
-\preliminary{point estimates; example-bootstrap, permutation, and
+(Figs.~\ref{fig:blocks}--\ref{fig:blocks_olmo3_7b}); the C4 control sits between blocks.\preliminary{point estimates; example-bootstrap, permutation and
 prompt-stability tests are left to future work} The
 mathematics benchmarks cluster regardless of format, and within-block
-fine structure matches intuition (SVAMP, grade-school word problems,
+fine structure is consistent with benchmark content (SVAMP, grade-school word problems,
 is the loosest member of the math block). A projected-gradient SVD
 version gives the same verdict in subspace terms: principal-angle
 similarity within capability exceeds cross-capability similarity by
@@ -802,7 +774,7 @@ $2$--$4\times$.
 
 \input{figs/appendix_blocks}
 
-\paragraph{Selective ablation (preliminary evidence: single model; random, magnitude-matched, and global-Fisher controls are left to future work).} A first targeted test:
+\paragraph{Selective ablation.}\preliminary{single model; random, magnitude-matched and global-Fisher control ablations are left to future work} We
 select the top $0.05\%$ of weight coordinates by each capability's
 \emph{residual} Fisher signature (excluding coordinates shared with
 other capabilities) and zero them. The damage matrix is nearly
@@ -967,13 +939,12 @@ established asymptote, and the saturating form does not describe the
 non-monotone aligned-data trajectory below. \preliminary{one model, one density, one recipe; with three-point
 ladders the largest-budget extrapolation of the saturating form beats a
 carry-forward baseline in only 4 of 9 fits, so the ladder is too sparse
-to claim extrapolation, and a denser multi-model grid is left to future work} Two mechanism results:
-recovery on \emph{aligned} data (teacher traces) heals substantially
+to claim extrapolation, and a denser multi-model grid is left to future work} Two further results bear on mechanism.
+Recovery on \emph{aligned} data (teacher traces) heals substantially
 faster at small budgets (math $2.76$ vs.\ $3.47$ at $0.5$M tokens),
 as the gradient-overlap prediction requires, but over-training on
-narrow aligned data \emph{re-damages} the model (QA $4.95\to9.75$
-from $0.5$M to $8$M tokens), while general-text recovery is monotone.
-Aligned recovery is fast at small budgets and harmful when over-trained on narrow data; general recovery is slow and monotone on this model. Quantization damage past the bit cliff is markedly less redeemable
+narrow aligned data damages the model again (QA $4.95\to9.75$
+from $0.5$M to $8$M tokens), while general-text recovery is monotone. Quantization damage past the bit cliff is markedly less redeemable
 under the same recipe (residuals $\approx2.6$--$2.8$ after int3) than
 pruning damage at matched severity.
 
@@ -1002,7 +973,7 @@ quantization-only is close behind (0.21, 0.19, 0.49).
 
 
 \paragraph{Locked rule and independent confirmation.} The rule fixed
-before the confirmation panel was measured (analysis/final\_rule.py):
+before the confirmation panel was measured is as follows:
 pruning uses the power form for math and code and the median curve
 for QA at unseen densities of seen sizes, and the median development
 curve for every capability on new sizes or stages; per-channel
