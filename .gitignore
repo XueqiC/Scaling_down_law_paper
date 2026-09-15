@@ -11,3 +11,6 @@ main.synctex.gz
 *.synctex*
 # PNG previews of the figures are local only; LaTeX uses the PDFs
 figs/*.png
+figs/.mplconfig/
+**/.mplconfig/
+**/pytest-of-*/
