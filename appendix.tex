@@ -112,39 +112,51 @@ before use: their model-shard hashes differ from every other cached revision of 
 capability vectors differ from those of the neighbouring stages.
 
 \begin{table}[H]
-\centering\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}p{2.55cm}p{3.35cm}p{2.95cm}p{1.85cm}p{2.35cm}@{}}
+\centering\footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.3cm}>{\raggedright\arraybackslash}p{4.0cm}>{\raggedright\arraybackslash}p{3.3cm}>{\raggedright\arraybackslash}p{3.4cm}@{}}
 \toprule
-Cohort & Sources & Interventions & Probes & Role \\
+Cohort & Models and states & Interventions & Role in the study \\
 \midrule
-Heterogeneous panel & 12 dense checkpoints, \nSeries{} series from
-\nFamilies{} families: Qwen3 0.6B/1.7B/4B, Gemma-3 270M--27B,
-Gemma-4-31B, Muse-30B, OLMo-3 7B/32B (+2 prospective: Qwen3 8B/14B) &
-global magnitude pruning, 10 densities in $[0.3,0.9]$; RTN int8/6/5/4/3
-& 64 per capability, primary benchmarks & phenomena; cross-family
-transfer; noise screen \\
-Controlled Pythia panel & sizes 160M/410M/1.4B $\times$ steps
-16k/64k/143k (9 states); new sources 160M, 410M, 1.4B at 96k; 1B at
-32k/96k/112k; 6.9B at 32k/112k & pruning: 4 dev densities 0.9--0.6,
-tests at 0.75/0.65/0.55; bits 8/6/4/3, test 5 & same & development
-set; source-axis and configuration-axis tests \\
-Distillation, controlled & the 9 Pythia states as students; fixed
-teacher pool (600 traces per domain); LoRA & fixed recipe & same &
-$\delta_c$ source transfer \\
-Distillation, pools & Gemma-3-1B student; pools U75 and U600 (fit),
-U225 (test); 3 pool seeds $\times$ 2 training seeds & processed tokens
-$T$; reuse count $E=T/D_U$ & same & configuration axis (pool) \\
-Distillation, heterogeneous & Gemma-3 270M--12B, OLMo-3-7B, Qwen3
-0.6B--4B students; two API teachers; full-trace vs answer-only & recipe
-& same & phenomena only \\
+Heterogeneous panel &
+Twelve public checkpoints from \nSeries{} series and \nFamilies{} families: Qwen3 (0.6B, 1.7B, 4B),
+Gemma-3 (270M to 27B), Gemma-4 (31B), Muse (30B), OLMo-3 (7B, 32B); two further Qwen3 checkpoints
+(8B, 14B) measured prospectively at four densities. &
+Global magnitude pruning at ten densities in $[0.3,0.9]$; per-channel round-to-nearest quantization
+at 8, 6, 5, 4 and 3 bits. &
+Establishes the phenomena and the limits of cross-family transfer; screens the measurement noise. \\
+\addlinespace
+Controlled Pythia panel &
+Development states: 160M, 410M and 1.4B at steps 16k, 64k and 143k (nine states). Held-out states:
+160M, 410M and 1.4B at step 96k; 1B at steps 32k, 96k and 112k; 6.9B at steps 32k and 112k. &
+Pruning at four development densities (0.9 to 0.6) with tests at 0.75, 0.65 and 0.55; quantization at
+8, 6, 4 and 3 bits with a test at 5 bits. &
+Development set for pruning and quantization; tests along the source axis and the configuration
+axis. \\
+\addlinespace
+Distillation, controlled &
+The nine Pythia development states as students; one fixed teacher pool of 600 traces per domain;
+LoRA adapters under one recipe. &
+Fixed recipe. &
+Source transfer of the signed response $\delta_c$. \\
+\addlinespace
+Distillation, pools &
+Gemma-3 1B student; pools of 75 and 600 traces per domain for fitting and 225 for testing; three
+pool seeds and two training seeds. &
+Processed tokens $T$ and the reuse count $E=T/D_U$. &
+Configuration axis: the pool. \\
+\addlinespace
+Distillation, heterogeneous &
+Gemma-3 students from 270M to 12B, OLMo-3 7B and Qwen3 0.6B to 4B; two API teachers; full-trace
+against answer-only traces. &
+Recipe. &
+Phenomena only. \\
 \bottomrule
 \end{tabular}
-\caption{Cohorts and their roles. Counts are generated from the result
-files (\texttt{v51\_panel\_tables.py}); the two Qwen3 prospectives were
-measured at four densities only. The 2.8B Pythia checkpoints were
-excluded because the step revisions we downloaded loaded identical
-weights (hash check); nothing is claimed about other revisions.}
-\label{tab:panels_full}
+\caption{Cohorts and their roles. Every cohort is scored with the same 64 probes per capability on
+the primary benchmarks. Counts are generated from the result files. The 2.8B Pythia checkpoints were
+excluded because the step revisions available to us loaded identical weights, which a hash check
+confirmed; nothing is claimed about other revisions.}
+\label{tab:cohorts}
 \end{table}
 \input{tables/models_domains}
 
@@ -269,7 +281,7 @@ folds, and it does not convert into held-out gain. No further statistics or rich
 proposed.
 
 
-\subsection{Conditioning on the initial model state (moved from the main text)}
+\subsection{Conditioning on the initial model state}
 \label{sec:app_conditioning}
 
 On the nine-state development panel with one stage held out, a
@@ -281,7 +293,7 @@ intervals above zero for math and code, adding $D_0$ does not
 three inputs per capability, and every arm also carries a source-free
 relation for the cases where the source inputs add nothing.
 
-\subsection{Selection and boundary of the delivered relations (moved from the main text)}
+\subsection{Selection and boundary of the delivered relations}
 \label{sec:app_selbound}
 
 \paragraph{Pruning: selection.} Fit on nine states at $d\in\{0.9,0.8,0.7,0.6\}$
@@ -325,10 +337,10 @@ $U{=}200$ at three new budgets. A linear form in the student state, fit on nine 
 frozen strongest baseline for code on both students, where that
 baseline is the same $\log(1+E)$ form with an intercept, so the gain
 supports the zero-budget boundary and parsimony of the form, not a
-full student-data-training law; QA gains on 270M only, math loses to intercept baselines, no selected form is the hindsight best of the sixteen frozen forms, a minimum selection favours by construction (Table~\ref{tab:main_final}); a 6.6-times-larger student is out of range.
+full student-data-training law; QA gains on 270M only, math loses to intercept baselines, no selected form is the post-hoc best of the sixteen frozen forms, a minimum selection favours by construction (Table~\ref{tab:main_final}); a 6.6-times-larger student is out of range.
 
 
-\subsection{Applicability across capabilities (moved from the main text)}
+\subsection{Applicability across capabilities}
 \label{sec:app_applic}
 
 Where the initial-state inputs help is method- and range-specific:
@@ -370,7 +382,7 @@ Appendix~\ref{sec:app_shared}.
 \subsection{Shared structure, parameter ranges, and one-point calibration}
 \label{sec:app_shared}
 
-\paragraph{Shared structure, ranges, and calibration (moved from the main text).} One function
+\paragraph{Shared structure, ranges, and calibration.} One function
 family for all three methods, with method- and capability-specific
 parameters, holds for pruning by construction and fails for the other two arms on
 the same held-out splits (Appendix~\ref{sec:app_shared}). Within pruning one exponent shared across capabilities costs nothing
@@ -424,7 +436,7 @@ ablation is retrospective.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{figs/frozen_candidates.pdf}
-\caption{Frozen candidates on the confirmation panels (moved from the main text): per-cell
+\caption{Frozen candidates on the confirmation panels: per-cell
 prediction against measurement for every frozen candidate.}
 \label{fig:confirm}
 \end{figure}
@@ -556,7 +568,7 @@ trajectories of the uniform protocol (leave-one-trajectory-out, ties
 within 0.02 nats toward fewer parameters: a reuse-count form for math
 and code, the joint form for QA), froze predictions for six new pools
 of $U{=}200$ at budgets of 50k, 100k, and 200k supervised tokens, and
-fixed the strongest baseline per student and capability from the same development pass (a development-designated baseline; ranked in hindsight over all sixteen frozen forms, a source-conditioned variant has the lowest test MAE for every student and capability, Table~\ref{tab:main_final}); Table~\ref{tab:distill_confirm} gives the paired differences with
+fixed the strongest baseline per student and capability from the same development pass (a development-designated baseline; ranked post hoc over all sixteen frozen forms, a source-conditioned variant has the lowest test MAE for every student and capability, Table~\ref{tab:main_final}); Table~\ref{tab:distill_confirm} gives the paired differences with
 pool-cluster intervals (six independent pools). Dense losses
 re-measured on a different GPU drift by at most 0.001 nats from the
 frozen descriptor and were tolerated at 0.01; shifting every response
@@ -699,7 +711,7 @@ to $-0.79$ nats at Qwen3-4B; in every Gemma-3 size, in Gemma-4-31B,
 and in Muse-30B, QA is the most-damaged capability at the mildest
 densities (Gemma-4-31B: $+2.89$ QA against $+0.68$ math at $d=0.7$);
 OLMo-3-7B lies in between with differences of at most $0.15$ nats. A
-noise screen sets the scale: the median $|\Delta L|$ at $d=0.9$ is
+measurement-noise floor sets the scale: the median $|\Delta L|$ at $d=0.9$ is
 $0.013$ nats, and 29 of the 62 nominal improvement cells across all
 arms exceed twice that median; the rest are treated as zero. Cliffs
 occur between $d=0.5$ and $0.7$ for Qwen3 and Gemma, at $0.55$ for
@@ -754,7 +766,7 @@ independently.} Gemma-3 robustness peaks at 12B (27B collapses far
 earlier, $+4.0$ vs.\ $+0.68$ at $\dens=0.7$), mirroring the prior
 ability-space observation of a Qwen3 14B peak. A mid-scale robustness
 peak is a reproducible pattern of scaling-down.
-\paragraph{A candidate predictor, honestly retired.} The
+\paragraph{A candidate predictor that was retired.} The
 top-concentration statistic $\kappa_c$ tracked robustness within the
 Qwen3 ladder and was pre-registered as a predictor; the full grid
 retires it (cross-family inversion: OLMo, the most robust family,
@@ -983,7 +995,7 @@ Table~\ref{tab:selection-feasible} gives the per-policy results behind Fig.~\ref
 \label{fig:rule_main}
 \end{figure}
 
-\paragraph{Retrospective validation (moved from the main text).} On the controlled panel (17 states, budgets from 0.2 to 1,
+\paragraph{Retrospective validation.} On the controlled panel (17 states, budgets from 0.2 to 1,
 every law refit with the target held out) the law-based choice is within 0.19, 0.17 and 0.42 nats of
 the oracle for math, code and QA and picks the oracle's method in 96\%, 95\% and 73\% of 289 cells;
 quantization-only is close behind (0.21, 0.19, 0.49).
@@ -1106,7 +1118,7 @@ $g\in\{32,512\}$ and a new state, \texttt{6199353}), \texttt{v70}
 \texttt{v78} (locked selection rule and maps for four fresh states,
 \texttt{869ec2e}); the retrospective analyses \texttt{v59},
 \texttt{v60}/\texttt{v64}, \texttt{v63}, \texttt{v65},
-\texttt{v76}/\texttt{v79}, \texttt{v80}/\texttt{v81}, and \texttt{v84} to \texttt{v86} (main table, figures, hindsight ranking of the frozen alternatives) are audits of those records. Content hashes and the ledger entries C33 to C59 are in
+\texttt{v76}/\texttt{v79}, \texttt{v80}/\texttt{v81}, and \texttt{v84} to \texttt{v86} (main table, figures, post-hoc ranking of the frozen alternatives) are audits of those records. Content hashes and the ledger entries C33 to C59 are in
 \texttt{docs/}. When a diagnostic overturns an earlier headline, the
 text is downgraded and the prediction stays as committed.
 

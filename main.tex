@@ -43,6 +43,10 @@
 \newcommand{\resultpending}[1]{(#1 is left to future work)}
 \newcommand{\verifyclaim}[1]{(unverified: #1)}
 \newcommand{\preliminary}[1]{(preliminary evidence: #1)}
+% Paragraph columns in every table are set ragged right: narrow justified cells produce
+% the wide word gaps that make dense tables hard to read.
+\usepackage{etoolbox}
+\AtBeginEnvironment{tabular}{\raggedright\let\\\tabularnewline}
 
 % notation for the capability-geometry framework
 \newcommand{\wz}{w_0}
