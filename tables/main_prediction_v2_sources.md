@@ -135,7 +135,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "nine states; unseen density within 0.6-0.9",
+        "label": "nine states; density 0.6-0.9",
         "expected": [
           {
             "sizes": [
@@ -161,7 +161,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "Requested scope, not an assertion that this holdout artifact exists.",
-    "rendered": "nine states; unseen density within 0.6-0.9"
+    "rendered": "nine states; density 0.6-0.9"
   },
   {
     "row": 0,
@@ -255,7 +255,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "new stages of seen sizes; 6.9B outside range",
+        "label": "seen-size stages; 6.9B outside",
         "expected": [
           "pythia-410m@step48000",
           "pythia-1.4b@step112000",
@@ -272,7 +272,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities"
     ],
     "note": "Outside the size range of the original nine-state panel; V53's expanded register itself includes 6.9B.",
-    "rendered": "new stages of seen sizes; 6.9B outside range"
+    "rendered": "seen-size stages; 6.9B outside"
   },
   {
     "row": 1,
@@ -457,7 +457,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "Pythia 160M-1.4B; bit 4, groups 64/256",
+        "label": "160M-1.4B; 4-bit, g64/256",
         "expected": [
           [
             "pythia-160m@step16000",
@@ -476,7 +476,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "Pythia 160M-1.4B; bit 4, groups 64/256"
+    "rendered": "160M-1.4B; 4-bit, g64/256"
   },
   {
     "row": 2,
@@ -802,7 +802,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "410M/1.4B; bits 3-5, groups 32/512",
+        "label": "410M/1.4B; bits 3-5, g32/512",
         "expected": [
           "pythia-410m@step143000",
           "b3_g32",
@@ -881,7 +881,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "410M/1.4B; bits 3-5, groups 32/512"
+    "rendered": "410M/1.4B; bits 3-5, g32/512"
   },
   {
     "row": 3,
@@ -1285,7 +1285,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "1.4B, 112k; bits 3-5, groups 32/128/512",
+        "label": "1.4B/112k; g32/128/512",
         "expected": [
           "pythia-1.4b@step112000",
           "b3_g32",
@@ -1346,7 +1346,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "1.4B, 112k; bits 3-5, groups 32/128/512"
+    "rendered": "1.4B/112k; g32/128/512"
   },
   {
     "row": 4,
@@ -1650,7 +1650,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "three students; budgets at least 150k held out",
+        "label": "three students; $T\\ge150$k holdout",
         "expected": [
           [
             "gemma3-1b",
@@ -1667,7 +1667,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/a2-curvature-interaction/summary.json#/decision_table/54/distribution"
     ],
     "note": "Only the training-probe rows whose MAEs are printed here; fresh-sample QA rows are not pooled or advertised.",
-    "rendered": "three students; budgets at least 150k held out"
+    "rendered": "three students; $T\\ge150$k holdout"
   },
   {
     "row": 5,
@@ -1940,7 +1940,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "three students; data-rung holdout, 1% budget-tolerance proxy",
+        "label": "three students; 1% budget proxy",
         "expected": [
           [
             "gemma3-1b",
@@ -1957,7 +1957,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/a2-curvature-interaction/summary.json#/decision_table/50/distribution"
     ],
     "note": "Only the training-probe rows whose MAEs are printed here; fresh-sample QA rows are not pooled or advertised.",
-    "rendered": "three students; data-rung holdout, 1\\% budget-tolerance proxy"
+    "rendered": "three students; 1\\% budget proxy"
   },
   {
     "row": 6,
@@ -2237,7 +2237,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "270M/1B; six pools, 50k-200k tokens",
+        "label": "270M/1B; six pools, 50k-200k",
         "expected": [
           [
             "gemma3-270m",
@@ -2573,7 +2573,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "270M/1B; six pools, 50k-200k tokens"
+    "rendered": "270M/1B; six pools, 50k-200k"
   },
   {
     "row": 7,
@@ -2764,7 +2764,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
 ```json
 {
   "parts": [
-    "Frozen-artifact MAEs (native-token nats; training probes). Inputs: source size, initial loss and pretraining tokens for source-conditioned forms; the configuration for all; distillation forms take supervised budget, pool size and reuse. ",
+    "Frozen MAEs: native-token nats, training probes; stored intervals in brackets. Inputs: source size, initial loss and pretraining tokens for source-conditioned forms; the configuration for all; distillation forms take supervised budget, pool size and reuse. ",
     {
       "sources": [
         "results/v53-prune-dev/register.json#/candidate_definitions/power"
@@ -2787,7 +2787,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "phi.[a0 + a1*u + a2*v + a3*u*v + a4*u^2]; coefficients ordered by term then phi"
       ]
     },
-    "$m_c$ is the development median; $A,B$ are affine in the descriptor. Budget/reuse forms are fold-selected; counts are per capability. Baselines follow math/code/QA: A2=per-density regression, med=development median, bilin=bilinear, surf=response surface, const=constant, zero=zero change, E/T=E-only/T-only, L/N=loss/size surface. Pool pairs follow student order. Brackets are stored MAE intervals. Density holdout and exact fixed-budget reuse: not tested."
+    "$m_c$=med; $A,B$ affine in descriptor. Budget/reuse forms: fold-selected; counts per capability. Dev. baselines (math/code/QA): A2=per-density regression, med=dev. median, bilin=bilinear, surf=surface, const=constant, zero=zero change, E/T=E-only/T-only, L/N=loss/size surface. Pool pairs: student order. Not tested: density holdout, exact fixed-budget reuse."
   ],
   "context": [
     "results/v53-prune-dev/register.json#/feature_names",
@@ -2798,7 +2798,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "results/v70-distill-confirm/freeze.json#/reference_rule"
   ],
   "note": "",
-  "rendered": "Frozen-artifact MAEs (native-token nats; training probes). Inputs: source size, initial loss and pretraining tokens for source-conditioned forms; the configuration for all; distillation forms take supervised budget, pool size and reuse. $r=(1-d)/0.3$; $Q_c=a+bu+cv+duv+eu^2$; $m_c$ is the devel\\-opment median; $A,B$ are affine in the descriptor. Budget/reuse forms are fold-selected; counts are per capability. Baselines follow math/code/QA: A2=per-density regression, med=devel\\-opment median, bilin=bilinear, surf=response surface, const=constant, zero=zero change, E/T=E-only/T-only, L/N=loss/size surface. Pool pairs follow student order. Brackets are stored MAE intervals. Density holdout and exact fixed-budget reuse: not tested."
+  "rendered": "Frozen MAEs: native-token nats, training probes; stored intervals in brackets. Inputs: source size, initial loss and pretraining tokens for source-conditioned forms; the configuration for all; distillation forms take supervised budget, pool size and reuse. $r=(1-d)/0.3$; $Q_c=a+bu+cv+duv+eu^2$; $m_c$=med; $A,B$ affine in descriptor. Budget/reuse forms: fold-selected; counts per capability. Dev. baselines (math/code/QA): A2=per-density regression, med=dev. median, bilin=bilinear, surf=surface, const=constant, zero=zero change, E/T=E-only/T-only, L/N=loss/size surface. Pool pairs: student order. Not tested: density holdout, exact fixed-budget reuse."
 }
 ```
 

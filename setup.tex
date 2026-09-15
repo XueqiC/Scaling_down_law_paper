@@ -10,9 +10,8 @@ probe set $\probeset{c}$ of prompt and reference pairs drawn once
 from held-out splits of MATH-500
 \citep{hendrycks2021math,lightman2023verify}, MBPP
 \citep{austin2021program}, and 2WikiMultihopQA
-\citep{ho2020constructing}. Each probe set fixes one evaluation distribution $j$; we write $L_c$ with the distribution implied
-and report transfer to other distributions of the same capability where it was measured. The
-observable is the
+\citep{ho2020constructing}. Each probe set fixes one evaluation distribution; we write $L_c$ with it implied. The observable
+is the
 token-weighted conditional cross-entropy of the reference completion,
 \begin{equation}
 \Lc{c}(w)\;=\;\frac{1}{T_c}\sum_{(x,y)\in\probeset{c}}\;\sum_{t=1}^{|y|}
@@ -20,14 +19,11 @@ token-weighted conditional cross-entropy of the reference completion,
 T_c=\sum_{(x,y)\in\probeset{c}}|y|,
 \label{eq:taskloss}
 \end{equation}
-with prompt tokens masked, the model's own tokenizer, and the same 64 measurement probes per
-capability for every state compared within a model (Appendix~\ref{sec:app_details}). The reference model $M_0$ is the checkpoint before the compression intervention. Responses are within-model differences on
-identical token sequences in native nats per token: for pruning and
-quantization the damage
-$\Delta L_c=L_c(\text{compressed})-L_c(M_0)$, for distillation the
-signed transfer $\delta_c=L_c(S_{\mathrm{KD}})-L_c(S_0)$ of a student
-relative to its own initial state $S_0$, which is the reference
-model of that arm; the teacher never plays the role of the source. The observable is a likelihood, not an
+with prompt tokens masked and the same 64 probes per capability for every state compared within a
+model (Appendix~\ref{sec:app_details}). The reference model $M_0$ is the checkpoint before the compression intervention. Responses are within-model differences in native nats per token: the damage
+$\Delta L_c=L_c(\text{compressed})-L_c(M_0)$ for pruning and quantization, and for distillation the
+signed transfer $\delta_c=L_c(S_{\mathrm{KD}})-L_c(S_0)$ of a student relative to its own initial
+state, the reference of that arm; the teacher never plays the source. The observable is a likelihood, not an
 accuracy, and absolute levels of different tokenizers are never placed on one scale
 (Appendix~\ref{sec:app_measure}).
 
@@ -65,10 +61,9 @@ bit-width and group size, or pool and budget).
 \label{sec:eval}
 
 Each relation is fit on development states and settings only, with leave-one-stage-out and
-leave-one-source-out folds, and judged on unseen settings and unseen states (a new size, stage or
-student) with forms, coefficients and predictions committed before the outcome is measured; a
-prediction keeps its status, development, frozen prediction or post-hoc recommendation, whatever the
-outcome. Error is the mean absolute error of $\widehat\Delta$ in nats per token per capability,
+leave-one-source-out folds, and judged on unseen settings and states with forms, coefficients and
+predictions committed before the outcome is measured; every prediction keeps its status
+(development, frozen prediction, post-hoc recommendation) whatever the outcome. Error is the mean absolute error of $\widehat\Delta$ in nats per token per capability,
 compared on the same cells with source-free references (zero change, a per-capability constant, a
 strength-only curve, the median development curve), same-input alternatives and the no-$D_0$
 ablation; the strongest baseline chosen inside the development folds is the comparator, and any

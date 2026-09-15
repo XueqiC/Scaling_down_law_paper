@@ -36,12 +36,11 @@ supervised tokens, for math, code and QA on three students, both pool seeds draw
 \end{figure}
 
 \paragraph{Reusing a small pool is expensive, the price rises with student size, and QA pays most of
-it.} At one learning rate and a matched budget of about 200k supervised tokens
-(Fig.~\ref{fig:responses_v2}), spending the budget on a pool reused about twelve times costs QA
-$+0.29$, $+2.55$ and $+4.85$ nats on students of 100M, 700M and 3.2B non-embedding parameters, while
-nine times more independent data turns the same budget into a gain of roughly one nat on each; math
-and code damage falls monotonically as well. Two pool seeds per cell put the pool-draw noise at about
-0.02 nats on code and 0.13 on QA.
+it.} At one rate and a matched budget near 200k supervised tokens (Fig.~\ref{fig:responses_v2}), a
+pool reused about twelve times costs QA $+0.29$, $+2.55$ and $+4.85$ nats on students of 100M, 700M
+and 3.2B non-embedding parameters, while nine times more independent data turns the same budget into
+a gain near one nat on each; math and code damage falls monotonically as well. Two pool seeds per
+cell put the pool-draw noise near 0.02 nats on code and 0.13 on QA.
 
 \paragraph{The cost transfers across QA distributions; the gain does not.} Scored on a fresh 2Wiki
 sample, MuSiQue and TriviaQA, all three distributions worsen at high reuse and improve monotonically as
