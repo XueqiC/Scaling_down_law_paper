@@ -2,22 +2,29 @@
   {
     "file": "fig8_a.pdf",
     "size_inches": [
-      5.5,
-      1.6
+      2.7,
+      1.9
     ]
   },
   {
     "file": "fig8_b.pdf",
     "size_inches": [
+      2.7,
+      1.9
+    ]
+  },
+  {
+    "file": "fig8_legend.pdf",
+    "size_inches": [
       5.5,
-      1.6
+      0.3
     ]
   },
   {
     "file": "heterogeneity.png",
     "size_inches": [
       5.5,
-      3.3000000000000003
+      2.2199999999999998
     ],
     "dpi": 220
   }

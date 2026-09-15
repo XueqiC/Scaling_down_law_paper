@@ -1,7 +1,7 @@
 {
   "size_inches": [
-    5.5,
-    1.6
+    2.7,
+    1.9
   ],
   "records": [
     {
@@ -463,5 +463,34 @@
     "results/v10-quantization/Qwen--Qwen3-1.7B/quant_losses.json": "eafc51455ab51bc32a046ca3ea32cf54b2e889cad75229d80593c05c4086c9df",
     "results/v6-capability-geometry/Qwen3-4B/prune_losses.json": "08befcee9e632da3ce7120e41ebe949ad78005819681189f08ef89405ea03957",
     "results/v10-quantization/Qwen--Qwen3-4B/quant_losses.json": "989bc2130600d71e70bb363c9d8f4da1bfaabe601a5029584eae366e48baf788"
+  },
+  "axes": [
+    {
+      "xlim": [
+        -0.65,
+        11.65
+      ],
+      "ylim": [
+        -1.7802467283836436,
+        5.678125039514588
+      ],
+      "xscale": "linear",
+      "yscale": "linear",
+      "row_labels": [
+        "\u22123",
+        "0",
+        "3",
+        "6"
+      ]
+    }
+  ],
+  "legend_entries": [],
+  "legend_font_sizes_pt": [],
+  "font": {
+    "family": "Times New Roman",
+    "weight": "bold",
+    "ticks_pt": 14,
+    "labels_pt": 15,
+    "legend_pt": 13
   }
 }

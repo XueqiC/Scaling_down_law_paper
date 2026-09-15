@@ -1,6 +1,6 @@
 {
   "size_inches": [
-    2.7,
+    1.8,
     1.8
   ],
   "records": [
@@ -1217,5 +1217,35 @@
     "results/v69-quant-confirm/develop.json": "9f035cb37a94d425064f37d822490b52dcad4c669e62864f27cba4ffa5e5643d",
     "results/v69-quant-confirm/freeze.json": "6ade0a3ff576781cf286978519b6a922500d37e3bc72cef4e3e635e826cccdc2",
     "results/v69-quant-confirm/compare.json": "12944c61ed42c61f1beaf8f84ef5c87d900b3b1a38d65d175976e27d3d4e6bac"
+  },
+  "axes": [
+    {
+      "xlim": [
+        2.7,
+        8.3
+      ],
+      "ylim": [
+        -1.0,
+        27.0
+      ],
+      "xscale": "linear",
+      "yscale": "linear",
+      "row_labels": [
+        "\u221210",
+        "0",
+        "10",
+        "20",
+        "30"
+      ]
+    }
+  ],
+  "legend_entries": [],
+  "legend_font_sizes_pt": [],
+  "font": {
+    "family": "Times New Roman",
+    "weight": "bold",
+    "ticks_pt": 14,
+    "labels_pt": 15,
+    "legend_pt": 13
   }
 }

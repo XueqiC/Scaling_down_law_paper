@@ -3680,5 +3680,41 @@
   "input_sha256": {
     "results/v96-joint-response/summary.json": "6a5fd653836a7879b2fd26e44360f25bb70159cf08f359b9970b7c30a1067d13",
     "results/v100-critical-region/summary.json": "1203f8a85658ab02c7326080cb182685264e3a53d1ab5fe1ecc926b0c2d730a3"
+  },
+  "axes": [
+    {
+      "xlim": [
+        0.0,
+        220.0
+      ],
+      "ylim": [
+        -1.0,
+        8.0
+      ],
+      "xscale": "linear",
+      "yscale": "linear",
+      "row_labels": [
+        "0",
+        "3",
+        "6"
+      ]
+    }
+  ],
+  "legend_entries": [
+    "Math",
+    "Code",
+    "QA"
+  ],
+  "legend_font_sizes_pt": [
+    13.0,
+    13.0,
+    13.0
+  ],
+  "font": {
+    "family": "Times New Roman",
+    "weight": "bold",
+    "ticks_pt": 14,
+    "labels_pt": 15,
+    "legend_pt": 13
   }
 }

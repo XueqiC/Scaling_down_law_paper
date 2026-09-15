@@ -5,11 +5,12 @@ Baselines use minimum development LOSO MAE excluding the selected relation: V53 
 V46 has no recorded development-selected baseline; V78 has no such baseline predictions on its plotted cells. Keep these relation MAEs grey and label baseline unavailable. Do not choose on test errors, transport the later V53 selection to V46, or call V78's v64-law a development-selected baseline. Split V46/V72 within the inside-range row to avoid pairing a subset baseline with a full-row relation MAE.
 V70 remains split by student within the new-pool budgets row: paired_difference.ci95 covers one student/capability's 18 checkpoints (6 equally sized pools). Never average interval endpoints across students. Draw the stored baseline-minus-relation gain interval [lo, hi] as [baseline MAE - hi, baseline MAE - lo]. This is a translated paired gain interval at a fixed baseline reference, not a marginal MAE confidence interval.
 A2 frozen_prediction_error_interval covers its development holdouts, not any of these V70 or A5/A7 corner cells. No A2 holdout row existed in the cell figure; none is added and no A2 interval is transplanted. No refitting, resampling, or invented interval.
-Corner rows are unchanged: signed prediction-minus-measurement on a separate symlog axis, original capability colours, circles filled iff within the stored band, triangles for the 4B development student. Whiskers are A5 registered +/-2-noise bands, not CIs. Primary QA additivity failed to reject. Source panel C (display panel d) shows only the registered additive corner predictions (zero); no frozen response-law predictions on fresh distributions exist.
+Corner rows are unchanged: signed prediction-minus-measurement on a separate symlog axis, original capability colours, circles filled iff within the stored band, triangles for the 4B development student. Whiskers are A5 registered +/-2-noise bands, not CIs. Primary QA additivity failed to reject. Source panel C (lower group in display panel c) shows only the registered additive corner predictions (zero); no frozen response-law predictions on fresh distributions exist.
 V46 .55 is outside its original coarse .6--.9 range; .65 is inside. V72 repeats two revision labels with identical weights; both records retained, not independent states. V78 uses each frozen configuration once. V93 descriptors only verify state identity.
-fig3_a.pdf: 5.5 x 2.2 in; bold Times New Roman; ticks 13 pt, axis labels 14 pt, legend 12 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig3_b.pdf: 5.5 x 1.4 in; bold Times New Roman; ticks 13 pt, axis labels 14 pt, legend 12 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig3_c.pdf: 2.7 x 1.7 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+Display mapping: fig3_a = MAE A, fig3_b = MAE B, fig3_c = all corner A+B+C. Frozen panel fields, counts and numbers are unchanged; a thin separator precedes fresh distributions.
+fig3_a.pdf: 2.3 x 2 in; bold Times New Roman; ticks 13 pt, axis labels 14 pt, legend 12 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig3_b.pdf: 1.5 x 2 in; bold Times New Roman; ticks 13 pt, axis labels 14 pt, legend 12 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig3_c.pdf: 1.7 x 2 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
 
 ## Inputs (SHA-256)
 
@@ -270,6 +271,138 @@ fig3_c.pdf: 2.7 x 1.7 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, 
     "student": "gemma3-4b",
     "candidate": "F_int",
     "interval_source": "results/a5-corner-second-difference/summary.json#/students/gemma3-4b/readouts/code/interval"
+  },
+  {
+    "kind": "corner",
+    "panel": "C",
+    "group": "2wiki_new",
+    "capability": "qa",
+    "predicted": 0.0,
+    "measured": -0.3339129440961335,
+    "residual": 0.3339129440961335,
+    "measurement_interval": [
+      -1.0985129440961334,
+      0.43068705590386647
+    ],
+    "residual_interval": [
+      -0.43068705590386647,
+      1.0985129440961334
+    ],
+    "within": true,
+    "status": "frozen prediction",
+    "source": "results/a5-corner-second-difference/summary.json#/students/gemma3-1b/fresh_sample_check/readouts/2wiki_new",
+    "student": "gemma3-1b",
+    "candidate": "registered additive contrast"
+  },
+  {
+    "kind": "corner",
+    "panel": "C",
+    "group": "musique",
+    "capability": "qa",
+    "predicted": 0.0,
+    "measured": 0.043442038381742654,
+    "residual": -0.043442038381742654,
+    "measurement_interval": [
+      -1.6285579616182573,
+      1.7154420383817426
+    ],
+    "residual_interval": [
+      -1.7154420383817426,
+      1.6285579616182573
+    ],
+    "within": true,
+    "status": "frozen prediction",
+    "source": "results/a5-corner-second-difference/summary.json#/students/gemma3-1b/fresh_sample_check/readouts/musique",
+    "student": "gemma3-1b",
+    "candidate": "registered additive contrast"
+  },
+  {
+    "kind": "corner",
+    "panel": "C",
+    "group": "triviaqa",
+    "capability": "qa",
+    "predicted": 0.0,
+    "measured": -0.11343210704291096,
+    "residual": 0.11343210704291096,
+    "measurement_interval": [
+      -0.40143210704291094,
+      0.17456789295708902
+    ],
+    "residual_interval": [
+      -0.17456789295708902,
+      0.40143210704291094
+    ],
+    "within": true,
+    "status": "frozen prediction",
+    "source": "results/a5-corner-second-difference/summary.json#/students/gemma3-1b/fresh_sample_check/readouts/triviaqa",
+    "student": "gemma3-1b",
+    "candidate": "registered additive contrast"
+  },
+  {
+    "kind": "corner",
+    "panel": "C",
+    "group": "2wiki_new",
+    "capability": "qa",
+    "predicted": 0.0,
+    "measured": -0.3070141065830718,
+    "residual": 0.3070141065830718,
+    "measurement_interval": [
+      -1.0716141065830718,
+      0.4575858934169281
+    ],
+    "residual_interval": [
+      -0.4575858934169281,
+      1.0716141065830718
+    ],
+    "within": true,
+    "status": "development",
+    "source": "results/a5-corner-second-difference/summary.json#/students/gemma3-4b/fresh_sample_check/readouts/2wiki_new",
+    "student": "gemma3-4b",
+    "candidate": "registered additive contrast"
+  },
+  {
+    "kind": "corner",
+    "panel": "C",
+    "group": "musique",
+    "capability": "qa",
+    "predicted": 0.0,
+    "measured": -0.01004116960580892,
+    "residual": 0.01004116960580892,
+    "measurement_interval": [
+      -1.6820411696058089,
+      1.661958830394191
+    ],
+    "residual_interval": [
+      -1.661958830394191,
+      1.6820411696058089
+    ],
+    "within": true,
+    "status": "development",
+    "source": "results/a5-corner-second-difference/summary.json#/students/gemma3-4b/fresh_sample_check/readouts/musique",
+    "student": "gemma3-4b",
+    "candidate": "registered additive contrast"
+  },
+  {
+    "kind": "corner",
+    "panel": "C",
+    "group": "triviaqa",
+    "capability": "qa",
+    "predicted": 0.0,
+    "measured": -0.6584902635261196,
+    "residual": 0.6584902635261196,
+    "measurement_interval": [
+      -0.9464902635261196,
+      -0.37049026352611963
+    ],
+    "residual_interval": [
+      0.37049026352611963,
+      0.9464902635261196
+    ],
+    "within": false,
+    "status": "development",
+    "source": "results/a5-corner-second-difference/summary.json#/students/gemma3-4b/fresh_sample_check/readouts/triviaqa",
+    "student": "gemma3-4b",
+    "candidate": "registered additive contrast"
   }
 ]
 ```

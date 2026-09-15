@@ -5,3 +5,4 @@ loss range is retained, including 3-bit collapse. The inputs are the frozen
 V10 quant_losses.json files listed in V36's summary; plot_fig1_final.py does
 not itself read a per-channel panel, so V36 supplies this additional artifact.
 Colour follows Figure 1; positive loss change means worse performance.
+Shared key: fig4_legend.pdf; panels form one row.

@@ -36,37 +36,34 @@ distillation the 4B student, 6.6 times the reference size and a development stud
 round, keeps only its QA gain at the development pools (0.83, $[0.12,1.54]$) and is beaten by the
 frozen constant at the unseen pool on every capability (Table~\ref{tab:distill_paired}).
 
-\begin{figure}[p]
+\begin{figure}[t]
 \centering
-\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of seen states}\end{subfigure}\\[2pt]
-\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_b.pdf}\caption{New sources or students}\end{subfigure}\\[2pt]
-\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_c.pdf}\caption{Corner contrasts}\end{subfigure}\hfill
-\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_d.pdf}\caption{New evaluation distributions}\end{subfigure}
+\begin{subfigure}[t]{0.41\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of seen states}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.27\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_b.pdf}\caption{New sources or students}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.30\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_c.pdf}\caption{Corner contrasts and fresh distributions}\end{subfigure}\\[1pt]
+\includegraphics[width=\textwidth]{figs/fig3_legend.pdf}
 \caption{Generalization of the frozen relations, by kind of novelty. In (a) and (b) each row compares
 the error of the relation (filled) with that of the development-selected baseline (hollow) on the
-same cells, green where the relation is lower, with $n$ cells and whiskers where a paired interval
-was stored; the 4B distillation student is a development student and is drawn as such. (c) The
-corner second differences with their registered bands; the primary QA test failed to reject
-additivity. (d) No frozen response-law prediction exists on the fresh distributions; only the
-registered corner contrasts are shown. Row codes V46 and V72 name earlier frozen tests (V72 is the
-2.8B repeat, one state); per-cell errors are in Appendix~\ref{sec:app_results}.}
+same cells, green where the relation is lower, with the number of cells in parentheses and whiskers
+where a paired interval was stored; the 4B distillation student is a development student and is
+drawn as such. (c) Prediction minus measurement for the corner second differences with their
+registered bands (the primary QA test failed to reject additivity) and for the registered corner
+contrasts on the fresh distributions, on which no frozen response-law prediction exists. Row codes
+V46 and V72 name earlier frozen tests (V72 is the 2.8B repeat, one state); per-cell errors are in
+Appendix~\ref{sec:app_results}.}
 \label{fig:generalization}
 \end{figure}
-\begin{figure}[p]
+\begin{figure}[t]
 \centering
-\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig7_a.pdf}\caption{Math}\end{subfigure}\hfill
-\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig7_b.pdf}\caption{Code}\end{subfigure}\\[2pt]
-\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig7_c.pdf}\caption{QA (2Wiki)}\end{subfigure}\hfill
-\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig7_d.pdf}\caption{Largest loss increase across capabilities}\end{subfigure}\\[2pt]
-\includegraphics[width=0.8\textwidth]{figs/fig7_legend.pdf}
+\includegraphics[width=\textwidth]{figs/fig7.pdf}\\[1pt]
+\includegraphics[width=\textwidth]{figs/fig7_legend.pdf}
 \caption{Selection maps under the frozen rule on four fresh Pythia states (rows) at seventeen
-nominal storage budgets from 20\% to 100\% of dense matrix storage, one panel per objective. Colour
-is the method the rule selects; an open marker marks a budget at which the measured oracle chooses
-a different method. Predictions were frozen before measurement.}
+nominal storage budgets from 20\% to 100\% of dense matrix storage, one column block per objective
+(math, code, QA on 2Wiki, and the largest loss increase across capabilities). Colour is the method
+the rule selects; an open marker marks a budget at which the measured oracle chooses a different
+method. Predictions were frozen before measurement.}
 \label{fig:rule_main_v2}
 \end{figure}
-\FloatBarrier
-
 \paragraph{The range each relation has earned.} Figure~\ref{fig:generalization} separates the kinds
 of novelty. New configurations of seen states are where the initial-state inputs pay: unseen pruning
 densities inside the range and unseen group sizes on development states are predicted within their

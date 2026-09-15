@@ -1,8 +1,9 @@
 # heterogeneity: frozen sources
 
 delta read verbatim from V51 panel.json dl07/dl4. Reused import-safe V51 load_prune/load_quant with audited reads to verify dense subtraction; no table generator invoked. Keep cohort=panel; sort series then numeric model size; panel a density=.7, b bit=4.
-fig8_a.pdf: 5.5 x 1.6 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig8_b.pdf: 5.5 x 1.6 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig8_a.pdf: 2.7 x 1.9 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig8_b.pdf: 2.7 x 1.9 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig8_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
 
 ## Inputs (SHA-256)
 
