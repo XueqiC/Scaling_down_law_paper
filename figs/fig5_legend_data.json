@@ -5,20 +5,17 @@
   ],
   "records": [],
   "input_sha256": {
-    "results/v78-rule-confirm/compare.json": "601669be112c5dd7c016e859423700a98f6a916dcd12c838bb5cd9c8c09686a8",
-    "results/v78-rule-confirm/freeze.json": "78dd229d7131f485b3a0651eac6978d2671ad139c02fcc2ea753d3420d5f129f",
-    "results/v78-rule-confirm/freeze.json.sha256": "2ee2efaab09b1c7cfb098b681b35e28eeba7378dba7e3c3a06292e5b24537c87"
+    "results/v96-joint-response/summary.json": "6a5fd653836a7879b2fd26e44360f25bb70159cf08f359b9970b7c30a1067d13",
+    "results/v100-critical-region/summary.json": "1203f8a85658ab02c7326080cb182685264e3a53d1ab5fe1ecc926b0c2d730a3"
   },
   "axes": [],
   "legend_entries": [
-    "Prune",
-    "Quant",
-    "Distill",
-    "Dense",
-    "Oracle differs"
+    "Math",
+    "Code",
+    "QA",
+    "Range across pool pairs"
   ],
   "legend_font_sizes_pt": [
-    8.5,
     8.5,
     8.5,
     8.5,
@@ -37,9 +34,11 @@
     "errorbar_capsize_pt": 2
   },
   "artist_sizes": {
-    "line_widths_pt": [],
+    "line_widths_pt": [
+      1.8
+    ],
     "marker_sizes_pt": [
-      3.8
+      5.0
     ],
     "errorbar_widths_pt": [],
     "cap_sizes_pt": [],

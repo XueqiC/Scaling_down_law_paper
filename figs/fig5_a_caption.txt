@@ -3,17 +3,20 @@ Observed-endpoint falsification diagnostic for logarithmic reuse,
 for Gemma-3 1B (a) and 4B (b). The ordinate is the saved measured pool-change
 effect divided by log(1+E2)-log(1+E1), where E=T/D_U; the abscissa is the saved
 common_T=(T_first+T_second)/2, in thousands of supervised tokens. Colour denotes
-Math, Code or QA. Thin lines (0.6 pt, alpha 0.35, without markers) connect the
-saved ratios for each individual pool/seed trajectory dyad across budgets,
-separately within each capability and tolerance. Heavy lines (1.8 pt, alpha 1)
-connect the per-budget-band median of those individual plotted ratios across
-pool pairs, separately for each capability and tolerance. The bands are the
-saved V100 nominal 25k, 50k, 100k and 200k bands; each median is positioned at
-the median common_T of its contributing records. Heavy solid lines with filled
-circles denote 1% budget matching; heavy dashed lines with filled triangles
-denote 0.3%. All markers are 5 pt, filled in the capability colour, with a white
-edge. The tighter set is nested in the 1% set, so some points coincide. Only
-occupied bands are shown; connecting segments are visual guides, with no
+Math, Code or QA. Both matching tolerances (1% and 0.3%) are pooled. For each
+capability, one light filled band spans the minimum to maximum saved ratio
+across all pool pairs at each budget; one heavy solid line (1.8 pt) connects
+the per-budget median across those pairs, with 5 pt filled circles. Matching
+pair IDs present at both tolerances count once in these summaries because the
+tighter set is nested in the 1% set. The sidecar keeps every pair's values and
+the tolerance flag, including both records of a pair present at both tolerances.
+Budgets use the saved V100 nominal 25k, 50k, 100k and 200k bands; each summary
+is positioned at the median common_T of its contributing unique pairs. Filled
+bands have alpha 0.15 and no outline; they show the range across pool pairs,
+not uncertainty intervals. Circle markers have capability-coloured fill and
+a white edge. The two 2.7 x 1.45-inch panels have no inside legends; the shared
+5.5 x 0.3-inch fig5_legend.pdf sits above the panels. Only occupied budget bands
+are shown; connecting segments and filled bands are visual guides, with no
 interpolated observations, fitted slopes or new intervals. The set of pool pairs
 can change across bands, so the median lines are descriptive summaries.
 At exactly matched T, a separable logarithmic reuse form predicts a horizontal
@@ -22,8 +25,8 @@ coefficient. V100 reports zero exactly matched nonzero-budget pairs: the observe
 drift also admits residual budget, composition and schedule confounding and does
 not establish an exact fixed-budget causal falsification. At 0.3%, critical
 U=132 matches occur only near 200k and cannot identify critical-pool drift.
-V100 fixed_budget.endpoint_ratios supplies all individual plotted numbers and
-budget-band labels; the heavy lines summarize these records by medians. Its saved
+V100 fixed_budget.endpoint_ratios supplies all individual numbers and
+budget-band labels; the heavy lines summarize the pooled pairs by medians. Its saved
 raw_response_curves verifies endpoint identity and E without reading trajectories.
 V96 part_d supplies the original definition and matching endpoint cross-checks;
 its broader ordinal matches are not added to the two requested tolerance sets.

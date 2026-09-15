@@ -1,7 +1,7 @@
 {
   "size_inches": [
     1.8,
-    1.15
+    1.35
   ],
   "records": [
     {
@@ -257,6 +257,22 @@
     "marker_size_pt": 3.8,
     "errorbar_capsize_pt": 2
   },
+  "artist_sizes": {
+    "line_widths_pt": [],
+    "marker_sizes_pt": [
+      5.0
+    ],
+    "errorbar_widths_pt": [
+      1.3
+    ],
+    "cap_sizes_pt": [
+      2.5
+    ],
+    "cap_widths_pt": [
+      1.3
+    ]
+  },
+  "legend_layout": null,
   "axis_font_sizes_pt": [
     {
       "x_ticks": [

@@ -1195,6 +1195,16 @@
     "marker_size_pt": 3.8,
     "errorbar_capsize_pt": 2
   },
+  "artist_sizes": {
+    "line_widths_pt": [],
+    "marker_sizes_pt": [
+      3.8
+    ],
+    "errorbar_widths_pt": [],
+    "cap_sizes_pt": [],
+    "cap_widths_pt": []
+  },
+  "legend_layout": null,
   "axis_font_sizes_pt": [
     {
       "x_ticks": [

@@ -1,10 +1,17 @@
 # fig1_c: frozen sources
 
+Reused a1_development_table.load_development_table (schema, cohort, metadata and hash checks). A1 CSV fields: run_id, checkpoint_id, student_id, pool_seed, U, T_actual, D_U_pool, capability, distribution, delta. Select positive T_actual nearest 200000 separately per trajectory/readout. reuse=T_actual/D_U_pool; y=delta (own-initial loss subtracted by A1). Both pool seeds remain separate points.
+The four-rung core includes pool seeds 41/42 and, for the critical rung, 51/52. Seed markers identify the first/second registered seed within each rung; one line connects arithmetic mean reuse/delta over the two seeds per rung. All individual seed records are retained unchanged. Scope rows in the same CSV originate in v99-scope. All points, including 4B, are development.
 Final checkpoint = maximum positive updates with positive processed_tokens. learning_rate = float(output_suffix after lrpilot_); delta used verbatim.
-fig1_c.pdf: 1.8 x 1.15 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig1_a.pdf: 1.8 x 1.35 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [1.1, 1.5], 'marker_sizes_pt': [5.0], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig1_b.pdf: 1.8 x 1.35 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [1.1, 1.5], 'marker_sizes_pt': [5.0], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig1_c.pdf: 1.8 x 1.35 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [1.1, 1.5], 'marker_sizes_pt': [5.0], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
 
 ## Inputs (SHA-256)
 
+- `results/a1-development-table/development_table.csv`: `2f92035256201a99e853e90d95f47296b02799c9700d40bbca6525a9b33ab67e`
+- `results/a1-development-table/row_metadata.csv`: `f3c974254c5bf857820c1eb2d7f922246bbd6ad9e1013c7ce11be3bf6ecc4947`
+- `results/a1-development-table/summary.json`: `0531986629012bc9d348b23dadde0b577daf466cdc2805dc26138d9c86489c8b`
 - `results/v12-distill/gemma3-1b/gpt-5.6-luna_full_75_lrpilot_1e-4_lora_dseed11/trajectory/update-00000000/eval.json`: `d4b93ea38f588e7799206364706c95f9125be749b53caa22d89663a8edcd6f84`
 - `results/v12-distill/gemma3-1b/gpt-5.6-luna_full_75_lrpilot_1e-4_lora_dseed11/trajectory/update-00000008/eval.json`: `468a6868879a302993b869d74dc1ca56c3bb565adfef8411fec9c1b7bd7e407f`
 - `results/v12-distill/gemma3-1b/gpt-5.6-luna_full_75_lrpilot_2e-4_lora_dseed11/trajectory/update-00000000/eval.json`: `77207ebd0c4b100f6bc4f3e6a65a113be8b13482282f886a40993228b01b64e6`

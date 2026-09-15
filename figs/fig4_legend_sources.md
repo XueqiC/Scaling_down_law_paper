@@ -1,10 +1,10 @@
 # fig4_legend: frozen sources
 
 a/b: delta = loss_source - dense_source; x parsed from the JSON configuration key. a delivered: reuse plot_fig1_final.prune_curve; pointwise median of nine frozen state predictions for power, source-free median_curve for QA; no fitting. c: delta = V69 dL; bit and group parsed from config.
-fig4_a.pdf: 1.8 x 1.15 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig4_b.pdf: 1.8 x 1.15 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig4_c.pdf: 1.8 x 1.15 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig4_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 8.5 pt, axis labels 8.5 pt, legend 8.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig4_a.pdf: 1.8 x 1.35 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [1.1, 1.4], 'marker_sizes_pt': [], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig4_b.pdf: 1.8 x 1.35 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [1.1, 1.4], 'marker_sizes_pt': [], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig4_c.pdf: 1.8 x 1.35 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [1.1, 1.4], 'marker_sizes_pt': [5.0], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig4_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 8.5 pt, axis labels 8.5 pt, legend 8.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [1.4], 'marker_sizes_pt': [5.0], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
 
 ## Inputs (SHA-256)
 

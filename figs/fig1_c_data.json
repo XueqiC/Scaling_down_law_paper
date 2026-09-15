@@ -1,7 +1,7 @@
 {
   "size_inches": [
     1.8,
-    1.15
+    1.35
   ],
   "records": [
     {
@@ -222,6 +222,9 @@
     }
   ],
   "input_sha256": {
+    "results/a1-development-table/summary.json": "0531986629012bc9d348b23dadde0b577daf466cdc2805dc26138d9c86489c8b",
+    "results/a1-development-table/development_table.csv": "2f92035256201a99e853e90d95f47296b02799c9700d40bbca6525a9b33ab67e",
+    "results/a1-development-table/row_metadata.csv": "f3c974254c5bf857820c1eb2d7f922246bbd6ad9e1013c7ce11be3bf6ecc4947",
     "results/v12-distill/gemma3-1b/gpt-5.6-luna_full_75_lrpilot_5e-5_lora_dseed11/trajectory/update-00000000/eval.json": "10022114f0ab1effc8c48a5bc9a417db2ea9d19bd096d48dca58408c9cbe872a",
     "results/v12-distill/gemma3-1b/gpt-5.6-luna_full_75_lrpilot_5e-5_lora_dseed11/trajectory/update-00000008/eval.json": "94649c984f59dd7b01853c76e7fd1f4e60d2707ebfce2df5b371453101757da7",
     "results/v12-distill/gemma3-1b/gpt-5.6-luna_full_75_lrpilot_1e-4_lora_dseed11/trajectory/update-00000000/eval.json": "d4b93ea38f588e7799206364706c95f9125be749b53caa22d89663a8edcd6f84",
@@ -267,6 +270,19 @@
     "marker_size_pt": 3.8,
     "errorbar_capsize_pt": 2
   },
+  "artist_sizes": {
+    "line_widths_pt": [
+      1.1,
+      1.5
+    ],
+    "marker_sizes_pt": [
+      5.0
+    ],
+    "errorbar_widths_pt": [],
+    "cap_sizes_pt": [],
+    "cap_widths_pt": []
+  },
+  "legend_layout": null,
   "axis_font_sizes_pt": [
     {
       "x_ticks": [

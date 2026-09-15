@@ -1,5 +1,5 @@
 Pruning responses on the original nine development states: Pythia
-160M, 410M and 1.4B at steps 16k, 64k and 143k. Thin coloured lines are each
+160M, 410M and 1.4B at steps 16k, 64k and 143k. Light coloured lines are each
 state's measured loss minus its own dense loss, including every saved density.
 Opaque Math/Code lines are the pointwise median of the nine state-conditioned
 V53 power predictions; the opaque QA line is the delivered V53 median curve.
@@ -10,7 +10,7 @@ The register and V6 loss artifacts are the pruning sources used by
 plot_fig1_final.py; no held-out source is presented as a development state.
 
 Per-output-channel symmetric round-to-nearest quantization on the
-same nine V36 development states. Thin lines show each state's per-capability
+same nine V36 development states. Light lines show each state's per-capability
 loss change from its own dense anchor across every saved bit-width. The full
 loss range is retained, including 3-bit collapse. The inputs are the frozen
 V10 quant_losses.json files listed in V36's summary; plot_fig1_final.py does
@@ -24,4 +24,4 @@ groups 64, 128 and 256; V69 compare.json supplies groups 32 and 512. The latter
 were unseen group sizes at the V69 freeze. These are the same frozen grouped
 quantization artifacts read by plot_fig1_final.py. All three bit-widths share
 one linear loss axis and a logarithmic group-size axis.
-Three 1.8 x 1.15-inch panels in one 5.5-inch row; fig4_legend.pdf is the shared capability and bit-width key.
+Three 1.8 x 1.35-inch panels in one 5.5-inch row; fig4_legend.pdf is the shared capability and bit-width key above the panels. Lines are 1.4 pt; markers, where present, are 5 pt.

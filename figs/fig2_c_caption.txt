@@ -16,8 +16,12 @@ error across its stored state/capability records. Zero-damage records are exclud
 The three families are pruning, grouped RTN, and per-channel RTN. There is no
 distillation displacement measurement; the superseded uncentred run and the
 separate cluster hardware run are not pooled.
-The three 1.8 x 1.15-inch panels form one row at 5.5-inch text width.
-The shared key is fig2_legend.pdf: Fold estimate, Boundary and Full apply to (a);
+The three 1.8 x 1.35-inch panels form one row at 5.5-inch text width.
+Lines are 1.5 pt and markers 5 pt; boundary crosses are 6 pt. Fold estimates
+are spread horizontally for visibility, without changing their curvature values.
+Error bars and whiskers are 1.3 pt with 2.5 pt caps; (b)'s shaded band edges
+and additive bars are 1.5 pt. The shared key fig2_legend.pdf sits above the panels:
+Fold estimate, Boundary and Full apply to (a);
 Additive, F_int and Observed to (b); Group, Channel and Prune to (c), denoting grouped
 RTN, per-channel RTN and pruning. Panel (b) labels use student size/readout,
 for example 1B QA. Damage and relative error in (c) are configuration medians.

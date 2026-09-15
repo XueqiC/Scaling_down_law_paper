@@ -5,4 +5,4 @@ groups 64, 128 and 256; V69 compare.json supplies groups 32 and 512. The latter
 were unseen group sizes at the V69 freeze. These are the same frozen grouped
 quantization artifacts read by plot_fig1_final.py. All three bit-widths share
 one linear loss axis and a logarithmic group-size axis.
-Shared key: fig4_legend.pdf; panels form one row.
+Shared key: fig4_legend.pdf above the panels; panels are 1.8 x 1.35 inches in one row. Lines 1.4 pt; markers 5 pt.

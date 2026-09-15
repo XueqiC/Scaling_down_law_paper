@@ -1,16 +1,21 @@
 Capability responses (a) and fresh QA distributions (b). Positive = worse:
 positive loss change means higher loss than the student's own initial state.
 Development endpoints nearest 200k supervised tokens per trajectory; every seed
-shown separately. Reuse T/D_U is measured in supervised-token passes, and loss
+shown as a separate marker. Reuse T/D_U is measured in supervised-token passes, and loss
 change in native-token nats. All points, including 4B, are development.
 Colours identify Math, Code and QA in (a), and 2Wiki, MuSiQue and TriviaQA in (b).
 Dotted, dashed and solid lines denote 270M, 1B and 4B students. Circles and squares
 identify the first and second registered pool seeds within each rung; the core
-uses seeds 41/42 and the critical rung uses 51/52. No seed averaging is applied.
+uses seeds 41/42 and the critical rung uses 51/52. One line per student and
+capability/distribution connects the arithmetic means of the two seeds at each
+pool-size rung (both reuse and loss change are averaged). Marker-only circles
+and squares retain each seed's observed reuse and loss change; there are no
+separate per-seed lines. Every underlying seed value remains in the sidecars.
 The complete shared key is supplied separately as fig1_legend.pdf: colours for
 all capabilities and distributions, student line styles, and S1/S2 for the two
 registered pool seeds. The learning-rate pilot (c) uses the same student styles.
-All three 1.8 x 1.15-inch panels form one row at 5.5-inch text width.
+All three 1.8 x 1.35-inch panels form one row at 5.5-inch text width, with the
+shared legend above. Data lines are 1.5 pt and seed markers are 5 pt.
 Learning-rate pilot for Gemma-3 1B (dashed) and 4B (solid).
 Colour identifies capability, using the Figure 1 palette. The x axis is the
 configured peak learning rate encoded in the run name, not the decayed lr field
@@ -19,6 +24,7 @@ update, with positive values indicating higher loss than the initial student.
 All six pilots use full teacher data with 75 examples per domain and data seed
 11; their final saved update is 8, at 37,903 processed input tokens. These are
 development pilots, with one run per student/rate and no uncertainty estimate.
-Panel (c) is 1.8 x 1.15 inches, the third panel in the 5.5-inch Figure 1 row.
-The complete capability/distribution/student/seed key is fig1_legend.pdf;
+Panel (c) is 1.8 x 1.35 inches, the third panel in the 5.5-inch Figure 1 row.
+Lines are 1.5 pt and markers are 5 pt. The complete
+capability/distribution/student/seed key is fig1_legend.pdf above the panels;
 the LR ticks give the configured rates and the markers denote checkpoints.

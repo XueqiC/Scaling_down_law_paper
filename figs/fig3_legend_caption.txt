@@ -26,7 +26,7 @@ registered corner contrasts are available on fresh distributions, with additive 
 No A2 development-holdout interval is transplanted to these confirmation cells.
 The three panels are 2.2, 1.45 and 1.85 inches wide and 1.6 inches high in one
 5.5-inch row. Panel (c) stacks 1B, 4B development, 2Wiki, MuSiQue and TriviaQA.
-The shared key is fig3_legend.pdf: Baseline, Relation and Lower of pair distinguish
+The shared key is fig3_legend.pdf above the panels: Baseline, Relation and Lower of pair distinguish
 the paired MAEs; Lower of pair marks a relation MAE below its paired baseline.
 The 4B development entry identifies development-student triangles in (c).
 Panel (b)'s row labels sit above their markers.
