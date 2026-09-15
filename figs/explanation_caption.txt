@@ -1,7 +1,8 @@
 Reuse-term curvature (a), registered corner test (b), and post-hoc
 displacement account (c). Primary QA additivity: failed to reject. This applies
 to the primary QA test only; math is size-dependent and code unresolved.
-Curvature intervals are conditional on development. Fold circles and boundary-hit
+Curvature intervals are conditional on development. The exponent p is unitless.
+Fold circles and boundary-hit
 crosses show the stored development fits; diamonds show the full-development fit
 with its conditional interval. Reference lines mark p = 0 and p = 1.
 Corner rows show each student/readout separately. The additive prediction is zero;
