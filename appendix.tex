@@ -692,7 +692,7 @@ occur between $d=0.5$ and $0.7$ for Qwen3 and Gemma, at $0.55$ for
 Muse-30B and $0.35$ for OLMo-3-7B, and had not occurred by $d=0.3$ for
 OLMo-3-32B. Robustness is not monotone in size within a series
 (Gemma-3-12B is the most robust Gemma-3 size; 27B collapses earlier).
-We read this as heterogeneity a predictor has to reproduce, not as an
+This heterogeneity is what a predictor has to reproduce; it is not an
 invariant.
 
 \paragraph{Quantization.} Table~\ref{tab:panel_quant} covers
@@ -768,7 +768,7 @@ prompt-stability tests are left to future work} The
 mathematics benchmarks cluster regardless of format, and within-block
 fine structure is consistent with benchmark content (SVAMP, grade-school word problems,
 is the loosest member of the math block). A projected-gradient SVD
-version gives the same verdict in subspace terms: principal-angle
+version gives the same result in subspace terms: principal-angle
 similarity within capability exceeds cross-capability similarity by
 $2$--$4\times$.
 
@@ -829,7 +829,7 @@ with it, QA joins the law). Two structural results:
 $\gamma\in[1.2,2.2]$ across all families, versus $3.2$--$8.7$ in the
 raw $(1-\dens)$ coordinate, which is what makes
 the form portable; and (ii) \emph{within a model, $\gamma$ is shared
-across capabilities} (e.g.\ Qwen3-0.6B: $1.41/1.56/1.43$;
+across capabilities} (for example Qwen3-0.6B: $1.41/1.56/1.43$;
 Gemma3-4B: $1.66/1.71$): capability differences appear to be carried
 by the two measured quantities, and the fitted structure is two
 parameters per model. This mechanism form uses gradient
