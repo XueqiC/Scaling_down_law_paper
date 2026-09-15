@@ -1,35 +1,21 @@
-\section{What Was Learned, and What It Enables}
+\section{Conclusion}
 \label{sec:learned}
 
-\paragraph{Responses and relations.} Compression damages capabilities unevenly and the unevenness is
-structured: a capability-specific power form under pruning inside its density range, a
-configuration-dependent quantization threshold that the measured grid predicts better than any
-surface, and a distillation reuse cost that grows with reuse and student size and transfers across
-QA distributions while the gain does not (Table~\ref{tab:main-prediction-v2}).
-
-\paragraph{Understanding gained in trying to build reliable laws.} First, a rejected form is not a rejected class: the logarithmic reuse term failed its own flatness
-implication, yet the fit-free second-difference test on two students did not reject additivity of
-budget and reuse on the QA readout (\S\ref{sec:why}). Second, an explanation is not a
-predictor: the displacement account reproduces damage across three families and needs the
-compressed model to compute. Third, source information transfers less than it fits: dense
-pre-compression statistics improve a parametric family in four of nine pairs and lose to a
-source-free configuration curve in nine of nine, with or without a shrunk source correction. Fourth, identifiability is a property of the design: the data that fitted a curvature exponent
-contained no budget-by-reuse rectangle, so the one fit-free statistic that separates additive from
-interacting structures was uncomputable until four trajectories were designed to land on one.
-
-\paragraph{Guidance for design and choice.} Choose inputs by the transfer needed: the initial state
-carries math and code at unseen densities and group sizes of seen states and over-predicts QA under
-pruning on new checkpoints, so a calibrated configuration median is the safer default when the state
-is new. Fix the training protocol before measuring distillation damage; the learning rate moves it by
-an order of magnitude. Design data-reuse experiments so that a budget-by-reuse rectangle exists by
-construction. Pay for calibration by what it buys: one point on the target distribution closes most
-of the gap to a source-specific fit, and dense statistics that cost more did not earn it.
-
-\paragraph{Limits.} The relations are conditional on the evaluated distributions and
-implementations. No fitted joint structure for distillation beat a low-order response surface on
-either pre-declared target, so a validated data-requirement relation is not delivered; the larger
-student diverged from the smaller on math and code at readouts the design could not resolve.
-Reopening measurement needs a new information source or a mechanism hypothesis, not another reuse
-function.
+We set out to build predictive scaling-down laws for capability-conditioned loss under pruning,
+quantization and distillation, and to hold every candidate to one validation standard. Under that
+standard the survivors are method-specific and bounded: a five-parameter pruning form for math and
+code inside its density range, a same-input interpolation over the measured quantization grid, and
+one-coefficient reuse forms for distillation on the development students, each carrying the range
+on which it was tested and a calibration cost stated in advance (Table~\ref{tab:main-prediction-v2}).
+The structures that failed are reported with the evidence that excluded them: a logarithmic reuse
+term contradicted its own flatness implication, dense source statistics fitted without
+transferring, and a fit-free rectangle test on two students neither rejected nor established
+additivity of budget and reuse. A second-order displacement account explains the measured damage
+across three families inside a magnitude boundary without predicting it. The relations feed a
+capability- and budget-specific selection rule validated prospectively on four fresh states, and
+every relation, verdict and recommendation keeps the status it had before its outcome was measured.
+What the study taught about building such laws, the guidance it supports for experiment design and
+configuration choice, and the limits of the present relations are collected in
+Appendix~\ref{sec:app_learned}.
 
 \phantomsection\label{sec:learned_end}
