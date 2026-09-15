@@ -7,7 +7,7 @@ explanations and open factors.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.64\textwidth]{figs/explanation.pdf}
+\includegraphics[width=0.58\textwidth]{figs/explanation.pdf}
 \caption{What shapes the distillation response, and what explains compression damage.
 \textbf{a}: the reuse-term curvature exponent $p$ across training folds per capability, with the
 full-development value and its conditional interval; $p=0$ is the logarithmic term, $p=1$ linear.
@@ -73,10 +73,10 @@ compressed model to compute: the account explains after the fact and enters no r
 \subsection{What is settled, excluded, and open}
 \label{sec:why_summary}
 
-\emph{Verified causes.} The learning rate sets distillation damage magnitude. The reuse ratio sets
-the QA cost, monotonically and with student size. The response shape differs across capabilities
-under pruning, which is where capability conditioning earns its 0.06 nats macro (0.17 on QA).
-Compression damage is second-order in logit displacement inside a magnitude boundary.
+\emph{Verified causes.} The learning rate sets distillation damage magnitude; the reuse ratio sets
+the QA cost, monotonically and with student size; the response shape differs across capabilities
+under pruning, where capability conditioning earns 0.06 nats macro (0.17 on QA); compression damage
+is second-order in logit displacement inside a magnitude boundary.
 
 \emph{Excluded explanations.} A logarithmic reuse term with budget-independent coefficients. Pure
 logit shrinkage as the damage mechanism. Source descriptors as a general route to cross-source
