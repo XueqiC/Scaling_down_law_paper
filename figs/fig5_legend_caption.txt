@@ -13,7 +13,7 @@ Budgets use the saved V100 nominal 25k, 50k, 100k and 200k bands; each summary
 is positioned at the median common_T of its contributing unique pairs. Filled
 bands have alpha 0.15 and no outline; they show the range across pool pairs,
 not uncertainty intervals. Circle markers have capability-coloured fill and
-a white edge. The two 2.7 x 1.45-inch panels have no inside legends; the shared
+a white edge. The two 2.7 x 1.15-inch panels have no inside legends; the shared
 5.5 x 0.3-inch fig5_legend.pdf sits above the panels. Only occupied budget bands
 are shown; connecting segments and filled bands are visual guides, with no
 interpolated observations, fitted slopes or new intervals. The set of pool pairs

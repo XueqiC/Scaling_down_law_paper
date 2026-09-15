@@ -15,4 +15,6 @@ The complete shared key is supplied separately as fig1_legend.pdf: colours for
 all capabilities and distributions, student line styles, and S1/S2 for the two
 registered pool seeds. The learning-rate pilot (c) uses the same student styles.
 All three 1.8 x 1.35-inch panels form one row at 5.5-inch text width, with the
-shared legend above. Data lines are 1.5 pt and seed markers are 5 pt.
+shared legend above. All three axes use the same measured rectangle and compact
+numeric tick format; (a) and (b) share their loss-change range and ticks.
+Data lines are 1.5 pt and seed markers are 5 pt.
