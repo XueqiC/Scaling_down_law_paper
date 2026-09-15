@@ -22,22 +22,20 @@ three compression families.}
 \subsection{Function shape}
 \label{sec:why_shape}
 
-Under pruning the pre-cliff response is a power law in the deleted capability mass once the
-first-order alignment term is removed, with a shared exponent that transfers across families
-(leave-one-family-out MAE 2.17 nats against 10.3 for raw sparsity; Appendix~\ref{sec:law}). Under
-quantization the response is a bit-width threshold whose position depends on the group size, which
-is why an interpolation over the measured grid predicts and a smooth surface does not.
+Under pruning the pre-cliff response is a power law in the deleted capability mass with a shared
+exponent that transfers across families (Appendix~\ref{sec:law}); under quantization it is a
+bit-width threshold whose position depends on the group size, which is why an interpolation over
+the measured grid predicts and a smooth surface does not.
 
 Under distillation, a four-coefficient joint form with a logarithmic
 reuse term, $\delta=(a+a'z)\log(1+T/T_{\mathrm{ref}})+(b+b'z)\log(1+E)$, carries a falsifiable
 implication: the pool-change effect divided by its log bracket must be flat in budget. It drifts by a factor of
 twenty across checkpoints for code on the 1B student, at budget-matching tolerances of 1\% and
-0.3\%. Opening the reuse term to a free exponent
-$h_p(E)=((1+E)^p-1)/p$, profiled inside training folds, returns $p$ near or above one for every
-capability (code 0.69, math 1.12, QA 1.44) with wide fold ranges and occasional boundary hits, and buys
-no held-out accuracy: against six baselines on four grouped hold-outs, neither the log form, the
-curved form nor a single interaction term beat the strongest development-stage baseline on either
-pre-declared target (Appendix~\ref{sec:app_forms}).
+0.3\%. A free reuse exponent $h_p(E)=((1+E)^p-1)/p$, profiled inside training folds, returns $p$ near or
+above one for every capability (code 0.69, math 1.12, QA 1.44; Fig.~\ref{fig:explanation}a) with
+wide fold ranges, and buys no held-out accuracy: against six baselines on four grouped hold-outs,
+neither the log form, the curved form nor a single interaction term beat the development-stage
+strongest baseline on either pre-declared target (Appendix~\ref{sec:app_forms}).
 
 Whether additivity itself failed could not be read from that data: a fixed pool and a doubling
 budget grid never place two trajectories on the same budget, so no budget-by-reuse rectangle existed.
