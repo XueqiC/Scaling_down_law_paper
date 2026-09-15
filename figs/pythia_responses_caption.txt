@@ -1,0 +1,26 @@
+Pruning responses on the original nine development states: Pythia
+160M, 410M and 1.4B at steps 16k, 64k and 143k. Thin coloured lines are each
+state's measured loss minus its own dense loss, including every saved density.
+Heavy Math/Code lines are the pointwise median of the nine state-conditioned
+V53 power predictions; the heavy QA line is the delivered V53 median curve.
+These summaries evaluate frozen coefficients without fitting. Delivered curves
+are shown only on their [0.6, 0.9] domain. V53's fit used 17 development states;
+the nine states displayed are selected by the original V36 input manifest.
+The register and V6 loss artifacts are the pruning sources used by
+plot_fig1_final.py; no held-out source is presented as a development state.
+
+Per-output-channel symmetric round-to-nearest quantization on the
+same nine V36 development states. Thin lines show each state's per-capability
+loss change from its own dense anchor across every saved bit-width. The full
+loss range is retained, including 3-bit collapse. The inputs are the frozen
+V10 quant_losses.json files listed in V36's summary; plot_fig1_final.py does
+not itself read a per-channel panel, so V36 supplies this additional artifact.
+Colour follows Figure 1; positive loss change means worse performance.
+
+Grouped symmetric RTN Math responses for Pythia 410M at step143k.
+Colour and marker identify 3, 4 and 5 bits. Connected markers are measured
+loss changes against group size, with no fitted curve. V69 develop.json supplies
+groups 64, 128 and 256; V69 compare.json supplies groups 32 and 512. The latter
+were unseen group sizes at the V69 freeze. These are the same frozen grouped
+quantization artifacts read by plot_fig1_final.py. All three bit-widths share
+one linear loss axis and a logarithmic group-size axis.

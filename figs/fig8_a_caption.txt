@@ -1,0 +1,13 @@
+Pruning at density 0.7.
+Heterogeneity across the original twelve-model panel, ordered by
+family/series and increasing size within each series. Grouped bars show Math,
+Code and QA loss changes from each model's own dense loss. Panel (a) is pruning
+at density d=0.7; panel (b) is per-output-channel symmetric RTN int4. Positive
+values are worse; negative values are improvements. Losses use native-token
+nats, so comparisons across tokenizers require caution. Values are read directly
+from V51 panel.json (dl07 and dl4), the frozen source of panel_prune.tex and
+panel_quant.tex, and checked against the original V51 load_prune/load_quant
+arithmetic. The two prospective Qwen3 additions are excluded by cohort=panel.
+Tick abbreviations: G3 = Gemma-3, G4 = Gemma-4, OL3 = OLMo-3, Q3 = Qwen3;
+Muse is written in full. The complete display names and JSON pointers are in
+the per-panel data sidecars. No seed averaging or uncertainty intervals.

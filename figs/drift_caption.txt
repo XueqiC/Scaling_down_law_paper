@@ -1,0 +1,18 @@
+Observed-endpoint falsification diagnostic for logarithmic reuse,
+for Gemma-3 1B (a) and 4B (b). The ordinate is the saved measured pool-change
+effect divided by log(1+E2)-log(1+E1), where E=T/D_U; the abscissa is the saved
+common_T=(T_first+T_second)/2, in thousands of supervised tokens. Colour denotes
+Math, Code or QA; hollow circles denote 1% budget matching and filled triangles
+0.3%. The tighter set is nested in the 1% set, so some points coincide. Lines
+connect only the same capability, pool/seed trajectory dyad and tolerance across
+budgets; no pooling, interpolation, fitted slopes or new intervals are used.
+At exactly matched T, a separable logarithmic reuse form predicts a horizontal
+ratio for each student/capability. The zero line is a reference, not a fitted
+coefficient. V100 reports zero exactly matched nonzero-budget pairs: the observed
+drift also admits residual budget, composition and schedule confounding and does
+not establish an exact fixed-budget causal falsification. At 0.3%, critical
+U=132 matches occur only near 200k and cannot identify critical-pool drift.
+V100 fixed_budget.endpoint_ratios supplies all plotted numbers; its saved
+raw_response_curves verifies endpoint identity and E without reading trajectories.
+V96 part_d supplies the original definition and matching endpoint cross-checks;
+its broader ordinal matches are not added to the two requested tolerance sets.

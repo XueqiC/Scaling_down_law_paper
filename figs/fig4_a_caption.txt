@@ -1,0 +1,10 @@
+Pruning responses on the original nine development states: Pythia
+160M, 410M and 1.4B at steps 16k, 64k and 143k. Thin coloured lines are each
+state's measured loss minus its own dense loss, including every saved density.
+Heavy Math/Code lines are the pointwise median of the nine state-conditioned
+V53 power predictions; the heavy QA line is the delivered V53 median curve.
+These summaries evaluate frozen coefficients without fitting. Delivered curves
+are shown only on their [0.6, 0.9] domain. V53's fit used 17 development states;
+the nine states displayed are selected by the original V36 input manifest.
+The register and V6 loss artifacts are the pruning sources used by
+plot_fig1_final.py; no held-out source is presented as a development state.

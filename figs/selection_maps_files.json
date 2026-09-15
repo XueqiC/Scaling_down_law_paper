@@ -1,0 +1,45 @@
+[
+  {
+    "file": "fig7_a.pdf",
+    "size_inches": [
+      2.7,
+      1.95
+    ]
+  },
+  {
+    "file": "fig7_b.pdf",
+    "size_inches": [
+      2.7,
+      1.95
+    ]
+  },
+  {
+    "file": "fig7_c.pdf",
+    "size_inches": [
+      2.7,
+      1.95
+    ]
+  },
+  {
+    "file": "fig7_d.pdf",
+    "size_inches": [
+      2.7,
+      1.95
+    ]
+  },
+  {
+    "file": "fig7_legend.pdf",
+    "size_inches": [
+      5.5,
+      0.32
+    ]
+  },
+  {
+    "file": "selection_maps.png",
+    "size_inches": [
+      5.5,
+      4.42
+    ],
+    "dpi": 220
+  }
+]

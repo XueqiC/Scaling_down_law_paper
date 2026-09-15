@@ -1,0 +1,24 @@
+[
+  {
+    "file": "fig8_a.pdf",
+    "size_inches": [
+      5.5,
+      2.7
+    ]
+  },
+  {
+    "file": "fig8_b.pdf",
+    "size_inches": [
+      5.5,
+      2.7
+    ]
+  },
+  {
+    "file": "heterogeneity.png",
+    "size_inches": [
+      5.5,
+      5.5
+    ],
+    "dpi": 220
+  }
+]

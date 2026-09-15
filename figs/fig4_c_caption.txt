@@ -1,0 +1,7 @@
+Grouped symmetric RTN Math responses for Pythia 410M at step143k.
+Colour and marker identify 3, 4 and 5 bits. Connected markers are measured
+loss changes against group size, with no fitted curve. V69 develop.json supplies
+groups 64, 128 and 256; V69 compare.json supplies groups 32 and 512. The latter
+were unseen group sizes at the V69 freeze. These are the same frozen grouped
+quantization artifacts read by plot_fig1_final.py. All three bit-widths share
+one linear loss axis and a logarithmic group-size axis.

@@ -1,0 +1,15 @@
+Objective: qa.
+Frozen selection maps on four fresh source states, for Math (a),
+Code (b), QA restricted to 2Wiki (c), and the maximum capability loss-change
+objective (d). Each panel has the same four states and 17 nominal storage
+budgets, from 20% through 100% of dense matrix storage in 5% increments.
+Row labels give Pythia parameter size / pretraining step (k=1,000).
+Cell colour is the frozen rule's predicted chosen method: pruning, quantization,
+distillation or dense. A white circle means the measured oracle method differs;
+unmarked cells agree at method level and need not agree at configuration level.
+The method colours and mismatch semantics reproduce V80 rule_maps_main.
+Selections, oracles and scores are read verbatim from V78 compare.json, with
+the chosen method/configuration checked against freeze.json. Nothing is refit,
+rescored or selected again. All 68 state-budget cells per objective are retained.
+QA remains limited to 2Wiki; the multi-objective result remains retrospective.
+The shared key is supplied as fig7_legend.pdf.

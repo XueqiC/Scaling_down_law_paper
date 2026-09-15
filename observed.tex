@@ -7,7 +7,21 @@ The measurements fix what a law has to reproduce.
 models the same pruning density leaves QA the least-damaged capability in some series and the
 most-damaged in others (Appendix~\ref{sec:app_hetero}); on the controlled Pythia panel, math and code
 respond to density along one shared shape with a capability-specific scale, while the QA response
-changes sign across density, so no scale of a shared curve represents it.
+changes sign across density, so no scale of a shared curve represents it
+(Figs.~\ref{fig:heterogeneity} and \ref{fig:pythia_responses}).
+
+
+\begin{figure}[t]
+\centering
+\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig8_a.pdf}\caption{Pruning at $d=0.7$}\end{subfigure}\\[2pt]
+\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig8_b.pdf}\caption{Per-channel int4}\end{subfigure}
+\caption{Capability damage across twelve public models, ordered by family and by size within a
+family. Bars are loss changes from each model's own dense loss for math, code and QA under (a)
+pruning to $d=0.7$ and (b) per-channel int4 quantization. The ordering of capabilities changes
+across series and the magnitudes differ by two orders at the same setting; the 3-bit collapse is not
+shown. Positive is worse.}
+\label{fig:heterogeneity}
+\end{figure}
 
 \paragraph{Size and stage of the source shape the response, inside a range.} Parameter count and
 pretraining tokens both enter the pruning amplitude for math and code and neither rescues QA. Inside
@@ -16,6 +30,21 @@ forms, a per-density regression and the median density curve agree within 0.05 n
 stages of a 1B source; at a 6.9B source, five times the development range, the source-conditioned
 forms lose to the median curve on math (0.30 against 0.12 nats) and QA (0.91 against 0.12) and tie
 on code (\S\ref{sec:general}).
+
+
+\begin{figure}[t]
+\centering
+\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig4_a.pdf}\caption{Pruning}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig4_b.pdf}\caption{Per-channel quantization}\end{subfigure}\\[2pt]
+\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig4_c.pdf}\caption{Grouped quantization, 410M at 143k, math}\end{subfigure}
+\caption{Compression responses on the controlled Pythia panel. (a) Loss change against retained
+density on the nine development states (thin lines, one per state and capability); heavy lines are
+the pointwise median of the state-conditioned power-form predictions for math and code and the
+median development curve for QA. (b) Loss change against bit-width under per-channel
+round-to-nearest, including the 3-bit collapse. (c) Loss change against group size at 3, 4 and 5
+bits for one state and capability; groups 32 and 512 were unseen at the freeze. Positive is worse.}
+\label{fig:pythia_responses}
+\end{figure}
 
 \paragraph{Distillation damage is a property of the protocol as much as of the method.} With everything but the
 learning rate held fixed, the loss increase on math and code is monotone in it: at $5\times10^{-5}$ the 1B student is essentially unharmed ($+0.003$ and $+0.007$
@@ -29,11 +58,14 @@ while the 4B is not ($+0.058$). Every distillation number that follows names its
 \centering
 \begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig1_a.pdf}\caption{Capability responses}\label{fig:resp_a}\end{subfigure}\hfill
 \begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig1_b.pdf}\caption{Fresh QA distributions}\label{fig:resp_b}\end{subfigure}\\[2pt]
-\includegraphics[width=0.7\textwidth]{figs/fig1_legend.pdf}
+\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig1_c.pdf}\caption{Learning-rate pilot}\label{fig:resp_c}\end{subfigure}\hfill
+\begin{minipage}[t]{0.49\textwidth}\vspace{18pt}\centering\includegraphics[width=\linewidth]{figs/fig1_legend.pdf}\end{minipage}
 \caption{Distillation responses observed under one protocol. (a) Loss change from each student's own
 initial state against the reuse ratio $E=T/D_U$ at the matched budget nearest 200k supervised tokens,
 for math, code and QA on three students (dotted 270M, dashed 1B, solid 4B), both pool seeds drawn
-separately. (b) The same trajectories scored on three fresh QA distributions. Positive is worse.}
+separately. (b) The same trajectories scored on three fresh QA distributions. (c) Final-checkpoint
+loss change against the peak learning rate for the 1B (solid) and 4B (dashed) students at one pool.
+Positive is worse.}
 \label{fig:responses_v2}
 \end{figure}
 
