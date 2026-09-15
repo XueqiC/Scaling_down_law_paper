@@ -14,51 +14,35 @@ Every test below scores predictions frozen before measurement on three kinds of 
 \subsection{Prediction at Unseen Compression Settings}
 \label{sec:unseen_settings}
 
-\paragraph{Pruning densities.} On three checkpoints that entered no fit (new stages of seen sizes, which the delivered rule assigns to the median curve), at densities 0.85, 0.675, and 0.575, the frozen power candidate has MAE
-0.243, 0.236, and 0.68 for math, code, and QA against 0.230, 0.222,
-and 0.68 for A2 and 0.277, 0.214, and 0.22 for the median curve: it
-reaches A2's math error with a quarter of the parameters, trails the
-median on code, and loses QA to every source-free curve. At $d=0.55$,
-an extrapolation for the nine-state freeze, every source-conditioned
-form of that freeze fails (0.6 to 4.5 nats).
-
-\paragraph{Quantization settings.} The per-channel predictor's one
-unseen setting, 5 bits by a fixed interpolation rule, is worse than a
-per-bit constant. In the grouped confirmation, with predictions frozen
-after development on all 54 cells, group sizes 32 and 512 on two development states are predicted best by the piecewise interpolation for math and code (0.07, 0.12 against 0.22, 0.31 for the frozen surface and 0.50, 0.56 for the median), while for QA the frozen zero and the median (0.46) edge the interpolation (0.48); on a state never used
-in a quantization fit (1.4B@112k) the median is best for math and QA
-at the new group sizes (0.13, 0.13), the interpolation is better for
-code (0.17 against 0.22), and at seen configurations the median leads
-on math and code while zero change is better for QA (0.05 against 0.16), and over the nine new-state cells the median's QA error is 0.14 against 0.22 for zero change: source conditioning adds nothing on that state.
-
-\paragraph{Distillation pools.} On the first frozen test (nine
-trajectories at an unseen pool) the headline joint form beats the
-frozen constant on five of six development-student cells, with paired
-intervals above zero (Table~\ref{tab:distill_paired}). In the
-confirmation at six new pools of $U{=}200$ and three new budgets,
-every selected form beats zero change; the gain over the development-designated baseline is detected for code on both students (0.004 and 0.005 nats) and for QA on 270M (0.09), for math a budget-only or surface baseline is better on both students, and the hindsight best of the sixteen frozen forms is a source-conditioned variant throughout, a minimum that selection favours by construction, so the registered comparison stays primary (Table~\ref{tab:main_final}).
+On three Pythia checkpoints that entered no fit, at densities inside the fitted range, the frozen
+pruning power form reaches 0.24, 0.24 and 0.68 nats for math, code and QA against 0.23, 0.22 and 0.68
+for the per-density regression and 0.28, 0.21 and 0.22 for the median curve: it matches the
+regression on math with a quarter of the parameters, trails the median on code, and loses QA to
+every source-free curve; at $d=0.55$, outside the range, every source-conditioned form fails by 0.6
+to 4.5 nats. In grouped quantization, with predictions frozen after development on all 54 cells,
+unseen group sizes 32 and 512 on the development states are predicted best by the piecewise
+interpolation for math and code (0.07 and 0.12 nats), while on a state absent from the fit the
+median is best for math and QA (0.13) and the interpolation for code (0.17 against 0.22); the
+per-channel predictor's one unseen setting is worse than a per-bit constant. For distillation, at six
+new pools of $U{=}200$ and three new budgets every selected form beats zero change, the gain over the
+development-designated baseline is detected for code on both students (0.004 and 0.005 nats) and for
+QA on the 270M student only, and the four corner budgets of the rectangle test landed on their
+predicted supervised totals to the token (\S\ref{sec:why_shape}).
 
 \subsection{Transfer across Model Sizes and Training Stages}
 \label{sec:unseen_states}
 
-Inside the range, the frozen per-density pruning regression beat its
-no-$D_0$ variant and the per-setting median at the unseen stage 96k,
-and for a 1B source at steps 32k and 112k the power form, A2, and the
-median curve are within 0.05 nats of one another. For a 6.9B source, five times the development range, the
-source-conditioned pruning forms lose to the median curve on math
-(0.30 against 0.12) and QA (0.91 against 0.12) and tie on code, and
-the per-bit quantization regression is worse than the per-bit median
-at every bit-width. On 6.9B@80k the power form ties the median on math and loses on code
-and QA, and on a 2.8B source inside the refit size range the frozen
-median density curve $\widetilde f_c(d)$ predicts within 0.08, 0.05,
-and 0.07 nats while both source-conditioned forms are three to seven
-times worse (Appendix~\ref{sec:app_results}): the aggregated
-development response is the more accurate predictor there, and the
-extra value of $N_0$ and $D_0$ is not yet stable enough to support the
-source-conditioned forms. For distillation, on Gemma-3-4B as a held-out student (6.6 times the
-reference size) the frozen constant is better than the headline form
-at the unseen pool on every capability (intervals below zero); at the development pools only its QA gain clears zero (0.83,
-$[0.12,1.54]$; Table~\ref{tab:distill_paired}).
+Inside the range, the frozen per-density pruning regression beats its no-$D_0$ variant and the
+per-setting median at an unseen stage, and for a 1B source at two new steps the power form, the
+regression and the median curve lie within 0.05 nats of one another. Outside it, at a 6.9B source
+five times the development range, the source-conditioned pruning forms lose to the median curve on
+math (0.30 against 0.12) and QA (0.91 against 0.12) and tie on code, the per-bit quantization
+regression is worse than the per-bit median at every bit-width, and on a 2.8B source inside the size
+range the frozen median density curve predicts within 0.08, 0.05 and 0.07 nats while both
+source-conditioned forms are three to seven times worse (Appendix~\ref{sec:app_results}). For
+distillation the 4B student, 6.6 times the reference size and a development student in the final
+round, keeps only its QA gain at the development pools (0.83, $[0.12,1.54]$) and is beaten by the
+frozen constant at the unseen pool on every capability (Table~\ref{tab:distill_paired}).
 
 \paragraph{The range each relation has earned.} Figure~\ref{fig:generalization} separates the three
 kinds of novelty. New configurations of seen states are where the initial-state inputs pay: unseen

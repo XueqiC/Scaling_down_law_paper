@@ -2,15 +2,13 @@
 \label{sec:intro}
 
 Deployed language-model agents are specialists
-\citep{yao2023react,schick2023toolformer,jimenez2024swebench,liu2024agentbench}:
-a coding agent lives on code synthesis, a retrieval assistant on
-multi-hop question answering, and both pay for every token. The model that serves such a workload is usually a reference model
-scaled down by pruning, quantization, or distillation, and choosing the route and its
-strength today means running each candidate through capability
-benchmarks. A single compression ratio cannot replace that search, because
-compression does not shrink capabilities uniformly: across twelve
-public models, the same pruning density leaves QA the least-damaged
-capability in some series and the most-damaged in others
+\citep{yao2023react,schick2023toolformer,jimenez2024swebench,liu2024agentbench}: a coding agent lives
+on code synthesis, a retrieval assistant on multi-hop question answering, and both pay for every
+token. The model that serves such a workload is usually a reference model scaled down by pruning,
+quantization, or distillation, and choosing the route and its strength today means measuring every
+candidate. A single compression ratio cannot replace that search, because compression does not
+shrink capabilities uniformly: across twelve public models the same pruning density leaves QA the
+least-damaged capability in some series and the most-damaged in others
 (Appendix~\ref{sec:app_hetero}).
 
 We therefore ask how the capability-conditioned loss after compression

@@ -75,16 +75,15 @@ supportable in form across distributions; a claim that distillation improves que
 \subsection{Mechanism}
 \label{sec:why_mech}
 
-For pruning and quantization the loss change under a logit displacement $r$ obeys an exact identity,
-$\Delta L=(\mathbb{E}_p[r]-r_y)+\tfrac12\mathrm{Var}_p(r)+O(\lVert r\rVert^3)$, and its coefficient-free
-second-order truncation reproduces measured damage with median relative error under 5\% up to a
-boundary set by damage magnitude, not by family or knob: grouped four-bit quantization with fine
-groups at 0.06 nats and 3.3\% error sits on the same curve as per-channel four-bit at 0.24 nats and
-23.8\% (Fig.~\ref{fig:explanation}c, Appendix~\ref{sec:app_disp}). A shift-invariant projection of
-the displacement onto the logits shows the pure-shrinkage account failing on magnitude, with about
-three percent of the response in the shrinkage direction. What this account does not do is predict:
-the variance of the orthogonal residual requires the compressed model, so it explains the damage
-after the fact and is not an admitted input.
+For pruning and quantization the loss change under a logit displacement $r$ obeys the exact
+identity $\Delta L=(\mathbb{E}_p[r]-r_y)+\tfrac12\mathrm{Var}_p(r)+O(\lVert r\rVert^3)$, and its
+coefficient-free second-order truncation reproduces the measured damage across three families with
+one boundary set by damage magnitude rather than by family or knob: under 5\% median relative error
+below about 0.1 nats, past 20\% by 0.25 (Fig.~\ref{fig:explanation}c, Appendix~\ref{sec:app_disp}).
+A shift-invariant projection shows pure logit shrinkage carrying about three percent of the
+response, so that account fails on magnitude. The residual variance that carries the rest needs the
+compressed model to compute: the mechanism explains the damage after the fact and enters no relation
+as an input.
 
 \subsection{What is settled, excluded, and open}
 \label{sec:why_summary}
