@@ -2,25 +2,15 @@
 \label{sec:laws}
 
 
-Each arm delivers one relation in the interface of
-Eq.~\ref{eq:interface}: relation, inputs and range, selection, and
-boundary. The reference anchor $L_{0,c}$ is a measured quantity that
-reconstructs an absolute loss; the response relation
-$\widehat\Delta_{m,c}$ is the predictive claim, and a good absolute
-prediction with a source-free $\widehat\Delta$ says nothing about
-whether $N_0$ or $D_0$ predict the damage.
-
-\subsection{Conditioning on the Initial Model State}
-\label{sec:conditioning}
-
-On the nine-state development panel with one stage held out, a
-per-setting regression of the pruning response on $(N_0,D_0,L_{0,c})$
-lowers the error from 0.413, 0.516, and 0.500 nats to 0.253, 0.292,
-and 0.806 for math, code, and QA; adding $L_{0,c}$ to $(N_0,D_0)$ has
-intervals above zero for math and code, adding $D_0$ does not
-(Fig.~\ref{fig:inputs}A). The source-conditioned forms below use the
-three inputs per capability, and every arm also carries a source-free
-relation for the cases where the source inputs add nothing.
+Each arm delivers one relation in the interface of Eq.~\ref{eq:interface}, with its inputs and
+its tested range; selection and boundary detail is in Appendix~\ref{sec:app_selbound}. The
+reference anchor $L_{0,c}$ reconstructs an absolute loss; the response relation
+$\widehat\Delta_{m,c}$ is the predictive claim, and a good absolute prediction with a source-free
+$\widehat\Delta$ says nothing about whether $N_0$ or $D_0$ predict the damage. On the nine-state
+development panel a per-setting regression on $(N_0,D_0,L_{0,c})$ lowers the pruning error from
+0.41, 0.52 and 0.50 nats to 0.25, 0.29 and 0.81 for math, code and QA
+(Appendix~\ref{sec:app_conditioning}); the source-conditioned forms below use those three inputs,
+and every arm also carries a source-free relation for where they add nothing.
 
 \subsection{Pruning}
 \label{sec:law_prune}
@@ -45,7 +35,7 @@ includes 0.55.
 
 \paragraph{Relation.} Per-channel RTN offers no continuous axis (int8
 and int6 within 0.01 nats of the reference, int4 0.03 to 0.35, int3
-collapse); at a seen bit-width the per-bit source regression of \S\ref{sec:conditioning} improved on the per-bit median for math and code only in the leave-one-state-out development evaluation, so a new state is predicted by the per-bit development median. Sharing one scale
+collapse); at a seen bit-width the per-bit source regression of \S\ref{sec:app_conditioning} improved on the per-bit median for math and code only in the leave-one-state-out development evaluation, so a new state is predicted by the per-bit development median. Sharing one scale
 across $g$ contiguous weights adds a second axis. The delivered grouped
 relation for math and code on seen states is a same-input piecewise
 interpolation: a per-configuration regression on

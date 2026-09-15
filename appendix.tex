@@ -269,6 +269,18 @@ folds, and it does not convert into held-out gain. No further statistics or rich
 proposed.
 
 
+\subsection{Conditioning on the initial model state (moved from the main text)}
+\label{sec:app_conditioning}
+
+On the nine-state development panel with one stage held out, a
+per-setting regression of the pruning response on $(N_0,D_0,L_{0,c})$
+lowers the error from 0.413, 0.516, and 0.500 nats to 0.253, 0.292,
+and 0.806 for math, code, and QA; adding $L_{0,c}$ to $(N_0,D_0)$ has
+intervals above zero for math and code, adding $D_0$ does not
+(Fig.~\ref{fig:inputs}A). The source-conditioned forms below use the
+three inputs per capability, and every arm also carries a source-free
+relation for the cases where the source inputs add nothing.
+
 \subsection{Selection and boundary of the delivered relations (moved from the main text)}
 \label{sec:app_selbound}
 
