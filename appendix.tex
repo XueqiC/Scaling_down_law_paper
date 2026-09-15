@@ -957,6 +957,13 @@ Table~\ref{tab:selection-feasible} gives the per-policy results behind Fig.~\ref
 \end{figure}
 \input{tables/selection_feasible}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.74\textwidth]{figs/rule_maps_main.pdf}
+\caption{Selection maps under the frozen selection rule on four fresh states, each at 17 nominal storage budgets that share the state's model and candidate configurations (colour = predicted method; marker only where the measured oracle's method differs). Math and code select quantization almost everywhere; QA (2Wiki) selects pruning at high budgets on the 32k states and distillation on 1B@64k.}
+\label{fig:rule_main}
+\end{figure}
+
 \paragraph{Locked rule and independent confirmation.} The rule fixed
 before the confirmation panel was measured (analysis/final\_rule.py):
 pruning uses the power form for math and code and the median curve

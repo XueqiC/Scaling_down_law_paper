@@ -4,18 +4,11 @@
 Three kinds of result come out of this study, and each rests on evidence a reader can locate.
 
 \paragraph{Responses and relations.} Compression damages capabilities unevenly, and the unevenness is
-itself structured. Under global magnitude pruning the response of math and code to density follows a
-five-parameter power form with a source-conditioned amplitude inside $d\in[0.6,0.9]$, matching a
-per-density regression on three new checkpoints (0.24 against 0.23 nats for math) and losing its
-footing outside that range and on QA (\S\ref{sec:laws}). Under grouped quantization the configuration
-axis carries the prediction: a frozen same-input interpolation over the measured grid predicts unseen
-group sizes on the development states where a parametric surface does not, and per-channel
-quantization supports only a per-bit source regression. Under a fixed trace-distillation protocol the
-response to independent-data reuse is large, monotone and size-scaling: at a matched budget of about
-200k supervised tokens, reusing a small pool costs QA $+0.29$, $+2.55$ and $+4.85$ nats on students of
-100M, 700M and 3.2B non-embedding parameters, while nine times more independent data turns the same
-budget into a gain of about one nat on each (\S\ref{sec:observed}). The cost of over-reuse reproduces
-on three QA distributions; the gain is confined to 2Wiki.
+structured: a capability-specific power form under pruning inside $d\in[0.6,0.9]$, a
+configuration-dependent threshold under quantization that the measured grid predicts better than any
+surface, and under distillation a reuse cost that is monotone in $E=T/D_U$, grows with student size
+and reproduces across QA distributions while the gain does not (\S\ref{sec:observed},
+\S\ref{sec:laws}, Table~\ref{tab:main_prediction_v2}).
 
 \paragraph{Understanding gained in trying to build reliable laws.} Four lessons carry beyond this
 paper. First, a rejected form is not a rejected class: the four-coefficient joint form with a

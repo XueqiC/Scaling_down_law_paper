@@ -31,12 +31,6 @@ the registered criterion; the rule beats quantization-only on three states and t
 historical distillation candidates; on the three newly measured states the mean regrets differ by
 less than $10^{-5}$ nats (Table~\ref{tab:rule_decomp}).
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.74\textwidth]{figs/rule_maps_main.pdf}
-\caption{Selection maps under the frozen selection rule on four fresh states, each at 17 nominal storage budgets that share the state's model and candidate configurations (colour = predicted method; marker only where the measured oracle's method differs). Math and code select quantization almost everywhere; QA (2Wiki) selects pruning at high budgets on the 32k states and distillation on 1B@64k.}
-\label{fig:rule_main}
-\end{figure}
 
 The planned independent validation of the selection rule across model families, with fresh
 distillation candidates alongside pruning and quantization candidates under one feasible budget, was
