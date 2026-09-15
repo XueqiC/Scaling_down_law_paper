@@ -7,6 +7,17 @@ set. Table~\ref{tab:main-prediction-v2} gives each relation's error against its 
 baseline with its status; Fig.~\ref{fig:generalization} shows the same comparison per row; per-cell
 results and earlier tests are in Appendix~\ref{sec:app_results}. Errors are MAE in nats per token.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.72\textwidth]{figs/generalization.pdf}
+\caption{Generalization of the frozen relations, separated by the kind of novelty. \textbf{A}: new
+configurations of seen states. \textbf{B}: new sources or students; the 4B distillation student is a
+development student in the final round and is drawn as such. \textbf{C}: new evaluation
+distributions. Each row compares the relation's error with the development-selected baseline's on
+the same cells; a point below its baseline marks a cell where the relation earned its range.}
+\label{fig:generalization}
+\end{figure}
+
 \subsection{Prediction at Unseen Compression Settings}
 \label{sec:unseen_settings}
 
