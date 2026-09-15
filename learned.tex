@@ -1,12 +1,11 @@
 \section{What Was Learned, and What It Enables}
 \label{sec:learned}
 
-\paragraph{Responses and relations.} Compression damages capabilities unevenly, and the unevenness is
-structured: a capability-specific power form under pruning inside $d\in[0.6,0.9]$, a
+\paragraph{Responses and relations.} Compression damages capabilities unevenly and the unevenness is
+structured: a capability-specific power form under pruning inside its density range, a
 configuration-dependent threshold under quantization that the measured grid predicts better than any
-surface, and under distillation a reuse cost that is monotone in $E=T/D_U$, grows with student size
-and reproduces across QA distributions while the gain does not (\S\ref{sec:observed},
-\S\ref{sec:laws}, Table~\ref{tab:main-prediction-v2}).
+surface, and a distillation reuse cost that grows with reuse and student size and transfers across
+QA distributions while the gain does not (Table~\ref{tab:main-prediction-v2}).
 
 \paragraph{Understanding gained in trying to build reliable laws.} First, a rejected form is not a rejected class: the logarithmic reuse term failed its own flatness
 implication, yet the fit-free second-difference test on two students did not reject additivity of
@@ -22,10 +21,9 @@ structures was uncomputable until four trajectories were designed to land on the
 \paragraph{Guidance for design and choice.} Choose inputs by the transfer needed: the initial state carries math and code at unseen densities
 and group sizes of seen states and over-predicts QA under pruning on every new checkpoint, so a
 configuration median with a one-point calibration is the safer default when the state is new. Fix the training protocol before measuring distillation damage: the learning rate moves the
-damage by an order of magnitude on the 1B student. Design data-reuse experiments so that at least one budget-by-reuse rectangle exists by
-construction, since fixed pools and a doubling budget grid never produce one. Budget calibration
-by what it buys: one calibration point on the target distribution closes most of the gap to a
-source-specific fit, and the dense statistics that cost more did not earn it. State the range with the relation, as Table~\ref{tab:main-prediction-v2} does.
+damage by an order of magnitude on the 1B student. Design data-reuse experiments so that a budget-by-reuse rectangle exists by construction. Budget
+calibration by what it buys: one calibration point on the target distribution closes most of the
+gap to a source-specific fit, and dense statistics that cost more did not earn it. State the range with the relation, as Table~\ref{tab:main-prediction-v2} does.
 
 \paragraph{Limits, and what would reopen the experiments.} The relations are conditional on the evaluated distributions and implementations. No fitted joint
 structure for distillation beat a low-order response surface on either pre-declared target, so the
