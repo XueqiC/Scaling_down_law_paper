@@ -1,7 +1,7 @@
 # fig4_a: frozen sources
 
 a/b: delta = loss_source - dense_source; x parsed from the JSON configuration key. a delivered: reuse plot_fig1_final.prune_curve; pointwise median of nine frozen state predictions for power, source-free median_curve for QA; no fitting. c: delta = V69 dL; bit and group parsed from config.
-fig4_a.pdf: 2.7 x 2 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig4_a.pdf: 2.7 x 1.8 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
 
 ## Inputs (SHA-256)
 

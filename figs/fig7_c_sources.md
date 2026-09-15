@@ -1,9 +1,9 @@
 # fig7_c: frozen sources
 
 Reuse V80 rule_maps_main semantics: colour indexes (prune,quant,distill,dense); white circle iff locked-rule.oracle_method_agreement is false. Direct V78 fields; freeze seal and frozen chosen method/configuration/score verified; no rule execution.
-fig7_a.pdf: 2.7 x 1.95 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig7_b.pdf: 2.7 x 1.95 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig7_c.pdf: 2.7 x 1.95 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig7_a.pdf: 2.7 x 1.5 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig7_b.pdf: 2.7 x 1.5 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig7_c.pdf: 2.7 x 1.5 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
 
 ## Inputs (SHA-256)
 

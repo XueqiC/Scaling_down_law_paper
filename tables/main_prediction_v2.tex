@@ -4,21 +4,57 @@
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1}
 \setlength{\abovecaptionskip}{4pt}
-\thinmuskip=0mu\medmuskip=0mu\thickmuskip=0mu
-\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr .095\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .225\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .155\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .235\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .17\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .12\linewidth-2\tabcolsep\relax}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr .24\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .76\textwidth-2\tabcolsep\relax}}
 \toprule
-Task & Relation (params) & Tested range & MAE & Baseline MAE & Status \\
+\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\mbox{\textbf{Pruning, unseen density}}\hfill \mbox{development}} \\
+Relation (parameters) & $A_c(\mathbf x)r^{\gamma_c}$ (5) \\
+Tested range & nine states; densities held out inside 0.6 to 0.9 \\
+MAE & not tested \\
+Baseline MAE & not tested \\
 \midrule
-Prune: density & $A_c(\mathbf x)r^{\gamma_c}$ (5) & 9 states; d=0.6-0.9 & not tested & not tested & devel\-opment \\
-Prune: state & $A_c(\mathbf x)r^{\gamma_c}$ (5) & seen-size stages; 6.9B outside & math 0.24/ code 0.24/ QA 0.68 & A2 0.23/ A2 0.22/ med 0.22 & frozen prediction \\
-Quant: bits & $\phi^\top Q_c$ (20) & 160M-1.4B; b4/g64,256 & math 0.19/ code 0.21/ QA 0.44 & med 0.55/ med 0.73/ med 0.54 & frozen prediction \\
-Quant: group & math: $\phi^\top Q_c$ (20); code: $m_c(b,g)$ (9); QA: $0$ (0) & 410M/1.4B; bits 3-5, g32/512 & math 0.21/ code 0.56/ QA 0.46 & bilin 0.33/ zero 0.68/ med 0.46 & frozen prediction \\
-Quant: state & math: $\phi^\top Q_c$ (20); code: $m_c(b,g)$ (9); QA: $0$ (0) & 1.4B/112k; g32,128,512 & math 0.30/ code 0.15/ QA 0.22 & bilin 0.35/ zero 0.56/ med 0.14 & frozen prediction \\
-Distill: budget & $Au+Bv$ (4); $Au+Bh_p(E)$ (5); $Au+Bv+kuv$ (5) & 3 students; $T\ge150$k held out & math 0.07 [0.05,0.11]/ code 0.07 [0.05,0.09]/ QA 2.18 [1.68,2.88] & const 0.09/ const 0.11/ const 1.44 & devel\-opment \\
-Distill: reuse & $Au+Bv$ (4); $Au+Bh_p(E)$ (5); $Au+Bv+kuv$ (5) & 3 students; 1\% budget proxy & math 0.08 [0.05,0.14]/ code 0.07 [0.04,0.12]/ QA 1.02 [0.72,1.34] & surf/E 0.08/ zero/surf/E 0.07/ surf 0.76 & devel\-opment \\
-Distill: pool & math: $a_c\ell_E$ (1); code: $a_c\ell_E$ (1); QA: $u(a+bu+qv)$ (3) & 270M/1B; 6 pools, 50k-200k & math 0.07,0.06/ code 0.02,0.05/ QA 0.51,0.46 & T/L 0.07,0.03/ E 0.02,0.05/ E/N 0.61,0.45 & frozen prediction \\
+\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\mbox{\textbf{Pruning, new source state}}\hfill \mbox{frozen prediction}} \\
+Relation (parameters) & $A_c(\mathbf x)r^{\gamma_c}$ (5) \\
+Tested range & new stages of seen sizes; a 6.9B source outside the size range \\
+MAE & math 0.24 / code 0.24 / QA 0.68 \\
+Baseline MAE & per-density regression 0.23 / per-density regression 0.22 / median 0.22 \\
+\midrule
+\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\mbox{\textbf{Quantization, unseen bit-width}}\hfill \mbox{frozen prediction}} \\
+Relation (parameters) & $\phi^\top Q_c$ (20) \\
+Tested range & Pythia 160M to 1.4B; bit 4 with groups 64 and 256 \\
+MAE & math 0.19 / code 0.21 / QA 0.44 \\
+Baseline MAE & median 0.55 / median 0.73 / median 0.54 \\
+\midrule
+\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\mbox{\textbf{Quantization, unseen group size}}\hfill \mbox{frozen prediction}} \\
+Relation (parameters) & math: $\phi^\top Q_c$ (20); code: $m_c(b,g)$ (9); QA: $0$ (0) \\
+Tested range & Pythia 410M and 1.4B; bits 3 to 5 with groups 32 and 512 \\
+MAE & math 0.21 / code 0.56 / QA 0.46 \\
+Baseline MAE & bilinear 0.33 / zero change 0.68 / median 0.46 \\
+\midrule
+\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\mbox{\textbf{Quantization, new state}}\hfill \mbox{frozen prediction}} \\
+Relation (parameters) & math: $\phi^\top Q_c$ (20); code: $m_c(b,g)$ (9); QA: $0$ (0) \\
+Tested range & Pythia 1.4B at step 112000; groups 32, 128 and 512 \\
+MAE & math 0.30 / code 0.15 / QA 0.22 \\
+Baseline MAE & bilinear 0.35 / zero change 0.56 / median 0.14 \\
+\midrule
+\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\mbox{\textbf{Distillation, budget response}}\hfill \mbox{development}} \\
+Relation (parameters) & additive log (4); curved (5); interaction (5) \\
+Tested range & three students; budgets of at least 150000 tokens held out \\
+MAE & math 0.07 [0.05,0.11] / code 0.07 [0.05,0.09] / QA 2.18 [1.68,2.88] \\
+Baseline MAE & constant 0.09 / constant 0.11 / constant 1.44 \\
+\midrule
+\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\mbox{\textbf{Distillation, data-reuse response}}\hfill \mbox{development}} \\
+Relation (parameters) & additive log (4); curved (5); interaction (5) \\
+Tested range & three students; a one percent budget tolerance approximates fixed-budget reuse \\
+MAE & math 0.08 [0.05,0.14] / code 0.07 [0.04,0.12] / QA 1.02 [0.72,1.34] \\
+Baseline MAE & surface and reuse only 0.08 / zero change, surface and reuse only 0.07 / surface 0.76 \\
+\midrule
+\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\mbox{\textbf{Distillation, new pool}}\hfill \mbox{frozen prediction}} \\
+Relation (parameters) & math and code: $a_c\log(1+E)$ (1); QA: $u(a+bu+qv)$ (3) \\
+Tested range & 270M and 1B students; six pools with budgets of 50000 to 200000 tokens \\
+MAE & math 0.07,0.06 / code 0.02,0.05 / QA 0.51,0.46 \\
+Baseline MAE & budget only and loss-size surface 0.07,0.03 / reuse only 0.02,0.05 / reuse only and loss-size surface 0.61,0.45 \\
 \bottomrule
 \end{tabular}
-\caption{\footnotesize Frozen MAEs: native-token nats, training probes; stored intervals in brackets. Inputs: source size, initial loss and pretraining tokens for source-conditioned forms; the configuration for all; distillation forms take supervised budget, pool size and reuse. $r=(1-d)/0.3$; $Q_c=a+bu+cv+duv+eu^2$; $\ell_E=\log(1+E)$; $m_c$=med; $A,B$ affine in descriptor; $b/g$=bits/groups. Budget/reuse forms: fold-selected; counts per capability. Dev. baselines (math/code/QA): A2=per-density regression, med=dev. median, surf=response surface, E/T=E-only/T-only, L/N=loss/size surface. Pool pairs: student order. Not tested: density holdout, exact fixed-budget reuse.}
+\caption{\footnotesize Frozen prediction evidence per method and prediction task. Errors are mean absolute errors in native-token nats on the training probes, with stored intervals in brackets. Source-conditioned forms take the source size, its initial loss and its pretraining tokens together with the configuration; distillation forms take the supervised budget, the pool size and the reuse ratio. The baseline column names the baseline selected inside the development folds and gives its error. Status distinguishes development results, predictions frozen before measurement, and post-hoc recommendations. Cells marked not tested have no frozen artifact.}
 \label{tab:main-prediction-v2}
 \end{table*}

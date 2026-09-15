@@ -3,28 +3,28 @@
     "file": "fig4_a.pdf",
     "size_inches": [
       2.7,
-      2.0
+      1.8
     ]
   },
   {
     "file": "fig4_b.pdf",
     "size_inches": [
       2.7,
-      2.0
+      1.8
     ]
   },
   {
     "file": "fig4_c.pdf",
     "size_inches": [
       2.7,
-      2.0
+      1.8
     ]
   },
   {
     "file": "pythia_responses.png",
     "size_inches": [
       8.3,
-      2.0
+      1.8
     ],
     "dpi": 220
   }

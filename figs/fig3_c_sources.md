@@ -7,9 +7,9 @@ V70 remains split by student within the new-pool budgets row: paired_difference.
 A2 frozen_prediction_error_interval covers its development holdouts, not any of these V70 or A5/A7 corner cells. No A2 holdout row existed in the cell figure; none is added and no A2 interval is transplanted. No refitting, resampling, or invented interval.
 Corner rows are unchanged: signed prediction-minus-measurement on a separate symlog axis, original capability colours, circles filled iff within the stored band, triangles for the 4B development student. Whiskers are A5 registered +/-2-noise bands, not CIs. Primary QA additivity failed to reject. Source panel C (display panel d) shows only the registered additive corner predictions (zero); no frozen response-law predictions on fresh distributions exist.
 V46 .55 is outside its original coarse .6--.9 range; .65 is inside. V72 repeats two revision labels with identical weights; both records retained, not independent states. V78 uses each frozen configuration once. V93 descriptors only verify state identity.
-fig3_a.pdf: 5.5 x 2.95 in; bold Times New Roman; ticks 13 pt, axis labels 14 pt, legend 12 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig3_b.pdf: 5.5 x 1.9 in; bold Times New Roman; ticks 13 pt, axis labels 14 pt, legend 12 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig3_c.pdf: 2.7 x 2 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig3_a.pdf: 5.5 x 2.2 in; bold Times New Roman; ticks 13 pt, axis labels 14 pt, legend 12 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig3_b.pdf: 5.5 x 1.4 in; bold Times New Roman; ticks 13 pt, axis labels 14 pt, legend 12 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig3_c.pdf: 2.7 x 1.7 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
 
 ## Inputs (SHA-256)
 
