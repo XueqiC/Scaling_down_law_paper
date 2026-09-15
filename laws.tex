@@ -2,13 +2,16 @@
 \label{sec:laws}
 
 
-Each arm delivers one relation in the interface of Eq.~\ref{eq:interface}; selection and
-boundary detail is in Appendix~\ref{sec:app_selbound}. The anchor $L_{0,c}$ reconstructs an
-absolute loss and the response $\widehat\Delta_{m,c}$ is the predictive claim. On the nine-state
-panel a per-setting regression on $(N_0,D_0,L_{0,c})$ lowers the pruning error from 0.41, 0.52 and
-0.50 nats to 0.25, 0.29 and 0.81 for math, code and QA (Appendix~\ref{sec:app_conditioning}); the
-source-conditioned forms below use those inputs, and every arm also carries a source-free relation
-for where they add nothing.
+Each arm delivers one relation in the interface of Eq.~\ref{eq:interface}, and
+Table~\ref{tab:main-prediction-v2} collects them by method and prediction task with the inputs
+each needs, the range it was tested on, its error, the baseline selected inside the development
+folds, and a status that keeps development results, frozen predictions and post-hoc recommendations
+apart. The anchor $L_{0,c}$ reconstructs an absolute loss; the response $\widehat\Delta_{m,c}$ is
+the predictive claim. Conditioning on the initial state earns its place on the pruning panel, where
+a per-setting regression on $(N_0,D_0,L_{0,c})$ lowers the error from 0.41, 0.52 and 0.50 nats to
+0.25, 0.29 and 0.81 for math, code and QA (Appendix~\ref{sec:app_conditioning}); every arm also
+carries a source-free relation for the cases where those inputs add nothing. Selection and boundary
+detail for each relation is in Appendix~\ref{sec:app_selbound}.
 
 \input{tables/main_prediction_v2}
 
