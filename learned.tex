@@ -22,10 +22,9 @@ property of the design: the data that fitted a curvature exponent near one conta
 budget-by-reuse rectangle, so the one fit-free statistic that separates additive from interacting
 structures was uncomputable until four trajectories were designed to land on the corners.
 
-\paragraph{Guidance for design and choice.} Choose inputs by the transfer needed: the initial state carries math and code at unseen densities and group sizes of seen
-states, adds nothing on new quantization states, and over-predicts QA under pruning on every new
-checkpoint; a configuration median with a one-point calibration is the safer default when the state is
-new. Fix the training protocol before measuring distillation damage, because the learning rate
+\paragraph{Guidance for design and choice.} Choose inputs by the transfer needed: the initial state carries math and code at unseen densities
+and group sizes of seen states and over-predicts QA under pruning on every new checkpoint, so a
+configuration median with a one-point calibration is the safer default when the state is new. Fix the training protocol before measuring distillation damage, because the learning rate
 changes the damage magnitude by an order of magnitude on the 1B student while leaving the size
 ordering intact. Design data-reuse experiments so that at least one budget-by-reuse rectangle exists by
 construction, since fixed pools and a doubling budget grid never produce one. Budget calibration
