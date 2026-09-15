@@ -7,7 +7,7 @@ explanations and open factors.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.72\textwidth]{figs/explanation.pdf}
+\includegraphics[width=0.64\textwidth]{figs/explanation.pdf}
 \caption{What shapes the distillation response, and what explains compression damage.
 \textbf{a}: the reuse-term curvature exponent $p$ across training folds per capability, with the
 full-development value and its conditional interval; $p=0$ is the logarithmic term, $p=1$ linear.
@@ -27,11 +27,10 @@ exponent that transfers across families (Appendix~\ref{sec:law}); under quantiza
 bit-width threshold whose position depends on the group size, which is why an interpolation over
 the measured grid predicts and a smooth surface does not.
 
-Under distillation, a four-coefficient joint form with a logarithmic
-reuse term, $\delta=(a+a'z)\log(1+T/T_{\mathrm{ref}})+(b+b'z)\log(1+E)$, carries a falsifiable
-implication: the pool-change effect divided by its log bracket must be flat in budget. It drifts by a factor of
-twenty across checkpoints for code on the 1B student, at budget-matching tolerances of 1\% and
-0.3\%. A free reuse exponent $h_p(E)=((1+E)^p-1)/p$, profiled inside training folds, returns $p$ near or
+Under distillation, a joint form with a logarithmic reuse term,
+$\delta=(a+a'z)\log(1+T/T_{\mathrm{ref}})+(b+b'z)\log(1+E)$, implies that the pool-change effect
+divided by its log bracket is flat in budget; it drifts by a factor of twenty across checkpoints for
+code on the 1B student at matching tolerances of 1\% and 0.3\%. A free reuse exponent $h_p(E)=((1+E)^p-1)/p$, profiled inside training folds, returns $p$ near or
 above one for every capability (code 0.69, math 1.12, QA 1.44; Fig.~\ref{fig:explanation}a) with
 wide fold ranges, and buys no held-out accuracy: against six baselines on four grouped hold-outs,
 neither the log form, the curved form nor a single interaction term beat the development-stage
@@ -49,17 +48,16 @@ underpowered.
 \subsection{Source state, protocol, and evaluation distribution}
 \label{sec:why_conditions}
 
-Size and stage carry math and code to unseen densities of seen states and over-predict QA on every
-new checkpoint, whose density response is not proportional to any shared curve ($R^2$ 0.49 against
-0.94 and 0.97). Richer descriptors did not repair transfer: dense pre-compression statistics improve
+Size and stage carry math and code to unseen densities of seen states and over-predict QA, whose
+density response is not proportional to any shared curve. Richer descriptors did not repair
+transfer: dense pre-compression statistics improve
 a parametric family in four of nine arm-and-capability pairs and lose to the source-free median
 configuration curve in nine of nine, and a heavily shrunk source correction added to that frozen
 curve gains on none of the nine primary pairs (Appendix~\ref{sec:app_inputs}). Under distillation
 the learning rate sets the damage magnitude (\S\ref{sec:observed}); at a fixed rate the reuse ratio
 $E=T/D_U$ sets a QA cost that is monotone, grows with student size, and transfers across the three
-QA distributions while the gain is confined to 2Wiki. A requirement phrased as the independent data
-needed to keep a conditional loss increase below a threshold is therefore supportable in form across
-distributions; a claim that distillation improves question answering is a 2Wiki statement.
+QA distributions while the gain is confined to 2Wiki. A data requirement phrased as a bound on the loss increase is therefore supportable in form
+across distributions; a claim that distillation improves question answering is a 2Wiki statement.
 
 \subsection{Mechanism}
 \label{sec:why_mech}

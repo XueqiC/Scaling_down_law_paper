@@ -1,45 +1,22 @@
 % Generated from frozen JSON; see main_prediction_v2_sources.md.
-\begin{table*}[p]
-\centering
-\rotatebox{90}{%
-\begin{minipage}{\textheight}
-\centering\small
-\setlength{\tabcolsep}{2pt}
-\renewcommand{\arraystretch}{1.08}
-\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr .09\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .18\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .06\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .14\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .23\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .23\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .07\linewidth-2\tabcolsep\relax}}
+\begin{table*}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1}
+\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr .095\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .23\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .17\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .205\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .195\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .105\linewidth-2\tabcolsep\relax}}
 \toprule
-Task & Relation (params) & Inputs & Tested range & MAE by capability & Development-selected baseline and its MAE & Status \\
+Task & Relation (params) & Tested range & MAE by capability & Dev. baseline MAE & Status \\
 \midrule
-Pruning: unseen density & $A_c(\mathbf x)((1-d)/0.3)^{\gamma_c}$ (5) & $\mathbf x$; density & Requested nine-state panel; density held out inside [0.6, 0.9]; training probes & not tested (frozen density-holdout artifact unavailable) & not tested (density-holdout baseline unavailable) & devel\-opment \\
-Pruning: new source state & $A_c(\mathbf x)((1-d)/0.3)^{\gamma_c}$ (5) & $\mathbf x$; density & new stages of seen sizes and a 6.9B source outside the size range; density 0.85, 0.675, 0.575; training probes & math 0.24 / code 0.24 / QA 0.68 & math/code: A2 anchor interpolation; QA: devel\-opment median curve\newline math 0.23 / code 0.22 / QA 0.22 & frozen prediction \\
-Quanti\-zation: unseen bit-width & quadratic surface in (bits, log group size) with source amplitude (20) & $\mathbf x$; bits, group size & Pythia 160M-1.4B at steps 16k and 143k; bit 4, groups 64 and 256; training probes & math 0.19 / code 0.21 / QA 0.44 & per-configuration devel\-opment median\newline math 0.55 / code 0.73 / QA 0.54 & frozen prediction \\
-Quanti\-zation: unseen group size & math quadratic surface in (bits, log group size) with source amplitude (20); code per-configuration devel\-opment median (9); QA zero change (0) & $\mathbf x$; bits, group size & Pythia 410M at step 143k and 1.4B at step 16k; bits 3-5, groups 32 and 512; training probes & math 0.21 / code 0.56 / QA 0.46 & math: bilinear in (bits, log group size); code: zero change; QA: per-configuration devel\-opment median\newline math 0.33 / code 0.68 / QA 0.46 & frozen prediction \\
+Prune: density & $A_c r^{\gamma_c}$ (5) & nine states; unseen density within 0.6-0.9 & not tested & not tested & devel\-opment \\
+Prune: state & $A_c r^{\gamma_c}$ (5) & new stages of seen sizes; 6.9B outside range & math 0.24 / code 0.24 / QA 0.68 & A2 0.23 / A2 0.22 / med 0.22 & frozen prediction \\
+Quant: bits & $\phi^\top Q_c$ (20) & Pythia 160M-1.4B; bit 4, groups 64/256 & math 0.19 / code 0.21 / QA 0.44 & med 0.55 / med 0.73 / med 0.54 & frozen prediction \\
+Quant: group & math: $\phi^\top Q_c$ (20); code: $m_c(b,g)$ (9); QA: $0$ (0) & 410M/1.4B; bits 3-5, groups 32/512 & math 0.21 / code 0.56 / QA 0.46 & bilin 0.33 / zero 0.68 / med 0.46 & frozen prediction \\
+Quant: state & math: $\phi^\top Q_c$ (20); code: $m_c(b,g)$ (9); QA: $0$ (0) & 1.4B, 112k; bits 3-5, groups 32/128/512 & math 0.30 / code 0.15 / QA 0.22 & bilin 0.35 / zero 0.56 / med 0.14 & frozen prediction \\
+Distill: budget & $Au+Bv$ (4); $Au+Bh_p(E)$ (5); $Au+Bv+kuv$ (5) & three students; budgets at least 150k held out & math 0.07 [0.05,0.11] / code 0.07 [0.05,0.09] / QA 2.18 [1.68,2.88] & const 0.09 / const 0.11 / const 1.44 & devel\-opment \\
+Distill: reuse & $Au+Bv$ (4); $Au+Bh_p(E)$ (5); $Au+Bv+kuv$ (5) & three students; data-rung holdout, 1\% budget-tolerance proxy & math 0.08 [0.05,0.14] / code 0.07 [0.04,0.12] / QA 1.02 [0.72,1.34] & surf/E 0.08 / zero/surf/E 0.07 / surf 0.76 & devel\-opment \\
+Distill: pool & math: $a_c\log(1+E)$ (1); code: $a_c\log(1+E)$ (1); QA: $u(a+bu+qv)$ (3) & 270M/1B; six pools, 50k-200k tokens & math 0.07,0.06 / code 0.02,0.05 / QA 0.51,0.46 & T/L 0.07,0.03 / E 0.02,0.05 / E/N 0.61,0.45 & frozen prediction \\
 \bottomrule
 \end{tabular}
-\caption{Frozen-artifact prediction evidence. Errors are native-token nats; parameter counts are per capability. $\mathbf x$ contains source size, initial capability loss and training tokens. Brackets show stored MAE intervals only. Development includes within-development holdouts. The requested pruning density-holdout artifact is unavailable: V53 stores source-state holdouts. The new-source pruning size-range label refers to the original development panel.}
+\caption{Frozen-artifact MAEs (native-token nats; training probes). Inputs: source size, initial loss and pretraining tokens for source-conditioned forms; the configuration for all; distillation forms take supervised budget, pool size and reuse. $r=(1-d)/0.3$; $Q_c=a+bu+cv+duv+eu^2$; $m_c$ is the devel\-opment median; $A,B$ are affine in the descriptor. Budget/reuse forms are fold-selected; counts are per capability. Baselines follow math/code/QA: A2=per-density regression, med=devel\-opment median, bilin=bilinear, surf=response surface, const=constant, zero=zero change, E/T=E-only/T-only, L/N=loss/size surface. Pool pairs follow student order. Brackets are stored MAE intervals. Density holdout and exact fixed-budget reuse: not tested.}
 \label{tab:main-prediction-v2}
-\end{minipage}%
-}
-\end{table*}
-\begin{table*}[p]
-\centering
-\rotatebox{90}{%
-\begin{minipage}{\textheight}
-\centering\small
-\setlength{\tabcolsep}{2pt}
-\renewcommand{\arraystretch}{1.08}
-\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr .09\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .18\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .06\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .14\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .23\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .23\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .07\linewidth-2\tabcolsep\relax}}
-\toprule
-Task & Relation (params) & Inputs & Tested range & MAE by capability & Development-selected baseline and its MAE & Status \\
-\midrule
-Quanti\-zation: new state & math quadratic surface in (bits, log group size) with source amplitude (20); code per-configuration devel\-opment median (9); QA zero change (0) & $\mathbf x$; bits, group size & Pythia 1.4B at step 112k; bits 3-5, groups 32, 128 and 512; training probes & math 0.30 / code 0.15 / QA 0.22 & math: bilinear in (bits, log group size); code: zero change; QA: per-configuration devel\-opment median\newline math 0.35 / code 0.56 / QA 0.14 & frozen prediction \\
-Distillation: budget response & Fold-selected additive log / curved / interaction forms (4/5/5) & Budget, reuse; size or initial loss & Gemma 3: 270M, 1B and 4B; budgets at least 150k tokens held out; training probes & math 0.07 / code 0.07 / QA 2.18\newline Stored MAE intervals: math [0.05, 0.11] / code [0.05, 0.09] / QA [1.68, 2.88] & constant\newline math 0.09 / code 0.11 / QA 1.44 & devel\-opment \\
-Distillation: data-reuse response & Fold-selected additive log / curved / interaction forms (4/5/5) & Budget, reuse; size or initial loss & Gemma 3: 270M, 1B and 4B; data-rung holdout; 1\% matched-budget tolerance proxy; training probes & math 0.08 / code 0.07 / QA 1.02\newline Stored MAE intervals: math [0.05, 0.14] / code [0.04, 0.12] / QA [0.72, 1.34]; exact fixed-budget response: not tested & math: source surface, reuse only; code: zero change, source surface, reuse only; QA: source surface\newline math 0.08 / code 0.07 / QA 0.76 & devel\-opment \\
-Distillation: new pool & math $a_c\log(1+E)$ (1); code $a_c\log(1+E)$ (1); QA $u(a+bu+qv)$ (3) & Planned supervised budget, pool completion tokens; fixed protocol & Gemma 3: 270M and 1B; six new samples with 200 examples per domain; planned tokens 50k, 100k and 200k; training probes & 270M:\newline math 0.07 / code 0.02 / QA 0.51\newline 1B:\newline math 0.06 / code 0.05 / QA 0.46 & 270M:\newline math: budget only; code/QA: reuse only\newline math 0.07 / code 0.02 / QA 0.61\newline 1B:\newline math: initial-loss surface; code: reuse only; QA: size surface\newline math 0.03 / code 0.05 / QA 0.45 & frozen prediction \\
-\bottomrule
-\end{tabular}
-\addtocounter{table}{-1}
-\caption{Frozen-artifact prediction evidence. Errors are native-token nats; parameter counts are per capability. $\mathbf x$ contains source size, initial capability loss and training tokens. Brackets show stored MAE intervals only. Development includes within-development holdouts. Continued. For the pool relations, $u=\log(1+T/T_{\rm ref})$ and $v=\log(D_U/D_{\rm ref})$. Pool gain intervals are not MAE intervals and are omitted here.}
-\end{minipage}%
-}
 \end{table*}

@@ -1,6 +1,6 @@
 # Main prediction table: cell sources
 
-Columns: task, relation, inputs, tested range, error, development baseline, status.
+Columns: task, relation, tested range, error, development baseline, status.
 All indices are zero-based JSON pointers. `mean` is equal-weight arithmetic only; no refits or resampling.
 Numeric values are formatted directly from the following executable source recipes. Context pointers justify textual labels and missing evidence.
 The `label` operation uses the generator's explicit presentation mappings; `expected` preserves the source values and must match before rendering `label`. Counts always use their own JSON fields.
@@ -30,61 +30,53 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
 ## Fields per cell
 
 - Cell (0, 0): `results/v53-prune-dev/register.json#/loso_folds`
-- Cell (0, 1): `results/v53-prune-dev/register.json#/candidate_definitions/power`; `results/v53-prune-dev/register.json#/n_params_per_capability/power`
-- Cell (0, 2): `results/v53-prune-dev/register.json#/feature_names`
-- Cell (0, 3): `results/v40-prune-strength/register.json#/dev`
-- Cell (0, 4): `results/v53-prune-dev/register.json#/loso_predictions`
-- Cell (0, 5): `results/v53-prune-dev/register.json#/loso_table`
-- Cell (0, 6): `results/v53-prune-dev/register.json#/selection_rule`
+- Cell (0, 1): `results/v53-prune-dev/register.json#/feature_names`; `results/v53-prune-dev/register.json#/candidate_definitions/power`; `results/v53-prune-dev/register.json#/n_params_per_capability/power`
+- Cell (0, 2): `results/v40-prune-strength/register.json#/dev`
+- Cell (0, 3): `results/v53-prune-dev/register.json#/loso_predictions`
+- Cell (0, 4): `results/v53-prune-dev/register.json#/loso_table`
+- Cell (0, 5): `results/v53-prune-dev/register.json#/selection_rule`
 - Cell (1, 0): `results/v53-prune-dev/register.json#/selected_candidate`
-- Cell (1, 1): `results/v53-prune-dev/register.json#/candidate_definitions/power`; `results/v53-prune-dev/register.json#/n_params_per_capability/power`
-- Cell (1, 2): `results/v53-prune-dev/register.json#/feature_names`
-- Cell (1, 3): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v40-prune-strength/register.json#/dev/sizes`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`
-- Cell (1, 4): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/qa`
-- Cell (1, 5): `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/register.json#/loso_table/2/candidate`; `results/v53-prune-dev/register.json#/loso_table/5/candidate`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
-- Cell (1, 6): `results/v53-prune-dev/register.json#/selected_candidate`
+- Cell (1, 1): `results/v53-prune-dev/register.json#/feature_names`; `results/v53-prune-dev/register.json#/candidate_definitions/power`; `results/v53-prune-dev/register.json#/n_params_per_capability/power`
+- Cell (1, 2): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v40-prune-strength/register.json#/dev/sizes`
+- Cell (1, 3): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/qa`
+- Cell (1, 4): `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/register.json#/loso_table/2/candidate`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code`; `results/v53-prune-dev/register.json#/loso_table/5/candidate`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
+- Cell (1, 5): `results/v53-prune-dev/register.json#/selected_candidate`
 - Cell (2, 0): `results/v55-quant-group/register.json#/test_sets/bit_test`
-- Cell (2, 1): `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v55-quant-group/register.json#/n_params_per_capability/low_order_2d`
-- Cell (2, 2): `results/v55-quant-group/register.json#/feature_names`; `results/v55-quant-group/register.json#/test_sets/bit_test/configs`
-- Cell (2, 3): `results/v55-quant-group/register.json#/test_sets/bit_test/states`; `results/v55-quant-group/register.json#/test_sets/bit_test/configs`
-- Cell (2, 4): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa`
-- Cell (2, 5): `results/v55-quant-group/register.json#/loso_table`; `results/v55-quant-group/register.json#/loso_table/4/candidate`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/math`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/code`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/qa`
-- Cell (2, 6): `results/v55-quant-group/register.json#/precommitted_rule`
+- Cell (2, 1): `results/v55-quant-group/register.json#/feature_names`; `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v55-quant-group/register.json#/n_params_per_capability/low_order_2d`
+- Cell (2, 2): `results/v55-quant-group/register.json#/test_sets/bit_test/states`; `results/v55-quant-group/register.json#/test_sets/bit_test/configs`
+- Cell (2, 3): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa`
+- Cell (2, 4): `results/v55-quant-group/register.json#/loso_table`; `results/v55-quant-group/register.json#/loso_table/4/candidate`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/math`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/code`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/qa`
+- Cell (2, 5): `results/v55-quant-group/register.json#/precommitted_rule`
 - Cell (3, 0): `results/v69-quant-confirm/compare.json#/rows/0/test_set`; `results/v69-quant-confirm/compare.json#/rows/1/test_set`; `results/v69-quant-confirm/compare.json#/rows/2/test_set`; `results/v69-quant-confirm/compare.json#/rows/3/test_set`; `results/v69-quant-confirm/compare.json#/rows/4/test_set`; `results/v69-quant-confirm/compare.json#/rows/5/test_set`; `results/v69-quant-confirm/compare.json#/rows/6/test_set`; `results/v69-quant-confirm/compare.json#/rows/7/test_set`; `results/v69-quant-confirm/compare.json#/rows/8/test_set`; `results/v69-quant-confirm/compare.json#/rows/9/test_set`; `results/v69-quant-confirm/compare.json#/rows/10/test_set`; `results/v69-quant-confirm/compare.json#/rows/11/test_set`; `results/v69-quant-confirm/compare.json#/rows/12/test_set`; `results/v69-quant-confirm/compare.json#/rows/13/test_set`; `results/v69-quant-confirm/compare.json#/rows/14/test_set`; `results/v69-quant-confirm/compare.json#/rows/15/test_set`; `results/v69-quant-confirm/compare.json#/rows/16/test_set`; `results/v69-quant-confirm/compare.json#/rows/17/test_set`; `results/v69-quant-confirm/compare.json#/rows/18/test_set`; `results/v69-quant-confirm/compare.json#/rows/19/test_set`; `results/v69-quant-confirm/compare.json#/rows/20/test_set`; `results/v69-quant-confirm/compare.json#/rows/21/test_set`; `results/v69-quant-confirm/compare.json#/rows/22/test_set`; `results/v69-quant-confirm/compare.json#/rows/23/test_set`; `results/v69-quant-confirm/compare.json#/rows/24/test_set`; `results/v69-quant-confirm/compare.json#/rows/25/test_set`; `results/v69-quant-confirm/compare.json#/rows/26/test_set`; `results/v69-quant-confirm/compare.json#/rows/27/test_set`; `results/v69-quant-confirm/compare.json#/rows/28/test_set`; `results/v69-quant-confirm/compare.json#/rows/29/test_set`; `results/v69-quant-confirm/compare.json#/rows/30/test_set`; `results/v69-quant-confirm/compare.json#/rows/31/test_set`; `results/v69-quant-confirm/compare.json#/rows/32/test_set`; `results/v69-quant-confirm/compare.json#/rows/33/test_set`; `results/v69-quant-confirm/compare.json#/rows/34/test_set`; `results/v69-quant-confirm/compare.json#/rows/35/test_set`
-- Cell (3, 1): `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v69-quant-confirm/develop.json#/models`; `results/v69-quant-confirm/develop.json#/selected/math/candidate`; `results/v69-quant-confirm/develop.json#/selected/math/n_coefficients`; `results/v69-quant-confirm/develop.json#/selected/code/candidate`; `results/v69-quant-confirm/develop.json#/selected/code/n_coefficients`; `results/v69-quant-confirm/develop.json#/selected/qa/candidate`; `results/v69-quant-confirm/develop.json#/selected/qa/n_coefficients`
-- Cell (3, 2): `results/v69-quant-confirm/develop.json#/feature_names`; `results/v69-quant-confirm/develop.json#/dev_configs`
-- Cell (3, 3): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/1/state`; `results/v69-quant-confirm/compare.json#/rows/2/state`; `results/v69-quant-confirm/compare.json#/rows/3/state`; `results/v69-quant-confirm/compare.json#/rows/4/state`; `results/v69-quant-confirm/compare.json#/rows/5/state`; `results/v69-quant-confirm/compare.json#/rows/6/state`; `results/v69-quant-confirm/compare.json#/rows/7/state`; `results/v69-quant-confirm/compare.json#/rows/8/state`; `results/v69-quant-confirm/compare.json#/rows/9/state`; `results/v69-quant-confirm/compare.json#/rows/10/state`; `results/v69-quant-confirm/compare.json#/rows/11/state`; `results/v69-quant-confirm/compare.json#/rows/12/state`; `results/v69-quant-confirm/compare.json#/rows/13/state`; `results/v69-quant-confirm/compare.json#/rows/14/state`; `results/v69-quant-confirm/compare.json#/rows/15/state`; `results/v69-quant-confirm/compare.json#/rows/16/state`; `results/v69-quant-confirm/compare.json#/rows/17/state`; `results/v69-quant-confirm/compare.json#/rows/18/state`; `results/v69-quant-confirm/compare.json#/rows/19/state`; `results/v69-quant-confirm/compare.json#/rows/20/state`; `results/v69-quant-confirm/compare.json#/rows/21/state`; `results/v69-quant-confirm/compare.json#/rows/22/state`; `results/v69-quant-confirm/compare.json#/rows/23/state`; `results/v69-quant-confirm/compare.json#/rows/24/state`; `results/v69-quant-confirm/compare.json#/rows/25/state`; `results/v69-quant-confirm/compare.json#/rows/26/state`; `results/v69-quant-confirm/compare.json#/rows/27/state`; `results/v69-quant-confirm/compare.json#/rows/28/state`; `results/v69-quant-confirm/compare.json#/rows/29/state`; `results/v69-quant-confirm/compare.json#/rows/30/state`; `results/v69-quant-confirm/compare.json#/rows/31/state`; `results/v69-quant-confirm/compare.json#/rows/32/state`; `results/v69-quant-confirm/compare.json#/rows/33/state`; `results/v69-quant-confirm/compare.json#/rows/34/state`; `results/v69-quant-confirm/compare.json#/rows/35/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/1/config`; `results/v69-quant-confirm/compare.json#/rows/2/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/4/config`; `results/v69-quant-confirm/compare.json#/rows/5/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/7/config`; `results/v69-quant-confirm/compare.json#/rows/8/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/10/config`; `results/v69-quant-confirm/compare.json#/rows/11/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/13/config`; `results/v69-quant-confirm/compare.json#/rows/14/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/16/config`; `results/v69-quant-confirm/compare.json#/rows/17/config`; `results/v69-quant-confirm/compare.json#/rows/18/config`; `results/v69-quant-confirm/compare.json#/rows/19/config`; `results/v69-quant-confirm/compare.json#/rows/20/config`; `results/v69-quant-confirm/compare.json#/rows/21/config`; `results/v69-quant-confirm/compare.json#/rows/22/config`; `results/v69-quant-confirm/compare.json#/rows/23/config`; `results/v69-quant-confirm/compare.json#/rows/24/config`; `results/v69-quant-confirm/compare.json#/rows/25/config`; `results/v69-quant-confirm/compare.json#/rows/26/config`; `results/v69-quant-confirm/compare.json#/rows/27/config`; `results/v69-quant-confirm/compare.json#/rows/28/config`; `results/v69-quant-confirm/compare.json#/rows/29/config`; `results/v69-quant-confirm/compare.json#/rows/30/config`; `results/v69-quant-confirm/compare.json#/rows/31/config`; `results/v69-quant-confirm/compare.json#/rows/32/config`; `results/v69-quant-confirm/compare.json#/rows/33/config`; `results/v69-quant-confirm/compare.json#/rows/34/config`; `results/v69-quant-confirm/compare.json#/rows/35/config`
-- Cell (3, 4): `results/v69-quant-confirm/compare.json#/rows/0/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/3/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/6/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/9/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/12/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/15/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/18/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/21/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/24/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/27/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/30/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/33/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/1/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/4/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/7/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/10/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/13/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/16/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/19/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/22/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/25/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/28/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/31/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/34/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/2/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/5/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/8/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/11/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/14/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/17/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/20/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/23/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/26/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/29/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/32/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/35/absolute_errors/zero`
-- Cell (3, 5): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math`; `results/v69-quant-confirm/develop.json#/loso/scores/zero/code`; `results/v69-quant-confirm/develop.json#/loso/scores/median/qa`; `results/v69-quant-confirm/compare.json#/rows/0/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/3/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/6/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/9/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/12/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/15/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/18/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/21/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/24/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/27/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/30/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/33/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/1/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/4/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/7/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/10/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/13/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/16/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/19/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/22/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/25/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/28/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/31/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/34/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/2/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/5/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/8/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/11/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/14/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/17/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/20/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/23/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/26/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/29/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/32/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/35/absolute_errors/median`
-- Cell (3, 6): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`
+- Cell (3, 1): `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v69-quant-confirm/develop.json#/models`; `results/v69-quant-confirm/develop.json#/feature_names`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selected/math/candidate`; `results/v69-quant-confirm/develop.json#/selected/math/n_coefficients`; `results/v69-quant-confirm/develop.json#/selected/code/candidate`; `results/v69-quant-confirm/develop.json#/selected/code/n_coefficients`; `results/v69-quant-confirm/develop.json#/selected/qa/candidate`; `results/v69-quant-confirm/develop.json#/selected/qa/n_coefficients`
+- Cell (3, 2): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/1/state`; `results/v69-quant-confirm/compare.json#/rows/1/config`; `results/v69-quant-confirm/compare.json#/rows/2/state`; `results/v69-quant-confirm/compare.json#/rows/2/config`; `results/v69-quant-confirm/compare.json#/rows/3/state`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/4/state`; `results/v69-quant-confirm/compare.json#/rows/4/config`; `results/v69-quant-confirm/compare.json#/rows/5/state`; `results/v69-quant-confirm/compare.json#/rows/5/config`; `results/v69-quant-confirm/compare.json#/rows/6/state`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/7/state`; `results/v69-quant-confirm/compare.json#/rows/7/config`; `results/v69-quant-confirm/compare.json#/rows/8/state`; `results/v69-quant-confirm/compare.json#/rows/8/config`; `results/v69-quant-confirm/compare.json#/rows/9/state`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/10/state`; `results/v69-quant-confirm/compare.json#/rows/10/config`; `results/v69-quant-confirm/compare.json#/rows/11/state`; `results/v69-quant-confirm/compare.json#/rows/11/config`; `results/v69-quant-confirm/compare.json#/rows/12/state`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/13/state`; `results/v69-quant-confirm/compare.json#/rows/13/config`; `results/v69-quant-confirm/compare.json#/rows/14/state`; `results/v69-quant-confirm/compare.json#/rows/14/config`; `results/v69-quant-confirm/compare.json#/rows/15/state`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/16/state`; `results/v69-quant-confirm/compare.json#/rows/16/config`; `results/v69-quant-confirm/compare.json#/rows/17/state`; `results/v69-quant-confirm/compare.json#/rows/17/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`; `results/v69-quant-confirm/compare.json#/rows/18/config`; `results/v69-quant-confirm/compare.json#/rows/19/state`; `results/v69-quant-confirm/compare.json#/rows/19/config`; `results/v69-quant-confirm/compare.json#/rows/20/state`; `results/v69-quant-confirm/compare.json#/rows/20/config`; `results/v69-quant-confirm/compare.json#/rows/21/state`; `results/v69-quant-confirm/compare.json#/rows/21/config`; `results/v69-quant-confirm/compare.json#/rows/22/state`; `results/v69-quant-confirm/compare.json#/rows/22/config`; `results/v69-quant-confirm/compare.json#/rows/23/state`; `results/v69-quant-confirm/compare.json#/rows/23/config`; `results/v69-quant-confirm/compare.json#/rows/24/state`; `results/v69-quant-confirm/compare.json#/rows/24/config`; `results/v69-quant-confirm/compare.json#/rows/25/state`; `results/v69-quant-confirm/compare.json#/rows/25/config`; `results/v69-quant-confirm/compare.json#/rows/26/state`; `results/v69-quant-confirm/compare.json#/rows/26/config`; `results/v69-quant-confirm/compare.json#/rows/27/state`; `results/v69-quant-confirm/compare.json#/rows/27/config`; `results/v69-quant-confirm/compare.json#/rows/28/state`; `results/v69-quant-confirm/compare.json#/rows/28/config`; `results/v69-quant-confirm/compare.json#/rows/29/state`; `results/v69-quant-confirm/compare.json#/rows/29/config`; `results/v69-quant-confirm/compare.json#/rows/30/state`; `results/v69-quant-confirm/compare.json#/rows/30/config`; `results/v69-quant-confirm/compare.json#/rows/31/state`; `results/v69-quant-confirm/compare.json#/rows/31/config`; `results/v69-quant-confirm/compare.json#/rows/32/state`; `results/v69-quant-confirm/compare.json#/rows/32/config`; `results/v69-quant-confirm/compare.json#/rows/33/state`; `results/v69-quant-confirm/compare.json#/rows/33/config`; `results/v69-quant-confirm/compare.json#/rows/34/state`; `results/v69-quant-confirm/compare.json#/rows/34/config`; `results/v69-quant-confirm/compare.json#/rows/35/state`; `results/v69-quant-confirm/compare.json#/rows/35/config`
+- Cell (3, 3): `results/v69-quant-confirm/compare.json#/rows/0/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/3/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/6/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/9/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/12/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/15/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/18/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/21/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/24/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/27/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/30/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/33/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/1/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/4/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/7/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/10/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/13/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/16/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/19/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/22/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/25/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/28/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/31/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/34/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/2/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/5/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/8/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/11/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/14/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/17/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/20/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/23/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/26/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/29/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/32/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/35/absolute_errors/zero`
+- Cell (3, 4): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math`; `results/v69-quant-confirm/compare.json#/rows/0/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/3/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/6/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/9/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/12/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/15/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/18/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/21/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/24/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/27/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/30/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/33/absolute_errors/bilinear`; `results/v69-quant-confirm/develop.json#/loso/scores/zero/code`; `results/v69-quant-confirm/compare.json#/rows/1/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/4/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/7/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/10/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/13/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/16/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/19/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/22/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/25/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/28/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/31/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/34/absolute_errors/zero`; `results/v69-quant-confirm/develop.json#/loso/scores/median/qa`; `results/v69-quant-confirm/compare.json#/rows/2/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/5/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/8/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/11/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/14/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/17/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/20/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/23/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/26/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/29/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/32/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/35/absolute_errors/median`
+- Cell (3, 5): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`
 - Cell (4, 0): `results/v69-quant-confirm/compare.json#/rows/36/test_set`; `results/v69-quant-confirm/compare.json#/rows/37/test_set`; `results/v69-quant-confirm/compare.json#/rows/38/test_set`; `results/v69-quant-confirm/compare.json#/rows/39/test_set`; `results/v69-quant-confirm/compare.json#/rows/40/test_set`; `results/v69-quant-confirm/compare.json#/rows/41/test_set`; `results/v69-quant-confirm/compare.json#/rows/42/test_set`; `results/v69-quant-confirm/compare.json#/rows/43/test_set`; `results/v69-quant-confirm/compare.json#/rows/44/test_set`; `results/v69-quant-confirm/compare.json#/rows/45/test_set`; `results/v69-quant-confirm/compare.json#/rows/46/test_set`; `results/v69-quant-confirm/compare.json#/rows/47/test_set`; `results/v69-quant-confirm/compare.json#/rows/48/test_set`; `results/v69-quant-confirm/compare.json#/rows/49/test_set`; `results/v69-quant-confirm/compare.json#/rows/50/test_set`; `results/v69-quant-confirm/compare.json#/rows/51/test_set`; `results/v69-quant-confirm/compare.json#/rows/52/test_set`; `results/v69-quant-confirm/compare.json#/rows/53/test_set`; `results/v69-quant-confirm/compare.json#/rows/54/test_set`; `results/v69-quant-confirm/compare.json#/rows/55/test_set`; `results/v69-quant-confirm/compare.json#/rows/56/test_set`; `results/v69-quant-confirm/compare.json#/rows/57/test_set`; `results/v69-quant-confirm/compare.json#/rows/58/test_set`; `results/v69-quant-confirm/compare.json#/rows/59/test_set`; `results/v69-quant-confirm/compare.json#/rows/60/test_set`; `results/v69-quant-confirm/compare.json#/rows/61/test_set`; `results/v69-quant-confirm/compare.json#/rows/62/test_set`
-- Cell (4, 1): `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v69-quant-confirm/develop.json#/models`; `results/v69-quant-confirm/develop.json#/selected/math/candidate`; `results/v69-quant-confirm/develop.json#/selected/math/n_coefficients`; `results/v69-quant-confirm/develop.json#/selected/code/candidate`; `results/v69-quant-confirm/develop.json#/selected/code/n_coefficients`; `results/v69-quant-confirm/develop.json#/selected/qa/candidate`; `results/v69-quant-confirm/develop.json#/selected/qa/n_coefficients`
-- Cell (4, 2): `results/v69-quant-confirm/develop.json#/feature_names`; `results/v69-quant-confirm/develop.json#/dev_configs`
-- Cell (4, 3): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/37/state`; `results/v69-quant-confirm/compare.json#/rows/38/state`; `results/v69-quant-confirm/compare.json#/rows/39/state`; `results/v69-quant-confirm/compare.json#/rows/40/state`; `results/v69-quant-confirm/compare.json#/rows/41/state`; `results/v69-quant-confirm/compare.json#/rows/42/state`; `results/v69-quant-confirm/compare.json#/rows/43/state`; `results/v69-quant-confirm/compare.json#/rows/44/state`; `results/v69-quant-confirm/compare.json#/rows/45/state`; `results/v69-quant-confirm/compare.json#/rows/46/state`; `results/v69-quant-confirm/compare.json#/rows/47/state`; `results/v69-quant-confirm/compare.json#/rows/48/state`; `results/v69-quant-confirm/compare.json#/rows/49/state`; `results/v69-quant-confirm/compare.json#/rows/50/state`; `results/v69-quant-confirm/compare.json#/rows/51/state`; `results/v69-quant-confirm/compare.json#/rows/52/state`; `results/v69-quant-confirm/compare.json#/rows/53/state`; `results/v69-quant-confirm/compare.json#/rows/54/state`; `results/v69-quant-confirm/compare.json#/rows/55/state`; `results/v69-quant-confirm/compare.json#/rows/56/state`; `results/v69-quant-confirm/compare.json#/rows/57/state`; `results/v69-quant-confirm/compare.json#/rows/58/state`; `results/v69-quant-confirm/compare.json#/rows/59/state`; `results/v69-quant-confirm/compare.json#/rows/60/state`; `results/v69-quant-confirm/compare.json#/rows/61/state`; `results/v69-quant-confirm/compare.json#/rows/62/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/37/config`; `results/v69-quant-confirm/compare.json#/rows/38/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/40/config`; `results/v69-quant-confirm/compare.json#/rows/41/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/43/config`; `results/v69-quant-confirm/compare.json#/rows/44/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/46/config`; `results/v69-quant-confirm/compare.json#/rows/47/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/49/config`; `results/v69-quant-confirm/compare.json#/rows/50/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/52/config`; `results/v69-quant-confirm/compare.json#/rows/53/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/55/config`; `results/v69-quant-confirm/compare.json#/rows/56/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/58/config`; `results/v69-quant-confirm/compare.json#/rows/59/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`; `results/v69-quant-confirm/compare.json#/rows/61/config`; `results/v69-quant-confirm/compare.json#/rows/62/config`
-- Cell (4, 4): `results/v69-quant-confirm/compare.json#/rows/36/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/39/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/42/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/45/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/48/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/51/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/54/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/57/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/60/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/37/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/40/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/43/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/46/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/49/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/52/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/55/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/58/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/61/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/38/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/41/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/44/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/47/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/50/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/53/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/56/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/59/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/62/absolute_errors/zero`
-- Cell (4, 5): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math`; `results/v69-quant-confirm/develop.json#/loso/scores/zero/code`; `results/v69-quant-confirm/develop.json#/loso/scores/median/qa`; `results/v69-quant-confirm/compare.json#/rows/36/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/39/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/42/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/45/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/48/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/51/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/54/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/57/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/60/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/37/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/40/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/43/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/46/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/49/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/52/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/55/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/58/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/61/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/38/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/41/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/44/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/47/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/50/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/53/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/56/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/59/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/62/absolute_errors/median`
-- Cell (4, 6): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`
+- Cell (4, 1): `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v69-quant-confirm/develop.json#/models`; `results/v69-quant-confirm/develop.json#/feature_names`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selected/math/candidate`; `results/v69-quant-confirm/develop.json#/selected/math/n_coefficients`; `results/v69-quant-confirm/develop.json#/selected/code/candidate`; `results/v69-quant-confirm/develop.json#/selected/code/n_coefficients`; `results/v69-quant-confirm/develop.json#/selected/qa/candidate`; `results/v69-quant-confirm/develop.json#/selected/qa/n_coefficients`
+- Cell (4, 2): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/37/state`; `results/v69-quant-confirm/compare.json#/rows/37/config`; `results/v69-quant-confirm/compare.json#/rows/38/state`; `results/v69-quant-confirm/compare.json#/rows/38/config`; `results/v69-quant-confirm/compare.json#/rows/39/state`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/40/state`; `results/v69-quant-confirm/compare.json#/rows/40/config`; `results/v69-quant-confirm/compare.json#/rows/41/state`; `results/v69-quant-confirm/compare.json#/rows/41/config`; `results/v69-quant-confirm/compare.json#/rows/42/state`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/43/state`; `results/v69-quant-confirm/compare.json#/rows/43/config`; `results/v69-quant-confirm/compare.json#/rows/44/state`; `results/v69-quant-confirm/compare.json#/rows/44/config`; `results/v69-quant-confirm/compare.json#/rows/45/state`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/46/state`; `results/v69-quant-confirm/compare.json#/rows/46/config`; `results/v69-quant-confirm/compare.json#/rows/47/state`; `results/v69-quant-confirm/compare.json#/rows/47/config`; `results/v69-quant-confirm/compare.json#/rows/48/state`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/49/state`; `results/v69-quant-confirm/compare.json#/rows/49/config`; `results/v69-quant-confirm/compare.json#/rows/50/state`; `results/v69-quant-confirm/compare.json#/rows/50/config`; `results/v69-quant-confirm/compare.json#/rows/51/state`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/52/state`; `results/v69-quant-confirm/compare.json#/rows/52/config`; `results/v69-quant-confirm/compare.json#/rows/53/state`; `results/v69-quant-confirm/compare.json#/rows/53/config`; `results/v69-quant-confirm/compare.json#/rows/54/state`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/55/state`; `results/v69-quant-confirm/compare.json#/rows/55/config`; `results/v69-quant-confirm/compare.json#/rows/56/state`; `results/v69-quant-confirm/compare.json#/rows/56/config`; `results/v69-quant-confirm/compare.json#/rows/57/state`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/58/state`; `results/v69-quant-confirm/compare.json#/rows/58/config`; `results/v69-quant-confirm/compare.json#/rows/59/state`; `results/v69-quant-confirm/compare.json#/rows/59/config`; `results/v69-quant-confirm/compare.json#/rows/60/state`; `results/v69-quant-confirm/compare.json#/rows/60/config`; `results/v69-quant-confirm/compare.json#/rows/61/state`; `results/v69-quant-confirm/compare.json#/rows/61/config`; `results/v69-quant-confirm/compare.json#/rows/62/state`; `results/v69-quant-confirm/compare.json#/rows/62/config`
+- Cell (4, 3): `results/v69-quant-confirm/compare.json#/rows/36/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/39/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/42/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/45/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/48/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/51/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/54/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/57/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/60/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/37/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/40/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/43/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/46/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/49/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/52/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/55/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/58/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/61/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/38/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/41/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/44/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/47/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/50/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/53/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/56/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/59/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/62/absolute_errors/zero`
+- Cell (4, 4): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math`; `results/v69-quant-confirm/compare.json#/rows/36/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/39/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/42/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/45/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/48/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/51/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/54/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/57/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/60/absolute_errors/bilinear`; `results/v69-quant-confirm/develop.json#/loso/scores/zero/code`; `results/v69-quant-confirm/compare.json#/rows/37/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/40/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/43/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/46/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/49/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/52/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/55/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/58/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/61/absolute_errors/zero`; `results/v69-quant-confirm/develop.json#/loso/scores/median/qa`; `results/v69-quant-confirm/compare.json#/rows/38/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/41/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/44/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/47/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/50/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/53/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/56/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/59/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/62/absolute_errors/median`
+- Cell (4, 5): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`
 - Cell (5, 0): `results/a2-curvature-interaction/summary.json#/decision_table/18/target`; `results/a2-curvature-interaction/summary.json#/decision_table/6/target`; `results/a2-curvature-interaction/summary.json#/decision_table/54/target`
-- Cell (5, 1): `results/a2-curvature-interaction/summary.json#/protocol/structures`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_log`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_curv`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_int`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_log/fit/nominal_parameters`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/nominal_parameters`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_int/fit/nominal_parameters`
-- Cell (5, 2): `results/a2-curvature-interaction/summary.json#/protocol/descriptors`; `results/a2-curvature-interaction/summary.json#/protocol/descriptor_calibration_cost`
-- Cell (5, 3): `results/a2-curvature-interaction/summary.json#/decision_table/18/distribution`; `results/a2-curvature-interaction/summary.json#/decision_table/6/distribution`; `results/a2-curvature-interaction/summary.json#/decision_table/54/distribution`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_log/fit/standardizer/students`; `results/a2-curvature-interaction/summary.json#/protocol/largest_budget`
-- Cell (5, 4): `results/a2-curvature-interaction/summary.json#/decision_table/18/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/6/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/54/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/18/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/18/primary_mae_interval/1`; `results/a2-curvature-interaction/summary.json#/decision_table/6/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/6/primary_mae_interval/1`; `results/a2-curvature-interaction/summary.json#/decision_table/54/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/54/primary_mae_interval/1`
-- Cell (5, 5): `results/a2-curvature-interaction/summary.json#/decision_table/18/inner_selected_baselines`; `results/a2-curvature-interaction/summary.json#/decision_table/6/inner_selected_baselines`; `results/a2-curvature-interaction/summary.json#/decision_table/54/inner_selected_baselines`; `results/a2-curvature-interaction/summary.json#/decision_table/18/baseline_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/6/baseline_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/54/baseline_mae`
-- Cell (5, 6): `results/a2-curvature-interaction/summary.json#/protocol/secondary`; `results/a2-curvature-interaction/summary.json#/protocol/previous_F_int`
+- Cell (5, 1): `results/a2-curvature-interaction/summary.json#/protocol/structures`; `results/a2-curvature-interaction/summary.json#/protocol/descriptors`; `results/a2-curvature-interaction/summary.json#/protocol/descriptor_calibration_cost`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_log`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_log/fit/nominal_parameters`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_curv`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/nominal_parameters`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_int`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_int/fit/nominal_parameters`
+- Cell (5, 2): `results/a2-curvature-interaction/summary.json#/decision_table/18/distribution`; `results/a2-curvature-interaction/summary.json#/decision_table/6/distribution`; `results/a2-curvature-interaction/summary.json#/decision_table/54/distribution`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_log/fit/standardizer/students`; `results/a2-curvature-interaction/summary.json#/protocol/largest_budget`
+- Cell (5, 3): `results/a2-curvature-interaction/summary.json#/decision_table/18/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/18/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/18/primary_mae_interval/1`; `results/a2-curvature-interaction/summary.json#/decision_table/6/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/6/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/6/primary_mae_interval/1`; `results/a2-curvature-interaction/summary.json#/decision_table/54/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/54/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/54/primary_mae_interval/1`
+- Cell (5, 4): `results/a2-curvature-interaction/summary.json#/decision_table/18/inner_selected_baselines`; `results/a2-curvature-interaction/summary.json#/decision_table/18/baseline_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/6/inner_selected_baselines`; `results/a2-curvature-interaction/summary.json#/decision_table/6/baseline_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/54/inner_selected_baselines`; `results/a2-curvature-interaction/summary.json#/decision_table/54/baseline_mae`
+- Cell (5, 5): `results/a2-curvature-interaction/summary.json#/protocol/secondary`; `results/a2-curvature-interaction/summary.json#/protocol/previous_F_int`
 - Cell (6, 0): `results/a2-curvature-interaction/summary.json#/decision_table/14/target`; `results/a2-curvature-interaction/summary.json#/decision_table/2/target`; `results/a2-curvature-interaction/summary.json#/decision_table/50/target`
-- Cell (6, 1): `results/a2-curvature-interaction/summary.json#/protocol/structures`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_log`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_curv`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_int`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_log/fit/nominal_parameters`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/nominal_parameters`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_int/fit/nominal_parameters`
-- Cell (6, 2): `results/a2-curvature-interaction/summary.json#/protocol/descriptors`; `results/a2-curvature-interaction/summary.json#/protocol/descriptor_calibration_cost`
-- Cell (6, 3): `results/a2-curvature-interaction/summary.json#/decision_table/14/distribution`; `results/a2-curvature-interaction/summary.json#/decision_table/2/distribution`; `results/a2-curvature-interaction/summary.json#/decision_table/50/distribution`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/standardizer/students`; `results/a2-curvature-interaction/summary.json#/protocol/I_U`
-- Cell (6, 4): `results/a2-curvature-interaction/summary.json#/decision_table/14/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/2/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/50/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/14/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/14/primary_mae_interval/1`; `results/a2-curvature-interaction/summary.json#/decision_table/2/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/2/primary_mae_interval/1`; `results/a2-curvature-interaction/summary.json#/decision_table/50/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/50/primary_mae_interval/1`
-- Cell (6, 5): `results/a2-curvature-interaction/summary.json#/decision_table/14/inner_selected_baselines`; `results/a2-curvature-interaction/summary.json#/decision_table/2/inner_selected_baselines`; `results/a2-curvature-interaction/summary.json#/decision_table/50/inner_selected_baselines`; `results/a2-curvature-interaction/summary.json#/decision_table/14/baseline_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/2/baseline_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/50/baseline_mae`
-- Cell (6, 6): `results/a2-curvature-interaction/summary.json#/protocol/secondary`; `results/a2-curvature-interaction/summary.json#/protocol/previous_F_int`
+- Cell (6, 1): `results/a2-curvature-interaction/summary.json#/protocol/structures`; `results/a2-curvature-interaction/summary.json#/protocol/descriptors`; `results/a2-curvature-interaction/summary.json#/protocol/descriptor_calibration_cost`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_log`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_log/fit/nominal_parameters`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_curv`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/nominal_parameters`; `results/a2-curvature-interaction/summary.json#/protocol/structures/F_int`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_int/fit/nominal_parameters`
+- Cell (6, 2): `results/a2-curvature-interaction/summary.json#/decision_table/14/distribution`; `results/a2-curvature-interaction/summary.json#/decision_table/2/distribution`; `results/a2-curvature-interaction/summary.json#/decision_table/50/distribution`; `results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/standardizer/students`; `results/a2-curvature-interaction/summary.json#/protocol/I_U`
+- Cell (6, 3): `results/a2-curvature-interaction/summary.json#/decision_table/14/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/14/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/14/primary_mae_interval/1`; `results/a2-curvature-interaction/summary.json#/decision_table/2/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/2/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/2/primary_mae_interval/1`; `results/a2-curvature-interaction/summary.json#/decision_table/50/primary_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/50/primary_mae_interval/0`; `results/a2-curvature-interaction/summary.json#/decision_table/50/primary_mae_interval/1`
+- Cell (6, 4): `results/a2-curvature-interaction/summary.json#/decision_table/14/inner_selected_baselines`; `results/a2-curvature-interaction/summary.json#/decision_table/14/baseline_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/2/inner_selected_baselines`; `results/a2-curvature-interaction/summary.json#/decision_table/2/baseline_mae`; `results/a2-curvature-interaction/summary.json#/decision_table/50/inner_selected_baselines`; `results/a2-curvature-interaction/summary.json#/decision_table/50/baseline_mae`
+- Cell (6, 5): `results/a2-curvature-interaction/summary.json#/protocol/secondary`; `results/a2-curvature-interaction/summary.json#/protocol/previous_F_int`
 - Cell (7, 0): `results/v70-distill-confirm/freeze.json#/confirmation_register/unused_U_assertion`
-- Cell (7, 1): `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/reference_rule`; `results/v70-distill-confirm/freeze.json#/selected/math/method`; `results/v70-distill-confirm/freeze.json#/selected/math/n_params`; `results/v70-distill-confirm/freeze.json#/selected/code/method`; `results/v70-distill-confirm/freeze.json#/selected/code/n_params`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`; `results/v70-distill-confirm/freeze.json#/selected/qa/n_params`
-- Cell (7, 2): `results/v70-distill-confirm/freeze.json#/prediction_rule`; `results/v70-distill-confirm/freeze.json#/reference_rule`
-- Cell (7, 3): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
-- Cell (7, 4): `results/v70-distill-confirm/compare.json#/groups/0/student`; `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/3/student`; `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
-- Cell (7, 5): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/0/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/1/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/2/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/3/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/4/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/5/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/0/student`; `results/v70-distill-confirm/compare.json#/groups/0/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/1/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/2/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/0/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/1/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/3/student`; `results/v70-distill-confirm/compare.json#/groups/3/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/4/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/5/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/3/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/4/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
-- Cell (7, 6): `results/v70-distill-confirm/freeze.json#/frozen_at_utc`; `results/v47-p2-register/register.json#/v5_confirm/registered_at_utc`
+- Cell (7, 1): `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/reference_rule`; `results/v70-distill-confirm/freeze.json#/prediction_rule`; `results/v70-distill-confirm/freeze.json#/selected/math/method`; `results/v70-distill-confirm/freeze.json#/selected/math/n_params`; `results/v70-distill-confirm/freeze.json#/selected/code/method`; `results/v70-distill-confirm/freeze.json#/selected/code/n_params`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`; `results/v70-distill-confirm/freeze.json#/selected/qa/n_params`
+- Cell (7, 2): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
+- Cell (7, 3): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
+- Cell (7, 4): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/0/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/1/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/2/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/3/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/4/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/5/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/0/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/3/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/0/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/3/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/1/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/4/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/1/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/4/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/2/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/5/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
+- Cell (7, 5): `results/v70-distill-confirm/freeze.json#/frozen_at_utc`; `results/v47-p2-register/register.json#/v5_confirm/registered_at_utc`
 
 ## Machine-readable cell recipes
 
@@ -94,13 +86,13 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "row": 0,
     "column": 0,
     "parts": [
-      "Pruning: unseen density"
+      "Prune: density"
     ],
     "context": [
       "results/v53-prune-dev/register.json#/loso_folds"
     ],
     "note": "The requested nine-state leave-density-out DEVELOPMENT evaluation is absent from the supplied V53 files. register.json records n_dev_states=17 and loso_folds/loso_predictions hold out source states, not densities. predictions_<tag>.json contains new-source predictions only. V40 documents the original nine-state panel and its [0.6, 0.9] grid, but does not supply the requested density-holdout errors. No LOSO, training-fit or identical-weight repeat errors are substituted.",
-    "rendered": "Pruning: unseen density"
+    "rendered": "Prune: density"
   },
   {
     "row": 0,
@@ -112,7 +104,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "$A_c(\\mathbf x)((1-d)/0.3)^{\\gamma_c}$",
+        "label": "$A_c r^{\\gamma_c}$",
         "expected": [
           "(beta.phi) * ((1-d)/0.3)**gamma"
         ]
@@ -127,25 +119,15 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       },
       ")"
     ],
-    "context": [],
-    "note": "",
-    "rendered": "$A_c(\\mathbf x)((1-d)/0.3)^{\\gamma_c}$ (5)"
-  },
-  {
-    "row": 0,
-    "column": 2,
-    "parts": [
-      "$\\mathbf x$; density"
-    ],
     "context": [
       "results/v53-prune-dev/register.json#/feature_names"
     ],
     "note": "",
-    "rendered": "$\\mathbf x$; density"
+    "rendered": "$A_c r^{\\gamma_c}$ (5)"
   },
   {
     "row": 0,
-    "column": 3,
+    "column": 2,
     "parts": [
       {
         "sources": [
@@ -153,7 +135,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "Requested nine-state panel; density held out inside [0.6, 0.9]",
+        "label": "nine states; unseen density within 0.6-0.9",
         "expected": [
           {
             "sizes": [
@@ -175,40 +157,39 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
             "n_rows": 108
           }
         ]
-      },
-      "; training probes"
+      }
     ],
     "context": [],
     "note": "Requested scope, not an assertion that this holdout artifact exists.",
-    "rendered": "Requested nine-state panel; density held out inside [0.6, 0.9]; training probes"
+    "rendered": "nine states; unseen density within 0.6-0.9"
   },
   {
     "row": 0,
-    "column": 4,
+    "column": 3,
     "parts": [
-      "not tested (frozen density-holdout artifact unavailable)"
+      "not tested"
     ],
     "context": [
       "results/v53-prune-dev/register.json#/loso_predictions"
     ],
     "note": "The requested nine-state leave-density-out DEVELOPMENT evaluation is absent from the supplied V53 files. register.json records n_dev_states=17 and loso_folds/loso_predictions hold out source states, not densities. predictions_<tag>.json contains new-source predictions only. V40 documents the original nine-state panel and its [0.6, 0.9] grid, but does not supply the requested density-holdout errors. No LOSO, training-fit or identical-weight repeat errors are substituted.",
-    "rendered": "not tested (frozen density-holdout artifact unavailable)"
+    "rendered": "not tested"
   },
   {
     "row": 0,
-    "column": 5,
+    "column": 4,
     "parts": [
-      "not tested (density-holdout baseline unavailable)"
+      "not tested"
     ],
     "context": [
       "results/v53-prune-dev/register.json#/loso_table"
     ],
     "note": "The requested nine-state leave-density-out DEVELOPMENT evaluation is absent from the supplied V53 files. register.json records n_dev_states=17 and loso_folds/loso_predictions hold out source states, not densities. predictions_<tag>.json contains new-source predictions only. V40 documents the original nine-state panel and its [0.6, 0.9] grid, but does not supply the requested density-holdout errors. No LOSO, training-fit or identical-weight repeat errors are substituted.",
-    "rendered": "not tested (density-holdout baseline unavailable)"
+    "rendered": "not tested"
   },
   {
     "row": 0,
-    "column": 6,
+    "column": 5,
     "parts": [
       "development"
     ],
@@ -222,13 +203,13 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "row": 1,
     "column": 0,
     "parts": [
-      "Pruning: new source state"
+      "Prune: state"
     ],
     "context": [
       "results/v53-prune-dev/register.json#/selected_candidate"
     ],
     "note": "",
-    "rendered": "Pruning: new source state"
+    "rendered": "Prune: state"
   },
   {
     "row": 1,
@@ -240,7 +221,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "$A_c(\\mathbf x)((1-d)/0.3)^{\\gamma_c}$",
+        "label": "$A_c r^{\\gamma_c}$",
         "expected": [
           "(beta.phi) * ((1-d)/0.3)**gamma"
         ]
@@ -255,25 +236,15 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       },
       ")"
     ],
-    "context": [],
-    "note": "",
-    "rendered": "$A_c(\\mathbf x)((1-d)/0.3)^{\\gamma_c}$ (5)"
-  },
-  {
-    "row": 1,
-    "column": 2,
-    "parts": [
-      "$\\mathbf x$; density"
-    ],
     "context": [
       "results/v53-prune-dev/register.json#/feature_names"
     ],
     "note": "",
-    "rendered": "$\\mathbf x$; density"
+    "rendered": "$A_c r^{\\gamma_c}$ (5)"
   },
   {
     "row": 1,
-    "column": 3,
+    "column": 2,
     "parts": [
       {
         "sources": [
@@ -284,7 +255,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "new stages of seen sizes and a 6.9B source outside the size range",
+        "label": "new stages of seen sizes; 6.9B outside range",
         "expected": [
           "pythia-410m@step48000",
           "pythia-1.4b@step112000",
@@ -295,24 +266,17 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
             "1.4b"
           ]
         ]
-      },
-      "; density ",
-      {
-        "sources": [
-          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities"
-        ],
-        "op": "join",
-        "format": null
-      },
-      "; training probes"
+      }
     ],
-    "context": [],
+    "context": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities"
+    ],
     "note": "Outside the size range of the original nine-state panel; V53's expanded register itself includes 6.9B.",
-    "rendered": "new stages of seen sizes and a 6.9B source outside the size range; density 0.85, 0.675, 0.575; training probes"
+    "rendered": "new stages of seen sizes; 6.9B outside range"
   },
   {
     "row": 1,
-    "column": 4,
+    "column": 3,
     "parts": [
       "math ",
       {
@@ -353,37 +317,20 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
   },
   {
     "row": 1,
-    "column": 5,
+    "column": 4,
     "parts": [
-      "math/code: ",
       {
         "sources": [
-          "results/v53-prune-dev/register.json#/loso_table/2/candidate",
           "results/v53-prune-dev/register.json#/loso_table/2/candidate"
         ],
         "op": "label",
         "format": null,
-        "label": "A2 anchor interpolation",
+        "label": "A2",
         "expected": [
-          "A2",
           "A2"
         ]
       },
-      "; ",
-      "QA: ",
-      {
-        "sources": [
-          "results/v53-prune-dev/register.json#/loso_table/5/candidate"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "development median curve",
-        "expected": [
-          "median_curve"
-        ]
-      },
-      "\n",
-      "math ",
+      " ",
       {
         "sources": [
           "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math",
@@ -394,7 +341,18 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "format": ".2f"
       },
       " / ",
-      "code ",
+      {
+        "sources": [
+          "results/v53-prune-dev/register.json#/loso_table/2/candidate"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "A2",
+        "expected": [
+          "A2"
+        ]
+      },
+      " ",
       {
         "sources": [
           "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code",
@@ -405,7 +363,18 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "format": ".2f"
       },
       " / ",
-      "QA ",
+      {
+        "sources": [
+          "results/v53-prune-dev/register.json#/loso_table/5/candidate"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "med",
+        "expected": [
+          "median_curve"
+        ]
+      },
+      " ",
       {
         "sources": [
           "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa",
@@ -420,11 +389,11 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v53-prune-dev/register.json#/loso_table"
     ],
     "note": "Minimum development LOSO MAE excluding power, per capability; no test ranking.",
-    "rendered": "math/code: A2 anchor interpolation; QA: devel\\-opment median curve\\newline math 0.23 / code 0.22 / QA 0.22"
+    "rendered": "A2 0.23 / A2 0.22 / med 0.22"
   },
   {
     "row": 1,
-    "column": 6,
+    "column": 5,
     "parts": [
       "frozen prediction"
     ],
@@ -438,13 +407,13 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "row": 2,
     "column": 0,
     "parts": [
-      "Quantization: unseen bit-width"
+      "Quant: bits"
     ],
     "context": [
       "results/v55-quant-group/register.json#/test_sets/bit_test"
     ],
     "note": "",
-    "rendered": "Quanti\\-zation: unseen bit-width"
+    "rendered": "Quant: bits"
   },
   {
     "row": 2,
@@ -456,7 +425,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "quadratic surface in (bits, log group size) with source amplitude",
+        "label": "$\\phi^\\top Q_c$",
         "expected": [
           "phi.[a0 + a1*u + a2*v + a3*u*v + a4*u^2]; coefficients ordered by term then phi"
         ]
@@ -471,34 +440,24 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       },
       ")"
     ],
-    "context": [],
+    "context": [
+      "results/v55-quant-group/register.json#/feature_names"
+    ],
     "note": "",
-    "rendered": "quadratic surface in (bits, log group size) with source amplitude (20)"
+    "rendered": "$\\phi^\\top Q_c$ (20)"
   },
   {
     "row": 2,
     "column": 2,
     "parts": [
-      "$\\mathbf x$; bits, group size"
-    ],
-    "context": [
-      "results/v55-quant-group/register.json#/feature_names",
-      "results/v55-quant-group/register.json#/test_sets/bit_test/configs"
-    ],
-    "note": "",
-    "rendered": "$\\mathbf x$; bits, group size"
-  },
-  {
-    "row": 2,
-    "column": 3,
-    "parts": [
       {
         "sources": [
-          "results/v55-quant-group/register.json#/test_sets/bit_test/states"
+          "results/v55-quant-group/register.json#/test_sets/bit_test/states",
+          "results/v55-quant-group/register.json#/test_sets/bit_test/configs"
         ],
         "op": "label",
         "format": null,
-        "label": "Pythia 160M-1.4B at steps 16k and 143k",
+        "label": "Pythia 160M-1.4B; bit 4, groups 64/256",
         "expected": [
           [
             "pythia-160m@step16000",
@@ -507,33 +466,21 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
             "pythia-410m@step143000",
             "pythia-1.4b@step16000",
             "pythia-1.4b@step143000"
-          ]
-        ]
-      },
-      "; ",
-      {
-        "sources": [
-          "results/v55-quant-group/register.json#/test_sets/bit_test/configs"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "bit 4, groups 64 and 256",
-        "expected": [
+          ],
           [
             "b4_g64",
             "b4_g256"
           ]
         ]
-      },
-      "; training probes"
+      }
     ],
     "context": [],
     "note": "",
-    "rendered": "Pythia 160M-1.4B at steps 16k and 143k; bit 4, groups 64 and 256; training probes"
+    "rendered": "Pythia 160M-1.4B; bit 4, groups 64/256"
   },
   {
     "row": 2,
-    "column": 4,
+    "column": 3,
     "parts": [
       "math ",
       {
@@ -568,25 +515,20 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
   },
   {
     "row": 2,
-    "column": 5,
+    "column": 4,
     "parts": [
       {
         "sources": [
-          "results/v55-quant-group/register.json#/loso_table/4/candidate",
-          "results/v55-quant-group/register.json#/loso_table/4/candidate",
           "results/v55-quant-group/register.json#/loso_table/4/candidate"
         ],
         "op": "label",
         "format": null,
-        "label": "per-configuration development median",
+        "label": "med",
         "expected": [
-          "median",
-          "median",
           "median"
         ]
       },
-      "\n",
-      "math ",
+      " ",
       {
         "sources": [
           "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/math"
@@ -595,7 +537,18 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "format": ".2f"
       },
       " / ",
-      "code ",
+      {
+        "sources": [
+          "results/v55-quant-group/register.json#/loso_table/4/candidate"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "med",
+        "expected": [
+          "median"
+        ]
+      },
+      " ",
       {
         "sources": [
           "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/code"
@@ -604,7 +557,18 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "format": ".2f"
       },
       " / ",
-      "QA ",
+      {
+        "sources": [
+          "results/v55-quant-group/register.json#/loso_table/4/candidate"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "med",
+        "expected": [
+          "median"
+        ]
+      },
+      " ",
       {
         "sources": [
           "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/qa"
@@ -617,11 +581,11 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v55-quant-group/register.json#/loso_table"
     ],
     "note": "Development minimum over registered baselines mean/median/zero.",
-    "rendered": "per-configuration devel\\-opment median\\newline math 0.55 / code 0.73 / QA 0.54"
+    "rendered": "med 0.55 / med 0.73 / med 0.54"
   },
   {
     "row": 2,
-    "column": 6,
+    "column": 5,
     "parts": [
       "frozen prediction"
     ],
@@ -635,7 +599,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "row": 3,
     "column": 0,
     "parts": [
-      "Quantization: unseen group size"
+      "Quant: group"
     ],
     "context": [
       "results/v69-quant-confirm/compare.json#/rows/0/test_set",
@@ -676,20 +640,20 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v69-quant-confirm/compare.json#/rows/35/test_set"
     ],
     "note": "",
-    "rendered": "Quanti\\-zation: unseen group size"
+    "rendered": "Quant: group"
   },
   {
     "row": 3,
     "column": 1,
     "parts": [
-      "math ",
+      "math: ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/selected/math/candidate"
         ],
         "op": "label",
         "format": null,
-        "label": "quadratic surface in (bits, log group size) with source amplitude",
+        "label": "$\\phi^\\top Q_c$",
         "expected": [
           "low_order_2d"
         ]
@@ -704,14 +668,14 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       },
       ")",
       "; ",
-      "code ",
+      "code: ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/selected/code/candidate"
         ],
         "op": "label",
         "format": null,
-        "label": "per-configuration development median",
+        "label": "$m_c(b,g)$",
         "expected": [
           "median"
         ]
@@ -726,14 +690,14 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       },
       ")",
       "; ",
-      "QA ",
+      "QA: ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/selected/qa/candidate"
         ],
         "op": "label",
         "format": null,
-        "label": "zero change",
+        "label": "$0$",
         "expected": [
           "zero"
         ]
@@ -750,200 +714,178 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [
       "results/v55-quant-group/register.json#/candidate_definitions/low_order_2d",
-      "results/v69-quant-confirm/develop.json#/models"
+      "results/v69-quant-confirm/develop.json#/models",
+      "results/v69-quant-confirm/develop.json#/feature_names",
+      "results/v69-quant-confirm/develop.json#/dev_configs"
     ],
     "note": "Surface is phi.[a0+a1*u+a2*v+a3*u*v+a4*u^2]; median is per configuration; zero is identically zero.",
-    "rendered": "math quadratic surface in (bits, log group size) with source amplitude (20); code per-configuration devel\\-opment median (9); QA zero change (0)"
+    "rendered": "math: $\\phi^\\top Q_c$ (20); code: $m_c(b,g)$ (9); QA: $0$ (0)"
   },
   {
     "row": 3,
     "column": 2,
     "parts": [
-      "$\\mathbf x$; bits, group size"
-    ],
-    "context": [
-      "results/v69-quant-confirm/develop.json#/feature_names",
-      "results/v69-quant-confirm/develop.json#/dev_configs"
-    ],
-    "note": "",
-    "rendered": "$\\mathbf x$; bits, group size"
-  },
-  {
-    "row": 3,
-    "column": 3,
-    "parts": [
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/rows/0/state",
-          "results/v69-quant-confirm/compare.json#/rows/1/state",
-          "results/v69-quant-confirm/compare.json#/rows/2/state",
-          "results/v69-quant-confirm/compare.json#/rows/3/state",
-          "results/v69-quant-confirm/compare.json#/rows/4/state",
-          "results/v69-quant-confirm/compare.json#/rows/5/state",
-          "results/v69-quant-confirm/compare.json#/rows/6/state",
-          "results/v69-quant-confirm/compare.json#/rows/7/state",
-          "results/v69-quant-confirm/compare.json#/rows/8/state",
-          "results/v69-quant-confirm/compare.json#/rows/9/state",
-          "results/v69-quant-confirm/compare.json#/rows/10/state",
-          "results/v69-quant-confirm/compare.json#/rows/11/state",
-          "results/v69-quant-confirm/compare.json#/rows/12/state",
-          "results/v69-quant-confirm/compare.json#/rows/13/state",
-          "results/v69-quant-confirm/compare.json#/rows/14/state",
-          "results/v69-quant-confirm/compare.json#/rows/15/state",
-          "results/v69-quant-confirm/compare.json#/rows/16/state",
-          "results/v69-quant-confirm/compare.json#/rows/17/state",
-          "results/v69-quant-confirm/compare.json#/rows/18/state",
-          "results/v69-quant-confirm/compare.json#/rows/19/state",
-          "results/v69-quant-confirm/compare.json#/rows/20/state",
-          "results/v69-quant-confirm/compare.json#/rows/21/state",
-          "results/v69-quant-confirm/compare.json#/rows/22/state",
-          "results/v69-quant-confirm/compare.json#/rows/23/state",
-          "results/v69-quant-confirm/compare.json#/rows/24/state",
-          "results/v69-quant-confirm/compare.json#/rows/25/state",
-          "results/v69-quant-confirm/compare.json#/rows/26/state",
-          "results/v69-quant-confirm/compare.json#/rows/27/state",
-          "results/v69-quant-confirm/compare.json#/rows/28/state",
-          "results/v69-quant-confirm/compare.json#/rows/29/state",
-          "results/v69-quant-confirm/compare.json#/rows/30/state",
-          "results/v69-quant-confirm/compare.json#/rows/31/state",
-          "results/v69-quant-confirm/compare.json#/rows/32/state",
-          "results/v69-quant-confirm/compare.json#/rows/33/state",
-          "results/v69-quant-confirm/compare.json#/rows/34/state",
-          "results/v69-quant-confirm/compare.json#/rows/35/state"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Pythia 410M at step 143k and 1.4B at step 16k",
-        "expected": [
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-410m@step143000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000",
-          "pythia-1.4b@step16000"
-        ]
-      },
-      "; ",
-      {
-        "sources": [
           "results/v69-quant-confirm/compare.json#/rows/0/config",
+          "results/v69-quant-confirm/compare.json#/rows/1/state",
           "results/v69-quant-confirm/compare.json#/rows/1/config",
+          "results/v69-quant-confirm/compare.json#/rows/2/state",
           "results/v69-quant-confirm/compare.json#/rows/2/config",
+          "results/v69-quant-confirm/compare.json#/rows/3/state",
           "results/v69-quant-confirm/compare.json#/rows/3/config",
+          "results/v69-quant-confirm/compare.json#/rows/4/state",
           "results/v69-quant-confirm/compare.json#/rows/4/config",
+          "results/v69-quant-confirm/compare.json#/rows/5/state",
           "results/v69-quant-confirm/compare.json#/rows/5/config",
+          "results/v69-quant-confirm/compare.json#/rows/6/state",
           "results/v69-quant-confirm/compare.json#/rows/6/config",
+          "results/v69-quant-confirm/compare.json#/rows/7/state",
           "results/v69-quant-confirm/compare.json#/rows/7/config",
+          "results/v69-quant-confirm/compare.json#/rows/8/state",
           "results/v69-quant-confirm/compare.json#/rows/8/config",
+          "results/v69-quant-confirm/compare.json#/rows/9/state",
           "results/v69-quant-confirm/compare.json#/rows/9/config",
+          "results/v69-quant-confirm/compare.json#/rows/10/state",
           "results/v69-quant-confirm/compare.json#/rows/10/config",
+          "results/v69-quant-confirm/compare.json#/rows/11/state",
           "results/v69-quant-confirm/compare.json#/rows/11/config",
+          "results/v69-quant-confirm/compare.json#/rows/12/state",
           "results/v69-quant-confirm/compare.json#/rows/12/config",
+          "results/v69-quant-confirm/compare.json#/rows/13/state",
           "results/v69-quant-confirm/compare.json#/rows/13/config",
+          "results/v69-quant-confirm/compare.json#/rows/14/state",
           "results/v69-quant-confirm/compare.json#/rows/14/config",
+          "results/v69-quant-confirm/compare.json#/rows/15/state",
           "results/v69-quant-confirm/compare.json#/rows/15/config",
+          "results/v69-quant-confirm/compare.json#/rows/16/state",
           "results/v69-quant-confirm/compare.json#/rows/16/config",
+          "results/v69-quant-confirm/compare.json#/rows/17/state",
           "results/v69-quant-confirm/compare.json#/rows/17/config",
+          "results/v69-quant-confirm/compare.json#/rows/18/state",
           "results/v69-quant-confirm/compare.json#/rows/18/config",
+          "results/v69-quant-confirm/compare.json#/rows/19/state",
           "results/v69-quant-confirm/compare.json#/rows/19/config",
+          "results/v69-quant-confirm/compare.json#/rows/20/state",
           "results/v69-quant-confirm/compare.json#/rows/20/config",
+          "results/v69-quant-confirm/compare.json#/rows/21/state",
           "results/v69-quant-confirm/compare.json#/rows/21/config",
+          "results/v69-quant-confirm/compare.json#/rows/22/state",
           "results/v69-quant-confirm/compare.json#/rows/22/config",
+          "results/v69-quant-confirm/compare.json#/rows/23/state",
           "results/v69-quant-confirm/compare.json#/rows/23/config",
+          "results/v69-quant-confirm/compare.json#/rows/24/state",
           "results/v69-quant-confirm/compare.json#/rows/24/config",
+          "results/v69-quant-confirm/compare.json#/rows/25/state",
           "results/v69-quant-confirm/compare.json#/rows/25/config",
+          "results/v69-quant-confirm/compare.json#/rows/26/state",
           "results/v69-quant-confirm/compare.json#/rows/26/config",
+          "results/v69-quant-confirm/compare.json#/rows/27/state",
           "results/v69-quant-confirm/compare.json#/rows/27/config",
+          "results/v69-quant-confirm/compare.json#/rows/28/state",
           "results/v69-quant-confirm/compare.json#/rows/28/config",
+          "results/v69-quant-confirm/compare.json#/rows/29/state",
           "results/v69-quant-confirm/compare.json#/rows/29/config",
+          "results/v69-quant-confirm/compare.json#/rows/30/state",
           "results/v69-quant-confirm/compare.json#/rows/30/config",
+          "results/v69-quant-confirm/compare.json#/rows/31/state",
           "results/v69-quant-confirm/compare.json#/rows/31/config",
+          "results/v69-quant-confirm/compare.json#/rows/32/state",
           "results/v69-quant-confirm/compare.json#/rows/32/config",
+          "results/v69-quant-confirm/compare.json#/rows/33/state",
           "results/v69-quant-confirm/compare.json#/rows/33/config",
+          "results/v69-quant-confirm/compare.json#/rows/34/state",
           "results/v69-quant-confirm/compare.json#/rows/34/config",
+          "results/v69-quant-confirm/compare.json#/rows/35/state",
           "results/v69-quant-confirm/compare.json#/rows/35/config"
         ],
         "op": "label",
         "format": null,
-        "label": "bits 3-5, groups 32 and 512",
+        "label": "410M/1.4B; bits 3-5, groups 32/512",
         "expected": [
+          "pythia-410m@step143000",
           "b3_g32",
+          "pythia-410m@step143000",
           "b3_g32",
+          "pythia-410m@step143000",
           "b3_g32",
+          "pythia-410m@step143000",
           "b3_g512",
+          "pythia-410m@step143000",
           "b3_g512",
+          "pythia-410m@step143000",
           "b3_g512",
+          "pythia-410m@step143000",
           "b4_g32",
+          "pythia-410m@step143000",
           "b4_g32",
+          "pythia-410m@step143000",
           "b4_g32",
+          "pythia-410m@step143000",
           "b4_g512",
+          "pythia-410m@step143000",
           "b4_g512",
+          "pythia-410m@step143000",
           "b4_g512",
+          "pythia-410m@step143000",
           "b5_g32",
+          "pythia-410m@step143000",
           "b5_g32",
+          "pythia-410m@step143000",
           "b5_g32",
+          "pythia-410m@step143000",
           "b5_g512",
+          "pythia-410m@step143000",
           "b5_g512",
+          "pythia-410m@step143000",
           "b5_g512",
+          "pythia-1.4b@step16000",
           "b3_g32",
+          "pythia-1.4b@step16000",
           "b3_g32",
+          "pythia-1.4b@step16000",
           "b3_g32",
+          "pythia-1.4b@step16000",
           "b3_g512",
+          "pythia-1.4b@step16000",
           "b3_g512",
+          "pythia-1.4b@step16000",
           "b3_g512",
+          "pythia-1.4b@step16000",
           "b4_g32",
+          "pythia-1.4b@step16000",
           "b4_g32",
+          "pythia-1.4b@step16000",
           "b4_g32",
+          "pythia-1.4b@step16000",
           "b4_g512",
+          "pythia-1.4b@step16000",
           "b4_g512",
+          "pythia-1.4b@step16000",
           "b4_g512",
+          "pythia-1.4b@step16000",
           "b5_g32",
+          "pythia-1.4b@step16000",
           "b5_g32",
+          "pythia-1.4b@step16000",
           "b5_g32",
+          "pythia-1.4b@step16000",
           "b5_g512",
+          "pythia-1.4b@step16000",
           "b5_g512",
+          "pythia-1.4b@step16000",
           "b5_g512"
         ]
-      },
-      "; training probes"
+      }
     ],
     "context": [],
     "note": "",
-    "rendered": "Pythia 410M at step 143k and 1.4B at step 16k; bits 3-5, groups 32 and 512; training probes"
+    "rendered": "410M/1.4B; bits 3-5, groups 32/512"
   },
   {
     "row": 3,
-    "column": 4,
+    "column": 3,
     "parts": [
       "math ",
       {
@@ -1011,16 +953,15 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
   },
   {
     "row": 3,
-    "column": 5,
+    "column": 4,
     "parts": [
-      "math: ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math"
         ],
         "op": "label",
         "format": null,
-        "label": "bilinear in (bits, log group size)",
+        "label": "bilin",
         "expected": [
           {
             "n": 54,
@@ -1038,60 +979,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
           }
         ]
       },
-      "; ",
-      "code: ",
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/loso/scores/zero/code"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "zero change",
-        "expected": [
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.5143543829067956,
-              "pythia-1.4b@step16000": 0.10937458732799844,
-              "pythia-160m@step143000": 6.2735256054723605,
-              "pythia-160m@step16000": 0.3426432136914666,
-              "pythia-410m@step143000": 1.110008451522595,
-              "pythia-410m@step16000": 0.19481419855795895
-            },
-            "macro_mae": 1.4241200732465291,
-            "mae": 1.4241200732465291
-          }
-        ]
-      },
-      "; ",
-      "QA: ",
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/loso/scores/median/qa"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "per-configuration development median",
-        "expected": [
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.16258053443177,
-              "pythia-1.4b@step16000": 0.2355005016899031,
-              "pythia-160m@step143000": 6.541049456062526,
-              "pythia-160m@step16000": 0.09769750739332464,
-              "pythia-410m@step143000": 0.7294274133924797,
-              "pythia-410m@step16000": 0.15231569497253902
-            },
-            "macro_mae": 1.319761851323757,
-            "mae": 1.3197618513237568
-          }
-        ]
-      },
-      "\n",
-      "math ",
+      " ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/rows/0/absolute_errors/bilinear",
@@ -1111,7 +999,31 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "format": ".2f"
       },
       " / ",
-      "code ",
+      {
+        "sources": [
+          "results/v69-quant-confirm/develop.json#/loso/scores/zero/code"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "zero",
+        "expected": [
+          {
+            "n": 54,
+            "n_states": 6,
+            "state_mae": {
+              "pythia-1.4b@step143000": 0.5143543829067956,
+              "pythia-1.4b@step16000": 0.10937458732799844,
+              "pythia-160m@step143000": 6.2735256054723605,
+              "pythia-160m@step16000": 0.3426432136914666,
+              "pythia-410m@step143000": 1.110008451522595,
+              "pythia-410m@step16000": 0.19481419855795895
+            },
+            "macro_mae": 1.4241200732465291,
+            "mae": 1.4241200732465291
+          }
+        ]
+      },
+      " ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/rows/1/absolute_errors/zero",
@@ -1131,7 +1043,31 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "format": ".2f"
       },
       " / ",
-      "QA ",
+      {
+        "sources": [
+          "results/v69-quant-confirm/develop.json#/loso/scores/median/qa"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "med",
+        "expected": [
+          {
+            "n": 54,
+            "n_states": 6,
+            "state_mae": {
+              "pythia-1.4b@step143000": 0.16258053443177,
+              "pythia-1.4b@step16000": 0.2355005016899031,
+              "pythia-160m@step143000": 6.541049456062526,
+              "pythia-160m@step16000": 0.09769750739332464,
+              "pythia-410m@step143000": 0.7294274133924797,
+              "pythia-410m@step16000": 0.15231569497253902
+            },
+            "macro_mae": 1.319761851323757,
+            "mae": 1.3197618513237568
+          }
+        ]
+      },
+      " ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/rows/2/absolute_errors/median",
@@ -1155,11 +1091,11 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v69-quant-confirm/develop.json#/loso/scores"
     ],
     "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability.",
-    "rendered": "math: bilinear in (bits, log group size); code: zero change; QA: per-configuration devel\\-opment median\\newline math 0.33 / code 0.68 / QA 0.46"
+    "rendered": "bilin 0.33 / zero 0.68 / med 0.46"
   },
   {
     "row": 3,
-    "column": 6,
+    "column": 5,
     "parts": [
       "frozen prediction"
     ],
@@ -1173,7 +1109,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "row": 4,
     "column": 0,
     "parts": [
-      "Quantization: new state"
+      "Quant: state"
     ],
     "context": [
       "results/v69-quant-confirm/compare.json#/rows/36/test_set",
@@ -1205,20 +1141,20 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v69-quant-confirm/compare.json#/rows/62/test_set"
     ],
     "note": "",
-    "rendered": "Quanti\\-zation: new state"
+    "rendered": "Quant: state"
   },
   {
     "row": 4,
     "column": 1,
     "parts": [
-      "math ",
+      "math: ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/selected/math/candidate"
         ],
         "op": "label",
         "format": null,
-        "label": "quadratic surface in (bits, log group size) with source amplitude",
+        "label": "$\\phi^\\top Q_c$",
         "expected": [
           "low_order_2d"
         ]
@@ -1233,14 +1169,14 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       },
       ")",
       "; ",
-      "code ",
+      "code: ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/selected/code/candidate"
         ],
         "op": "label",
         "format": null,
-        "label": "per-configuration development median",
+        "label": "$m_c(b,g)$",
         "expected": [
           "median"
         ]
@@ -1255,14 +1191,14 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       },
       ")",
       "; ",
-      "QA ",
+      "QA: ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/selected/qa/candidate"
         ],
         "op": "label",
         "format": null,
-        "label": "zero change",
+        "label": "$0$",
         "expected": [
           "zero"
         ]
@@ -1279,164 +1215,142 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [
       "results/v55-quant-group/register.json#/candidate_definitions/low_order_2d",
-      "results/v69-quant-confirm/develop.json#/models"
+      "results/v69-quant-confirm/develop.json#/models",
+      "results/v69-quant-confirm/develop.json#/feature_names",
+      "results/v69-quant-confirm/develop.json#/dev_configs"
     ],
     "note": "Surface is phi.[a0+a1*u+a2*v+a3*u*v+a4*u^2]; median is per configuration; zero is identically zero.",
-    "rendered": "math quadratic surface in (bits, log group size) with source amplitude (20); code per-configuration devel\\-opment median (9); QA zero change (0)"
+    "rendered": "math: $\\phi^\\top Q_c$ (20); code: $m_c(b,g)$ (9); QA: $0$ (0)"
   },
   {
     "row": 4,
     "column": 2,
     "parts": [
-      "$\\mathbf x$; bits, group size"
-    ],
-    "context": [
-      "results/v69-quant-confirm/develop.json#/feature_names",
-      "results/v69-quant-confirm/develop.json#/dev_configs"
-    ],
-    "note": "",
-    "rendered": "$\\mathbf x$; bits, group size"
-  },
-  {
-    "row": 4,
-    "column": 3,
-    "parts": [
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/rows/36/state",
-          "results/v69-quant-confirm/compare.json#/rows/37/state",
-          "results/v69-quant-confirm/compare.json#/rows/38/state",
-          "results/v69-quant-confirm/compare.json#/rows/39/state",
-          "results/v69-quant-confirm/compare.json#/rows/40/state",
-          "results/v69-quant-confirm/compare.json#/rows/41/state",
-          "results/v69-quant-confirm/compare.json#/rows/42/state",
-          "results/v69-quant-confirm/compare.json#/rows/43/state",
-          "results/v69-quant-confirm/compare.json#/rows/44/state",
-          "results/v69-quant-confirm/compare.json#/rows/45/state",
-          "results/v69-quant-confirm/compare.json#/rows/46/state",
-          "results/v69-quant-confirm/compare.json#/rows/47/state",
-          "results/v69-quant-confirm/compare.json#/rows/48/state",
-          "results/v69-quant-confirm/compare.json#/rows/49/state",
-          "results/v69-quant-confirm/compare.json#/rows/50/state",
-          "results/v69-quant-confirm/compare.json#/rows/51/state",
-          "results/v69-quant-confirm/compare.json#/rows/52/state",
-          "results/v69-quant-confirm/compare.json#/rows/53/state",
-          "results/v69-quant-confirm/compare.json#/rows/54/state",
-          "results/v69-quant-confirm/compare.json#/rows/55/state",
-          "results/v69-quant-confirm/compare.json#/rows/56/state",
-          "results/v69-quant-confirm/compare.json#/rows/57/state",
-          "results/v69-quant-confirm/compare.json#/rows/58/state",
-          "results/v69-quant-confirm/compare.json#/rows/59/state",
-          "results/v69-quant-confirm/compare.json#/rows/60/state",
-          "results/v69-quant-confirm/compare.json#/rows/61/state",
-          "results/v69-quant-confirm/compare.json#/rows/62/state"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Pythia 1.4B at step 112k",
-        "expected": [
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000",
-          "pythia-1.4b@step112000"
-        ]
-      },
-      "; ",
-      {
-        "sources": [
           "results/v69-quant-confirm/compare.json#/rows/36/config",
+          "results/v69-quant-confirm/compare.json#/rows/37/state",
           "results/v69-quant-confirm/compare.json#/rows/37/config",
+          "results/v69-quant-confirm/compare.json#/rows/38/state",
           "results/v69-quant-confirm/compare.json#/rows/38/config",
+          "results/v69-quant-confirm/compare.json#/rows/39/state",
           "results/v69-quant-confirm/compare.json#/rows/39/config",
+          "results/v69-quant-confirm/compare.json#/rows/40/state",
           "results/v69-quant-confirm/compare.json#/rows/40/config",
+          "results/v69-quant-confirm/compare.json#/rows/41/state",
           "results/v69-quant-confirm/compare.json#/rows/41/config",
+          "results/v69-quant-confirm/compare.json#/rows/42/state",
           "results/v69-quant-confirm/compare.json#/rows/42/config",
+          "results/v69-quant-confirm/compare.json#/rows/43/state",
           "results/v69-quant-confirm/compare.json#/rows/43/config",
+          "results/v69-quant-confirm/compare.json#/rows/44/state",
           "results/v69-quant-confirm/compare.json#/rows/44/config",
+          "results/v69-quant-confirm/compare.json#/rows/45/state",
           "results/v69-quant-confirm/compare.json#/rows/45/config",
+          "results/v69-quant-confirm/compare.json#/rows/46/state",
           "results/v69-quant-confirm/compare.json#/rows/46/config",
+          "results/v69-quant-confirm/compare.json#/rows/47/state",
           "results/v69-quant-confirm/compare.json#/rows/47/config",
+          "results/v69-quant-confirm/compare.json#/rows/48/state",
           "results/v69-quant-confirm/compare.json#/rows/48/config",
+          "results/v69-quant-confirm/compare.json#/rows/49/state",
           "results/v69-quant-confirm/compare.json#/rows/49/config",
+          "results/v69-quant-confirm/compare.json#/rows/50/state",
           "results/v69-quant-confirm/compare.json#/rows/50/config",
+          "results/v69-quant-confirm/compare.json#/rows/51/state",
           "results/v69-quant-confirm/compare.json#/rows/51/config",
+          "results/v69-quant-confirm/compare.json#/rows/52/state",
           "results/v69-quant-confirm/compare.json#/rows/52/config",
+          "results/v69-quant-confirm/compare.json#/rows/53/state",
           "results/v69-quant-confirm/compare.json#/rows/53/config",
+          "results/v69-quant-confirm/compare.json#/rows/54/state",
           "results/v69-quant-confirm/compare.json#/rows/54/config",
+          "results/v69-quant-confirm/compare.json#/rows/55/state",
           "results/v69-quant-confirm/compare.json#/rows/55/config",
+          "results/v69-quant-confirm/compare.json#/rows/56/state",
           "results/v69-quant-confirm/compare.json#/rows/56/config",
+          "results/v69-quant-confirm/compare.json#/rows/57/state",
           "results/v69-quant-confirm/compare.json#/rows/57/config",
+          "results/v69-quant-confirm/compare.json#/rows/58/state",
           "results/v69-quant-confirm/compare.json#/rows/58/config",
+          "results/v69-quant-confirm/compare.json#/rows/59/state",
           "results/v69-quant-confirm/compare.json#/rows/59/config",
+          "results/v69-quant-confirm/compare.json#/rows/60/state",
           "results/v69-quant-confirm/compare.json#/rows/60/config",
+          "results/v69-quant-confirm/compare.json#/rows/61/state",
           "results/v69-quant-confirm/compare.json#/rows/61/config",
+          "results/v69-quant-confirm/compare.json#/rows/62/state",
           "results/v69-quant-confirm/compare.json#/rows/62/config"
         ],
         "op": "label",
         "format": null,
-        "label": "bits 3-5, groups 32, 128 and 512",
+        "label": "1.4B, 112k; bits 3-5, groups 32/128/512",
         "expected": [
+          "pythia-1.4b@step112000",
           "b3_g32",
+          "pythia-1.4b@step112000",
           "b3_g32",
+          "pythia-1.4b@step112000",
           "b3_g32",
+          "pythia-1.4b@step112000",
           "b3_g512",
+          "pythia-1.4b@step112000",
           "b3_g512",
+          "pythia-1.4b@step112000",
           "b3_g512",
+          "pythia-1.4b@step112000",
           "b4_g32",
+          "pythia-1.4b@step112000",
           "b4_g32",
+          "pythia-1.4b@step112000",
           "b4_g32",
+          "pythia-1.4b@step112000",
           "b4_g512",
+          "pythia-1.4b@step112000",
           "b4_g512",
+          "pythia-1.4b@step112000",
           "b4_g512",
+          "pythia-1.4b@step112000",
           "b5_g32",
+          "pythia-1.4b@step112000",
           "b5_g32",
+          "pythia-1.4b@step112000",
           "b5_g32",
+          "pythia-1.4b@step112000",
           "b5_g512",
+          "pythia-1.4b@step112000",
           "b5_g512",
+          "pythia-1.4b@step112000",
           "b5_g512",
+          "pythia-1.4b@step112000",
           "b3_g128",
+          "pythia-1.4b@step112000",
           "b3_g128",
+          "pythia-1.4b@step112000",
           "b3_g128",
+          "pythia-1.4b@step112000",
           "b4_g128",
+          "pythia-1.4b@step112000",
           "b4_g128",
+          "pythia-1.4b@step112000",
           "b4_g128",
+          "pythia-1.4b@step112000",
           "b5_g128",
+          "pythia-1.4b@step112000",
           "b5_g128",
+          "pythia-1.4b@step112000",
           "b5_g128"
         ]
-      },
-      "; training probes"
+      }
     ],
     "context": [],
     "note": "",
-    "rendered": "Pythia 1.4B at step 112k; bits 3-5, groups 32, 128 and 512; training probes"
+    "rendered": "1.4B, 112k; bits 3-5, groups 32/128/512"
   },
   {
     "row": 4,
-    "column": 4,
+    "column": 3,
     "parts": [
       "math ",
       {
@@ -1495,16 +1409,15 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
   },
   {
     "row": 4,
-    "column": 5,
+    "column": 4,
     "parts": [
-      "math: ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math"
         ],
         "op": "label",
         "format": null,
-        "label": "bilinear in (bits, log group size)",
+        "label": "bilin",
         "expected": [
           {
             "n": 54,
@@ -1522,15 +1435,30 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
           }
         ]
       },
-      "; ",
-      "code: ",
+      " ",
+      {
+        "sources": [
+          "results/v69-quant-confirm/compare.json#/rows/36/absolute_errors/bilinear",
+          "results/v69-quant-confirm/compare.json#/rows/39/absolute_errors/bilinear",
+          "results/v69-quant-confirm/compare.json#/rows/42/absolute_errors/bilinear",
+          "results/v69-quant-confirm/compare.json#/rows/45/absolute_errors/bilinear",
+          "results/v69-quant-confirm/compare.json#/rows/48/absolute_errors/bilinear",
+          "results/v69-quant-confirm/compare.json#/rows/51/absolute_errors/bilinear",
+          "results/v69-quant-confirm/compare.json#/rows/54/absolute_errors/bilinear",
+          "results/v69-quant-confirm/compare.json#/rows/57/absolute_errors/bilinear",
+          "results/v69-quant-confirm/compare.json#/rows/60/absolute_errors/bilinear"
+        ],
+        "op": "mean",
+        "format": ".2f"
+      },
+      " / ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/loso/scores/zero/code"
         ],
         "op": "label",
         "format": null,
-        "label": "zero change",
+        "label": "zero",
         "expected": [
           {
             "n": 54,
@@ -1548,15 +1476,30 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
           }
         ]
       },
-      "; ",
-      "QA: ",
+      " ",
+      {
+        "sources": [
+          "results/v69-quant-confirm/compare.json#/rows/37/absolute_errors/zero",
+          "results/v69-quant-confirm/compare.json#/rows/40/absolute_errors/zero",
+          "results/v69-quant-confirm/compare.json#/rows/43/absolute_errors/zero",
+          "results/v69-quant-confirm/compare.json#/rows/46/absolute_errors/zero",
+          "results/v69-quant-confirm/compare.json#/rows/49/absolute_errors/zero",
+          "results/v69-quant-confirm/compare.json#/rows/52/absolute_errors/zero",
+          "results/v69-quant-confirm/compare.json#/rows/55/absolute_errors/zero",
+          "results/v69-quant-confirm/compare.json#/rows/58/absolute_errors/zero",
+          "results/v69-quant-confirm/compare.json#/rows/61/absolute_errors/zero"
+        ],
+        "op": "mean",
+        "format": ".2f"
+      },
+      " / ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/loso/scores/median/qa"
         ],
         "op": "label",
         "format": null,
-        "label": "per-configuration development median",
+        "label": "med",
         "expected": [
           {
             "n": 54,
@@ -1574,42 +1517,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
           }
         ]
       },
-      "\n",
-      "math ",
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/rows/36/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/39/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/42/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/45/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/48/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/51/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/54/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/57/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/60/absolute_errors/bilinear"
-        ],
-        "op": "mean",
-        "format": ".2f"
-      },
-      " / ",
-      "code ",
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/rows/37/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/40/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/43/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/46/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/49/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/52/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/55/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/58/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/61/absolute_errors/zero"
-        ],
-        "op": "mean",
-        "format": ".2f"
-      },
-      " / ",
-      "QA ",
+      " ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/rows/38/absolute_errors/median",
@@ -1630,11 +1538,11 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v69-quant-confirm/develop.json#/loso/scores"
     ],
     "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability.",
-    "rendered": "math: bilinear in (bits, log group size); code: zero change; QA: per-configuration devel\\-opment median\\newline math 0.35 / code 0.56 / QA 0.14"
+    "rendered": "bilin 0.35 / zero 0.56 / med 0.14"
   },
   {
     "row": 4,
-    "column": 6,
+    "column": 5,
     "parts": [
       "frozen prediction"
     ],
@@ -1648,7 +1556,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "row": 5,
     "column": 0,
     "parts": [
-      "Distillation: budget response"
+      "Distill: budget"
     ],
     "context": [
       "results/a2-curvature-interaction/summary.json#/decision_table/18/target",
@@ -1656,46 +1564,21 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/a2-curvature-interaction/summary.json#/decision_table/54/target"
     ],
     "note": "",
-    "rendered": "Distillation: budget response"
+    "rendered": "Distill: budget"
   },
   {
     "row": 5,
     "column": 1,
     "parts": [
-      "Fold-selected ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/protocol/structures/F_log"
         ],
         "op": "label",
         "format": null,
-        "label": "additive log",
+        "label": "$Au+Bv$",
         "expected": [
           "(a+a_prime*z)*u+(b+b_prime*z)*v"
-        ]
-      },
-      " / ",
-      {
-        "sources": [
-          "results/a2-curvature-interaction/summary.json#/protocol/structures/F_curv"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "curved",
-        "expected": [
-          "(a+a_prime*z)*u+(b+b_prime*z)*h_p(E)"
-        ]
-      },
-      " / ",
-      {
-        "sources": [
-          "results/a2-curvature-interaction/summary.json#/protocol/structures/F_int"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "interaction forms",
-        "expected": [
-          "(a+a_prime*z)*u+(b+b_prime*z)*v+k*u*v"
         ]
       },
       " (",
@@ -1706,7 +1589,19 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": null
       },
-      "/",
+      "); ",
+      {
+        "sources": [
+          "results/a2-curvature-interaction/summary.json#/protocol/structures/F_curv"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "$Au+Bh_p(E)$",
+        "expected": [
+          "(a+a_prime*z)*u+(b+b_prime*z)*h_p(E)"
+        ]
+      },
+      " (",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/nominal_parameters"
@@ -1714,7 +1609,19 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": null
       },
-      "/",
+      "); ",
+      {
+        "sources": [
+          "results/a2-curvature-interaction/summary.json#/protocol/structures/F_int"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "$Au+Bv+kuv$",
+        "expected": [
+          "(a+a_prime*z)*u+(b+b_prime*z)*v+k*u*v"
+        ]
+      },
+      " (",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_int/fit/nominal_parameters"
@@ -1725,56 +1632,34 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       ")"
     ],
     "context": [
-      "results/a2-curvature-interaction/summary.json#/protocol/structures"
+      "results/a2-curvature-interaction/summary.json#/protocol/structures",
+      "results/a2-curvature-interaction/summary.json#/protocol/descriptors",
+      "results/a2-curvature-interaction/summary.json#/protocol/descriptor_calibration_cost"
     ],
-    "note": "Forms and parameter counts are per structure, not summed over folds.",
-    "rendered": "Fold-selected additive log / curved / interaction forms (4/5/5)"
+    "note": "Fold-selected forms; A=a+a_prime*z and B=b+b_prime*z. Counts are per structure, not summed over folds.",
+    "rendered": "$Au+Bv$ (4); $Au+Bh_p(E)$ (5); $Au+Bv+kuv$ (5)"
   },
   {
     "row": 5,
     "column": 2,
     "parts": [
-      "Budget, reuse; size or initial loss"
-    ],
-    "context": [
-      "results/a2-curvature-interaction/summary.json#/protocol/descriptors",
-      "results/a2-curvature-interaction/summary.json#/protocol/descriptor_calibration_cost"
-    ],
-    "note": "",
-    "rendered": "Budget, reuse; size or initial loss"
-  },
-  {
-    "row": 5,
-    "column": 3,
-    "parts": [
       {
         "sources": [
-          "results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_log/fit/standardizer/students"
+          "results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_log/fit/standardizer/students",
+          "results/a2-curvature-interaction/summary.json#/protocol/largest_budget"
         ],
         "op": "label",
         "format": null,
-        "label": "Gemma 3: 270M, 1B and 4B",
+        "label": "three students; budgets at least 150k held out",
         "expected": [
           [
             "gemma3-1b",
             "gemma3-270m",
             "gemma3-4b"
-          ]
-        ]
-      },
-      "; ",
-      {
-        "sources": [
-          "results/a2-curvature-interaction/summary.json#/protocol/largest_budget"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "budgets at least 150k tokens held out",
-        "expected": [
+          ],
           "All T>=150000 withheld; fit only T<150000. QA scope has only final positive checkpoints and is unscorable here."
         ]
-      },
-      "; training probes"
+      }
     ],
     "context": [
       "results/a2-curvature-interaction/summary.json#/decision_table/18/distribution",
@@ -1782,11 +1667,11 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/a2-curvature-interaction/summary.json#/decision_table/54/distribution"
     ],
     "note": "Only the training-probe rows whose MAEs are printed here; fresh-sample QA rows are not pooled or advertised.",
-    "rendered": "Gemma 3: 270M, 1B and 4B; budgets at least 150k tokens held out; training probes"
+    "rendered": "three students; budgets at least 150k held out"
   },
   {
     "row": 5,
-    "column": 4,
+    "column": 3,
     "parts": [
       "math ",
       {
@@ -1796,27 +1681,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
-      "code ",
-      {
-        "sources": [
-          "results/a2-curvature-interaction/summary.json#/decision_table/6/primary_mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      " / ",
-      "QA ",
-      {
-        "sources": [
-          "results/a2-curvature-interaction/summary.json#/decision_table/54/primary_mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      "\nStored MAE intervals: ",
-      "math ",
-      "[",
+      " [",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/18/primary_mae_interval/0"
@@ -1824,7 +1689,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      ", ",
+      ",",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/18/primary_mae_interval/1"
@@ -1835,7 +1700,14 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "]",
       " / ",
       "code ",
-      "[",
+      {
+        "sources": [
+          "results/a2-curvature-interaction/summary.json#/decision_table/6/primary_mae"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      " [",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/6/primary_mae_interval/0"
@@ -1843,7 +1715,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      ", ",
+      ",",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/6/primary_mae_interval/1"
@@ -1854,7 +1726,14 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "]",
       " / ",
       "QA ",
-      "[",
+      {
+        "sources": [
+          "results/a2-curvature-interaction/summary.json#/decision_table/54/primary_mae"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      " [",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/54/primary_mae_interval/0"
@@ -1862,7 +1741,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      ", ",
+      ",",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/54/primary_mae_interval/1"
@@ -1874,35 +1753,26 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "Training-probe MAEs; reuse is the recorded tolerance proxy, not an exact intervention. Intervals conditional on frozen fold predictions.",
-    "rendered": "math 0.07 / code 0.07 / QA 2.18\\newline Stored MAE intervals: math [0.05, 0.11] / code [0.05, 0.09] / QA [1.68, 2.88]"
+    "rendered": "math 0.07 [0.05,0.11] / code 0.07 [0.05,0.09] / QA 2.18 [1.68,2.88]"
   },
   {
     "row": 5,
-    "column": 5,
+    "column": 4,
     "parts": [
       {
         "sources": [
-          "results/a2-curvature-interaction/summary.json#/decision_table/18/inner_selected_baselines",
-          "results/a2-curvature-interaction/summary.json#/decision_table/6/inner_selected_baselines",
-          "results/a2-curvature-interaction/summary.json#/decision_table/54/inner_selected_baselines"
+          "results/a2-curvature-interaction/summary.json#/decision_table/18/inner_selected_baselines"
         ],
         "op": "label",
         "format": null,
-        "label": "constant",
+        "label": "const",
         "expected": [
-          {
-            "constant": 34
-          },
-          {
-            "constant": 34
-          },
           {
             "constant": 34
           }
         ]
       },
-      "\n",
-      "math ",
+      " ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/18/baseline_mae"
@@ -1911,7 +1781,20 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "format": ".2f"
       },
       " / ",
-      "code ",
+      {
+        "sources": [
+          "results/a2-curvature-interaction/summary.json#/decision_table/6/inner_selected_baselines"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "const",
+        "expected": [
+          {
+            "constant": 34
+          }
+        ]
+      },
+      " ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/6/baseline_mae"
@@ -1920,7 +1803,20 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "format": ".2f"
       },
       " / ",
-      "QA ",
+      {
+        "sources": [
+          "results/a2-curvature-interaction/summary.json#/decision_table/54/inner_selected_baselines"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "const",
+        "expected": [
+          {
+            "constant": 34
+          }
+        ]
+      },
+      " ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/54/baseline_mae"
@@ -1931,11 +1827,11 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "Inner-development-selected baselines. Never strongest_observed_baseline or strongest_baseline_mae.",
-    "rendered": "constant\\newline math 0.09 / code 0.11 / QA 1.44"
+    "rendered": "const 0.09 / const 0.11 / const 1.44"
   },
   {
     "row": 5,
-    "column": 6,
+    "column": 5,
     "parts": [
       "development"
     ],
@@ -1950,7 +1846,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "row": 6,
     "column": 0,
     "parts": [
-      "Distillation: data-reuse response"
+      "Distill: reuse"
     ],
     "context": [
       "results/a2-curvature-interaction/summary.json#/decision_table/14/target",
@@ -1958,46 +1854,21 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/a2-curvature-interaction/summary.json#/decision_table/50/target"
     ],
     "note": "",
-    "rendered": "Distillation: data-reuse response"
+    "rendered": "Distill: reuse"
   },
   {
     "row": 6,
     "column": 1,
     "parts": [
-      "Fold-selected ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/protocol/structures/F_log"
         ],
         "op": "label",
         "format": null,
-        "label": "additive log",
+        "label": "$Au+Bv$",
         "expected": [
           "(a+a_prime*z)*u+(b+b_prime*z)*v"
-        ]
-      },
-      " / ",
-      {
-        "sources": [
-          "results/a2-curvature-interaction/summary.json#/protocol/structures/F_curv"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "curved",
-        "expected": [
-          "(a+a_prime*z)*u+(b+b_prime*z)*h_p(E)"
-        ]
-      },
-      " / ",
-      {
-        "sources": [
-          "results/a2-curvature-interaction/summary.json#/protocol/structures/F_int"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "interaction forms",
-        "expected": [
-          "(a+a_prime*z)*u+(b+b_prime*z)*v+k*u*v"
         ]
       },
       " (",
@@ -2008,7 +1879,19 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": null
       },
-      "/",
+      "); ",
+      {
+        "sources": [
+          "results/a2-curvature-interaction/summary.json#/protocol/structures/F_curv"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "$Au+Bh_p(E)$",
+        "expected": [
+          "(a+a_prime*z)*u+(b+b_prime*z)*h_p(E)"
+        ]
+      },
+      " (",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/nominal_parameters"
@@ -2016,7 +1899,19 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": null
       },
-      "/",
+      "); ",
+      {
+        "sources": [
+          "results/a2-curvature-interaction/summary.json#/protocol/structures/F_int"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "$Au+Bv+kuv$",
+        "expected": [
+          "(a+a_prime*z)*u+(b+b_prime*z)*v+k*u*v"
+        ]
+      },
+      " (",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_int/fit/nominal_parameters"
@@ -2027,56 +1922,34 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       ")"
     ],
     "context": [
-      "results/a2-curvature-interaction/summary.json#/protocol/structures"
+      "results/a2-curvature-interaction/summary.json#/protocol/structures",
+      "results/a2-curvature-interaction/summary.json#/protocol/descriptors",
+      "results/a2-curvature-interaction/summary.json#/protocol/descriptor_calibration_cost"
     ],
-    "note": "Forms and parameter counts are per structure, not summed over folds.",
-    "rendered": "Fold-selected additive log / curved / interaction forms (4/5/5)"
+    "note": "Fold-selected forms; A=a+a_prime*z and B=b+b_prime*z. Counts are per structure, not summed over folds.",
+    "rendered": "$Au+Bv$ (4); $Au+Bh_p(E)$ (5); $Au+Bv+kuv$ (5)"
   },
   {
     "row": 6,
     "column": 2,
     "parts": [
-      "Budget, reuse; size or initial loss"
-    ],
-    "context": [
-      "results/a2-curvature-interaction/summary.json#/protocol/descriptors",
-      "results/a2-curvature-interaction/summary.json#/protocol/descriptor_calibration_cost"
-    ],
-    "note": "",
-    "rendered": "Budget, reuse; size or initial loss"
-  },
-  {
-    "row": 6,
-    "column": 3,
-    "parts": [
       {
         "sources": [
-          "results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/standardizer/students"
+          "results/a2-curvature-interaction/summary.json#/parameter_intervals/0/fits/F_curv/fit/standardizer/students",
+          "results/a2-curvature-interaction/summary.json#/protocol/I_U"
         ],
         "op": "label",
         "format": null,
-        "label": "Gemma 3: 270M, 1B and 4B",
+        "label": "three students; data-rung holdout, 1% budget-tolerance proxy",
         "expected": [
           [
             "gemma3-1b",
             "gemma3-270m",
             "gemma3-4b"
-          ]
-        ]
-      },
-      "; ",
-      {
-        "sources": [
-          "results/a2-curvature-interaction/summary.json#/protocol/I_U"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "data-rung holdout; 1% matched-budget tolerance proxy",
-        "expected": [
+          ],
           "Exact I_U has no observed positive matched-T pairs. Decision MAEs labelled 1% tolerance proxy use actual endpoints; fixed-T model predictions are stored but not scored against mismatched outcomes. 0.5%/5% separate sensitivity, never pooled."
         ]
-      },
-      "; training probes"
+      }
     ],
     "context": [
       "results/a2-curvature-interaction/summary.json#/decision_table/14/distribution",
@@ -2084,11 +1957,11 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/a2-curvature-interaction/summary.json#/decision_table/50/distribution"
     ],
     "note": "Only the training-probe rows whose MAEs are printed here; fresh-sample QA rows are not pooled or advertised.",
-    "rendered": "Gemma 3: 270M, 1B and 4B; data-rung holdout; 1\\% matched-budget tolerance proxy; training probes"
+    "rendered": "three students; data-rung holdout, 1\\% budget-tolerance proxy"
   },
   {
     "row": 6,
-    "column": 4,
+    "column": 3,
     "parts": [
       "math ",
       {
@@ -2098,27 +1971,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
-      "code ",
-      {
-        "sources": [
-          "results/a2-curvature-interaction/summary.json#/decision_table/2/primary_mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      " / ",
-      "QA ",
-      {
-        "sources": [
-          "results/a2-curvature-interaction/summary.json#/decision_table/50/primary_mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      "\nStored MAE intervals: ",
-      "math ",
-      "[",
+      " [",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/14/primary_mae_interval/0"
@@ -2126,7 +1979,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      ", ",
+      ",",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/14/primary_mae_interval/1"
@@ -2137,7 +1990,14 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "]",
       " / ",
       "code ",
-      "[",
+      {
+        "sources": [
+          "results/a2-curvature-interaction/summary.json#/decision_table/2/primary_mae"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      " [",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/2/primary_mae_interval/0"
@@ -2145,7 +2005,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      ", ",
+      ",",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/2/primary_mae_interval/1"
@@ -2156,7 +2016,14 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "]",
       " / ",
       "QA ",
-      "[",
+      {
+        "sources": [
+          "results/a2-curvature-interaction/summary.json#/decision_table/50/primary_mae"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      " [",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/50/primary_mae_interval/0"
@@ -2164,7 +2031,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      ", ",
+      ",",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/50/primary_mae_interval/1"
@@ -2172,25 +2039,23 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      "]",
-      "; exact fixed-budget response: not tested"
+      "]"
     ],
     "context": [],
     "note": "Training-probe MAEs; reuse is the recorded tolerance proxy, not an exact intervention. Intervals conditional on frozen fold predictions.",
-    "rendered": "math 0.08 / code 0.07 / QA 1.02\\newline Stored MAE intervals: math [0.05, 0.14] / code [0.04, 0.12] / QA [0.72, 1.34]; exact fixed-budget response: not tested"
+    "rendered": "math 0.08 [0.05,0.14] / code 0.07 [0.04,0.12] / QA 1.02 [0.72,1.34]"
   },
   {
     "row": 6,
-    "column": 5,
+    "column": 4,
     "parts": [
-      "math: ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/14/inner_selected_baselines"
         ],
         "op": "label",
         "format": null,
-        "label": "source surface, reuse only",
+        "label": "surf/E",
         "expected": [
           {
             "surface": 109,
@@ -2198,40 +2063,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
           }
         ]
       },
-      "; ",
-      "code: ",
-      {
-        "sources": [
-          "results/a2-curvature-interaction/summary.json#/decision_table/2/inner_selected_baselines"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "zero change, source surface, reuse only",
-        "expected": [
-          {
-            "zero": 38,
-            "surface": 71,
-            "reuse_only": 29
-          }
-        ]
-      },
-      "; ",
-      "QA: ",
-      {
-        "sources": [
-          "results/a2-curvature-interaction/summary.json#/decision_table/50/inner_selected_baselines"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "source surface",
-        "expected": [
-          {
-            "surface": 138
-          }
-        ]
-      },
-      "\n",
-      "math ",
+      " ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/14/baseline_mae"
@@ -2240,7 +2072,22 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "format": ".2f"
       },
       " / ",
-      "code ",
+      {
+        "sources": [
+          "results/a2-curvature-interaction/summary.json#/decision_table/2/inner_selected_baselines"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "zero/surf/E",
+        "expected": [
+          {
+            "zero": 38,
+            "surface": 71,
+            "reuse_only": 29
+          }
+        ]
+      },
+      " ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/2/baseline_mae"
@@ -2249,7 +2096,20 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "format": ".2f"
       },
       " / ",
-      "QA ",
+      {
+        "sources": [
+          "results/a2-curvature-interaction/summary.json#/decision_table/50/inner_selected_baselines"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "surf",
+        "expected": [
+          {
+            "surface": 138
+          }
+        ]
+      },
+      " ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/50/baseline_mae"
@@ -2260,11 +2120,11 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "Inner-development-selected baselines. Never strongest_observed_baseline or strongest_baseline_mae.",
-    "rendered": "math: source surface, reuse only; code: zero change, source surface, reuse only; QA: source surface\\newline math 0.08 / code 0.07 / QA 0.76"
+    "rendered": "surf/E 0.08 / zero/surf/E 0.07 / surf 0.76"
   },
   {
     "row": 6,
-    "column": 6,
+    "column": 5,
     "parts": [
       "development"
     ],
@@ -2279,19 +2139,19 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "row": 7,
     "column": 0,
     "parts": [
-      "Distillation: new pool"
+      "Distill: pool"
     ],
     "context": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/unused_U_assertion"
     ],
     "note": "",
-    "rendered": "Distillation: new pool"
+    "rendered": "Distill: pool"
   },
   {
     "row": 7,
     "column": 1,
     "parts": [
-      "math ",
+      "math: ",
       {
         "sources": [
           "results/v70-distill-confirm/freeze.json#/selected/math/method"
@@ -2313,7 +2173,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       },
       ")",
       "; ",
-      "code ",
+      "code: ",
       {
         "sources": [
           "results/v70-distill-confirm/freeze.json#/selected/code/method"
@@ -2335,7 +2195,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       },
       ")",
       "; ",
-      "QA ",
+      "QA: ",
       {
         "sources": [
           "results/v70-distill-confirm/freeze.json#/selected/qa/method"
@@ -2359,51 +2219,30 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [
       "results/v70-distill-confirm/freeze.json#/models",
-      "results/v70-distill-confirm/freeze.json#/reference_rule"
+      "results/v70-distill-confirm/freeze.json#/reference_rule",
+      "results/v70-distill-confirm/freeze.json#/prediction_rule"
     ],
     "note": "E and joint are the frozen V50/V70 design identifiers. E has one coefficient; joint has three coefficients on u, u*u, u*log(D_U/D_ref). T_star is null, not fitted, for these selected forms.",
-    "rendered": "math $a_c\\log(1+E)$ (1); code $a_c\\log(1+E)$ (1); QA $u(a+bu+qv)$ (3)"
+    "rendered": "math: $a_c\\log(1+E)$ (1); code: $a_c\\log(1+E)$ (1); QA: $u(a+bu+qv)$ (3)"
   },
   {
     "row": 7,
     "column": 2,
     "parts": [
-      "Planned supervised budget, pool completion tokens; fixed protocol"
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/prediction_rule",
-      "results/v70-distill-confirm/freeze.json#/reference_rule"
-    ],
-    "note": "",
-    "rendered": "Planned supervised budget, pool completion tokens; fixed protocol"
-  },
-  {
-    "row": 7,
-    "column": 3,
-    "parts": [
       {
         "sources": [
-          "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
+          "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
+          "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
+          "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
         ],
         "op": "label",
         "format": null,
-        "label": "Gemma 3: 270M and 1B",
+        "label": "270M/1B; six pools, 50k-200k tokens",
         "expected": [
           [
             "gemma3-270m",
             "gemma3-1b"
-          ]
-        ]
-      },
-      "; ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/freeze.json#/confirmation_register/pools"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "six new samples with 200 examples per domain",
-        "expected": [
+          ],
           {
             "U200_s31": {
               "U": 200,
@@ -2723,51 +2562,35 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
               "schedule_updates": 208,
               "planned_epochs": 6
             }
-          }
-        ]
-      },
-      "; ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "planned tokens 50k, 100k and 200k",
-        "expected": [
+          },
           [
             50000,
             100000,
             200000
           ]
         ]
-      },
-      "; training probes"
+      }
     ],
     "context": [],
     "note": "",
-    "rendered": "Gemma 3: 270M and 1B; six new samples with 200 examples per domain; planned tokens 50k, 100k and 200k; training probes"
+    "rendered": "270M/1B; six pools, 50k-200k tokens"
   },
   {
     "row": 7,
-    "column": 4,
+    "column": 3,
     "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/0/student"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "270M",
-        "expected": [
-          "gemma3-270m"
-        ]
-      },
-      ":\n",
       "math ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/0/candidate_mae"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      ",",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/3/candidate_mae"
         ],
         "op": "identity",
         "format": ".2f"
@@ -2781,38 +2604,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
-      "QA ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/2/candidate_mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/3/student"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "1B",
-        "expected": [
-          "gemma3-1b"
-        ]
-      },
-      ":\n",
-      "math ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/3/candidate_mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      " / ",
-      "code ",
+      ",",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/4/candidate_mae"
@@ -2824,61 +2616,44 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "QA ",
       {
         "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/2/candidate_mae"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      ",",
+      {
+        "sources": [
           "results/v70-distill-confirm/compare.json#/groups/5/candidate_mae"
         ],
         "op": "identity",
         "format": ".2f"
       }
     ],
-    "context": [],
-    "note": "",
-    "rendered": "270M:\\newline math 0.07 / code 0.02 / QA 0.51\\newline 1B:\\newline math 0.06 / code 0.05 / QA 0.46"
+    "context": [
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
+    ],
+    "note": "Comma-separated scores follow student order 270M, 1B; no student averaging.",
+    "rendered": "math 0.07,0.06 / code 0.02,0.05 / QA 0.51,0.46"
   },
   {
     "row": 7,
-    "column": 5,
+    "column": 4,
     "parts": [
       {
         "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/0/student"
+          "results/v70-distill-confirm/compare.json#/groups/0/strongest_baseline",
+          "results/v70-distill-confirm/compare.json#/groups/3/strongest_baseline"
         ],
         "op": "label",
         "format": null,
-        "label": "270M",
+        "label": "T/L",
         "expected": [
-          "gemma3-270m"
+          "T-only",
+          "surface:L0"
         ]
       },
-      ":\n",
-      "math: ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/0/strongest_baseline"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "budget only",
-        "expected": [
-          "T-only"
-        ]
-      },
-      "; ",
-      "code/QA: ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/1/strongest_baseline",
-          "results/v70-distill-confirm/compare.json#/groups/2/strongest_baseline"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "reuse only",
-        "expected": [
-          "E-only",
-          "E-only"
-        ]
-      },
-      "\n",
-      "math ",
+      " ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/0/baseline_mae"
@@ -2886,77 +2661,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
-      "code ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/1/baseline_mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      " / ",
-      "QA ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/2/baseline_mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/3/student"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "1B",
-        "expected": [
-          "gemma3-1b"
-        ]
-      },
-      ":\n",
-      "math: ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/3/strongest_baseline"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "initial-loss surface",
-        "expected": [
-          "surface:L0"
-        ]
-      },
-      "; ",
-      "code: ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/4/strongest_baseline"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "reuse only",
-        "expected": [
-          "E-only"
-        ]
-      },
-      "; ",
-      "QA: ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/5/strongest_baseline"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "size surface",
-        "expected": [
-          "surface:logN"
-        ]
-      },
-      "\n",
-      "math ",
+      ",",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/3/baseline_mae"
@@ -2965,7 +2670,28 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "format": ".2f"
       },
       " / ",
-      "code ",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/1/strongest_baseline",
+          "results/v70-distill-confirm/compare.json#/groups/4/strongest_baseline"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "E",
+        "expected": [
+          "E-only",
+          "E-only"
+        ]
+      },
+      " ",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/1/baseline_mae"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      ",",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/4/baseline_mae"
@@ -2974,7 +2700,28 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "format": ".2f"
       },
       " / ",
-      "QA ",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/2/strongest_baseline",
+          "results/v70-distill-confirm/compare.json#/groups/5/strongest_baseline"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "E/N",
+        "expected": [
+          "E-only",
+          "surface:logN"
+        ]
+      },
+      " ",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/2/baseline_mae"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      ",",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/5/baseline_mae"
@@ -2994,11 +2741,11 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v70-distill-confirm/compare.json#/groups/5/paired_difference"
     ],
     "note": "Only MAEs are printed. Stored paired_difference.ci95 estimates baseline-minus-candidate gain, not an MAE interval; it is not displayed in the MAE columns.",
-    "rendered": "270M:\\newline math: budget only; code/QA: reuse only\\newline math 0.07 / code 0.02 / QA 0.61\\newline 1B:\\newline math: initial-loss surface; code: reuse only; QA: size surface\\newline math 0.03 / code 0.05 / QA 0.45"
+    "rendered": "T/L 0.07,0.03 / E 0.02,0.05 / E/N 0.61,0.45"
   },
   {
     "row": 7,
-    "column": 6,
+    "column": 5,
     "parts": [
       "frozen prediction"
     ],
@@ -3010,6 +2757,49 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "rendered": "frozen prediction"
   }
 ]
+```
+
+## Caption recipe
+
+```json
+{
+  "parts": [
+    "Frozen-artifact MAEs (native-token nats; training probes). Inputs: source size, initial loss and pretraining tokens for source-conditioned forms; the configuration for all; distillation forms take supervised budget, pool size and reuse. ",
+    {
+      "sources": [
+        "results/v53-prune-dev/register.json#/candidate_definitions/power"
+      ],
+      "op": "label",
+      "format": null,
+      "label": "$r=(1-d)/0.3$; ",
+      "expected": [
+        "(beta.phi) * ((1-d)/0.3)**gamma"
+      ]
+    },
+    {
+      "sources": [
+        "results/v55-quant-group/register.json#/candidate_definitions/low_order_2d"
+      ],
+      "op": "label",
+      "format": null,
+      "label": "$Q_c=a+bu+cv+duv+eu^2$; ",
+      "expected": [
+        "phi.[a0 + a1*u + a2*v + a3*u*v + a4*u^2]; coefficients ordered by term then phi"
+      ]
+    },
+    "$m_c$ is the development median; $A,B$ are affine in the descriptor. Budget/reuse forms are fold-selected; counts are per capability. Baselines follow math/code/QA: A2=per-density regression, med=development median, bilin=bilinear, surf=response surface, const=constant, zero=zero change, E/T=E-only/T-only, L/N=loss/size surface. Pool pairs follow student order. Brackets are stored MAE intervals. Density holdout and exact fixed-budget reuse: not tested."
+  ],
+  "context": [
+    "results/v53-prune-dev/register.json#/feature_names",
+    "results/v55-quant-group/register.json#/feature_names",
+    "results/a2-curvature-interaction/summary.json#/protocol/descriptors",
+    "results/a2-curvature-interaction/summary.json#/protocol/structures",
+    "results/a2-curvature-interaction/summary.json#/protocol/I_U",
+    "results/v70-distill-confirm/freeze.json#/reference_rule"
+  ],
+  "note": "",
+  "rendered": "Frozen-artifact MAEs (native-token nats; training probes). Inputs: source size, initial loss and pretraining tokens for source-conditioned forms; the configuration for all; distillation forms take supervised budget, pool size and reuse. $r=(1-d)/0.3$; $Q_c=a+bu+cv+duv+eu^2$; $m_c$ is the devel\\-opment median; $A,B$ are affine in the descriptor. Budget/reuse forms are fold-selected; counts are per capability. Baselines follow math/code/QA: A2=per-density regression, med=devel\\-opment median, bilin=bilinear, surf=response surface, const=constant, zero=zero change, E/T=E-only/T-only, L/N=loss/size surface. Pool pairs follow student order. Brackets are stored MAE intervals. Density holdout and exact fixed-budget reuse: not tested."
+}
 ```
 
 ## Input hashes
