@@ -11,6 +11,7 @@ changes sign across density, so no scale of a shared curve represents it
 (Figs.~\ref{fig:heterogeneity} and \ref{fig:pythia_responses}).
 
 
+
 \begin{figure}[p]
 \centering
 \begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig8_a.pdf}\caption{Pruning at $d=0.7$}\end{subfigure}\\[2pt]
@@ -22,16 +23,6 @@ across series and the magnitudes differ by two orders at the same setting; the 3
 shown. Positive is worse.}
 \label{fig:heterogeneity}
 \end{figure}
-
-\paragraph{Size and stage of the source shape the response, inside a range.} Parameter count and
-pretraining tokens both enter the pruning amplitude for math and code and neither rescues QA. Inside
-the development range the source-conditioned
-forms, a per-density regression and the median density curve agree within 0.05 nats at unseen
-stages of a 1B source; at a 6.9B source, five times the development range, the source-conditioned
-forms lose to the median curve on math (0.30 against 0.12 nats) and QA (0.91 against 0.12) and tie
-on code (\S\ref{sec:general}).
-
-
 \begin{figure}[p]
 \centering
 \begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig4_a.pdf}\caption{Pruning}\end{subfigure}\hfill
@@ -45,6 +36,17 @@ round-to-nearest, including the 3-bit collapse. (c) Loss change against group si
 bits for one state and capability; groups 32 and 512 were unseen at the freeze. Positive is worse.}
 \label{fig:pythia_responses}
 \end{figure}
+\FloatBarrier
+
+\paragraph{Size and stage of the source shape the response, inside a range.} Parameter count and
+pretraining tokens both enter the pruning amplitude for math and code and neither rescues QA. Inside
+the development range the source-conditioned
+forms, a per-density regression and the median density curve agree within 0.05 nats at unseen
+stages of a 1B source; at a 6.9B source, five times the development range, the source-conditioned
+forms lose to the median curve on math (0.30 against 0.12 nats) and QA (0.91 against 0.12) and tie
+on code (\S\ref{sec:general}).
+
+
 
 \paragraph{Distillation damage is a property of the protocol as much as of the method.} With everything but the
 learning rate held fixed, the loss increase on math and code is monotone in it: at $5\times10^{-5}$ the 1B student is essentially unharmed ($+0.003$ and $+0.007$
@@ -53,6 +55,21 @@ magnitude larger ($+0.051$ and $+0.052$); at $1\times10^{-4}$ and $2\times10^{-4
 degrades about twice as much as the 1B on math, and at the lowest rate the 1B is nearly unharmed
 while the 4B is not ($+0.058$). Every distillation number that follows names its rate.
 
+
+
+\paragraph{Reusing a small pool is expensive, the price rises with student size, and QA pays most of
+it.} At one rate and a matched budget near 200k supervised tokens (Fig.~\ref{fig:responses_v2}), a
+pool reused about twelve times costs QA $+0.29$, $+2.55$ and $+4.85$ nats on students of 100M, 700M
+and 3.2B non-embedding parameters, while nine times more independent data turns the same budget into
+a gain near one nat on each; math and code damage falls monotonically as well. Two pool seeds per
+cell put the pool-draw noise near 0.02 nats on code and 0.13 on QA.
+
+\paragraph{The cost transfers across QA distributions; the gain does not.} Scored on a fresh 2Wiki
+sample, MuSiQue and TriviaQA, all three distributions worsen at high reuse and improve monotonically as
+reuse falls, for every student, so the reuse cost is not an artefact of the training distribution.
+Only 2Wiki crosses into a gain; MuSiQue flattens near zero and TriviaQA stays positive at every reuse
+level measured, and the 4B student is damaged about twice as much as the 1B at matched reuse on all
+three.
 
 \begin{figure}[p]
 \centering
@@ -68,20 +85,22 @@ loss change against the peak learning rate for the 1B (solid) and 4B (dashed) st
 Positive is worse.}
 \label{fig:responses_v2}
 \end{figure}
-
-\paragraph{Reusing a small pool is expensive, the price rises with student size, and QA pays most of
-it.} At one rate and a matched budget near 200k supervised tokens (Fig.~\ref{fig:responses_v2}), a
-pool reused about twelve times costs QA $+0.29$, $+2.55$ and $+4.85$ nats on students of 100M, 700M
-and 3.2B non-embedding parameters, while nine times more independent data turns the same budget into
-a gain near one nat on each; math and code damage falls monotonically as well. Two pool seeds per
-cell put the pool-draw noise near 0.02 nats on code and 0.13 on QA.
-
-\paragraph{The cost transfers across QA distributions; the gain does not.} Scored on a fresh 2Wiki
-sample, MuSiQue and TriviaQA, all three distributions worsen at high reuse and improve monotonically as
-reuse falls, for every student, so the reuse cost is not an artefact of the training distribution.
-Only 2Wiki crosses into a gain; MuSiQue flattens near zero and TriviaQA stays positive at every reuse
-level measured, and the 4B student is damaged about twice as much as the 1B at matched reuse on all
-three.
+\begin{figure}[p]
+\centering
+\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig2_a.pdf}\caption{Reuse-term curvature}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig2_b.pdf}\caption{Corner test}\end{subfigure}\\[2pt]
+\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig2_c.pdf}\caption{Displacement account}\end{subfigure}
+\caption{What shapes the distillation response, and what explains compression damage. (a) The reuse
+exponent $p$ across training folds per capability, with the full-development value and its
+conditional interval; $p=0$ is the logarithmic term, $p=1$ linear; crosses mark boundary hits. (b)
+The four-corner second difference per student and readout: the additive prediction (zero), the
+frozen interaction candidate (diamond), the measurement, and the registered noise band; the
+pre-fixed rule failed to reject additivity on the QA probe. (c) Median relative error of the
+coefficient-free second-order displacement account against damage magnitude across three
+compression families.}
+\label{fig:explanation}
+\end{figure}
+\FloatBarrier
 
 \paragraph{What a law must reproduce.} A relation for these responses has to carry a
 capability-specific shape under pruning, a threshold with a configuration-dependent position under
