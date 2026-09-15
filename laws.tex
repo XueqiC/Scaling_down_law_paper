@@ -1,12 +1,6 @@
 \section{Final Predictive Relations per Method}
 \label{sec:laws}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.92\textwidth]{figs/final_relations.pdf}
-\caption{Measured responses and frozen relations on native configuration axes, in native-token nats. \textbf{A:} Pythia-1.4B at step 112k: every measured density (capability markers; dense references coincide at zero), the delivered power form (solid, Eq.~\ref{eq:power}), and frozen median development curves $\widetilde f_c(d)$ (dashed). Shading marks the 17-state refit's range, $d\in[0.55,0.9]$. \textbf{B:} Math responses on Pythia-410M at 143k and 1.4B at 16k, with separate rows/scales for $b=3,4,5$ and a $\log_2 g$ axis. Solid lines show frozen same-input piecewise interpolation; dashed lines show per-configuration medians. Boundary extensions in $\log_2 g$ are floored at zero. Hollow diamonds mark predictions at $g=32,512$, unmeasured when frozen; filled markers include their later confirmation measurements. \textbf{C:} All twelve $U=200$ Gemma-3 trajectories (270M and 1B, six sampled pools each), at planned $T=50$k/$100$k/$200$k. Markers and thin connectors show actual responses at recorded $E=T_{\mathrm{actual}}/D_U$, including budget overshoot. Solid lines evaluate the frozen selected forms, $a_c\log(1+E)$ for math/code and the joint form for QA. Dotted lines show the strongest baseline frozen per student/capability (dark: 270M; light: 1B). Pool-dependent curves retain each $D_U$; coincident curves are drawn once. Coefficients were frozen before confirmation; stored planned-budget predictions are unchanged.}
-\label{fig:responses}
-\end{figure}
 
 Each arm delivers one relation in the interface of
 Eq.~\ref{eq:interface}: relation, inputs and range, selection, and
@@ -46,16 +40,6 @@ Eq.~\ref{eq:power}; $L_{0,c}$ alone for the median curve. The
 nine-state freeze covers $d\in[0.6,0.9]$ and $0.55$ was an
 extrapolation for it; the 17-state refit used for the confirmations
 includes 0.55.
-\paragraph{Selection.} Fit on nine states at $d\in\{0.9,0.8,0.7,0.6\}$
-and scored at the unseen 0.65 and 0.55, Eq.~\ref{eq:power} cuts the
-strength-only error two- to threefold and A2 matches it; refit on 17
-states under a pre-committed leave-one-source-out rule, A2 (0.479)
-and the power form (0.494) tie within 0.02 nats and the rule prefers
-the continuous form that vanishes at $d=1$ (coefficients in
-Appendix~\ref{sec:app_coef}; $\gamma_c$ is a fitted constant, not
-established as necessary).
-\paragraph{Boundary.} Evaluated as a frozen candidate on three new checkpoints, the power form reaches A2's math error with five parameters against twenty and does not beat the median curve on code or QA; on a 2.8B source the median curve is three to seven times better than either source form (\S\ref{sec:general}). The compact form trades accuracy for compactness within a tested range; the median curve is the relation for new states, a rule fixed after these tests and reused frozen in \S\ref{sec:selection}.
-
 \subsection{Quantization}
 \label{sec:law_quant}
 
@@ -75,22 +59,6 @@ under the same boundary rule.
 ($b\in\{3,4,5\}$, $g\in\{64,128,256\}$ on six states) plus
 $(N_0,D_0,L_{0,c})$ for the interpolation; $L_{0,c}$ alone for the
 median.
-\paragraph{Selection.} Two parametric candidates were tested first, a
-separable amplitude-times-shape form and a low-order surface in
-$\log_2 q_{\max}$ and $\log_2 g$; the surface beat zero change at the
-unseen $b=4$ and $g=128$ on the two-bit-level development set, but its
-quadratic term is unidentified there (rank 16 of 20,
-Appendix~\ref{sec:app_forms}). In a confirmation round with all 54
-unblinded cells as development set and 21 cells frozen at unseen
-group sizes and on a new state, the interpolation won the frozen cells
-for math and code and the median won the new state, so the delivered
-rule was fixed after that round and is labeled retrospective
-(Appendix~\ref{sec:app_results}).
-\paragraph{Boundary.} The interpolation holds at unseen group sizes of
-seen states; on the new state the source-free median is as good or
-better except for code, so source conditioning adds nothing there,
-and the surface is not delivered (\S\ref{sec:unseen_settings}).
-
 \subsection{Distillation}
 \label{sec:law_distill}
 
@@ -110,16 +78,14 @@ loss; no student descriptor. The relations hold on the two
 development students (270M, 1B), and for QA on the 2Wiki distribution
 only, where the gain replicates on a fresh sample and reverses sign on
 MuSiQue and TriviaQA (Appendix~\ref{sec:app_measure}).
-\paragraph{Selection.} Eight forms in $T$, $E$, and a source term were
-frozen on twelve development runs and scored on nine unseen-pool
-trajectories with the headline chosen after the test, and two
-descriptor-carrying forms were compared retrospectively
-(Appendix~\ref{sec:app_forms}); the delivered forms were then
-re-selected on all 25 trajectories by a pre-committed
-leave-one-trajectory-out rule and frozen for six new pools of
-$U{=}200$ at three new budgets. A linear form in the student state, fit on nine Pythia states, serves only as the math predictor for distillation candidates in \S\ref{sec:selection}.
-\paragraph{Boundary.} At the new pool size the selected form beats the
-frozen strongest baseline for code on both students, where that
-baseline is the same $\log(1+E)$ form with an intercept, so the gain
-supports the zero-budget boundary and parsimony of the form, not a
-full student-data-training law; QA gains on 270M only, math loses to intercept baselines, no selected form is the hindsight best of the sixteen frozen forms, a minimum selection favours by construction (Table~\ref{tab:main_final}); a 6.6-times-larger student is out of range.
+\paragraph{What a practitioner can compute today.} With the initial state and the configuration
+alone, Table~\ref{tab:main_prediction_v2} gives one relation per arm and task with its tested range
+and its error against the development-stage strongest baseline. For pruning at an unseen density of a
+seen source, the power form predicts math and code to about 0.24 nats and should not be used for QA
+or outside $d\in[0.6,0.9]$. For quantization the measured grid is the predictor: interpolate group
+sizes on a seen state, use the per-bit median on a new state, and expect 0.13 to 0.17 nats. For
+distillation, the one-coefficient reuse forms and the QA joint form hold on the development students
+at the 2Wiki distribution; the budget-doubling and data-change interventions are not predicted by any
+of the parsimonious forms tried, and the corresponding rows of the table say so. Every relation
+carries a status, development or frozen prediction or post-hoc recommendation, and the reader should
+weight it accordingly.

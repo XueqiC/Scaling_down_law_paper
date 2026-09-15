@@ -60,35 +60,16 @@ reference size) the frozen constant is better than the headline form
 at the unseen pool on every capability (intervals below zero); at the development pools only its QA gain clears zero (0.83,
 $[0.12,1.54]$; Table~\ref{tab:distill_paired}).
 
-\subsection{Applicability across Capabilities and Shared Structure}
-\label{sec:capabilities}
-
-Where the initial-state inputs help is method- and range-specific:
-they carry math and code at unseen pruning densities of seen sizes
-and at unseen group sizes of seen states, add nothing on new
-quantization states or in distillation beyond the reference anchor,
-and over-predict the QA pruning response on every new checkpoint. What capability conditioning adds is measurable on the frozen
-confirmation panels (Appendix~\ref{sec:app_shared}): per-capability
-pruning curves beat a shared damage curve with a signed
-per-capability scale by 0.06 nats macro (interval $[0.02,0.10]$ with
-the 2.8B duplicate merged), almost entirely through QA (0.17,
-$[0.11,0.24]$), whose aggregate curve is not proportional to the tested shared curve:
-it changes sign across density (damage at $d=0.55$, improvement from
-0.6 to 0.9), so no scale of that curve, including a negative one,
-represents it ($R^2$ 0.49 against 0.94 and 0.97 for math and code),
-and its direction also varies across sources. For math and
-code a shared curve is as good or better, for grouped quantization
-the two are indistinguishable (0.003 nats), and for distillation the
-comparison is empty because the one-coefficient forms are
-algebraically equivalent. Conditioning matters where the shape of the
-response differs across capabilities.
-
-\paragraph{Shared structure and ranges.} One function family across
-methods holds for pruning by construction and fails for quantization
-and distillation; within pruning one exponent shared across
-capabilities costs nothing, whereas quantization coefficients must be
-capability-specific; parameter intervals and 80\% prediction
-intervals that under-cover (78\% and 67\%) are in
-Appendix~\ref{sec:app_shared}.
+\paragraph{The range each relation has earned.} Figure~\ref{fig:generalization} separates the three
+kinds of novelty. New configurations of seen states are where the initial-state inputs pay: unseen
+pruning densities inside the fitted range and unseen quantization group sizes on development states
+are predicted within their stated error, and the four distillation corner budgets landed on their
+predicted supervised totals to the token. New sources and students are where they do not: at five
+times the development size the source-conditioned pruning forms lose to a median curve, a 2.8B source
+inside the size range is predicted best by the frozen median density curve, and the 4B distillation
+student, drawn as a development student since it entered this round's fits, keeps only its QA gain.
+New evaluation distributions split by sign: the reuse cost reproduces on all three, the gain on one.
+A relation from this paper should be used inside the panel it was tested on and with a one-point
+calibration when the state is new; beyond that its status is a recommendation, not a prediction.
 
 \FloatBarrier

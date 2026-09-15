@@ -1,0 +1,56 @@
+\section{What Compression Does to Capabilities}
+\label{sec:observed}
+
+Before any relation is fitted, the measurements themselves fix what a law has to reproduce. Four
+observations recur across the arms.
+
+\paragraph{Damage is uneven across capabilities, and the ordering is not fixed.} Across twelve public
+models the same pruning density leaves QA the least-damaged capability in some series and the
+most-damaged in others (Appendix~\ref{sec:app_hetero}); on the controlled Pythia panel, math and code
+respond to density along one shared shape with a capability-specific scale, while the QA response
+changes sign across density, improving from $d=0.9$ to $0.6$ and worsening at $0.55$, so that no
+scale of a shared curve, including a negative one, represents it. Under quantization the damage is a
+threshold in bit-width whose position moves with the group size, and at matched damage the same curve
+describes grouped and per-channel quantizers through different knobs. A single compression ratio
+therefore cannot stand in for a capability-conditioned measurement.
+
+\paragraph{Size and stage of the source shape the response, inside a range.} On the Pythia panel,
+where parameter count and pretraining tokens vary independently, both enter the pruning amplitude
+for math and code and neither rescues QA. Inside the development range the source-conditioned
+forms, a per-density regression and the median density curve agree within 0.05 nats at unseen
+stages of a 1B source; at a 6.9B source, five times the development range, the source-conditioned
+forms lose to the median curve on math (0.30 against 0.12 nats) and QA (0.91 against 0.12) and tie
+on code (\S\ref{sec:general}). The state's contribution is real where the response shape is shared
+and absent where it is not.
+
+\paragraph{Distillation damage is a property of the protocol as much as of the method.} With one
+student, one pool and everything else held fixed, the loss increase on math and code is monotone in
+the learning rate: at $5\times10^{-5}$ the 1B student is essentially unharmed ($+0.003$ and $+0.007$
+nats) while still gaining $0.79$ nats on QA, and at $1\times10^{-4}$ the increase is an order of
+magnitude larger ($+0.051$ and $+0.052$); at $1\times10^{-4}$ and $2\times10^{-4}$ the 4B student
+degrades about twice as much as the 1B on math, and at the lowest rate the 1B is nearly unharmed
+while the 4B is not ($+0.058$). Every distillation number that follows names its rate.
+
+\paragraph{Reusing a small pool is expensive, the price rises with student size, and QA pays most of
+it.} At one learning rate and a matched budget of about 200k supervised tokens
+(Fig.~\ref{fig:responses_v2}), spending the budget on a pool reused about twelve times costs QA
+$+0.29$, $+2.55$ and $+4.85$ nats on students of 100M, 700M and 3.2B non-embedding parameters, while
+nine times more independent data turns the same budget into a gain of roughly one nat on each; math
+and code damage falls monotonically as well, by a factor of five on the largest student. Two pool
+seeds per cell bound the pool-draw noise at about 0.017 nats on code and 0.13 on QA. This is the first
+time in the study that the budget axis and the independent-data axis were separated under control;
+everything measured earlier varied them together.
+
+\paragraph{The cost transfers across QA distributions; the gain does not.} Scored on a fresh 2Wiki
+sample, MuSiQue and TriviaQA, all three distributions worsen at high reuse and improve monotonically as
+reuse falls, for every student, so the reuse cost is not an artefact of the training distribution.
+Only 2Wiki crosses into a gain; MuSiQue flattens near zero and TriviaQA stays positive at every reuse
+level measured, and the 4B student is damaged about twice as much as the 1B at matched reuse on all
+three.
+
+\paragraph{What a law must reproduce.} A relation for these responses has to carry a
+capability-specific shape under pruning, a threshold with a configuration-dependent position under
+quantization, and, under distillation, a reuse cost that is monotone in $E=T/D_U$, grows with student
+size, and separates by evaluation distribution in sign. Each of the relations in \S\ref{sec:laws} is
+judged against exactly these features, and the explanations in \S\ref{sec:why} are what accounts for
+them.
