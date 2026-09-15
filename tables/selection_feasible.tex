@@ -1,12 +1,10 @@
-\begin{table}[H]
-\setbox2=\vbox{\begin{minipage}{\linewidth}
+\begin{table}[H]\normalfont
 \centering
 \small
 \setlength{\tabcolsep}{3pt}
 \caption{The table evaluates feasible leave-one-state-out selection. Coverage and oracle-method agreement are percentages; regret is in nats. Own and common refer to the subsets defined below. Rows identify policies and objectives; columns give feasibility coverage, mean regret, and oracle-method agreement. This is a \mbox{post-hoc} development evaluation. Own means the cells feasible for that policy; common means cells feasible for every policy.}
 \label{tab:selection-feasible}
-\setbox0=\hbox{
-\begin{tabular}{llrrrrr}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrrrrr@{}}
 \toprule
 Policy & Objective & Coverage & \multicolumn{2}{c}{Regret (nats)} & \multicolumn{2}{c}{Agreement (\%)} \\
 \cmidrule(lr){4-5}\cmidrule(lr){6-7}
@@ -42,12 +40,9 @@ Distillation only & \shortstack[l]{Maximum across\\capabilities} & 33.2 & 0.3332
 \shortstack[l]{Cheapest feasible\\configuration} & QA & 100.0 & 4.3334 & 1.8392 & 64.7 & 58.2 \\
 \shortstack[l]{Cheapest feasible\\configuration} & \shortstack[l]{Maximum across\\capabilities} & 100.0 & 5.1782 & 2.2700 & 78.2 & 43.6 \\
 \bottomrule
-\end{tabular}
-}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
+\end{tabular*}
 \par\smallskip
 \begin{minipage}{\linewidth}\small
 Coverage is feasible cells / 289. Own averages only that policy's feasible cells; common averages the same 55/289 cells feasible for all six policies, including Cheapest feasible configuration. Agreement uses those same respective subsets. Empty subsets are marked not available. An empty candidate set returns infeasible with no source fallback. Dense ($r=1$) is eligible for predicted selection, measured oracle, and cheapest feasible configuration only at $r_{\max}=1$. Fixed policies retain only their named method; Quantization only pools channel and grouped round-to-nearest quantization. Each deployed endpoint is an absolute loss: source dense plus response for pruning and round-to-nearest quantization; student dense plus student post-training change for distillation. The maximum-capability objective is $\max_c(L_c-L_{0c})$. The unchanged no-clear-winner heuristic uses pooled leave-one-state-out MAEs and is not calibrated uncertainty. Five-bit folds remain underidentified; measurement coverage and dense anchors vary by arm.
 \end{minipage}
-\end{minipage}}
-\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
 \end{table}

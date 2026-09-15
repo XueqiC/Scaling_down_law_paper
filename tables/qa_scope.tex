@@ -1,11 +1,9 @@
-\begin{table}[H]
-\setbox2=\vbox{\begin{minipage}{\linewidth}
+\begin{table}[H]\normalfont
 \centering
 \small
 \caption{The table audits QA measurement scope on Gemma-3-1B by reporting conditional loss and $\Delta L$ from dense (native-token nats; negative is improvement), 256 fixed references per set. distillation labels denote nominal supervised-token budgets. 2Wiki supplies all context; MuSiQue supplies supporting paragraphs; TriviaQA uses V48's no-context control. 24/24 cells measured. Rows identify compression states; paired columns give loss and change from dense for each benchmark. This is a \mbox{post-hoc} measurement-scope audit of \mbox{pre-specified} states. The numbered control identifies the original evaluation record.}
 \label{tab:qa_scope}
-\setbox0=\hbox{
-\begin{tabular}{lrrrrrr}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrr@{}}
 \toprule
 & \multicolumn{2}{c}{New 2Wiki} & \multicolumn{2}{c}{MuSiQue} & \multicolumn{2}{c}{TriviaQA} \\
 State & Loss & $\Delta L$ & Loss & $\Delta L$ & Loss & $\Delta L$ \\
@@ -19,8 +17,5 @@ Dense & 5.796 & +0.000 & 1.919 & +0.000 & 2.714 & +0.000 \\
 \shortstack[l]{Distillation at\\supervised budget\\140k} & 4.537 & -1.258 & 2.114 & +0.195 & 3.058 & +0.344 \\
 \shortstack[l]{Distillation at\\supervised budget\\280k} & 4.917 & -0.878 & 2.124 & +0.204 & 2.967 & +0.253 \\
 \bottomrule
-\end{tabular}
-}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
-\end{minipage}}
-\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
+\end{tabular*}
 \end{table}

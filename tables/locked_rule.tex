@@ -24,12 +24,10 @@
 % ``student`` with N0, D0 and a per-capability ``dense`` mapping. QA KD requires
 % ``qa_distribution='2Wiki'``. New-size/stage status takes precedence over a
 % previously seen size. Undefined table cells are rejected, never improvised.
-\begin{table}[H]
-\setbox2=\vbox{\begin{minipage}{\linewidth}
+\begin{table}[H]\normalfont
 \centering\small
 \setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.05}
-\setbox0=\hbox{
-\begin{tabular}{@{}llllcl@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llllcl@{}}
 \toprule
 Arm & Capability & State status & Response predictor & Fit & Anchor \\
 \midrule
@@ -88,12 +86,9 @@ Dense & Code & Any valid status & 0 (no loss change) & --- & $L_{0,c}$ \\
 % value = float(inputs["L0"])
 Dense & QA & Any valid status & 0 (no loss change) & --- & $L_{0,c}$ \\
 \bottomrule
-\end{tabular}
-}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
+\end{tabular*}
 \caption{The table specifies the exact locked selection rule in \texttt{analysis/final\_rule.py}. Each absolute prediction is the listed anchor plus the response. $L_{0,c}$ is source dense loss; $L_{S0,c}$ is the initial student's dense loss. The fit keys identify the frozen development data below. Rows identify compression families, capabilities, and source-state status; columns specify the response predictor, development fit, and dense-loss anchor. Absolute losses are in nats per native token. This rule was frozen before selection confirmation. Fit keys P, Q, G, and K denote pruning, channel quantization, grouped quantization, and distillation development data, respectively; numbered predictor records identify the original development fits.}
 \label{tab:locked_rule}
-\end{minipage}}
-\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
 \end{table}
 \begingroup\small
 \noindent\textbf{Development data.} P: V53 register, 17 Pythia states, 84 density responses per capability ($0.55\le d<1$, excluding 2.8B). Q: V64 frozen paired channel rows; 16/16/4/17/17 states at 8/6/5/4/3 bits. G: V69 development grid, 160M/410M/1.4B at 16k/143k, $b\in\{3,4,5\}$, $g\in\{64,128,256\}$. K: V39 fixed-recipe Pythia students frozen in V64: 160M/410M/1.4B at 16k/64k/143k, excluding both selectable students (160M@64k, 410M@64k), leaving seven. Recipe: \texttt{gpt-5.6-luna}, full pool 600, two epochs, strict LoRA, seed 0. Full rosters and literal code are in the V85 artifact.

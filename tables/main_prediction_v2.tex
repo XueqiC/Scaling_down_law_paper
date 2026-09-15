@@ -1,63 +1,60 @@
 % Generated from frozen JSON; see main_prediction_v2_sources.md.
-\begin{table*}[tp]
-\setbox2=\vbox{\begin{minipage}{\linewidth}
+\begin{table*}[tp]\normalfont
 \centering\footnotesize
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{0.92}
 \setlength{\abovecaptionskip}{4pt}
-\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr .24\textwidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr .76\textwidth-2\tabcolsep\relax}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.240000000\textwidth-0.480000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.760000000\textwidth-1.520000000\tabcolsep\relax}@{}}
 \toprule
-\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\mbox{\textbf{Pruning, unseen density}}\hfill \mbox{development}} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 1.000000000\textwidth-0.000000000\tabcolsep\relax}@{}}{\mbox{\textbf{Pruning, unseen density}}\hfill \mbox{development}} \\
 Relation & $A_c(\mathbf x)r^{\gamma_c}$ (5) \\
 Tested range & nine states; densities held out inside 0.6 to 0.9 \\
 Mean absolute error & not tested \\
 Baseline error & not tested \\
 \midrule
-\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\mbox{\textbf{Pruning, new source state}}\hfill \mbox{frozen prediction}} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 1.000000000\textwidth-0.000000000\tabcolsep\relax}@{}}{\mbox{\textbf{Pruning, new source state}}\hfill \mbox{frozen prediction}} \\
 Relation & $A_c(\mathbf x)r^{\gamma_c}$ (5) \\
 Tested range & new stages of seen sizes; a 6.9B source outside the size range \\
 Mean absolute error & Math 0.24; Code 0.24; QA 0.68 \\
 Baseline error & per-density regression 0.23; per-density regression 0.22; development median 0.22 \\
 \midrule
-\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\mbox{\textbf{Quantization, unseen bit-width}}\hfill \mbox{frozen prediction}} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 1.000000000\textwidth-0.000000000\tabcolsep\relax}@{}}{\mbox{\textbf{Quantization, unseen bit-width}}\hfill \mbox{frozen prediction}} \\
 Relation & $\phi^\top Q_c$ (20) \\
 Tested range & Pythia-160M to Pythia-1.4B; bit width 4 with group sizes 64 and 256 \\
 Mean absolute error & Math 0.19; Code 0.21; QA 0.44 \\
 Baseline error & development median 0.55; development median 0.73; development median 0.54 \\
 \midrule
-\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\mbox{\textbf{Quantization, unseen group size}}\hfill \mbox{frozen prediction}} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 1.000000000\textwidth-0.000000000\tabcolsep\relax}@{}}{\mbox{\textbf{Quantization, unseen group size}}\hfill \mbox{frozen prediction}} \\
 Relation & Math: $\phi^\top Q_c$ (20); Code: $m_c(b,g)$ (9); QA: $0$ (0) \\
 Tested range & Pythia-410M and Pythia-1.4B; bit widths 3 to 5 with group sizes 32 and 512 \\
 Mean absolute error & Math 0.21; Code 0.56; QA 0.46 \\
 Baseline error & bilinear 0.33; zero change 0.68; development median 0.46 \\
 \midrule
-\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\mbox{\textbf{Quantization, new state}}\hfill \mbox{frozen prediction}} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 1.000000000\textwidth-0.000000000\tabcolsep\relax}@{}}{\mbox{\textbf{Quantization, new state}}\hfill \mbox{frozen prediction}} \\
 Relation & Math: $\phi^\top Q_c$ (20); Code: $m_c(b,g)$ (9); QA: $0$ (0) \\
 Tested range & Pythia-1.4B at step 112000; group sizes 32, 128 and 512 \\
 Mean absolute error & Math 0.30; Code 0.15; QA 0.22 \\
 Baseline error & bilinear 0.35; zero change 0.56; development median 0.14 \\
 \midrule
-\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\mbox{\textbf{Distillation, budget response}}\hfill \mbox{development}} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 1.000000000\textwidth-0.000000000\tabcolsep\relax}@{}}{\mbox{\textbf{Distillation, budget response}}\hfill \mbox{development}} \\
 Relation & additive logarithmic form (4); curved form (5); interaction form (5) \\
 Tested range & three students; budgets of at least 150000 tokens held out \\
 Mean absolute error & Math 0.07 [0.05,0.11]; Code 0.07 [0.05,0.09]; QA 2.18 [1.68,2.88] \\
 Baseline error & constant 0.09; constant 0.11; constant 1.44 \\
 \midrule
-\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\mbox{\textbf{Distillation, data-reuse response}}\hfill \mbox{development}} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 1.000000000\textwidth-0.000000000\tabcolsep\relax}@{}}{\mbox{\textbf{Distillation, data-reuse response}}\hfill \mbox{development}} \\
 Relation & additive logarithmic form (4); curved form (5); interaction form (5) \\
 Tested range & three students; a one percent budget tolerance approximates fixed-budget reuse \\
 Mean absolute error & Math 0.08 [0.05,0.14]; Code 0.07 [0.04,0.12]; QA 1.02 [0.72,1.34] \\
 Baseline error & response surface and reuse only 0.08; zero change, response surface and reuse only 0.07; response surface 0.76 \\
 \midrule
-\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\mbox{\textbf{Distillation, new pool}}\hfill \mbox{frozen prediction}} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 1.000000000\textwidth-0.000000000\tabcolsep\relax}@{}}{\mbox{\textbf{Distillation, new pool}}\hfill \mbox{frozen prediction}} \\
 Relation & Math and Code: $a_c\log(1+E)$ (1); QA: $u(a+bu+qv)$ (3) \\
 Tested range & Gemma-3-270M and Gemma-3-1B students; six pools with budgets of 50000 to 200000 tokens \\
 Mean absolute error & Math 0.07,0.06; Code 0.02,0.05; QA 0.51,0.46 \\
 Baseline error & budget only and response surface with initial loss 0.07,0.03; reuse only 0.02,0.05; reuse only and response surface with student size 0.61,0.45 \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \caption{\footnotesize Development and frozen prediction evidence by method and prediction task. Each block names a method and task; the left column identifies the field and the right column gives its value. Parentheses after relations give parameter counts. Errors are mean absolute errors in native-token nats on the training probes, with stored intervals in brackets. Source-conditioned forms take the source size, its initial loss and its pretraining tokens together with the configuration; distillation forms take the supervised budget, the pool size and the reuse ratio. The baseline row names the baseline selected inside the development folds and gives its error. Status distinguishes development results, predictions frozen before measurement, and recommendations made after testing. Cells marked not tested have no frozen artifact. Error entries follow the capability order Math, Code, and QA; paired student errors follow the displayed student order. Bit widths are in bits, group sizes count weights, and budgets count supervised tokens.}
 \label{tab:main-prediction-v2}
-\end{minipage}}
-\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
 \end{table*}

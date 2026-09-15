@@ -1,8 +1,6 @@
-\begin{table}[H]
-\setbox2=\vbox{\begin{minipage}{\linewidth}
+\begin{table}[H]\normalfont
 \centering\footnotesize
-\setbox0=\hbox{
-\begin{tabular}{@{}lrrrr@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrr@{}}
 \toprule
 Predictor & Math MAE & Code MAE & QA MAE & Mean MAE \\
 \midrule
@@ -11,10 +9,7 @@ Predictor & Math MAE & Code MAE & QA MAE & Mean MAE \\
 \shortstack[l]{Median development\\curve} & 0.080 & 0.054 & 0.065 & 0.066 \\
 Zero change & 0.218 & 0.145 & 0.326 & 0.230 \\
 \bottomrule
-\end{tabular}
-}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
+\end{tabular*}
 \caption{The table evaluates pruning repeatability on Pythia-2.8B (final checkpoint; the two cached revisions used carry identical weights, so the six cells per capability are three densities measured twice), $d\in\{0.85,0.75,0.65\}$. Entries give mean absolute prediction errors for signed $\Delta L$ in nats; six cells per capability, with equal state, density and capability weights. All four predictors were frozen before target pruning measurements, using the delivered V53 register and the same available inputs $(N_0,D_0,L_{0,c},d)$, with zero target pruning calibration points. Source-free median and zero ignore source covariates. A2 uses V53's fixed ridge anchor fits and linear interpolation. No refitting, test-based selection or outcome censoring. Dense inputs are measured first; responses use each V6 pruning run's checked dense reference. Rows identify frozen predictors; columns give mean absolute errors for each capability and their mean. V53 identifies the original pruning development register. MAE denotes mean absolute error.}
 \label{tab:prune_repeat}
-\end{minipage}}
-\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
 \end{table}

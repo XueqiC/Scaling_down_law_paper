@@ -1,7 +1,6 @@
-\begin{table}[p]
-\setbox2=\vbox{\begin{minipage}{\linewidth}\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.02}
-\setbox0=\hbox{
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{5.2cm}>{\raggedright\arraybackslash}p{4.0cm}rrr@{}}
+\begin{table}[H]
+\normalfont\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.02}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.340000000\textwidth-2.720000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.260000000\textwidth-2.080000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333340\textwidth-1.066666720\tabcolsep\relax}@{}}
 \toprule
 Test; \emph{\mbox{held-out} axis}; [provenance] & Predictor & Math & Code & QA \\
 \midrule
@@ -18,6 +17,15 @@ Test; \emph{\mbox{held-out} axis}; [provenance] & Predictor & Math & Code & QA \
  & Simple baseline: strength only & \textbf{0.273} & \textbf{0.018} & \textbf{0.530} \\
 \addlinespace[2pt]
 \textbf{pruning}: new source Pythia-1B at steps 32k and 112k, $d$ 0.9--0.6 (interpolation)\newline{\itshape in-range size; stages 32k, 112k} [P·F·F·A] & Candidate: shared power form & 0.215 (-0.05) & 0.191 (-0.07) & 0.261 (-0.03) \\
+\bottomrule\end{tabular*}
+\caption{Configuration axis, pruning: does a relation fit at seen densities and sources predict unseen densities, sizes and stages? Protocol A (full development panel) for the two P1-v2 pairs and the single-stage Pythia-1B at step 96k prospective; protocol B in Table~\ref{tab:p1v2}. Format, bold, improvement in parentheses, and origin Code as in Table~\ref{tab:pred_source}. Rows identify frozen prediction tests and predictors; columns give mean absolute errors in nats per native token by capability. Parentheses give baseline-minus-candidate improvement; bold marks the lowest error. The provenance letters mean: P, prediction frozen before measurement; F, baseline specified before measurement; R, \mbox{post-hoc} baseline; A, all specified forms reported. A1 denotes the linear power form and A2 denotes per-density regression with interpolation. The numbered pair identifier names the original registration.}
+\label{tab:pred_config_prune}\end{table}
+\begin{table}[H]\ContinuedFloat
+\normalfont\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.02}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.340000000\textwidth-2.720000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.260000000\textwidth-2.080000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333340\textwidth-1.066666720\tabcolsep\relax}@{}}
+\toprule
+Test; \emph{\mbox{held-out} axis}; [provenance] & Predictor & Math & Code & QA \\
+\midrule
  & Same-input baseline: per-density regression (A2) & 0.205 & \textbf{0.119} & 0.237 \\
  & Simple baseline: median curve; strength only & \textbf{0.169} & 0.128 & \textbf{0.227} \\
 \addlinespace[2pt]
@@ -31,11 +39,17 @@ Test; \emph{\mbox{held-out} axis}; [provenance] & Predictor & Math & Code & QA \
 \addlinespace[2pt]
 \textbf{pruning}: new source Pythia-6.9B at steps 32k and 112k, $d=0.55$ (extrapolation)\newline{\itshape size $5\times$ beyond development range; stages 32k, 112k} [P·F·F·A] & Candidate: shared power form & \textbf{0.615} (+0.00) & 0.547 (-0.01) & 4.472 (-3.57) \\
  & Same-input baseline: A1 ($\gamma{=}1$); per-density regression (A2) & 0.618 & \textbf{0.535} & 2.850 \\
+\bottomrule\end{tabular*}
+\caption[]{Continued from the preceding table part.}
+\end{table}
+\begin{table}[H]\ContinuedFloat
+\normalfont\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.02}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.340000000\textwidth-2.720000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.260000000\textwidth-2.080000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333340\textwidth-1.066666720\tabcolsep\relax}@{}}
+\toprule
+Test; \emph{\mbox{held-out} axis}; [provenance] & Predictor & Math & Code & QA \\
+\midrule
  & Simple baseline: median curve; strength only & 0.703 & 0.712 & \textbf{0.904} \\
 \addlinespace[2pt]
-\bottomrule\end{tabular}
-}\ifdim\dimexpr\ht0+\dp0\relax>.65\textheight\setbox0=\hbox{\resizebox*{!}{.65\textheight}{\box0}}\fi\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
-\caption{Configuration axis, pruning: does a relation fit at seen densities and sources predict unseen densities, sizes and stages? Protocol A (full development panel) for the two P1-v2 pairs and the single-stage Pythia-1B at step 96k prospective; protocol B in Table~\ref{tab:p1v2}. Format, bold, improvement in parentheses, and origin Code as in Table~\ref{tab:pred_source}. Rows identify frozen prediction tests and predictors; columns give mean absolute errors in nats per native token by capability. Parentheses give baseline-minus-candidate improvement; bold marks the lowest error. The provenance letters mean: P, prediction frozen before measurement; F, baseline specified before measurement; R, \mbox{post-hoc} baseline; A, all specified forms reported. A1 denotes the linear power form and A2 denotes per-density regression with interpolation. The numbered pair identifier names the original registration.}
-\label{tab:pred_config_prune}\end{minipage}}
-\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
+\bottomrule\end{tabular*}
+\caption[]{Continued from the preceding table part.}
 \end{table}

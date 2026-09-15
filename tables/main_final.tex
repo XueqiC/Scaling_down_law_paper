@@ -13,12 +13,10 @@
 % INPUT results/v70-distill-confirm/compare.json sha256=983f53033b07e035b1cb552429b8ce6ab23f8d6aee4365237970e2b46b0a829b
 % INPUT results/v70-distill-confirm/freeze.json sha256=d7b28c7251dbc6113c3de7c957560827e603d4e77a48010f99835a8468db0c24
 % INPUT results/v50-p2v2/compare_test.json sha256=4c07abf0f940e95992a3f46d79b6d9a3ef9524ba55adaefa824b0cdec8a601aa
-\begin{table}[t]
-\setbox2=\vbox{\begin{minipage}{\linewidth}
+\begin{table}[t]\normalfont
 \centering\scriptsize
 \setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1.06}
-\setbox0=\hbox{
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.127\textwidth-1.524\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.230\textwidth-2.760\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.097\textwidth-1.164\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.163\textwidth-1.956\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.073\textwidth-0.876\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.130\textwidth-1.560\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.180\textwidth-2.160\tabcolsep\relax}@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.127000000\textwidth-1.524000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.230000000\textwidth-2.760000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.097000000\textwidth-1.164000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.163000000\textwidth-1.956000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.073000000\textwidth-0.876000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.130000000\textwidth-1.560000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.180000000\textwidth-2.160000000\tabcolsep\relax}@{}}
 \toprule
 Arm and frozen candidate & Test object & Candidate MAE & Strongest frozen alternative (name, MAE) & Gain & Delivered rule & Scope \\
 \midrule
@@ -259,10 +257,7 @@ Distillation\newline Frozen reuse, reuse, and joint responses & Gemma-3-270M; 6 
 % SOURCE C48 delivery timing: fixed before test; rule mapping/timing from supplied V86 specification and paper/docs/RESULTS_LEDGER.md; new stages use the new-state branch in analysis/final_rule.py#/predict (read only)
 Distillation\newline Frozen reuse, reuse, and joint responses & Gemma-3-1B; 6 pools $U=200$; $T$ 50, 100, 200k & $0.057$\newline $0.049$\newline $0.463$ & $F_2(L_0)$ $0.031$\newline $F_1(L_0)$ $0.046$\newline Budget only $0.386$ & $-0.026$\newline $-0.002$\newline $-0.077$ & Same as frozen candidate\newline Same as frozen candidate\newline Same as frozen candidate & \emph{frozen before testing}\newline Seen student; new pools; 2Wiki QA \\
 \bottomrule
-\end{tabular}
-}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
+\end{tabular*}
 \caption{\scriptsize The table compares frozen candidates and delivered rules. Errors are mean absolute errors (MAE) in nats per token; stacked entries give Math, Code, and QA, respectively. The strongest alternative has the lowest pooled test MAE among the round's other frozen predictors, a diagnostic minimum that selection favours; the registered comparison is primary. Gain = alternative minus candidate; negative values favor the alternative. Delivered rules fixed after a test are retrospective for it. Frozen development selection = response surface, development median, and zero change, respectively. Rows identify frozen candidates and test panels; columns give candidate errors, the strongest frozen alternative, error differences, delivered rules, and their timing and scope. F1 denotes descriptor-modulated reuse and F2 denotes the saturating budget and reuse form; L0 denotes initial loss. Pool sizes count traces per domain and budgets count supervised tokens. MAE denotes mean absolute error.}
 \label{tab:main_final}
-\end{minipage}}
-\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
 \end{table}

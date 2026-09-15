@@ -88,9 +88,9 @@ pruning confirmation panel (410M at 48k, 1.4B at 112k, 6.9B at 80k) have shard h
 from every other revision of the same size, and their dense capability vectors differ from those of
 the neighbouring stages.
 
-\begin{table}[H]
+\begin{table}[H]\normalfont
 \centering\footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.15}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.3cm}>{\raggedright\arraybackslash}p{4.0cm}>{\raggedright\arraybackslash}p{3.3cm}>{\raggedright\arraybackslash}p{3.4cm}@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.176923077\textwidth-1.061538462\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.307692308\textwidth-1.846153846\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.253846154\textwidth-1.523076923\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.261538462\textwidth-1.569230769\tabcolsep\relax}@{}}
 \toprule
 Cohort & Models and states & Interventions & Role in the study \\
 \midrule
@@ -98,7 +98,7 @@ Heterogeneous panel &
 Twelve public checkpoints from \nSeries{} series and \nFamilies{} families: Qwen3 (0.6B, 1.7B, 4B),
 Gemma-3 (270M to 27B), Gemma-4 (31B), Muse (30B), OLMo-3 (7B, 32B); two further Qwen3 checkpoints
 (8B, 14B) measured prospectively at four densities. &
-Global magnitude pruning at ten densities in $[0.3,0.9]$; per-channel round-to-nearest quantization
+Global magnitude pruning at ten densities in $[0.3,\allowbreak 0.9]$; per-channel round-to-nearest quantization
 at 8, 6, 5, 4 and 3 bits. &
 Establishes the phenomena and the limits of cross-family transfer; screens the measurement noise. \\
 \addlinespace
@@ -127,7 +127,7 @@ Gemma-3 students from 270M to 12B, OLMo-3-7B and Qwen3 0.6B to 4B; two teachers 
 Varied distillation recipes. &
 Describes measured responses. \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \caption{Cohort rows list models and states, compression interventions, and study roles. Counts describe models, states, probes, or traces per domain; densities and reuse counts are dimensionless, bit widths are in bits, and budgets are in tokens. Rows distinguish development cohorts, frozen prediction tests, and descriptive \mbox{post-hoc} measurements. Every cohort is scored with the same 64 probes per capability on
 the primary benchmarks. Counts are generated from the result files. The 2.8B Pythia checkpoints were
 excluded because the step revisions available to us loaded identical weights, which a hash check
@@ -135,6 +135,7 @@ confirmed; nothing is claimed about other revisions.}
 \label{tab:cohorts}
 \end{table}
 \input{tables/models_domains}
+\FloatBarrier
 
 \paragraph{Architectures and parameter conventions.} Every model in
 the heterogeneous panel and the controlled panel is a dense
@@ -781,7 +782,7 @@ diagonal (Gemma-3-1B; rows ablate, columns measure, nats/token):
 
 \begin{center}
 \small
-\begin{tabular}{@{}lrrr@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrr@{}}
 \toprule
 Ablated region & Math & Code & QA \\
 \midrule
@@ -789,7 +790,7 @@ Math & $\mathbf{+4.63}$ & $+0.43$ & $+0.05$ \\
 Code & $+0.42$ & $\mathbf{+7.14}$ & $+0.00$ \\
 QA   & $+0.01$ & $+0.00$ & $\mathbf{+2.29}$ \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \captionof*{table}{\mbox{Post-hoc} selective-ablation measurements. Rows identify the ablated capability region; columns identify the measured capability. Entries are loss increases in nats per native token; bold entries mark the matching capability.}
 \end{center}
 
@@ -893,13 +894,13 @@ family or the knob (Table~\ref{tab:disp_boundary}): under 5\% wherever the loss 
 0.1 nats, and rising past 20\% by 0.25 nats. Grouped four-bit quantization with fine groups, at 0.06
 nats, sits on the same curve as per-channel four-bit at 0.24 nats.
 
-\begin{table}[H]
+\begin{table}[H]\normalfont
 \centering\small
 \caption{Median relative error of the coefficient-free second-order account, by family and
 configuration. Rows identify compression families; the second column pairs each setting with its median relative error in percent. This is a \mbox{post-hoc} analysis of measured damage; density is dimensionless and bit width is in bits.}
 \label{tab:disp_boundary}
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{@{}ll@{}}
+%
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.250000000\textwidth-0.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.750000000\textwidth-1.500000000\tabcolsep\relax}@{}}
 \toprule
 Family & Configuration: median relative error \\
 \midrule
@@ -907,8 +908,8 @@ Pruning & $d=0.9$: 0.9\%; 0.85: 4.3\%; 0.8: 5.3\%; 0.75: 11.1\%; 0.7: 16.0\%; 0.
 Grouped quantization & 5 bits: 1.6--2.7\% at every group size; 4 bits: 3.3\% to 9.2\% by group size; 3 bits: 35.9\% \\
 Per-channel quantization & 8 bits: 2.5\%; 6 bits: 3.0\%; 5 bits: 4.2\%; 4 bits: 23.8\%; 3 bits: 53.9\% \\
 \bottomrule
-\end{tabular}%
-}
+\end{tabular*}%
+
 \end{table}
 
 Two readings of this account are excluded. Projecting the displacement onto the reference logits
@@ -1134,9 +1135,9 @@ $g\in\{32,512\}$ and a new state, \texttt{6199353}), \texttt{v70}
 text is downgraded and the prediction stays as committed.
 
 \subsection{Information budgets}
-\begin{table}[H]
+\begin{table}[H]\normalfont
 \centering\small
-\begin{tabular}{@{}p{2.5cm}p{5.7cm}p{4.9cm}@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.190839695\textwidth-0.763358779\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.435114504\textwidth-1.740458015\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.374045802\textwidth-1.496183206\tabcolsep\relax}@{}}
 \toprule
 Budget & Information available & Cost to disclose \\
 \midrule
@@ -1151,7 +1152,7 @@ compression cost \\
 Oracle diagnostic & Rescaling based on measured target outcomes & No predictive information budget applies;
 this diagnostic measures form misfit after testing \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \caption{Rows identify information budgets; columns specify available information and costs to disclose. K0 means no compressed-target calibration, and K1 means one compressed-target calibration measurement. Predictive budgets are fixed on development data; the oracle row is a \mbox{post-hoc} diagnostic. Losses use nats per native token, model size counts parameters, and pretraining exposure counts tokens. Unknown $D_0$ stays unknown; handling of
 missing inputs is fixed on the development panel and never inferred
 from the target response. Predicting $\mathbf L_0$ from $(N_0,D_0)$ is
