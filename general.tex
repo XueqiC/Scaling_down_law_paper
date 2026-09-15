@@ -31,9 +31,8 @@ QA on the 270M only (Table~\ref{tab:main_prediction_v2}).
 \subsection{Transfer across Model Sizes and Training Stages}
 \label{sec:unseen_states}
 
-Inside the range, the frozen per-density pruning regression beats its no-$D_0$ variant and the
-per-setting median at an unseen stage, and for a 1B source at two new steps the power form, the
-regression and the median curve lie within 0.05 nats of one another. Outside it, at a 6.9B source
+Inside the range the frozen forms and the median curve lie within 0.05 nats of one another at
+unseen stages of a 1B source. Outside it, at a 6.9B source
 five times the development range, the source-conditioned pruning forms lose to the median curve on
 math (0.30 against 0.12) and QA (0.91 against 0.12) and tie on code, the per-bit quantization
 regression is worse than the per-bit median at every bit-width, and on a 2.8B source inside the size
