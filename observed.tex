@@ -31,6 +31,17 @@ magnitude larger ($+0.051$ and $+0.052$); at $1\times10^{-4}$ and $2\times10^{-4
 degrades about twice as much as the 1B on math, and at the lowest rate the 1B is nearly unharmed
 while the 4B is not ($+0.058$). Every distillation number that follows names its rate.
 
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figs/responses_v2.pdf}
+\caption{Distillation responses observed under one protocol. \textbf{A}: loss change from each
+student's own initial state against the reuse ratio $E=T/D_U$ at the matched budget nearest 200k
+supervised tokens, for math, code and QA on three students, both pool seeds drawn separately.
+\textbf{B}: the same trajectories scored on three fresh QA distributions. Positive is worse.}
+\label{fig:responses_v2}
+\end{figure}
+
 \paragraph{Reusing a small pool is expensive, the price rises with student size, and QA pays most of
 it.} At one learning rate and a matched budget of about 200k supervised tokens
 (Fig.~\ref{fig:responses_v2}), spending the budget on a pool reused about twelve times costs QA
