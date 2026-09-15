@@ -25,70 +25,75 @@
 % ``qa_distribution='2Wiki'``. New-size/stage status takes precedence over a
 % previously seen size. Undefined table cells are rejected, never improvised.
 \begin{table}[H]
+\setbox2=\vbox{\begin{minipage}{\linewidth}
 \centering\small
 \setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.05}
+\setbox0=\hbox{
 \begin{tabular}{@{}llllcl@{}}
 \toprule
-Arm & Cap. & State status & Response predictor & Fit & Anchor \\
+Arm & Capability & State status & Response predictor & Fit & Anchor \\
 \midrule
 % delta = float(np.dot(p["beta"], z) * prune.shape(d, p["gamma"]))
-Pruning & Math & Seen source state; new $d$ & v53 power & P & $L_{0,c}$ \\
+Pruning & Math & Seen source state; new $d$ & Pruning power form & P & $L_{0,c}$ \\
 % delta = float(np.dot(p["beta"], z) * prune.shape(d, p["gamma"]))
-Pruning & Code & Seen source state; new $d$ & v53 power & P & $L_{0,c}$ \\
+Pruning & Code & Seen source state; new $d$ & Pruning power form & P & $L_{0,c}$ \\
 % delta = prune.linear_curve(f["models"][c]["median_curve"]["anchors"], d)
-Pruning & QA & Seen source state; new $d$ & v53 median curve & P & $L_{0,c}$ \\
+Pruning & QA & Seen source state; new $d$ & \shortstack[l]{Pruning development\\median curve} & P & $L_{0,c}$ \\
 % delta = prune.linear_curve(f["models"][c]["median_curve"]["anchors"], d)
-Pruning & Math & New size or new stage & v53 median curve & P & $L_{0,c}$ \\
+Pruning & Math & \shortstack[l]{New size or new\\stage} & \shortstack[l]{Pruning development\\median curve} & P & $L_{0,c}$ \\
 % delta = prune.linear_curve(f["models"][c]["median_curve"]["anchors"], d)
-Pruning & Code & New size or new stage & v53 median curve & P & $L_{0,c}$ \\
+Pruning & Code & \shortstack[l]{New size or new\\stage} & \shortstack[l]{Pruning development\\median curve} & P & $L_{0,c}$ \\
 % delta = prune.linear_curve(f["models"][c]["median_curve"]["anchors"], d)
-Pruning & QA & New size or new stage & v53 median curve & P & $L_{0,c}$ \\
+Pruning & QA & \shortstack[l]{New size or new\\stage} & \shortstack[l]{Pruning development\\median curve} & P & $L_{0,c}$ \\
 \addlinespace
 % delta = channel_delta(f["models"][c], inputs)
-Channel RTN & Math & Seen state & v36 regression & Q & $L_{0,c}$ \\
+\shortstack[l]{Per-channel\\round-to-nearest\\quantization} & Math & Seen state & \shortstack[l]{Per-bit source\\regression} & Q & $L_{0,c}$ \\
 % delta = channel_delta(f["models"][c], inputs)
-Channel RTN & Code & Seen state & v36 regression & Q & $L_{0,c}$ \\
+\shortstack[l]{Per-channel\\round-to-nearest\\quantization} & Code & Seen state & \shortstack[l]{Per-bit source\\regression} & Q & $L_{0,c}$ \\
 % delta = channel_delta(f["models"][c], inputs)
-Channel RTN & QA & Seen state & v36 regression & Q & $L_{0,c}$ \\
+\shortstack[l]{Per-channel\\round-to-nearest\\quantization} & QA & Seen state & \shortstack[l]{Per-bit source\\regression} & Q & $L_{0,c}$ \\
 % delta = f["median"][c][str(inputs["bit"])]
-Channel RTN & Math & New state & per-bit dev median & Q & $L_{0,c}$ \\
+\shortstack[l]{Per-channel\\round-to-nearest\\quantization} & Math & New state & \shortstack[l]{Per-bit development\\median} & Q & $L_{0,c}$ \\
 % delta = f["median"][c][str(inputs["bit"])]
-Channel RTN & Code & New state & per-bit dev median & Q & $L_{0,c}$ \\
+\shortstack[l]{Per-channel\\round-to-nearest\\quantization} & Code & New state & \shortstack[l]{Per-bit development\\median} & Q & $L_{0,c}$ \\
 % delta = f["median"][c][str(inputs["bit"])]
-Channel RTN & QA & New state & per-bit dev median & Q & $L_{0,c}$ \\
+\shortstack[l]{Per-channel\\round-to-nearest\\quantization} & QA & New state & \shortstack[l]{Per-bit development\\median} & Q & $L_{0,c}$ \\
 \addlinespace
 % anchors = {k: float(np.dot(beta, z)) for k, beta in
 %                        f["models"][c]["same_input_interpolation"]["anchors"].items()}
-Grouped RTN & Math & Seen state & v69 interpolation & G & $L_{0,c}$ \\
+\shortstack[l]{Grouped\\round-to-nearest\\quantization} & Math & Seen state & \shortstack[l]{Piecewise source\\interpolation} & G & $L_{0,c}$ \\
 % anchors = {k: float(np.dot(beta, z)) for k, beta in
 %                        f["models"][c]["same_input_interpolation"]["anchors"].items()}
-Grouped RTN & Code & Seen state & v69 interpolation & G & $L_{0,c}$ \\
+\shortstack[l]{Grouped\\round-to-nearest\\quantization} & Code & Seen state & \shortstack[l]{Piecewise source\\interpolation} & G & $L_{0,c}$ \\
 % anchors = f["models"][c]["median"]["anchors"]
-Grouped RTN & QA & Seen state & per-config median & G & $L_{0,c}$ \\
+\shortstack[l]{Grouped\\round-to-nearest\\quantization} & QA & Seen state & \shortstack[l]{per-configuration\\median} & G & $L_{0,c}$ \\
 % anchors = f["models"][c]["median"]["anchors"]
-Grouped RTN & Math & New state & per-config median & G & $L_{0,c}$ \\
+\shortstack[l]{Grouped\\round-to-nearest\\quantization} & Math & New state & \shortstack[l]{per-configuration\\median} & G & $L_{0,c}$ \\
 % anchors = f["models"][c]["median"]["anchors"]
-Grouped RTN & Code & New state & per-config median & G & $L_{0,c}$ \\
+\shortstack[l]{Grouped\\round-to-nearest\\quantization} & Code & New state & \shortstack[l]{per-configuration\\median} & G & $L_{0,c}$ \\
 % anchors = f["models"][c]["median"]["anchors"]
-Grouped RTN & QA & New state & per-config median & G & $L_{0,c}$ \\
+\shortstack[l]{Grouped\\round-to-nearest\\quantization} & QA & New state & \shortstack[l]{per-configuration\\median} & G & $L_{0,c}$ \\
 \addlinespace
 % float(distill._predict(f["linear"][c], [{**s, "L0": anchor}])[0])
-Distillation & Math & New source & linear (math) & K & $L_{S0,c}$ \\
+Distillation & Math & New source & \shortstack[l]{Linear source\\regression} & K & $L_{S0,c}$ \\
 % float(f["constant"][c])
-Distillation & Code & New source & constant & K & $L_{S0,c}$ \\
+Distillation & Code & New source & Constant & K & $L_{S0,c}$ \\
 % float(f["constant"][c])
-Distillation & QA & New source & constant & K & $L_{S0,c}$ \\
+Distillation & QA & New source & Constant & K & $L_{S0,c}$ \\
 \addlinespace
 % value = float(inputs["L0"])
-Dense & Math & Any valid status & 0 (no response) & --- & $L_{0,c}$ \\
+Dense & Math & Any valid status & 0 (no loss change) & --- & $L_{0,c}$ \\
 % value = float(inputs["L0"])
-Dense & Code & Any valid status & 0 (no response) & --- & $L_{0,c}$ \\
+Dense & Code & Any valid status & 0 (no loss change) & --- & $L_{0,c}$ \\
 % value = float(inputs["L0"])
-Dense & QA & Any valid status & 0 (no response) & --- & $L_{0,c}$ \\
+Dense & QA & Any valid status & 0 (no loss change) & --- & $L_{0,c}$ \\
 \bottomrule
 \end{tabular}
-\caption{Exact locked selection rule in \texttt{analysis/final\_rule.py}. Each absolute prediction is the listed anchor plus the response. $L_{0,c}$ is source dense loss; $L_{S0,c}$ is the initial student's dense loss. The fit keys identify the frozen development data below.}
+}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
+\caption{The table specifies the exact locked selection rule in \texttt{analysis/final\_rule.py}. Each absolute prediction is the listed anchor plus the response. $L_{0,c}$ is source dense loss; $L_{S0,c}$ is the initial student's dense loss. The fit keys identify the frozen development data below. Rows identify compression families, capabilities, and source-state status; columns specify the response predictor, development fit, and dense-loss anchor. Absolute losses are in nats per native token. This rule was frozen before selection confirmation. Fit keys P, Q, G, and K denote pruning, channel quantization, grouped quantization, and distillation development data, respectively; numbered predictor records identify the original development fits.}
 \label{tab:locked_rule}
+\end{minipage}}
+\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
 \end{table}
 \begingroup\small
 \noindent\textbf{Development data.} P: V53 register, 17 Pythia states, 84 density responses per capability ($0.55\le d<1$, excluding 2.8B). Q: V64 frozen paired channel rows; 16/16/4/17/17 states at 8/6/5/4/3 bits. G: V69 development grid, 160M/410M/1.4B at 16k/143k, $b\in\{3,4,5\}$, $g\in\{64,128,256\}$. K: V39 fixed-recipe Pythia students frozen in V64: 160M/410M/1.4B at 16k/64k/143k, excluding both selectable students (160M@64k, 410M@64k), leaving seven. Recipe: \texttt{gpt-5.6-luna}, full pool 600, two epochs, strict LoRA, seed 0. Full rosters and literal code are in the V85 artifact.

@@ -1,38 +1,48 @@
-\begin{table}[H]\centering\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{table}[H]
+\setbox2=\vbox{\begin{minipage}{\linewidth}\centering\scriptsize\setlength{\tabcolsep}{2pt}
+\setbox0=\hbox{
 \begin{tabular}{@{}lrrrrrrr@{}}
 \toprule
-Form & P & LOCO math & LOCO code & LOCO qa & LOSO math & LOSO code & LOSO qa \\
+Form & Parameters & \shortstack[l]{leave-one-run-out\\Math} & \shortstack[l]{leave-one-run-out\\Code} & leave-one-run-out QA & \shortstack[l]{leave-one-student-out\\Math} & \shortstack[l]{leave-one-student-out\\Code} & \shortstack[l]{leave-one-student-out\\QA} \\
 \midrule
-zero & 0 & 0.152/-0.152 & 0.178/-0.178 & 1.429/+0.143 & 0.152/-0.152 & 0.178/-0.178 & 1.429/+0.143 \\
-constant & 3 & 0.095/+0.000 & 0.103/+0.000 & 1.400/+0.000 & 0.093/+0.000 & 0.100/+0.000 & 1.358/-0.000 \\
-T-only & 6 & 0.082/+0.000 & 0.072/+0.000 & 1.092/-0.000 & 0.089/+0.000 & 0.070/+0.000 & 1.075/-0.000 \\
-E-only & 6 & 0.073/-0.003 & 0.055/-0.002 & 0.798/-0.029 & 0.091/+0.000 & 0.056/+0.000 & 0.949/+0.000 \\
-surface:L0 & 12 & 0.072/+0.000 & 0.054/-0.000 & 0.812/+0.001 & 0.091/+0.000 & 0.054/+0.000 & 0.944/-0.000 \\
-surface:logN & 12 & 0.072/+0.000 & 0.054/-0.000 & 0.812/+0.001 & 0.091/+0.000 & 0.054/+0.000 & 0.944/+0.000 \\
-F1:L0 & 6 & 0.057/+0.003 & 0.052/+0.003 & 1.518/+0.662 & 0.152/-0.152 & 0.178/-0.178 & 1.429/+0.143 \\
-F1:logN & 6 & 0.057/+0.003 & 0.052/+0.003 & 1.518/+0.662 & 0.152/-0.152 & 0.178/-0.178 & 1.429/+0.143 \\
-F2:L0 & 12 & 0.062/-0.007 & 0.057/-0.005 & 0.706/-0.069 & 0.152/-0.152 & 0.178/-0.178 & 1.429/+0.143 \\
-F2:logN & 12 & 0.062/-0.007 & 0.057/-0.005 & 0.706/-0.069 & 0.152/-0.152 & 0.178/-0.178 & 1.429/+0.143 \\
+Zero change & 0 & 0.152; -0.152 & 0.178; -0.178 & 1.429; +0.143 & 0.152; -0.152 & 0.178; -0.178 & 1.429; +0.143 \\
+Constant & 3 & 0.095; +0.000 & 0.103; +0.000 & 1.400; +0.000 & 0.093; +0.000 & 0.100; +0.000 & 1.358; -0.000 \\
+Budget only & 6 & 0.082; +0.000 & 0.072; +0.000 & 1.092; -0.000 & 0.089; +0.000 & 0.070; +0.000 & 1.075; -0.000 \\
+Reuse only & 6 & 0.073; -0.003 & 0.055; -0.002 & 0.798; -0.029 & 0.091; +0.000 & 0.056; +0.000 & 0.949; +0.000 \\
+\shortstack[l]{Response surface\\with initial loss} & 12 & 0.072; +0.000 & 0.054; -0.000 & 0.812; +0.001 & 0.091; +0.000 & 0.054; +0.000 & 0.944; -0.000 \\
+\shortstack[l]{Response surface\\with student size} & 12 & 0.072; +0.000 & 0.054; -0.000 & 0.812; +0.001 & 0.091; +0.000 & 0.054; +0.000 & 0.944; +0.000 \\
+F1 with initial loss & 6 & 0.057; +0.003 & 0.052; +0.003 & 1.518; +0.662 & 0.152; -0.152 & 0.178; -0.178 & 1.429; +0.143 \\
+F1 with student size & 6 & 0.057; +0.003 & 0.052; +0.003 & 1.518; +0.662 & 0.152; -0.152 & 0.178; -0.178 & 1.429; +0.143 \\
+F2 with initial loss & 12 & 0.062; -0.007 & 0.057; -0.005 & 0.706; -0.069 & 0.152; -0.152 & 0.178; -0.178 & 1.429; +0.143 \\
+F2 with student size & 12 & 0.062; -0.007 & 0.057; -0.005 & 0.706; -0.069 & 0.152; -0.152 & 0.178; -0.178 & 1.429; +0.143 \\
 \bottomrule\end{tabular}
-\caption{Distillation development matrix (12 runs, 48 points): held-out MAE/signed bias (nats) per form and capability under leave-one-run-out (LOCO) and leave-one-student-out (LOSO). Forms: $t=\log(1+T_c/35000)$, $e=\log(1+E)$, $s=1-e^{-T_c/T_*}$; T-only $a+bt$; E-only $a+be$; surface $a+bt+ce+dz$; F1 $(a+\lambda z)e$; F2 $(a+\lambda z)s+(b+\mu z)e$, $z$ = standardized $L_{0,c}$ (or $\log N_S$, identical up to sign with two students). Under LOSO the descriptor forms degenerate (one student in training) and fall back to zero.}
-\label{tab:v56_forms}\end{table}
-\begin{table}[H]\centering\scriptsize\setlength{\tabcolsep}{2pt}
+}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
+\caption{The distillation development matrix (12 runs, 48 points) is evaluated using \mbox{held-out} mean absolute error and signed bias (nats) per form and capability under leave-one-run-out evaluation and leave-one-student-out evaluation. Forms: $t=\log(1+T_c/35000)$, $e=\log(1+E)$, $s=1-e^{-T_c/T_*}$; budget only $a+bt$; reuse only $a+be$; surface $a+bt+ce+dz$; F1 $(a+\lambda z)e$; F2 $(a+\lambda z)s+(b+\mu z)e$, $z$ = standardized $L_{0,c}$ (or $\log N_S$, identical up to sign with two students). Under leave-one-student-out the descriptor forms degenerate (one student in training) and fall back to zero. Rows identify forms and columns give parameter counts and capability errors under each development holdout. Each paired entry gives mean absolute error followed by signed bias. The descriptor suffix L0 means initial loss and logN means logarithmic student size.}
+\label{tab:v56_forms}\end{minipage}}
+\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
+\end{table}
+\begin{table}[H]
+\setbox2=\vbox{\begin{minipage}{\linewidth}\centering\scriptsize\setlength{\tabcolsep}{2pt}
+\setbox0=\hbox{
 \begin{tabular}{@{}lllrrrr@{}}
 \toprule
-Structure & P shared/per & Capability & Shared MAE & Per-cap MAE & Gain & >0.02 \\
+Structure & \shortstack[l]{Parameters, shared\\and specific} & Capability & Shared MAE & \shortstack[l]{Capability-specific\\MAE} & Gain & Gain exceeds 0.02 \\
 \midrule
-E-only & 4/4 & math & 0.431 & 0.409 & 0.022 & yes \\
-E-only & 4/4 & code & 0.417 & 0.412 & 0.006 & no \\
-E-only & 4/4 & qa & 0.967 & 1.150 & -0.183 & no \\
-E-only & 4/4 & macro & 0.605 & 0.657 & -0.052 & no \\
-T+E & 5/5 & math & 0.439 & 0.327 & 0.111 & yes \\
-T+E & 5/5 & code & 0.419 & 0.314 & 0.105 & yes \\
-T+E & 5/5 & qa & 0.979 & 0.853 & 0.126 & yes \\
-T+E & 5/5 & macro & 0.612 & 0.498 & 0.114 & yes \\
-F2 & 7/7 & math & 0.536 & 0.145 & 0.390 & yes \\
-F2 & 7/7 & code & 0.527 & 0.107 & 0.420 & yes \\
-F2 & 7/7 & qa & 1.044 & 0.826 & 0.219 & yes \\
-F2 & 7/7 & macro & 0.702 & 0.359 & 0.343 & yes \\
+Reuse only & 4; 4 & Math & 0.431 & 0.409 & 0.022 & Yes \\
+Reuse only & 4; 4 & Code & 0.417 & 0.412 & 0.006 & No \\
+Reuse only & 4; 4 & QA & 0.967 & 1.150 & -0.183 & No \\
+Reuse only & 4; 4 & Capability mean & 0.605 & 0.657 & -0.052 & No \\
+Budget and reuse & 5; 5 & Math & 0.439 & 0.327 & 0.111 & Yes \\
+Budget and reuse & 5; 5 & Code & 0.419 & 0.314 & 0.105 & Yes \\
+Budget and reuse & 5; 5 & QA & 0.979 & 0.853 & 0.126 & Yes \\
+Budget and reuse & 5; 5 & Capability mean & 0.612 & 0.498 & 0.114 & Yes \\
+F2 & 7; 7 & Math & 0.536 & 0.145 & 0.390 & Yes \\
+F2 & 7; 7 & Code & 0.527 & 0.107 & 0.420 & Yes \\
+F2 & 7; 7 & QA & 1.044 & 0.826 & 0.219 & Yes \\
+F2 & 7; 7 & Capability mean & 0.702 & 0.359 & 0.343 & Yes \\
 \bottomrule\end{tabular}
-\caption{Capability conditioning at matched parameter count (leave-one-run-out MAE, nats): shared response shape with per-capability offsets versus per-capability models with the same total count; gain $>0.02$ nats is a descriptive threshold.}
-\label{tab:v56_condition}\end{table}
+}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
+\caption{The table compares capability conditioning at matched parameter count (leave-one-run-out MAE, nats), using a shared response shape with per-capability offsets versus per-capability models with the same total count; gain $>0.02$ nats is a descriptive threshold. Rows identify response structures and capabilities; columns compare parameter counts, errors, gains, and the stated gain threshold in this development analysis. F2 denotes a saturating budget response plus a logarithmic reuse response, with a student descriptor. Paired parameter counts give the shared and capability-specific totals, respectively. MAE denotes mean absolute error.}
+\label{tab:v56_condition}\end{minipage}}
+\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
+\end{table}

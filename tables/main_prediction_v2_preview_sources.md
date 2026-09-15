@@ -281,7 +281,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "row": 1,
     "column": 3,
     "parts": [
-      "math ",
+      "Math ",
       {
         "sources": [
           "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/math",
@@ -291,8 +291,8 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
-      "code ",
+      "; ",
+      "Code ",
       {
         "sources": [
           "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/code",
@@ -302,7 +302,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       "QA ",
       {
         "sources": [
@@ -316,7 +316,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "math 0.24 / code 0.24 / QA 0.68"
+    "rendered": "Math 0.24; Code 0.24; QA 0.68"
   },
   {
     "row": 1,
@@ -343,7 +343,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       {
         "sources": [
           "results/v53-prune-dev/register.json#/loso_table/2/candidate"
@@ -365,14 +365,14 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       {
         "sources": [
           "results/v53-prune-dev/register.json#/loso_table/5/candidate"
         ],
         "op": "label",
         "format": null,
-        "label": "median",
+        "label": "development median",
         "expected": [
           "median_curve"
         ]
@@ -392,7 +392,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v53-prune-dev/register.json#/loso_table"
     ],
     "note": "Minimum development LOSO MAE excluding power, per capability; no test ranking.",
-    "rendered": "per-density regression 0.23 / per-density regression 0.22 / median 0.22"
+    "rendered": "per-density regression 0.23; per-density regression 0.22; development median 0.22"
   },
   {
     "row": 1,
@@ -460,7 +460,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "Pythia 160M to 1.4B; bit 4 with groups 64 and 256",
+        "label": "Pythia-160M to Pythia-1.4B; bit width 4 with group sizes 64 and 256",
         "expected": [
           [
             "pythia-160m@step16000",
@@ -479,13 +479,13 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "Pythia 160M to 1.4B; bit 4 with groups 64 and 256"
+    "rendered": "Pythia-160M to Pythia-1.4B; bit width 4 with group sizes 64 and 256"
   },
   {
     "row": 2,
     "column": 3,
     "parts": [
-      "math ",
+      "Math ",
       {
         "sources": [
           "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math"
@@ -493,8 +493,8 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
-      "code ",
+      "; ",
+      "Code ",
       {
         "sources": [
           "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code"
@@ -502,7 +502,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       "QA ",
       {
         "sources": [
@@ -514,7 +514,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "math 0.19 / code 0.21 / QA 0.44"
+    "rendered": "Math 0.19; Code 0.21; QA 0.44"
   },
   {
     "row": 2,
@@ -526,7 +526,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "median",
+        "label": "development median",
         "expected": [
           "median"
         ]
@@ -539,14 +539,14 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       {
         "sources": [
           "results/v55-quant-group/register.json#/loso_table/4/candidate"
         ],
         "op": "label",
         "format": null,
-        "label": "median",
+        "label": "development median",
         "expected": [
           "median"
         ]
@@ -559,14 +559,14 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       {
         "sources": [
           "results/v55-quant-group/register.json#/loso_table/4/candidate"
         ],
         "op": "label",
         "format": null,
-        "label": "median",
+        "label": "development median",
         "expected": [
           "median"
         ]
@@ -584,7 +584,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v55-quant-group/register.json#/loso_table"
     ],
     "note": "Development minimum over registered baselines mean/median/zero.",
-    "rendered": "median 0.55 / median 0.73 / median 0.54"
+    "rendered": "development median 0.55; development median 0.73; development median 0.54"
   },
   {
     "row": 2,
@@ -649,7 +649,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "row": 3,
     "column": 1,
     "parts": [
-      "math: ",
+      "Math: ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/selected/math/candidate"
@@ -671,7 +671,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       },
       ")",
       "; ",
-      "code: ",
+      "Code: ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/selected/code/candidate"
@@ -722,7 +722,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v69-quant-confirm/develop.json#/dev_configs"
     ],
     "note": "Surface is phi.[a0+a1*u+a2*v+a3*u*v+a4*u^2]; median is per configuration; zero is identically zero.",
-    "rendered": "math: $\\phi^\\top Q_c$ (20); code: $m_c(b,g)$ (9); QA: $0$ (0)"
+    "rendered": "Math: $\\phi^\\top Q_c$ (20); Code: $m_c(b,g)$ (9); QA: $0$ (0)"
   },
   {
     "row": 3,
@@ -805,7 +805,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "Pythia 410M and 1.4B; bits 3 to 5 with groups 32 and 512",
+        "label": "Pythia-410M and Pythia-1.4B; bit widths 3 to 5 with group sizes 32 and 512",
         "expected": [
           "pythia-410m@step143000",
           "b3_g32",
@@ -884,13 +884,13 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "Pythia 410M and 1.4B; bits 3 to 5 with groups 32 and 512"
+    "rendered": "Pythia-410M and Pythia-1.4B; bit widths 3 to 5 with group sizes 32 and 512"
   },
   {
     "row": 3,
     "column": 3,
     "parts": [
-      "math ",
+      "Math ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/rows/0/absolute_errors/low_order_2d",
@@ -909,8 +909,8 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
-      "code ",
+      "; ",
+      "Code ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/rows/1/absolute_errors/median",
@@ -929,7 +929,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       "QA ",
       {
         "sources": [
@@ -952,7 +952,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "math 0.21 / code 0.56 / QA 0.46"
+    "rendered": "Math 0.21; Code 0.56; QA 0.46"
   },
   {
     "row": 3,
@@ -1001,7 +1001,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/loso/scores/zero/code"
@@ -1045,14 +1045,14 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/loso/scores/median/qa"
         ],
         "op": "label",
         "format": null,
-        "label": "median",
+        "label": "development median",
         "expected": [
           {
             "n": 54,
@@ -1094,7 +1094,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v69-quant-confirm/develop.json#/loso/scores"
     ],
     "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability.",
-    "rendered": "bilinear 0.33 / zero change 0.68 / median 0.46"
+    "rendered": "bilinear 0.33; zero change 0.68; development median 0.46"
   },
   {
     "row": 3,
@@ -1150,7 +1150,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "row": 4,
     "column": 1,
     "parts": [
-      "math: ",
+      "Math: ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/selected/math/candidate"
@@ -1172,7 +1172,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       },
       ")",
       "; ",
-      "code: ",
+      "Code: ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/selected/code/candidate"
@@ -1223,7 +1223,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v69-quant-confirm/develop.json#/dev_configs"
     ],
     "note": "Surface is phi.[a0+a1*u+a2*v+a3*u*v+a4*u^2]; median is per configuration; zero is identically zero.",
-    "rendered": "math: $\\phi^\\top Q_c$ (20); code: $m_c(b,g)$ (9); QA: $0$ (0)"
+    "rendered": "Math: $\\phi^\\top Q_c$ (20); Code: $m_c(b,g)$ (9); QA: $0$ (0)"
   },
   {
     "row": 4,
@@ -1288,7 +1288,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "Pythia 1.4B at step 112000; groups 32, 128 and 512",
+        "label": "Pythia-1.4B at step 112000; group sizes 32, 128 and 512",
         "expected": [
           "pythia-1.4b@step112000",
           "b3_g32",
@@ -1349,13 +1349,13 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "Pythia 1.4B at step 112000; groups 32, 128 and 512"
+    "rendered": "Pythia-1.4B at step 112000; group sizes 32, 128 and 512"
   },
   {
     "row": 4,
     "column": 3,
     "parts": [
-      "math ",
+      "Math ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/rows/36/absolute_errors/low_order_2d",
@@ -1371,8 +1371,8 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
-      "code ",
+      "; ",
+      "Code ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/rows/37/absolute_errors/median",
@@ -1388,7 +1388,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       "QA ",
       {
         "sources": [
@@ -1408,7 +1408,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "math 0.30 / code 0.15 / QA 0.22"
+    "rendered": "Math 0.30; Code 0.15; QA 0.22"
   },
   {
     "row": 4,
@@ -1454,7 +1454,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/loso/scores/zero/code"
@@ -1495,14 +1495,14 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/loso/scores/median/qa"
         ],
         "op": "label",
         "format": null,
-        "label": "median",
+        "label": "development median",
         "expected": [
           {
             "n": 54,
@@ -1541,7 +1541,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v69-quant-confirm/develop.json#/loso/scores"
     ],
     "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability.",
-    "rendered": "bilinear 0.35 / zero change 0.56 / median 0.14"
+    "rendered": "bilinear 0.35; zero change 0.56; development median 0.14"
   },
   {
     "row": 4,
@@ -1579,7 +1579,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "additive log",
+        "label": "additive logarithmic form",
         "expected": [
           "(a+a_prime*z)*u+(b+b_prime*z)*v"
         ]
@@ -1599,7 +1599,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "curved",
+        "label": "curved form",
         "expected": [
           "(a+a_prime*z)*u+(b+b_prime*z)*h_p(E)"
         ]
@@ -1619,7 +1619,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "interaction",
+        "label": "interaction form",
         "expected": [
           "(a+a_prime*z)*u+(b+b_prime*z)*v+k*u*v"
         ]
@@ -1640,7 +1640,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/a2-curvature-interaction/summary.json#/protocol/descriptor_calibration_cost"
     ],
     "note": "Fold-selected forms; A=a+a_prime*z and B=b+b_prime*z. Counts are per structure, not summed over folds.",
-    "rendered": "additive log (4); curved (5); interaction (5)"
+    "rendered": "additive logarithmic form (4); curved form (5); interaction form (5)"
   },
   {
     "row": 5,
@@ -1676,7 +1676,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "row": 5,
     "column": 3,
     "parts": [
-      "math ",
+      "Math ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/18/primary_mae"
@@ -1701,8 +1701,8 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "format": ".2f"
       },
       "]",
-      " / ",
-      "code ",
+      "; ",
+      "Code ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/6/primary_mae"
@@ -1727,7 +1727,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "format": ".2f"
       },
       "]",
-      " / ",
+      "; ",
       "QA ",
       {
         "sources": [
@@ -1756,7 +1756,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "Training-probe MAEs; reuse is the recorded tolerance proxy, not an exact intervention. Intervals conditional on frozen fold predictions.",
-    "rendered": "math 0.07 [0.05,0.11] / code 0.07 [0.05,0.09] / QA 2.18 [1.68,2.88]"
+    "rendered": "Math 0.07 [0.05,0.11]; Code 0.07 [0.05,0.09]; QA 2.18 [1.68,2.88]"
   },
   {
     "row": 5,
@@ -1783,7 +1783,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/6/inner_selected_baselines"
@@ -1805,7 +1805,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/54/inner_selected_baselines"
@@ -1830,7 +1830,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "Inner-development-selected baselines. Never strongest_observed_baseline or strongest_baseline_mae.",
-    "rendered": "constant 0.09 / constant 0.11 / constant 1.44"
+    "rendered": "constant 0.09; constant 0.11; constant 1.44"
   },
   {
     "row": 5,
@@ -1869,7 +1869,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "additive log",
+        "label": "additive logarithmic form",
         "expected": [
           "(a+a_prime*z)*u+(b+b_prime*z)*v"
         ]
@@ -1889,7 +1889,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "curved",
+        "label": "curved form",
         "expected": [
           "(a+a_prime*z)*u+(b+b_prime*z)*h_p(E)"
         ]
@@ -1909,7 +1909,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "interaction",
+        "label": "interaction form",
         "expected": [
           "(a+a_prime*z)*u+(b+b_prime*z)*v+k*u*v"
         ]
@@ -1930,7 +1930,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/a2-curvature-interaction/summary.json#/protocol/descriptor_calibration_cost"
     ],
     "note": "Fold-selected forms; A=a+a_prime*z and B=b+b_prime*z. Counts are per structure, not summed over folds.",
-    "rendered": "additive log (4); curved (5); interaction (5)"
+    "rendered": "additive logarithmic form (4); curved form (5); interaction form (5)"
   },
   {
     "row": 6,
@@ -1966,7 +1966,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "row": 6,
     "column": 3,
     "parts": [
-      "math ",
+      "Math ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/14/primary_mae"
@@ -1991,8 +1991,8 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "format": ".2f"
       },
       "]",
-      " / ",
-      "code ",
+      "; ",
+      "Code ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/2/primary_mae"
@@ -2017,7 +2017,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "format": ".2f"
       },
       "]",
-      " / ",
+      "; ",
       "QA ",
       {
         "sources": [
@@ -2046,7 +2046,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "Training-probe MAEs; reuse is the recorded tolerance proxy, not an exact intervention. Intervals conditional on frozen fold predictions.",
-    "rendered": "math 0.08 [0.05,0.14] / code 0.07 [0.04,0.12] / QA 1.02 [0.72,1.34]"
+    "rendered": "Math 0.08 [0.05,0.14]; Code 0.07 [0.04,0.12]; QA 1.02 [0.72,1.34]"
   },
   {
     "row": 6,
@@ -2058,7 +2058,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "surface and reuse only",
+        "label": "response surface and reuse only",
         "expected": [
           {
             "surface": 109,
@@ -2074,14 +2074,14 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/2/inner_selected_baselines"
         ],
         "op": "label",
         "format": null,
-        "label": "zero change, surface and reuse only",
+        "label": "zero change, response surface and reuse only",
         "expected": [
           {
             "zero": 38,
@@ -2098,14 +2098,14 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       {
         "sources": [
           "results/a2-curvature-interaction/summary.json#/decision_table/50/inner_selected_baselines"
         ],
         "op": "label",
         "format": null,
-        "label": "surface",
+        "label": "response surface",
         "expected": [
           {
             "surface": 138
@@ -2123,7 +2123,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "Inner-development-selected baselines. Never strongest_observed_baseline or strongest_baseline_mae.",
-    "rendered": "surface and reuse only 0.08 / zero change, surface and reuse only 0.07 / surface 0.76"
+    "rendered": "response surface and reuse only 0.08; zero change, response surface and reuse only 0.07; response surface 0.76"
   },
   {
     "row": 6,
@@ -2154,7 +2154,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "row": 7,
     "column": 1,
     "parts": [
-      "math and code: ",
+      "Math and Code: ",
       {
         "sources": [
           "results/v70-distill-confirm/freeze.json#/selected/math/method",
@@ -2205,7 +2205,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v70-distill-confirm/freeze.json#/prediction_rule"
     ],
     "note": "E and joint are the frozen V50/V70 design identifiers. E has one coefficient; joint has three coefficients on u, u*u, u*log(D_U/D_ref). T_star is null, not fitted, for these selected forms.",
-    "rendered": "math and code: $a_c\\log(1+E)$ (1); QA: $u(a+bu+qv)$ (3)"
+    "rendered": "Math and Code: $a_c\\log(1+E)$ (1); QA: $u(a+bu+qv)$ (3)"
   },
   {
     "row": 7,
@@ -2219,7 +2219,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "270M and 1B students; six pools with budgets of 50000 to 200000 tokens",
+        "label": "Gemma-3-270M and Gemma-3-1B students; six pools with budgets of 50000 to 200000 tokens",
         "expected": [
           [
             "gemma3-270m",
@@ -2555,13 +2555,13 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "270M and 1B students; six pools with budgets of 50000 to 200000 tokens"
+    "rendered": "Gemma-3-270M and Gemma-3-1B students; six pools with budgets of 50000 to 200000 tokens"
   },
   {
     "row": 7,
     "column": 3,
     "parts": [
-      "math ",
+      "Math ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/0/candidate_mae"
@@ -2577,8 +2577,8 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
-      "code ",
+      "; ",
+      "Code ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/1/candidate_mae"
@@ -2594,7 +2594,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       "QA ",
       {
         "sources": [
@@ -2616,7 +2616,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
     ],
     "note": "Comma-separated scores follow student order 270M, 1B; no student averaging.",
-    "rendered": "math 0.07,0.06 / code 0.02,0.05 / QA 0.51,0.46"
+    "rendered": "Math 0.07,0.06; Code 0.02,0.05; QA 0.51,0.46"
   },
   {
     "row": 7,
@@ -2629,7 +2629,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "budget only and loss-size surface",
+        "label": "budget only and response surface with initial loss",
         "expected": [
           "T-only",
           "surface:L0"
@@ -2651,7 +2651,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/1/strongest_baseline",
@@ -2681,7 +2681,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "; ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/2/strongest_baseline",
@@ -2689,7 +2689,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "reuse only and loss-size surface",
+        "label": "reuse only and response surface with student size",
         "expected": [
           "E-only",
           "surface:logN"
@@ -2722,8 +2722,8 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v70-distill-confirm/compare.json#/groups/4/paired_difference",
       "results/v70-distill-confirm/compare.json#/groups/5/paired_difference"
     ],
-    "note": "Only MAEs are printed, paired in student order 270M, 1B. Names joined by 'and' follow the same student order; a shared name is printed once. Loss-size surface covers the stored initial-loss (surface:L0) and size (surface:logN) variants, without changing either selection. Stored paired_difference.ci95 estimates baseline-minus-candidate gain, not an MAE interval; it is not displayed in the MAE columns.",
-    "rendered": "budget only and loss-size surface 0.07,0.03 / reuse only 0.02,0.05 / reuse only and loss-size surface 0.61,0.45"
+    "note": "Only MAEs are printed, paired in student order 270M, 1B. Names joined by 'and' follow the same student order; a shared name is printed once. Response-surface labels distinguish the stored initial-loss (surface:L0) and size (surface:logN) variants, without changing either selection. Stored paired_difference.ci95 estimates baseline-minus-candidate gain, not an MAE interval; it is not displayed in the MAE columns.",
+    "rendered": "budget only and response surface with initial loss 0.07,0.03; reuse only 0.02,0.05; reuse only and response surface with student size 0.61,0.45"
   },
   {
     "row": 7,
@@ -2746,7 +2746,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
 ```json
 {
   "parts": [
-    "Frozen prediction evidence per method and prediction task. Errors are mean absolute errors in native-token nats on the training probes, with stored intervals in brackets. Source-conditioned forms take the source size, its initial loss and its pretraining tokens together with the configuration; distillation forms take the supervised budget, the pool size and the reuse ratio. The baseline column names the baseline selected inside the development folds and gives its error. Status distinguishes development results, predictions frozen before measurement, and post-hoc recommendations. Cells marked not tested have no frozen artifact."
+    "Development and frozen prediction evidence by method and prediction task. Each block names a method and task; the left column identifies the field and the right column gives its value. Parentheses after relations give parameter counts. Errors are mean absolute errors in native-token nats on the training probes, with stored intervals in brackets. Source-conditioned forms take the source size, its initial loss and its pretraining tokens together with the configuration; distillation forms take the supervised budget, the pool size and the reuse ratio. The baseline row names the baseline selected inside the development folds and gives its error. Status distinguishes development results, predictions frozen before measurement, and recommendations made after testing. Cells marked not tested have no frozen artifact. Error entries follow the capability order Math, Code, and QA; paired student errors follow the displayed student order. Bit widths are in bits, group sizes count weights, and budgets count supervised tokens."
   ],
   "context": [
     "results/v53-prune-dev/register.json#/feature_names",
@@ -2760,7 +2760,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "results/v70-distill-confirm/freeze.json#/models"
   ],
   "note": "",
-  "rendered": "Frozen prediction evidence per method and prediction task. Errors are mean absolute errors in native-token nats on the training probes, with stored intervals in brackets. Source-conditioned forms take the source size, its initial loss and its pretraining tokens together with the configuration; distillation forms take the supervised budget, the pool size and the reuse ratio. The baseline column names the baseline selected inside the development folds and gives its error. Status distinguishes development results, predictions frozen before measurement, and post-hoc recommendations. Cells marked not tested have no frozen artifact."
+  "rendered": "Development and frozen prediction evidence by method and prediction task. Each block names a method and task; the left column identifies the field and the right column gives its value. Parentheses after relations give parameter counts. Errors are mean absolute errors in native-token nats on the training probes, with stored intervals in brackets. Source-conditioned forms take the source size, its initial loss and its pretraining tokens together with the configuration; distillation forms take the supervised budget, the pool size and the reuse ratio. The baseline row names the baseline selected inside the development folds and gives its error. Status distinguishes development results, predictions frozen before measurement, and recommendations made after testing. Cells marked not tested have no frozen artifact. Error entries follow the capability order Math, Code, and QA; paired student errors follow the displayed student order. Bit widths are in bits, group sizes count weights, and budgets count supervised tokens."
 }
 ```
 

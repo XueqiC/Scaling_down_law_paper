@@ -112,24 +112,23 @@ axis. \\
 \addlinespace
 Distillation, controlled &
 The nine Pythia development states as students; one fixed teacher pool of 600 traces per domain;
-LoRA adapters under one recipe. &
-Fixed recipe. &
-Source transfer of the signed response $\delta_c$. \\
+Low-rank adaptation adapters under one recipe. &
+A fixed distillation recipe. &
+Tests source transfer of the signed response $\delta_c$. \\
 \addlinespace
 Distillation, pools &
-Gemma-3 1B student; pools of 75 and 600 traces per domain for fitting and 225 for testing; three
+Gemma-3-1B student; pools of 75 and 600 traces per domain for fitting and 225 for testing; three
 pool seeds and two training seeds. &
-Processed tokens $T$ and the reuse count $E=T/D_U$. &
-Configuration axis: the pool. \\
+Processed-token budget $T$ and reuse count $E=T/D_U$. &
+Tests transfer to an unseen trace pool. \\
 \addlinespace
 Distillation, heterogeneous &
-Gemma-3 students from 270M to 12B, OLMo-3 7B and Qwen3 0.6B to 4B; two API teachers; full-trace
-against answer-only traces. &
-Recipe. &
-Phenomena only. \\
+Gemma-3 students from 270M to 12B, OLMo-3-7B and Qwen3 0.6B to 4B; two teachers accessed through an application programming interface; full traces compared with answer-only traces. &
+Varied distillation recipes. &
+Describes measured responses. \\
 \bottomrule
 \end{tabular}
-\caption{Cohorts and their roles. Every cohort is scored with the same 64 probes per capability on
+\caption{Cohort rows list models and states, compression interventions, and study roles. Counts describe models, states, probes, or traces per domain; densities and reuse counts are dimensionless, bit widths are in bits, and budgets are in tokens. Rows distinguish development cohorts, frozen prediction tests, and descriptive \mbox{post-hoc} measurements. Every cohort is scored with the same 64 probes per capability on
 the primary benchmarks. Counts are generated from the result files. The 2.8B Pythia checkpoints were
 excluded because the step revisions available to us loaded identical weights, which a hash check
 confirmed; nothing is claimed about other revisions.}
@@ -784,13 +783,14 @@ diagonal (Gemma-3-1B; rows ablate, columns measure, nats/token):
 \small
 \begin{tabular}{@{}lrrr@{}}
 \toprule
-Ablated region & math & code & QA \\
+Ablated region & Math & Code & QA \\
 \midrule
-math & $\mathbf{+4.63}$ & $+0.43$ & $+0.05$ \\
-code & $+0.42$ & $\mathbf{+7.14}$ & $+0.00$ \\
+Math & $\mathbf{+4.63}$ & $+0.43$ & $+0.05$ \\
+Code & $+0.42$ & $\mathbf{+7.14}$ & $+0.00$ \\
 QA   & $+0.01$ & $+0.00$ & $\mathbf{+2.29}$ \\
 \bottomrule
 \end{tabular}
+\captionof*{table}{\mbox{Post-hoc} selective-ablation measurements. Rows identify the ablated capability region; columns identify the measured capability. Entries are loss increases in nats per native token; bold entries mark the matching capability.}
 \end{center}
 
 Zeroing $0.05\%$ of weights, selected from gradients alone, selectively
@@ -896,17 +896,19 @@ nats, sits on the same curve as per-channel four-bit at 0.24 nats.
 \begin{table}[H]
 \centering\small
 \caption{Median relative error of the coefficient-free second-order account, by family and
-configuration; the boundary is set by damage magnitude.}
+configuration. Rows identify compression families; the second column pairs each setting with its median relative error in percent. This is a \mbox{post-hoc} analysis of measured damage; density is dimensionless and bit width is in bits.}
 \label{tab:disp_boundary}
+\resizebox{\linewidth}{!}{%
 \begin{tabular}{@{}ll@{}}
 \toprule
 Family & Configuration: median relative error \\
 \midrule
 Pruning & $d=0.9$: 0.9\%; 0.85: 4.3\%; 0.8: 5.3\%; 0.75: 11.1\%; 0.7: 16.0\%; 0.65: 28.2\%; 0.6: 44.4\% \\
-Grouped quantization & 5 bit: 1.6--2.7\% at every group size; 4 bit: 3.3\% to 9.2\% by group size; 3 bit: 35.9\% \\
-Per-channel quantization & 8 bit: 2.5\%; 6 bit: 3.0\%; 5 bit: 4.2\%; 4 bit: 23.8\%; 3 bit: 53.9\% \\
+Grouped quantization & 5 bits: 1.6--2.7\% at every group size; 4 bits: 3.3\% to 9.2\% by group size; 3 bits: 35.9\% \\
+Per-channel quantization & 8 bits: 2.5\%; 6 bits: 3.0\%; 5 bits: 4.2\%; 4 bits: 23.8\%; 3 bits: 53.9\% \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 Two readings of this account are excluded. Projecting the displacement onto the reference logits
@@ -1100,19 +1102,19 @@ text is downgraded and the prediction stays as committed.
 \toprule
 Budget & Information available & Cost to disclose \\
 \midrule
-K0, metadata only & $N_0$, public $D_0$, architecture, intervention
-configuration & metadata availability; $D_0$ may be undisclosed \\
-K0 + dense anchor & the above plus the dense capability losses
-$\mathbf L_0$, measured once before compression & probe count, one
-forward pass per probe, native loss units \\
-K1 & the above plus one pre-specified measurement of the target at one
-compression configuration & the calibration configuration and its
+Metadata only (K0) & $N_0$, public $D_0$, architecture, intervention
+configuration & Disclose metadata availability; $D_0$ may be undisclosed \\
+Metadata and dense anchor (K0) & The preceding information plus the dense capability losses
+$\mathbf L_0$, measured once before compression & Disclose the probe count, one
+forward pass per probe, and native loss units \\
+One target calibration measurement (K1) & The preceding information plus one pre-specified measurement of the target at one
+compression configuration & Disclose the calibration configuration and its
 compression cost \\
-Oracle diagnostic & post-hoc rescaling on the target outcomes & none;
-diagnoses form misfit, never a prediction \\
+Oracle diagnostic & Rescaling based on measured target outcomes & No predictive information budget applies;
+this diagnostic measures form misfit after testing \\
 \bottomrule
 \end{tabular}
-\caption{Information budgets. Unknown $D_0$ stays unknown; handling of
+\caption{Rows identify information budgets; columns specify available information and costs to disclose. K0 means no compressed-target calibration, and K1 means one compressed-target calibration measurement. Predictive budgets are fixed on development data; the oracle row is a \mbox{post-hoc} diagnostic. Losses use nats per native token, model size counts parameters, and pretraining exposure counts tokens. Unknown $D_0$ stays unknown; handling of
 missing inputs is fixed on the development panel and never inferred
 from the target response. Predicting $\mathbf L_0$ from $(N_0,D_0)$ is
 the task of dense scaling laws and is not attempted here.}

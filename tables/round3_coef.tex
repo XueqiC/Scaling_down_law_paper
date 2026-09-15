@@ -1,11 +1,16 @@
-\begin{table}[H]\centering\footnotesize
+\begin{table}[H]
+\setbox2=\vbox{\begin{minipage}{\linewidth}\centering\footnotesize
+\setbox0=\hbox{
 \begin{tabular}{@{}lrrrrr@{}}
 \toprule
-capability & $\gamma_c$ & $\beta_{c,0}$ & $\beta_{c,\log N_0}$ & $\beta_{c,L_0}$ & $\beta_{c,\log D_0}$ \\
+Capability & $\gamma_c$ & $\beta_{c,0}$ & $\beta_{c,\log N_0}$ & $\beta_{c,L_0}$ & $\beta_{c,\log D_0}$ \\
 \midrule
-math & 3.75 & +3.275 & +0.319 & +3.850 & +0.250 \\
-code & 3.05 & +4.499 & +0.273 & +5.357 & +0.347 \\
-qa & 3.05 & -7.409 & -0.481 & +5.486 & +0.106 \\
+Math & 3.75 & +3.275 & +0.319 & +3.850 & +0.250 \\
+Code & 3.05 & +4.499 & +0.273 & +5.357 & +0.347 \\
+QA & 3.05 & -7.409 & -0.481 & +5.486 & +0.106 \\
 \bottomrule\end{tabular}
-\caption{Selected pruning form $\widehat{\Delta L}_c=(\beta_c\cdot\phi)((1-d)/0.3)^{\gamma_c}$ with $\phi=[1,z(\log N_0),z(L_{0,c}),z(\log D_0)]$; standardization centers 20.248, 2.661, 25.614 and scales 1.407, 1.691, 0.739 for $(\log N_0, L_{0,c}, \log D_0)$ in natural units ($N_0$ = transformer weight-matrix parameters, $D_0$ = tokens). Register: \texttt{v53-prune-dev/register.json}.}
-\label{tab:round3_coef}\end{table}
+}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
+\caption{The selected pruning form is $\widehat{\Delta L}_c=(\beta_c\cdot\phi)((1-d)/0.3)^{\gamma_c}$ with $\phi=[1,z(\log N_0),z(L_{0,c}),z(\log D_0)]$; standardization uses centers 20.248, 2.661, 25.614 and scales 1.407, 1.691, 0.739 for $(\log N_0, L_{0,c}, \log D_0)$ in natural units ($N_0$ = transformer weight-matrix parameters, $D_0$ = tokens). The register is \texttt{v53-prune-dev/register.json}. Rows identify capabilities; columns give the fitted exponent and coefficients of the intercept, source size, initial loss, and pretraining tokens, respectively. These development coefficients were frozen for prediction. Loss is in nats per native token; standardized covariates and the exponent are dimensionless.}
+\label{tab:round3_coef}\end{minipage}}
+\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
+\end{table}
