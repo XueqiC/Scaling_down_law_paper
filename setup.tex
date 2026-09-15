@@ -10,10 +10,9 @@ probe set $\probeset{c}$ of prompt and reference pairs drawn once
 from held-out splits of MATH-500
 \citep{hendrycks2021math,lightman2023verify}, MBPP
 \citep{austin2021program}, and 2WikiMultihopQA
-\citep{ho2020constructing}. Each probe set fixes one evaluation distribution $j$, so the measured
-quantity is $L_{c,j}$; we write $L_c$ with the fixed distribution
-implied and test in Appendix~\ref{sec:app_measure} how far a response
-carries to other distributions of the same capability. The observable is the
+\citep{ho2020constructing}. Each probe set fixes one evaluation distribution $j$; we write $L_c$ with the distribution implied
+and report transfer to other distributions of the same capability where it was measured. The
+observable is the
 token-weighted conditional cross-entropy of the reference completion,
 \begin{equation}
 \Lc{c}(w)\;=\;\frac{1}{T_c}\sum_{(x,y)\in\probeset{c}}\;\sum_{t=1}^{|y|}
@@ -28,9 +27,9 @@ quantization the damage
 $\Delta L_c=L_c(\text{compressed})-L_c(M_0)$, for distillation the
 signed transfer $\delta_c=L_c(S_{\mathrm{KD}})-L_c(S_0)$ of a student
 relative to its own initial state $S_0$, which is the reference
-model of that arm; the teacher never plays the role of the source. The observable is a likelihood on a
-fixed distribution, not an accuracy, and absolute levels of different tokenizers are never placed on
-one scale (Appendix~\ref{sec:app_measure}).
+model of that arm; the teacher never plays the role of the source. The observable is a likelihood, not an
+accuracy, and absolute levels of different tokenizers are never placed on one scale
+(Appendix~\ref{sec:app_measure}).
 
 \subsection{Models and Compression Settings}
 \label{sec:models}

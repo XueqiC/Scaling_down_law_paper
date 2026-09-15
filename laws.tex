@@ -27,11 +27,6 @@ A_c(\mathbf x)=\beta_c\cdot\big(1,\tilde{\log N_0},\tilde L_{0,c},\tilde{\log D_
 with five parameters per capability (tildes standardized on the
 development set) approximates the twenty-parameter per-density regression A2 for math and code; for any new state (a new size, or a new stage of a seen size, which takes precedence) and for QA everywhere, the delivered relation is the source-free median development curve,
 $\widehat L_c=L_{0,c}+\widetilde f_c(d)$.
-\paragraph{Inputs and range.} $N_0$, $D_0$, and $L_{0,c}$ for
-Eq.~\ref{eq:power}; $L_{0,c}$ alone for the median curve. The
-nine-state freeze covers $d\in[0.6,0.9]$ and $0.55$ was an
-extrapolation for it; the 17-state refit used for the confirmations
-includes 0.55.
 \subsection{Quantization}
 \label{sec:law_quant}
 
@@ -42,10 +37,6 @@ groups of $g$ weights per scale as a second axis, the delivered relation for mat
 states is a same-input piecewise interpolation over the measured $(b,g)$ grid, linear in $\log_2 g$,
 with a zero floor beyond it; for QA, and for every capability on a new state, the per-configuration
 development median under the same rule.
-\paragraph{Inputs and range.} The measured development grid
-($b\in\{3,4,5\}$, $g\in\{64,128,256\}$ on six states) plus
-$(N_0,D_0,L_{0,c})$ for the interpolation; $L_{0,c}$ alone for the
-median.
 \subsection{Distillation}
 \label{sec:law_distill}
 
@@ -60,11 +51,6 @@ delivered relations, frozen for the confirmation, are
 \end{equation}
 with $u=\log(1+T/T_{\mathrm{ref}})$ and $v=\log(D_U/D_{\mathrm{ref}})$: one parameter for math and code, which vanish at zero budget, and three for QA; QA improves under every recipe we ran while math and
 code move by hundredths to tenths of a nat.
-\paragraph{Inputs and range.} $T$, $D_U$, and the student's reference
-loss; no student descriptor. The relations hold on the two
-development students (270M, 1B), and for QA on the 2Wiki distribution
-only, where the gain replicates on a fresh sample and reverses sign on
-MuSiQue and TriviaQA (Appendix~\ref{sec:app_measure}).
 \paragraph{What a practitioner can compute today.} Table~\ref{tab:main_prediction_v2} gives one relation per arm and task with its range and its
 error against the development-stage strongest baseline. For pruning at an unseen density of a
 seen source, the power form predicts math and code to about 0.24 nats and should not be used for QA
