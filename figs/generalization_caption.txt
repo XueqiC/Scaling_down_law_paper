@@ -1,0 +1,23 @@
+Generalization to new configurations of seen states (a), new sources
+or students (b), registered corner contrasts for both students (c), and fresh
+evaluation distributions (d). MAE axes are logarithmic in native-token nats.
+Paired markers compare the relation and development-selected baseline on identical
+cells with equal cell weights. Math, Code and QA use circles, squares and diamonds
+in the MAE panels. Hollow markers denote baselines; filled relation markers are
+green only when the relation MAE is lower. Parentheses in row labels give the cell
+count per capability, not an independent sample size. V46 and the Pythia locked-rule
+row have no stored development-selected baseline: their unpaired relation markers
+remain grey. V46/V72 and the 270M/1B new-pool budgets remain separate.
+Paired gain CIs are translated about the fixed baseline MAE: a stored
+baseline-minus-relation interval [lo, hi] is drawn at [baseline MAE - hi,
+baseline MAE - lo]. These are paired gain intervals, not marginal MAE confidence
+intervals; no intervals are averaged across students.
+Corner whiskers are registered ±2-noise bands, not CIs. Corners: filled in band /
+hollow outside. Both corner panels use signed prediction-minus-measurement with a
+symmetric-log axis and unchanged limits of -2.5 to 2.5 native-token nats.
+Circles denote 1B; triangles denote the 4B development student. Capability colours
+apply in (c), and all fresh-distribution contrasts in (d) are QA.
+Primary QA additivity: failed to reject. Math is size-dependent and code unresolved.
+No frozen response-law predictions on fresh evaluation distributions. Only
+registered corner contrasts are available in (d), with additive predictions zero.
+No A2 development-holdout interval is transplanted to these confirmation cells.

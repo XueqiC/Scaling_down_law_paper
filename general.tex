@@ -8,18 +8,21 @@ Appendix~\ref{sec:app_results}.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth]{figs/generalization.pdf}
-\caption{Generalization of the frozen relations, by kind of novelty. \textbf{A}: new configurations
-of seen states; \textbf{B}: new sources or students, with the 4B distillation student drawn as the
-development student it is; \textbf{C}: new evaluation distributions, on which no frozen response-law
-prediction exists and only the registered corner contrasts are shown. Upper panels: per row and
-capability, the error of the relation (filled) against that of the development-selected baseline
-(hollow) on the same cells, green where the relation is lower, with $n$ cells and whiskers where a
-paired interval was stored. Lower panels: the corner second differences with their registered bands;
-the primary QA test failed to reject additivity. Row codes V46 and V72 name earlier frozen tests
-(V72 is the 2.8B repeat, one state); per-cell errors are in Appendix~\ref{sec:app_results}.}
+\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of seen states}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_b.pdf}\caption{New sources or students}\end{subfigure}\\[4pt]
+\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_c.pdf}\caption{Corner contrasts}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_d.pdf}\caption{New evaluation distributions}\end{subfigure}
+\caption{Generalization of the frozen relations, by kind of novelty. In (a) and (b) each row compares
+the error of the relation (filled) with that of the development-selected baseline (hollow) on the
+same cells, green where the relation is lower, with $n$ cells and whiskers where a paired interval
+was stored; the 4B distillation student is a development student and is drawn as such. (c) The
+corner second differences with their registered bands; the primary QA test failed to reject
+additivity. (d) No frozen response-law prediction exists on the fresh distributions; only the
+registered corner contrasts are shown. Row codes V46 and V72 name earlier frozen tests (V72 is the
+2.8B repeat, one state); per-cell errors are in Appendix~\ref{sec:app_results}.}
 \label{fig:generalization}
 \end{figure}
+
 
 \subsection{Prediction at Unseen Compression Settings}
 \label{sec:unseen_settings}

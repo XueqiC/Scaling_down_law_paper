@@ -1,10 +1,8 @@
-# responses_v2: frozen sources
+# fig1_a: frozen sources
 
 Reused a1_development_table.load_development_table (schema, cohort, metadata and hash checks). A1 CSV fields: run_id, checkpoint_id, student_id, pool_seed, U, T_actual, D_U_pool, capability, distribution, delta. Select positive T_actual nearest 200000 separately per trajectory/readout. reuse=T_actual/D_U_pool; y=delta (own-initial loss subtracted by A1). Both pool seeds remain separate points.
 The four-rung core includes pool seeds 41/42 and, for the critical rung, 51/52. Seed markers identify the first/second registered seed within each rung; no seed averaging. Scope rows in the same CSV originate in v99-scope. All points, including 4B, are development.
 fig1_a.pdf: 2.7 x 2 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig1_b.pdf: 2.7 x 2 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
 
 ## Inputs (SHA-256)
 
@@ -47,36 +45,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-1b",
-    "reuse": 5.761035272295163,
-    "delta": -0.3098080753657264,
-    "pool_seed": 51,
-    "U": 132,
-    "T_actual": 198773,
-    "D_U_pool": 34503,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
-    "checkpoint_id": "update-00000144",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-1b",
-    "reuse": 5.761035272295163,
-    "delta": 0.752491247406639,
-    "pool_seed": 51,
-    "U": 132,
-    "T_actual": 198773,
-    "D_U_pool": 34503,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
-    "checkpoint_id": "update-00000144",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-1b",
@@ -89,21 +57,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
     "checkpoint_id": "update-00000144",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-1b",
-    "reuse": 5.761035272295163,
-    "delta": 0.4481618397271454,
-    "pool_seed": 51,
-    "U": 132,
-    "T_actual": 198773,
-    "D_U_pool": 34503,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed51",
-    "checkpoint_id": "update-00000144",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -137,36 +90,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-1b",
-    "reuse": 5.809347844914692,
-    "delta": -0.12665923785266475,
-    "pool_seed": 52,
-    "U": 132,
-    "T_actual": 201230,
-    "D_U_pool": 34639,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52",
-    "checkpoint_id": "update-00000144",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-1b",
-    "reuse": 5.809347844914692,
-    "delta": 0.5741214989626557,
-    "pool_seed": 52,
-    "U": 132,
-    "T_actual": 201230,
-    "D_U_pool": 34639,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52",
-    "checkpoint_id": "update-00000144",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-1b",
@@ -179,21 +102,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52",
     "checkpoint_id": "update-00000144",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-1b",
-    "reuse": 5.809347844914692,
-    "delta": 0.5185606999183769,
-    "pool_seed": 52,
-    "U": 132,
-    "T_actual": 201230,
-    "D_U_pool": 34639,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_132_critical_lora_dseed52",
-    "checkpoint_id": "update-00000144",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -227,36 +135,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-1b",
-    "reuse": 3.891824145696661,
-    "delta": -0.8075467770376177,
-    "pool_seed": 41,
-    "U": 198,
-    "T_actual": 198736,
-    "D_U_pool": 51065,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000144",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-1b",
-    "reuse": 3.891824145696661,
-    "delta": 0.33988751296680486,
-    "pool_seed": 41,
-    "U": 198,
-    "T_actual": 198736,
-    "D_U_pool": 51065,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000144",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-1b",
@@ -269,21 +147,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
     "checkpoint_id": "update-00000144",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-1b",
-    "reuse": 3.891824145696661,
-    "delta": 0.3617400667560635,
-    "pool_seed": 41,
-    "U": 198,
-    "T_actual": 198736,
-    "D_U_pool": 51065,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000144",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -317,36 +180,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-1b",
-    "reuse": 3.8571759437968036,
-    "delta": -0.7340913172675032,
-    "pool_seed": 42,
-    "U": 198,
-    "T_actual": 199848,
-    "D_U_pool": 51812,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-1b",
-    "reuse": 3.8571759437968036,
-    "delta": 0.6109326374481328,
-    "pool_seed": 42,
-    "U": 198,
-    "T_actual": 199848,
-    "D_U_pool": 51812,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-1b",
@@ -359,21 +192,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
     "checkpoint_id": "update-00000143",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-1b",
-    "reuse": 3.8571759437968036,
-    "delta": 0.35293642869636166,
-    "pool_seed": 42,
-    "U": 198,
-    "T_actual": 199848,
-    "D_U_pool": 51812,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -407,36 +225,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-1b",
-    "reuse": 1.2671495797890655,
-    "delta": -1.069230832027169,
-    "pool_seed": 41,
-    "U": 594,
-    "T_actual": 198722,
-    "D_U_pool": 156826,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000142",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-1b",
-    "reuse": 1.2671495797890655,
-    "delta": 0.29284313407676343,
-    "pool_seed": 41,
-    "U": 594,
-    "T_actual": 198722,
-    "D_U_pool": 156826,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000142",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-1b",
@@ -449,21 +237,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
     "checkpoint_id": "update-00000142",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-1b",
-    "reuse": 1.2671495797890655,
-    "delta": 0.24904256792210822,
-    "pool_seed": 41,
-    "U": 594,
-    "T_actual": 198722,
-    "D_U_pool": 156826,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000142",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -497,36 +270,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-1b",
-    "reuse": 1.289129477252271,
-    "delta": -1.1270245559038665,
-    "pool_seed": 42,
-    "U": 594,
-    "T_actual": 201946,
-    "D_U_pool": 156653,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-1b",
-    "reuse": 1.289129477252271,
-    "delta": 0.17038138615145249,
-    "pool_seed": 42,
-    "U": 594,
-    "T_actual": 201946,
-    "D_U_pool": 156653,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-1b",
@@ -539,21 +282,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42",
     "checkpoint_id": "update-00000143",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-1b",
-    "reuse": 1.289129477252271,
-    "delta": 0.2697282022504668,
-    "pool_seed": 42,
-    "U": 594,
-    "T_actual": 201946,
-    "D_U_pool": 156653,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_594_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -587,36 +315,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-1b",
-    "reuse": 11.74189364461738,
-    "delta": 2.133890086206896,
-    "pool_seed": 41,
-    "U": 66,
-    "T_actual": 199166,
-    "D_U_pool": 16962,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000152",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-1b",
-    "reuse": 11.74189364461738,
-    "delta": 1.9737243905601662,
-    "pool_seed": 41,
-    "U": 66,
-    "T_actual": 199166,
-    "D_U_pool": 16962,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000152",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-1b",
@@ -629,21 +327,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41",
     "checkpoint_id": "update-00000152",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-1b",
-    "reuse": 11.74189364461738,
-    "delta": 0.8722871239505601,
-    "pool_seed": 41,
-    "U": 66,
-    "T_actual": 199166,
-    "D_U_pool": 16962,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000152",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -677,36 +360,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-1b",
-    "reuse": 11.67405285313377,
-    "delta": 3.103974823667712,
-    "pool_seed": 42,
-    "U": 66,
-    "T_actual": 199673,
-    "D_U_pool": 17104,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000151",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-1b",
-    "reuse": 11.67405285313377,
-    "delta": 2.0070442168049794,
-    "pool_seed": 42,
-    "U": 66,
-    "T_actual": 199673,
-    "D_U_pool": 17104,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000151",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-1b",
@@ -719,21 +372,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42",
     "checkpoint_id": "update-00000151",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-1b",
-    "reuse": 11.67405285313377,
-    "delta": 1.1125532007929104,
-    "pool_seed": 42,
-    "U": 66,
-    "T_actual": 199673,
-    "D_U_pool": 17104,
-    "run_id": "gemma3-1b/gpt-5.6-luna_full_66_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000151",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -767,36 +405,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-270m",
-    "reuse": 3.891824145696661,
-    "delta": -0.8821716627481706,
-    "pool_seed": 41,
-    "U": 198,
-    "T_actual": 198736,
-    "D_U_pool": 51065,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000144",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-270m",
-    "reuse": 3.891824145696661,
-    "delta": 0.014312110995850613,
-    "pool_seed": 41,
-    "U": 198,
-    "T_actual": 198736,
-    "D_U_pool": 51065,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000144",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-270m",
@@ -809,21 +417,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-270m/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
     "checkpoint_id": "update-00000144",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-270m",
-    "reuse": 3.891824145696661,
-    "delta": 0.3922108208955226,
-    "pool_seed": 41,
-    "U": 198,
-    "T_actual": 198736,
-    "D_U_pool": 51065,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000144",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -857,36 +450,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-270m",
-    "reuse": 3.8571759437968036,
-    "delta": -0.9518800613897591,
-    "pool_seed": 42,
-    "U": 198,
-    "T_actual": 199848,
-    "D_U_pool": 51812,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-270m",
-    "reuse": 3.8571759437968036,
-    "delta": 0.11217582987551866,
-    "pool_seed": 42,
-    "U": 198,
-    "T_actual": 199848,
-    "D_U_pool": 51812,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-270m",
@@ -899,21 +462,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-270m/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
     "checkpoint_id": "update-00000143",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-270m",
-    "reuse": 3.8571759437968036,
-    "delta": 0.4012156016791044,
-    "pool_seed": 42,
-    "U": 198,
-    "T_actual": 199848,
-    "D_U_pool": 51812,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -947,36 +495,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-270m",
-    "reuse": 1.2671495797890655,
-    "delta": -1.0954541372779518,
-    "pool_seed": 41,
-    "U": 594,
-    "T_actual": 198722,
-    "D_U_pool": 156826,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000142",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-270m",
-    "reuse": 1.2671495797890655,
-    "delta": 0.041286307053942206,
-    "pool_seed": 41,
-    "U": 594,
-    "T_actual": 198722,
-    "D_U_pool": 156826,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000142",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-270m",
@@ -989,21 +507,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-270m/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
     "checkpoint_id": "update-00000142",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-270m",
-    "reuse": 1.2671495797890655,
-    "delta": 0.3770872201492539,
-    "pool_seed": 41,
-    "U": 594,
-    "T_actual": 198722,
-    "D_U_pool": 156826,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000142",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -1037,36 +540,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-270m",
-    "reuse": 1.289129477252271,
-    "delta": -1.2230093227533958,
-    "pool_seed": 42,
-    "U": 594,
-    "T_actual": 201946,
-    "D_U_pool": 156653,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_594_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-270m",
-    "reuse": 1.289129477252271,
-    "delta": -0.06439639522821583,
-    "pool_seed": 42,
-    "U": 594,
-    "T_actual": 201946,
-    "D_U_pool": 156653,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_594_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-270m",
@@ -1079,21 +552,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-270m/gpt-5.6-luna_full_594_matrix2_lora_dseed42",
     "checkpoint_id": "update-00000143",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-270m",
-    "reuse": 1.289129477252271,
-    "delta": 0.35260027985074593,
-    "pool_seed": 42,
-    "U": 594,
-    "T_actual": 201946,
-    "D_U_pool": 156653,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_594_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -1127,36 +585,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-270m",
-    "reuse": 11.74189364461738,
-    "delta": 0.618452847439916,
-    "pool_seed": 41,
-    "U": 66,
-    "T_actual": 199166,
-    "D_U_pool": 16962,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_66_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000152",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-270m",
-    "reuse": 11.74189364461738,
-    "delta": 0.6010341026970956,
-    "pool_seed": 41,
-    "U": 66,
-    "T_actual": 199166,
-    "D_U_pool": 16962,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_66_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000152",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-270m",
@@ -1169,21 +597,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-270m/gpt-5.6-luna_full_66_matrix2_lora_dseed41",
     "checkpoint_id": "update-00000152",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-270m",
-    "reuse": 11.74189364461738,
-    "delta": 1.028445662313433,
-    "pool_seed": 41,
-    "U": 66,
-    "T_actual": 199166,
-    "D_U_pool": 16962,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_66_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000152",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -1217,36 +630,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-270m",
-    "reuse": 11.67405285313377,
-    "delta": 0.5754779747910135,
-    "pool_seed": 42,
-    "U": 66,
-    "T_actual": 199673,
-    "D_U_pool": 17104,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_66_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000151",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-270m",
-    "reuse": 11.67405285313377,
-    "delta": 0.6594147108402493,
-    "pool_seed": 42,
-    "U": 66,
-    "T_actual": 199673,
-    "D_U_pool": 17104,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_66_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000151",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-270m",
@@ -1259,21 +642,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-270m/gpt-5.6-luna_full_66_matrix2_lora_dseed42",
     "checkpoint_id": "update-00000151",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-270m",
-    "reuse": 11.67405285313377,
-    "delta": 0.7651155841884325,
-    "pool_seed": 42,
-    "U": 66,
-    "T_actual": 199673,
-    "D_U_pool": 17104,
-    "run_id": "gemma3-270m/gpt-5.6-luna_full_66_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000151",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -1307,36 +675,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-4b",
-    "reuse": 5.761035272295163,
-    "delta": 2.5613387375914325,
-    "pool_seed": 51,
-    "U": 132,
-    "T_actual": 198773,
-    "D_U_pool": 34503,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
-    "checkpoint_id": "update-00000144",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-4b",
-    "reuse": 5.761035272295163,
-    "delta": 1.901415002593361,
-    "pool_seed": 51,
-    "U": 132,
-    "T_actual": 198773,
-    "D_U_pool": 34503,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
-    "checkpoint_id": "update-00000144",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-4b",
@@ -1349,21 +687,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
     "checkpoint_id": "update-00000144",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-4b",
-    "reuse": 5.761035272295163,
-    "delta": 1.365477786847015,
-    "pool_seed": 51,
-    "U": 132,
-    "T_actual": 198773,
-    "D_U_pool": 34503,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed51",
-    "checkpoint_id": "update-00000144",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -1397,36 +720,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-4b",
-    "reuse": 5.809347844914692,
-    "delta": 2.228744203892372,
-    "pool_seed": 52,
-    "U": 132,
-    "T_actual": 201230,
-    "D_U_pool": 34639,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52",
-    "checkpoint_id": "update-00000144",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-4b",
-    "reuse": 5.809347844914692,
-    "delta": 0.9519450207468878,
-    "pool_seed": 52,
-    "U": 132,
-    "T_actual": 201230,
-    "D_U_pool": 34639,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52",
-    "checkpoint_id": "update-00000144",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-4b",
@@ -1439,21 +732,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52",
     "checkpoint_id": "update-00000144",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-4b",
-    "reuse": 5.809347844914692,
-    "delta": 1.4893285039645523,
-    "pool_seed": 52,
-    "U": 132,
-    "T_actual": 201230,
-    "D_U_pool": 34639,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_132_critical_lora_dseed52",
-    "checkpoint_id": "update-00000144",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -1487,36 +765,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-4b",
-    "reuse": 3.891824145696661,
-    "delta": 0.25945132902298873,
-    "pool_seed": 41,
-    "U": 198,
-    "T_actual": 198736,
-    "D_U_pool": 51065,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000144",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-4b",
-    "reuse": 3.891824145696661,
-    "delta": 0.9101805627593362,
-    "pool_seed": 41,
-    "U": 198,
-    "T_actual": 198736,
-    "D_U_pool": 51065,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000144",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-4b",
@@ -1529,21 +777,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
     "checkpoint_id": "update-00000144",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-4b",
-    "reuse": 3.891824145696661,
-    "delta": 1.2775762301772389,
-    "pool_seed": 41,
-    "U": 198,
-    "T_actual": 198736,
-    "D_U_pool": 51065,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000144",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -1577,36 +810,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-4b",
-    "reuse": 3.8571759437968036,
-    "delta": -0.14467615269069967,
-    "pool_seed": 42,
-    "U": 198,
-    "T_actual": 199848,
-    "D_U_pool": 51812,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-4b",
-    "reuse": 3.8571759437968036,
-    "delta": 0.46150803941908713,
-    "pool_seed": 42,
-    "U": 198,
-    "T_actual": 199848,
-    "D_U_pool": 51812,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-4b",
@@ -1619,21 +822,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
     "checkpoint_id": "update-00000143",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-4b",
-    "reuse": 3.8571759437968036,
-    "delta": 1.2927996735074627,
-    "pool_seed": 42,
-    "U": 198,
-    "T_actual": 199848,
-    "D_U_pool": 51812,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_198_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -1667,36 +855,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-4b",
-    "reuse": 1.2671495797890655,
-    "delta": -0.8062406119383487,
-    "pool_seed": 41,
-    "U": 594,
-    "T_actual": 198722,
-    "D_U_pool": 156826,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000142",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-4b",
-    "reuse": 1.2671495797890655,
-    "delta": 0.3080993905601661,
-    "pool_seed": 41,
-    "U": 594,
-    "T_actual": 198722,
-    "D_U_pool": 156826,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000142",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-4b",
@@ -1709,21 +867,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
     "checkpoint_id": "update-00000142",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-4b",
-    "reuse": 1.2671495797890655,
-    "delta": 0.4796911438899252,
-    "pool_seed": 41,
-    "U": 594,
-    "T_actual": 198722,
-    "D_U_pool": 156826,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000142",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -1757,36 +900,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-4b",
-    "reuse": 1.289129477252271,
-    "delta": -1.188138796368861,
-    "pool_seed": 42,
-    "U": 594,
-    "T_actual": 201946,
-    "D_U_pool": 156653,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-4b",
-    "reuse": 1.289129477252271,
-    "delta": 0.25554492997925293,
-    "pool_seed": 42,
-    "U": 594,
-    "T_actual": 201946,
-    "D_U_pool": 156653,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-4b",
@@ -1799,21 +912,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42",
     "checkpoint_id": "update-00000143",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-4b",
-    "reuse": 1.289129477252271,
-    "delta": 0.6477371443563431,
-    "pool_seed": 42,
-    "U": 594,
-    "T_actual": 201946,
-    "D_U_pool": 156653,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_594_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000143",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -1847,36 +945,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-4b",
-    "reuse": 11.74189364461738,
-    "delta": 4.832490448667711,
-    "pool_seed": 41,
-    "U": 66,
-    "T_actual": 199166,
-    "D_U_pool": 16962,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000152",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-4b",
-    "reuse": 11.74189364461738,
-    "delta": 2.877219957533714,
-    "pool_seed": 41,
-    "U": 66,
-    "T_actual": 199166,
-    "D_U_pool": 16962,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000152",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-4b",
@@ -1889,21 +957,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41",
     "checkpoint_id": "update-00000152",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-4b",
-    "reuse": 11.74189364461738,
-    "delta": 2.023679818680037,
-    "pool_seed": 41,
-    "U": 66,
-    "T_actual": 199166,
-    "D_U_pool": 16962,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed41",
-    "checkpoint_id": "update-00000152",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   },
   {
@@ -1937,36 +990,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "status": "development"
   },
   {
-    "panel": "right",
-    "series": "2wiki_new",
-    "student": "gemma3-4b",
-    "reuse": 11.67405285313377,
-    "delta": 6.713927423816989,
-    "pool_seed": 42,
-    "U": 66,
-    "T_actual": 199673,
-    "D_U_pool": 17104,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000151",
-    "distribution": "2wiki_new:bbd036c56ac37bd3",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "musique",
-    "student": "gemma3-4b",
-    "reuse": 11.67405285313377,
-    "delta": 3.1392019620080216,
-    "pool_seed": 42,
-    "U": 66,
-    "T_actual": 199673,
-    "D_U_pool": 17104,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000151",
-    "distribution": "musique:0c676ed3b3c2a52d",
-    "status": "development"
-  },
-  {
     "panel": "left",
     "series": "qa",
     "student": "gemma3-4b",
@@ -1979,21 +1002,6 @@ fig1_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15
     "run_id": "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42",
     "checkpoint_id": "update-00000151",
     "distribution": "training_probe:2WikiMultihopQA:35e3fde33c8b6e91",
-    "status": "development"
-  },
-  {
-    "panel": "right",
-    "series": "triviaqa",
-    "student": "gemma3-4b",
-    "reuse": 11.67405285313377,
-    "delta": 2.9652294557486005,
-    "pool_seed": 42,
-    "U": 66,
-    "T_actual": 199673,
-    "D_U_pool": 17104,
-    "run_id": "gemma3-4b/gpt-5.6-luna_full_66_matrix2_lora_dseed42",
-    "checkpoint_id": "update-00000151",
-    "distribution": "triviaqa:25268a1f786058ff",
     "status": "development"
   }
 ]

@@ -1,0 +1,10 @@
+Capability responses (a) and fresh QA distributions (b). Positive = worse:
+positive loss change means higher loss than the student's own initial state.
+Development endpoints nearest 200k supervised tokens per trajectory; every seed
+shown separately. Reuse T/D_U is measured in supervised-token passes, and loss
+change in native-token nats. All points, including 4B, are development.
+Colours identify Math, Code and QA in (a), and 2Wiki, MuSiQue and TriviaQA in (b).
+Dotted, dashed and solid lines denote 270M, 1B and 4B students. Circles and squares
+identify the first and second registered pool seeds within each rung; the core
+uses seeds 41/42 and the critical rung uses 51/52. No seed averaging is applied.
+The shared line/marker key is supplied separately as fig1_legend.pdf.

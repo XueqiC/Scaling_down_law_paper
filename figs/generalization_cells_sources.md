@@ -11,7 +11,7 @@ No measurement intervals are stored for V46/V53/V69/V70/V72/V78 prediction cells
 
 ## Inputs (SHA-256)
 
-- `paper/docs/RESULTS_LEDGER.md`: `0b458ad1f8027462837eaefd170715f6721a7ffdfd9cac2663088690663555e1`
+- `paper/docs/RESULTS_LEDGER.md`: `046d37181b86e28c173d01d97ef469916d23e0d9aa2ca9707a03fc7f786d5aad`
 - `results/a5-corner-second-difference/summary.json`: `05de90f078ea37d760f256eb9b9cfe37bea734827b2c8099e25f66a689a1bc75`
 - `results/a7-closeout-audit/summary.json`: `14d698bc5348bee38fe593632f421fa64d794ad2a2687a70532bae935a078c9e`
 - `results/v46-p1-newsource/compare.json`: `8e6a4b910b06038ef35f10a96e512d0cc29bfc1d2ed97471bba680cc9cb9d6f0`
