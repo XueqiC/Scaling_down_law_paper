@@ -2,8 +2,8 @@
 
 V96 definition: Measured delta2-delta1 divided by log(1+T2/D_U2)-log(1+T1/D_U1). T2 differs from T1: these are observed-endpoint diagnostics, not the exact fixed-T falsification statistic.
 V100 exact_nonzero_budget_pairs=0
-Figure 5 artist overrides to shared defaults: individual dyads 0.8 pt, alpha 0.35, no markers; per-band medians 2.5 pt, alpha 1, with 9 pt capability-filled markers and 1.2 pt white edges. Saved budget bands group individual raw ratios; both x and y are medians within each student/capability/tolerance/band. Circle/solid = 1%; triangle/dashed = 0.3%.
-fig5_a.pdf: 2.7 x 1.8 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+Figure 5 artist overrides to shared defaults: individual dyads 0.6 pt, alpha 0.35, no markers; per-band medians 1.8 pt, alpha 1, with 5 pt capability-filled markers and 0.6 pt white edges. Saved budget bands group individual raw ratios; both x and y are medians within each student/capability/tolerance/band. Circle/solid = 1%; triangle/dashed = 0.3%.
+fig5_a.pdf: 2.7 x 1.45 in; bold Times New Roman; ticks 8.5 pt, axis labels 9.5 pt, legend 8.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
 
 ## Inputs (SHA-256)
 

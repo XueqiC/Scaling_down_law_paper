@@ -1,7 +1,7 @@
 {
   "size_inches": [
-    2.3,
-    2.0
+    2.2,
+    1.6
   ],
   "records": [
     {
@@ -4035,9 +4035,9 @@
       "xscale": "log",
       "yscale": "linear",
       "row_labels": [
-        "Prune in-range",
-        "Prune V46 in",
-        "Prune V46 out",
+        "Prune in range",
+        "Prune in, frozen",
+        "Prune out, frozen",
         "Quant group",
         "Distill 270M",
         "Distill 1B"
@@ -4049,8 +4049,31 @@
   "font": {
     "family": "Times New Roman",
     "weight": "bold",
-    "ticks_pt": 13,
-    "labels_pt": 14,
-    "legend_pt": 12
-  }
+    "ticks_pt": 8.5,
+    "labels_pt": 9.5,
+    "legend_pt": 8.5
+  },
+  "style_defaults": {
+    "line_width_pt": 1.1,
+    "marker_size_pt": 3.8,
+    "errorbar_capsize_pt": 2
+  },
+  "axis_font_sizes_pt": [
+    {
+      "x_ticks": [
+        8.5,
+        8.5
+      ],
+      "y_ticks": [
+        8.5,
+        8.5,
+        8.5,
+        8.5,
+        8.5,
+        8.5
+      ],
+      "x_label": 9.5,
+      "y_label": 9.5
+    }
+  ]
 }

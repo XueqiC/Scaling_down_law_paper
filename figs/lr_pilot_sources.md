@@ -1,7 +1,7 @@
 # lr_pilot: frozen sources
 
 Final checkpoint = maximum positive updates with positive processed_tokens. learning_rate = float(output_suffix after lrpilot_); delta used verbatim.
-fig1_c.pdf: 1.8 x 1.8 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig1_c.pdf: 1.8 x 1.15 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
 
 ## Inputs (SHA-256)
 

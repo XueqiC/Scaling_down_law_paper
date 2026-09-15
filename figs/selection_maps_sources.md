@@ -1,9 +1,12 @@
 # selection_maps: frozen sources
 
 Reuse V80 rule_maps_main semantics: colour indexes (prune,quant,distill,dense); white circle iff locked-rule.oracle_method_agreement is false. Direct V78 fields; freeze seal and frozen chosen method/configuration/score verified; no rule execution.
-Display: fig7 is one axis with objective blocks Math, Code, QA, largest loss increase. Each block retains columns 0..16 (20..100% storage); display x = 18*block + column. All four original state rows, 272 cells and 20 oracle-mismatch rings are retained. Objective names are small bold column-axis annotations inside the panel canvas.
-fig7.pdf: 5.5 x 1.7 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig7_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+Display: fig7_a through fig7_d show math, code, question answering and largest loss increase. Each panel retains columns 0..16 (20..100% storage) and identical vertical margins. All four original state rows, 272 cells and 20 oracle-mismatch rings are retained. Only fig7_a shows state tick labels; objective names appear only in captions.
+fig7_a.pdf: 1.75 x 1.5 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig7_b.pdf: 1.25 x 1.5 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig7_c.pdf: 1.25 x 1.5 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig7_d.pdf: 1.25 x 1.5 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig7_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 8.5 pt, axis labels 8.5 pt, legend 8.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
 
 ## Inputs (SHA-256)
 

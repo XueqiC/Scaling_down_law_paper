@@ -3,21 +3,21 @@
     "file": "fig5_a.pdf",
     "size_inches": [
       2.7,
-      1.8
+      1.45
     ]
   },
   {
     "file": "fig5_b.pdf",
     "size_inches": [
       2.7,
-      1.8
+      1.45
     ]
   },
   {
     "file": "drift.png",
     "size_inches": [
       5.5,
-      1.8
+      1.45
     ],
     "dpi": 220
   }

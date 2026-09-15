@@ -1,8 +1,8 @@
 Pruning responses on the original nine development states: Pythia
 160M, 410M and 1.4B at steps 16k, 64k and 143k. Thin coloured lines are each
 state's measured loss minus its own dense loss, including every saved density.
-Heavy Math/Code lines are the pointwise median of the nine state-conditioned
-V53 power predictions; the heavy QA line is the delivered V53 median curve.
+Opaque Math/Code lines are the pointwise median of the nine state-conditioned
+V53 power predictions; the opaque QA line is the delivered V53 median curve.
 These summaries evaluate frozen coefficients without fitting. Delivered curves
 are shown only on their [0.6, 0.9] domain. V53's fit used 17 development states;
 the nine states displayed are selected by the original V36 input manifest.
@@ -24,4 +24,4 @@ groups 64, 128 and 256; V69 compare.json supplies groups 32 and 512. The latter
 were unseen group sizes at the V69 freeze. These are the same frozen grouped
 quantization artifacts read by plot_fig1_final.py. All three bit-widths share
 one linear loss axis and a logarithmic group-size axis.
-Three 1.8 x 1.8-inch panels in one 5.5-inch row; fig4_legend.pdf is the shared capability and bit-width key.
+Three 1.8 x 1.15-inch panels in one 5.5-inch row; fig4_legend.pdf is the shared capability and bit-width key.

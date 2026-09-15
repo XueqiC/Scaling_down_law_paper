@@ -2,7 +2,7 @@ Reuse-term curvature (a), registered corner test (b), and post-hoc
 displacement account (c). Primary QA additivity: failed to reject. This applies
 to the primary QA test only; math is size-dependent and code unresolved.
 Curvature intervals are conditional on development. The exponent p is unitless.
-Fold circles and boundary-hit
+Fold estimate circles and Boundary
 crosses show the stored development fits; diamonds show the full-development fit
 with its conditional interval. Reference lines mark p = 0 and p = 1.
 Corner rows show each student/readout separately. The additive prediction is zero;
@@ -16,8 +16,8 @@ error across its stored state/capability records. Zero-damage records are exclud
 The three families are pruning, grouped RTN, and per-channel RTN. There is no
 distillation displacement measurement; the superseded uncentred run and the
 separate cluster hardware run are not pooled.
-The three 1.8 x 1.9-inch panels form one row at 5.5-inch text width.
-The shared key is fig2_legend.pdf: Fold, Bound. and Full apply to (a);
-Add., F_int and Obs. to (b); Group, Channel and Prune to (c), denoting grouped
+The three 1.8 x 1.15-inch panels form one row at 5.5-inch text width.
+The shared key is fig2_legend.pdf: Fold estimate, Boundary and Full apply to (a);
+Additive, F_int and Observed to (b); Group, Channel and Prune to (c), denoting grouped
 RTN, per-channel RTN and pruning. Panel (b) labels use student size/readout,
 for example 1B QA. Damage and relative error in (c) are configuration medians.

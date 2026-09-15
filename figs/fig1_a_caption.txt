@@ -10,4 +10,4 @@ uses seeds 41/42 and the critical rung uses 51/52. No seed averaging is applied.
 The complete shared key is supplied separately as fig1_legend.pdf: colours for
 all capabilities and distributions, student line styles, and S1/S2 for the two
 registered pool seeds. The learning-rate pilot (c) uses the same student styles.
-All three 1.8 x 1.8-inch panels form one row at 5.5-inch text width.
+All three 1.8 x 1.15-inch panels form one row at 5.5-inch text width.

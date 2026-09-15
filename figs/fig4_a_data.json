@@ -1,7 +1,7 @@
 {
   "size_inches": [
     1.8,
-    1.8
+    1.15
   ],
   "records": [
     {
@@ -13652,8 +13652,31 @@
   "font": {
     "family": "Times New Roman",
     "weight": "bold",
-    "ticks_pt": 14,
-    "labels_pt": 15,
-    "legend_pt": 13
-  }
+    "ticks_pt": 7.5,
+    "labels_pt": 8.5,
+    "legend_pt": 7.5
+  },
+  "style_defaults": {
+    "line_width_pt": 1.1,
+    "marker_size_pt": 3.8,
+    "errorbar_capsize_pt": 2
+  },
+  "axis_font_sizes_pt": [
+    {
+      "x_ticks": [
+        7.5,
+        7.5,
+        7.5
+      ],
+      "y_ticks": [
+        7.5,
+        7.5,
+        7.5,
+        7.5,
+        7.5
+      ],
+      "x_label": 8.5,
+      "y_label": 8.5
+    }
+  ]
 }

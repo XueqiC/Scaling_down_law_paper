@@ -3,15 +3,15 @@ Observed-endpoint falsification diagnostic for logarithmic reuse,
 for Gemma-3 1B (a) and 4B (b). The ordinate is the saved measured pool-change
 effect divided by log(1+E2)-log(1+E1), where E=T/D_U; the abscissa is the saved
 common_T=(T_first+T_second)/2, in thousands of supervised tokens. Colour denotes
-Math, Code or QA. Thin lines (0.8 pt, alpha 0.35, without markers) connect the
+Math, Code or QA. Thin lines (0.6 pt, alpha 0.35, without markers) connect the
 saved ratios for each individual pool/seed trajectory dyad across budgets,
-separately within each capability and tolerance. Heavy lines (2.5 pt, alpha 1)
+separately within each capability and tolerance. Heavy lines (1.8 pt, alpha 1)
 connect the per-budget-band median of those individual plotted ratios across
 pool pairs, separately for each capability and tolerance. The bands are the
 saved V100 nominal 25k, 50k, 100k and 200k bands; each median is positioned at
 the median common_T of its contributing records. Heavy solid lines with filled
 circles denote 1% budget matching; heavy dashed lines with filled triangles
-denote 0.3%. All markers are 9 pt, filled in the capability colour, with a white
+denote 0.3%. All markers are 5 pt, filled in the capability colour, with a white
 edge. The tighter set is nested in the 1% set, so some points coincide. Only
 occupied bands are shown; connecting segments are visual guides, with no
 interpolated observations, fitted slopes or new intervals. The set of pool pairs

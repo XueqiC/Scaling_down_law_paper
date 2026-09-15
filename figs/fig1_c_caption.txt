@@ -6,6 +6,6 @@ update, with positive values indicating higher loss than the initial student.
 All six pilots use full teacher data with 75 examples per domain and data seed
 11; their final saved update is 8, at 37,903 processed input tokens. These are
 development pilots, with one run per student/rate and no uncertainty estimate.
-Panel (c) is 1.8 x 1.8 inches, the third panel in the 5.5-inch Figure 1 row.
+Panel (c) is 1.8 x 1.15 inches, the third panel in the 5.5-inch Figure 1 row.
 The complete capability/distribution/student/seed key is fig1_legend.pdf;
-the LR axis labels are in units of 10^-5 and the markers denote checkpoints.
+the LR ticks give the configured rates and the markers denote checkpoints.

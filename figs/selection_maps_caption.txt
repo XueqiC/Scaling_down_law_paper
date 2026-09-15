@@ -1,6 +1,6 @@
-Frozen selection maps on four fresh source states, with four column
-blocks ordered Math, Code, QA restricted to 2Wiki, and largest loss increase
-(maximum capability loss change). Each block has the same four states and 17 nominal storage
+Frozen selection maps on four fresh source states: (a) math,
+(b) code, (c) question answering, (d) largest loss increase across the three
+(maximum capability loss change). Each panel has the same four states and 17 nominal storage
 budgets, from 20% through 100% of dense matrix storage in 5% increments.
 Row labels give Pythia parameter size / pretraining step (k=1,000).
 Cell colour is the frozen rule's predicted chosen method: pruning, quantization,
@@ -12,5 +12,7 @@ the chosen method/configuration checked against freeze.json. Nothing is refit,
 rescored or selected again. All 68 state-budget cells per objective are retained.
 QA remains limited to 2Wiki; the multi-objective result remains retrospective.
 The shared key is supplied as fig7_legend.pdf.
-The single panel fig7.pdf is 5.5 x 1.7 inches, with one shared storage-budget
-axis and four state rows. Small bold column headers are objective axis annotations.
+The four panels form one 5.5-inch row: fig7_a.pdf is 1.75 x 1.5 inches;
+fig7_b.pdf, fig7_c.pdf and fig7_d.pdf are each 1.25 x 1.5 inches.
+Only (a) carries state tick labels. All panels use the same vertical margins,
+aligned state rows, and Storage budget (%) axis with ticks at 20 and 100.

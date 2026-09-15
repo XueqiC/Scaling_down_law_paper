@@ -8,10 +8,10 @@ A2 frozen_prediction_error_interval covers its development holdouts, not any of 
 Corner rows are unchanged: signed prediction-minus-measurement on a separate symlog axis, original capability colours, circles filled iff within the stored band, triangles for the 4B development student. Whiskers are A5 registered +/-2-noise bands, not CIs. Primary QA additivity failed to reject. Source panel C (lower group in display panel c) shows only the registered additive corner predictions (zero); no frozen response-law predictions on fresh distributions exist.
 V46 .55 is outside its original coarse .6--.9 range; .65 is inside. V72 repeats two revision labels with identical weights; both records retained, not independent states. V78 uses each frozen configuration once. V93 descriptors only verify state identity.
 Display mapping: fig3_a = MAE A, fig3_b = MAE B, fig3_c = all corner A+B+C. Frozen panel fields, counts and numbers are unchanged; a thin separator precedes fresh distributions.
-fig3_a.pdf: 2.3 x 2 in; bold Times New Roman; ticks 13 pt, axis labels 14 pt, legend 12 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig3_b.pdf: 1.5 x 2 in; bold Times New Roman; ticks 13 pt, axis labels 14 pt, legend 12 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig3_c.pdf: 1.7 x 2 in; bold Times New Roman; ticks 14 pt, axis labels 15 pt, legend 13 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
-fig3_legend.pdf: 5.5 x 0.3 in; bold Times New Roman; ticks 13 pt, axis labels 14 pt, legend 12 pt; lines 2 pt, markers 7 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig3_a.pdf: 2.2 x 1.6 in; bold Times New Roman; ticks 8.5 pt, axis labels 9.5 pt, legend 8.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig3_b.pdf: 1.45 x 1.6 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig3_c.pdf: 1.85 x 1.6 in; bold Times New Roman; ticks 7.5 pt, axis labels 8.5 pt, legend 7.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
+fig3_legend.pdf: 5.5 x 0.42 in; bold Times New Roman; ticks 8.5 pt, axis labels 8.5 pt, legend 8.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Full canvas retained; no titles, panel letters, or explanatory annotations.
 
 ## Inputs (SHA-256)
 

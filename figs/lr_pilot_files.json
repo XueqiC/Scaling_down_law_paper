@@ -3,14 +3,14 @@
     "file": "fig1_c.pdf",
     "size_inches": [
       1.8,
-      1.8
+      1.15
     ]
   },
   {
     "file": "lr_pilot.png",
     "size_inches": [
       1.8,
-      1.8
+      1.15
     ],
     "dpi": 220
   }

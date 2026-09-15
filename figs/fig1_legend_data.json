@@ -1,7 +1,7 @@
 {
   "size_inches": [
     5.5,
-    0.3
+    0.42
   ],
   "records": [],
   "input_sha256": {
@@ -24,35 +24,41 @@
   "axes": [],
   "legend_entries": [
     "Math",
-    "Code",
-    "QA",
-    "2Wiki",
-    "MuSiQue",
-    "TriviaQA",
     "270M",
+    "Code",
     "1B",
+    "QA",
     "4B",
+    "2Wiki",
     "S1",
-    "S2"
+    "MuSiQue",
+    "S2",
+    "TriviaQA"
   ],
   "legend_font_sizes_pt": [
-    13.0,
-    13.0,
-    13.0,
-    13.0,
-    13.0,
-    13.0,
-    13.0,
-    13.0,
-    13.0,
-    13.0,
-    13.0
+    8.5,
+    8.5,
+    8.5,
+    8.5,
+    8.5,
+    8.5,
+    8.5,
+    8.5,
+    8.5,
+    8.5,
+    8.5
   ],
   "font": {
     "family": "Times New Roman",
     "weight": "bold",
-    "ticks_pt": 14,
-    "labels_pt": 15,
-    "legend_pt": 13
-  }
+    "ticks_pt": 8.5,
+    "labels_pt": 8.5,
+    "legend_pt": 8.5
+  },
+  "style_defaults": {
+    "line_width_pt": 1.1,
+    "marker_size_pt": 3.8,
+    "errorbar_capsize_pt": 2
+  },
+  "axis_font_sizes_pt": []
 }
