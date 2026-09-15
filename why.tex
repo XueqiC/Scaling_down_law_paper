@@ -64,9 +64,9 @@ For pruning and quantization the loss change under a logit displacement $r$ obey
 $\Delta L=(\mathbb{E}_p[r]-r_y)+\tfrac12\mathrm{Var}_p(r)+O(\lVert r\rVert^3)$, and its
 coefficient-free second-order truncation reproduces the measured damage across three families with
 one boundary set by damage magnitude, under 5\% median relative error below about 0.1 nats and past
-20\% by 0.25 (Fig.~\ref{fig:explanation}c, Appendix~\ref{sec:app_disp}). Pure logit shrinkage carries
-about three percent of the response, and the residual variance that carries the rest needs the
-compressed model to compute: the account explains after the fact and enters no relation as an input.
+20\% by 0.25 (Fig.~\ref{fig:explanation}c, Appendix~\ref{sec:app_disp}). Pure logit shrinkage carries about three percent of the response; the residual variance that
+carries the rest needs the compressed model, so the account explains after the fact and enters no
+relation as an input.
 
 \subsection{What is settled, excluded, and open}
 \label{sec:why_summary}
