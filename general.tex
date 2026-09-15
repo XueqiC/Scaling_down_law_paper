@@ -10,11 +10,14 @@ results and earlier tests are in Appendix~\ref{sec:app_results}. Errors are MAE 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.72\textwidth]{figs/generalization.pdf}
-\caption{Generalization of the frozen relations, separated by the kind of novelty. \textbf{A}: new
-configurations of seen states. \textbf{B}: new sources or students; the 4B distillation student is a
-development student in the final round and is drawn as such. \textbf{C}: new evaluation
-distributions. Each row compares the error of the relation with that of the development-selected baseline on
-the same cells; a point below its baseline marks a cell where the relation earned its range.}
+\caption{Generalization of the frozen relations, by kind of novelty. \textbf{A}: new configurations
+of seen states; \textbf{B}: new sources or students, with the 4B distillation student drawn as the
+development student it is; \textbf{C}: new evaluation distributions, on which no frozen response-law
+prediction exists and only the registered corner contrasts are shown. Upper panels: per row and
+capability, the error of the relation (filled) against that of the development-selected baseline
+(hollow) on the same cells, green where the relation is lower, with $n$ cells and whiskers where a
+paired interval was stored. Lower panels: the corner second differences with their registered bands;
+the primary QA test failed to reject additivity. Per-cell errors are in Appendix~\ref{sec:app_results}.}
 \label{fig:generalization}
 \end{figure}
 
