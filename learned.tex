@@ -10,8 +10,7 @@ surface, and under distillation a reuse cost that is monotone in $E=T/D_U$, grow
 and reproduces across QA distributions while the gain does not (\S\ref{sec:observed},
 \S\ref{sec:laws}, Table~\ref{tab:main_prediction_v2}).
 
-\paragraph{Understanding gained in trying to build reliable laws.} Four lessons carry beyond this
-paper. First, a rejected form is not a rejected class: the four-coefficient joint form with a
+\paragraph{Understanding gained in trying to build reliable laws.} First, a rejected form is not a rejected class: the four-coefficient joint form with a
 logarithmic reuse term failed its own flatness implication, yet the fit-free second-difference test on
 two students did not reject additivity of budget and reuse on the QA readout, with the measured
 statistic between the additive prediction of zero and the frozen interaction candidate's $-0.49$ nats,
@@ -22,31 +21,26 @@ explains without forecasting. Third, source information transfers less than it f
 pre-compression statistics improve a parametric family in four of nine arm-and-capability pairs and
 lose to a source-free median configuration curve in nine of nine, and holding that curve fixed while
 adding only a shrunk source correction gains nothing on the primary split. Fourth, identifiability is a
-property of the design, not the estimator: a curvature exponent profiled inside folds sits near one
-rather than zero, but its fold range is wide, and the data set that produced it contained no complete
-budget-by-reuse rectangle, so the one statistic that discriminates additive from interacting
-structures without fitting was uncomputable until four trajectories were designed to land on the
-corners.
+property of the design: the data that fitted a curvature exponent near one contained no
+budget-by-reuse rectangle, so the one fit-free statistic that separates additive from interacting
+structures was uncomputable until four trajectories were designed to land on the corners.
 
-\paragraph{Guidance for design and choice.} The practical content is concrete. Choose inputs by the
-transfer you need: the initial state carries math and code at unseen densities and group sizes of seen
+\paragraph{Guidance for design and choice.} Choose inputs by the transfer needed: the initial state carries math and code at unseen densities and group sizes of seen
 states, adds nothing on new quantization states, and over-predicts QA under pruning on every new
 checkpoint; a configuration median with a one-point calibration is the safer default when the state is
 new. Fix the training protocol before measuring distillation damage, because the learning rate
 changes the damage magnitude by an order of magnitude on the 1B student while leaving the size
 ordering intact. Design data-reuse experiments so that at least one budget-by-reuse rectangle exists by
 construction, since fixed pools and a doubling budget grid never produce one. Budget calibration
-honestly: the one-point calibration that closes most of the gap to a source-specific fit costs one
-forward pass on the target distribution, and the dense statistics that cost more did not earn it.
-State the range with the relation: every relation here carries the states, configurations,
-capabilities and distributions it was tested on, and the decision study covers four Pythia states
-under nominal storage budgets with its cross-family validation on fresh candidates not completed.
+by what it buys: one calibration point on the target distribution closes most of the gap to a
+source-specific fit, and the dense statistics that cost more did not earn it. State the range with
+the relation, as Table~\ref{tab:main_prediction_v2} does, and as the decision study does by covering
+four Pythia states under nominal storage budgets with its cross-family validation not completed.
 
-\paragraph{Limits, and what would reopen the experiments.} The relations are conditional on the
-evaluated loss distributions and the compression implementations. No fitted joint structure for
-distillation beat a low-order response surface on either pre-declared target, so the data requirement
-a practitioner would most like, how much independent data keeps a conditional loss below a threshold,
-is supportable in form and not yet delivered as a validated relation. The larger student diverged from
-the smaller on math and code at readouts the design could not resolve. Reopening measurement would
-require a new information source or a mechanism hypothesis rather than another candidate reuse
-function; the remaining budget is not by itself a reason.
+\paragraph{Limits, and what would reopen the experiments.} The relations are conditional on the evaluated
+distributions and the compression implementations. No fitted joint structure for distillation beat
+a low-order response surface on either pre-declared target, so the data requirement a practitioner
+would most like, how much independent data keeps a conditional loss below a threshold, is supportable
+in form and not yet delivered as a validated relation; and the larger student diverged from the
+smaller on math and code at readouts the design could not resolve. Reopening measurement needs a new
+information source or a mechanism hypothesis, not another candidate reuse function.

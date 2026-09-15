@@ -67,14 +67,12 @@ loss; no student descriptor. The relations hold on the two
 development students (270M, 1B), and for QA on the 2Wiki distribution
 only, where the gain replicates on a fresh sample and reverses sign on
 MuSiQue and TriviaQA (Appendix~\ref{sec:app_measure}).
-\paragraph{What a practitioner can compute today.} With the initial state and the configuration
-alone, Table~\ref{tab:main_prediction_v2} gives one relation per arm and task with its tested range
-and its error against the development-stage strongest baseline. For pruning at an unseen density of a
+\paragraph{What a practitioner can compute today.} Table~\ref{tab:main_prediction_v2} gives one relation per arm and task with its range and its
+error against the development-stage strongest baseline. For pruning at an unseen density of a
 seen source, the power form predicts math and code to about 0.24 nats and should not be used for QA
 or outside $d\in[0.6,0.9]$. For quantization the measured grid is the predictor: interpolate group
 sizes on a seen state, use the per-bit median on a new state, and expect 0.13 to 0.17 nats. For
 distillation, the one-coefficient reuse forms and the QA joint form hold on the development students
 at the 2Wiki distribution; the budget-doubling and data-change interventions are not predicted by any
-of the parsimonious forms tried, and the corresponding rows of the table say so. Every relation
-carries a status, development or frozen prediction or post-hoc recommendation, and the reader should
-weight it accordingly.
+of the parsimonious forms tried, and the corresponding rows of the table say so. Each row carries its
+status: development, frozen prediction, or post-hoc recommendation.
