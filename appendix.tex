@@ -246,6 +246,29 @@ the development pools the two descriptor variants disagree on math
 (0.404 with the loss descriptor, 0.122 with the size descriptor), so
 the descriptor choice is not settled by these data.
 \FloatBarrier
+\subsection{Pre-compression statistics as additional inputs}
+\label{sec:app_inputs}
+
+Three strictly separated input budgets were compared on the nine-state development panel with
+leave-one-source-state-out and leave-one-size-out splits and a rule fixed in advance: the K0 state
+alone; K0 with a dense loss anchor; and K0 with three dense statistics measured by one forward pass
+per state and capability (the reference-token logit margin, the trace of the loss Hessian in logit
+space, and the logit variance). The statistics help inside a parametric family, through ridge, in
+four of nine arm-and-capability pairs (pruning math and QA, grouped-quantization math and QA), each
+with an interval above zero; in nine of nine pairs both statistics-augmented linear candidates still
+have higher error than the source-free median configuration curve. Accuracy at naming the most
+fragile capability falls for pruning (58.3\% to 41.7\%) and rises for grouped quantization (40.7\% to
+49.4\%) when the statistics are added.
+
+One explanation was then tested and closed: that the source-dependent candidates lose because they
+re-learn the whole response. Holding the median configuration curve fixed and fitting only a heavily
+shrunk source correction to its residual, with the shrinkage strength selected inside training folds
+from a grid fixed in advance, yields a positive gain with an interval excluding zero in zero of nine
+primary pairs against a pre-fixed requirement of five; the data prefers a finite correction in most
+folds, and it does not convert into held-out gain. No further statistics or richer corrections are
+proposed.
+
+
 \subsection{Shared structure, parameter ranges, and one-point calibration}
 \label{sec:app_shared}
 
@@ -753,6 +776,50 @@ law into a measurable, smoothly evolving order parameter.
 \preliminary{three models, two families; a multi-model extension is left to future work}
 
 \FloatBarrier
+\subsection{The logit-displacement account of compression damage}
+\label{sec:app_disp}
+
+For a compressed model whose logits are displaced by $r$ from the reference's, the change in
+cross-entropy on a supervised token $y$ with reference distribution $p$ is exactly
+\begin{equation}
+\Delta L \;=\; \big(\mathbb{E}_p[r]-r_y\big)\;+\;\tfrac12\,\mathrm{Var}_p(r)\;+\;O(\lVert r\rVert^3),
+\label{eq:displacement}
+\end{equation}
+so the first-order term is the signed alignment of the displacement with the target and the
+second-order term is coefficient-free. Evaluated on 339 cells across pruning, grouped quantization
+and per-channel quantization on the development states, the truncation to second order reproduces
+the measured loss change with median relative error that tracks the damage magnitude rather than the
+family or the knob (Table~\ref{tab:disp_boundary}): under 5\% wherever the loss change is below about
+0.1 nats, and rising past 20\% by 0.25 nats. Grouped four-bit quantization with fine groups, at 0.06
+nats, sits on the same curve as per-channel four-bit at 0.24 nats.
+
+\begin{table}[H]
+\centering\small
+\caption{Median relative error of the coefficient-free second-order account, by family and
+configuration; the boundary is set by damage magnitude.}
+\label{tab:disp_boundary}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Family & Configuration: median relative error \\
+\midrule
+Pruning & $d=0.9$: 0.9\%; 0.85: 4.3\%; 0.8: 5.3\%; 0.75: 11.1\%; 0.7: 16.0\%; 0.65: 28.2\%; 0.6: 44.4\% \\
+Grouped quantization & 5 bit: 1.6--2.7\% at every group size; 4 bit: 3.3\% to 9.2\% by group size; 3 bit: 35.9\% \\
+Per-channel quantization & 8 bit: 2.5\%; 6 bit: 3.0\%; 5 bit: 4.2\%; 4 bit: 23.8\%; 3 bit: 53.9\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Two readings of this account are excluded. Projecting the displacement onto the reference logits
+with a shift-invariant estimator, $\epsilon=-\mathrm{Cov}_p(r,z)/\mathrm{Var}_p(z)$ (the uncentred
+version moves by 85\% under a constant logit shift and is not used), the pure-shrinkage account
+fails on magnitude: about three percent of the response lies in the shrinkage direction, and the
+variance of the orthogonal residual carries the rest for math and code. That residual variance is
+not shown to be random noise, and it is not a pre-compression predictor, because computing it needs
+the compressed model. The account therefore explains the damage after the fact and enters no
+relation as an input. Variance dominance is per capability: seventeen cells with negative loss
+change are carried by the first-order term.
+
+
 \section{Recovery and Cross-Method Analyses}
 \label{sec:app_cross}
 \subsection{Recovery arm: redeemable damage and the fitted plateau}
