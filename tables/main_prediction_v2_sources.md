@@ -2740,7 +2740,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v70-distill-confirm/compare.json#/groups/4/paired_difference",
       "results/v70-distill-confirm/compare.json#/groups/5/paired_difference"
     ],
-    "note": "Only MAEs are printed. Stored paired_difference.ci95 estimates baseline-minus-candidate gain, not an MAE interval; it is not displayed in the MAE columns.",
+    "note": "Only MAEs are printed, paired in student order 270M, 1B. T=T-only, E=E-only, L=initial-loss surface, N=size surface. Stored paired_difference.ci95 estimates baseline-minus-candidate gain, not an MAE interval; it is not displayed in the MAE columns.",
     "rendered": "T/L 0.07,0.03/ E 0.02,0.05/ E/N 0.61,0.45"
   },
   {
