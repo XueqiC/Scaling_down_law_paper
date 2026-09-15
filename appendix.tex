@@ -168,7 +168,7 @@ coincide throughout, and the reference-model definition of
 \S\ref{sec:loss} is exercised only on dense architectures. The laws
 use the transformer-matrix count $N_0$ (decoder-block matrices,
 excluding embeddings, head, biases, and norms); the frozen
-distillation source term used v50's literal meta count of the student,
+distillation source term used the metadata parameter count of the student recorded at the freeze,
 which for Gemma-3-4B includes 0.42B vision and projector parameters
 and counts tied embeddings twice; these frozen covariates are reported
 as recorded and not recomputed.
@@ -1023,7 +1023,7 @@ fallback. Predictions under this rule and under the earlier
 source-conditioned laws were frozen for four fresh states before
 measurement (Table~\ref{tab:rule-confirm}; Fig.~\ref{fig:rule_maps});
 the registered criterion confirms a capability when the locked rule's mean regret over the 68 cells is within the source-conditioned map's and below quantization-only's; math, code, and QA meet it, while the multi-capability objective fails the first condition (0.0020 against 0.0019) and is reported as prospective, not confirmed. The distillation candidates on 1B@64k are the
-existing v39 students 160M@64k and 410M@64k, whose post-training
+existing students 160M@64k and 410M@64k, whose post-training
 outcomes were purged from the fits that predict them; per-state
 regrets and candidate-set sizes are in
 Tables~\ref{tab:rule-confirm-by-state} and
