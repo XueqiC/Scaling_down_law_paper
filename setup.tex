@@ -32,19 +32,16 @@ quantization the damage
 $\Delta L_c=L_c(\text{compressed})-L_c(M_0)$, for distillation the
 signed transfer $\delta_c=L_c(S_{\mathrm{KD}})-L_c(S_0)$ of a student
 relative to its own initial state $S_0$, which is the reference
-model of that arm; the teacher never plays the role of the source. The observable is the likelihood of a fixed reference on a fixed
-distribution: a QA loss can fall while exact-match accuracy does not
-rise, and a gain on one QA distribution need not appear on another;
-absolute levels of different tokenizers are never placed on one scale
-(Appendix~\ref{sec:app_measure}).
+model of that arm; the teacher never plays the role of the source. The observable is a likelihood on a
+fixed distribution, not an accuracy, and absolute levels of different tokenizers are never placed on
+one scale (Appendix~\ref{sec:app_measure}).
 
 \subsection{Models and Compression Settings}
 \label{sec:models}
 
-A \emph{heterogeneous panel} of twelve finished public models from
-five series (Qwen3, Gemma-3, Gemma-4, Muse, OLMo-3; 0.6B to 32B)
-establishes the phenomena and the limits of cross-family transfer
-(Appendix~\ref{sec:app_hetero}). A \emph{controlled panel} of Pythia checkpoints
+A \emph{heterogeneous panel} of twelve public models from five series (0.6B to 32B) establishes
+the phenomena and the limits of cross-family transfer (Appendix~\ref{sec:app_hetero}). A
+\emph{controlled panel} of Pythia checkpoints
 \citep{biderman2023pythia} (160M, 410M, 1.4B at steps 16k, 64k, 143k) varies the
 initial state along parameter count and pretraining stage with
 architecture and data fixed; it is the development set for pruning and quantization and the controlled transfer panel, while the distillation relations are developed on Gemma-3 student trajectories (\S\ref{sec:law_distill}). \emph{New states and configurations} that entered no fit (Pythia
@@ -78,18 +75,13 @@ share the endpoint and the evaluation protocol.
 \subsection{Fitting and Evaluation}
 \label{sec:eval}
 
-Each relation is fit on development states and settings only and is
-judged on unseen settings (outside the fitted set) and unseen states
-(a new size, stage, or student). On the development panel we use leave-one-stage-out and
-leave-one-source-out cross-validation; for new states every
-candidate's forms, coefficients, and predictions are committed before
-the outcome is measured, and a prediction keeps its provenance label
-whatever the outcome. The reference anchor $L_{0,c}$ is the only measured input. Error is the mean
-absolute error of $\widehat\Delta$ in nats per token per capability;
-every candidate is compared on the same cells with source-free
-references (zero change, a per-capability constant, a strength-only
-curve, or the median development curve), with same-input alternatives,
-and with the no-$D_0$ ablation, and the strongest baseline per
-capability is reported and marked as chosen after the fact. Freeze
-commits, provenance codes, fold rules, and bootstrap units are in
-Appendix~\ref{sec:app_registration}.
+Each relation is fit on development states and settings only, with leave-one-stage-out and
+leave-one-source-out folds, and judged on unseen settings and unseen states (a new size, stage or
+student) with forms, coefficients and predictions committed before the outcome is measured; a
+prediction keeps its status, development, frozen prediction or post-hoc recommendation, whatever the
+outcome. Error is the mean absolute error of $\widehat\Delta$ in nats per token per capability,
+compared on the same cells with source-free references (zero change, a per-capability constant, a
+strength-only curve, the median development curve), same-input alternatives and the no-$D_0$
+ablation; the strongest baseline chosen inside the development folds is the comparator, and any
+baseline chosen after the fact is marked as such. Freeze commits, provenance codes, fold rules and
+bootstrap units are in Appendix~\ref{sec:app_registration}.
