@@ -7,7 +7,7 @@ explanations and open factors.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.78\textwidth]{figs/explanation.pdf}
+\includegraphics[width=0.72\textwidth]{figs/explanation.pdf}
 \caption{What shapes the distillation response, and what explains compression damage.
 \textbf{a}: the reuse-term curvature exponent $p$ across training folds per capability, with the
 full-development value and its conditional interval; $p=0$ is the logarithmic term, $p=1$ linear.
@@ -39,13 +39,12 @@ strongest baseline on either pre-declared target (Appendix~\ref{sec:app_forms}).
 
 Whether additivity itself failed could not be read from that data: a fixed pool and a doubling
 budget grid never place two trajectories on the same budget, so no budget-by-reuse rectangle existed.
-Four trajectories designed by replaying the trainer's update boundaries landed on one to the token. The second difference across the rectangle, which
-is exactly zero for any additive structure whatever its curvature, was $-0.24$ nats on the 1B student
-and $-0.21$ on the 4B for the QA probe, inside the pre-registered band of $\pm 0.32$ and between the
-additive prediction of zero and the frozen interaction candidate's $-0.49$
-(Fig.~\ref{fig:explanation}b). The pre-fixed rule did not reject additivity; it also does not
-establish it, and the 4B student's statistic on math and code fell outside its band at readouts the
-design had registered as underpowered.
+Four trajectories designed by replaying the trainer's update boundaries landed on one to the token. The second difference across it, exactly zero for any additive structure whatever its curvature,
+was $-0.24$ nats on the 1B student and $-0.21$ on the 4B for the QA probe, inside the pre-registered
+band of $\pm0.32$ and between the additive prediction of zero and the frozen interaction candidate's
+$-0.49$ (Fig.~\ref{fig:explanation}b). The pre-fixed rule did not reject additivity and does not
+establish it; the 4B statistic on math and code fell outside its band at readouts registered as
+underpowered.
 
 \subsection{Source state, protocol, and evaluation distribution}
 \label{sec:why_conditions}
@@ -65,15 +64,13 @@ distributions; a claim that distillation improves question answering is a 2Wiki 
 \subsection{Mechanism}
 \label{sec:why_mech}
 
-For pruning and quantization the loss change under a logit displacement $r$ obeys the exact
-identity $\Delta L=(\mathbb{E}_p[r]-r_y)+\tfrac12\mathrm{Var}_p(r)+O(\lVert r\rVert^3)$, and its
+For pruning and quantization the loss change under a logit displacement $r$ obeys the exact identity
+$\Delta L=(\mathbb{E}_p[r]-r_y)+\tfrac12\mathrm{Var}_p(r)+O(\lVert r\rVert^3)$, and its
 coefficient-free second-order truncation reproduces the measured damage across three families with
-one boundary set by damage magnitude rather than by family or knob: under 5\% median relative error
-below about 0.1 nats, past 20\% by 0.25 (Fig.~\ref{fig:explanation}c, Appendix~\ref{sec:app_disp}).
-A shift-invariant projection shows pure logit shrinkage carrying about three percent of the
-response, so that account fails on magnitude. The residual variance that carries the rest needs the
-compressed model to compute: the mechanism explains the damage after the fact and enters no relation
-as an input.
+one boundary set by damage magnitude, under 5\% median relative error below about 0.1 nats and past
+20\% by 0.25 (Fig.~\ref{fig:explanation}c, Appendix~\ref{sec:app_disp}). Pure logit shrinkage carries
+about three percent of the response, and the residual variance that carries the rest needs the
+compressed model to compute: the account explains after the fact and enters no relation as an input.
 
 \subsection{What is settled, excluded, and open}
 \label{sec:why_summary}
