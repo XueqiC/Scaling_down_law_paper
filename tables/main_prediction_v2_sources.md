@@ -104,7 +104,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "$A_c r^{\\gamma_c}$",
+        "label": "$A_c(\\mathbf x)r^{\\gamma_c}$",
         "expected": [
           "(beta.phi) * ((1-d)/0.3)**gamma"
         ]
@@ -123,7 +123,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v53-prune-dev/register.json#/feature_names"
     ],
     "note": "",
-    "rendered": "$A_c r^{\\gamma_c}$ (5)"
+    "rendered": "$A_c(\\mathbf x)r^{\\gamma_c}$ (5)"
   },
   {
     "row": 0,
@@ -135,7 +135,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "nine states; density 0.6-0.9",
+        "label": "9 states; d=0.6-0.9",
         "expected": [
           {
             "sizes": [
@@ -161,7 +161,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "Requested scope, not an assertion that this holdout artifact exists.",
-    "rendered": "nine states; density 0.6-0.9"
+    "rendered": "9 states; d=0.6-0.9"
   },
   {
     "row": 0,
@@ -221,7 +221,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "$A_c r^{\\gamma_c}$",
+        "label": "$A_c(\\mathbf x)r^{\\gamma_c}$",
         "expected": [
           "(beta.phi) * ((1-d)/0.3)**gamma"
         ]
@@ -240,7 +240,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v53-prune-dev/register.json#/feature_names"
     ],
     "note": "",
-    "rendered": "$A_c r^{\\gamma_c}$ (5)"
+    "rendered": "$A_c(\\mathbf x)r^{\\gamma_c}$ (5)"
   },
   {
     "row": 1,
@@ -313,7 +313,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "math 0.24 / code 0.24 / QA 0.68"
+    "rendered": "math 0.24/ code 0.24/ QA 0.68"
   },
   {
     "row": 1,
@@ -389,7 +389,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v53-prune-dev/register.json#/loso_table"
     ],
     "note": "Minimum development LOSO MAE excluding power, per capability; no test ranking.",
-    "rendered": "A2 0.23 / A2 0.22 / med 0.22"
+    "rendered": "A2 0.23/ A2 0.22/ med 0.22"
   },
   {
     "row": 1,
@@ -457,7 +457,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "160M-1.4B; 4-bit, g64/256",
+        "label": "160M-1.4B; b4/g64,256",
         "expected": [
           [
             "pythia-160m@step16000",
@@ -476,7 +476,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "160M-1.4B; 4-bit, g64/256"
+    "rendered": "160M-1.4B; b4/g64,256"
   },
   {
     "row": 2,
@@ -511,7 +511,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "math 0.19 / code 0.21 / QA 0.44"
+    "rendered": "math 0.19/ code 0.21/ QA 0.44"
   },
   {
     "row": 2,
@@ -581,7 +581,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v55-quant-group/register.json#/loso_table"
     ],
     "note": "Development minimum over registered baselines mean/median/zero.",
-    "rendered": "med 0.55 / med 0.73 / med 0.54"
+    "rendered": "med 0.55/ med 0.73/ med 0.54"
   },
   {
     "row": 2,
@@ -949,7 +949,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "math 0.21 / code 0.56 / QA 0.46"
+    "rendered": "math 0.21/ code 0.56/ QA 0.46"
   },
   {
     "row": 3,
@@ -1091,7 +1091,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v69-quant-confirm/develop.json#/loso/scores"
     ],
     "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability.",
-    "rendered": "bilin 0.33 / zero 0.68 / med 0.46"
+    "rendered": "bilin 0.33/ zero 0.68/ med 0.46"
   },
   {
     "row": 3,
@@ -1285,7 +1285,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "1.4B/112k; g32/128/512",
+        "label": "1.4B/112k; g32,128,512",
         "expected": [
           "pythia-1.4b@step112000",
           "b3_g32",
@@ -1346,7 +1346,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "1.4B/112k; g32/128/512"
+    "rendered": "1.4B/112k; g32,128,512"
   },
   {
     "row": 4,
@@ -1405,7 +1405,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "math 0.30 / code 0.15 / QA 0.22"
+    "rendered": "math 0.30/ code 0.15/ QA 0.22"
   },
   {
     "row": 4,
@@ -1538,7 +1538,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v69-quant-confirm/develop.json#/loso/scores"
     ],
     "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability.",
-    "rendered": "bilin 0.35 / zero 0.56 / med 0.14"
+    "rendered": "bilin 0.35/ zero 0.56/ med 0.14"
   },
   {
     "row": 4,
@@ -1650,7 +1650,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "three students; $T\\ge150$k holdout",
+        "label": "3 students; $T\\ge150$k held out",
         "expected": [
           [
             "gemma3-1b",
@@ -1667,7 +1667,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/a2-curvature-interaction/summary.json#/decision_table/54/distribution"
     ],
     "note": "Only the training-probe rows whose MAEs are printed here; fresh-sample QA rows are not pooled or advertised.",
-    "rendered": "three students; $T\\ge150$k holdout"
+    "rendered": "3 students; $T\\ge150$k held out"
   },
   {
     "row": 5,
@@ -1753,7 +1753,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "Training-probe MAEs; reuse is the recorded tolerance proxy, not an exact intervention. Intervals conditional on frozen fold predictions.",
-    "rendered": "math 0.07 [0.05,0.11] / code 0.07 [0.05,0.09] / QA 2.18 [1.68,2.88]"
+    "rendered": "math 0.07 [0.05,0.11]/ code 0.07 [0.05,0.09]/ QA 2.18 [1.68,2.88]"
   },
   {
     "row": 5,
@@ -1827,7 +1827,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "Inner-development-selected baselines. Never strongest_observed_baseline or strongest_baseline_mae.",
-    "rendered": "const 0.09 / const 0.11 / const 1.44"
+    "rendered": "const 0.09/ const 0.11/ const 1.44"
   },
   {
     "row": 5,
@@ -1940,7 +1940,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "three students; 1% budget proxy",
+        "label": "3 students; 1% budget proxy",
         "expected": [
           [
             "gemma3-1b",
@@ -1957,7 +1957,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/a2-curvature-interaction/summary.json#/decision_table/50/distribution"
     ],
     "note": "Only the training-probe rows whose MAEs are printed here; fresh-sample QA rows are not pooled or advertised.",
-    "rendered": "three students; 1\\% budget proxy"
+    "rendered": "3 students; 1\\% budget proxy"
   },
   {
     "row": 6,
@@ -2043,7 +2043,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "Training-probe MAEs; reuse is the recorded tolerance proxy, not an exact intervention. Intervals conditional on frozen fold predictions.",
-    "rendered": "math 0.08 [0.05,0.14] / code 0.07 [0.04,0.12] / QA 1.02 [0.72,1.34]"
+    "rendered": "math 0.08 [0.05,0.14]/ code 0.07 [0.04,0.12]/ QA 1.02 [0.72,1.34]"
   },
   {
     "row": 6,
@@ -2120,7 +2120,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "Inner-development-selected baselines. Never strongest_observed_baseline or strongest_baseline_mae.",
-    "rendered": "surf/E 0.08 / zero/surf/E 0.07 / surf 0.76"
+    "rendered": "surf/E 0.08/ zero/surf/E 0.07/ surf 0.76"
   },
   {
     "row": 6,
@@ -2158,7 +2158,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "$a_c\\log(1+E)$",
+        "label": "$a_c\\ell_E$",
         "expected": [
           "E"
         ]
@@ -2180,7 +2180,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "$a_c\\log(1+E)$",
+        "label": "$a_c\\ell_E$",
         "expected": [
           "E"
         ]
@@ -2223,7 +2223,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v70-distill-confirm/freeze.json#/prediction_rule"
     ],
     "note": "E and joint are the frozen V50/V70 design identifiers. E has one coefficient; joint has three coefficients on u, u*u, u*log(D_U/D_ref). T_star is null, not fitted, for these selected forms.",
-    "rendered": "math: $a_c\\log(1+E)$ (1); code: $a_c\\log(1+E)$ (1); QA: $u(a+bu+qv)$ (3)"
+    "rendered": "math: $a_c\\ell_E$ (1); code: $a_c\\ell_E$ (1); QA: $u(a+bu+qv)$ (3)"
   },
   {
     "row": 7,
@@ -2237,7 +2237,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         ],
         "op": "label",
         "format": null,
-        "label": "270M/1B; six pools, 50k-200k",
+        "label": "270M/1B; 6 pools, 50k-200k",
         "expected": [
           [
             "gemma3-270m",
@@ -2573,7 +2573,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     ],
     "context": [],
     "note": "",
-    "rendered": "270M/1B; six pools, 50k-200k"
+    "rendered": "270M/1B; 6 pools, 50k-200k"
   },
   {
     "row": 7,
@@ -2634,7 +2634,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
     ],
     "note": "Comma-separated scores follow student order 270M, 1B; no student averaging.",
-    "rendered": "math 0.07,0.06 / code 0.02,0.05 / QA 0.51,0.46"
+    "rendered": "math 0.07,0.06/ code 0.02,0.05/ QA 0.51,0.46"
   },
   {
     "row": 7,
@@ -2741,7 +2741,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
       "results/v70-distill-confirm/compare.json#/groups/5/paired_difference"
     ],
     "note": "Only MAEs are printed. Stored paired_difference.ci95 estimates baseline-minus-candidate gain, not an MAE interval; it is not displayed in the MAE columns.",
-    "rendered": "T/L 0.07,0.03 / E 0.02,0.05 / E/N 0.61,0.45"
+    "rendered": "T/L 0.07,0.03/ E 0.02,0.05/ E/N 0.61,0.45"
   },
   {
     "row": 7,
@@ -2787,7 +2787,1609 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
         "phi.[a0 + a1*u + a2*v + a3*u*v + a4*u^2]; coefficients ordered by term then phi"
       ]
     },
-    "$m_c$=med; $A,B$ affine in descriptor. Budget/reuse forms: fold-selected; counts per capability. Dev. baselines (math/code/QA): A2=per-density regression, med=dev. median, bilin=bilinear, surf=surface, const=constant, zero=zero change, E/T=E-only/T-only, L/N=loss/size surface. Pool pairs: student order. Not tested: density holdout, exact fixed-budget reuse."
+    {
+      "sources": [
+        "results/v70-distill-confirm/freeze.json#/models"
+      ],
+      "op": "label",
+      "format": null,
+      "label": "$\\ell_E=\\log(1+E)$; ",
+      "expected": [
+        {
+          "math": {
+            "constant": {
+              "coef": [
+                0.16073202379148357
+              ],
+              "rank": 1,
+              "n_params": 1,
+              "sse": 2.5170896942462475,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "constant",
+              "selection_n_params": 1,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 2.5170896942462475
+                }
+              ]
+            },
+            "constant+src": {
+              "coef": [
+                0.16572843297364517,
+                0.04964661954532312
+              ],
+              "rank": 2,
+              "n_params": 2,
+              "sse": 2.2870365477995342,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "constant+src",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 2.2870365477995342
+                }
+              ]
+            },
+            "T": {
+              "coef": [
+                0.1141146071917939
+              ],
+              "rank": 1,
+              "n_params": 1,
+              "sse": 2.095269809380306,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "T",
+              "selection_n_params": 1,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 2.095269809380306
+                }
+              ]
+            },
+            "T+src": {
+              "coef": [
+                0.11798307948838954,
+                0.038075898170200836
+              ],
+              "rank": 2,
+              "n_params": 2,
+              "sse": 1.783198514343183,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "T+src",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 1.783198514343183
+                }
+              ]
+            },
+            "E": {
+              "coef": [
+                0.15127841083533308
+              ],
+              "rank": 1,
+              "n_params": 1,
+              "sse": 1.2891117375250243,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "E",
+              "selection_n_params": 1,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 1.2891117375250243
+                }
+              ]
+            },
+            "E+src": {
+              "coef": [
+                0.15911482013227596,
+                0.059728296977249025
+              ],
+              "rank": 2,
+              "n_params": 2,
+              "sse": 0.7473056773292215,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "E+src",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 0.7473056773292215
+                }
+              ]
+            },
+            "joint": {
+              "coef": [
+                0.057436995691740246,
+                0.010793281549704731,
+                -0.08234766958431203
+              ],
+              "rank": 3,
+              "n_params": 3,
+              "sse": 1.1069063512935944,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "joint",
+              "selection_n_params": 3,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 1.1069063512935944
+                }
+              ]
+            },
+            "joint+src": {
+              "coef": [
+                0.06050775408374385,
+                0.010956165581474591,
+                -0.0839798191711278,
+                0.0403715195655175
+              ],
+              "rank": 4,
+              "n_params": 4,
+              "sse": 0.7564580273069285,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "joint+src",
+              "selection_n_params": 4,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 0.7564580273069285
+                }
+              ]
+            },
+            "F1:L0": {
+              "coef": [
+                0.15978098118643583,
+                -0.058365867546725986
+              ],
+              "columns": [
+                "b0",
+                "b1"
+              ],
+              "n_params": 2,
+              "rank": 2,
+              "column_mean": [
+                0.0,
+                0.0
+              ],
+              "column_scale": [
+                0.6999208707326598,
+                1.216776696158139
+              ],
+              "standardized_coef": [
+                0.1118340434785289,
+                -0.0710182274819088
+              ],
+              "sse": 0.7900740186789115,
+              "ridge_objective": 0.7900915691208269,
+              "effective_df": 1.9999868808296406,
+              "intercept_unpenalized": false,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "F1:L0",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 0.7900740186789115
+                }
+              ]
+            },
+            "F1:logN": {
+              "coef": [
+                0.15911426425319122,
+                0.05945300306468042
+              ],
+              "columns": [
+                "b0",
+                "b1"
+              ],
+              "n_params": 2,
+              "rank": 2,
+              "column_mean": [
+                0.0,
+                0.0
+              ],
+              "column_scale": [
+                0.6999208707326598,
+                1.2432284815872339
+              ],
+              "standardized_coef": [
+                0.11136739438208013,
+                0.0739136667259038
+              ],
+              "sse": 0.7473056774337997,
+              "ridge_objective": 0.74732354336046,
+              "effective_df": 1.9999869195464919,
+              "intercept_unpenalized": false,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "F1:logN",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 0.7473056774337997
+                }
+              ]
+            },
+            "F2:L0": {
+              "coef": [
+                -0.051195454892940286,
+                0.059053885125669454,
+                0.1875346636613153,
+                -0.09061204480923599
+              ],
+              "columns": [
+                "b0",
+                "b1",
+                "b2",
+                "b3"
+              ],
+              "n_params": 4,
+              "rank": 4,
+              "column_mean": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "column_scale": [
+                0.22044697778616124,
+                0.7227193539804633,
+                0.6999208707326598,
+                1.216776696158139
+              ],
+              "standardized_coef": [
+                -0.011285883307536427,
+                0.04267938570806032,
+                0.1312594250823843,
+                -0.11025462451511542
+              ],
+              "sse": 0.735260216675391,
+              "ridge_objective": 0.7352915506954174,
+              "effective_df": 3.9998706171809855,
+              "intercept_unpenalized": false,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": 70000,
+              "method": "F2:L0",
+              "selection_n_params": 5,
+              "T_star_grid_sse": [
+                {
+                  "T_star": 17500,
+                  "sse": 0.7539545246795474
+                },
+                {
+                  "T_star": 35000,
+                  "sse": 0.7436500726553973
+                },
+                {
+                  "T_star": 70000,
+                  "sse": 0.735260216675391
+                },
+                {
+                  "T_star": 140000,
+                  "sse": 0.7417640430133925
+                },
+                {
+                  "T_star": 280000,
+                  "sse": 0.7535107887066673
+                }
+              ]
+            },
+            "F2:logN": {
+              "coef": [
+                -0.05088943840889367,
+                -0.06884614958696111,
+                0.18669419344974178,
+                0.09668062627062765
+              ],
+              "columns": [
+                "b0",
+                "b1",
+                "b2",
+                "b3"
+              ],
+              "n_params": 4,
+              "rank": 4,
+              "column_mean": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "column_scale": [
+                0.22044697778616124,
+                0.7347268653802675,
+                0.6999208707326598,
+                1.2432284815872339
+              ],
+              "standardized_coef": [
+                -0.011218422898475603,
+                -0.050583115679528945,
+                0.1306711624400749,
+                0.12019610819733524
+              ],
+              "sse": 0.6793862169700631,
+              "ridge_objective": 0.6794204235317864,
+              "effective_df": 3.999870949053996,
+              "intercept_unpenalized": false,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": 70000,
+              "method": "F2:logN",
+              "selection_n_params": 5,
+              "T_star_grid_sse": [
+                {
+                  "T_star": 17500,
+                  "sse": 0.694319595939052
+                },
+                {
+                  "T_star": 35000,
+                  "sse": 0.6843543318418208
+                },
+                {
+                  "T_star": 70000,
+                  "sse": 0.6793862169700631
+                },
+                {
+                  "T_star": 140000,
+                  "sse": 0.6922251592553327
+                },
+                {
+                  "T_star": 280000,
+                  "sse": 0.708345988023976
+                }
+              ]
+            },
+            "T-only": {
+              "coef": [
+                -0.003541624822581496,
+                0.11628241029372188
+              ],
+              "columns": [
+                "b0",
+                "b1"
+              ],
+              "n_params": 2,
+              "rank": 2,
+              "column_mean": [
+                0.0,
+                1.4127127929247456
+              ],
+              "column_scale": [
+                1.0,
+                0.5586406513529452
+              ],
+              "standardized_coef": [
+                0.16073202379148355,
+                0.06496008142737521
+              ],
+              "sse": 2.0951000367167674,
+              "ridge_objective": 2.0951042565289466,
+              "effective_df": 1.999990000099999,
+              "intercept_unpenalized": true,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "T-only",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 2.0951000367167674
+                }
+              ]
+            },
+            "E-only": {
+              "coef": [
+                -0.01118477622714309,
+                0.15855937408854176
+              ],
+              "columns": [
+                "b0",
+                "b1"
+              ],
+              "n_params": 2,
+              "rank": 2,
+              "column_mean": [
+                0.0,
+                1.0842424234257253
+              ],
+              "column_scale": [
+                1.0,
+                0.6999208707326598
+              ],
+              "standardized_coef": [
+                0.16073202379148357,
+                0.1109790151748777
+              ],
+              "sse": 1.2854308806440566,
+              "ridge_objective": 1.2854431969858657,
+              "effective_df": 1.999990000099999,
+              "intercept_unpenalized": true,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "E-only",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 1.2854308806440566
+                }
+              ]
+            },
+            "surface:L0": {
+              "coef": [
+                0.01215786230194732,
+                -0.022975065100232436,
+                0.172481010822215,
+                -0.05351151417686075
+              ],
+              "columns": [
+                "b0",
+                "b1",
+                "b2",
+                "b3"
+              ],
+              "n_params": 4,
+              "rank": 4,
+              "column_mean": [
+                0.0,
+                1.4127127929247456,
+                1.0842424234257253,
+                0.11174976798674695
+              ],
+              "column_scale": [
+                1.0,
+                0.5586406513529452,
+                0.6999208707326598,
+                0.954678928379201
+              ],
+              "standardized_coef": [
+                0.16073202379148355,
+                -0.012834805332470167,
+                0.12072305927953406,
+                -0.05108631501031384
+              ],
+              "sse": 1.017286023539862,
+              "ridge_objective": 1.017303372140713,
+              "effective_df": 3.99995570923737,
+              "intercept_unpenalized": true,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "surface:L0",
+              "selection_n_params": 4,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 1.017286023539862
+                }
+              ]
+            },
+            "surface:logN": {
+              "coef": [
+                0.011490392938827698,
+                -0.02267647795795931,
+                0.17209449876133037,
+                0.05257118770214056
+              ],
+              "columns": [
+                "b0",
+                "b1",
+                "b2",
+                "b3"
+              ],
+              "n_params": 4,
+              "rank": 4,
+              "column_mean": [
+                0.0,
+                1.4127127929247456,
+                1.0842424234257253,
+                -0.10110433614310209
+              ],
+              "column_scale": [
+                1.0,
+                0.5586406513529452,
+                0.6999208707326598,
+                0.9705677865952219
+              ],
+              "standardized_coef": [
+                0.16073202379148355,
+                -0.012668002416825093,
+                0.12045253142133101,
+                0.05102390128674851
+              ],
+              "sse": 1.0178506878998392,
+              "ridge_objective": 1.0178679606289527,
+              "effective_df": 3.999955718536262,
+              "intercept_unpenalized": true,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "surface:logN",
+              "selection_n_params": 4,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 1.0178506878998392
+                }
+              ]
+            }
+          },
+          "code": {
+            "constant": {
+              "coef": [
+                0.173201671833481
+              ],
+              "rank": 1,
+              "n_params": 1,
+              "sse": 1.3742118081786727,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "constant",
+              "selection_n_params": 1,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 1.3742118081786727
+                }
+              ]
+            },
+            "constant+src": {
+              "coef": [
+                0.17493449965668284,
+                0.017218174200623337
+              ],
+              "rank": 2,
+              "n_params": 2,
+              "sse": 1.3465409258773553,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "constant+src",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 1.3465409258773553
+                }
+              ]
+            },
+            "T": {
+              "coef": [
+                0.12407374115952728
+              ],
+              "rank": 1,
+              "n_params": 1,
+              "sse": 0.82134205516135,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "T",
+              "selection_n_params": 1,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 0.82134205516135
+                }
+              ]
+            },
+            "T+src": {
+              "coef": [
+                0.12520774528085912,
+                0.011161570288720918
+              ],
+              "rank": 2,
+              "n_params": 2,
+              "sse": 0.7945254309045957,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "T+src",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 0.7945254309045957
+                }
+              ]
+            },
+            "E": {
+              "coef": [
+                0.15508921029854716
+              ],
+              "rank": 1,
+              "n_params": 1,
+              "sse": 0.3681927671333221,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "E",
+              "selection_n_params": 1,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 0.3681927671333221
+                }
+              ]
+            },
+            "E+src": {
+              "coef": [
+                0.15742770032882616,
+                0.01782372789809887
+              ],
+              "rank": 2,
+              "n_params": 2,
+              "sse": 0.31994461537989544,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "E+src",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 0.31994461537989544
+                }
+              ]
+            },
+            "joint": {
+              "coef": [
+                0.08274500154886288,
+                0.007327626702562026,
+                -0.06222617470502769
+              ],
+              "rank": 3,
+              "n_params": 3,
+              "sse": 0.2576166967027025,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "joint",
+              "selection_n_params": 3,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 0.2576166967027025
+                }
+              ]
+            },
+            "joint+src": {
+              "coef": [
+                0.08372438455362223,
+                0.007379576687581161,
+                -0.06274673000847193,
+                0.012876030964122633
+              ],
+              "rank": 4,
+              "n_params": 4,
+              "sse": 0.22196847916393406,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "joint+src",
+              "selection_n_params": 4,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 0.22196847916393406
+                }
+              ]
+            },
+            "F1:L0": {
+              "coef": [
+                0.1576911943384957,
+                -0.018693930281834397
+              ],
+              "columns": [
+                "b0",
+                "b1"
+              ],
+              "n_params": 2,
+              "rank": 2,
+              "column_mean": [
+                0.0,
+                0.0
+              ],
+              "column_scale": [
+                0.6999208707326598,
+                1.2295118688217672
+              ],
+              "standardized_coef": [
+                0.110371358048273,
+                -0.022984409156442034
+              ],
+              "sse": 0.3158625206063066,
+              "ridge_objective": 0.3158752307260483,
+              "effective_df": 1.9999868998040653,
+              "intercept_unpenalized": false,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "F1:L0",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 0.3158625206063066
+                }
+              ]
+            },
+            "F1:logN": {
+              "coef": [
+                0.15742720494403759,
+                0.017741530173426417
+              ],
+              "columns": [
+                "b0",
+                "b1"
+              ],
+              "n_params": 2,
+              "rank": 2,
+              "column_mean": [
+                0.0,
+                0.0
+              ],
+              "column_scale": [
+                0.6999208707326598,
+                1.2432284815872339
+              ],
+              "standardized_coef": [
+                0.11018658636143967,
+                0.02205677561854302
+              ],
+              "sse": 0.31994461542482466,
+              "ridge_objective": 0.31995724300998934,
+              "effective_df": 1.9999869195464919,
+              "intercept_unpenalized": false,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "F1:logN",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 0.31994461542482466
+                }
+              ]
+            },
+            "F2:L0": {
+              "coef": [
+                0.060952881527360746,
+                0.004102475680641165,
+                0.13252972429909557,
+                -0.01996364988508595
+              ],
+              "columns": [
+                "b0",
+                "b1",
+                "b2",
+                "b3"
+              ],
+              "n_params": 4,
+              "rank": 4,
+              "column_mean": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "column_scale": [
+                0.24086751939138176,
+                0.5632977612697625,
+                0.6999208707326598,
+                1.2295118688217672
+              ],
+              "standardized_coef": [
+                0.01468156937325216,
+                0.0023109153665688137,
+                0.09276032002938231,
+                -0.024545544478715483
+              ],
+              "sse": 0.2935212818199757,
+              "ridge_objective": 0.2935307096695105,
+              "effective_df": 3.999855695003592,
+              "intercept_unpenalized": false,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": 140000,
+              "method": "F2:L0",
+              "selection_n_params": 5,
+              "T_star_grid_sse": [
+                {
+                  "T_star": 17500,
+                  "sse": 0.30544248675508245
+                },
+                {
+                  "T_star": 35000,
+                  "sse": 0.3021486116564483
+                },
+                {
+                  "T_star": 70000,
+                  "sse": 0.29646618782354633
+                },
+                {
+                  "T_star": 140000,
+                  "sse": 0.2935212818199757
+                },
+                {
+                  "T_star": 280000,
+                  "sse": 0.29487246409644324
+                }
+              ]
+            },
+            "F2:logN": {
+              "coef": [
+                0.06055806244059962,
+                -0.011381973551954448,
+                0.1324832512263962,
+                0.022072985600691684
+              ],
+              "columns": [
+                "b0",
+                "b1",
+                "b2",
+                "b3"
+              ],
+              "n_params": 4,
+              "rank": 4,
+              "column_mean": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "column_scale": [
+                0.24086751939138176,
+                0.56810518448474,
+                0.6999208707326598,
+                1.2432284815872339
+              ],
+              "standardized_coef": [
+                0.014586470279215637,
+                -0.006466158184533513,
+                0.09272779255587296,
+                0.0274417643724448
+              ],
+              "sse": 0.2967255368425055,
+              "ridge_objective": 0.29673514291276654,
+              "effective_df": 3.9998559452686098,
+              "intercept_unpenalized": false,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": 140000,
+              "method": "F2:logN",
+              "selection_n_params": 5,
+              "T_star_grid_sse": [
+                {
+                  "T_star": 17500,
+                  "sse": 0.3105586961444763
+                },
+                {
+                  "T_star": 35000,
+                  "sse": 0.3066988540388428
+                },
+                {
+                  "T_star": 70000,
+                  "sse": 0.3001305534273628
+                },
+                {
+                  "T_star": 140000,
+                  "sse": 0.2967255368425055
+                },
+                {
+                  "T_star": 280000,
+                  "sse": 0.29811414554971105
+                }
+              ]
+            },
+            "T-only": {
+              "coef": [
+                -0.015371568023798576,
+                0.1334830694545319
+              ],
+              "columns": [
+                "b0",
+                "b1"
+              ],
+              "n_params": 2,
+              "rank": 2,
+              "column_mean": [
+                0.0,
+                1.4127127929247456
+              ],
+              "column_scale": [
+                1.0,
+                0.5586406513529452
+              ],
+              "standardized_coef": [
+                0.17320167183348098,
+                0.07456906886467012
+              ],
+              "sse": 0.8181460839522186,
+              "ridge_objective": 0.8181516444982498,
+              "effective_df": 1.999990000099999,
+              "intercept_unpenalized": true,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "T-only",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 0.8181460839522186
+                }
+              ]
+            },
+            "E-only": {
+              "coef": [
+                0.017161049185427518,
+                0.14391672865468066
+              ],
+              "columns": [
+                "b0",
+                "b1"
+              ],
+              "n_params": 2,
+              "rank": 2,
+              "column_mean": [
+                0.0,
+                1.0842424234257253
+              ],
+              "column_scale": [
+                1.0,
+                0.6999208707326598
+              ],
+              "standardized_coef": [
+                0.173201671833481,
+                0.10073032203298003
+              ],
+              "sse": 0.35953173729633303,
+              "ridge_objective": 0.3595418838941099,
+              "effective_df": 1.999990000099999,
+              "intercept_unpenalized": true,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "E-only",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 0.35953173729633303
+                }
+              ]
+            },
+            "surface:L0": {
+              "coef": [
+                -0.005650722926239388,
+                0.02838148339100419,
+                0.13012030169363922,
+                -0.02176736191616726
+              ],
+              "columns": [
+                "b0",
+                "b1",
+                "b2",
+                "b3"
+              ],
+              "n_params": 4,
+              "rank": 4,
+              "column_mean": [
+                0.0,
+                1.4127127929247456,
+                1.0842424234257253,
+                0.10678561614781082
+              ],
+              "column_scale": [
+                1.0,
+                0.5586406513529452,
+                0.6999208707326598,
+                0.9623186761583143
+              ],
+              "standardized_coef": [
+                0.173201671833481,
+                0.015855050367913376,
+                0.09107391486140837,
+                -0.020947138902624986
+              ],
+              "sse": 0.29992558284837706,
+              "ridge_objective": 0.29993456747159564,
+              "effective_df": 3.9999557137666404,
+              "intercept_unpenalized": true,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "surface:L0",
+              "selection_n_params": 4,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 0.29992558284837706
+                }
+              ]
+            },
+            "surface:logN": {
+              "coef": [
+                -0.005999909613518234,
+                0.028537689294728455,
+                0.12991809785689273,
+                0.019550996948294642
+              ],
+              "columns": [
+                "b0",
+                "b1",
+                "b2",
+                "b3"
+              ],
+              "n_params": 4,
+              "rank": 4,
+              "column_mean": [
+                0.0,
+                1.4127127929247456,
+                1.0842424234257253,
+                -0.10110433614310209
+              ],
+              "column_scale": [
+                1.0,
+                0.5586406513529452,
+                0.6999208707326598,
+                0.9705677865952219
+              ],
+              "standardized_coef": [
+                0.17320167183348098,
+                0.015942313335715073,
+                0.09093238817592728,
+                0.01897556783383627
+              ],
+              "sse": 0.3077823206169306,
+              "ridge_objective": 0.3077912035456791,
+              "effective_df": 3.999955718536262,
+              "intercept_unpenalized": true,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "surface:logN",
+              "selection_n_params": 4,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 0.3077823206169306
+                }
+              ]
+            }
+          },
+          "qa": {
+            "constant": {
+              "coef": [
+                -0.4321713147410356
+              ],
+              "rank": 1,
+              "n_params": 1,
+              "sse": 284.13968105882003,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "constant",
+              "selection_n_params": 1,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 284.13968105882003
+                }
+              ]
+            },
+            "constant+src": {
+              "coef": [
+                -0.42464251113419743,
+                0.07480965522892569
+              ],
+              "rank": 2,
+              "n_params": 2,
+              "sse": 283.61732802813845,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "constant+src",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 283.61732802813845
+                }
+              ]
+            },
+            "T": {
+              "coef": [
+                -0.05168563598155366
+              ],
+              "rank": 1,
+              "n_params": 1,
+              "sse": 302.20036891493106,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "T",
+              "selection_n_params": 1,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 302.20036891493106
+                }
+              ]
+            },
+            "T+src": {
+              "coef": [
+                -0.04198702710998694,
+                0.09545971005436725
+              ],
+              "rank": 2,
+              "n_params": 2,
+              "sse": 300.2388444387371,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "T+src",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 300.2388444387371
+                }
+              ]
+            },
+            "E": {
+              "coef": [
+                0.3273172564742093
+              ],
+              "rank": 1,
+              "n_params": 1,
+              "sse": 284.97359934174057,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "E",
+              "selection_n_params": 1,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 284.97359934174057
+                }
+              ]
+            },
+            "E+src": {
+              "coef": [
+                0.35588711247106464,
+                0.21775647224592007
+              ],
+              "rank": 2,
+              "n_params": 2,
+              "sse": 277.7720533473062,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "E+src",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 277.7720533473062
+                }
+              ]
+            },
+            "joint": {
+              "coef": [
+                -2.9688116523930717,
+                1.356158261677763,
+                -1.023683789975026
+              ],
+              "rank": 3,
+              "n_params": 3,
+              "sse": 55.24420503489745,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "joint",
+              "selection_n_params": 3,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 55.24420503489745
+                }
+              ]
+            },
+            "joint+src": {
+              "coef": [
+                -2.9593258292685753,
+                1.3566614237367545,
+                -1.0287256331670844,
+                0.12471091664609944
+              ],
+              "rank": 4,
+              "n_params": 4,
+              "sse": 51.90007822703503,
+              "estimator": "V50 OLS",
+              "T_star": null,
+              "method": "joint+src",
+              "selection_n_params": 4,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 51.90007822703503
+                }
+              ]
+            },
+            "F1:L0": {
+              "coef": [
+                0.3339597883146617,
+                0.20951496896600255
+              ],
+              "columns": [
+                "b0",
+                "b1"
+              ],
+              "n_params": 2,
+              "rank": 2,
+              "column_mean": [
+                0.0,
+                0.0
+              ],
+              "column_scale": [
+                0.6999208707326598,
+                1.3498814632932603
+              ],
+              "standardized_coef": [
+                0.23374542582689278,
+                0.28282037288966955
+              ],
+              "sse": 276.9779561029243,
+              "ridge_objective": 276.9780907272117,
+              "effective_df": 1.9999870518873917,
+              "intercept_unpenalized": false,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "F1:L0",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 276.9779561029243
+                }
+              ]
+            },
+            "F1:logN": {
+              "coef": [
+                0.35588575780811676,
+                0.21675290454123844
+              ],
+              "columns": [
+                "b0",
+                "b1"
+              ],
+              "n_params": 2,
+              "rank": 2,
+              "column_mean": [
+                0.0,
+                0.0
+              ],
+              "column_scale": [
+                0.6999208707326598,
+                1.2432284815872339
+              ],
+              "standardized_coef": [
+                0.2490918694864096,
+                0.2694733843924265
+              ],
+              "sse": 277.77205334832485,
+              "ridge_objective": 277.77218801098917,
+              "effective_df": 1.9999869195464919,
+              "intercept_unpenalized": false,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "F1:logN",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 277.77205334832485
+                }
+              ]
+            },
+            "F2:L0": {
+              "coef": [
+                -2.9104084216207613,
+                -0.5105566952521462,
+                2.1944230187138922,
+                0.5385719267152923
+              ],
+              "columns": [
+                "b0",
+                "b1",
+                "b2",
+                "b3"
+              ],
+              "n_params": 4,
+              "rank": 4,
+              "column_mean": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "column_scale": [
+                0.05112911845051045,
+                1.0005499058201779,
+                0.6999208707326598,
+                1.3498814632932603
+              ],
+              "standardized_coef": [
+                -0.14880661692841107,
+                -0.5108374533503961,
+                1.5359224700140193,
+                0.7270082605231093
+              ],
+              "sse": 56.36758371109217,
+              "ridge_objective": 56.37075440824992,
+              "effective_df": 3.9999154189112316,
+              "intercept_unpenalized": false,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": 17500,
+              "method": "F2:L0",
+              "selection_n_params": 5,
+              "T_star_grid_sse": [
+                {
+                  "T_star": 17500,
+                  "sse": 56.36758371109217
+                },
+                {
+                  "T_star": 35000,
+                  "sse": 63.96460599433314
+                },
+                {
+                  "T_star": 70000,
+                  "sse": 105.4310359206424
+                },
+                {
+                  "T_star": 140000,
+                  "sse": 172.69570334009404
+                },
+                {
+                  "T_star": 280000,
+                  "sse": 218.8290311850522
+                }
+              ]
+            },
+            "F2:logN": {
+              "coef": [
+                -2.964719585478156,
+                -0.5512432653142666,
+                2.25944090594338,
+                0.6026666942517298
+              ],
+              "columns": [
+                "b0",
+                "b1",
+                "b2",
+                "b3"
+              ],
+              "n_params": 4,
+              "rank": 4,
+              "column_mean": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "column_scale": [
+                0.05112911845051045,
+                0.9379128174747559,
+                0.6999208707326598,
+                1.2432284815872339
+              ],
+              "standardized_coef": [
+                -0.15158349885846087,
+                -0.5170181240848881,
+                1.5814298462568803,
+                0.7492523991977758
+              ],
+              "sse": 55.3171695388007,
+              "ridge_objective": 55.32052212361479,
+              "effective_df": 3.9999151987654216,
+              "intercept_unpenalized": false,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": 17500,
+              "method": "F2:logN",
+              "selection_n_params": 5,
+              "T_star_grid_sse": [
+                {
+                  "T_star": 17500,
+                  "sse": 55.3171695388007
+                },
+                {
+                  "T_star": 35000,
+                  "sse": 62.1868912999047
+                },
+                {
+                  "T_star": 70000,
+                  "sse": 102.91177483849286
+                },
+                {
+                  "T_star": 140000,
+                  "sse": 170.45133096964065
+                },
+                {
+                  "T_star": 280000,
+                  "sse": 217.33439811084986
+                }
+              ]
+            },
+            "T-only": {
+              "coef": [
+                -2.65593551989825,
+                1.5741092006064064
+              ],
+              "columns": [
+                "b0",
+                "b1"
+              ],
+              "n_params": 2,
+              "rank": 2,
+              "column_mean": [
+                0.0,
+                1.4127127929247456
+              ],
+              "column_scale": [
+                1.0,
+                0.5586406513529452
+              ],
+              "standardized_coef": [
+                -0.43217131474103554,
+                0.8793613891274267
+              ],
+              "sse": 206.81048923710284,
+              "ridge_objective": 206.81126251355553,
+              "effective_df": 1.999990000099999,
+              "intercept_unpenalized": true,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "T-only",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 206.81048923710284
+                }
+              ]
+            },
+            "E-only": {
+              "coef": [
+                -2.6757452814197427,
+                2.0692549177240345
+              ],
+              "columns": [
+                "b0",
+                "b1"
+              ],
+              "n_params": 2,
+              "rank": 2,
+              "column_mean": [
+                0.0,
+                1.0842424234257253
+              ],
+              "column_scale": [
+                1.0,
+                0.6999208707326598
+              ],
+              "standardized_coef": [
+                -0.43217131474103565,
+                1.4483147037812445
+              ],
+              "sse": 74.37393770896229,
+              "ridge_objective": 74.37603532444348,
+              "effective_df": 1.999990000099999,
+              "intercept_unpenalized": true,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "E-only",
+              "selection_n_params": 2,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 74.37393770896229
+                }
+              ]
+            },
+            "surface:L0": {
+              "coef": [
+                -2.529919529224559,
+                -0.16894242463070927,
+                2.157046336561663,
+                0.09644470450487758
+              ],
+              "columns": [
+                "b0",
+                "b1",
+                "b2",
+                "b3"
+              ],
+              "n_params": 4,
+              "rank": 4,
+              "column_mean": [
+                0.0,
+                1.4127127929247456,
+                1.0842424234257253,
+                -0.024322832240421786
+              ],
+              "column_scale": [
+                1.0,
+                0.5586406513529452,
+                0.6999208707326598,
+                1.0353807984163887
+              ],
+              "standardized_coef": [
+                -0.4321713147410356,
+                -0.09437810613684527,
+                1.5097617500969331,
+                0.09985699515329283
+              ],
+              "sse": 72.86291953917602,
+              "ridge_objective": 72.86521779836447,
+              "effective_df": 3.999955752094182,
+              "intercept_unpenalized": true,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "surface:L0",
+              "selection_n_params": 4,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 72.86291953917602
+                }
+              ]
+            },
+            "surface:logN": {
+              "coef": [
+                -2.5206848230366896,
+                -0.17307349743003683,
+                2.1623938858538967,
+                0.11416458886162384
+              ],
+              "columns": [
+                "b0",
+                "b1",
+                "b2",
+                "b3"
+              ],
+              "n_params": 4,
+              "rank": 4,
+              "column_mean": [
+                0.0,
+                1.4127127929247456,
+                1.0842424234257253,
+                -0.10110433614310209
+              ],
+              "column_scale": [
+                1.0,
+                0.5586406513529452,
+                0.6999208707326598,
+                0.9705677865952219
+              ],
+              "standardized_coef": [
+                -0.43217131474103554,
+                -0.09668589133624805,
+                1.5135046114538393,
+                0.11080447231897977
+              ],
+              "sse": 72.63351921391468,
+              "ridge_objective": 72.63583153591624,
+              "effective_df": 3.999955718536262,
+              "intercept_unpenalized": true,
+              "estimator": "V56 standardized ridge, lambda=0.001",
+              "T_star": null,
+              "method": "surface:logN",
+              "selection_n_params": 4,
+              "T_star_grid_sse": [
+                {
+                  "T_star": null,
+                  "sse": 72.63351921391468
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "$m_c$=med; $A,B$ affine in descriptor; $b/g$=bits/groups. Budget/reuse forms: fold-selected; counts per capability. Dev. baselines (math/code/QA): A2=per-density regression, med=dev. median, surf=response surface, E/T=E-only/T-only, L/N=loss/size surface. Pool pairs: student order. Not tested: density holdout, exact fixed-budget reuse."
   ],
   "context": [
     "results/v53-prune-dev/register.json#/feature_names",
@@ -2798,7 +4400,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "results/v70-distill-confirm/freeze.json#/reference_rule"
   ],
   "note": "",
-  "rendered": "Frozen MAEs: native-token nats, training probes; stored intervals in brackets. Inputs: source size, initial loss and pretraining tokens for source-conditioned forms; the configuration for all; distillation forms take supervised budget, pool size and reuse. $r=(1-d)/0.3$; $Q_c=a+bu+cv+duv+eu^2$; $m_c$=med; $A,B$ affine in descriptor. Budget/reuse forms: fold-selected; counts per capability. Dev. baselines (math/code/QA): A2=per-density regression, med=dev. median, bilin=bilinear, surf=surface, const=constant, zero=zero change, E/T=E-only/T-only, L/N=loss/size surface. Pool pairs: student order. Not tested: density holdout, exact fixed-budget reuse."
+  "rendered": "Frozen MAEs: native-token nats, training probes; stored intervals in brackets. Inputs: source size, initial loss and pretraining tokens for source-conditioned forms; the configuration for all; distillation forms take supervised budget, pool size and reuse. $r=(1-d)/0.3$; $Q_c=a+bu+cv+duv+eu^2$; $\\ell_E=\\log(1+E)$; $m_c$=med; $A,B$ affine in descriptor; $b/g$=bits/groups. Budget/reuse forms: fold-selected; counts per capability. Dev. baselines (math/code/QA): A2=per-density regression, med=dev. median, surf=response surface, E/T=E-only/T-only, L/N=loss/size surface. Pool pairs: student order. Not tested: density holdout, exact fixed-budget reuse."
 }
 ```
 

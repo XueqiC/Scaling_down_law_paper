@@ -30,11 +30,11 @@ the measured grid predicts and a smooth surface does not.
 Under distillation, a joint form with a logarithmic reuse term,
 $\delta=(a+a'z)\log(1+T/T_{\mathrm{ref}})+(b+b'z)\log(1+E)$, implies that the pool-change effect
 divided by its log bracket is flat in budget; it drifts by a factor of twenty across checkpoints for
-code on the 1B student at matching tolerances of 1\% and 0.3\%. A free reuse exponent $h_p(E)=((1+E)^p-1)/p$, profiled inside training folds, returns $p$ near or
-above one for every capability (code 0.69, math 1.12, QA 1.44; Fig.~\ref{fig:explanation}a) with
-wide fold ranges, and buys no held-out accuracy: against six baselines on four grouped hold-outs,
-neither the log form, the curved form nor a single interaction term beat the development-stage
-strongest baseline on either pre-declared target (Appendix~\ref{sec:app_forms}).
+code on the 1B student at matching tolerances of 1\% and 0.3\%. A free reuse exponent $h_p(E)=((1+E)^p-1)/p$, profiled inside training folds, sits near or above
+one for every capability (code 0.69, math 1.12, QA 1.44; Fig.~\ref{fig:explanation}a) with wide
+fold ranges and buys no held-out accuracy: neither the log form, the curved form nor a single
+interaction term beat the development-stage strongest baseline on either pre-declared target
+(Appendix~\ref{sec:app_forms}).
 
 Whether additivity itself failed could not be read from that data, because a fixed pool and a
 doubling budget grid never place two trajectories on the same budget; four trajectories designed by
