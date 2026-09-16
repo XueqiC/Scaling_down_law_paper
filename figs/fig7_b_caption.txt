@@ -4,7 +4,7 @@ Frozen selection maps on four fresh source states: (a) math,
 budgets, from 20% through 100% of dense matrix storage in 5% increments.
 Row labels give Pythia parameter size / pretraining step (k=1,000).
 Cell colour is the frozen rule's predicted chosen method: pruning, quantization,
-distillation or dense. Cross-hatching and a hollow black circle mean the measured oracle method differs;
+distillation or dense. A hollow black circle means the measured oracle method differs;
 unmarked cells agree at method level and need not agree at configuration level.
 The chosen methods and mismatch identities reproduce V80 rule_maps_main.
 Selections, oracles and scores are read verbatim from V78 compare.json, with

@@ -1,23 +1,33 @@
-Generalization to new configurations of seen states (a) and new
-sources or students (b). MAE axes are logarithmic in native-token nats and share
+Generalization across pruning densities and checkpoints, quantization
+group sizes, and distillation pools (a), and new training stages or a new
+quantization model state (b). MAE axes are logarithmic in native-token nats and share
 one range. Paired markers compare relation and development-selected baseline
 on identical cells with equal cell weights. Math, Code and QA retain their
-capability hues. Hollow circles denote baselines; hollow diamonds denote frozen
-relation predictions. The connecting segment uses the capability colour when
+capability hues. A hollow circle denotes the development-selected baseline;
+a hollow diamond denotes the frozen relation. The connecting segment uses the capability colour when
 the relation MAE is lower, and reference grey otherwise. Cell counts per capability
 are in generalization_mae_pairs.md and record sidecars.
-Prune in, frozen and Prune out, frozen are frozen new-state pruning predictions
-inside and outside the fitted density range. These rows have no stored
+Pruning, new checkpoints inside the density range and Pruning, new checkpoints
+outside the range are frozen new-state pruning predictions. These rows have no stored
 development-selected baseline and retain unpaired capability-coloured markers.
-Prune in range and the two frozen pruning rows remain separate, as do the
-270M/1B new-pool budgets. Paired gain CIs are translated about the fixed baseline
+Pruning, unseen densities of development states remains a separate row, as do
+Distillation, new pools, 270M student and Distillation, new pools, 1B student.
+Within each row, Math, Code and QA occupy sub-rows at -0.25, 0 and +0.25 row units;
+each connecting segment and interval follows its capability's sub-row. Markers
+retain thin white outer edges. Small horizontal display offsets, bounded by the
+shared 1.5% limit, separate any remaining glyph-edge collisions across capabilities;
+true MAEs and offsets are recorded in the sidecars. Connecting segments follow
+the displayed markers. When a baseline and relation
+coincide within 2 percent of the baseline MAE, the diamond is drawn on top and the
+coincidence is recorded in the sidecar.
+Paired gain CIs are translated about the fixed baseline
 MAE: [lo, hi] for baseline-minus-relation is drawn at
 [baseline MAE - hi, baseline MAE - lo]. These are paired gain intervals, not
 marginal MAE confidence intervals; no intervals are averaged across students.
 No A2 development-holdout interval is transplanted to confirmation cells.
-Two 2.7 x 1.6-inch panels form one 5.5-inch row with fig3_legend.pdf above:
+Two 5.5-inch-wide panels are stacked with matching left margins: fig3_a is
+1.5 inches high (six rows), and fig3_b is 0.85 inches high (two rows).
+The 5.5 x 0.3-inch fig3_legend.pdf strip sits above them:
 Baseline, Relation and Lower of pair distinguish the paired MAEs. The locked-rule
 selection row is excluded. Corner second differences and fresh-distribution
 contrasts are shown separately in corner_contrasts_a.pdf.
-
-Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.
