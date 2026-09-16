@@ -17,7 +17,7 @@ collects the parameter count, pretraining tokens and reference capability loss o
 \subsection{Pruning: expanded development set and the selection rule}
 Table~\ref{tab:v53_loso} reports the leave-one-source-out comparison of the pruning candidates on the
 expanded seventeen-state development set, under the rule committed before the confirmation that selected the delivered
-form.
+form for each capability.
 \input{tables/v53_loso}
 \subsection{Grouped quantization: leave-one-state-out on six states}
 Table~\ref{tab:v55_loso} reports the leave-one-state-out comparison of the grouped-quantization
@@ -33,7 +33,7 @@ The low-order surface tested for grouped quantization is
 \label{eq:quant2d}
 \end{equation}
 with one four-vector of state coefficients $\phi(\mathbf x)$ per term (twenty coefficients) and
-$q_{\max}(b)=2^{b-1}-1$ the integer range at bit-width $b$.
+$q_{\max}(b)=2^{b-1}-1$ the integer range available at bit-width $b$.
 
 \paragraph{Identifiability of the two-dimensional form.} The
 development bit-widths are $b\in\{3,5\}$, so the centred $u$ takes the
@@ -102,7 +102,7 @@ correction to its residual, with the shrinkage strength selected inside the trai
 fixed in advance, gives a positive gain with an interval excluding zero in none of the nine primary
 pairs, against a pre-specified requirement of five; the fit selects a finite correction in most folds,
 and the correction does not translate into held-out gain. We propose no further statistics or richer
-corrections.
+corrections on this evidence.
 
 
 \subsection{Conditioning on the initial model state}
@@ -158,7 +158,7 @@ not appear on TriviaQA ($+0.1$ to $+0.4$). The distillation QA
 response reported in Section 5.3 of the main paper is specific to the
 probe distribution, which shares its multi-hop format with the teacher
 pool, and does not indicate a general QA gain. The math response
-under distillation on SVAMP lies within that probe's noise.
+under distillation on SVAMP lies within the noise of that probe and supports no separate claim.
 \input{tables/p3_check}
 
 \paragraph{An independent multi-hop distribution.} The primary QA
@@ -265,6 +265,7 @@ late stage (1.29 against 3.8 to 4.1).
 \input{tables/round3_prune}
 \end{retargetreferences}
 \input{tables/round3_quant}
+\input{tables/main_context}
 
 The quantization confirmation round (development on all 54 unblinded
 cells with three bit levels, rank 20 of 20; predictions frozen before
@@ -283,6 +284,16 @@ linear in $\log_2 g$ between the two nearest measured group sizes at
 the same bit-width, extrapolated beyond the grid and floored at zero
 change; no target measurement enters either predictor.
 \input{tables/quant_threeway}
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=5.5in]{figs/input_form_gain_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_a.pdf}\subcaption{Full versus no-$D_0$}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_b.pdf}\subcaption{Source-free comparison}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_c.pdf}\subcaption{Power versus alternatives}\end{subfigure}
+
+\caption{Paired improvements; positive values favour the first-named model. (a) Full model against its variant without $D_0$, per arm and capability, with cluster-bootstrap intervals where they were computed. (b) Source-conditioned candidate against the strongest source-free baseline on the twenty registered tests (hollow: frozen prospective; filled: leave-one-out). (c) Shared power form against the same-input alternatives A1 and A2 on the pruning configuration tests of the confirmation round.}
+\label{fig:gains}
+\end{figure}
 
 The pruning repeatability check froze the delivered power form, A2,
 the median development curve, and zero change for Pythia-2.8B, a size
@@ -299,16 +310,6 @@ and zero change is second; both source-conditioned forms over-predict
 the damage.
 \input{tables/prune_repeat}
 
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=5.5in]{figs/input_form_gain_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_a.pdf}\subcaption{Full versus no-$D_0$}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_b.pdf}\subcaption{Source-free comparison}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_c.pdf}\subcaption{Power versus alternatives}\end{subfigure}
-
-\caption{Paired improvements; positive values favour the first-named model. (a) Full model against its variant without $D_0$, per arm and capability, with cluster-bootstrap intervals where they were computed. (b) Source-conditioned candidate against the strongest source-free baseline on the twenty registered tests (hollow: frozen prospective; filled: leave-one-out). (c) Shared power form against the same-input alternatives A1 and A2 on the pruning configuration tests.}
-\label{fig:gains}
-\end{figure}
 
 The multi-student distillation test of the uniform protocol
 (Section 5.3 of the main paper) is given in Table~\ref{tab:p2v2_test}; the
@@ -319,9 +320,8 @@ reproduce the four checkpoints of their originals within 0.017 nats
 for math and 0.030 for code; for QA the difference grows with the
 reuse ratio, from 0.004 to 0.019 at the first two checkpoints to 0.089
 and 0.186 at the last; training-seed noise is well below the law
-errors except for QA at high reuse.
+errors except for QA at high reuse, where the two are comparable.
 \input{tables/p2v2_test}
-\input{tables/main_context}
 \input{tables/distill_paired}
 
 
@@ -344,17 +344,15 @@ positively aligned (cosine $+0.36$ to $+0.45$) while signatures of
 different capabilities are \emph{anti-aligned} ($-0.23$ to $-0.25$),
 in each of the ten models from five series for which the block analysis was run
 (Figs.~\ref{fig:blocks}--\ref{fig:blocks_olmo3_7b}); the C4 control sits between blocks.\preliminary{point estimates; example-bootstrap, permutation and
-prompt-stability tests are left to future work} The
+prompt-stability tests are left to future work and are not part of this analysis} The
 mathematics benchmarks cluster regardless of format, and within-block
 fine structure is consistent with benchmark content (SVAMP, a set of grade-school word problems,
 is the loosest member of the math block). A projected-gradient SVD
 version gives the same result in subspace terms: principal-angle
 similarity within capability exceeds cross-capability similarity by
-$2$--$4\times$.
+$2$--$4\times$ across the models examined.
 
-\input{figs/appendix_blocks}
-
-\paragraph{Selective ablation.}\preliminary{single model; random, magnitude-matched and global-Fisher control ablations are left to future work} We
+\paragraph{Selective ablation.}\preliminary{single model; random, magnitude-matched and global-Fisher control ablations are left to future work and are not reported here} We
 select the top $0.05\%$ of weight coordinates by the \emph{residual}
 Fisher signature of each capability (excluding coordinates shared with
 other capabilities) and zero them. The damage matrix for Gemma-3-1B is nearly diagonal. In the table below, rows identify the ablated
@@ -371,7 +369,7 @@ Code & $+0.42$ & $\mathbf{+7.14}$ & $+0.00$ \\
 QA   & $+0.01$ & $+0.00$ & $\mathbf{+2.29}$ \\
 \bottomrule
 \end{tabular*}
-\captionof*{table}{\mbox{Post-hoc} selective-ablation measurements. Rows identify the ablated capability region; columns identify the measured capability. Entries are loss increases in nats per native token; bold entries mark the matching capability on the diagonal.}
+\captionof*{table}{\mbox{Post-hoc} selective-ablation measurements. Rows identify the ablated capability region; columns identify the measured capability. Entries are loss increases in nats per native token; bold entries mark the matching capability on the diagonal of the damage matrix.}
 \end{center}
 
 Zeroing $0.05\%$ of the weights, selected from gradients alone,
@@ -384,7 +382,7 @@ established causal carriers; if confirmed, ablation itself would be a form of
 
 
 
-\FloatBarrier
+\input{figs/appendix_blocks}
 
 \section{Selection addenda, recovery and earlier analyses}
 \label{sec:supp_selection}
@@ -448,7 +446,7 @@ same-benchmark evaluation inflated the QA gains by roughly one third;
 (3) discrimination heterogeneity invalidates interval-scale ability while
 rankings survive (Spearman $\rho\ge0.98$); (4) item-level damage is smooth
 before the cliff, which excludes discrete skill deletion at the item level.
-These findings fixed the protocol of Section 2.1 of the main paper.
+These findings fixed the measurement protocol described in Section 2.1 of the main paper.
 
 
 \paragraph{Feasible-policy results and rule decomposition.} Tables~\ref{tab:selection-feasible} and~\ref{tab:rule_decomp} give the per-policy results behind the feasibility figure of Appendix~H of the main paper and the decomposition of the regret of the locked rule by state and budget.
