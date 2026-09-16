@@ -27,21 +27,21 @@ The source state shapes this response inside a range: parameter count and pretra
 enter the pruning amplitude for math and code, and neither improves the QA prediction.
 Inside the development range the source-conditioned forms, a per-density regression and the median
 density curve agree within 0.05 nats at unseen stages of a 1B source; at a 6.9B source, five times
-the development range, the source-conditioned forms lose to the median curve on math (0.30 against
-0.12 nats) and QA (0.91 against 0.12) and tie on code, as the tests of \S\ref{sec:general} show.
+the development range, the source-conditioned forms lose to the median curve on math and QA by a
+factor of three to seven and tie on code, as the tests of \S\ref{sec:general} show.
 
 Distillation adds a dependence on the protocol as strong as the dependence on the method. With
 all settings except the learning rate held fixed (Appendix Fig.~\ref{fig:lr_pilot}), the loss
-increase on math and code grows with the rate: at $5\times10^{-5}$ the 1B student is almost unharmed ($+0.003$ and $+0.007$ nats) and
-still gains $0.79$ nats on QA, and at $1\times10^{-4}$ the increase is an order of magnitude larger
-($+0.051$ and $+0.052$). At $1\times10^{-4}$ and $2\times10^{-4}$ the 4B student degrades about
-twice as much as the 1B on math, and at the lowest rate the 4B is harmed ($+0.058$) where the 1B is
-not.
+increase on math and code grows with the rate: at
+$5\times10^{-5}$ the 1B student is almost unharmed and still gains $0.79$ nats on QA, and at
+$1\times10^{-4}$ the increase is an order of magnitude larger. At the two higher rates the 4B
+student degrades about twice as much as the 1B on math, and at the lowest rate the 4B is harmed
+where the 1B is not.
 
 Once the rate is fixed, the size of the data pool dominates: reusing a small pool is costly, the
 cost rises with student size, and QA bears most of it. At one rate and a matched
 budget $T$ near 200k supervised tokens (Fig.~\ref{fig:responses_v2}), a pool of $D_U$ supervised
-tokens reused about twelve times (reuse ratio $E=T/D_U$) costs QA $+0.29$, $+2.55$ and $+4.85$ nats
+tokens reused about twelve times, a reuse ratio $E=T/D_U$ near twelve, costs QA $+0.29$, $+2.55$ and $+4.85$ nats
 on students of 100M, 700M and 3.2B non-embedding parameters, and nine times more independent data
 converts the same budget into a gain near one nat on each student; math and code damage also falls
 with reuse. Two pool seeds per cell put the pool-draw noise near 0.02 nats on code and

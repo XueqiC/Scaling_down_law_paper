@@ -24,8 +24,8 @@ panel that separates size from stage, and a validation standard fixed in advance
 We ask when the loss of a capability after compression can be predicted from the initial model
 state and the configuration alone. The endpoint is the conditional loss on a fixed probe set
 relative to a reference measured beforehand (Eq.~\ref{eq:interface}); the admitted inputs are the
-initial state (parameter count, pretraining tokens, reference capability losses) and the
-intervention setting, with no measurement of the compressed target. The study then proceeds in one
+initial state, meaning parameter count, pretraining tokens and reference capability losses, and
+the intervention setting; no measurement of the compressed target is used. The study then proceeds in one
 sequence: controlled measurements on Pythia checkpoints whose size and stage vary independently,
 and on Gemma students under one distillation protocol, establish what a law must reproduce
 (\S\ref{sec:observed}); an analysis of shape, conditions and mechanism explains why

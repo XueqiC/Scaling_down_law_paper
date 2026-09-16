@@ -13,8 +13,7 @@ configuration axis, the conditions that change it, and the mechanism behind the 
 \label{sec:why_shape}
 
 The first question is the shape of the response along each configuration axis. Under pruning the
-pre-cliff response, described with gradient information of the dense model (a richer information
-budget than the initial-state inputs of \S\ref{sec:laws}), is a power law in the deleted capability
+pre-cliff response, described with gradient information of the dense model with a richer information budget than the initial-state inputs of \S\ref{sec:laws}, is a power law in the deleted capability
 mass with a shared exponent that transfers across families; under quantization it is a
 bit-width threshold whose position depends on the group size, so an interpolation over the
 measured grid predicts the response where a smooth surface does not reproduce it.
@@ -24,8 +23,7 @@ $\delta=(a+a'z)\log(1+T/T_{\mathrm{ref}})+(b+b'z)\log(1+E)$ with $z$ the standar
 and $T_{\mathrm{ref}}$ a reference budget, implies that the pool-change effect divided by its log
 bracket is flat in budget; it drifts by a factor of twenty across checkpoints for code on the 1B
 student (Appendix Fig.~\ref{fig:drift}). A free reuse exponent $h_p(E)=((1+E)^p-1)/p$, profiled
-inside training folds, lies near or above one for each capability (code 0.69, math 1.12, QA 1.44;
-Fig.~\ref{fig:explanation}a) with wide fold ranges, and neither the logarithmic form, the curved
+inside training folds, lies near or above one for each capability as Fig.~\ref{fig:explanation}a shows with wide fold ranges, and neither the logarithmic form, the curved
 form nor a single interaction term beats the development-stage strongest baseline on either
 pre-declared target of the confirmation round.
 

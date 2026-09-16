@@ -16,22 +16,22 @@ those inputs add nothing to accuracy.
 \subsection{Pruning}
 \label{sec:law_prune}
 
-For a seen source state (size and stage in the fit) at an unseen density in the development range, the compact form
+For a source state in the fit at an unseen density in the development range, the compact form
 \begin{equation}
 \widehat{\Delta L}_c(\mathbf x,d)=A_c(\mathbf x)\,\Big(\frac{1-d}{0.3}\Big)^{\gamma_c},
 \qquad
 A_c(\mathbf x)=\beta_c\cdot\big(1,\tilde{\log N_0},\tilde L_{0,c},\tilde{\log D_0}\big),
 \label{eq:power}
 \end{equation}
-with five parameters per capability (tildes standardized on the development set) approximates the
-twenty-parameter per-density regression A2 for math and code; for any new state and for QA
+with five parameters per capability, tildes standardized on the development set, approximates
+the twenty-parameter per-density regression A2 for math and code; for any new state and for QA
 everywhere the delivered relation is the source-free median development curve
 $\widehat L_c=L_{0,c}+\widetilde f_c(d)$.
 \subsection{Quantization}
 \label{sec:law_quant}
 
-Per-channel round-to-nearest offers no continuous axis (int8 and int6 within 0.01 nats of the
-reference, int4 0.03 to 0.35, int3 collapse); at a seen bit-width the delivered relation is the
+Per-channel round-to-nearest offers no continuous axis: int8 and int6 stay within 0.01 nats of
+the reference, int4 costs 0.03 to 0.35 nats and int3 collapses. At a seen bit-width the delivered relation is the
 per-bit source regression on seen states and the per-bit median on new ones. With
 groups of $g$ weights per scale as a second axis, the delivered relation for math and code on seen
 states is a piecewise interpolation over the measured $(b,g)$ grid, linear in $\log_2 g$; for QA,
@@ -57,6 +57,6 @@ In practice, Table~\ref{tab:main-prediction-v2} separates the frozen candidates 
 rules. For pruning, the five-parameter power form, tested as a frozen candidate on three checkpoints
 outside every fit, predicts math and code to about 0.24 nats inside $d\in[0.6,0.9]$; the delivered
 rule for a new state is nevertheless the source-free median curve, which matches or beats it on
-code and QA, and the power form is delivered only for unseen densities of the states in its fit. For quantization the measured grid is the predictor (0.13 to 0.17 nats); for distillation the
+code and QA, and the power form is delivered only for unseen densities of the states in its fit. For quantization the measured grid is the predictor, with errors of 0.13 to 0.17 nats; for distillation the
 one-coefficient reuse forms and the QA joint form hold on the development students at the 2Wiki
 distribution, and the budget-doubling and data-change interventions remain open targets.

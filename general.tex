@@ -12,13 +12,11 @@ the errors and Fig.~\ref{fig:generalization} shows the same comparison for each 
 
 The first kind of novelty is a new configuration of a state that entered the fit. A registered
 follow-up on four further Pythia states outside every fit found the five-parameter pruning form
-fitted on half the density measurements within 0.013 (math) and 0.020 (code) nats of the
-full-budget per-density regression, and 0.04 to 0.07 nats better than the median curve
+fitted on half the density measurements within 0.02 nats of the full-budget per-density regression on math and code, and 0.04 to 0.07 nats better than the median curve
 (Appendix~\ref{tab:a11}). In grouped quantization, with predictions frozen on all 54 cells, unseen group sizes on the development states
 are predicted best by the piecewise interpolation for math and code (Table~\ref{tab:main-prediction-v2}
 lists candidates and delivered rule on the same cells). For distillation, at six
-new pools and three new budgets each selected form beats zero change and the gain over the
-development-designated baseline is detected for code on both students (0.004 and 0.005 nats) and for
+new pools and three new budgets each selected form beats zero change and the gain over the development-designated baseline is detected for code on both students and for
 QA on the 270M only (Table~\ref{tab:main-prediction-v2}).
 
 \subsection{Transfer across Model Sizes and Training Stages}
@@ -26,18 +24,17 @@ QA on the 270M only (Table~\ref{tab:main-prediction-v2}).
 
 The second kind of novelty is a new model state, and here the range of each relation shows. On
 three Pythia checkpoints that entered no fit, the frozen pruning power form matches the per-density
-regression on math with a quarter of the parameters (0.24 against 0.23 nats), trails the median on
-code, and loses QA to each source-free curve; at $d=0.55$, outside the range, each
+regression on math with a quarter of the parameters, trails the median on code, and loses QA to each source-free curve; at $d=0.55$, outside the range, each
 source-conditioned form fails by 0.6 to 4.5 nats. On a new quantization state the median wins for
 math and QA and the interpolation for code; inside the range the frozen forms and the median curve
 agree within 0.05 nats at unseen stages of a 1B source. Outside it, at a 6.9B source
 five times the development range, the source-conditioned pruning forms lose to the median curve on
-math (0.30 against 0.12) and QA (0.91 against 0.12) and tie on code, the per-bit quantization
+math and QA and tie on code, the per-bit quantization
 regression is worse than the per-bit median at each bit-width, and on a 2.8B source inside the size
 range the frozen median density curve predicts within 0.08, 0.05 and 0.07 nats, three to seven
 times better than both source-conditioned forms. For
 distillation the 4B student, 6.6 times the reference size and a development student in the final
-round, keeps only its QA gain at the development pools (0.83, $[0.12,1.54]$) and is beaten by the
+round, keeps only its QA gain at the development pools and is beaten by the
 frozen constant at the unseen pool on each of the three capabilities.
 
 \begin{figure}[t]
