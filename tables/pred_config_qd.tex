@@ -21,7 +21,7 @@ Test; \emph{\mbox{held-out} axis}; [provenance] & Predictor & Math & Code & QA \
  & Simple baseline: per-bit mean; per-bit median & 1.466 & 1.537 & \textbf{1.000} \\
 \addlinespace[2pt]
 \bottomrule\end{tabular*}
-\caption*{Rows identify frozen prediction tests and predictors; columns give mean absolute errors in nats per native token by capability. Parentheses give baseline-minus-candidate improvement; bold marks the lowest error. The provenance letters are P for a prediction frozen before measurement, F for a baseline specified before measurement, R for a \mbox{post-hoc} selection, and A for all specified forms reported. Pool sizes count traces per domain.}
+\caption*{Rows identify frozen prediction tests and predictors; columns give mean absolute errors in nats per native token by capability. Parentheses give baseline-minus-candidate improvement; bold marks the lowest error. The provenance letters are P for a prediction frozen before measurement, F for a baseline specified before measurement, R for a \mbox{post-hoc} selection, and A for all specified forms reported. Pool sizes count traces per domain and budgets count supervised tokens.}
 \end{table}
 \begin{table}[!htbp]
 \normalfont\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.02}
@@ -63,5 +63,5 @@ Test; \emph{\mbox{held-out} axis}; [provenance] & Predictor & Math & Code & QA \
  & Simple baseline: zero change & 0.153 & 0.178 & 1.167 \\
 \addlinespace[2pt]
 \bottomrule\end{tabular*}
-\caption{Configuration-axis tests for quantization and distillation: unseen sizes and stages at seen bit-widths (protocol A; the 5-bit prediction is a fixed interpolation rule) and unseen distillation pools. For the pool of 375 traces per domain the headline is the frozen form with the lowest per-capability development error, a rule stated after the tests (R), with 12 points per capability and Gemma-3-4B \mbox{held-out}. Entries, bold marking, parentheses, and the origin code follow Table~\ref{tab:pred_source}.}
+\caption{Configuration-axis tests for quantization and distillation: unseen sizes and stages at seen bit-widths (protocol A; the 5-bit prediction is a fixed interpolation rule) and unseen distillation pools. For the pool of 375 traces per domain the headline is the frozen form with the lowest per-capability development error, a rule stated after the tests (R), with 12 points per capability and Gemma-3-4B \mbox{held-out}. Entries, bold marking, parentheses, and the origin code follow Table~\ref{tab:pred_source} throughout.}
 \label{tab:pred_config_qd}\end{table}
