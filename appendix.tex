@@ -570,6 +570,39 @@ intervals cover pool sampling only.
 
 \FloatBarrier
 
+\subsection{Measurement efficiency of the compact pruning form}
+\label{sec:app_a11}
+
+A retrospective subsampling study of the nine-state development panel (twenty fixed replicates at
+25, 50 and 100 percent of the measurements, reducing either the number of sources or the number of
+densities per source) found that the five-parameter power form reaches 0.25 nats on new states with
+18 density measurements per capability where the per-density regression needs 36, and that the
+median curve is the better predictor for QA at every budget. A registered confirmation then froze
+five predictors before four Pythia states in no earlier fit or test (160M at step 80000, 410M at
+step 112000, 1.4B at step 48000, 1B at step 48000) were pruned to densities 0.65 to 0.9;
+Table~\ref{tab:a11} gives the outcome. The registered rule (the reduced-budget power form within
+0.05 nats of the full-budget regression on math and code) is met.
+
+\begin{table}[!htbp]
+\centering\footnotesize
+\caption{Registered measurement-efficiency confirmation on four Pythia states outside every fit
+(24 cells per capability): mean absolute error in nats per token of each frozen predictor. The
+reduced-budget power form used the densities 0.9 and 0.7 of each development state (18
+measurements per capability).}
+\label{tab:a11}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrr@{}}
+\toprule
+Predictor (development measurements per capability) & Math & Code & QA \\
+\midrule
+Power form (18) & 0.073 & 0.104 & 0.179 \\
+Power form (36) & 0.062 & 0.109 & 0.223 \\
+Per-density regression (36) & 0.060 & 0.084 & 0.177 \\
+Median density curve (36) & 0.112 & 0.170 & 0.183 \\
+Median density curve (18) & 0.145 & 0.212 & 0.186 \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
 \section{Mechanisms}
 \label{sec:app_mech}
 
