@@ -221,10 +221,825 @@
       "processed_tokens_source": "results/v12-distill/gemma3-4b/gpt-5.6-luna_full_75_lrpilot_2e-4_lora_dseed11/trajectory/update-00000008/eval.json#/processed_tokens"
     }
   ],
+  "marker_visibility": {
+    "count": 18,
+    "maximum_displacement_fraction": 0.015,
+    "maximum_cluster_spread_fraction": 0.06,
+    "coincident_definition": "True glyph bounding boxes overlap (including 0.6-pt edges)",
+    "acceptance": "visible OR bounded with documented coincident neighbours",
+    "points": [
+      {
+        "id": 0,
+        "axis": 0,
+        "x": 5e-05,
+        "y": -0.2501245019920315,
+        "true_center_pt": [
+          32.64747325454366,
+          74.26062278493387
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:0",
+        "fallback_to_true": false,
+        "coincident_neighbours": [
+          1
+        ],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          32.64747325454366,
+          74.26062278493387
+        ],
+        "drawn_coordinate": [
+          4.9999999999999996e-05,
+          -0.25012450199203173
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          3.529303946892918e-17,
+          1.362236840030867e-16
+        ],
+        "zorder": 20.0,
+        "visible_ink_pixels": 69
+      },
+      {
+        "id": 1,
+        "axis": 0,
+        "x": 5e-05,
+        "y": -0.1914529382470116,
+        "true_center_pt": [
+          32.64747325454366,
+          76.80041759342997
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:0",
+        "fallback_to_true": false,
+        "coincident_neighbours": [
+          0
+        ],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          32.64747325454366,
+          76.80041759342997
+        ],
+        "drawn_coordinate": [
+          4.9999999999999996e-05,
+          -0.19145293824701182
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          3.529303946892918e-17,
+          1.362236840030867e-16
+        ],
+        "zorder": 20.0001,
+        "visible_ink_pixels": 89
+      },
+      {
+        "id": 2,
+        "axis": 0,
+        "x": 5e-05,
+        "y": -0.0035422033641461237,
+        "true_center_pt": [
+          32.64747325454366,
+          84.93476204332872
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:2",
+        "fallback_to_true": true,
+        "coincident_neighbours": [
+          3,
+          4,
+          5
+        ],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          32.64747325454366,
+          84.93476204332872
+        ],
+        "drawn_coordinate": [
+          4.9999999999999996e-05,
+          -0.0035422033641463457
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          3.529303946892918e-17,
+          1.362236840030867e-16
+        ],
+        "zorder": 20.0002,
+        "visible_ink_pixels": 0
+      },
+      {
+        "id": 3,
+        "axis": 0,
+        "x": 5e-05,
+        "y": -0.002989371124889284,
+        "true_center_pt": [
+          32.64747325454366,
+          84.95869323523176
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:2",
+        "fallback_to_true": true,
+        "coincident_neighbours": [
+          2,
+          4,
+          5
+        ],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          32.64747325454366,
+          84.95869323523176
+        ],
+        "drawn_coordinate": [
+          4.9999999999999996e-05,
+          -0.002989371124889395
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          3.529303946892918e-17,
+          6.811184200154335e-17
+        ],
+        "zorder": 20.0003,
+        "visible_ink_pixels": 0
+      },
+      {
+        "id": 4,
+        "axis": 0,
+        "x": 5e-05,
+        "y": -0.001771479185119551,
+        "true_center_pt": [
+          32.64747325454366,
+          85.01141375993738
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:2",
+        "fallback_to_true": true,
+        "coincident_neighbours": [
+          2,
+          3,
+          5
+        ],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          32.64747325454366,
+          85.01141375993738
+        ],
+        "drawn_coordinate": [
+          4.9999999999999996e-05,
+          -0.001771479185119551
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          3.529303946892918e-17,
+          0.0
+        ],
+        "zorder": 20.0004,
+        "visible_ink_pixels": 0
+      },
+      {
+        "id": 5,
+        "axis": 0,
+        "x": 5e-05,
+        "y": 0.0009092286710107311,
+        "true_center_pt": [
+          32.64747325454366,
+          85.12745716259293
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:2",
+        "fallback_to_true": true,
+        "coincident_neighbours": [
+          2,
+          3,
+          4
+        ],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          32.64747325454366,
+          85.12745716259293
+        ],
+        "drawn_coordinate": [
+          4.9999999999999996e-05,
+          0.0009092286710106201
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          3.529303946892918e-17,
+          6.811184200154335e-17
+        ],
+        "zorder": 20.0005,
+        "visible_ink_pixels": 89
+      },
+      {
+        "id": 6,
+        "axis": 0,
+        "x": 0.0001,
+        "y": -0.6650273904382464,
+        "true_center_pt": [
+          73.49224847088992,
+          56.30016400655049
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:6",
+        "fallback_to_true": false,
+        "coincident_neighbours": [],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          73.49224847088992,
+          56.30016400655049
+        ],
+        "drawn_coordinate": [
+          0.0001,
+          -0.6650273904382467
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          0.0,
+          1.362236840030867e-16
+        ],
+        "zorder": 20.0006,
+        "visible_ink_pixels": 89
+      },
+      {
+        "id": 7,
+        "axis": 0,
+        "x": 0.0001,
+        "y": -0.48384586653386474,
+        "true_center_pt": [
+          73.49224847088992,
+          64.14321205973648
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:7",
+        "fallback_to_true": false,
+        "coincident_neighbours": [],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          73.49224847088992,
+          64.14321205973648
+        ],
+        "drawn_coordinate": [
+          0.0001,
+          -0.48384586653386497
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          0.0,
+          1.362236840030867e-16
+        ],
+        "zorder": 20.0007,
+        "visible_ink_pixels": 89
+      },
+      {
+        "id": 8,
+        "axis": 0,
+        "x": 0.0001,
+        "y": -0.003674799212001867,
+        "true_center_pt": [
+          73.49224847088992,
+          84.92902218871234
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:8",
+        "fallback_to_true": true,
+        "coincident_neighbours": [
+          9,
+          10,
+          11
+        ],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          73.49224847088992,
+          84.92902218871234
+        ],
+        "drawn_coordinate": [
+          0.0001,
+          -0.003674799212002089
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          0.0,
+          1.362236840030867e-16
+        ],
+        "zorder": 20.0008,
+        "visible_ink_pixels": 0
+      },
+      {
+        "id": 9,
+        "axis": 0,
+        "x": 0.0001,
+        "y": -0.0034322409211692273,
+        "true_center_pt": [
+          73.49224847088992,
+          84.93952213533882
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:8",
+        "fallback_to_true": true,
+        "coincident_neighbours": [
+          8,
+          10,
+          11
+        ],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          73.49224847088992,
+          84.93952213533882
+        ],
+        "drawn_coordinate": [
+          0.0001,
+          -0.0034322409211693383
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          0.0,
+          6.811184200154335e-17
+        ],
+        "zorder": 20.0009,
+        "visible_ink_pixels": 0
+      },
+      {
+        "id": 10,
+        "axis": 0,
+        "x": 0.0001,
+        "y": -0.002297387068201928,
+        "true_center_pt": [
+          73.49224847088992,
+          84.9886480788145
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:8",
+        "fallback_to_true": true,
+        "coincident_neighbours": [
+          8,
+          9,
+          11
+        ],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          73.49224847088992,
+          84.9886480788145
+        ],
+        "drawn_coordinate": [
+          0.0001,
+          -0.0022973870682021502
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          0.0,
+          1.362236840030867e-16
+        ],
+        "zorder": 20.001,
+        "visible_ink_pixels": 9
+      },
+      {
+        "id": 11,
+        "axis": 0,
+        "x": 0.0001,
+        "y": 0.012085164418851324,
+        "true_center_pt": [
+          73.49224847088992,
+          85.61124490883076
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:8",
+        "fallback_to_true": true,
+        "coincident_neighbours": [
+          8,
+          9,
+          10
+        ],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          73.49224847088992,
+          85.61124490883076
+        ],
+        "drawn_coordinate": [
+          0.0001,
+          0.012085164418851324
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "zorder": 20.0011,
+        "visible_ink_pixels": 89
+      },
+      {
+        "id": 12,
+        "axis": 0,
+        "x": 0.0002,
+        "y": -1.3119397410358564,
+        "true_center_pt": [
+          114.33702368723618,
+          28.296399921785245
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:12",
+        "fallback_to_true": false,
+        "coincident_neighbours": [],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          114.33702368723618,
+          28.296399921785245
+        ],
+        "drawn_coordinate": [
+          0.00019999999999999982,
+          -1.3119397410358566
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          9.882051051300171e-16,
+          1.362236840030867e-16
+        ],
+        "zorder": 20.0012,
+        "visible_ink_pixels": 89
+      },
+      {
+        "id": 13,
+        "axis": 0,
+        "x": 0.0002,
+        "y": -1.0593874501992033,
+        "true_center_pt": [
+          114.33702368723618,
+          39.228970253953484
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:13",
+        "fallback_to_true": false,
+        "coincident_neighbours": [],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          114.33702368723618,
+          39.228970253953484
+        ],
+        "drawn_coordinate": [
+          0.00019999999999999982,
+          -1.0593874501992036
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          9.882051051300171e-16,
+          1.362236840030867e-16
+        ],
+        "zorder": 20.0013,
+        "visible_ink_pixels": 89
+      },
+      {
+        "id": 14,
+        "axis": 0,
+        "x": 0.0002,
+        "y": 0.009078830823737727,
+        "true_center_pt": [
+          114.33702368723618,
+          85.48110570731467
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:14",
+        "fallback_to_true": true,
+        "coincident_neighbours": [
+          15,
+          16,
+          17
+        ],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          114.33702368723618,
+          85.48110570731467
+        ],
+        "drawn_coordinate": [
+          0.00019999999999999982,
+          0.009078830823737505
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          9.882051051300171e-16,
+          1.362236840030867e-16
+        ],
+        "zorder": 20.0014,
+        "visible_ink_pixels": 9
+      },
+      {
+        "id": 15,
+        "axis": 0,
+        "x": 0.0002,
+        "y": 0.020609183209577164,
+        "true_center_pt": [
+          114.33702368723618,
+          85.98023556274093
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:14",
+        "fallback_to_true": true,
+        "coincident_neighbours": [
+          14,
+          16,
+          17
+        ],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          114.33702368723618,
+          85.98023556274093
+        ],
+        "drawn_coordinate": [
+          0.00019999999999999982,
+          0.020609183209576942
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          9.882051051300171e-16,
+          1.362236840030867e-16
+        ],
+        "zorder": 20.0015,
+        "visible_ink_pixels": 0
+      },
+      {
+        "id": 16,
+        "axis": 0,
+        "x": 0.0002,
+        "y": 0.030391939769707665,
+        "true_center_pt": [
+          114.33702368723618,
+          86.40371488966291
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:14",
+        "fallback_to_true": true,
+        "coincident_neighbours": [
+          14,
+          15,
+          17
+        ],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          114.33702368723618,
+          86.40371488966291
+        ],
+        "drawn_coordinate": [
+          0.00019999999999999982,
+          0.030391939769707665
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          9.882051051300171e-16,
+          0.0
+        ],
+        "zorder": 20.0016,
+        "visible_ink_pixels": 69
+      },
+      {
+        "id": 17,
+        "axis": 0,
+        "x": 0.0002,
+        "y": 0.08773109562054848,
+        "true_center_pt": [
+          114.33702368723618,
+          88.885831967476
+        ],
+        "axis_range_pt": [
+          100.08,
+          70.55999999999999
+        ],
+        "marker": "o",
+        "marker_size_pt": 3.8,
+        "cluster": "0:14",
+        "fallback_to_true": true,
+        "coincident_neighbours": [
+          14,
+          15,
+          16
+        ],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          114.33702368723618,
+          88.885831967476
+        ],
+        "drawn_coordinate": [
+          0.00019999999999999982,
+          0.08773109562054837
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          9.882051051300171e-16,
+          6.811184200154335e-17
+        ],
+        "zorder": 20.0017,
+        "visible_ink_pixels": 89
+      }
+    ],
+    "png_pixel_check": {
+      "dpi": 220,
+      "count": 18,
+      "point_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "minimum_visible_ink_pixels": 0,
+      "visible_ink_pixels": [
+        69,
+        89,
+        0,
+        0,
+        0,
+        89,
+        89,
+        89,
+        0,
+        0,
+        9,
+        89,
+        89,
+        89,
+        9,
+        0,
+        69,
+        89
+      ],
+      "fully_hidden": 6,
+      "accepted_coincident_point_ids": [
+        2,
+        3,
+        4,
+        8,
+        9,
+        15
+      ],
+      "undocumented_hidden": 0
+    }
+  },
   "input_sha256": {
-    "results/a1-development-table/summary.json": "0531986629012bc9d348b23dadde0b577daf466cdc2805dc26138d9c86489c8b",
-    "results/a1-development-table/development_table.csv": "2f92035256201a99e853e90d95f47296b02799c9700d40bbca6525a9b33ab67e",
-    "results/a1-development-table/row_metadata.csv": "f3c974254c5bf857820c1eb2d7f922246bbd6ad9e1013c7ce11be3bf6ecc4947",
     "results/v12-distill/gemma3-1b/gpt-5.6-luna_full_75_lrpilot_5e-5_lora_dseed11/trajectory/update-00000000/eval.json": "10022114f0ab1effc8c48a5bc9a417db2ea9d19bd096d48dca58408c9cbe872a",
     "results/v12-distill/gemma3-1b/gpt-5.6-luna_full_75_lrpilot_5e-5_lora_dseed11/trajectory/update-00000008/eval.json": "94649c984f59dd7b01853c76e7fd1f4e60d2707ebfce2df5b371453101757da7",
     "results/v12-distill/gemma3-1b/gpt-5.6-luna_full_75_lrpilot_1e-4_lora_dseed11/trajectory/update-00000000/eval.json": "d4b93ea38f588e7799206364706c95f9125be749b53caa22d89663a8edcd6f84",
@@ -236,7 +1051,10 @@
     "results/v12-distill/gemma3-4b/gpt-5.6-luna_full_75_lrpilot_1e-4_lora_dseed11/trajectory/update-00000000/eval.json": "4d8a442d7e1e3de687761ca5ec2853626f97621cea6036cb9bffe1f6d1db5f19",
     "results/v12-distill/gemma3-4b/gpt-5.6-luna_full_75_lrpilot_1e-4_lora_dseed11/trajectory/update-00000008/eval.json": "03897bc164c6a3f44c718aab4418f7230c9293a49d8d1b36e33d7eab1a6bfede",
     "results/v12-distill/gemma3-4b/gpt-5.6-luna_full_75_lrpilot_2e-4_lora_dseed11/trajectory/update-00000000/eval.json": "3fc87de4bb4cbaef88025647fa18a73da55f6d92ae4c823f77b8798f7dcc7091",
-    "results/v12-distill/gemma3-4b/gpt-5.6-luna_full_75_lrpilot_2e-4_lora_dseed11/trajectory/update-00000008/eval.json": "e1430b4c1349fc4311c8cfb1e8ce81a4dd7d18299ae2022618a32134cadfa570"
+    "results/v12-distill/gemma3-4b/gpt-5.6-luna_full_75_lrpilot_2e-4_lora_dseed11/trajectory/update-00000008/eval.json": "e1430b4c1349fc4311c8cfb1e8ce81a4dd7d18299ae2022618a32134cadfa570",
+    "results/a1-development-table/summary.json": "0531986629012bc9d348b23dadde0b577daf466cdc2805dc26138d9c86489c8b",
+    "results/a1-development-table/development_table.csv": "2f92035256201a99e853e90d95f47296b02799c9700d40bbca6525a9b33ab67e",
+    "results/a1-development-table/row_metadata.csv": "f3c974254c5bf857820c1eb2d7f922246bbd6ad9e1013c7ce11be3bf6ecc4947"
   },
   "axes": [
     {
@@ -293,11 +1111,10 @@
   },
   "artist_sizes": {
     "line_widths_pt": [
-      1.1,
-      1.5
+      1.1
     ],
     "marker_sizes_pt": [
-      5.0
+      3.8
     ],
     "errorbar_widths_pt": [],
     "cap_sizes_pt": [],

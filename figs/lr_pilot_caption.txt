@@ -7,8 +7,10 @@ All six pilots use full teacher data with 75 examples per domain and data seed
 11; their final saved update is 8, at 37,903 processed input tokens. These are
 development pilots, with one run per student/rate and no uncertainty estimate.
 Panel (c) is 1.8 x 1.35 inches, the third panel in the 5.5-inch Figure 3 row.
-Lines are 1.5 pt and markers are 5 pt. The complete
+Lines are 1.1 pt and markers are 3.8 pt. The complete
 capability/distribution/student/seed key is fig1_legend.pdf above the panels;
 the LR ticks give the configured rates and the markers denote checkpoints.
 The measured axes rectangle and compact numeric tick format match panels (a)/(b);
 the pilot retains its own loss-change range.
+
+Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

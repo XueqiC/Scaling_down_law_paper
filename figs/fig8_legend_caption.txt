@@ -14,3 +14,5 @@ The three touching capability bars fill 0.85 of each model slot; the remaining
 0.15 separates model groups. The two 2.7 x 1.6-inch panels form one row at
 5.5-inch text width; model labels are rotated 45 degrees at 7.5 pt.
 The shared key fig8_legend.pdf sits above the panels.
+
+Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

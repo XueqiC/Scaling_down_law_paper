@@ -17,4 +17,6 @@ registered pool seeds. The learning-rate pilot (c) uses the same student styles.
 All three 1.8 x 1.35-inch panels form one row at 5.5-inch text width, with the
 shared legend above. All three axes use the same measured rectangle and compact
 numeric tick format; (a) and (b) share their loss-change range and ticks.
-Data lines are 1.5 pt and seed markers are 5 pt.
+Data lines are 1.1 pt and seed markers are 3.8 pt.
+
+Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

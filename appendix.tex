@@ -348,8 +348,15 @@ Appendix~\ref{sec:app_shared}.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.92\textwidth]{figs/final_relations.pdf}
-\caption{Measured responses and frozen relations on native configuration axes, in native-token nats. \textbf{A:} Pythia-1.4B at step 112k: every measured density (capability markers; dense references coincide at zero), the delivered power form (solid, Eq.~\ref{eq:power}), and frozen median development curves $\widetilde f_c(d)$ (dashed). Shading marks the 17-state refit's range, $d\in[0.55,0.9]$. \textbf{B:} Math responses on Pythia-410M at 143k and 1.4B at 16k, with separate rows/scales for $b=3,4,5$ and a $\log_2 g$ axis. Solid lines show frozen same-input piecewise interpolation; dashed lines show per-configuration medians. Boundary extensions in $\log_2 g$ are floored at zero. Hollow diamonds mark predictions at $g=32,512$, unmeasured when frozen; filled markers include their later confirmation measurements. \textbf{C:} All twelve $U=200$ Gemma-3 trajectories (270M and 1B, six sampled pools each), at planned $T=50$k/$100$k/$200$k. Markers and thin connectors show actual responses at recorded $E=T_{\mathrm{actual}}/D_U$, including budget overshoot. Solid lines evaluate the frozen selected forms, $a_c\log(1+E)$ for math/code and the joint form for QA. Dotted lines show the strongest baseline frozen per student/capability (dark: 270M; light: 1B). Pool-dependent curves retain each $D_U$; coincident curves are drawn once. Coefficients were frozen before confirmation; stored planned-budget predictions are unchanged.}
+\includegraphics[width=5.5in]{figs/final_relations_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/final_relations_a.pdf}\subcaption{A: Pruning}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/final_relations_b.pdf}\subcaption{B: Math, 3 bit}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/final_relations_c.pdf}\subcaption{B: Math, 4 bit}\end{subfigure}\\[3pt]
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/final_relations_d.pdf}\subcaption{B: Math, 5 bit}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/final_relations_e.pdf}\subcaption{C: 270M}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/final_relations_f.pdf}\subcaption{C: 1B}\end{subfigure}
+
+\caption{Measured responses and frozen relations on native configuration axes, in native-token nats. \textbf{A:} Pythia-1.4B at step 112k: every measured density (capability markers; dense references coincide at zero), the delivered power form (solid, Eq.~\ref{eq:power}), and frozen median development curves $\widetilde f_c(d)$ (dashed). Shading marks the 17-state refit's range, $d\in[0.55,0.9]$. \textbf{B:} Math responses on Pythia-410M at 143k and 1.4B at 16k, with separate panels/scales for $b=3,4,5$ and a $\log_2 g$ axis. Solid (410M) and dotted (1.4B) lines show frozen same-input piecewise interpolation; dashed lines show per-configuration medians. Boundary extensions in $\log_2 g$ are floored at zero. Hollow diamonds mark predictions at $g=32,512$, unmeasured when frozen; filled markers include their later confirmation measurements. \textbf{C:} All twelve $U=200$ Gemma-3 trajectories (270M and 1B, six sampled pools each), at planned $T=50$k/$100$k/$200$k. Markers and thin connectors show actual responses at recorded $E=T_{\mathrm{actual}}/D_U$, including budget overshoot. Capability-coloured lines evaluate the frozen selected forms, $a_c\log(1+E)$ for math/code and the joint form for QA. Grey lines show the strongest baseline frozen per student/capability; dotted and dashed lines denote 270M and 1B throughout C. Pool-dependent curves retain each $D_U$; coincident curves are drawn once. Coefficients were frozen before confirmation; stored planned-budget predictions are unchanged.}
 \label{fig:responses_relations}
 \end{figure}
 
@@ -374,7 +381,11 @@ amplifies noise and is no shortcut (Appendix~\ref{sec:app_shared}).
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth]{figs/input_form_compact.pdf}
+\includegraphics[width=5.5in]{figs/input_form_compact_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_compact_a.pdf}\subcaption{Adding inputs}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_compact_b.pdf}\subcaption{Same-input form}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_compact_c.pdf}\subcaption{Capability shape}\end{subfigure}
+
 \caption{Which inputs and forms matter. A: improvement (nats, positive = better) from adding the dense anchor $L_{0,c}$ to $(N_0,D_0)$ and from adding $D_0$ to $(N_0,L_{0,c})$ on the controlled panel, leave-one-stage-out, with 95\% cluster-bootstrap intervals. B: improvement of the shared power form over the same-input alternatives A2 and A1 on every pruning test (positive = power form better). C: gain of per-capability response shapes over a shared shape at matched parameter count on the distillation development matrix (positive = per-capability better). Intervals only where computed.}
 \label{fig:inputs}
 \end{figure}
@@ -409,15 +420,23 @@ ablation is retrospective.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{figs/frozen_candidates.pdf}
-\caption{Frozen candidates on the confirmation panels: per-cell
-prediction against measurement for every frozen candidate.}
+\includegraphics[width=5.5in]{figs/frozen_candidates_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/frozen_candidates_a.pdf}\subcaption{Pruning}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/frozen_candidates_b.pdf}\subcaption{Grouped quantization}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/frozen_candidates_c.pdf}\subcaption{Distillation}\end{subfigure}
+
+\caption{Frozen candidates on the confirmation panels, summarising per-cell
+prediction against measurement for every frozen candidate. Hatched bars show MAE of the strongest frozen alternative minus candidate MAE; hollow diamonds show the delivered-rule gain where it differs. Each panel retains two cohorts, top then bottom: pruning C35/C52, quantization C44/C46, and distillation C47/C48.}
 \label{fig:confirm}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{figs/generalization_cells.pdf}
+\includegraphics[width=5.5in]{figs/generalization_cells_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/generalization_cells_a.pdf}\subcaption{New configurations}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/generalization_cells_b.pdf}\subcaption{New sources/students}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/generalization_cells_c.pdf}\subcaption{Fresh QA}\end{subfigure}
+
 \caption{Per-cell prediction minus measurement for every frozen relation, by kind of novelty; the
 main-text figure summarises these cells as paired errors against the development-selected baseline.
 Crosses mark cells whose artifact stores no interval.}
@@ -555,7 +574,11 @@ intervals cover pool sampling only.
 \FloatBarrier
 \begin{figure}[p]
 \centering
-\includegraphics[width=0.92\textwidth]{figs/input_form_gain.pdf}
+\includegraphics[width=5.5in]{figs/input_form_gain_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_a.pdf}\subcaption{Full versus no-$D_0$}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_b.pdf}\subcaption{Source-free comparison}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_c.pdf}\subcaption{Power versus alternatives}\end{subfigure}
+
 \caption{Paired improvements, zero line marked, positive means the first-named model is better. A: full model against its no-$D_0$ variant, per arm and capability; intervals only where a cluster bootstrap was computed (leave-one-stage-out panels), $n$ = evaluated source states. B: source-conditioned candidate against the strongest source-free baseline for all twenty registered tests (hollow = frozen prospective, filled = leave-one-out). C: shared power form against the same-input alternatives A1 and A2 on the pruning configuration tests. Generated by \texttt{plot\_fig2\_gains.py} from the frozen result files (Appendix~\ref{sec:app_registration}).}
 \label{fig:gains}
 \end{figure}
@@ -664,8 +687,15 @@ retained as measured; nothing is clipped at zero.
 \FloatBarrier
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.95\textwidth]{figs/measurement_support.pdf}
-\caption{Measurement support for capability specificity. Top: out-of-fold MAE of predicting the secondary-benchmark response of each capability from the primary-benchmark response of the same capability (diamond) or of another capability, against zero and train-mean controls, on the six-model, five-density pruning panel; rows are hold-out protocols with all densities and with $d\ge0.75$ only. Bottom: paired same-over-cross gain with 95\% model-bootstrap intervals (six clusters, fixed out-of-fold fits). Generated by \texttt{plot\_fig4\_measurement.py} from \texttt{v26-loss-validity-pred/summary.json}.}
+\includegraphics[width=5.5in]{figs/measurement_support_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/measurement_support_a.pdf}\subcaption{Math transfer MAE}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/measurement_support_b.pdf}\subcaption{Code transfer MAE}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/measurement_support_c.pdf}\subcaption{QA transfer MAE}\end{subfigure}\\[3pt]
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/measurement_support_d.pdf}\subcaption{Math paired gain}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/measurement_support_e.pdf}\subcaption{Code paired gain}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/measurement_support_f.pdf}\subcaption{QA paired gain}\end{subfigure}
+
+\caption{Measurement support for capability specificity. Top: out-of-fold MAE of predicting the secondary-benchmark response of each capability from the primary-benchmark response of the same capability (diamond) or of another capability, against zero and train-mean controls, on the six-model, five-density pruning panel; protocol indices 1--3 are model-out, density-out, and model-and-density-out with all densities, and 4--6 repeat these with $d\ge0.75$ only. Bottom: paired same-over-cross gain with 95\% model-bootstrap intervals (six clusters, fixed out-of-fold fits). Generated by \texttt{plot\_fig4\_measurement.py} from \texttt{v26-loss-validity-pred/summary.json}.}
 \label{fig:measurement}
 \end{figure}
 
@@ -956,16 +986,25 @@ pruning damage at matched severity.
 Table~\ref{tab:selection-feasible} gives the per-policy results behind Fig.~\ref{fig:selection}: mean regret against the measured oracle, agreement with the oracle's method, the share of no-clear-winner cells, and the share of cells in which a fixed-method policy cannot meet the budget (such cells are INFEASIBLE, with no fallback, and enter no mean). Regenerated without fallback by \texttt{v64\_selection\_feasible.py}.
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{figs/selection_feasible.pdf}
-\caption{Capability-specific selection maps on held-out Pythia states under the earlier laws (retrospective, leave-one-state-out): for each state (rows) and nominal storage budget (columns) the colour is the method whose predicted loss is lowest among feasible measured configurations; grey cross-hatching marks cells with no feasible configuration for a policy, diagonal hatching the no-clear-winner heuristic, and a marker where the measured oracle chooses a different method.}
+\includegraphics[width=5.5in]{figs/selection_feasible_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/selection_feasible_a.pdf}\subcaption{Math}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/selection_feasible_b.pdf}\subcaption{Code}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/selection_feasible_c.pdf}\subcaption{QA (2Wiki)}\end{subfigure}
+
+\caption{Capability-specific selection maps on held-out Pythia states under the earlier laws (retrospective, leave-one-state-out): for each state (rows) and nominal storage budget (columns) the colour is the method whose predicted loss is lowest among feasible measured configurations; grey cross-hatching marks cells with no feasible configuration for a policy, diagonal hatching the no-clear-winner heuristic, and a hollow black circle plus cross-hatching where the measured oracle chooses a different method.}
 \label{fig:selection}
 \end{figure}
 \input{tables/selection_feasible}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.74\textwidth]{figs/rule_maps_main.pdf}
-\caption{Selection maps under the frozen selection rule on four fresh states, each at 17 nominal storage budgets that share the state's model and candidate configurations (colour = predicted method; marker only where the measured oracle's method differs). Math and code select quantization almost everywhere; QA (2Wiki) selects pruning at high budgets on the 32k states and distillation on 1B@64k.}
+\includegraphics[width=5.5in]{figs/rule_maps_main_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_a.pdf}\subcaption{Math}\end{subfigure}\hfill
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_b.pdf}\subcaption{Code}\end{subfigure}\\[3pt]
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_c.pdf}\subcaption{QA (2Wiki)}\end{subfigure}\hfill
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_d.pdf}\subcaption{Largest loss increase}\end{subfigure}
+
+\caption{Selection maps under the frozen selection rule on four fresh states, each at 17 nominal storage budgets that share the state's model and candidate configurations (colour = predicted method; hollow black circle plus cross-hatching only where the measured oracle's method differs). Math and code select quantization almost everywhere; QA (2Wiki) selects pruning at high budgets on the 32k states and distillation on 1B@64k.}
 \label{fig:rule_main}
 \end{figure}
 
@@ -1012,14 +1051,21 @@ text.
 \input{tables/rule_confirm_by_state}
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{figs/rule_regret.pdf}
+\includegraphics[width=5.5in]{figs/rule_regret_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{5.5in}\centering\includegraphics[width=\linewidth]{figs/rule_regret_a.pdf}\subcaption{Mean regret}\end{subfigure}
+
 \caption{Mean regret per objective on the four fresh states (log scale) for the locked rule, the earlier laws, quantization-only, and the cheapest feasible configuration.}
 \label{fig:rule_regret}
 \end{figure}
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{figs/rule_maps_full.pdf}
-\caption{Full selection maps on the four fresh states under the locked rule and under the earlier source-conditioned laws (row pairs), against nominal storage budget; colour = predicted method, marker = the measured oracle's method, hatching = no-clear-winner candidate set. The bottom-right panel is the largest loss increase across capabilities, $\max_c[L_c(M)-L_c(M_0)]$.}
+\includegraphics[width=5.5in]{figs/rule_maps_full_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_full_a.pdf}\subcaption{Math}\end{subfigure}\hfill
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_full_b.pdf}\subcaption{Code}\end{subfigure}\\[3pt]
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_full_c.pdf}\subcaption{QA (2Wiki)}\end{subfigure}\hfill
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_full_d.pdf}\subcaption{Largest loss increase}\end{subfigure}
+
+\caption{Full selection maps on the four fresh states under the locked rule and under the earlier source-conditioned laws (row pairs), against nominal storage budget; colour = predicted method, hollow circle and cross-hatching = oracle method differs, diagonal hatching = no-clear-winner candidate set. The bottom-right panel is the largest loss increase across capabilities, $\max_c[L_c(M)-L_c(M_0)]$.}
 \label{fig:rule_maps}
 \end{figure}
 \input{tables/candidate_coverage}

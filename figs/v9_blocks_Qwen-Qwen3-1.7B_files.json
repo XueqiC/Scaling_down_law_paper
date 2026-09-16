@@ -1,0 +1,45 @@
+[
+  {
+    "file": "v9_blocks_Qwen-Qwen3-1.7B_a.pdf",
+    "size_inches": [
+      2.7,
+      2.4
+    ]
+  },
+  {
+    "file": "v9_blocks_Qwen-Qwen3-1.7B_b.pdf",
+    "size_inches": [
+      2.7,
+      2.4
+    ]
+  },
+  {
+    "file": "v9_blocks_Qwen-Qwen3-1.7B_c.pdf",
+    "size_inches": [
+      2.7,
+      2.4
+    ]
+  },
+  {
+    "file": "v9_blocks_Qwen-Qwen3-1.7B_d.pdf",
+    "size_inches": [
+      2.7,
+      2.4
+    ]
+  },
+  {
+    "file": "v9_blocks_Qwen-Qwen3-1.7B_legend.pdf",
+    "size_inches": [
+      5.5,
+      0.42
+    ]
+  },
+  {
+    "file": "v9_blocks_Qwen-Qwen3-1.7B.png",
+    "size_inches": [
+      5.5,
+      5.319999999999999
+    ],
+    "dpi": 220
+  }
+]

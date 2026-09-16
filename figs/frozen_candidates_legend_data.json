@@ -1,0 +1,83 @@
+{
+  "size_inches": [
+    5.5,
+    0.42
+  ],
+  "records": [],
+  "marker_visibility": {
+    "count": 0,
+    "maximum_displacement_fraction": 0.015,
+    "maximum_cluster_spread_fraction": 0.06,
+    "coincident_definition": "True glyph bounding boxes overlap (including 0.6-pt edges)",
+    "acceptance": "visible OR bounded with documented coincident neighbours",
+    "points": [],
+    "png_pixel_check": {
+      "dpi": 220,
+      "count": 0,
+      "point_ids": [],
+      "minimum_visible_ink_pixels": 0,
+      "visible_ink_pixels": [],
+      "fully_hidden": 0,
+      "accepted_coincident_point_ids": [],
+      "undocumented_hidden": 0
+    }
+  },
+  "input_sha256": {
+    "results/v53-prune-dev/register.json": "7498103830f139f6bea16ee440b717a05dee41e45b9835fdac6a2251b833974d",
+    "results/v53-prune-dev/predictions_pythia-1.4b@step112000.json": "862e299cc30a55672c785de418b0c184c204e3d5c2b222fb6174351e507489f4",
+    "results/v6-capability-geometry/pythia-1.4b--step112000/prune_losses.json": "bfc02e7d54eb623c2e8e4f1237b546aa62ecd14f23330b50e2a833e226916c42",
+    "results/v69-quant-confirm/freeze.json": "6ade0a3ff576781cf286978519b6a922500d37e3bc72cef4e3e635e826cccdc2",
+    "results/v69-quant-confirm/develop.json": "9f035cb37a94d425064f37d822490b52dcad4c669e62864f27cba4ffa5e5643d",
+    "results/v69-quant-confirm/compare.json": "12944c61ed42c61f1beaf8f84ef5c87d900b3b1a38d65d175976e27d3d4e6bac",
+    "results/v70-distill-confirm/freeze.json": "d7b28c7251dbc6113c3de7c957560827e603d4e77a48010f99835a8468db0c24",
+    "results/v70-distill-confirm/compare.json": "983f53033b07e035b1cb552429b8ce6ab23f8d6aee4365237970e2b46b0a829b",
+    "results/v53-prune-dev/compare_pythia-410m@step48000.json": "6cbfcff19a7196a5377e83417538159b86797996d3045c976fcb3e29dd321399",
+    "results/v53-prune-dev/compare_pythia-1.4b@step112000.json": "23dd3cd34588ea33666f0158fc05004b6bc8273ab8947bb43aad954085857406",
+    "results/v53-prune-dev/compare_pythia-6.9b@step80000.json": "288af4793219be8325a33fcaa0d2dbc0dd96defff4890de040aea0723e177eb9",
+    "results/v53-prune-dev/predictions_pythia-410m@step48000.json": "6a3e987278dcb2d59d37eb72161bc0a062dd5cbe67116087b9fe7374bf426d6a",
+    "results/v53-prune-dev/predictions_pythia-6.9b@step80000.json": "c14ec20711138aa57d7ae4d394c97ba8b08c05ed65926c537473e6ec499558d3",
+    "results/v72-prune-repeat/compare.json": "639eef759655038f393e0451b4d7471883dae31d4da08ffe32a6277eaec76fb9",
+    "results/v72-prune-repeat/freeze.json": "3f4e45d0bd505b7d65815f2246a5c3b343f3a49be465aedf724aaa208b0de8b9",
+    "results/v50-p2v2/compare_test.json": "4c07abf0f940e95992a3f46d79b6d9a3ef9524ba55adaefa824b0cdec8a601aa"
+  },
+  "axes": [],
+  "legend_entries": [
+    "Math",
+    "Code",
+    "QA",
+    "Delivered"
+  ],
+  "legend_font_sizes_pt": [
+    8.5,
+    8.5,
+    8.5,
+    8.5
+  ],
+  "font": {
+    "family": "Times New Roman",
+    "weight": "bold",
+    "ticks_pt": 8.5,
+    "labels_pt": 8.5,
+    "legend_pt": 8.5
+  },
+  "style_defaults": {
+    "line_width_pt": 1.1,
+    "marker_size_pt": 3.8,
+    "errorbar_capsize_pt": 2
+  },
+  "artist_sizes": {
+    "line_widths_pt": [],
+    "marker_sizes_pt": [
+      3.8
+    ],
+    "errorbar_widths_pt": [],
+    "cap_sizes_pt": [],
+    "cap_widths_pt": []
+  },
+  "legend_layout": {
+    "placement": "above panels",
+    "bottom_padding_inches": 0,
+    "minimum_top_padding_inches": 0.02
+  },
+  "axis_font_sizes_pt": []
+}

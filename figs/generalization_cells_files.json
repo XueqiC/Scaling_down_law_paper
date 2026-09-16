@@ -1,0 +1,38 @@
+[
+  {
+    "file": "generalization_cells_a.pdf",
+    "size_inches": [
+      1.8,
+      1.35
+    ]
+  },
+  {
+    "file": "generalization_cells_b.pdf",
+    "size_inches": [
+      1.8,
+      1.35
+    ]
+  },
+  {
+    "file": "generalization_cells_c.pdf",
+    "size_inches": [
+      1.8,
+      1.35
+    ]
+  },
+  {
+    "file": "generalization_cells_legend.pdf",
+    "size_inches": [
+      5.5,
+      0.42
+    ]
+  },
+  {
+    "file": "generalization_cells.png",
+    "size_inches": [
+      5.5,
+      1.77
+    ],
+    "dpi": 220
+  }
+]

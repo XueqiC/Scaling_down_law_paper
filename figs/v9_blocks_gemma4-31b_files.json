@@ -1,0 +1,45 @@
+[
+  {
+    "file": "v9_blocks_gemma4-31b_a.pdf",
+    "size_inches": [
+      2.7,
+      2.4
+    ]
+  },
+  {
+    "file": "v9_blocks_gemma4-31b_b.pdf",
+    "size_inches": [
+      2.7,
+      2.4
+    ]
+  },
+  {
+    "file": "v9_blocks_gemma4-31b_c.pdf",
+    "size_inches": [
+      2.7,
+      2.4
+    ]
+  },
+  {
+    "file": "v9_blocks_gemma4-31b_d.pdf",
+    "size_inches": [
+      2.7,
+      2.4
+    ]
+  },
+  {
+    "file": "v9_blocks_gemma4-31b_legend.pdf",
+    "size_inches": [
+      5.5,
+      0.42
+    ]
+  },
+  {
+    "file": "v9_blocks_gemma4-31b.png",
+    "size_inches": [
+      5.5,
+      5.319999999999999
+    ],
+    "dpi": 220
+  }
+]

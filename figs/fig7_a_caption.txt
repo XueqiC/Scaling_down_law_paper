@@ -4,9 +4,9 @@ Frozen selection maps on four fresh source states: (a) math,
 budgets, from 20% through 100% of dense matrix storage in 5% increments.
 Row labels give Pythia parameter size / pretraining step (k=1,000).
 Cell colour is the frozen rule's predicted chosen method: pruning, quantization,
-distillation or dense. A white circle means the measured oracle method differs;
+distillation or dense. Cross-hatching and a hollow black circle mean the measured oracle method differs;
 unmarked cells agree at method level and need not agree at configuration level.
-The method colours and mismatch semantics reproduce V80 rule_maps_main.
+The chosen methods and mismatch identities reproduce V80 rule_maps_main.
 Selections, oracles and scores are read verbatim from V78 compare.json, with
 the chosen method/configuration checked against freeze.json. Nothing is refit,
 rescored or selected again. All 68 state-budget cells per objective are retained.
@@ -16,3 +16,5 @@ The four panels form one 5.5-inch row: fig7_a.pdf is 1.75 x 1.5 inches;
 fig7_b.pdf, fig7_c.pdf and fig7_d.pdf are each 1.25 x 1.5 inches.
 Only (a) carries state tick labels. All panels use the same vertical margins,
 aligned state rows, and Storage budget (%) axis with ticks at 20 and 100.
+
+Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

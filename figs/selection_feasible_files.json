@@ -1,0 +1,38 @@
+[
+  {
+    "file": "selection_feasible_a.pdf",
+    "size_inches": [
+      1.8,
+      2.4
+    ]
+  },
+  {
+    "file": "selection_feasible_b.pdf",
+    "size_inches": [
+      1.8,
+      2.4
+    ]
+  },
+  {
+    "file": "selection_feasible_c.pdf",
+    "size_inches": [
+      1.8,
+      2.4
+    ]
+  },
+  {
+    "file": "selection_feasible_legend.pdf",
+    "size_inches": [
+      5.5,
+      0.42
+    ]
+  },
+  {
+    "file": "selection_feasible.png",
+    "size_inches": [
+      5.5,
+      2.82
+    ],
+    "dpi": 220
+  }
+]

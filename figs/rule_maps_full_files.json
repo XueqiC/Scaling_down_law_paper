@@ -1,0 +1,45 @@
+[
+  {
+    "file": "rule_maps_full_a.pdf",
+    "size_inches": [
+      2.7,
+      1.45
+    ]
+  },
+  {
+    "file": "rule_maps_full_b.pdf",
+    "size_inches": [
+      2.7,
+      1.45
+    ]
+  },
+  {
+    "file": "rule_maps_full_c.pdf",
+    "size_inches": [
+      2.7,
+      1.45
+    ]
+  },
+  {
+    "file": "rule_maps_full_d.pdf",
+    "size_inches": [
+      2.7,
+      1.45
+    ]
+  },
+  {
+    "file": "rule_maps_full_legend.pdf",
+    "size_inches": [
+      5.5,
+      0.42
+    ]
+  },
+  {
+    "file": "rule_maps_full.png",
+    "size_inches": [
+      5.5,
+      3.4199999999999995
+    ],
+    "dpi": 220
+  }
+]

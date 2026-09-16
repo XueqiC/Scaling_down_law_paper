@@ -1,0 +1,631 @@
+{
+  "size_inches": [
+    1.8,
+    1.35
+  ],
+  "records": [
+    {
+      "candidate": "power",
+      "candidate_mae": 0.24305607432870568,
+      "alternative_set": [
+        "A1",
+        "A2",
+        "cont",
+        "strength_only",
+        "median_curve",
+        "zero"
+      ],
+      "strongest_alternative": "A2",
+      "alternative_mae": 0.22984457123512217,
+      "gain": -0.013211503093583515,
+      "delivered": "median_curve",
+      "delivered_mae": 0.27725981439004505,
+      "delivered_gain": -0.047415243154922876,
+      "delivered_differs": true,
+      "all_method_mae": {
+        "power": 0.24305607432870568,
+        "A1": 0.3625764194340142,
+        "A2": 0.22984457123512217,
+        "cont": 0.3129024215579021,
+        "strength_only": 0.44974234202979757,
+        "median_curve": 0.27725981439004505,
+        "zero": 0.5216325239262833
+      },
+      "mae_sources": {
+        "power": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/math; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/math; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/math)",
+        "A1": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A1/math; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A1/math; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A1/math)",
+        "A2": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math)",
+        "cont": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/cont/math; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/cont/math; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/cont/math)",
+        "strength_only": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/strength_only/math; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/strength_only/math; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/strength_only/math)",
+        "median_curve": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/math; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/math; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/math)",
+        "zero": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/zero/math; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/zero/math; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/zero/math)"
+      },
+      "display": {
+        "candidate_mae": "0.2431",
+        "alternative_mae": "0.2298",
+        "gain": "-0.0132",
+        "delivered_mae": "0.2773"
+      },
+      "cap": "math",
+      "row": "C35"
+    },
+    {
+      "candidate": "power",
+      "candidate_mae": 0.23612291498241916,
+      "alternative_set": [
+        "A1",
+        "A2",
+        "cont",
+        "strength_only",
+        "median_curve",
+        "zero"
+      ],
+      "strongest_alternative": "median_curve",
+      "alternative_mae": 0.21352144573858442,
+      "gain": -0.022601469243834743,
+      "delivered": "median_curve",
+      "delivered_mae": 0.21352144573858442,
+      "delivered_gain": 0.0,
+      "delivered_differs": true,
+      "all_method_mae": {
+        "power": 0.23612291498241916,
+        "A1": 0.4028581981852265,
+        "A2": 0.2217045267411343,
+        "cont": 0.30459154693774065,
+        "strength_only": 0.4882818201620883,
+        "median_curve": 0.21352144573858442,
+        "zero": 0.5303726593244064
+      },
+      "mae_sources": {
+        "power": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/code; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/code; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/code)",
+        "A1": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A1/code; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A1/code; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A1/code)",
+        "A2": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code)",
+        "cont": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/cont/code; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/cont/code; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/cont/code)",
+        "strength_only": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/strength_only/code; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/strength_only/code; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/strength_only/code)",
+        "median_curve": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code)",
+        "zero": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/zero/code; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/zero/code; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/zero/code)"
+      },
+      "display": {
+        "candidate_mae": "0.2361",
+        "alternative_mae": "0.2135",
+        "gain": "-0.0226",
+        "delivered_mae": "0.2135"
+      },
+      "cap": "code",
+      "row": "C35"
+    },
+    {
+      "candidate": "power",
+      "candidate_mae": 0.6784256894645805,
+      "alternative_set": [
+        "A1",
+        "A2",
+        "cont",
+        "strength_only",
+        "median_curve",
+        "zero"
+      ],
+      "strongest_alternative": "zero",
+      "alternative_mae": 0.18485292564427563,
+      "gain": -0.49357276382030485,
+      "delivered": "median_curve",
+      "delivered_mae": 0.2206420640578797,
+      "delivered_gain": -0.035789138413604066,
+      "delivered_differs": true,
+      "all_method_mae": {
+        "power": 0.6784256894645805,
+        "A1": 0.737867315913079,
+        "A2": 0.6822702828662186,
+        "cont": 0.7460497709257371,
+        "strength_only": 0.5792451652792973,
+        "median_curve": 0.2206420640578797,
+        "zero": 0.18485292564427563
+      },
+      "mae_sources": {
+        "power": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/qa; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/qa; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/qa)",
+        "A1": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A1/qa; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A1/qa; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A1/qa)",
+        "A2": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/qa; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/qa; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/qa)",
+        "cont": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/cont/qa; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/cont/qa; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/cont/qa)",
+        "strength_only": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/strength_only/qa; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/strength_only/qa; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/strength_only/qa)",
+        "median_curve": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa)",
+        "zero": "mean(results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/zero/qa; results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/zero/qa; results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/zero/qa)"
+      },
+      "display": {
+        "candidate_mae": "0.6784",
+        "alternative_mae": "0.1849",
+        "gain": "-0.4936",
+        "delivered_mae": "0.2206"
+      },
+      "cap": "qa",
+      "row": "C35"
+    },
+    {
+      "candidate": "power",
+      "candidate_mae": 0.2918249928910655,
+      "alternative_set": [
+        "A2",
+        "median_curve",
+        "zero"
+      ],
+      "strongest_alternative": "median_curve",
+      "alternative_mae": 0.07991576366368745,
+      "gain": -0.21190922922737804,
+      "delivered": "median_curve",
+      "delivered_mae": 0.07991576366368745,
+      "delivered_gain": 0.0,
+      "delivered_differs": true,
+      "all_method_mae": {
+        "power": 0.2918249928910655,
+        "A2": 0.4249980769587108,
+        "median_curve": 0.07991576366368745,
+        "zero": 0.21844762582720353
+      },
+      "mae_sources": {
+        "power": "results/v72-prune-repeat/compare.json#/scores/power/by_capability/math/mae",
+        "A2": "results/v72-prune-repeat/compare.json#/scores/A2/by_capability/math/mae",
+        "median_curve": "results/v72-prune-repeat/compare.json#/scores/median_curve/by_capability/math/mae",
+        "zero": "results/v72-prune-repeat/compare.json#/scores/zero/by_capability/math/mae"
+      },
+      "display": {
+        "candidate_mae": "0.2918",
+        "alternative_mae": "0.0799",
+        "gain": "-0.2119",
+        "delivered_mae": "0.0799"
+      },
+      "cap": "math",
+      "row": "C52"
+    },
+    {
+      "candidate": "power",
+      "candidate_mae": 0.39335501944909756,
+      "alternative_set": [
+        "A2",
+        "median_curve",
+        "zero"
+      ],
+      "strongest_alternative": "median_curve",
+      "alternative_mae": 0.05379427145234136,
+      "gain": -0.3395607479967562,
+      "delivered": "median_curve",
+      "delivered_mae": 0.05379427145234136,
+      "delivered_gain": 0.0,
+      "delivered_differs": true,
+      "all_method_mae": {
+        "power": 0.39335501944909756,
+        "A2": 0.45824518939864695,
+        "median_curve": 0.05379427145234136,
+        "zero": 0.14531336661120356
+      },
+      "mae_sources": {
+        "power": "results/v72-prune-repeat/compare.json#/scores/power/by_capability/code/mae",
+        "A2": "results/v72-prune-repeat/compare.json#/scores/A2/by_capability/code/mae",
+        "median_curve": "results/v72-prune-repeat/compare.json#/scores/median_curve/by_capability/code/mae",
+        "zero": "results/v72-prune-repeat/compare.json#/scores/zero/by_capability/code/mae"
+      },
+      "display": {
+        "candidate_mae": "0.3934",
+        "alternative_mae": "0.0538",
+        "gain": "-0.3396",
+        "delivered_mae": "0.0538"
+      },
+      "cap": "code",
+      "row": "C52"
+    },
+    {
+      "candidate": "power",
+      "candidate_mae": 0.6788475813133066,
+      "alternative_set": [
+        "A2",
+        "median_curve",
+        "zero"
+      ],
+      "strongest_alternative": "median_curve",
+      "alternative_mae": 0.06522546340304179,
+      "gain": -0.6136221179102648,
+      "delivered": "median_curve",
+      "delivered_mae": 0.06522546340304179,
+      "delivered_gain": 0.0,
+      "delivered_differs": true,
+      "all_method_mae": {
+        "power": 0.6788475813133066,
+        "A2": 0.4373972748572968,
+        "median_curve": 0.06522546340304179,
+        "zero": 0.3255604404309252
+      },
+      "mae_sources": {
+        "power": "results/v72-prune-repeat/compare.json#/scores/power/by_capability/qa/mae",
+        "A2": "results/v72-prune-repeat/compare.json#/scores/A2/by_capability/qa/mae",
+        "median_curve": "results/v72-prune-repeat/compare.json#/scores/median_curve/by_capability/qa/mae",
+        "zero": "results/v72-prune-repeat/compare.json#/scores/zero/by_capability/qa/mae"
+      },
+      "display": {
+        "candidate_mae": "0.6788",
+        "alternative_mae": "0.0652",
+        "gain": "-0.6136",
+        "delivered_mae": "0.0652"
+      },
+      "cap": "qa",
+      "row": "C52"
+    }
+  ],
+  "marker_visibility": {
+    "count": 6,
+    "maximum_displacement_fraction": 0.015,
+    "maximum_cluster_spread_fraction": 0.06,
+    "coincident_definition": "True glyph bounding boxes overlap (including 0.6-pt edges)",
+    "acceptance": "visible OR bounded with documented coincident neighbours",
+    "points": [
+      {
+        "id": 0,
+        "axis": 0,
+        "x": -0.047415243154922876,
+        "y": 0.0,
+        "true_center_pt": [
+          114.33676465634225,
+          86.1909677419355
+        ],
+        "axis_range_pt": [
+          90.0,
+          69.12
+        ],
+        "marker": "D",
+        "marker_size_pt": 3.8,
+        "cluster": "0:0",
+        "fallback_to_true": false,
+        "coincident_neighbours": [],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          114.33676465634225,
+          86.1909677419355
+        ],
+        "drawn_coordinate": [
+          -0.04741524315492285,
+          0.0
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          4.307843665856884e-17,
+          0.0
+        ],
+        "zorder": 20.0,
+        "visible_ink_pixels": 96
+      },
+      {
+        "id": 1,
+        "axis": 0,
+        "x": -0.035789138413604066,
+        "y": 2.0,
+        "true_center_pt": [
+          115.96076619483853,
+          63.8941935483871
+        ],
+        "axis_range_pt": [
+          90.0,
+          69.12
+        ],
+        "marker": "D",
+        "marker_size_pt": 3.8,
+        "cluster": "0:1",
+        "fallback_to_true": false,
+        "coincident_neighbours": [],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          115.96076619483853,
+          63.8941935483871
+        ],
+        "drawn_coordinate": [
+          -0.035789138413604094,
+          1.9999999999999991
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          4.307843665856884e-17,
+          1.4325458382260086e-16
+        ],
+        "zorder": 20.0001,
+        "visible_ink_pixels": 96
+      },
+      {
+        "id": 2,
+        "axis": 0,
+        "x": 0.0,
+        "y": 5.0,
+        "true_center_pt": [
+          120.96,
+          30.44903225806451
+        ],
+        "axis_range_pt": [
+          90.0,
+          69.12
+        ],
+        "marker": "D",
+        "marker_size_pt": 3.8,
+        "cluster": "0:2",
+        "fallback_to_true": false,
+        "coincident_neighbours": [],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          120.96,
+          30.44903225806451
+        ],
+        "drawn_coordinate": [
+          0.0,
+          5.0
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "zorder": 20.0002,
+        "visible_ink_pixels": 96
+      },
+      {
+        "id": 3,
+        "axis": 0,
+        "x": 0.0,
+        "y": 4.0,
+        "true_center_pt": [
+          120.96,
+          41.59741935483871
+        ],
+        "axis_range_pt": [
+          90.0,
+          69.12
+        ],
+        "marker": "D",
+        "marker_size_pt": 3.8,
+        "cluster": "0:3",
+        "fallback_to_true": false,
+        "coincident_neighbours": [],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          120.96,
+          41.59741935483871
+        ],
+        "drawn_coordinate": [
+          0.0,
+          3.9999999999999996
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          0.0,
+          7.162729191130043e-17
+        ],
+        "zorder": 20.0003,
+        "visible_ink_pixels": 96
+      },
+      {
+        "id": 4,
+        "axis": 0,
+        "x": 0.0,
+        "y": 3.0,
+        "true_center_pt": [
+          120.96,
+          52.7458064516129
+        ],
+        "axis_range_pt": [
+          90.0,
+          69.12
+        ],
+        "marker": "D",
+        "marker_size_pt": 3.8,
+        "cluster": "0:4",
+        "fallback_to_true": false,
+        "coincident_neighbours": [],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          120.96,
+          52.7458064516129
+        ],
+        "drawn_coordinate": [
+          0.0,
+          3.0
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "zorder": 20.0004,
+        "visible_ink_pixels": 96
+      },
+      {
+        "id": 5,
+        "axis": 0,
+        "x": 0.0,
+        "y": 1.0,
+        "true_center_pt": [
+          120.96,
+          75.0425806451613
+        ],
+        "axis_range_pt": [
+          90.0,
+          69.12
+        ],
+        "marker": "D",
+        "marker_size_pt": 3.8,
+        "cluster": "0:5",
+        "fallback_to_true": false,
+        "coincident_neighbours": [],
+        "dx_pt": 0.0,
+        "dy_pt": 0.0,
+        "center_pt": [
+          120.96,
+          75.0425806451613
+        ],
+        "drawn_coordinate": [
+          0.0,
+          1.0
+        ],
+        "axis_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "data_displacement_fraction": [
+          0.0,
+          0.0
+        ],
+        "zorder": 20.0005,
+        "visible_ink_pixels": 96
+      }
+    ],
+    "png_pixel_check": {
+      "dpi": 220,
+      "count": 6,
+      "point_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "minimum_visible_ink_pixels": 96,
+      "visible_ink_pixels": [
+        96,
+        96,
+        96,
+        96,
+        96,
+        96
+      ],
+      "fully_hidden": 0,
+      "accepted_coincident_point_ids": [],
+      "undocumented_hidden": 0
+    }
+  },
+  "input_sha256": {
+    "results/v53-prune-dev/register.json": "7498103830f139f6bea16ee440b717a05dee41e45b9835fdac6a2251b833974d",
+    "results/v53-prune-dev/predictions_pythia-1.4b@step112000.json": "862e299cc30a55672c785de418b0c184c204e3d5c2b222fb6174351e507489f4",
+    "results/v6-capability-geometry/pythia-1.4b--step112000/prune_losses.json": "bfc02e7d54eb623c2e8e4f1237b546aa62ecd14f23330b50e2a833e226916c42",
+    "results/v69-quant-confirm/freeze.json": "6ade0a3ff576781cf286978519b6a922500d37e3bc72cef4e3e635e826cccdc2",
+    "results/v69-quant-confirm/develop.json": "9f035cb37a94d425064f37d822490b52dcad4c669e62864f27cba4ffa5e5643d",
+    "results/v69-quant-confirm/compare.json": "12944c61ed42c61f1beaf8f84ef5c87d900b3b1a38d65d175976e27d3d4e6bac",
+    "results/v70-distill-confirm/freeze.json": "d7b28c7251dbc6113c3de7c957560827e603d4e77a48010f99835a8468db0c24",
+    "results/v70-distill-confirm/compare.json": "983f53033b07e035b1cb552429b8ce6ab23f8d6aee4365237970e2b46b0a829b",
+    "results/v53-prune-dev/compare_pythia-410m@step48000.json": "6cbfcff19a7196a5377e83417538159b86797996d3045c976fcb3e29dd321399",
+    "results/v53-prune-dev/compare_pythia-1.4b@step112000.json": "23dd3cd34588ea33666f0158fc05004b6bc8273ab8947bb43aad954085857406",
+    "results/v53-prune-dev/compare_pythia-6.9b@step80000.json": "288af4793219be8325a33fcaa0d2dbc0dd96defff4890de040aea0723e177eb9",
+    "results/v53-prune-dev/predictions_pythia-410m@step48000.json": "6a3e987278dcb2d59d37eb72161bc0a062dd5cbe67116087b9fe7374bf426d6a",
+    "results/v53-prune-dev/predictions_pythia-6.9b@step80000.json": "c14ec20711138aa57d7ae4d394c97ba8b08c05ed65926c537473e6ec499558d3",
+    "results/v72-prune-repeat/compare.json": "639eef759655038f393e0451b4d7471883dae31d4da08ffe32a6277eaec76fb9",
+    "results/v72-prune-repeat/freeze.json": "3f4e45d0bd505b7d65815f2246a5c3b343f3a49be465aedf724aaa208b0de8b9",
+    "results/v50-p2v2/compare_test.json": "4c07abf0f940e95992a3f46d79b6d9a3ef9524ba55adaefa824b0cdec8a601aa"
+  },
+  "axes": [
+    {
+      "rectangle": [
+        0.23888888888888887,
+        0.24444444444444444,
+        0.6944444444444444,
+        0.711111111111111
+      ],
+      "xticks": [
+        -0.75,
+        -0.5,
+        -0.25,
+        0.0
+      ],
+      "yticks": [
+        0.0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0
+      ],
+      "x_tick_labels": [
+        "\u22120.75",
+        "\u22120.50",
+        "\u22120.25",
+        "0.00"
+      ],
+      "minor_y_tick_labels": [],
+      "xlim": [
+        -0.644303223805778,
+        0.0
+      ],
+      "ylim": [
+        5.6,
+        -0.6
+      ],
+      "xscale": "linear",
+      "yscale": "linear",
+      "row_labels": [
+        "Math",
+        "Code",
+        "QA",
+        "Math",
+        "Code",
+        "QA"
+      ]
+    }
+  ],
+  "legend_entries": [],
+  "legend_font_sizes_pt": [],
+  "font": {
+    "family": "Times New Roman",
+    "weight": "bold",
+    "ticks_pt": 7.5,
+    "labels_pt": 8.5,
+    "legend_pt": 7.5
+  },
+  "style_defaults": {
+    "line_width_pt": 1.1,
+    "marker_size_pt": 3.8,
+    "errorbar_capsize_pt": 2
+  },
+  "artist_sizes": {
+    "line_widths_pt": [
+      1.1
+    ],
+    "marker_sizes_pt": [
+      3.8
+    ],
+    "errorbar_widths_pt": [],
+    "cap_sizes_pt": [],
+    "cap_widths_pt": []
+  },
+  "legend_layout": null,
+  "axis_font_sizes_pt": [
+    {
+      "x_ticks": [
+        7.5,
+        7.5,
+        7.5,
+        7.5
+      ],
+      "y_ticks": [
+        7.5,
+        7.5,
+        7.5,
+        7.5,
+        7.5,
+        7.5
+      ],
+      "x_label": 8.5,
+      "y_label": 8.5
+    }
+  ]
+}

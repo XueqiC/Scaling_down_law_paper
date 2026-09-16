@@ -5,4 +5,6 @@ loss range is retained, including 3-bit collapse. The inputs are the frozen
 V10 quant_losses.json files listed in V36's summary; plot_fig1_final.py does
 not itself read a per-channel panel, so V36 supplies this additional artifact.
 Colour follows Figure 1; positive loss change means worse performance.
-Shared key: fig4_legend.pdf above the panels; panels are 1.8 x 1.35 inches in one row. Lines 1.4 pt; markers 5 pt.
+Shared key: fig4_legend.pdf above the panels; panels are 1.8 x 1.35 inches in one row. Lines 1.1 pt; markers 3.8 pt.
+
+Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

@@ -1,0 +1,4 @@
+Mean regret.
+Mean regret on four fresh states; the saved pooled means are plotted without recomputation. Colour denotes objective; policy uses plain / diagonal / dotted / cross-hatched bars. Logarithmic axis, native-token nats.
+
+Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

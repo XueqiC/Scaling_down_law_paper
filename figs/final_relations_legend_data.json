@@ -1,0 +1,83 @@
+{
+  "size_inches": [
+    5.5,
+    0.42
+  ],
+  "records": [],
+  "marker_visibility": {
+    "count": 0,
+    "maximum_displacement_fraction": 0.015,
+    "maximum_cluster_spread_fraction": 0.06,
+    "coincident_definition": "True glyph bounding boxes overlap (including 0.6-pt edges)",
+    "acceptance": "visible OR bounded with documented coincident neighbours",
+    "points": [],
+    "png_pixel_check": {
+      "dpi": 220,
+      "count": 0,
+      "point_ids": [],
+      "minimum_visible_ink_pixels": 0,
+      "visible_ink_pixels": [],
+      "fully_hidden": 0,
+      "accepted_coincident_point_ids": [],
+      "undocumented_hidden": 0
+    }
+  },
+  "input_sha256": {
+    "results/v53-prune-dev/register.json": "7498103830f139f6bea16ee440b717a05dee41e45b9835fdac6a2251b833974d",
+    "results/v53-prune-dev/predictions_pythia-1.4b@step112000.json": "862e299cc30a55672c785de418b0c184c204e3d5c2b222fb6174351e507489f4",
+    "results/v6-capability-geometry/pythia-1.4b--step112000/prune_losses.json": "bfc02e7d54eb623c2e8e4f1237b546aa62ecd14f23330b50e2a833e226916c42",
+    "results/v69-quant-confirm/freeze.json": "6ade0a3ff576781cf286978519b6a922500d37e3bc72cef4e3e635e826cccdc2",
+    "results/v69-quant-confirm/develop.json": "9f035cb37a94d425064f37d822490b52dcad4c669e62864f27cba4ffa5e5643d",
+    "results/v69-quant-confirm/compare.json": "12944c61ed42c61f1beaf8f84ef5c87d900b3b1a38d65d175976e27d3d4e6bac",
+    "results/v70-distill-confirm/freeze.json": "d7b28c7251dbc6113c3de7c957560827e603d4e77a48010f99835a8468db0c24",
+    "results/v70-distill-confirm/compare.json": "983f53033b07e035b1cb552429b8ce6ab23f8d6aee4365237970e2b46b0a829b"
+  },
+  "axes": [],
+  "legend_entries": [
+    "Math",
+    "Code",
+    "QA",
+    "Frozen",
+    "Median",
+    "270M",
+    "1B"
+  ],
+  "legend_font_sizes_pt": [
+    8.5,
+    8.5,
+    8.5,
+    8.5,
+    8.5,
+    8.5,
+    8.5
+  ],
+  "font": {
+    "family": "Times New Roman",
+    "weight": "bold",
+    "ticks_pt": 8.5,
+    "labels_pt": 8.5,
+    "legend_pt": 8.5
+  },
+  "style_defaults": {
+    "line_width_pt": 1.1,
+    "marker_size_pt": 3.8,
+    "errorbar_capsize_pt": 2
+  },
+  "artist_sizes": {
+    "line_widths_pt": [
+      1.5
+    ],
+    "marker_sizes_pt": [
+      6.0
+    ],
+    "errorbar_widths_pt": [],
+    "cap_sizes_pt": [],
+    "cap_widths_pt": []
+  },
+  "legend_layout": {
+    "placement": "above panels",
+    "bottom_padding_inches": 0,
+    "minimum_top_padding_inches": 0.02
+  },
+  "axis_font_sizes_pt": []
+}

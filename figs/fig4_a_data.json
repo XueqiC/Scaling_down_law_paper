@@ -13601,6 +13601,24 @@
       "formula": "median_state(prune_curve(register,state,cap,d,method))"
     }
   ],
+  "marker_visibility": {
+    "count": 0,
+    "maximum_displacement_fraction": 0.015,
+    "maximum_cluster_spread_fraction": 0.06,
+    "coincident_definition": "True glyph bounding boxes overlap (including 0.6-pt edges)",
+    "acceptance": "visible OR bounded with documented coincident neighbours",
+    "points": [],
+    "png_pixel_check": {
+      "dpi": 220,
+      "count": 0,
+      "point_ids": [],
+      "minimum_visible_ink_pixels": 0,
+      "visible_ink_pixels": [],
+      "fully_hidden": 0,
+      "accepted_coincident_point_ids": [],
+      "undocumented_hidden": 0
+    }
+  },
   "input_sha256": {
     "results/v36-pythia-controlled/summary.json": "58dd81d2db4c089f97656232908d4aab8bccdf3114c05a880a50a5aaff844874",
     "results/v53-prune-dev/register.json": "7498103830f139f6bea16ee440b717a05dee41e45b9835fdac6a2251b833974d",
@@ -13628,6 +13646,30 @@
   },
   "axes": [
     {
+      "rectangle": [
+        0.19444444444444442,
+        0.2222222222222222,
+        0.7666666666666667,
+        0.7333333333333333
+      ],
+      "xticks": [
+        0.6,
+        0.8,
+        1.0
+      ],
+      "yticks": [
+        -4.0,
+        0.0,
+        4.0,
+        8.0,
+        12.0
+      ],
+      "x_tick_labels": [
+        "0.6",
+        "0.8",
+        "1.0"
+      ],
+      "minor_y_tick_labels": [],
       "xlim": [
         0.535,
         1.02
@@ -13663,8 +13705,7 @@
   },
   "artist_sizes": {
     "line_widths_pt": [
-      1.1,
-      1.4
+      1.1
     ],
     "marker_sizes_pt": [],
     "errorbar_widths_pt": [],

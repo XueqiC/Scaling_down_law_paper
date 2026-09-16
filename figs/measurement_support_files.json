@@ -1,0 +1,59 @@
+[
+  {
+    "file": "measurement_support_a.pdf",
+    "size_inches": [
+      1.8,
+      1.35
+    ]
+  },
+  {
+    "file": "measurement_support_b.pdf",
+    "size_inches": [
+      1.8,
+      1.35
+    ]
+  },
+  {
+    "file": "measurement_support_c.pdf",
+    "size_inches": [
+      1.8,
+      1.35
+    ]
+  },
+  {
+    "file": "measurement_support_d.pdf",
+    "size_inches": [
+      1.8,
+      1.35
+    ]
+  },
+  {
+    "file": "measurement_support_e.pdf",
+    "size_inches": [
+      1.8,
+      1.35
+    ]
+  },
+  {
+    "file": "measurement_support_f.pdf",
+    "size_inches": [
+      1.8,
+      1.35
+    ]
+  },
+  {
+    "file": "measurement_support_legend.pdf",
+    "size_inches": [
+      5.5,
+      0.42
+    ]
+  },
+  {
+    "file": "measurement_support.png",
+    "size_inches": [
+      5.5,
+      3.17
+    ],
+    "dpi": 220
+  }
+]

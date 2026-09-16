@@ -8,4 +8,6 @@ are shown only on their [0.6, 0.9] domain. V53's fit used 17 development states;
 the nine states displayed are selected by the original V36 input manifest.
 The register and V6 loss artifacts are the pruning sources used by
 plot_fig1_final.py; no held-out source is presented as a development state.
-Shared key: fig4_legend.pdf above the panels; panels are 1.8 x 1.35 inches in one row. Lines 1.4 pt; markers 5 pt.
+Shared key: fig4_legend.pdf above the panels; panels are 1.8 x 1.35 inches in one row. Lines 1.1 pt; markers 3.8 pt.
+
+Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

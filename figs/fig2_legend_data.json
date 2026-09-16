@@ -4,6 +4,24 @@
     0.42
   ],
   "records": [],
+  "marker_visibility": {
+    "count": 0,
+    "maximum_displacement_fraction": 0.015,
+    "maximum_cluster_spread_fraction": 0.06,
+    "coincident_definition": "True glyph bounding boxes overlap (including 0.6-pt edges)",
+    "acceptance": "visible OR bounded with documented coincident neighbours",
+    "points": [],
+    "png_pixel_check": {
+      "dpi": 220,
+      "count": 0,
+      "point_ids": [],
+      "minimum_visible_ink_pixels": 0,
+      "visible_ink_pixels": [],
+      "fully_hidden": 0,
+      "accepted_coincident_point_ids": [],
+      "undocumented_hidden": 0
+    }
+  },
   "input_sha256": {
     "results/a2-curvature-interaction/summary.json": "aed1934bf0c81333e200678f08567d018575fb3fcef7e2ecfcd881c95d3f820f",
     "results/a7-closeout-audit/summary.json": "14d698bc5348bee38fe593632f421fa64d794ad2a2687a70532bae935a078c9e",
@@ -167,11 +185,10 @@
   },
   "artist_sizes": {
     "line_widths_pt": [
-      1.5
+      1.1
     ],
     "marker_sizes_pt": [
-      5.0,
-      6.0
+      3.8
     ],
     "errorbar_widths_pt": [],
     "cap_sizes_pt": [],

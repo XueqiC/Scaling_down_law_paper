@@ -1,0 +1,4 @@
+B: Math, 5 bit.
+Measured responses and frozen relations. A: pruning; B: Math by bit width (410M/143k circles and solid lines; 1.4B/16k squares and dotted lines); C: the twelve U=200 trajectories, separated by student. All original measurements and frozen objects are retained. Colour always denotes capability; grey denotes baseline. Frozen predictions are hollow diamonds. Student line styles: 270M dotted, 1B dashed. No data or fits changed.
+
+Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

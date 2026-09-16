@@ -1161,6 +1161,24 @@
       "frozen_choice_source": "results/v78-rule-confirm/freeze.json#/maps/locked-rule/multi/67/policies/MAP"
     }
   ],
+  "marker_visibility": {
+    "count": 0,
+    "maximum_displacement_fraction": 0.015,
+    "maximum_cluster_spread_fraction": 0.06,
+    "coincident_definition": "True glyph bounding boxes overlap (including 0.6-pt edges)",
+    "acceptance": "visible OR bounded with documented coincident neighbours",
+    "points": [],
+    "png_pixel_check": {
+      "dpi": 220,
+      "count": 0,
+      "point_ids": [],
+      "minimum_visible_ink_pixels": 0,
+      "visible_ink_pixels": [],
+      "fully_hidden": 0,
+      "accepted_coincident_point_ids": [],
+      "undocumented_hidden": 0
+    }
+  },
   "input_sha256": {
     "results/v78-rule-confirm/compare.json": "601669be112c5dd7c016e859423700a98f6a916dcd12c838bb5cd9c8c09686a8",
     "results/v78-rule-confirm/freeze.json": "78dd229d7131f485b3a0651eac6978d2671ad139c02fcc2ea753d3420d5f129f",
@@ -1168,6 +1186,33 @@
   },
   "axes": [
     {
+      "rectangle": [
+        0.064,
+        0.21333333333333335,
+        0.9039999999999999,
+        0.7466666666666666
+      ],
+      "xticks": [
+        0.0,
+        16.0
+      ],
+      "yticks": [
+        0.0,
+        1.0,
+        2.0,
+        3.0
+      ],
+      "x_tick_labels": [
+        "20",
+        "100"
+      ],
+      "minor_y_tick_labels": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
       "xlim": [
         -0.5,
         16.5
@@ -1178,7 +1223,13 @@
       ],
       "xscale": "linear",
       "yscale": "linear",
-      "row_labels": []
+      "row_labels": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
     }
   ],
   "legend_entries": [],
@@ -1209,7 +1260,13 @@
         7.5,
         7.5
       ],
-      "y_ticks": [],
+      "y_ticks": [
+        7.5,
+        7.5,
+        7.5,
+        7.5,
+        7.5
+      ],
       "x_label": 8.5,
       "y_label": 8.5
     }
