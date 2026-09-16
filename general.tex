@@ -3,8 +3,7 @@
 
 Each test below scores predictions frozen before measurement. Table~\ref{tab:main-prediction-v2}
 gives the error of each relation against its development-stage baseline with its status;
-Fig.~\ref{fig:generalization} shows the same comparison per row; per-cell results are in
-Appendix~\ref{sec:app_results}.
+Fig.~\ref{fig:generalization} shows the same comparison per row, separated by the kind of novelty.
 
 
 
@@ -31,17 +30,17 @@ five times the development range, the source-conditioned pruning forms lose to t
 math (0.30 against 0.12) and QA (0.91 against 0.12) and tie on code, the per-bit quantization
 regression is worse than the per-bit median at each bit-width, and on a 2.8B source inside the size
 range the frozen median density curve predicts within 0.08, 0.05 and 0.07 nats while both
-source-conditioned forms are three to seven times worse (Appendix~\ref{sec:app_results}). For
+source-conditioned forms are three to seven times worse. For
 distillation the 4B student, 6.6 times the reference size and a development student in the final
 round, keeps only its QA gain at the development pools (0.83, $[0.12,1.54]$) and is beaten by the
-frozen constant at the unseen pool on each capability (Section S4 of the supplement).
+frozen constant at the unseen pool on each of the three capabilities.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figs/fig3_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.2in}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of seen states}\end{subfigure}%
 \begin{subfigure}[t]{1.45in}\centering\includegraphics[width=\linewidth]{figs/fig3_b.pdf}\caption{New sources or students}\end{subfigure}%
-\begin{subfigure}[t]{1.85in}\centering\includegraphics[width=\linewidth]{figs/fig3_c.pdf}\caption{Corner contrasts and fresh distributions}\end{subfigure}
+\begin{subfigure}[t]{1.85in}\centering\includegraphics[width=\linewidth]{figs/fig3_c.pdf}\caption{Corner contrasts}\end{subfigure}
 \caption{Generalization of the frozen relations, by kind of novelty. In (a) and (b) each row compares
 the error of the relation (hollow diamonds) with that of the development-selected baseline (hollow capability markers) on the
 same cells. The connecting segment uses the capability colour where the relation is lower and grey otherwise, with whiskers
@@ -50,7 +49,7 @@ drawn as such. (c) Prediction minus measurement for the corner second difference
 registered bands (the primary QA test failed to reject additivity) and for the registered corner
 contrasts on the fresh distributions, on which no frozen response-law prediction exists. The two
 pruning rows marked frozen are the new-state confirmation inside and outside the fitted density
-range; per-cell errors are in Appendix~\ref{sec:app_results}.}
+range.}
 \label{fig:generalization}
 \end{figure}
 \begin{figure}[t]
@@ -77,6 +76,6 @@ stated error. For new sources and students they are not: at five times the devel
 the source-conditioned pruning forms lose to a median curve, and the 4B distillation student keeps
 only its QA gain. New evaluation distributions split by sign. A relation from this paper should be used
 inside the panel it was tested on, with a one-point calibration when the state is new; beyond that
-range its status is a recommendation and no longer a prediction.
+range its status is a recommendation and no longer a prediction supported by a frozen test.
 
 \FloatBarrier

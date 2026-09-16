@@ -5,7 +5,7 @@ The measurements determine what a law must reproduce.
 
 \paragraph{Damage is uneven across capabilities, and the ordering is not fixed.} Across twelve public
 models the same pruning density leaves QA the least damaged capability in some series and the
-most damaged in others (Appendix~\ref{sec:app_hetero}); on the controlled Pythia panel, math and code
+most damaged in others; on the controlled Pythia panel, math and code
 respond to density along one shared shape with a capability-specific scale, while the QA response
 changes sign across density, so no scaling of a shared curve represents it
 (Figs.~\ref{fig:heterogeneity} and \ref{fig:pythia_responses}).
@@ -21,7 +21,7 @@ changes sign across density, so no scaling of a shared curve represents it
 family. Bars are loss changes from each model's own dense loss for math, code and QA under (a)
 pruning to $d=0.7$ and (b) per-channel int4 quantization. The ordering of capabilities changes
 across series and the magnitudes differ by two orders at the same setting. Positive values
-indicate higher loss.}
+indicate a loss above that of the dense model.}
 \label{fig:heterogeneity}
 \end{figure}
 \begin{figure}[t]
@@ -36,7 +36,7 @@ the pointwise median of the state-conditioned power-form predictions for math an
 median development curve for QA. (b) Loss change against bit-width under per-channel
 round-to-nearest, including the 3-bit collapse. (c) Loss change against group size at 3, 4 and 5
 bits for the 410M state at step 143k, math; groups 32 and 512 were unseen at the freeze. Positive
-values indicate higher loss.}
+values indicate a loss above that of the dense model.}
 \label{fig:pythia_responses}
 \end{figure}
 \paragraph{Size and stage of the source shape the response, inside a range.} Parameter count and
@@ -46,7 +46,7 @@ the development range the source-conditioned
 forms, a per-density regression and the median density curve agree within 0.05 nats at unseen
 stages of a 1B source; at a 6.9B source, five times the development range, the source-conditioned
 forms lose to the median curve on math (0.30 against 0.12 nats) and QA (0.91 against 0.12) and tie
-on code (\S\ref{sec:general}).
+on code, as the tests of \S\ref{sec:general} show.
 
 
 
@@ -65,7 +65,8 @@ it.} At one rate and a matched budget near 200k supervised tokens (Fig.~\ref{fig
 pool reused about twelve times costs QA $+0.29$, $+2.55$ and $+4.85$ nats on students of 100M, 700M
 and 3.2B non-embedding parameters, and nine times more independent data converts the same budget
 into a gain near one nat on each student; math and code damage also falls monotonically with reuse. Two pool seeds per
-cell put the pool-draw noise near 0.02 nats on code and 0.13 on QA.
+cell put the pool-draw noise near 0.02 nats on code and 0.13 nats on QA, small against the reuse
+cost.
 
 \paragraph{The cost transfers across QA distributions; the gain does not.} Scored on a fresh 2Wiki
 sample, MuSiQue and TriviaQA, all three distributions worsen at high reuse and improve monotonically as
@@ -86,7 +87,7 @@ for math, code and QA on three students (dotted 270M, dashed 1B, solid 4B); each
 mean of the two pool seeds, whose separate values are the two marker shapes. (b) The same
 trajectories scored on three fresh QA distributions. (c) Final-checkpoint
 loss change against the peak learning rate for the 1B (solid) and 4B (dashed) students at one pool.
-Positive values indicate higher loss.}
+Positive values indicate a loss above that of the initial student.}
 \label{fig:responses_v2}
 \end{figure}
 \begin{figure}[t]
