@@ -1,37 +1,37 @@
 \section{Introduction}
 \label{sec:intro}
 
-Deployed language-model agents are specialists
-\citep{yao2023react,schick2023toolformer,jimenez2024swebench,liu2024agentbench} that pay for every
-token. The model that serves such a workload is usually a reference model scaled down by pruning,
-quantization, or distillation, and choosing the route and its strength today means measuring every
-candidate. A single compression ratio cannot replace that search, because compression does not
-shrink capabilities uniformly: across twelve public models the same pruning density leaves QA the
-least-damaged capability in some series and the most-damaged in others
+Deployed language-model agents are specialized systems
+\citep{yao2023react,schick2023toolformer,jimenez2024swebench,liu2024agentbench} whose cost scales
+with each token. The model that serves such a workload is usually a reference model scaled down by pruning,
+quantization, or distillation, and choosing the method and its strength currently requires
+measuring each candidate. A single compression ratio does not replace that search, because
+compression does not reduce capabilities uniformly: across twelve public models the same pruning density leaves QA the
+least damaged capability in some series and the most damaged in others
 (Appendix~\ref{sec:app_hetero}).
 
-We therefore ask how the capability-conditioned loss after compression
+We ask how the capability-conditioned loss after compression
 can be predicted from the initial model state and the configuration of
 the method. The endpoint is the conditional loss of each capability on a fixed probe set relative to a
 reference measured beforehand (Eq.~\ref{eq:interface}); the admitted inputs are the initial state
 (parameter count, pretraining tokens, reference capability losses) and the intervention setting, and
-no measurement of the compressed target enters. Relations are developed on a controlled panel of Pythia checkpoints whose size and pretraining
+no measurement of the compressed target is used. Relations are developed on a controlled panel of Pythia checkpoints whose size and pretraining
 stage vary independently, and tested with coefficients and predictions frozen before new
 configurations and states are measured.
 
-The study is organised as one chain: define the prediction problem and its admitted inputs, measure
-the responses under control, ask which conditions and mechanisms explain their variation, build the
-relations those measurements permit, test them on new configurations, states and distributions, and
-carry the survivors into a selection decision. Three kinds of result come out of it. (1)
+The study proceeds in one sequence: we define the prediction problem and its admitted inputs,
+measure the responses under control, ask which conditions and mechanisms explain their variation,
+build the relations that those measurements permit, test them on new configurations, states and
+distributions, and carry the surviving relations into a selection decision. Three kinds of result
+follow. (1)
 \emph{Responses and relations}: capability-conditioned damage is structured, and where its shape is
-shared across states a bounded relation predicts it, per method, with the tested range stated in the
-same breath. (2) \emph{Understanding gained in building
+shared across states a bounded relation predicts it, per method, with its tested range stated alongside it. (2) \emph{Understanding gained in building
 reliable laws}: why a logarithmic reuse term fails and additivity was still not rejected; why source
 descriptors fit without transferring; why question answering and code diverge; and what
-identifiability demands of a design, since the data that fitted a curvature exponent contained no
-rectangle on which the additive and interacting readings could be told apart. (3) \emph{Guidance for experiment design and configuration choice}: which inputs to admit for
+identifiability requires of a design, because the data that fitted a curvature exponent contained
+no rectangle on which the additive and interacting readings could be separated. (3) \emph{Guidance for experiment design and configuration choice}: which inputs to admit for
 which transfer, when a calibrated configuration median is the better default, why the protocol must
 be fixed before damage is measured, how to design data-reuse experiments so that the decisive
-statistic is computable, and how far a selection rule has been validated. Every relation, verdict and
-recommendation keeps the status it was given before the outcome was measured: development, frozen
+statistic is computable, and how far a selection rule has been validated. Each relation, verdict and
+recommendation keeps the status assigned before its outcome was measured: development, frozen
 prediction, or post-hoc recommendation.

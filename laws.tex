@@ -7,10 +7,10 @@ Table~\ref{tab:main-prediction-v2} collects them by method and prediction task w
 each needs, the range it was tested on, its error, the baseline selected inside the development
 folds, and a status that keeps development results, frozen predictions and post-hoc recommendations
 apart. The anchor $L_{0,c}$ reconstructs an absolute loss; the response $\widehat\Delta_{m,c}$ is
-the predictive claim. Conditioning on the initial state earns its place on the pruning panel, where
+the predictive claim. Conditioning on the initial state is justified on the pruning panel, where
 a per-setting regression on $(N_0,D_0,L_{0,c})$ lowers the error from 0.41, 0.52 and 0.50 nats to
-0.25, 0.29 and 0.81 for math, code and QA (Section S2 of the supplement); every arm also
-carries a source-free relation for the cases where those inputs add nothing. Selection and boundary
+0.25, 0.29 and 0.81 for math, code and QA (Section S2 of the supplement); each arm also
+carries a source-free relation for the cases in which those inputs add nothing. Selection and boundary
 detail for each relation is in Appendix~\ref{sec:app_selbound}.
 
 \input{tables/main_prediction_v2}
@@ -36,28 +36,28 @@ $\widehat L_c=L_{0,c}+\widetilde f_c(d)$.
 relation is the per-bit source regression on seen states and the per-bit median on new ones. With
 groups of $g$ weights per scale as a second axis, the delivered relation for math and code on seen
 states is a same-input piecewise interpolation over the measured $(b,g)$ grid, linear in $\log_2 g$,
-with a zero floor beyond it; for QA, and for every capability on a new state, the per-configuration
+with a zero floor beyond it; for QA, and for each capability on a new state, the per-configuration
 development median under the same rule.
 \subsection{Distillation}
 \label{sec:law_distill}
 
 \paragraph{Relation.} The response is the signed transfer $\delta_c$ of
 an existing student relative to its own reference loss; the teacher
-never enters it, and the coordinates are the supervised completion
+does not enter it, and the coordinates are the supervised completion
 tokens $T$, the pool size $D_U$, and the reuse count $E=T/D_U$. The
 delivered relations, frozen for the confirmation, are
 \begin{equation}
 \widehat\delta_c=a_c\log(1+E)\ (\text{math, code}),\qquad \widehat\delta_{\mathrm{QA}}=u\,(a+b\,u+q\,v),
 \label{eq:kdforms}
 \end{equation}
-with $u=\log(1+T/T_{\mathrm{ref}})$ and $v=\log(D_U/D_{\mathrm{ref}})$: one parameter for math and code, which vanish at zero budget, and three for QA; QA improves under every recipe we ran while math and
+with $u=\log(1+T/T_{\mathrm{ref}})$ and $v=\log(D_U/D_{\mathrm{ref}})$: one parameter for math and code, which vanish at zero budget, and three for QA; QA improves under each recipe we ran, and math and
 code move by hundredths to tenths of a nat.
-\paragraph{What a practitioner can compute today.} Table~\ref{tab:main-prediction-v2} gives one relation per arm and task with its range and its
+\paragraph{Predictions available in practice.} Table~\ref{tab:main-prediction-v2} gives one relation per arm and task with its range and its
 error against the development-stage strongest baseline. For pruning at an unseen density of a
 seen source, the power form predicts math and code to about 0.24 nats and should not be used for QA
 or outside $d\in[0.6,0.9]$. For quantization the measured grid is the predictor: interpolate group
 sizes on a seen state, use the per-bit median on a new state, and expect 0.13 to 0.17 nats. For
 distillation, the one-coefficient reuse forms and the QA joint form hold on the development students
 at the 2Wiki distribution; the budget-doubling and data-change interventions are not predicted by any
-of the parsimonious forms tried, and the corresponding rows of the table say so. Each row carries its
+of the parsimonious forms tried, and the corresponding rows of the table record this. Each row carries its
 status: development, frozen prediction, or post-hoc recommendation.

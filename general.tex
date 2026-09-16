@@ -1,7 +1,7 @@
 \section{Independent Tests: Configurations, Model States, and Capabilities}
 \label{sec:general}
 
-Every test below scores predictions frozen before measurement. Table~\ref{tab:main-prediction-v2}
+Each test below scores predictions frozen before measurement. Table~\ref{tab:main-prediction-v2}
 gives the error of each relation against its development-stage baseline with its status;
 Fig.~\ref{fig:generalization} shows the same comparison per row; per-cell results are in
 Appendix~\ref{sec:app_results}.
@@ -13,12 +13,12 @@ Appendix~\ref{sec:app_results}.
 
 On three Pythia checkpoints that entered no fit, the frozen pruning power form matches the
 per-density regression on math with a quarter of the parameters (0.24 against 0.23 nats), trails the
-median on code, and loses QA to every source-free curve; at $d=0.55$, outside the range, every
+median on code, and loses QA to each source-free curve; at $d=0.55$, outside the range, each
 source-conditioned form fails by 0.6 to 4.5 nats. In grouped quantization, with predictions frozen on all 54 cells, unseen group sizes on the
 development states are predicted best by the piecewise interpolation for math and code (0.07 and
 0.12 nats), and on a state absent from the fit by the median for math and QA and the interpolation
 for code. For distillation, at six
-new pools and three new budgets every selected form beats zero change and the gain over the
+new pools and three new budgets each selected form beats zero change and the gain over the
 development-designated baseline is detected for code on both students (0.004 and 0.005 nats) and for
 QA on the 270M only (Table~\ref{tab:main-prediction-v2}).
 
@@ -29,12 +29,12 @@ Inside the range the frozen forms and the median curve lie within 0.05 nats of o
 unseen stages of a 1B source. Outside it, at a 6.9B source
 five times the development range, the source-conditioned pruning forms lose to the median curve on
 math (0.30 against 0.12) and QA (0.91 against 0.12) and tie on code, the per-bit quantization
-regression is worse than the per-bit median at every bit-width, and on a 2.8B source inside the size
+regression is worse than the per-bit median at each bit-width, and on a 2.8B source inside the size
 range the frozen median density curve predicts within 0.08, 0.05 and 0.07 nats while both
 source-conditioned forms are three to seven times worse (Appendix~\ref{sec:app_results}). For
 distillation the 4B student, 6.6 times the reference size and a development student in the final
 round, keeps only its QA gain at the development pools (0.83, $[0.12,1.54]$) and is beaten by the
-frozen constant at the unseen pool on every capability (Section S4 of the supplement).
+frozen constant at the unseen pool on each capability (Section S4 of the supplement).
 
 \begin{figure}[t]
 \centering
@@ -70,13 +70,13 @@ Colour is the method the rule selects; an open marker marks a budget at which th
 chooses a different method. Predictions were frozen before measurement.}
 \label{fig:rule_main_v2}
 \end{figure}
-\paragraph{The range each relation has earned.} Figure~\ref{fig:generalization} separates the kinds
-of novelty. New configurations of seen states are where the initial-state inputs pay: unseen pruning
+\paragraph{The validated range of each relation.} Figure~\ref{fig:generalization} separates the kinds
+of novelty. For new configurations of seen states the initial-state inputs are useful: unseen pruning
 densities inside the range and unseen group sizes on development states are predicted within their
-stated error. New sources and students are where they do not: at five times the development size
+stated error. For new sources and students they are not: at five times the development size
 the source-conditioned pruning forms lose to a median curve, and the 4B distillation student keeps
 only its QA gain. New evaluation distributions split by sign. A relation from this paper should be used
 inside the panel it was tested on, with a one-point calibration when the state is new; beyond that
-its status is a recommendation, not a prediction.
+range its status is a recommendation and no longer a prediction.
 
 \FloatBarrier

@@ -118,26 +118,26 @@ Address \\
 \maketitle
 
 \begin{abstract}
-Specialized workloads need specific capabilities, and the models that serve them are usually
-reference models scaled down by pruning, quantization, or distillation. We study, with one endpoint
-and one validation standard across the three methods, under which inputs, configurations and
-evaluation scopes a parsimonious relation predicts the loss conditioned on a capability and an
-evaluation distribution, and which plausible structures fail under independent test. Controlled
+Specialized workloads require specific capabilities, and the models that serve them are usually
+reference models reduced by pruning, quantization, or distillation. We study, with one endpoint
+and one validation standard across the three methods, the inputs, configurations and evaluation
+scopes under which a parsimonious relation predicts the loss conditioned on a capability and an
+evaluation distribution, and which plausible structures fail under independent tests. Controlled
 measurements on Pythia checkpoints whose size and pretraining stage vary independently, and on Gemma
-students under a fixed distillation protocol, fix what any law must reproduce: capability-uneven
-damage whose ordering changes across models, a source-state dependence that holds inside a range,
-distillation damage set by the learning rate, and a cost of reusing a small data pool that grows with
-reuse and student size and transfers across question-answering distributions while the gain does
-not. The relations that survive frozen tests are method-specific and bounded: a five-parameter
+students under a fixed distillation protocol, establish the observations that a law must
+reproduce: damage that differs across capabilities with an ordering that changes across models, a
+dependence on the source state that holds inside a range, distillation damage that depends on the
+learning rate, and a cost of reusing a small data pool that grows with the reuse ratio and the
+student size and transfers across question-answering distributions although the gain does not. The relations that pass frozen tests are method-specific and bounded: a five-parameter
 pruning form for math and code inside its density range, a same-input interpolation over the
 measured quantization grid, and one-coefficient reuse forms on the development students. Structures
-that did not survive are reported with what excluded them, including a logarithmic reuse term that
-fails its own flatness implication and a fit-free rectangle test that neither rejects nor
+that failed are reported with the evidence that excluded them, including a logarithmic reuse term
+that contradicts its own flatness implication and a fit-free rectangle test that neither rejects nor
 establishes additivity of budget and reuse. A second-order account explains compression damage
-across three families inside a magnitude boundary without predicting it. We connect the relations
-to a capability- and budget-specific selection problem validated prospectively on four fresh
-states, state the range and calibration cost of every prediction, and release coefficients,
-registered predictions, measurements and code. The public code repository is
+across three families inside a magnitude boundary but does not predict it. The relations feed a
+capability- and budget-specific selection problem validated prospectively on four fresh states. We
+state the range and calibration cost of each prediction and release coefficients, registered
+predictions, measurements and code. The public code repository is
 \url{https://anonymous.4open.science/r/scaling_down_law}.
 \end{abstract}
 

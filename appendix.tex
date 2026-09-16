@@ -5,13 +5,13 @@
 \label{sec:app_probes}
 
 Each capability is measured on a fixed probe set of prompt and reference pairs, drawn once with a
-fixed seed from held-out benchmark splits that are disjoint from every training and recovery source
+fixed seed from held-out benchmark splits that are disjoint from all training and recovery sources
 used in the paper. The primary benchmarks are MATH-500 \citep{hendrycks2021math,lightman2023verify}
 for mathematical reasoning, MBPP \citep{austin2021program} for code generation, and 2WikiMultihopQA
 \citep{ho2020constructing} for multi-hop question answering. For each capability we draw 128 probes
 and split them by index parity into an estimation half, used only for gradient and Fisher
-statistics, and a measurement half of 64 probes on which every reported loss is computed, so that
-mechanism statistics and evaluations do not share sampling noise. Every result in the paper uses the
+statistics, and a measurement half of 64 probes on which each reported loss is computed, so that
+mechanism statistics and evaluations do not share sampling noise. All reported results use the
 64-probe measurement half unless a 512-probe re-measurement is stated.
 
 The secondary benchmarks of the measurement checks (Appendix~\ref{sec:app_measure}) are GSM8K
@@ -36,13 +36,13 @@ applied to the same dense reference weights.
 
 \paragraph{Per-channel quantization.} Weights are fake-quantized per output channel with symmetric
 round-to-nearest at bit-width $\bits$: integers are clamped to $[-q_{\max},q_{\max}]$ with
-$q_{\max}=2^{\bits-1}-1$, the per-channel scale is the channel's maximum absolute weight divided by
+$q_{\max}=2^{\bits-1}-1$, the per-channel scale is the maximum absolute weight of the channel divided by
 $q_{\max}$, and activations stay in bfloat16. The dense weights are restored between bit-widths.
 Because the clipping range is fixed, the step size from 4 to 5 bits shrinks by $7/15$ and the
-squared step ratio between adjacent bit-widths is $(q_{\max}(\bits)/q_{\max}(\bits+1))^2$ rather
-than a constant $1/4$; a squared step ratio becomes a loss ratio only under assumptions about the
+squared step ratio between adjacent bit-widths is $(q_{\max}(\bits)/q_{\max}(\bits+1))^2$ and
+not a constant $1/4$. A squared step ratio becomes a loss ratio only under assumptions about the
 error distribution and the local response that we do not test, so the $4^{-\bits}$ shape is one
-candidate among others rather than a derived reference. Nominal storage ratios are computed from
+candidate among others and not a derived reference. Nominal storage ratios are computed from
 bit-widths; no memory or latency was measured.
 
 \paragraph{Grouped quantization.} The grouped variant (\S\ref{sec:law_quant}) splits each row of a
@@ -57,14 +57,14 @@ answering GSM8K, HotpotQA and CodeAlpaca prompts with 600 traces per domain, und
 recipe: LoRA adapters of rank 16 and scaling 32 on the query, key, value, output, gate, up and down
 projections, AdamW at learning rate $10^{-4}$ unless stated, an effective batch of 16 sequences, and
 a cosine schedule with 3\% warmup. The training mode and the trainable parameter count are recorded
-in each run manifest. Token accounting distinguishes processed tokens (every input token seen,
+in each run manifest. Token accounting distinguishes processed tokens (each input token seen,
 including repetitions), unique pool tokens, and supervised completion tokens. The data pool of $U$
 examples per domain is either the first $U$ rows of the trace file, the historical protocol, or a
 random sample drawn with a pool-sampling seed independent of the training seed; pools are
 identified by the sorted hashes of their samples and pairwise overlaps are reported. The historical
 schedule spanned a fixed number of epochs, so its cosine horizon varied with pool size; the
 controlled matrix of \S\ref{sec:law_distill} uses a schedule defined on the same absolute
-processed-token budget for every pool, and the two protocols are never mixed in a fit.
+processed-token budget for each pool, and the two protocols are not mixed in any fit.
 
 \subsection{The controlled Pythia panel}
 \label{sec:app_pythia}
@@ -109,7 +109,7 @@ Varied distillation recipes. &
 Describes measured responses. \\
 \bottomrule
 \end{tabular*}
-\caption{Cohort rows list models and states, compression interventions, and study roles. Counts describe models, states, probes, or traces per domain; densities and reuse counts are dimensionless, bit widths are in bits, and budgets are in tokens. Rows distinguish development cohorts, frozen prediction tests, and descriptive \mbox{post-hoc} measurements. Every cohort is scored with the same 64 probes per capability on
+\caption{Cohort rows list models and states, compression interventions, and study roles. Counts describe models, states, probes, or traces per domain; densities and reuse counts are dimensionless, bit widths are in bits, and budgets are in tokens. Rows distinguish development cohorts, frozen prediction tests, and descriptive \mbox{post-hoc} measurements. Each cohort is scored with the same 64 probes per capability on
 the primary benchmarks. Counts are generated from the result files. The 2.8B Pythia checkpoints were
 excluded because the step revisions available to us loaded identical weights, which a hash check
 confirmed; nothing is claimed about other revisions.}
@@ -129,21 +129,21 @@ steps 32{,}000, 96{,}000 and 112{,}000; Pythia-6.9B at 32{,}000 and 112{,}000; 4
 1.4B at 112{,}000; 6.9B at 80{,}000) entered no fit or model selection before their predictions
 were frozen.
 
-\paragraph{Weight identity.} The weight identity of every checkpoint was verified before use.
+\paragraph{Weight identity.} The weight identity of each checkpoint was verified before use.
 SHA-256 hashes of the safetensors blobs of all 23 Pythia revisions used (30 unique blobs) show that
-every revision with pruning or quantization measurements resolves to a distinct weight set, with one
+each revision with pruning or quantization measurements resolves to a distinct weight set, with one
 exception: the Pythia-2.8B revisions published for steps 16k, 64k and 143k load identical learned
 parameters. Those revisions were excluded from the panel, and the 2.8B repeatability check
-(Appendix~\ref{sec:app_results}) is therefore one state measured twice. The three checkpoints of the
+(Appendix~\ref{sec:app_results}) is one state measured twice. The three checkpoints of the
 pruning confirmation panel (410M at 48k, 1.4B at 112k, 6.9B at 80k) have shard hashes that differ
-from every other revision of the same size, and their dense capability vectors differ from those of
+from all other revisions of the same size, and their dense capability vectors differ from those of
 the neighbouring stages.
 
 
 
-\paragraph{Architectures and parameter conventions.} Every model in
-the heterogeneous panel and the controlled panel is a dense
-transformer (Section S1 of the supplement); no sparsely activated model
+\paragraph{Architectures and parameter conventions.} All models in
+the heterogeneous panel and the controlled panel are dense
+transformers (Section S1 of the supplement); no sparsely activated model
 entered any fit, so total and per-token active parameter counts
 coincide throughout, and the reference-model definition of
 \S\ref{sec:loss} is exercised only on dense architectures. The laws
@@ -160,9 +160,8 @@ as recorded and not recomputed.
 \section{Measurement Validity}
 \label{sec:app_measure}
 
-The capability-specificity, same-capability agreement, and independent multi-hop
-distribution checks are in Section S3 of the supplement.
-The pre-specified eight-state scope check is also in Section S3 of the supplement.
+The capability-specificity, same-capability agreement, independent multi-hop distribution, and
+pre-specified eight-state scope checks are reported in Section S3 of the supplement.
 
 \paragraph{Loss and behavior.} Loss-to-accuracy links were fit on
 GSM8K accuracy, MBPP pass@1, and TriviaQA exact match and token F1
@@ -182,14 +181,14 @@ full-solution reference and are not evidence of format robustness.
 The loss is the conditional cross-entropy of the reference completion
 given the prompt, summed over completion tokens and divided by the
 number of completion tokens, as in Eq.~\ref{eq:taskloss}. Prompts and
-references are tokenized with the model's own tokenizer and truncated to
+references are tokenized with the tokenizer of each model and truncated to
 1024 tokens; prompt tokens are masked out of the loss. All within-model
 responses $\Delta L_c$ are differences in native-token nats
 on identical token sequences. Because native-token units differ across
 tokenizers, cross-family comparisons of absolute levels use per-byte
 normalization or are reported separately, and no cross-tokenizer
 quantity is treated as a common numerical scale. Negative responses are
-retained as measured; nothing is clipped at zero.
+retained as measured and are not clipped at zero.
 
 \begin{figure}[!t]
 \centering
@@ -219,8 +218,8 @@ one nat, and how QA ranks before that cliff. Magnitudes differ by two
 orders across series at the same density (OLMo-3-32B $+0.01$ against
 Gemma-3-27B $+4.0$ on math at $d=0.7$). The ordering of capabilities is
 series-specific: in the Qwen3 sizes and in OLMo-3-32B, QA is the
-least-damaged capability at every pre-cliff density and improves, by up
-to $-0.79$ nats at Qwen3-4B; in every Gemma-3 size, in Gemma-4-31B,
+least-damaged capability at each pre-cliff density and improves, by up
+to $-0.79$ nats at Qwen3-4B; in each Gemma-3 size, in Gemma-4-31B,
 and in Muse-30B, QA is the most-damaged capability at the mildest
 densities (Gemma-4-31B: $+2.89$ QA against $+0.68$ math at $d=0.7$);
 OLMo-3-7B lies in between with differences of at most $0.15$ nats. A
@@ -231,16 +230,16 @@ occur between $d=0.5$ and $0.7$ for Qwen3 and Gemma, at $0.55$ for
 Muse-30B and $0.35$ for OLMo-3-7B, and had not occurred by $d=0.3$ for
 OLMo-3-32B. Robustness is not monotone in size within a series
 (Gemma-3-12B is the most robust Gemma-3 size; 27B collapses earlier).
-This heterogeneity is what a predictor has to reproduce; it is not an
+A predictor has to reproduce this heterogeneity, which is not an
 invariant.
 
 \paragraph{Quantization.} Table~\ref{tab:panel_quant} covers
 14 models. Int8 and int6 stay within $0.01$ nats of dense. Int4
-damages small models (Gemma-3-270M $+2.0$, $+2.4$, $+0.9$) and barely
-touches large ones (Gemma-3-27B $+0.33$, $+0.23$, $-0.67$); a QA
+damages small models (Gemma-3-270M $+2.0$, $+2.4$, $+0.9$) and changes
+large models little (Gemma-3-27B $+0.33$, $+0.23$, $-0.67$); a QA
 improvement under int4 recurs in five models and exceeds the measurement-noise floor. Int3 collapses 12 of the 14 models by $4.6$ to $28$ nats;
 OLMo-3-7B loses $2.8$ to $4.7$ and OLMo-3-32B only $0.4$ to $1.2$, so
-the collapse is common but not universal, and OLMo-3 is the robust
+the collapse is common although not universal, and OLMo-3 is the robust
 series under both interventions. Within the tested bit-widths a learned
 exponential $q_c e^{-kb}$ fits held-out bits better than the fixed
 $q_c4^{-b}$ shape (pooled MAE $6.7$ against $7.6$ nats), which shows only
@@ -251,9 +250,9 @@ under error-distribution assumptions we do not test.
 
 \paragraph{Distillation.} Black-box traces from two API teachers (600
 per domain) train Gemma-3 students under a full-trace and an
-answer-only recipe in a paired design. The answer-only recipe hurts
+answer-only recipe in a paired design. The answer-only recipe damages
 math more ($+0.19$ to $+0.22$ against $+0.09$ to $+0.12$ nats relative
-to the initial student) while QA improves under every recipe ($-0.58$
+to the initial student) while QA improves under both recipes ($-0.58$
 to $-1.44$); because the recipes differ in supervised tokens and update
 counts, this pairing does not isolate reasoning coverage, and the
 controlled comparisons are those of \S\ref{sec:law_distill}.
@@ -261,7 +260,7 @@ controlled comparisons are those of \S\ref{sec:law_distill}.
 \paragraph{What the endpoint does and does not say.} The same
 heterogeneity appears on independent secondary benchmarks for math and
 QA, where the primary-benchmark response predicts the secondary one
-better than any other capability's response does, with intervals
+better than the response of any other capability does, with intervals
 excluding zero in most hold-out protocols; for code the
 cross-capability predictor is as good or better
 (Appendix~\ref{sec:app_measure}, Fig.~\ref{fig:measurement}). A lower
@@ -275,12 +274,12 @@ does not rise. ``QA improves'' in this paper refers to the loss.
 
 \paragraph{Within-family robustness is non-monotonic in two families
 independently.} Gemma-3 robustness peaks at 12B (27B collapses far
-earlier, $+4.0$ vs.\ $+0.68$ at $\dens=0.7$), mirroring the prior
+earlier, $+4.0$ vs.\ $+0.68$ at $\dens=0.7$), in line with the earlier
 ability-space observation of a Qwen3 14B peak. A mid-scale robustness
-peak is a reproducible pattern of scaling-down.
+peak appears in both families.
 \paragraph{A candidate predictor that was retired.} The
 top-concentration statistic $\kappa_c$ tracked robustness within the
-Qwen3 ladder and was pre-registered as a predictor. The full grid retires it: across families the
+Qwen3 ladder and was pre-registered as a predictor. The full grid does not support it: across families the
 ordering inverts, since OLMo, the most robust family, has the lowest concentration, and within
 Gemma-3 the largest size violates the within-family trend.
 \paragraph{Matched-size panel ($\sim$30B).} At matched scale the
@@ -312,15 +311,15 @@ constants in the register files listed in Appendix~\ref{sec:app_registration}.
 \label{sec:app_selbound}
 
 \paragraph{Pruning: selection.} Fit on nine states at $d\in\{0.9,0.8,0.7,0.6\}$
-and scored at the unseen 0.65 and 0.55, Eq.~\ref{eq:power} cuts the
-strength-only error two- to threefold and A2 matches it; refit on 17
+and scored at the unseen 0.65 and 0.55, Eq.~\ref{eq:power} reduces the
+strength-only error by a factor of two to three, and A2 matches it; refit on 17
 states under a pre-committed leave-one-source-out rule, A2 (0.479)
 and the power form (0.494) tie within 0.02 nats and the rule prefers
 the continuous form that vanishes at $d=1$ (coefficients in
 Appendix~\ref{sec:app_coef}; $\gamma_c$ is a fitted constant, not
 established as necessary).
 
-\paragraph{Pruning: boundary.} Evaluated as a frozen candidate on three new checkpoints, the power form reaches A2's math error with five parameters against twenty and does not beat the median curve on code or QA; on a 2.8B source the median curve is three to seven times better than either source form (\S\ref{sec:general}). The compact form trades accuracy for compactness within a tested range; the median curve is the relation for new states, a rule fixed after these tests and reused frozen in \S\ref{sec:selection}.
+\paragraph{Pruning: boundary.} Evaluated as a frozen candidate on three new checkpoints, the power form reaches the math error of A2 with five parameters against twenty and does not beat the median curve on code or QA; on a 2.8B source the median curve is three to seven times better than either source form (\S\ref{sec:general}). The compact form trades accuracy for compactness within a tested range; the median curve is the relation for new states, a rule fixed after these tests and reused frozen in \S\ref{sec:selection}.
 
 \paragraph{Quantization: selection.} Two parametric candidates were tested first, a
 separable amplitude-times-shape form and a low-order surface in
@@ -351,8 +350,8 @@ $U{=}200$ at three new budgets. A linear form in the student state, fit on nine 
 \paragraph{Distillation: boundary.} At the new pool size the selected form beats the
 frozen strongest baseline for code on both students, where that
 baseline is the same $\log(1+E)$ form with an intercept, so the gain
-supports the zero-budget boundary and parsimony of the form, not a
-full student-data-training law; QA gains on 270M only, math loses to intercept baselines, no selected form is the post-hoc best of the sixteen frozen forms, a minimum selection favours by construction (Section S4 of the supplement); a 6.6-times-larger student is out of range.
+supports the zero-budget boundary and the parsimony of the form and does not
+establish a full student-data-training law; QA gains on 270M only, math loses to intercept baselines, no selected form is the post-hoc best of the sixteen frozen forms, a minimum selection favours by construction (Section S4 of the supplement); a 6.6-times-larger student is out of range.
 
 
 \subsection{Applicability across capabilities}
@@ -362,11 +361,11 @@ Where the initial-state inputs help is method- and range-specific:
 they carry math and code at unseen pruning densities of seen sizes
 and at unseen group sizes of seen states, add nothing on new
 quantization states or in distillation beyond the reference anchor,
-and over-predict the QA pruning response on every new checkpoint. What capability conditioning adds is measurable on the frozen
+and over-predict the QA pruning response on each new checkpoint. What capability conditioning adds is measurable on the frozen
 confirmation panels (Appendix~\ref{sec:app_shared}): per-capability
 pruning curves beat a shared damage curve with a signed
 per-capability scale by 0.06 nats macro (interval $[0.02,0.10]$ with
-the 2.8B duplicate merged), almost entirely through QA (0.17,
+the 2.8B duplicate merged), largely through QA (0.17,
 $[0.11,0.24]$), whose aggregate curve is not proportional to the tested shared curve:
 it changes sign across density (damage at $d=0.55$, improvement from
 0.6 to 0.9), so no scale of that curve, including a negative one,
@@ -397,26 +396,25 @@ Appendix~\ref{sec:app_shared}.
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/final_relations_e.pdf}\subcaption{C: 270M}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/final_relations_f.pdf}\subcaption{C: 1B}\end{subfigure}
 
-\caption{Measured responses and frozen relations on native configuration axes, in native-token nats. \textbf{A:} Pythia-1.4B at step 112k: every measured density (capability markers; dense references coincide at zero), the delivered power form (solid, Eq.~\ref{eq:power}), and frozen median development curves $\widetilde f_c(d)$ (dashed). Shading marks the 17-state refit's range, $d\in[0.55,0.9]$. \textbf{B:} Math responses on Pythia-410M at 143k and 1.4B at 16k, with separate panels/scales for $b=3,4,5$ and a $\log_2 g$ axis. Solid (410M) and dotted (1.4B) lines show frozen same-input piecewise interpolation; dashed lines show per-configuration medians. Boundary extensions in $\log_2 g$ are floored at zero. Hollow diamonds mark predictions at $g=32,512$, unmeasured when frozen; filled markers include their later confirmation measurements. \textbf{C:} All twelve $U=200$ Gemma-3 trajectories (270M and 1B, six sampled pools each), at planned $T=50$k/$100$k/$200$k. Markers and thin connectors show actual responses at recorded $E=T_{\mathrm{actual}}/D_U$, including budget overshoot. Capability-coloured lines evaluate the frozen selected forms, $a_c\log(1+E)$ for math/code and the joint form for QA. Grey lines show the strongest baseline frozen per student/capability; dotted and dashed lines denote 270M and 1B throughout C. Pool-dependent curves retain each $D_U$; coincident curves are drawn once. Coefficients were frozen before confirmation; stored planned-budget predictions are unchanged.}
+\caption{Measured responses and frozen relations on native configuration axes, in native-token nats. \textbf{A:} Pythia-1.4B at step 112k: each measured density (capability markers; dense references coincide at zero), the delivered power form (solid, Eq.~\ref{eq:power}), and frozen median development curves $\widetilde f_c(d)$ (dashed). Shading marks the range of the 17-state refit, $d\in[0.55,0.9]$. \textbf{B:} Math responses on Pythia-410M at 143k and 1.4B at 16k, with separate panels/scales for $b=3,4,5$ and a $\log_2 g$ axis. Solid (410M) and dotted (1.4B) lines show frozen same-input piecewise interpolation; dashed lines show per-configuration medians. Boundary extensions in $\log_2 g$ are floored at zero. Hollow diamonds mark predictions at $g=32,512$, unmeasured when frozen; filled markers include their later confirmation measurements. \textbf{C:} All twelve $U=200$ Gemma-3 trajectories (270M and 1B, six sampled pools each), at planned $T=50$k/$100$k/$200$k. Markers and thin connectors show actual responses at recorded $E=T_{\mathrm{actual}}/D_U$, including budget overshoot. Capability-coloured lines evaluate the frozen selected forms, $a_c\log(1+E)$ for math/code and the joint form for QA. Grey lines show the strongest baseline frozen per student/capability; dotted and dashed lines denote 270M and 1B throughout C. Pool-dependent curves retain each $D_U$; coincident curves are drawn once. Coefficients were frozen before confirmation; stored planned-budget predictions are unchanged.}
 \label{fig:responses_relations}
 \end{figure}
 
 \subsection{Shared structure, parameter ranges, and one-point calibration}
 \label{sec:app_shared}
 
-\paragraph{Shared structure, ranges, and calibration.} One function
+One function
 family for all three methods, with method- and capability-specific
 parameters, holds for pruning by construction and fails for the other two arms on
-the same held-out splits (Appendix~\ref{sec:app_shared}). Within pruning one exponent shared across capabilities costs nothing
+the same held-out splits. Within pruning one exponent shared across capabilities costs nothing
 (leave-one-source MAE within 0.02 nats of per-capability exponents),
-whereas the quantization coefficients must be capability-specific. Three ranges are kept apart
-(Appendix~\ref{sec:app_shared}): the bootstrap intervals of the pruning coefficients exclude zero for
+whereas the quantization coefficients must be capability-specific. Three ranges are kept apart: the bootstrap intervals of the pruning coefficients exclude zero for
 the dense-anchor term on math and code and not on QA; per-source
 exponents spread widely (3.0 to 6.0 for math); and 80\% prediction
 intervals from leave-one-source residuals
 under-cover (78\% on the 27 confirmation-panel cells, 67\% on the 1B
 and 6.9B pair cells) at a mean full width near 1.5 nats. One-point calibration of the pruning amplitude at the mildest density
-amplifies noise and is no shortcut (Appendix~\ref{sec:app_shared}).
+amplifies noise and offers no saving.
 
 
 
@@ -433,7 +431,7 @@ Table~\ref{tab:shared_structure} reports the shared-family test, the parameter-s
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_compact_b.pdf}\subcaption{Same-input form}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_compact_c.pdf}\subcaption{Capability shape}\end{subfigure}
 
-\caption{Which inputs and forms matter. A: improvement (nats, positive = better) from adding the dense anchor $L_{0,c}$ to $(N_0,D_0)$ and from adding $D_0$ to $(N_0,L_{0,c})$ on the controlled panel, leave-one-stage-out, with 95\% cluster-bootstrap intervals. B: improvement of the shared power form over the same-input alternatives A2 and A1 on every pruning test (positive = power form better). C: gain of per-capability response shapes over a shared shape at matched parameter count on the distillation development matrix (positive = per-capability better). Intervals only where computed.}
+\caption{Contribution of inputs and functional forms. (a) Improvement in nats from adding the dense anchor $L_{0,c}$ to $(N_0,D_0)$ and from adding $D_0$ to $(N_0,L_{0,c})$ on the controlled panel under leave-one-stage-out folds, with 95\% cluster-bootstrap intervals; positive values favour the added input. (b) Improvement of the shared power form over the same-input alternatives A2 and A1 on each pruning test; positive values favour the power form. (c) Gain of per-capability response shapes over a shared shape at matched parameter count on the distillation development matrix; positive values favour the per-capability shapes. Intervals are shown only where they were computed.}
 \label{fig:inputs}
 \end{figure}
 
@@ -453,7 +451,7 @@ supports no conclusion about conditioning there. The audit of this
 comparison (Section S2 of the supplement) shows that negative scales were allowed
 and none occurred, and that the QA gain arises because the aggregate
 QA curve reverses sign across density, a shape no proportional
-baseline can represent; QA's direction also varies across
+baseline can represent; the direction of QA also varies across
 development sources, which neither source-free variant captures. The
 ablation is retrospective.
 
@@ -471,7 +469,7 @@ ablation is retrospective.
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/frozen_candidates_c.pdf}\subcaption{Distillation}\end{subfigure}
 
 \caption{Frozen candidates on the confirmation panels, summarising per-cell
-prediction against measurement for every frozen candidate. Hatched bars show MAE of the strongest frozen alternative minus candidate MAE; hollow diamonds show the delivered-rule gain where it differs. Each panel retains two cohorts, top then bottom: pruning C35/C52, quantization C44/C46, and distillation C47/C48.}
+prediction against measurement for each frozen candidate. Hatched bars show MAE of the strongest frozen alternative minus candidate MAE; hollow diamonds show the delivered-rule gain where it differs. Each panel retains two cohorts, top then bottom: pruning C35/C52, quantization C44/C46, and distillation C47/C48.}
 \label{fig:confirm}
 \end{figure}
 
@@ -482,17 +480,17 @@ prediction against measurement for every frozen candidate. Hatched bars show MAE
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/generalization_cells_b.pdf}\subcaption{New sources/students}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/generalization_cells_c.pdf}\subcaption{Fresh QA}\end{subfigure}
 
-\caption{Per-cell prediction minus measurement for every frozen relation, by kind of novelty; the
+\caption{Per-cell prediction minus measurement for each frozen relation, by kind of novelty; the
 main-text figure summarises these cells as paired errors against the development-selected baseline.
 Crosses mark cells whose artifact stores no interval.}
 \label{fig:generalization_cells}
 \end{figure}
 
 \input{tables/final_deliverables}
-Tables in Section S4 of the supplement give every registered test in three lines (candidate,
-strongest same-input baseline, strongest simple baseline) with improvements and provenance codes;
-the table in Section S4 of the supplement the per-stage, per-protocol results of the Pythia-1B and 6.9B pairs; tables in Section S4 of the supplement the confirmation panel and the grouped-quantization tests; the figure in Section S4 of the supplement the paired
-improvements behind Fig.~\ref{fig:inputs}.
+Section S4 of the supplement gives each registered test in three lines (candidate,
+strongest same-input baseline, strongest simple baseline) with improvements and provenance codes,
+the per-stage and per-protocol results of the Pythia-1B and 6.9B pairs, the confirmation panel and the
+grouped-quantization tests, and the paired improvements behind Fig.~\ref{fig:inputs}.
 \begin{retargetreferences}{\retargetreference{Appendix Tables~\ref{tab:pred_source}--\ref{tab:pred_config_qd}}{Section S4 of the supplement}}
 \input{tables/pred_full}
 \end{retargetreferences}
@@ -518,11 +516,11 @@ trajectories of the uniform protocol (leave-one-trajectory-out, ties
 within 0.02 nats toward fewer parameters: a reuse-count form for math
 and code, the joint form for QA), froze predictions for six new pools
 of $U{=}200$ at budgets of 50k, 100k, and 200k supervised tokens, and
-fixed the strongest baseline per student and capability from the same development pass (a development-designated baseline; ranked post hoc over all sixteen frozen forms, a source-conditioned variant has the lowest test MAE for every student and capability, Section S4 of the supplement); Table~\ref{tab:distill_confirm} gives the paired differences with
+fixed the strongest baseline per student and capability from the same development pass (a development-designated baseline; ranked post hoc over all sixteen frozen forms, a source-conditioned variant has the lowest test MAE for each student and capability, Section S4 of the supplement); Table~\ref{tab:distill_confirm} gives the paired differences with
 pool-cluster intervals (six independent pools). Dense losses
 re-measured on a different GPU drift by at most 0.001 nats from the
-frozen descriptor and were tolerated at 0.01; shifting every response
-by $\pm$ that trajectory's drift changes no interval sign (0 of 12
+frozen descriptor and were tolerated at 0.01; shifting each response
+by the drift of its trajectory in either direction changes no interval sign (0 of 12
 comparisons, 0 of 36 per-budget comparisons). Per-example losses are
 not stored, so an item-level interval cannot be computed; each
 evaluation scores 64 items per capability, and the pool-cluster
@@ -538,7 +536,7 @@ intervals cover pool sampling only.
 \subsection{The pruning law}
 \label{sec:law}
 
-The mechanism form below fits the entire pre-cliff grid.
+The mechanism form below fits the full pre-cliff grid.
 With the measured alignment term subtracted, the curvature residual
 follows a power law in the deleted capability mass $m_c(\dens)$:
 \begin{equation}
@@ -547,11 +545,10 @@ follows a power law in the deleted capability mass $m_c(\dens)$:
 \label{eq:fitlaw}
 \end{equation}
 with in-sample $R^2 = 0.82$--$0.996$ over 24 capability$\times$model
-fits. The held-out battery (1000-resample cell bootstrap) is where the
-form is tested: in \emph{leave-one-family-out} transfer the
+fits. The form is tested on the held-out battery (1000-resample cell bootstrap): in \emph{leave-one-family-out} transfer the
 shared-$\gamma$ mechanism form attains MAE $2.17$ nats versus $10.3$
 for per-capability raw sparsity and $8.2$ for the direct-damage
-baseline (both CIs exclude zero), so the deleted-mass coordinate is what
+baseline (both CIs exclude zero), so the deleted-mass coordinate
 transfers across families; it also beats the direct-damage baseline in
 fit-shallow/predict-deep ($3.11$ vs.\ $4.24$) and raw sparsity in
 leave-largest-model-out ($1.41$ vs.\ $2.15$), while its edge over raw
@@ -560,15 +557,15 @@ sparsity within-model does not reach significance
 with it, QA joins the law). Two structural results:
 (i) in the deleted-mass coordinate the exponent concentrates at
 $\gamma\in[1.2,2.2]$ across all families, versus $3.2$--$8.7$ in the
-raw $(1-\dens)$ coordinate, which is what makes
+raw $(1-\dens)$ coordinate, which makes
 the form portable; and (ii) \emph{within a model, $\gamma$ is shared
 across capabilities} (for example Qwen3-0.6B: $1.41/1.56/1.43$;
 Gemma3-4B: $1.66/1.71$): capability differences appear to be carried
 by the two measured quantities, and the fitted structure is two
 parameters per model. This mechanism form uses gradient
-information of the dense model and is therefore not a K0 predictor; it
+information of the dense model and is not a K0 predictor; it
 is reported as an upper comparator for the reduced forms of the main
-text, not as a bound.
+text and not as a bound.
 
 \subsection{The signed first-order term predicts, in both directions}
 \label{sec:mech}
@@ -581,13 +578,13 @@ $-0.83$ vs.\ measured $-0.79$ at 4B, $\dens=0.7$); the QA term of Gemma is
 positive and no improvement exists at any size; the term for OLMo-3-7B is
 positive (mild degradation, prediction $+0.015$ $=$ measurement at
 $\dens=0.8$, code) while the term for OLMo-3-32B is negative, and
-deep-pruning QA improvement duly appears. At the level of individual model$\times$capability$\times$density
+QA improvement under deep pruning appears. At the level of individual model$\times$capability$\times$density
 cells in the mild regime, sign prediction accuracy is $67.6\%$
 (Wilson 95\% CI $[58.3,75.7]$, $n{=}108$), above chance, with the
 family-level pattern (Qwen and OLMo-32B QA improvements, Gemma
-none, an OLMo size flip) called in advance. Beyond the mild regime, first- plus second-order
+none, an OLMo size flip) stated in advance. Beyond the mild regime, first- plus second-order
 predictions fail by orders of magnitude at the cliff in each family:
-the collapse is non-perturbative in loss space, confirming the
+the collapse is non-perturbative in loss space, consistent with the
 two-regime structure of \eqref{eq:fitlaw}.
 
 \subsection{The cliff is a geometric threshold crossing}
@@ -604,8 +601,8 @@ The critical value is family-specific (Gemma: $0.035$--$0.10$ across
 1B/4B and all capabilities; Qwen: $0.13$--$0.23$) but consistent
 within a family across sizes and capabilities: the cliff boundary
 $\dens_c^{*}(N_0,f)$ reduces to one critical-retention constant per
-family, turning the least elegant fitted parameter of the two-regime
-law into a measurable, smoothly evolving order parameter.
+family, so the fitted cliff parameter of the two-regime
+law becomes a measurable, smoothly varying order parameter.
 \preliminary{three models, two families; a multi-model extension is left to future work}
 
 \subsection{The logit-displacement account of compression damage}
@@ -620,7 +617,7 @@ cross-entropy on a supervised token $y$ with reference distribution $p$ is exact
 so the first-order term is the signed alignment of the displacement with the target and the
 second-order term is coefficient-free. Evaluated on 339 cells across pruning, grouped quantization
 and per-channel quantization on the development states, the truncation to second order reproduces
-the measured loss change with median relative error that tracks the damage magnitude rather than the
+the measured loss change with a median relative error that depends on the damage magnitude and not on the
 family or the knob (Table~\ref{tab:disp_boundary}): under 5\% wherever the loss change is below about
 0.1 nats, and rising past 20\% by 0.25 nats. Grouped four-bit quantization with fine groups, at 0.06
 nats, sits on the same curve as per-channel four-bit at 0.24 nats.
@@ -636,7 +633,7 @@ configuration. Rows identify compression families; the second column pairs each 
 Family & Configuration: median relative error \\
 \midrule
 Pruning & $d=0.9$: 0.9\%; 0.85: 4.3\%; 0.8: 5.3\%; 0.75: 11.1\%; 0.7: 16.0\%; 0.65: 28.2\%; 0.6: 44.4\% \\
-Grouped quantization & 5 bits: 1.6--2.7\% at every group size; 4 bits: 3.3\% to 9.2\% by group size; 3 bits: 35.9\% \\
+Grouped quantization & 5 bits: 1.6--2.7\% at each group size; 4 bits: 3.3\% to 9.2\% by group size; 3 bits: 35.9\% \\
 Per-channel quantization & 8 bits: 2.5\%; 6 bits: 3.0\%; 5 bits: 4.2\%; 4 bits: 23.8\%; 3 bits: 53.9\% \\
 \bottomrule
 \end{tabular*}%
@@ -649,7 +646,7 @@ version moves by 85\% under a constant logit shift and is not used), the pure-sh
 fails on magnitude: about three percent of the response lies in the shrinkage direction, and the
 variance of the orthogonal residual carries the rest for math and code. That residual variance is
 not shown to be random noise, and it is not a pre-compression predictor, because computing it needs
-the compressed model. The account therefore explains the damage after the fact and enters no
+the compressed model. The account explains the damage after the fact and enters no
 relation as an input. Variance dominance is per capability: seventeen cells with negative loss
 change are carried by the first-order term.
 
@@ -659,7 +656,7 @@ change are carried by the first-order term.
 \section{Capability-Specific Selection}
 \label{sec:app_selection}
 
-Section S6 of the supplement tabulates the per-policy results behind Fig.~\ref{fig:selection}: mean regret against the measured oracle, agreement with the oracle's method, the share of no-clear-winner cells, and the share of cells in which a fixed-method policy cannot meet the budget (such cells are INFEASIBLE, with no fallback, and enter no mean).
+Section S6 of the supplement tabulates the per-policy results behind Fig.~\ref{fig:selection}: mean regret against the measured oracle, agreement with the oracle's method, the share of no-clear-winner cells, and the share of cells in which a fixed-method policy cannot meet the budget (such cells are infeasible, have no fallback, and enter no mean).
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=5.5in]{figs/selection_feasible_legend.pdf}\\[1pt]
@@ -684,7 +681,7 @@ Section S6 of the supplement tabulates the per-policy results behind Fig.~\ref{f
 \end{figure}
 
 \paragraph{Retrospective validation.} On the controlled panel (17 states, budgets from 0.2 to 1,
-every law refit with the target held out) the law-based choice is within 0.19, 0.17 and 0.42 nats of
+each law refit with the target held out) the law-based choice is within 0.19, 0.17 and 0.42 nats of
 the oracle for math, code and QA and picks the oracle's method in 96\%, 95\% and 73\% of 289 cells;
 quantization-only is close behind (0.21, 0.19, 0.49).
 
@@ -693,11 +690,11 @@ quantization-only is close behind (0.21, 0.19, 0.49).
 before the confirmation panel was measured is as follows:
 pruning uses the power form for math and code and the median curve
 for QA at unseen densities of seen sizes, and the median development
-curve for every capability on new sizes or stages; per-channel
+curve for each capability on new sizes or stages; per-channel
 quantization on new states uses the per-bit development median;
 grouped quantization uses the same-input piecewise interpolation for
 math and code and the per-configuration median for QA on seen states,
-and the per-configuration median for every capability on new states;
+and the per-configuration median for each capability on new states;
 distillation with a same-stage smaller student uses the student's
 reference loss plus a per-capability constant (code, QA) or the linear
 student-state form (math), QA on the 2Wiki distribution only.
@@ -710,14 +707,14 @@ uses the same candidates, predictor, and feasibility rule with no
 fallback. Predictions under this rule and under the earlier
 source-conditioned laws were frozen for four fresh states before
 measurement (Table~\ref{tab:rule-confirm}; Fig.~\ref{fig:rule_maps});
-the registered criterion confirms a capability when the locked rule's mean regret over the 68 cells is within the source-conditioned map's and below quantization-only's; math, code, and QA meet it, while the multi-capability objective fails the first condition (0.0020 against 0.0019) and is reported as prospective, not confirmed. The distillation candidates on 1B@64k are the
+the registered criterion confirms a capability when the mean regret of the locked rule over the 68 cells is within that of the source-conditioned map and below that of quantization-only; math, code, and QA meet it, while the multi-capability objective fails the first condition (0.0020 against 0.0019) and is reported as prospective and unconfirmed. The distillation candidates on 1B@64k are the
 existing students 160M@64k and 410M@64k, whose post-training
 outcomes were purged from the fits that predict them; per-state
 regrets and candidate-set sizes are in
 Section S6 of the supplement; the coverage columns there
 describe the no-clear-winner candidate set (whether it contains the
-oracle's method or configuration), and the single chosen
-configuration's method agreement is the figure quoted in the main
+oracle's method or configuration), and the method agreement of the single chosen
+configuration is the figure quoted in the main
 text.
 \input{tables/locked_rule}
 \input{tables/rule_confirm}
@@ -767,20 +764,20 @@ source-free configuration curve in nine of nine, with or without a shrunk source
 contained no budget-by-reuse rectangle, so the one fit-free statistic that separates additive from
 interacting structures was uncomputable until four trajectories were designed to land on one.
 
-\paragraph{Guidance for design and choice.} Choose inputs by the transfer needed: the initial state
+\paragraph{Guidance for design and choice.} Inputs should be chosen by the transfer needed: the initial state
 carries math and code at unseen densities and group sizes of seen states and over-predicts QA under
 pruning on new checkpoints, so a calibrated configuration median is the safer default when the state
-is new. Fix the training protocol before measuring distillation damage; the learning rate moves it by
-an order of magnitude. Design data-reuse experiments so that a budget-by-reuse rectangle exists by
-construction. Pay for calibration by what it buys: one point on the target distribution closes most
-of the gap to a source-specific fit, and dense statistics that cost more did not earn it.
+is new. The training protocol should be fixed before distillation damage is measured, since the learning rate moves it by
+an order of magnitude. Data-reuse experiments should be designed so that a budget-by-reuse rectangle exists by
+construction. Calibration should be paid for according to what it buys: one point on the target distribution closes most
+of the gap to a source-specific fit, whereas the more expensive dense statistics did not.
 
 \paragraph{Limits.} The relations are conditional on the evaluated distributions and
 implementations. No fitted joint structure for distillation beat a low-order response surface on
 either pre-declared target, so a validated data-requirement relation is not delivered; the larger
 student diverged from the smaller on math and code at readouts the design could not resolve.
-Reopening measurement needs a new information source or a mechanism hypothesis, not another reuse
-function.
+Reopening measurement requires a new information source or a mechanism hypothesis; a further reuse
+function would not suffice.
 
 
 \FloatBarrier
@@ -789,20 +786,20 @@ function.
 \label{sec:app_registration}
 
 \paragraph{Data cut-off.} The measurements behind this version were
-completed by 15:55 EDT on 11 September 2026; every frozen prediction
-is cited with the commit that recorded it, and nothing measured after
-its own freeze is used to form it.
+completed by 15:55 EDT on 11 September 2026; each frozen prediction
+is cited with the commit that recorded it, and no measurement taken after
+a freeze enters the corresponding prediction.
 \subsection{Registration and provenance codes}
 \label{sec:app_register}
 Prospective tests follow one order: forms, development set,
 standardization, and coefficients are fixed and committed; for a new
 source the reference capability losses are measured, since they are a
-permitted pre-compression input; the predictions of every candidate
+permitted pre-compression input; the predictions of each candidate
 are written to a versioned file and committed with the hash recorded;
 only then is the compressed or distilled outcome measured. Rows
 marked retrospective in the tables (leave-one-out panels, baselines or
 rules stated after a test, the post-test quantization rule) are
-labeled as such and never relabeled by outcome. Information budgets
+labeled as such and are not relabeled by outcome. Information budgets
 are reported separately: K0 uses pre-compression information only, K1
 adds one pre-specified target-side calibration point. The freeze
 records that carry the main conclusions are, in order:
@@ -844,7 +841,7 @@ this diagnostic measures form misfit after testing \\
 \bottomrule
 \end{tabular*}
 \caption{Rows identify information budgets; columns specify available information and costs to disclose. K0 means no compressed-target calibration, and K1 means one compressed-target calibration measurement. Predictive budgets are fixed on development data; the oracle row is a \mbox{post-hoc} diagnostic. Losses use nats per native token, model size counts parameters, and pretraining exposure counts tokens. Unknown $D_0$ stays unknown; handling of
-missing inputs is fixed on the development panel and never inferred
+missing inputs is fixed on the development panel and not inferred
 from the target response. Predicting $\mathbf L_0$ from $(N_0,D_0)$ is
 the task of dense scaling laws and is not attempted here.}
 \label{tab:budgets}
