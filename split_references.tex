@@ -1,0 +1,32 @@
+% Retarget references in immutable generated tables at their input sites.
+% Work on detokenized source so reference arguments remain literal search text.
+\ExplSyntaxOn
+\tl_new:N \l__split_old_tl
+\tl_new:N \l__split_new_tl
+\cs_new_protected:Npn \splitReadTable #1
+  {
+    \file_get:nnN {#1.tex} {} \splitTable
+    \tl_set:Nx \splitTable {\tl_to_str:N \splitTable}
+  }
+\cs_new_protected:Npn \retargetreference #1#2
+  {
+    \tl_set:Nx \l__split_old_tl {\tl_to_str:n {#1}}
+    \tl_set:Nx \l__split_new_tl {\tl_to_str:n {#2}}
+    \exp_args:NNV \tl_if_in:NnTF \splitTable \l__split_old_tl
+      {\exp_args:NNVV \tl_replace_all:Nnn \splitTable \l__split_old_tl \l__split_new_tl}
+      {\PackageError{appendix-split}{Reference~patch~failed}{Check~the~input~table.}}
+  }
+\cs_new_protected:Npn \splitUseTable
+  {
+    \tl_set_rescan:Nno \splitTable {} {\splitTable}
+    \splitTable
+  }
+\ExplSyntaxOff
+\newenvironment{retargetreferences}[1]{%
+  \begingroup
+  \renewcommand{\input}[1]{%
+    \splitReadTable{##1}%
+    #1%
+    \splitUseTable
+  }%
+}{\endgroup}

@@ -17,17 +17,17 @@ budget $B$.
 
 \paragraph{Prospective confirmation of a frozen rule.} Retrospectively, on the controlled panel the
 law-based choice picks the oracle's method in 96\%, 95\% and 73\% of 289 cells for math, code and
-QA (Appendix~\ref{sec:app_recovery}). A complete selection rule was then locked
+QA (Appendix~\ref{sec:app_selection}). A complete selection rule was then locked
 (Appendix Table~\ref{tab:locked_rule}; source-free predictors on new states), every candidate's
 predicted loss and the four maps were frozen for four fresh Pythia states (160M, 410M and 1.4B at
 step 32k, 1B at 64k; 18 configurations each, weights hashed against every earlier revision), and
-only then measured (Fig.~\ref{fig:rule_main_v2}; full maps in Appendix~\ref{sec:app_recovery}). Over 68 cells per objective the frozen-rule maps are
+only then measured (Fig.~\ref{fig:rule_main_v2}; full maps in Appendix~\ref{sec:app_selection}). Over 68 cells per objective the frozen-rule maps are
 within 0.00001, 0.004 and 0.14 nats of the oracle for math, code and QA, below the source-conditioned
 maps (0.015, 0.11, 0.21) and quantization-only under the same candidates (0.007, 0.010, 0.25), meeting
 the registered criterion; the rule beats quantization-only on three states and trails it on 160M@32k
 (0.22 against 0.13). The math and code margins come almost entirely from the one state with
 historical distillation candidates; on the three newly measured states the mean regrets differ by
-less than $10^{-5}$ nats (Table~\ref{tab:rule_decomp}).
+less than $10^{-5}$ nats (Section S6 of the supplement).
 
 
 The planned validation of the rule across model families with fresh distillation candidates was
