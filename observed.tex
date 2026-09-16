@@ -2,9 +2,7 @@
 \label{sec:observed}
 
 The measurements show first that damage is uneven across capabilities and that the ordering is
-not fixed. Across twelve public models the same pruning
-density leaves QA the least damaged capability in some series and the most damaged in others
-(Fig.~\ref{fig:heterogeneity}). On the controlled Pythia panel, math and code respond to density along one shared shape with a
+not fixed (Fig.~\ref{fig:heterogeneity}). On the controlled Pythia panel, math and code respond to density along one shared shape with a
 capability-specific scale, while the QA response changes sign across density
 (Fig.~\ref{fig:pythia_responses}).
 
@@ -32,8 +30,8 @@ density curve agree within 0.05 nats at unseen stages of a 1B source; at a 6.9B 
 the development range, the source-conditioned forms lose to the median curve on math (0.30 against
 0.12 nats) and QA (0.91 against 0.12) and tie on code, as the tests of \S\ref{sec:general} show.
 
-Distillation adds a dependence on the protocol that is as strong as the dependence on the method.
-With all settings except the learning rate held fixed (Appendix Fig.~\ref{fig:lr_pilot}), the loss
+Distillation adds a dependence on the protocol as strong as the dependence on the method. With
+all settings except the learning rate held fixed (Appendix Fig.~\ref{fig:lr_pilot}), the loss
 increase on math and code grows with the rate: at $5\times10^{-5}$ the 1B student is almost unharmed ($+0.003$ and $+0.007$ nats) and
 still gains $0.79$ nats on QA, and at $1\times10^{-4}$ the increase is an order of magnitude larger
 ($+0.051$ and $+0.052$). At $1\times10^{-4}$ and $2\times10^{-4}$ the 4B student degrades about
@@ -46,7 +44,7 @@ budget $T$ near 200k supervised tokens (Fig.~\ref{fig:responses_v2}), a pool of 
 tokens reused about twelve times (reuse ratio $E=T/D_U$) costs QA $+0.29$, $+2.55$ and $+4.85$ nats
 on students of 100M, 700M and 3.2B non-embedding parameters, and nine times more independent data
 converts the same budget into a gain near one nat on each student; math and code damage also falls
-monotonically with reuse. Two pool seeds per cell put the pool-draw noise near 0.02 nats on code and
+with reuse. Two pool seeds per cell put the pool-draw noise near 0.02 nats on code and
 0.13 nats on QA, small against the reuse cost.
 
 The reuse cost also transfers across QA distributions, whereas the gain does not. Scored on a fresh

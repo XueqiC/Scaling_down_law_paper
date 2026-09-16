@@ -25,14 +25,14 @@ The second kind of novelty is a new model state, and here the range of each rela
 three Pythia checkpoints that entered no fit, the frozen pruning power form matches the per-density
 regression on math with a quarter of the parameters (0.24 against 0.23 nats), trails the median on
 code, and loses QA to each source-free curve; at $d=0.55$, outside the range, each
-source-conditioned form fails by 0.6 to 4.5 nats. In grouped quantization on a state absent from the
-fit, the median wins for math and QA and the interpolation for code. Inside the range the frozen
-forms and the median curve lie within 0.05 nats of one another at unseen stages of a 1B source. Outside it, at a 6.9B source
+source-conditioned form fails by 0.6 to 4.5 nats. On a new quantization state the median wins for
+math and QA and the interpolation for code; inside the range the frozen forms and the median curve
+agree within 0.05 nats at unseen stages of a 1B source. Outside it, at a 6.9B source
 five times the development range, the source-conditioned pruning forms lose to the median curve on
 math (0.30 against 0.12) and QA (0.91 against 0.12) and tie on code, the per-bit quantization
 regression is worse than the per-bit median at each bit-width, and on a 2.8B source inside the size
-range the frozen median density curve predicts within 0.08, 0.05 and 0.07 nats while both
-source-conditioned forms are three to seven times worse. For
+range the frozen median density curve predicts within 0.08, 0.05 and 0.07 nats, three to seven
+times better than both source-conditioned forms. For
 distillation the 4B student, 6.6 times the reference size and a development student in the final
 round, keeps only its QA gain at the development pools (0.83, $[0.12,1.54]$) and is beaten by the
 frozen constant at the unseen pool on each of the three capabilities.
@@ -40,12 +40,12 @@ frozen constant at the unseen pool on each of the three capabilities.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figs/fig3_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of seen states}\end{subfigure}\hfill
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig3_b.pdf}\caption{New sources or students}\end{subfigure}
+\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of seen states}\end{subfigure}\\[2pt]
+\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_b.pdf}\caption{New sources or students}\end{subfigure}
 \caption{Generalization of the frozen relations by kind of novelty. Each row compares the error of
-the relation (diamonds) with that of the development-selected baseline (capability markers) on the
-same cells; the connecting segment is coloured where the relation is lower. The two pruning rows
-marked frozen are the new-state confirmation inside and outside the fitted density range.}
+the relation (hollow diamond) with that of the development-selected baseline (hollow circle) on the
+same cells, one thin sub-row per capability; the connecting segment is coloured where the relation is
+lower.}
 \label{fig:generalization}
 \end{figure}
 Taken together, Fig.~\ref{fig:generalization} gives each relation its validated range: the
@@ -53,4 +53,17 @@ initial-state inputs pay for new configurations of seen states, the source-free 
 safer predictor for new sources and students, and new evaluation distributions split by sign.
 Calibration on one target measurement, a K1 budget distinct from the K0 predictions above, helped in
 quantization and was unstable for pruning where the calibration point carried little damage signal.
-
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figs/fig7_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{1.75in}\centering
+\includegraphics[width=\textwidth]{figs/fig7_a.pdf}\subcaption{Math}\end{subfigure}%
+\begin{subfigure}[t]{1.25in}\centering
+\includegraphics[width=\textwidth]{figs/fig7_b.pdf}\subcaption{Code}\end{subfigure}%
+\begin{subfigure}[t]{1.25in}\centering
+\includegraphics[width=\textwidth]{figs/fig7_c.pdf}\subcaption{QA on 2Wiki}\end{subfigure}%
+\begin{subfigure}[t]{1.25in}\centering
+\includegraphics[width=\textwidth]{figs/fig7_d.pdf}\subcaption{Largest loss increase}\end{subfigure}
+\caption{Selection maps under the frozen rule on four fresh Pythia states at seventeen storage budgets, one panel per objective. Colour is the selected method; an open marker marks a budget at which the measured oracle chooses a different method from the rule.}
+\label{fig:rule_main_v2}
+\end{figure}

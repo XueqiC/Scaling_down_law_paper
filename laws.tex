@@ -34,9 +34,8 @@ Per-channel round-to-nearest offers no continuous axis (int8 and int6 within 0.0
 reference, int4 0.03 to 0.35, int3 collapse); at a seen bit-width the delivered relation is the
 per-bit source regression on seen states and the per-bit median on new ones. With
 groups of $g$ weights per scale as a second axis, the delivered relation for math and code on seen
-states is a same-input piecewise interpolation over the measured $(b,g)$ grid, linear in $\log_2 g$,
-with a zero floor beyond it; for QA, and for each capability on a new state, the per-configuration
-development median under the same rule. Table~\ref{tab:main-prediction-v2} lists the frozen
+states is a piecewise interpolation over the measured $(b,g)$ grid, linear in $\log_2 g$; for QA,
+and for each capability on a new state, it is the per-configuration development median. Table~\ref{tab:main-prediction-v2} lists the frozen
 candidates of the confirmation round beside this delivered rule, which was fixed after that round
 and is marked as such.
 \subsection{Distillation}
@@ -58,8 +57,6 @@ In practice, Table~\ref{tab:main-prediction-v2} separates the frozen candidates 
 rules. For pruning, the five-parameter power form, tested as a frozen candidate on three checkpoints
 outside every fit, predicts math and code to about 0.24 nats inside $d\in[0.6,0.9]$; the delivered
 rule for a new state is nevertheless the source-free median curve, which matches or beats it on
-code and QA, and the power form is delivered only for unseen densities of the states in its fit. For quantization the measured grid is the predictor: interpolate group sizes on a seen state, use
-the per-bit median on a new state, and expect 0.13 to 0.17 nats. For distillation, the
+code and QA, and the power form is delivered only for unseen densities of the states in its fit. For quantization the measured grid is the predictor (0.13 to 0.17 nats); for distillation the
 one-coefficient reuse forms and the QA joint form hold on the development students at the 2Wiki
-distribution; the budget-doubling and data-change interventions remain open targets.
-Section~\ref{sec:general} reports how these frozen predictions fared.
+distribution, and the budget-doubling and data-change interventions remain open targets.

@@ -1,6 +1,10 @@
 \section{Experimental Setup}
 \label{sec:setup}
 
+This section fixes the three things every later claim depends on: the quantity we predict, the
+models and settings on which it is measured, and the rule by which a prediction counts as
+validated, so that the sections that follow can be read against one fixed standard.
+
 \subsection{Capability-Conditioned Loss}
 \label{sec:loss}
 
@@ -35,11 +39,10 @@ size and stage independently and is the development set for pruning and quantiza
 is developed on Gemma-3 students. Held-out Pythia states (160M to 6.9B), new configurations and new
 pools provide the validation of the frozen relations.
 
-The three operations are fixed by protocol: global magnitude pruning to a retained density $d$;
-symmetric round-to-nearest quantization per output channel at bit-width $b$ or with groups of $g$
-weights sharing one scale; and LoRA fine-tuning \citep{hu2022lora} of an existing student on
-black-box teacher traces from a pool of $U$ traces per domain for a fixed budget
-(Appendix~\ref{sec:app_details}). The inputs admitted to each predictor are the parameter count $N_0$ of the transformer weight
+The three operations are fixed by protocol (Appendix~\ref{sec:app_details}): global magnitude
+pruning to a retained density $d$; symmetric round-to-nearest quantization per output channel at
+bit-width $b$ or with groups of $g$ weights sharing one scale; and LoRA fine-tuning
+\citep{hu2022lora} of an existing student on teacher traces from a pool of $U$ traces per domain. The inputs admitted to each predictor are the parameter count $N_0$ of the transformer weight
 matrices of $M_0$, the pretraining token count $D_0$ where disclosed, and the reference capability
 losses $L_{0,c}=L_c(M_0)$ measured once (the initial student for distillation). Each prediction is written as
 \begin{equation}

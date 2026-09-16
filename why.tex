@@ -1,8 +1,10 @@
 \section{Why the Responses Vary: Conditions and Mechanism}
 \label{sec:why}
 
-This section asks which conditions and mechanisms account for the variation in
-\S\ref{sec:observed}. The answers fall into verified causes, excluded explanations and open factors.
+Section~\ref{sec:observed} established what a law must reproduce; this section asks why the
+responses take those forms, because the answer decides which structures a law may share and which
+inputs it may use. Three questions follow in turn: the shape of the response along each
+configuration axis, the conditions that change it, and the mechanism behind the damage; \S\ref{sec:laws} builds only on the verified causes.
 
 
 
@@ -48,8 +50,8 @@ pairs and lose to the source-free median curve in nine of nine. Under distillati
 the learning rate sets the damage magnitude (\S\ref{sec:observed}); at a fixed rate the reuse ratio
 $E=T/D_U$ is the dominant factor among those varied: the QA cost it sets is monotone, grows with
 student size, and transfers across the three QA distributions while the gain is confined to 2Wiki,
-and a residual dependence on budget, pool composition and student remains. A data requirement phrased as a bound on the loss increase is supportable in form across
-distributions, whereas a claim that distillation improves question answering holds only for the 2Wiki distribution.
+and a residual dependence on budget, pool composition and student remains. A data requirement phrased as a bound on the loss increase is therefore supportable across
+distributions, whereas a gain claim holds only for 2Wiki.
 
 \subsection{Mechanism}
 \label{sec:why_mech}
@@ -65,10 +67,3 @@ past 20\% by 0.25 (Fig.~\ref{fig:explanation}b). The range is empirical, since t
 controlled by the logit displacement and the first- and second-order terms can cancel. Pure logit shrinkage carries about three percent of the response; the residual variance that
 carries the rest needs the compressed model, so the account explains the damage after the fact and
 enters no relation as an input.
-
-In sum, four findings are verified (the learning rate sets distillation damage, the reuse ratio is
-the dominant factor in the QA cost, response shapes differ across capabilities under pruning, and
-damage is second-order in logit displacement inside an empirical range), three explanations are
-excluded (a logarithmic reuse term with fixed coefficients, pure logit shrinkage, and source
-descriptors as a general route to transfer), and the budget-by-reuse interaction, the curvature of
-the reuse term and the data-change intervention remain open.

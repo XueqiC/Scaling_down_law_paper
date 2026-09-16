@@ -2,20 +2,6 @@
 \label{sec:selection}
 
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\textwidth]{figs/fig7_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{1.75in}\centering
-\includegraphics[width=\textwidth]{figs/fig7_a.pdf}\subcaption{Math}\end{subfigure}%
-\begin{subfigure}[t]{1.25in}\centering
-\includegraphics[width=\textwidth]{figs/fig7_b.pdf}\subcaption{Code}\end{subfigure}%
-\begin{subfigure}[t]{1.25in}\centering
-\includegraphics[width=\textwidth]{figs/fig7_c.pdf}\subcaption{QA on 2Wiki}\end{subfigure}%
-\begin{subfigure}[t]{1.25in}\centering
-\includegraphics[width=\textwidth]{figs/fig7_d.pdf}\subcaption{Largest loss increase}\end{subfigure}
-\caption{Selection maps under the frozen rule on four fresh Pythia states at seventeen storage budgets, one panel per objective. Colour is the selected method; an open marker marks a budget at which the measured oracle chooses a different method from the rule.}
-\label{fig:rule_main_v2}
-\end{figure}
 The relations turn configuration choice into a computation: given a reference model, a capability
 and a budget, the decision is
 \begin{equation}
@@ -24,18 +10,15 @@ and a budget, the decision is
 \label{eq:selection}
 \end{equation}
 where $\mathcal F_m(B)$ holds the settings of method $m$ within
-budget $B$. Retrospectively, on the controlled panel the law-based choice selects the method of the oracle in 96\%, 95\% and 73\% of 289 cells for math, code and
-QA. A complete selection rule was then locked (source-free predictors on new states), the predicted
-loss of each candidate and the four maps were frozen for four fresh Pythia states (160M, 410M and
-1.4B at step 32k, 1B at 64k; 18 configurations each), and only then measured
-(Fig.~\ref{fig:rule_main_v2}). Over 68 cells per objective the frozen-rule maps are within 0.00001, 0.004 and 0.14 nats of the
+budget $B$. Retrospectively, on the controlled panel the law-based choice selects the method of the oracle
+in 96\%, 95\% and 73\% of 289 cells for math, code and QA. A complete rule was then locked, the predicted loss of each candidate and the four maps were
+frozen for four fresh Pythia states (160M, 410M and 1.4B at step 32k, 1B at 64k; 18
+configurations each), and only then measured (Fig.~\ref{fig:rule_main_v2}). Over 68 cells per objective the frozen-rule maps are within 0.00001, 0.004 and 0.14 nats of the
 oracle for math, code and QA, below the source-conditioned maps (0.015, 0.11, 0.21) and
 quantization-only under the same candidates (0.007, 0.010, 0.25), meeting the registered criterion;
-the rule trails quantization-only on one state (160M at step 32k, 0.22 against 0.13). The math and code margins come largely from the one state with
-historical distillation candidates; on the three newly measured states the rule and the
-quantization-only baseline coincide to within $10^{-5}$ nats.
+the rule trails quantization-only on one state (160M at step 32k, 0.22 against 0.13). The math and code margins come largely from the one state with historical distillation
+candidates; elsewhere the two coincide.
 
 
 The prospective result establishes the rule on four Pythia states under nominal storage budgets;
-validation across model families with fresh distillation candidates is the natural next step, and
-no historical distillation candidate carries a claim beyond that panel.
+validation across model families with fresh distillation candidates is the natural next step.

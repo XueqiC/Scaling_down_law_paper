@@ -3,43 +3,57 @@
 
 Deployed language-model agents are specialized systems
 \citep{yao2023react,schick2023toolformer,jimenez2024swebench,liu2024agentbench} whose cost scales
-with each token. The model that serves such a workload is usually a reference model scaled down by pruning,
-quantization, or distillation, and choosing the method and its strength currently requires
+with each token. The model that serves such a workload is usually a reference model reduced by
+pruning, quantization, or distillation, and choosing the method and its strength currently requires
 measuring each candidate. A single compression ratio does not replace that search, because
-compression does not reduce capabilities uniformly: across twelve public models the same pruning density leaves QA the
-least damaged capability in some series and the most damaged in others
-(Fig.~\ref{fig:heterogeneity}), and the ordering changes with size and family, so capability must
-enter the prediction.
+compression does not reduce capabilities uniformly: across twelve public models the same pruning
+density leaves QA the least damaged capability in some series and the most damaged in others
+(Fig.~\ref{fig:heterogeneity}), and the ordering changes with size and family.
 
-We ask how the capability-conditioned loss after compression can be predicted from the initial
-model state and the configuration of the method. The endpoint is the conditional loss of each
-capability on a fixed probe set relative to a reference measured beforehand
-(Eq.~\ref{eq:interface}); the admitted inputs are the initial state (parameter count, pretraining
-tokens, reference capability losses) and the intervention setting, and no measurement of the
-compressed target is used. Relations are developed on a controlled panel of Pythia checkpoints and
-tested with coefficients and predictions frozen in advance.
+Existing compression laws predict an aggregate loss from sparsity, precision, training format, the
+pre-pruning loss or the teacher loss
+\citep{frantar2023scaling,kumar2024scaling,panferov2025unified,zhang2024scaling,busbridge2025distillation},
+and studies of uneven damage document it for single tasks or single quantizers
+\citep{jaiswal2023compressing,liu2025quantization,sengupta2025compression}. Three limitations
+remain: the endpoint is aggregate, so a capability-specific response shape stays invisible; the
+fits mix model states that differ in size and pretraining stage, so it is unclear which inputs a
+relation may use when the state is new; and coefficients are rarely frozen before the test
+measurements. A predictive law for capability-conditioned loss therefore needs its own endpoint, a
+panel that separates size from stage, and a validation standard fixed in advance.
 
-The study proceeds in one sequence, from the prediction problem and its admitted inputs, through
-controlled measurement and explanation, to frozen tests and a selection decision. Each relation,
-verdict and recommendation keeps the status assigned before its outcome was measured: development,
-frozen prediction, or post-hoc recommendation.
+We ask when the loss of a capability after compression can be predicted from the initial model
+state and the configuration alone. The endpoint is the conditional loss on a fixed probe set
+relative to a reference measured beforehand (Eq.~\ref{eq:interface}); the admitted inputs are the
+initial state (parameter count, pretraining tokens, reference capability losses) and the
+intervention setting, with no measurement of the compressed target. The study then proceeds in one
+sequence: controlled measurements on Pythia checkpoints whose size and stage vary independently,
+and on Gemma students under one distillation protocol, establish what a law must reproduce
+(\S\ref{sec:observed}); an analysis of shape, conditions and mechanism explains why
+(\S\ref{sec:why}); method-specific relations are built on the verified findings
+(\S\ref{sec:laws}), tested with coefficients and predictions frozen in advance
+(\S\ref{sec:general}), and carried into a selection rule confirmed prospectively
+(\S\ref{sec:selection}). Each relation keeps
+the status assigned before its outcome was measured, and the findings are stated below as rules
+with the measured cases as their instances.
 
-\paragraph{Contributions.} Three findings, and what they enable, make up the contribution.
+\paragraph{Contributions.}
 \begin{itemize}
-\item \textbf{Capability responses differ in shape, and the shape decides what a law may share.}
-Math and code follow one shared pruning shape with capability-specific scales, while the
-question-answering response changes sign across density and cannot be a scaled copy of that curve;
-a coefficient-free second-order account of logit displacement explains the measured damage inside a
-stated empirical range.
-\item \textbf{Predicting new configurations of measured models and transferring to new model
-states need different inputs and evidence.} Initial-state inputs carry math and code to unseen
-densities and group sizes of measured states; on new states a source-free configuration curve is as
-good or better, and a rectangle design measures the budget-by-reuse interaction.
-\item \textbf{The data requirement of distillation is defined by training exposure, student and
-evaluation distribution together.} Under one fixed protocol the learning rate sets the size of the
-damage, the cost of reusing a small pool grows with the reuse ratio and the student size and
-reproduces across three question-answering distributions, and the gain appears on one.
-\item \textbf{What the findings enable.} Method-specific relations with their tested ranges
+\item \textbf{A law may share a response shape only across capabilities whose shapes agree;
+capability conditioning is a structural choice and not a scale factor.} Under pruning, math and
+code share one curve with capability-specific scales while question answering changes sign across
+density, so no rescaled shared curve fits it; a coefficient-free second-order account of logit
+displacement explains the measured damage inside an empirical range.
+\item \textbf{Interpolating within a measured model and transferring to a new model state are
+different prediction problems that admit different inputs.} Initial-state inputs pay for unseen
+configurations of measured states; for new states a source-free configuration curve is as good or
+better, and the transferable information must be validated on its own, as the frozen tests and a
+fit-free rectangle design show.
+\item \textbf{The data requirement of distillation is a joint property of training exposure,
+student and evaluation distribution, and the cost of reuse transfers where the gain does not.}
+Under one protocol the learning rate sets the size of the damage, the reuse cost grows with reuse
+and student size and reproduces across three question-answering distributions, and the net gain
+appears on one of them.
+\item \textbf{What these rules deliver.} Method-specific relations with their tested ranges
 (Table~\ref{tab:main-prediction-v2}), a selection rule whose frozen maps on four fresh Pythia
 states match the measured oracle within 0.00001, 0.004 and 0.14 nats for math, code and QA, and a
 released suite of coefficients, registered predictions, measurements and code.

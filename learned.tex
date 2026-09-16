@@ -2,15 +2,12 @@
 \label{sec:learned}
 
 This study developed predictive scaling-down laws for capability-conditioned loss under pruning,
-quantization and distillation under one validation standard. Three findings organise the results:
-capability responses differ in shape, so a law may share a curve across math and code but not with
-question answering; predicting new configurations of measured models and transferring to new model
-states are different tasks, served by initial-state inputs and by a source-free configuration curve
-respectively; and the data requirement of distillation is defined by training exposure, student and
-evaluation distribution together. On these findings rest method-specific relations with their
-tested ranges (Table~\ref{tab:main-prediction-v2}), a rectangle design that measured the
-budget-by-reuse interaction directly, a second-order account of compression damage, and a selection
-rule confirmed prospectively on four fresh states, all with the status they had before their
-outcomes were measured.
+quantization and distillation under one validation standard. Three rules organise the results: a
+law may share a response shape only across capabilities whose shapes agree; interpolating within a
+measured model and transferring to a new model state are different problems with different
+admissible inputs; and the data requirement of distillation is a joint property of training
+exposure, student and evaluation distribution. On these rules rest the relations of
+Table~\ref{tab:main-prediction-v2}, the displacement account of damage, and a selection rule
+confirmed prospectively on fresh states.
 
 \phantomsection\label{sec:learned_end}
