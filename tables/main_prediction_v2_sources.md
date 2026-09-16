@@ -1,9 +1,11 @@
 # Main prediction table: cell sources
 
-Columns: task, relation (parameters), tested range, error (nats), development baseline (nats).
-Rendered layout: one row per complete frozen prediction task; status is shared in the caption. Cell coordinates match the five printed columns.
-Baseline entries follow math, code and QA order. Slash-separated scores and baseline names follow Math / Code / QA order; shared names appear once. Comma-separated pool scores and differing names follow student order 270M, 1B. Per-density denotes per-density regression; budget and reuse denote the corresponding one-input baselines; loss surface and size surface distinguish initial-loss and student-size response surfaces.
-All indices are zero-based JSON pointers. `mean` is equal-weight arithmetic only; no refits or resampling.
+Columns: Task (test set); Frozen candidate; Candidate error (Math / Code / QA); Delivered relation; Delivered error (Math / Code / QA); Baseline error (Math / Code / QA).
+Rendered layout: one row per frozen prediction task. Cell coordinates match the six printed columns; every cell is populated.
+Slash-separated scores follow Math / Code / QA order. Comma-separated distillation pairs follow student order 270M, 1B. Baseline identities and their development selection pointers are recorded in each baseline cell's note/context.
+Daggers mark post-test delivery decisions; frozen candidate predictions remain distinct. Delivered scores reuse the same frozen test cells, not test-error winners. For the earlier bit test, the delivered relation is the source surface as tested and repeats the candidate's stored errors without a dagger. The later delivered model has no matching stored score and its development includes those cells.
+Only stored V70 paired_difference.ci95 endpoints are printed, after their own candidate MAE. The sign is baseline minus candidate; the baseline identities match the frozen development selection. These are not MAE intervals. Missing intervals stay absent; no resampling or invented intervals.
+All indices are zero-based JSON pointers. `mean` is equal-weight arithmetic; `weighted_mean` pairs each stored subset MAE with its stored cell count, preserving equal cell weights. No refits or resampling.
 Numeric values are formatted directly from the following executable source recipes. Context pointers justify textual labels and freeze identities; incomplete tasks are omitted.
 The `label` operation uses the generator's explicit presentation mappings; `expected` preserves the source values and must match before rendering `label`. Counts always use their own JSON fields.
 The `shared` operation prints a common value only after checking that all grouped source values are identical.
@@ -32,31 +34,36 @@ V72 repeats use the same weights; no displayed score uses those repeats.
 
 ## Fields per cell
 
-- Cell (0, 0): `results/v53-prune-dev/register.json#/selected_candidate`
-- Cell (0, 1): `results/v53-prune-dev/register.json#/feature_names`; `results/v53-prune-dev/register.json#/candidate_definitions/power`; `results/v53-prune-dev/register.json#/n_params_per_capability/power`
-- Cell (0, 2): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v40-prune-strength/register.json#/dev/sizes`
-- Cell (0, 3): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/qa`
-- Cell (0, 4): `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/register.json#/loso_table/2/candidate`; `results/v53-prune-dev/register.json#/loso_table/5/candidate`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
-- Cell (1, 0): `results/v55-quant-group/register.json#/test_sets/bit_test`; `results/v55-quant-group/register.json#/precommitted_rule`
-- Cell (1, 1): `results/v55-quant-group/register.json#/feature_names`; `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v55-quant-group/register.json#/n_params_per_capability/low_order_2d`
-- Cell (1, 2): `results/v55-quant-group/register.json#/test_sets/bit_test/states`; `results/v55-quant-group/register.json#/test_sets/bit_test/configs`
-- Cell (1, 3): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa`
-- Cell (1, 4): `results/v55-quant-group/register.json#/loso_table`; `results/v55-quant-group/register.json#/loso_table/4/candidate`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/math`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/code`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/qa`
-- Cell (2, 0): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`; `results/v69-quant-confirm/compare.json#/rows/0/test_set`; `results/v69-quant-confirm/compare.json#/rows/1/test_set`; `results/v69-quant-confirm/compare.json#/rows/2/test_set`; `results/v69-quant-confirm/compare.json#/rows/3/test_set`; `results/v69-quant-confirm/compare.json#/rows/4/test_set`; `results/v69-quant-confirm/compare.json#/rows/5/test_set`; `results/v69-quant-confirm/compare.json#/rows/6/test_set`; `results/v69-quant-confirm/compare.json#/rows/7/test_set`; `results/v69-quant-confirm/compare.json#/rows/8/test_set`; `results/v69-quant-confirm/compare.json#/rows/9/test_set`; `results/v69-quant-confirm/compare.json#/rows/10/test_set`; `results/v69-quant-confirm/compare.json#/rows/11/test_set`; `results/v69-quant-confirm/compare.json#/rows/12/test_set`; `results/v69-quant-confirm/compare.json#/rows/13/test_set`; `results/v69-quant-confirm/compare.json#/rows/14/test_set`; `results/v69-quant-confirm/compare.json#/rows/15/test_set`; `results/v69-quant-confirm/compare.json#/rows/16/test_set`; `results/v69-quant-confirm/compare.json#/rows/17/test_set`; `results/v69-quant-confirm/compare.json#/rows/18/test_set`; `results/v69-quant-confirm/compare.json#/rows/19/test_set`; `results/v69-quant-confirm/compare.json#/rows/20/test_set`; `results/v69-quant-confirm/compare.json#/rows/21/test_set`; `results/v69-quant-confirm/compare.json#/rows/22/test_set`; `results/v69-quant-confirm/compare.json#/rows/23/test_set`; `results/v69-quant-confirm/compare.json#/rows/24/test_set`; `results/v69-quant-confirm/compare.json#/rows/25/test_set`; `results/v69-quant-confirm/compare.json#/rows/26/test_set`; `results/v69-quant-confirm/compare.json#/rows/27/test_set`; `results/v69-quant-confirm/compare.json#/rows/28/test_set`; `results/v69-quant-confirm/compare.json#/rows/29/test_set`; `results/v69-quant-confirm/compare.json#/rows/30/test_set`; `results/v69-quant-confirm/compare.json#/rows/31/test_set`; `results/v69-quant-confirm/compare.json#/rows/32/test_set`; `results/v69-quant-confirm/compare.json#/rows/33/test_set`; `results/v69-quant-confirm/compare.json#/rows/34/test_set`; `results/v69-quant-confirm/compare.json#/rows/35/test_set`
-- Cell (2, 1): `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v69-quant-confirm/develop.json#/models`; `results/v69-quant-confirm/develop.json#/feature_names`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selected/math/candidate`; `results/v69-quant-confirm/develop.json#/selected/math/n_coefficients`; `results/v69-quant-confirm/develop.json#/selected/code/candidate`; `results/v69-quant-confirm/develop.json#/selected/code/n_coefficients`; `results/v69-quant-confirm/develop.json#/selected/qa/candidate`; `results/v69-quant-confirm/develop.json#/selected/qa/n_coefficients`
-- Cell (2, 2): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/1/state`; `results/v69-quant-confirm/compare.json#/rows/1/config`; `results/v69-quant-confirm/compare.json#/rows/2/state`; `results/v69-quant-confirm/compare.json#/rows/2/config`; `results/v69-quant-confirm/compare.json#/rows/3/state`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/4/state`; `results/v69-quant-confirm/compare.json#/rows/4/config`; `results/v69-quant-confirm/compare.json#/rows/5/state`; `results/v69-quant-confirm/compare.json#/rows/5/config`; `results/v69-quant-confirm/compare.json#/rows/6/state`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/7/state`; `results/v69-quant-confirm/compare.json#/rows/7/config`; `results/v69-quant-confirm/compare.json#/rows/8/state`; `results/v69-quant-confirm/compare.json#/rows/8/config`; `results/v69-quant-confirm/compare.json#/rows/9/state`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/10/state`; `results/v69-quant-confirm/compare.json#/rows/10/config`; `results/v69-quant-confirm/compare.json#/rows/11/state`; `results/v69-quant-confirm/compare.json#/rows/11/config`; `results/v69-quant-confirm/compare.json#/rows/12/state`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/13/state`; `results/v69-quant-confirm/compare.json#/rows/13/config`; `results/v69-quant-confirm/compare.json#/rows/14/state`; `results/v69-quant-confirm/compare.json#/rows/14/config`; `results/v69-quant-confirm/compare.json#/rows/15/state`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/16/state`; `results/v69-quant-confirm/compare.json#/rows/16/config`; `results/v69-quant-confirm/compare.json#/rows/17/state`; `results/v69-quant-confirm/compare.json#/rows/17/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`; `results/v69-quant-confirm/compare.json#/rows/18/config`; `results/v69-quant-confirm/compare.json#/rows/19/state`; `results/v69-quant-confirm/compare.json#/rows/19/config`; `results/v69-quant-confirm/compare.json#/rows/20/state`; `results/v69-quant-confirm/compare.json#/rows/20/config`; `results/v69-quant-confirm/compare.json#/rows/21/state`; `results/v69-quant-confirm/compare.json#/rows/21/config`; `results/v69-quant-confirm/compare.json#/rows/22/state`; `results/v69-quant-confirm/compare.json#/rows/22/config`; `results/v69-quant-confirm/compare.json#/rows/23/state`; `results/v69-quant-confirm/compare.json#/rows/23/config`; `results/v69-quant-confirm/compare.json#/rows/24/state`; `results/v69-quant-confirm/compare.json#/rows/24/config`; `results/v69-quant-confirm/compare.json#/rows/25/state`; `results/v69-quant-confirm/compare.json#/rows/25/config`; `results/v69-quant-confirm/compare.json#/rows/26/state`; `results/v69-quant-confirm/compare.json#/rows/26/config`; `results/v69-quant-confirm/compare.json#/rows/27/state`; `results/v69-quant-confirm/compare.json#/rows/27/config`; `results/v69-quant-confirm/compare.json#/rows/28/state`; `results/v69-quant-confirm/compare.json#/rows/28/config`; `results/v69-quant-confirm/compare.json#/rows/29/state`; `results/v69-quant-confirm/compare.json#/rows/29/config`; `results/v69-quant-confirm/compare.json#/rows/30/state`; `results/v69-quant-confirm/compare.json#/rows/30/config`; `results/v69-quant-confirm/compare.json#/rows/31/state`; `results/v69-quant-confirm/compare.json#/rows/31/config`; `results/v69-quant-confirm/compare.json#/rows/32/state`; `results/v69-quant-confirm/compare.json#/rows/32/config`; `results/v69-quant-confirm/compare.json#/rows/33/state`; `results/v69-quant-confirm/compare.json#/rows/33/config`; `results/v69-quant-confirm/compare.json#/rows/34/state`; `results/v69-quant-confirm/compare.json#/rows/34/config`; `results/v69-quant-confirm/compare.json#/rows/35/state`; `results/v69-quant-confirm/compare.json#/rows/35/config`
-- Cell (2, 3): `results/v69-quant-confirm/compare.json#/rows/0/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/3/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/6/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/9/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/12/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/15/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/18/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/21/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/24/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/27/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/30/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/33/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/1/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/4/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/7/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/10/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/13/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/16/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/19/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/22/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/25/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/28/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/31/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/34/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/2/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/5/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/8/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/11/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/14/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/17/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/20/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/23/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/26/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/29/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/32/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/35/absolute_errors/zero`
-- Cell (2, 4): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math`; `results/v69-quant-confirm/develop.json#/loso/scores/zero/code`; `results/v69-quant-confirm/develop.json#/loso/scores/median/qa`; `results/v69-quant-confirm/compare.json#/rows/0/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/3/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/6/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/9/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/12/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/15/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/18/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/21/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/24/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/27/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/30/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/33/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/1/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/4/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/7/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/10/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/13/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/16/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/19/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/22/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/25/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/28/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/31/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/34/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/2/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/5/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/8/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/11/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/14/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/17/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/20/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/23/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/26/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/29/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/32/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/35/absolute_errors/median`
-- Cell (3, 0): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`; `results/v69-quant-confirm/compare.json#/rows/36/test_set`; `results/v69-quant-confirm/compare.json#/rows/37/test_set`; `results/v69-quant-confirm/compare.json#/rows/38/test_set`; `results/v69-quant-confirm/compare.json#/rows/39/test_set`; `results/v69-quant-confirm/compare.json#/rows/40/test_set`; `results/v69-quant-confirm/compare.json#/rows/41/test_set`; `results/v69-quant-confirm/compare.json#/rows/42/test_set`; `results/v69-quant-confirm/compare.json#/rows/43/test_set`; `results/v69-quant-confirm/compare.json#/rows/44/test_set`; `results/v69-quant-confirm/compare.json#/rows/45/test_set`; `results/v69-quant-confirm/compare.json#/rows/46/test_set`; `results/v69-quant-confirm/compare.json#/rows/47/test_set`; `results/v69-quant-confirm/compare.json#/rows/48/test_set`; `results/v69-quant-confirm/compare.json#/rows/49/test_set`; `results/v69-quant-confirm/compare.json#/rows/50/test_set`; `results/v69-quant-confirm/compare.json#/rows/51/test_set`; `results/v69-quant-confirm/compare.json#/rows/52/test_set`; `results/v69-quant-confirm/compare.json#/rows/53/test_set`; `results/v69-quant-confirm/compare.json#/rows/54/test_set`; `results/v69-quant-confirm/compare.json#/rows/55/test_set`; `results/v69-quant-confirm/compare.json#/rows/56/test_set`; `results/v69-quant-confirm/compare.json#/rows/57/test_set`; `results/v69-quant-confirm/compare.json#/rows/58/test_set`; `results/v69-quant-confirm/compare.json#/rows/59/test_set`; `results/v69-quant-confirm/compare.json#/rows/60/test_set`; `results/v69-quant-confirm/compare.json#/rows/61/test_set`; `results/v69-quant-confirm/compare.json#/rows/62/test_set`
-- Cell (3, 1): `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v69-quant-confirm/develop.json#/models`; `results/v69-quant-confirm/develop.json#/feature_names`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selected/math/candidate`; `results/v69-quant-confirm/develop.json#/selected/math/n_coefficients`; `results/v69-quant-confirm/develop.json#/selected/code/candidate`; `results/v69-quant-confirm/develop.json#/selected/code/n_coefficients`; `results/v69-quant-confirm/develop.json#/selected/qa/candidate`; `results/v69-quant-confirm/develop.json#/selected/qa/n_coefficients`
-- Cell (3, 2): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/37/state`; `results/v69-quant-confirm/compare.json#/rows/37/config`; `results/v69-quant-confirm/compare.json#/rows/38/state`; `results/v69-quant-confirm/compare.json#/rows/38/config`; `results/v69-quant-confirm/compare.json#/rows/39/state`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/40/state`; `results/v69-quant-confirm/compare.json#/rows/40/config`; `results/v69-quant-confirm/compare.json#/rows/41/state`; `results/v69-quant-confirm/compare.json#/rows/41/config`; `results/v69-quant-confirm/compare.json#/rows/42/state`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/43/state`; `results/v69-quant-confirm/compare.json#/rows/43/config`; `results/v69-quant-confirm/compare.json#/rows/44/state`; `results/v69-quant-confirm/compare.json#/rows/44/config`; `results/v69-quant-confirm/compare.json#/rows/45/state`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/46/state`; `results/v69-quant-confirm/compare.json#/rows/46/config`; `results/v69-quant-confirm/compare.json#/rows/47/state`; `results/v69-quant-confirm/compare.json#/rows/47/config`; `results/v69-quant-confirm/compare.json#/rows/48/state`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/49/state`; `results/v69-quant-confirm/compare.json#/rows/49/config`; `results/v69-quant-confirm/compare.json#/rows/50/state`; `results/v69-quant-confirm/compare.json#/rows/50/config`; `results/v69-quant-confirm/compare.json#/rows/51/state`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/52/state`; `results/v69-quant-confirm/compare.json#/rows/52/config`; `results/v69-quant-confirm/compare.json#/rows/53/state`; `results/v69-quant-confirm/compare.json#/rows/53/config`; `results/v69-quant-confirm/compare.json#/rows/54/state`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/55/state`; `results/v69-quant-confirm/compare.json#/rows/55/config`; `results/v69-quant-confirm/compare.json#/rows/56/state`; `results/v69-quant-confirm/compare.json#/rows/56/config`; `results/v69-quant-confirm/compare.json#/rows/57/state`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/58/state`; `results/v69-quant-confirm/compare.json#/rows/58/config`; `results/v69-quant-confirm/compare.json#/rows/59/state`; `results/v69-quant-confirm/compare.json#/rows/59/config`; `results/v69-quant-confirm/compare.json#/rows/60/state`; `results/v69-quant-confirm/compare.json#/rows/60/config`; `results/v69-quant-confirm/compare.json#/rows/61/state`; `results/v69-quant-confirm/compare.json#/rows/61/config`; `results/v69-quant-confirm/compare.json#/rows/62/state`; `results/v69-quant-confirm/compare.json#/rows/62/config`
-- Cell (3, 3): `results/v69-quant-confirm/compare.json#/rows/36/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/39/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/42/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/45/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/48/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/51/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/54/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/57/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/60/absolute_errors/low_order_2d`; `results/v69-quant-confirm/compare.json#/rows/37/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/40/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/43/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/46/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/49/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/52/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/55/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/58/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/61/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/38/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/41/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/44/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/47/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/50/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/53/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/56/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/59/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/62/absolute_errors/zero`
-- Cell (3, 4): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math`; `results/v69-quant-confirm/develop.json#/loso/scores/zero/code`; `results/v69-quant-confirm/develop.json#/loso/scores/median/qa`; `results/v69-quant-confirm/compare.json#/rows/36/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/39/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/42/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/45/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/48/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/51/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/54/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/57/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/60/absolute_errors/bilinear`; `results/v69-quant-confirm/compare.json#/rows/37/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/40/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/43/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/46/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/49/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/52/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/55/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/58/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/61/absolute_errors/zero`; `results/v69-quant-confirm/compare.json#/rows/38/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/41/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/44/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/47/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/50/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/53/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/56/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/59/absolute_errors/median`; `results/v69-quant-confirm/compare.json#/rows/62/absolute_errors/median`
-- Cell (4, 0): `results/v70-distill-confirm/freeze.json#/confirmation_register/unused_U_assertion`; `results/v70-distill-confirm/freeze.json#/frozen_at_utc`; `results/v47-p2-register/register.json#/v5_confirm/registered_at_utc`
-- Cell (4, 1): `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/reference_rule`; `results/v70-distill-confirm/freeze.json#/prediction_rule`; `results/v70-distill-confirm/freeze.json#/selected/math/method`; `results/v70-distill-confirm/freeze.json#/selected/code/method`; `results/v70-distill-confirm/freeze.json#/selected/math/n_params`; `results/v70-distill-confirm/freeze.json#/selected/code/n_params`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`; `results/v70-distill-confirm/freeze.json#/selected/qa/n_params`
-- Cell (4, 2): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
-- Cell (4, 3): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
-- Cell (4, 4): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/0/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/1/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/2/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/3/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/4/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/5/paired_difference`; `results/v70-distill-confirm/compare.json#/groups/0/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/3/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/1/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/4/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/2/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/5/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/0/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/3/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/1/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/4/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
+- Cell (0, 0): `results/v53-prune-dev/register.json#/selected_candidate`; `results/v53-prune-dev/register.json#/dev_states`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`
+- Cell (0, 1): `results/v53-prune-dev/register.json#/feature_names`; `results/v53-prune-dev/register.json#/candidate_definitions/power`
+- Cell (0, 2): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/qa`
+- Cell (0, 3): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`
+- Cell (0, 4): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
+- Cell (0, 5): `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
+- Cell (1, 0): `results/v55-quant-group/register.json#/precommitted_rule`; `results/v55-quant-group/register.json#/test_sets/bit_test/states`; `results/v55-quant-group/register.json#/test_sets/bit_test/configs`
+- Cell (1, 1): `results/v55-quant-group/register.json#/feature_names`; `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`
+- Cell (1, 2): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa`
+- Cell (1, 3): `results/v55-quant-group/register.json#/precommitted_rule`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v55-quant-group/register.json#/dev_configs`; `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`
+- Cell (1, 4): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa`
+- Cell (1, 5): `results/v55-quant-group/register.json#/loso_table`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/math`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/code`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/qa`
+- Cell (2, 0): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`; `results/v69-quant-confirm/compare.json#/rows/0/test_set`; `results/v69-quant-confirm/compare.json#/rows/1/test_set`; `results/v69-quant-confirm/compare.json#/rows/2/test_set`; `results/v69-quant-confirm/compare.json#/rows/3/test_set`; `results/v69-quant-confirm/compare.json#/rows/4/test_set`; `results/v69-quant-confirm/compare.json#/rows/5/test_set`; `results/v69-quant-confirm/compare.json#/rows/6/test_set`; `results/v69-quant-confirm/compare.json#/rows/7/test_set`; `results/v69-quant-confirm/compare.json#/rows/8/test_set`; `results/v69-quant-confirm/compare.json#/rows/9/test_set`; `results/v69-quant-confirm/compare.json#/rows/10/test_set`; `results/v69-quant-confirm/compare.json#/rows/11/test_set`; `results/v69-quant-confirm/compare.json#/rows/12/test_set`; `results/v69-quant-confirm/compare.json#/rows/13/test_set`; `results/v69-quant-confirm/compare.json#/rows/14/test_set`; `results/v69-quant-confirm/compare.json#/rows/15/test_set`; `results/v69-quant-confirm/compare.json#/rows/16/test_set`; `results/v69-quant-confirm/compare.json#/rows/17/test_set`; `results/v69-quant-confirm/compare.json#/rows/18/test_set`; `results/v69-quant-confirm/compare.json#/rows/19/test_set`; `results/v69-quant-confirm/compare.json#/rows/20/test_set`; `results/v69-quant-confirm/compare.json#/rows/21/test_set`; `results/v69-quant-confirm/compare.json#/rows/22/test_set`; `results/v69-quant-confirm/compare.json#/rows/23/test_set`; `results/v69-quant-confirm/compare.json#/rows/24/test_set`; `results/v69-quant-confirm/compare.json#/rows/25/test_set`; `results/v69-quant-confirm/compare.json#/rows/26/test_set`; `results/v69-quant-confirm/compare.json#/rows/27/test_set`; `results/v69-quant-confirm/compare.json#/rows/28/test_set`; `results/v69-quant-confirm/compare.json#/rows/29/test_set`; `results/v69-quant-confirm/compare.json#/rows/30/test_set`; `results/v69-quant-confirm/compare.json#/rows/31/test_set`; `results/v69-quant-confirm/compare.json#/rows/32/test_set`; `results/v69-quant-confirm/compare.json#/rows/33/test_set`; `results/v69-quant-confirm/compare.json#/rows/34/test_set`; `results/v69-quant-confirm/compare.json#/rows/35/test_set`; `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
+- Cell (2, 1): `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v69-quant-confirm/develop.json#/models`; `results/v69-quant-confirm/develop.json#/feature_names`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selected/math/candidate`; `results/v69-quant-confirm/develop.json#/selected/code/candidate`; `results/v69-quant-confirm/develop.json#/selected/qa/candidate`
+- Cell (2, 2): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/low_order_2d/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/qa/mae`
+- Cell (2, 3): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`
+- Cell (2, 4): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
+- Cell (2, 5): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
+- Cell (3, 0): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`; `results/v69-quant-confirm/compare.json#/rows/36/test_set`; `results/v69-quant-confirm/compare.json#/rows/37/test_set`; `results/v69-quant-confirm/compare.json#/rows/38/test_set`; `results/v69-quant-confirm/compare.json#/rows/39/test_set`; `results/v69-quant-confirm/compare.json#/rows/40/test_set`; `results/v69-quant-confirm/compare.json#/rows/41/test_set`; `results/v69-quant-confirm/compare.json#/rows/42/test_set`; `results/v69-quant-confirm/compare.json#/rows/43/test_set`; `results/v69-quant-confirm/compare.json#/rows/44/test_set`; `results/v69-quant-confirm/compare.json#/rows/45/test_set`; `results/v69-quant-confirm/compare.json#/rows/46/test_set`; `results/v69-quant-confirm/compare.json#/rows/47/test_set`; `results/v69-quant-confirm/compare.json#/rows/48/test_set`; `results/v69-quant-confirm/compare.json#/rows/49/test_set`; `results/v69-quant-confirm/compare.json#/rows/50/test_set`; `results/v69-quant-confirm/compare.json#/rows/51/test_set`; `results/v69-quant-confirm/compare.json#/rows/52/test_set`; `results/v69-quant-confirm/compare.json#/rows/53/test_set`; `results/v69-quant-confirm/compare.json#/rows/54/test_set`; `results/v69-quant-confirm/compare.json#/rows/55/test_set`; `results/v69-quant-confirm/compare.json#/rows/56/test_set`; `results/v69-quant-confirm/compare.json#/rows/57/test_set`; `results/v69-quant-confirm/compare.json#/rows/58/test_set`; `results/v69-quant-confirm/compare.json#/rows/59/test_set`; `results/v69-quant-confirm/compare.json#/rows/60/test_set`; `results/v69-quant-confirm/compare.json#/rows/61/test_set`; `results/v69-quant-confirm/compare.json#/rows/62/test_set`; `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
+- Cell (3, 1): `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v69-quant-confirm/develop.json#/models`; `results/v69-quant-confirm/develop.json#/feature_names`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selected/math/candidate`; `results/v69-quant-confirm/develop.json#/selected/code/candidate`; `results/v69-quant-confirm/develop.json#/selected/qa/candidate`
+- Cell (3, 2): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/low_order_2d/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/low_order_2d/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/low_order_2d/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/low_order_2d/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/qa/n`
+- Cell (3, 3): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`
+- Cell (3, 4): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
+- Cell (3, 5): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
+- Cell (4, 0): `results/v70-distill-confirm/freeze.json#/confirmation_register/unused_U_assertion`; `results/v70-distill-confirm/freeze.json#/frozen_at_utc`; `results/v47-p2-register/register.json#/v5_confirm/registered_at_utc`; `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
+- Cell (4, 1): `results/v70-distill-confirm/freeze.json#/selected`; `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/selected/math/method`; `results/v70-distill-confirm/freeze.json#/selected/code/method`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`
+- Cell (4, 2): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/bootstrap`; `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/0/paired_difference/ci95/0`; `results/v70-distill-confirm/compare.json#/groups/0/paired_difference/ci95/1`; `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/3/paired_difference/ci95/0`; `results/v70-distill-confirm/compare.json#/groups/3/paired_difference/ci95/1`; `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/1/paired_difference/ci95/0`; `results/v70-distill-confirm/compare.json#/groups/1/paired_difference/ci95/1`; `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/4/paired_difference/ci95/0`; `results/v70-distill-confirm/compare.json#/groups/4/paired_difference/ci95/1`; `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/2/paired_difference/ci95/0`; `results/v70-distill-confirm/compare.json#/groups/2/paired_difference/ci95/1`; `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/5/paired_difference/ci95/0`; `results/v70-distill-confirm/compare.json#/groups/5/paired_difference/ci95/1`
+- Cell (4, 3): `results/v70-distill-confirm/freeze.json#/selected`; `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/selected/math/method`; `results/v70-distill-confirm/freeze.json#/selected/code/method`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`
+- Cell (4, 4): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
+- Cell (4, 5): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/0/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/3/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/1/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/4/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
 
 ## Machine-readable cell recipes
 
@@ -66,13 +73,30 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "row": 0,
     "column": 0,
     "parts": [
-      "Pruning,\nnew source state"
+      "Pruning, new state\n",
+      {
+        "sources": [
+          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
+          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag",
+          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "three checkpoints outside every fit; includes 6.9B",
+        "expected": [
+          "pythia-410m@step48000",
+          "pythia-1.4b@step112000",
+          "pythia-6.9b@step80000"
+        ]
+      }
     ],
     "context": [
-      "results/v53-prune-dev/register.json#/selected_candidate"
+      "results/v53-prune-dev/register.json#/selected_candidate",
+      "results/v53-prune-dev/register.json#/dev_states",
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities"
     ],
-    "note": "",
-    "rendered": "Pruning,\\newline new source state"
+    "note": "All three test checkpoints are absent from every development fit. The 6.9B size occurs at other stages in the expanded register.",
+    "rendered": "Pruning, new state\\newline three checkpoints outside every fit; includes 6.9B"
   },
   {
     "row": 0,
@@ -84,62 +108,21 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "$A_c(\\mathbf x)\\,((1-d)/0.3)^{\\gamma_c}$",
+        "label": "Power form",
         "expected": [
           "(beta.phi) * ((1-d)/0.3)**gamma"
         ]
-      },
-      " (",
-      {
-        "sources": [
-          "results/v53-prune-dev/register.json#/n_params_per_capability/power"
-        ],
-        "op": "identity",
-        "format": null
-      },
-      ")"
+      }
     ],
     "context": [
       "results/v53-prune-dev/register.json#/feature_names"
     ],
     "note": "",
-    "rendered": "$A_c(\\mathbf x)\\,((1-d)/0.3)^{\\gamma_c}$ (5)"
+    "rendered": "Power form"
   },
   {
     "row": 0,
     "column": 2,
-    "parts": [
-      {
-        "sources": [
-          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
-          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag",
-          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag",
-          "results/v40-prune-strength/register.json#/dev/sizes"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "new stages; 6.9B outside size range",
-        "expected": [
-          "pythia-410m@step48000",
-          "pythia-1.4b@step112000",
-          "pythia-6.9b@step80000",
-          [
-            "160m",
-            "410m",
-            "1.4b"
-          ]
-        ]
-      }
-    ],
-    "context": [
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities"
-    ],
-    "note": "Outside the size range of the original nine-state panel; V53's expanded register itself includes 6.9B.",
-    "rendered": "new stages; 6.9B outside size range"
-  },
-  {
-    "row": 0,
-    "column": 3,
     "parts": [
       {
         "sources": [
@@ -177,24 +160,79 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   },
   {
     "row": 0,
+    "column": 3,
+    "parts": [
+      {
+        "sources": [
+          "results/v86-main-table/summary.json#/main_rows/0/delivered_timing",
+          "results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered",
+          "results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered",
+          "results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Source-free median density curve",
+        "expected": [
+          "fixed after test; reused frozen in Sec. 5",
+          "median_curve",
+          "median_curve",
+          "median_curve"
+        ]
+      },
+      "$^{\\dagger}$"
+    ],
+    "context": [],
+    "note": "New-state source-free median curve, fixed after test; scores use the same three checkpoints and densities as the frozen candidate.",
+    "rendered": "Source-free median density curve$^{\\dagger}$"
+  },
+  {
+    "row": 0,
     "column": 4,
     "parts": [
       {
         "sources": [
-          "results/v53-prune-dev/register.json#/loso_table/2/candidate",
-          "results/v53-prune-dev/register.json#/loso_table/2/candidate",
-          "results/v53-prune-dev/register.json#/loso_table/5/candidate"
+          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/math",
+          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/math",
+          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/math"
         ],
-        "op": "label",
-        "format": null,
-        "label": "per-density / per-density / development median",
-        "expected": [
-          "A2",
-          "A2",
-          "median_curve"
-        ]
+        "op": "mean",
+        "format": ".2f"
       },
-      "\n",
+      " / ",
+      {
+        "sources": [
+          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code",
+          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code",
+          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code"
+        ],
+        "op": "mean",
+        "format": ".2f"
+      },
+      " / ",
+      {
+        "sources": [
+          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa",
+          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa",
+          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa"
+        ],
+        "op": "mean",
+        "format": ".2f"
+      },
+      "$^{\\dagger}$"
+    ],
+    "context": [
+      "results/v86-main-table/summary.json#/main_rows/0/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered"
+    ],
+    "note": "New-state source-free median curve, fixed after test; scores use the same three checkpoints and densities as the frozen candidate.",
+    "rendered": "0.28 / 0.21 / 0.22$^{\\dagger}$"
+  },
+  {
+    "row": 0,
+    "column": 5,
+    "parts": [
       {
         "sources": [
           "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math",
@@ -228,57 +266,14 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "context": [
       "results/v53-prune-dev/register.json#/loso_table"
     ],
-    "note": "Minimum development LOSO MAE excluding power, per capability; no test ranking.",
-    "rendered": "per-density / per-density / development median\\newline 0.23 / 0.22 / 0.22"
+    "note": "Minimum development LOSO MAE excluding power, per capability: per-density / per-density / development median; no test ranking.",
+    "rendered": "0.23 / 0.22 / 0.22"
   },
   {
     "row": 1,
     "column": 0,
     "parts": [
-      "Quantization,\nunseen bit-width"
-    ],
-    "context": [
-      "results/v55-quant-group/register.json#/test_sets/bit_test",
-      "results/v55-quant-group/register.json#/precommitted_rule"
-    ],
-    "note": "",
-    "rendered": "Quantization,\\newline unseen bit-width"
-  },
-  {
-    "row": 1,
-    "column": 1,
-    "parts": [
-      {
-        "sources": [
-          "results/v55-quant-group/register.json#/candidate_definitions/low_order_2d"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "per-bit source regression",
-        "expected": [
-          "phi.[a0 + a1*u + a2*v + a3*u*v + a4*u^2]; coefficients ordered by term then phi"
-        ]
-      },
-      " (",
-      {
-        "sources": [
-          "results/v55-quant-group/register.json#/n_params_per_capability/low_order_2d"
-        ],
-        "op": "identity",
-        "format": null
-      },
-      ")"
-    ],
-    "context": [
-      "results/v55-quant-group/register.json#/feature_names"
-    ],
-    "note": "",
-    "rendered": "per-bit source regression (20)"
-  },
-  {
-    "row": 1,
-    "column": 2,
-    "parts": [
+      "Quantization, unseen bit-width\n",
       {
         "sources": [
           "results/v55-quant-group/register.json#/test_sets/bit_test/states",
@@ -286,7 +281,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "160M\u20131.4B; bit 4; groups 64, 256",
+        "label": "160M\u20131.4B; bit 4; groups 64 and 256",
         "expected": [
           [
             "pythia-160m@step16000",
@@ -303,13 +298,37 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ]
       }
     ],
-    "context": [],
+    "context": [
+      "results/v55-quant-group/register.json#/precommitted_rule"
+    ],
     "note": "",
-    "rendered": "160M\u20131.4B; bit 4; groups 64, 256"
+    "rendered": "Quantization, unseen bit-width\\newline 160M\u20131.4B; bit 4; groups 64 and 256"
   },
   {
     "row": 1,
-    "column": 3,
+    "column": 1,
+    "parts": [
+      {
+        "sources": [
+          "results/v55-quant-group/register.json#/candidate_definitions/low_order_2d"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Source surface",
+        "expected": [
+          "phi.[a0 + a1*u + a2*v + a3*u*v + a4*u^2]; coefficients ordered by term then phi"
+        ]
+      }
+    ],
+    "context": [
+      "results/v55-quant-group/register.json#/feature_names"
+    ],
+    "note": "",
+    "rendered": "Source surface"
+  },
+  {
+    "row": 1,
+    "column": 2,
     "parts": [
       {
         "sources": [
@@ -341,24 +360,65 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   },
   {
     "row": 1,
+    "column": 3,
+    "parts": [
+      {
+        "sources": [
+          "results/v55-quant-group/register.json#/candidate_definitions/low_order_2d"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Source surface (as tested)",
+        "expected": [
+          "phi.[a0 + a1*u + a2*v + a3*u*v + a4*u^2]; coefficients ordered by term then phi"
+        ]
+      }
+    ],
+    "context": [
+      "results/v55-quant-group/register.json#/precommitted_rule",
+      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule",
+      "results/v69-quant-confirm/develop.json#/dev_configs",
+      "results/v55-quant-group/register.json#/dev_configs"
+    ],
+    "note": "The delivered relation for this task is the source surface as tested; its errors reuse the candidate's exact frozen JSON fields. No post-test dagger applies. The later delivered rule has no matching stored score for this earlier bit test, whose configurations entered its development grid. V55 alternatives use different models and boundary rules and are not substituted for that later rule.",
+    "rendered": "Source surface (as tested)"
+  },
+  {
+    "row": 1,
     "column": 4,
     "parts": [
       {
         "sources": [
-          "results/v55-quant-group/register.json#/loso_table/4/candidate",
-          "results/v55-quant-group/register.json#/loso_table/4/candidate",
-          "results/v55-quant-group/register.json#/loso_table/4/candidate"
+          "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math"
         ],
-        "op": "label",
-        "format": null,
-        "label": "development median",
-        "expected": [
-          "median",
-          "median",
-          "median"
-        ]
+        "op": "identity",
+        "format": ".2f"
       },
-      "\n",
+      " / ",
+      {
+        "sources": [
+          "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      " / ",
+      {
+        "sources": [
+          "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      }
+    ],
+    "context": [],
+    "note": "The delivered relation for this task is the source surface as tested; its errors reuse the candidate's exact frozen JSON fields. No post-test dagger applies. The later delivered rule has no matching stored score for this earlier bit test, whose configurations entered its development grid. V55 alternatives use different models and boundary rules and are not substituted for that later rule.",
+    "rendered": "0.19 / 0.21 / 0.44"
+  },
+  {
+    "row": 1,
+    "column": 5,
+    "parts": [
       {
         "sources": [
           "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/math"
@@ -386,14 +446,40 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "context": [
       "results/v55-quant-group/register.json#/loso_table"
     ],
-    "note": "Development minimum over registered baselines mean/median/zero.",
-    "rendered": "development median\\newline 0.55 / 0.73 / 0.54"
+    "note": "Development minimum over registered baselines mean/median/zero: development median / development median / development median.",
+    "rendered": "0.55 / 0.73 / 0.54"
   },
   {
     "row": 2,
     "column": 0,
     "parts": [
-      "Quantization,\nunseen group size"
+      "Quantization, unseen group size",
+      "\n",
+      {
+        "sources": [
+          "results/v69-quant-confirm/compare.json#/rows/0/state",
+          "results/v69-quant-confirm/compare.json#/rows/0/config",
+          "results/v69-quant-confirm/compare.json#/rows/3/config",
+          "results/v69-quant-confirm/compare.json#/rows/6/config",
+          "results/v69-quant-confirm/compare.json#/rows/9/config",
+          "results/v69-quant-confirm/compare.json#/rows/12/config",
+          "results/v69-quant-confirm/compare.json#/rows/15/config",
+          "results/v69-quant-confirm/compare.json#/rows/18/state"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
+        "expected": [
+          "pythia-410m@step143000",
+          "b3_g32",
+          "b3_g512",
+          "b4_g32",
+          "b4_g512",
+          "b5_g32",
+          "b5_g512",
+          "pythia-1.4b@step16000"
+        ]
+      }
     ],
     "context": [
       "results/v69-quant-confirm/freeze.json#/frozen_at_utc",
@@ -435,77 +521,27 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v69-quant-confirm/compare.json#/rows/35/test_set"
     ],
     "note": "",
-    "rendered": "Quantization,\\newline unseen group size"
+    "rendered": "Quantization, unseen group size\\newline 410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512"
   },
   {
     "row": 2,
     "column": 1,
     "parts": [
-      "Math: ",
       {
         "sources": [
-          "results/v69-quant-confirm/develop.json#/selected/math/candidate"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "per-bit source regression",
-        "expected": [
-          "low_order_2d"
-        ]
-      },
-      " (",
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/selected/math/n_coefficients"
-        ],
-        "op": "identity",
-        "format": null
-      },
-      ")",
-      "; ",
-      "Code: ",
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/selected/code/candidate"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "piecewise interpolation over the $(b,g)$ grid",
-        "expected": [
-          "median"
-        ]
-      },
-      " (",
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/selected/code/n_coefficients"
-        ],
-        "op": "identity",
-        "format": null
-      },
-      ")",
-      "; ",
-      "QA: ",
-      {
-        "sources": [
+          "results/v69-quant-confirm/develop.json#/selected/math/candidate",
+          "results/v69-quant-confirm/develop.json#/selected/code/candidate",
           "results/v69-quant-confirm/develop.json#/selected/qa/candidate"
         ],
         "op": "label",
         "format": null,
-        "label": "zero change",
+        "label": "Math: source surface;\nCode: median;\nQA: zero change",
         "expected": [
+          "low_order_2d",
+          "median",
           "zero"
         ]
-      },
-      " (",
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/selected/qa/n_coefficients"
-        ],
-        "op": "identity",
-        "format": null
-      },
-      ")"
+      }
     ],
     "context": [
       "results/v55-quant-group/register.json#/candidate_definitions/low_order_2d",
@@ -513,8 +549,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v69-quant-confirm/develop.json#/feature_names",
       "results/v69-quant-confirm/develop.json#/dev_configs"
     ],
-    "note": "Frozen candidates unchanged: the source regression has 20 coefficients; Code interpolates nine per-configuration medians; QA is identically zero. This is not the retrospective same-input interpolation selection.",
-    "rendered": "Math: per-bit source regression (20); Code: piecewise interpolation over the $(b,g)$ grid (9); QA: zero change (0)"
+    "note": "Frozen candidates unchanged: Math uses the source surface, Code the per-configuration median, QA zero. Median interpolation is source-free and differs from the delivered same-input interpolation.",
+    "rendered": "Math: source surface;\\newline Code: median;\\newline QA: zero change"
   },
   {
     "row": 2,
@@ -522,220 +558,25 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "parts": [
       {
         "sources": [
-          "results/v69-quant-confirm/compare.json#/rows/0/state",
-          "results/v69-quant-confirm/compare.json#/rows/0/config",
-          "results/v69-quant-confirm/compare.json#/rows/1/state",
-          "results/v69-quant-confirm/compare.json#/rows/1/config",
-          "results/v69-quant-confirm/compare.json#/rows/2/state",
-          "results/v69-quant-confirm/compare.json#/rows/2/config",
-          "results/v69-quant-confirm/compare.json#/rows/3/state",
-          "results/v69-quant-confirm/compare.json#/rows/3/config",
-          "results/v69-quant-confirm/compare.json#/rows/4/state",
-          "results/v69-quant-confirm/compare.json#/rows/4/config",
-          "results/v69-quant-confirm/compare.json#/rows/5/state",
-          "results/v69-quant-confirm/compare.json#/rows/5/config",
-          "results/v69-quant-confirm/compare.json#/rows/6/state",
-          "results/v69-quant-confirm/compare.json#/rows/6/config",
-          "results/v69-quant-confirm/compare.json#/rows/7/state",
-          "results/v69-quant-confirm/compare.json#/rows/7/config",
-          "results/v69-quant-confirm/compare.json#/rows/8/state",
-          "results/v69-quant-confirm/compare.json#/rows/8/config",
-          "results/v69-quant-confirm/compare.json#/rows/9/state",
-          "results/v69-quant-confirm/compare.json#/rows/9/config",
-          "results/v69-quant-confirm/compare.json#/rows/10/state",
-          "results/v69-quant-confirm/compare.json#/rows/10/config",
-          "results/v69-quant-confirm/compare.json#/rows/11/state",
-          "results/v69-quant-confirm/compare.json#/rows/11/config",
-          "results/v69-quant-confirm/compare.json#/rows/12/state",
-          "results/v69-quant-confirm/compare.json#/rows/12/config",
-          "results/v69-quant-confirm/compare.json#/rows/13/state",
-          "results/v69-quant-confirm/compare.json#/rows/13/config",
-          "results/v69-quant-confirm/compare.json#/rows/14/state",
-          "results/v69-quant-confirm/compare.json#/rows/14/config",
-          "results/v69-quant-confirm/compare.json#/rows/15/state",
-          "results/v69-quant-confirm/compare.json#/rows/15/config",
-          "results/v69-quant-confirm/compare.json#/rows/16/state",
-          "results/v69-quant-confirm/compare.json#/rows/16/config",
-          "results/v69-quant-confirm/compare.json#/rows/17/state",
-          "results/v69-quant-confirm/compare.json#/rows/17/config",
-          "results/v69-quant-confirm/compare.json#/rows/18/state",
-          "results/v69-quant-confirm/compare.json#/rows/18/config",
-          "results/v69-quant-confirm/compare.json#/rows/19/state",
-          "results/v69-quant-confirm/compare.json#/rows/19/config",
-          "results/v69-quant-confirm/compare.json#/rows/20/state",
-          "results/v69-quant-confirm/compare.json#/rows/20/config",
-          "results/v69-quant-confirm/compare.json#/rows/21/state",
-          "results/v69-quant-confirm/compare.json#/rows/21/config",
-          "results/v69-quant-confirm/compare.json#/rows/22/state",
-          "results/v69-quant-confirm/compare.json#/rows/22/config",
-          "results/v69-quant-confirm/compare.json#/rows/23/state",
-          "results/v69-quant-confirm/compare.json#/rows/23/config",
-          "results/v69-quant-confirm/compare.json#/rows/24/state",
-          "results/v69-quant-confirm/compare.json#/rows/24/config",
-          "results/v69-quant-confirm/compare.json#/rows/25/state",
-          "results/v69-quant-confirm/compare.json#/rows/25/config",
-          "results/v69-quant-confirm/compare.json#/rows/26/state",
-          "results/v69-quant-confirm/compare.json#/rows/26/config",
-          "results/v69-quant-confirm/compare.json#/rows/27/state",
-          "results/v69-quant-confirm/compare.json#/rows/27/config",
-          "results/v69-quant-confirm/compare.json#/rows/28/state",
-          "results/v69-quant-confirm/compare.json#/rows/28/config",
-          "results/v69-quant-confirm/compare.json#/rows/29/state",
-          "results/v69-quant-confirm/compare.json#/rows/29/config",
-          "results/v69-quant-confirm/compare.json#/rows/30/state",
-          "results/v69-quant-confirm/compare.json#/rows/30/config",
-          "results/v69-quant-confirm/compare.json#/rows/31/state",
-          "results/v69-quant-confirm/compare.json#/rows/31/config",
-          "results/v69-quant-confirm/compare.json#/rows/32/state",
-          "results/v69-quant-confirm/compare.json#/rows/32/config",
-          "results/v69-quant-confirm/compare.json#/rows/33/state",
-          "results/v69-quant-confirm/compare.json#/rows/33/config",
-          "results/v69-quant-confirm/compare.json#/rows/34/state",
-          "results/v69-quant-confirm/compare.json#/rows/34/config",
-          "results/v69-quant-confirm/compare.json#/rows/35/state",
-          "results/v69-quant-confirm/compare.json#/rows/35/config"
+          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/low_order_2d/math/mae"
         ],
-        "op": "label",
-        "format": null,
-        "label": "410M, 1.4B; bits 3\u20135; groups 32, 512",
-        "expected": [
-          "pythia-410m@step143000",
-          "b3_g32",
-          "pythia-410m@step143000",
-          "b3_g32",
-          "pythia-410m@step143000",
-          "b3_g32",
-          "pythia-410m@step143000",
-          "b3_g512",
-          "pythia-410m@step143000",
-          "b3_g512",
-          "pythia-410m@step143000",
-          "b3_g512",
-          "pythia-410m@step143000",
-          "b4_g32",
-          "pythia-410m@step143000",
-          "b4_g32",
-          "pythia-410m@step143000",
-          "b4_g32",
-          "pythia-410m@step143000",
-          "b4_g512",
-          "pythia-410m@step143000",
-          "b4_g512",
-          "pythia-410m@step143000",
-          "b4_g512",
-          "pythia-410m@step143000",
-          "b5_g32",
-          "pythia-410m@step143000",
-          "b5_g32",
-          "pythia-410m@step143000",
-          "b5_g32",
-          "pythia-410m@step143000",
-          "b5_g512",
-          "pythia-410m@step143000",
-          "b5_g512",
-          "pythia-410m@step143000",
-          "b5_g512",
-          "pythia-1.4b@step16000",
-          "b3_g32",
-          "pythia-1.4b@step16000",
-          "b3_g32",
-          "pythia-1.4b@step16000",
-          "b3_g32",
-          "pythia-1.4b@step16000",
-          "b3_g512",
-          "pythia-1.4b@step16000",
-          "b3_g512",
-          "pythia-1.4b@step16000",
-          "b3_g512",
-          "pythia-1.4b@step16000",
-          "b4_g32",
-          "pythia-1.4b@step16000",
-          "b4_g32",
-          "pythia-1.4b@step16000",
-          "b4_g32",
-          "pythia-1.4b@step16000",
-          "b4_g512",
-          "pythia-1.4b@step16000",
-          "b4_g512",
-          "pythia-1.4b@step16000",
-          "b4_g512",
-          "pythia-1.4b@step16000",
-          "b5_g32",
-          "pythia-1.4b@step16000",
-          "b5_g32",
-          "pythia-1.4b@step16000",
-          "b5_g32",
-          "pythia-1.4b@step16000",
-          "b5_g512",
-          "pythia-1.4b@step16000",
-          "b5_g512",
-          "pythia-1.4b@step16000",
-          "b5_g512"
-        ]
-      }
-    ],
-    "context": [],
-    "note": "",
-    "rendered": "410M, 1.4B; bits 3\u20135; groups 32, 512"
-  },
-  {
-    "row": 2,
-    "column": 3,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/rows/0/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/3/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/6/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/9/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/12/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/15/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/18/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/21/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/24/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/27/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/30/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/33/absolute_errors/low_order_2d"
-        ],
-        "op": "mean",
+        "op": "identity",
         "format": ".2f"
       },
       " / ",
       {
         "sources": [
-          "results/v69-quant-confirm/compare.json#/rows/1/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/4/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/7/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/10/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/13/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/16/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/19/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/22/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/25/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/28/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/31/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/34/absolute_errors/median"
+          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/code/mae"
         ],
-        "op": "mean",
+        "op": "identity",
         "format": ".2f"
       },
       " / ",
       {
         "sources": [
-          "results/v69-quant-confirm/compare.json#/rows/2/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/5/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/8/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/11/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/14/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/17/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/20/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/23/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/26/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/29/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/32/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/35/absolute_errors/zero"
+          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/qa/mae"
         ],
-        "op": "mean",
+        "op": "identity",
         "format": ".2f"
       }
     ],
@@ -745,131 +586,141 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   },
   {
     "row": 2,
+    "column": 3,
+    "parts": [
+      {
+        "sources": [
+          "results/v86-main-table/summary.json#/main_rows/2/delivered_timing",
+          "results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered",
+          "results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered",
+          "results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered",
+          "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Math: interpolation;\nCode: interpolation;\nQA: median",
+        "expected": [
+          "fixed after test",
+          "same_input_interpolation",
+          "same_input_interpolation",
+          "median",
+          "R: piecewise interpolation for math/code on development states; per-configuration median for QA and for all capabilities on new states. Specified post-test rule, not the minimum error in each test panel."
+        ]
+      },
+      "$^{\\dagger}$"
+    ],
+    "context": [],
+    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
+    "rendered": "Math: interpolation;\\newline Code: interpolation;\\newline QA: median$^{\\dagger}$"
+  },
+  {
+    "row": 2,
     "column": 4,
     "parts": [
       {
         "sources": [
-          "results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math",
-          "results/v69-quant-confirm/develop.json#/loso/scores/zero/code",
-          "results/v69-quant-confirm/develop.json#/loso/scores/median/qa"
+          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/math/mae"
         ],
-        "op": "label",
-        "format": null,
-        "label": "bilinear / zero change / development median",
-        "expected": [
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.18035555432620828,
-              "pythia-1.4b@step16000": 0.4042579843558109,
-              "pythia-160m@step143000": 3.3985412467109986,
-              "pythia-160m@step16000": 0.43688672544116214,
-              "pythia-410m@step143000": 0.37784637907436774,
-              "pythia-410m@step16000": 0.2598977837534169
-            },
-            "macro_mae": 0.8429642789436608,
-            "mae": 0.8429642789436608
-          },
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.5143543829067956,
-              "pythia-1.4b@step16000": 0.10937458732799844,
-              "pythia-160m@step143000": 6.2735256054723605,
-              "pythia-160m@step16000": 0.3426432136914666,
-              "pythia-410m@step143000": 1.110008451522595,
-              "pythia-410m@step16000": 0.19481419855795895
-            },
-            "macro_mae": 1.4241200732465291,
-            "mae": 1.4241200732465291
-          },
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.16258053443177,
-              "pythia-1.4b@step16000": 0.2355005016899031,
-              "pythia-160m@step143000": 6.541049456062526,
-              "pythia-160m@step16000": 0.09769750739332464,
-              "pythia-410m@step143000": 0.7294274133924797,
-              "pythia-410m@step16000": 0.15231569497253902
-            },
-            "macro_mae": 1.319761851323757,
-            "mae": 1.3197618513237568
-          }
-        ]
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/rows/0/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/3/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/6/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/9/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/12/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/15/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/18/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/21/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/24/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/27/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/30/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/33/absolute_errors/bilinear"
-        ],
-        "op": "mean",
+        "op": "identity",
         "format": ".2f"
       },
       " / ",
       {
         "sources": [
-          "results/v69-quant-confirm/compare.json#/rows/1/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/4/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/7/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/10/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/13/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/16/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/19/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/22/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/25/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/28/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/31/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/34/absolute_errors/zero"
+          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae"
         ],
-        "op": "mean",
+        "op": "identity",
         "format": ".2f"
       },
       " / ",
       {
         "sources": [
-          "results/v69-quant-confirm/compare.json#/rows/2/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/5/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/8/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/11/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/14/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/17/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/20/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/23/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/26/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/29/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/32/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/35/absolute_errors/median"
+          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae"
         ],
-        "op": "mean",
+        "op": "identity",
+        "format": ".2f"
+      },
+      "$^{\\dagger}$"
+    ],
+    "context": [
+      "results/v86-main-table/summary.json#/main_rows/2/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered",
+      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
+    ],
+    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
+    "rendered": "0.07 / 0.12 / 0.46$^{\\dagger}$"
+  },
+  {
+    "row": 2,
+    "column": 5,
+    "parts": [
+      {
+        "sources": [
+          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      " / ",
+      {
+        "sources": [
+          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      " / ",
+      {
+        "sources": [
+          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae"
+        ],
+        "op": "identity",
         "format": ".2f"
       }
     ],
     "context": [
       "results/v69-quant-confirm/develop.json#/loso/scores"
     ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability.",
-    "rendered": "bilinear / zero change / development median\\newline 0.33 / 0.68 / 0.46"
+    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear / zero change / development median.",
+    "rendered": "0.33 / 0.68 / 0.46"
   },
   {
     "row": 3,
     "column": 0,
     "parts": [
-      "Quantization,\nnew state"
+      "Quantization, new state",
+      "\n",
+      {
+        "sources": [
+          "results/v69-quant-confirm/compare.json#/rows/36/state",
+          "results/v69-quant-confirm/compare.json#/rows/36/config",
+          "results/v69-quant-confirm/compare.json#/rows/39/config",
+          "results/v69-quant-confirm/compare.json#/rows/42/config",
+          "results/v69-quant-confirm/compare.json#/rows/45/config",
+          "results/v69-quant-confirm/compare.json#/rows/48/config",
+          "results/v69-quant-confirm/compare.json#/rows/51/config",
+          "results/v69-quant-confirm/compare.json#/rows/54/config",
+          "results/v69-quant-confirm/compare.json#/rows/57/config",
+          "results/v69-quant-confirm/compare.json#/rows/60/config"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512",
+        "expected": [
+          "pythia-1.4b@step112000",
+          "b3_g32",
+          "b3_g512",
+          "b4_g32",
+          "b4_g512",
+          "b5_g32",
+          "b5_g512",
+          "b3_g128",
+          "b4_g128",
+          "b5_g128"
+        ]
+      }
     ],
     "context": [
       "results/v69-quant-confirm/freeze.json#/frozen_at_utc",
@@ -902,77 +753,27 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v69-quant-confirm/compare.json#/rows/62/test_set"
     ],
     "note": "",
-    "rendered": "Quantization,\\newline new state"
+    "rendered": "Quantization, new state\\newline 1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512"
   },
   {
     "row": 3,
     "column": 1,
     "parts": [
-      "Math: ",
       {
         "sources": [
-          "results/v69-quant-confirm/develop.json#/selected/math/candidate"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "per-bit source regression",
-        "expected": [
-          "low_order_2d"
-        ]
-      },
-      " (",
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/selected/math/n_coefficients"
-        ],
-        "op": "identity",
-        "format": null
-      },
-      ")",
-      "; ",
-      "Code: ",
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/selected/code/candidate"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "piecewise interpolation over the $(b,g)$ grid",
-        "expected": [
-          "median"
-        ]
-      },
-      " (",
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/selected/code/n_coefficients"
-        ],
-        "op": "identity",
-        "format": null
-      },
-      ")",
-      "; ",
-      "QA: ",
-      {
-        "sources": [
+          "results/v69-quant-confirm/develop.json#/selected/math/candidate",
+          "results/v69-quant-confirm/develop.json#/selected/code/candidate",
           "results/v69-quant-confirm/develop.json#/selected/qa/candidate"
         ],
         "op": "label",
         "format": null,
-        "label": "zero change",
+        "label": "Math: source surface;\nCode: median;\nQA: zero change",
         "expected": [
+          "low_order_2d",
+          "median",
           "zero"
         ]
-      },
-      " (",
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/selected/qa/n_coefficients"
-        ],
-        "op": "identity",
-        "format": null
-      },
-      ")"
+      }
     ],
     "context": [
       "results/v55-quant-group/register.json#/candidate_definitions/low_order_2d",
@@ -980,8 +781,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v69-quant-confirm/develop.json#/feature_names",
       "results/v69-quant-confirm/develop.json#/dev_configs"
     ],
-    "note": "Frozen candidates unchanged: the source regression has 20 coefficients; Code interpolates nine per-configuration medians; QA is identically zero. This is not the retrospective same-input interpolation selection.",
-    "rendered": "Math: per-bit source regression (20); Code: piecewise interpolation over the $(b,g)$ grid (9); QA: zero change (0)"
+    "note": "Frozen candidates unchanged: Math uses the source surface, Code the per-configuration median, QA zero. Median interpolation is source-free and differs from the delivered same-input interpolation.",
+    "rendered": "Math: source surface;\\newline Code: median;\\newline QA: zero change"
   },
   {
     "row": 3,
@@ -989,175 +790,34 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "parts": [
       {
         "sources": [
-          "results/v69-quant-confirm/compare.json#/rows/36/state",
-          "results/v69-quant-confirm/compare.json#/rows/36/config",
-          "results/v69-quant-confirm/compare.json#/rows/37/state",
-          "results/v69-quant-confirm/compare.json#/rows/37/config",
-          "results/v69-quant-confirm/compare.json#/rows/38/state",
-          "results/v69-quant-confirm/compare.json#/rows/38/config",
-          "results/v69-quant-confirm/compare.json#/rows/39/state",
-          "results/v69-quant-confirm/compare.json#/rows/39/config",
-          "results/v69-quant-confirm/compare.json#/rows/40/state",
-          "results/v69-quant-confirm/compare.json#/rows/40/config",
-          "results/v69-quant-confirm/compare.json#/rows/41/state",
-          "results/v69-quant-confirm/compare.json#/rows/41/config",
-          "results/v69-quant-confirm/compare.json#/rows/42/state",
-          "results/v69-quant-confirm/compare.json#/rows/42/config",
-          "results/v69-quant-confirm/compare.json#/rows/43/state",
-          "results/v69-quant-confirm/compare.json#/rows/43/config",
-          "results/v69-quant-confirm/compare.json#/rows/44/state",
-          "results/v69-quant-confirm/compare.json#/rows/44/config",
-          "results/v69-quant-confirm/compare.json#/rows/45/state",
-          "results/v69-quant-confirm/compare.json#/rows/45/config",
-          "results/v69-quant-confirm/compare.json#/rows/46/state",
-          "results/v69-quant-confirm/compare.json#/rows/46/config",
-          "results/v69-quant-confirm/compare.json#/rows/47/state",
-          "results/v69-quant-confirm/compare.json#/rows/47/config",
-          "results/v69-quant-confirm/compare.json#/rows/48/state",
-          "results/v69-quant-confirm/compare.json#/rows/48/config",
-          "results/v69-quant-confirm/compare.json#/rows/49/state",
-          "results/v69-quant-confirm/compare.json#/rows/49/config",
-          "results/v69-quant-confirm/compare.json#/rows/50/state",
-          "results/v69-quant-confirm/compare.json#/rows/50/config",
-          "results/v69-quant-confirm/compare.json#/rows/51/state",
-          "results/v69-quant-confirm/compare.json#/rows/51/config",
-          "results/v69-quant-confirm/compare.json#/rows/52/state",
-          "results/v69-quant-confirm/compare.json#/rows/52/config",
-          "results/v69-quant-confirm/compare.json#/rows/53/state",
-          "results/v69-quant-confirm/compare.json#/rows/53/config",
-          "results/v69-quant-confirm/compare.json#/rows/54/state",
-          "results/v69-quant-confirm/compare.json#/rows/54/config",
-          "results/v69-quant-confirm/compare.json#/rows/55/state",
-          "results/v69-quant-confirm/compare.json#/rows/55/config",
-          "results/v69-quant-confirm/compare.json#/rows/56/state",
-          "results/v69-quant-confirm/compare.json#/rows/56/config",
-          "results/v69-quant-confirm/compare.json#/rows/57/state",
-          "results/v69-quant-confirm/compare.json#/rows/57/config",
-          "results/v69-quant-confirm/compare.json#/rows/58/state",
-          "results/v69-quant-confirm/compare.json#/rows/58/config",
-          "results/v69-quant-confirm/compare.json#/rows/59/state",
-          "results/v69-quant-confirm/compare.json#/rows/59/config",
-          "results/v69-quant-confirm/compare.json#/rows/60/state",
-          "results/v69-quant-confirm/compare.json#/rows/60/config",
-          "results/v69-quant-confirm/compare.json#/rows/61/state",
-          "results/v69-quant-confirm/compare.json#/rows/61/config",
-          "results/v69-quant-confirm/compare.json#/rows/62/state",
-          "results/v69-quant-confirm/compare.json#/rows/62/config"
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/low_order_2d/math/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/low_order_2d/math/n",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/low_order_2d/math/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/low_order_2d/math/n"
         ],
-        "op": "label",
-        "format": null,
-        "label": "1.4B, step 112000; groups 32, 128, 512",
-        "expected": [
-          "pythia-1.4b@step112000",
-          "b3_g32",
-          "pythia-1.4b@step112000",
-          "b3_g32",
-          "pythia-1.4b@step112000",
-          "b3_g32",
-          "pythia-1.4b@step112000",
-          "b3_g512",
-          "pythia-1.4b@step112000",
-          "b3_g512",
-          "pythia-1.4b@step112000",
-          "b3_g512",
-          "pythia-1.4b@step112000",
-          "b4_g32",
-          "pythia-1.4b@step112000",
-          "b4_g32",
-          "pythia-1.4b@step112000",
-          "b4_g32",
-          "pythia-1.4b@step112000",
-          "b4_g512",
-          "pythia-1.4b@step112000",
-          "b4_g512",
-          "pythia-1.4b@step112000",
-          "b4_g512",
-          "pythia-1.4b@step112000",
-          "b5_g32",
-          "pythia-1.4b@step112000",
-          "b5_g32",
-          "pythia-1.4b@step112000",
-          "b5_g32",
-          "pythia-1.4b@step112000",
-          "b5_g512",
-          "pythia-1.4b@step112000",
-          "b5_g512",
-          "pythia-1.4b@step112000",
-          "b5_g512",
-          "pythia-1.4b@step112000",
-          "b3_g128",
-          "pythia-1.4b@step112000",
-          "b3_g128",
-          "pythia-1.4b@step112000",
-          "b3_g128",
-          "pythia-1.4b@step112000",
-          "b4_g128",
-          "pythia-1.4b@step112000",
-          "b4_g128",
-          "pythia-1.4b@step112000",
-          "b4_g128",
-          "pythia-1.4b@step112000",
-          "b5_g128",
-          "pythia-1.4b@step112000",
-          "b5_g128",
-          "pythia-1.4b@step112000",
-          "b5_g128"
-        ]
-      }
-    ],
-    "context": [],
-    "note": "",
-    "rendered": "1.4B, step 112000; groups 32, 128, 512"
-  },
-  {
-    "row": 3,
-    "column": 3,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/rows/36/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/39/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/42/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/45/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/48/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/51/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/54/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/57/absolute_errors/low_order_2d",
-          "results/v69-quant-confirm/compare.json#/rows/60/absolute_errors/low_order_2d"
-        ],
-        "op": "mean",
+        "op": "weighted_mean",
         "format": ".2f"
       },
       " / ",
       {
         "sources": [
-          "results/v69-quant-confirm/compare.json#/rows/37/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/40/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/43/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/46/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/49/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/52/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/55/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/58/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/61/absolute_errors/median"
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n"
         ],
-        "op": "mean",
+        "op": "weighted_mean",
         "format": ".2f"
       },
       " / ",
       {
         "sources": [
-          "results/v69-quant-confirm/compare.json#/rows/38/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/41/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/44/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/47/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/50/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/53/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/56/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/59/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/62/absolute_errors/zero"
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/qa/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/qa/n",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/qa/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/qa/n"
         ],
-        "op": "mean",
+        "op": "weighted_mean",
         "format": ".2f"
       }
     ],
@@ -1167,192 +827,129 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   },
   {
     "row": 3,
+    "column": 3,
+    "parts": [
+      {
+        "sources": [
+          "results/v86-main-table/summary.json#/main_rows/3/delivered_timing",
+          "results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered",
+          "results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered",
+          "results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered",
+          "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Median",
+        "expected": [
+          "fixed after test",
+          "median",
+          "median",
+          "median",
+          "R: piecewise interpolation for math/code on development states; per-configuration median for QA and for all capabilities on new states. Specified post-test rule, not the minimum error in each test panel."
+        ]
+      },
+      "$^{\\dagger}$"
+    ],
+    "context": [],
+    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
+    "rendered": "Median$^{\\dagger}$"
+  },
+  {
+    "row": 3,
     "column": 4,
     "parts": [
       {
         "sources": [
-          "results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math",
-          "results/v69-quant-confirm/develop.json#/loso/scores/zero/code",
-          "results/v69-quant-confirm/develop.json#/loso/scores/median/qa"
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/n",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/n"
         ],
-        "op": "label",
-        "format": null,
-        "label": "bilinear / zero change / development median",
-        "expected": [
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.18035555432620828,
-              "pythia-1.4b@step16000": 0.4042579843558109,
-              "pythia-160m@step143000": 3.3985412467109986,
-              "pythia-160m@step16000": 0.43688672544116214,
-              "pythia-410m@step143000": 0.37784637907436774,
-              "pythia-410m@step16000": 0.2598977837534169
-            },
-            "macro_mae": 0.8429642789436608,
-            "mae": 0.8429642789436608
-          },
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.5143543829067956,
-              "pythia-1.4b@step16000": 0.10937458732799844,
-              "pythia-160m@step143000": 6.2735256054723605,
-              "pythia-160m@step16000": 0.3426432136914666,
-              "pythia-410m@step143000": 1.110008451522595,
-              "pythia-410m@step16000": 0.19481419855795895
-            },
-            "macro_mae": 1.4241200732465291,
-            "mae": 1.4241200732465291
-          },
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.16258053443177,
-              "pythia-1.4b@step16000": 0.2355005016899031,
-              "pythia-160m@step143000": 6.541049456062526,
-              "pythia-160m@step16000": 0.09769750739332464,
-              "pythia-410m@step143000": 0.7294274133924797,
-              "pythia-410m@step16000": 0.15231569497253902
-            },
-            "macro_mae": 1.319761851323757,
-            "mae": 1.3197618513237568
-          }
-        ]
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/rows/36/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/39/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/42/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/45/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/48/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/51/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/54/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/57/absolute_errors/bilinear",
-          "results/v69-quant-confirm/compare.json#/rows/60/absolute_errors/bilinear"
-        ],
-        "op": "mean",
+        "op": "weighted_mean",
         "format": ".2f"
       },
       " / ",
       {
         "sources": [
-          "results/v69-quant-confirm/compare.json#/rows/37/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/40/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/43/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/46/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/49/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/52/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/55/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/58/absolute_errors/zero",
-          "results/v69-quant-confirm/compare.json#/rows/61/absolute_errors/zero"
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n"
         ],
-        "op": "mean",
+        "op": "weighted_mean",
         "format": ".2f"
       },
       " / ",
       {
         "sources": [
-          "results/v69-quant-confirm/compare.json#/rows/38/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/41/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/44/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/47/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/50/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/53/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/56/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/59/absolute_errors/median",
-          "results/v69-quant-confirm/compare.json#/rows/62/absolute_errors/median"
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n"
         ],
-        "op": "mean",
+        "op": "weighted_mean",
+        "format": ".2f"
+      },
+      "$^{\\dagger}$"
+    ],
+    "context": [
+      "results/v86-main-table/summary.json#/main_rows/3/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered",
+      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
+    ],
+    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
+    "rendered": "0.09 / 0.15 / 0.14$^{\\dagger}$"
+  },
+  {
+    "row": 3,
+    "column": 5,
+    "parts": [
+      {
+        "sources": [
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n"
+        ],
+        "op": "weighted_mean",
+        "format": ".2f"
+      },
+      " / ",
+      {
+        "sources": [
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n"
+        ],
+        "op": "weighted_mean",
+        "format": ".2f"
+      },
+      " / ",
+      {
+        "sources": [
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n"
+        ],
+        "op": "weighted_mean",
         "format": ".2f"
       }
     ],
     "context": [
       "results/v69-quant-confirm/develop.json#/loso/scores"
     ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability.",
-    "rendered": "bilinear / zero change / development median\\newline 0.35 / 0.56 / 0.14"
+    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear / zero change / development median.",
+    "rendered": "0.35 / 0.56 / 0.14"
   },
   {
     "row": 4,
     "column": 0,
     "parts": [
-      "Distillation,\nnew pool"
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/unused_U_assertion",
-      "results/v70-distill-confirm/freeze.json#/frozen_at_utc",
-      "results/v47-p2-register/register.json#/v5_confirm/registered_at_utc"
-    ],
-    "note": "",
-    "rendered": "Distillation,\\newline new pool"
-  },
-  {
-    "row": 4,
-    "column": 1,
-    "parts": [
-      "Math, Code: ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/freeze.json#/selected/math/method",
-          "results/v70-distill-confirm/freeze.json#/selected/code/method"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "$a_c\\log(1+E)$",
-        "expected": [
-          "E",
-          "E"
-        ]
-      },
-      " (",
-      {
-        "sources": [
-          "results/v70-distill-confirm/freeze.json#/selected/math/n_params",
-          "results/v70-distill-confirm/freeze.json#/selected/code/n_params"
-        ],
-        "op": "shared",
-        "format": null
-      },
-      "); QA: ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/freeze.json#/selected/qa/method"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "$u(a+bu+qv)$",
-        "expected": [
-          "joint"
-        ]
-      },
-      " (",
-      {
-        "sources": [
-          "results/v70-distill-confirm/freeze.json#/selected/qa/n_params"
-        ],
-        "op": "identity",
-        "format": null
-      },
-      ")"
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/models",
-      "results/v70-distill-confirm/freeze.json#/reference_rule",
-      "results/v70-distill-confirm/freeze.json#/prediction_rule"
-    ],
-    "note": "E and joint are the frozen V50/V70 design identifiers. E has one coefficient; joint has three coefficients on u, u*u, u*log(D_U/D_ref). T_star is null, not fitted, for these selected forms.",
-    "rendered": "Math, Code: $a_c\\log(1+E)$ (1); QA: $u(a+bu+qv)$ (3)"
-  },
-  {
-    "row": 4,
-    "column": 2,
-    "parts": [
+      "Distillation, new pool\n",
       {
         "sources": [
           "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
@@ -1361,7 +958,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "270M, 1B pairs; six pools; 50000\u2013200000 tokens",
+        "label": "270M, 1B pairs; six pools; 50k\u2013200k tokens",
         "expected": [
           [
             "gemma3-270m",
@@ -1695,13 +1292,44 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ]
       }
     ],
-    "context": [],
+    "context": [
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/unused_U_assertion",
+      "results/v70-distill-confirm/freeze.json#/frozen_at_utc",
+      "results/v47-p2-register/register.json#/v5_confirm/registered_at_utc"
+    ],
     "note": "",
-    "rendered": "270M, 1B pairs; six pools; 50000\u2013200000 tokens"
+    "rendered": "Distillation, new pool\\newline 270M, 1B pairs; six pools; 50k\u2013200k tokens"
   },
   {
     "row": 4,
-    "column": 3,
+    "column": 1,
+    "parts": [
+      {
+        "sources": [
+          "results/v70-distill-confirm/freeze.json#/selected/math/method",
+          "results/v70-distill-confirm/freeze.json#/selected/code/method",
+          "results/v70-distill-confirm/freeze.json#/selected/qa/method"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Math: reuse;\nCode: reuse;\nQA: joint budget/pool",
+        "expected": [
+          "E",
+          "E",
+          "joint"
+        ]
+      }
+    ],
+    "context": [
+      "results/v70-distill-confirm/freeze.json#/selected",
+      "results/v70-distill-confirm/freeze.json#/models"
+    ],
+    "note": "The frozen and delivered forms are identical: one-coefficient zero-anchored reuse for Math/Code, joint budget/pool for QA; fixed before test.",
+    "rendered": "Math: reuse;\\newline Code: reuse;\\newline QA: joint budget/pool"
+  },
+  {
+    "row": 4,
+    "column": 2,
     "parts": [
       {
         "sources": [
@@ -1710,7 +1338,195 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      ",",
+      " [",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/0/paired_difference/ci95/0"
+        ],
+        "op": "identity",
+        "format": ".4f"
+      },
+      ", ",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/0/paired_difference/ci95/1"
+        ],
+        "op": "identity",
+        "format": ".4f"
+      },
+      "]",
+      ",\n",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/3/candidate_mae"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      " [",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/3/paired_difference/ci95/0"
+        ],
+        "op": "identity",
+        "format": ".4f"
+      },
+      ", ",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/3/paired_difference/ci95/1"
+        ],
+        "op": "identity",
+        "format": ".4f"
+      },
+      "]",
+      " / ",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/1/candidate_mae"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      " [",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/1/paired_difference/ci95/0"
+        ],
+        "op": "identity",
+        "format": ".4f"
+      },
+      ", ",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/1/paired_difference/ci95/1"
+        ],
+        "op": "identity",
+        "format": ".4f"
+      },
+      "]",
+      ",\n",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/4/candidate_mae"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      " [",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/4/paired_difference/ci95/0"
+        ],
+        "op": "identity",
+        "format": ".4f"
+      },
+      ", ",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/4/paired_difference/ci95/1"
+        ],
+        "op": "identity",
+        "format": ".4f"
+      },
+      "]",
+      " / ",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/2/candidate_mae"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      " [",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/2/paired_difference/ci95/0"
+        ],
+        "op": "identity",
+        "format": ".4f"
+      },
+      ", ",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/2/paired_difference/ci95/1"
+        ],
+        "op": "identity",
+        "format": ".4f"
+      },
+      "]",
+      ",\n",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/5/candidate_mae"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      " [",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/5/paired_difference/ci95/0"
+        ],
+        "op": "identity",
+        "format": ".4f"
+      },
+      ", ",
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/5/paired_difference/ci95/1"
+        ],
+        "op": "identity",
+        "format": ".4f"
+      },
+      "]"
+    ],
+    "context": [
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
+      "results/v70-distill-confirm/freeze.json#/bootstrap"
+    ],
+    "note": "Comma-separated scores follow student order 270M, 1B; no student averaging. Brackets are stored 95% paired baseline-minus-candidate intervals, not MAE intervals; each baseline identity is checked by the reused frozen loader.",
+    "rendered": "0.07 [-0.0098, -0.0081],\\newline 0.06 [-0.0235, -0.0233] / 0.02 [0.0025, 0.0050],\\newline 0.05 [0.0042, 0.0050] / 0.51 [0.0774, 0.1093],\\newline 0.46 [-0.0198, -0.0098]"
+  },
+  {
+    "row": 4,
+    "column": 3,
+    "parts": [
+      {
+        "sources": [
+          "results/v70-distill-confirm/freeze.json#/selected/math/method",
+          "results/v70-distill-confirm/freeze.json#/selected/code/method",
+          "results/v70-distill-confirm/freeze.json#/selected/qa/method"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Math: reuse;\nCode: reuse;\nQA: joint budget/pool",
+        "expected": [
+          "E",
+          "E",
+          "joint"
+        ]
+      }
+    ],
+    "context": [
+      "results/v70-distill-confirm/freeze.json#/selected",
+      "results/v70-distill-confirm/freeze.json#/models"
+    ],
+    "note": "The frozen and delivered forms are identical: one-coefficient zero-anchored reuse for Math/Code, joint budget/pool for QA; fixed before test.",
+    "rendered": "Math: reuse;\\newline Code: reuse;\\newline QA: joint budget/pool"
+  },
+  {
+    "row": 4,
+    "column": 4,
+    "parts": [
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/0/candidate_mae"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      ", ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/3/candidate_mae"
@@ -1726,7 +1542,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      ",",
+      ", ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/4/candidate_mae"
@@ -1742,7 +1558,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      ",",
+      ", ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/5/candidate_mae"
@@ -1752,37 +1568,22 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       }
     ],
     "context": [
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
+      "results/v86-main-table/summary.json#/main_rows/4/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered",
+      "results/v86-main-table/summary.json#/main_rows/5/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered"
     ],
-    "note": "Comma-separated scores follow student order 270M, 1B; no student averaging.",
-    "rendered": "0.07,0.06 / 0.02,0.05 / 0.51,0.46"
+    "note": "Same candidate, same cells; repeat the stored MAEs without the candidate-versus-baseline intervals.",
+    "rendered": "0.07, 0.06 / 0.02, 0.05 / 0.51, 0.46"
   },
   {
     "row": 4,
-    "column": 4,
+    "column": 5,
     "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/0/strongest_baseline",
-          "results/v70-distill-confirm/compare.json#/groups/3/strongest_baseline",
-          "results/v70-distill-confirm/compare.json#/groups/1/strongest_baseline",
-          "results/v70-distill-confirm/compare.json#/groups/4/strongest_baseline",
-          "results/v70-distill-confirm/compare.json#/groups/2/strongest_baseline",
-          "results/v70-distill-confirm/compare.json#/groups/5/strongest_baseline"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "budget, loss surface / reuse / reuse, size surface",
-        "expected": [
-          "T-only",
-          "surface:L0",
-          "E-only",
-          "E-only",
-          "E-only",
-          "surface:logN"
-        ]
-      },
-      "\n",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/0/baseline_mae"
@@ -1790,7 +1591,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      ",",
+      ", ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/3/baseline_mae"
@@ -1806,7 +1607,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      ",",
+      ", ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/4/baseline_mae"
@@ -1822,7 +1623,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      ",",
+      ", ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/5/baseline_mae"
@@ -1833,16 +1634,10 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "context": [
       "results/v70-distill-confirm/freeze.json#/baseline_rule",
-      "results/v70-distill-confirm/freeze.json#/strongest_baseline",
-      "results/v70-distill-confirm/compare.json#/groups/0/paired_difference",
-      "results/v70-distill-confirm/compare.json#/groups/1/paired_difference",
-      "results/v70-distill-confirm/compare.json#/groups/2/paired_difference",
-      "results/v70-distill-confirm/compare.json#/groups/3/paired_difference",
-      "results/v70-distill-confirm/compare.json#/groups/4/paired_difference",
-      "results/v70-distill-confirm/compare.json#/groups/5/paired_difference"
+      "results/v70-distill-confirm/freeze.json#/strongest_baseline"
     ],
-    "note": "Only MAEs are printed, paired in student order 270M, 1B. Comma-separated names follow the same student order; a shared name is printed once. Loss-surface and size-surface labels distinguish the stored initial-loss (surface:L0) and size (surface:logN) variants, without changing either selection. Stored paired_difference.ci95 estimates baseline-minus-candidate gain, not an MAE interval; it is not displayed in the MAE columns.",
-    "rendered": "budget, loss surface / reuse / reuse, size surface\\newline 0.07,0.03 / 0.02,0.05 / 0.61,0.45"
+    "note": "Development-fixed baseline identities, student order 270M, 1B: budget, loss surface / reuse / reuse, size surface.",
+    "rendered": "0.07, 0.03 / 0.02, 0.05 / 0.61, 0.45"
   }
 ]
 ```
@@ -1852,7 +1647,22 @@ V72 repeats use the same weights; no displayed score uses those repeats.
 ```json
 {
   "parts": [
-    "Frozen predictions by method and task: relation with parameter count, tested range, mean absolute error in native-token nats on the training probes (Math / Code / QA) against the baseline selected inside the development folds. All rows are predictions frozen before measurement."
+    "Frozen prediction tasks by method. Frozen candidates, delivered relations, and baselines selected within development folds report mean absolute errors in native-token nats (Math / Code / QA) on the same cells. Brackets give stored paired intervals of baseline minus candidate. Daggers mark delivered rules fixed after the test. Distillation entries list the ",
+    {
+      "sources": [
+        "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
+      ],
+      "op": "label",
+      "format": null,
+      "label": "270M and 1B",
+      "expected": [
+        [
+          "gemma3-270m",
+          "gemma3-1b"
+        ]
+      ]
+    },
+    " students in that order."
   ],
   "context": [
     "results/v53-prune-dev/register.json#/feature_names",
@@ -1863,8 +1673,1339 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "results/v70-distill-confirm/freeze.json#/models"
   ],
   "note": "",
-  "rendered": "Frozen predictions by method and task: relation with parameter count, tested range, mean absolute error in native-token nats on the training probes (Math / Code / QA) against the baseline selected inside the development folds. All rows are predictions frozen before measurement."
+  "rendered": "Frozen prediction tasks by method. Frozen candidates, delivered relations, and baselines selected within development folds report mean absolute errors in native-token nats (Math / Code / QA) on the same cells. Brackets give stored paired intervals of baseline minus candidate. Daggers mark delivered rules fixed after the test. Distillation entries list the 270M and 1B students in that order."
 }
+```
+
+## Every printed number
+
+- Cell (0, 0), `three` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`
+- Cell (0, 0), `6.9` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`
+- Cell (0, 2), `0.24` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/math`
+- Cell (0, 2), `0.24` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/code`
+- Cell (0, 2), `0.68` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/qa`
+- Cell (0, 4), `0.28` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/math`
+- Cell (0, 4), `0.21` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code`
+- Cell (0, 4), `0.22` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
+- Cell (0, 5), `0.23` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math`
+- Cell (0, 5), `0.22` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code`
+- Cell (0, 5), `0.22` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
+- Cell (1, 0), `160` (label): `results/v55-quant-group/register.json#/test_sets/bit_test/states`; `results/v55-quant-group/register.json#/test_sets/bit_test/configs`
+- Cell (1, 0), `1.4` (label): `results/v55-quant-group/register.json#/test_sets/bit_test/states`; `results/v55-quant-group/register.json#/test_sets/bit_test/configs`
+- Cell (1, 0), `4` (label): `results/v55-quant-group/register.json#/test_sets/bit_test/states`; `results/v55-quant-group/register.json#/test_sets/bit_test/configs`
+- Cell (1, 0), `64` (label): `results/v55-quant-group/register.json#/test_sets/bit_test/states`; `results/v55-quant-group/register.json#/test_sets/bit_test/configs`
+- Cell (1, 0), `256` (label): `results/v55-quant-group/register.json#/test_sets/bit_test/states`; `results/v55-quant-group/register.json#/test_sets/bit_test/configs`
+- Cell (1, 2), `0.19` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math`
+- Cell (1, 2), `0.21` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code`
+- Cell (1, 2), `0.44` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa`
+- Cell (1, 4), `0.19` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math`
+- Cell (1, 4), `0.21` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code`
+- Cell (1, 4), `0.44` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa`
+- Cell (1, 5), `0.55` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/math`
+- Cell (1, 5), `0.73` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/code`
+- Cell (1, 5), `0.54` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/qa`
+- Cell (2, 0), `410` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
+- Cell (2, 0), `143` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
+- Cell (2, 0), `1.4` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
+- Cell (2, 0), `16` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
+- Cell (2, 0), `3` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
+- Cell (2, 0), `5` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
+- Cell (2, 0), `32` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
+- Cell (2, 0), `512` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
+- Cell (2, 2), `0.21` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/low_order_2d/math/mae`
+- Cell (2, 2), `0.56` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/code/mae`
+- Cell (2, 2), `0.46` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/qa/mae`
+- Cell (2, 4), `0.07` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/math/mae`
+- Cell (2, 4), `0.12` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae`
+- Cell (2, 4), `0.46` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
+- Cell (2, 5), `0.33` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae`
+- Cell (2, 5), `0.68` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae`
+- Cell (2, 5), `0.46` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
+- Cell (3, 0), `1.4` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
+- Cell (3, 0), `112` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
+- Cell (3, 0), `3` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
+- Cell (3, 0), `5` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
+- Cell (3, 0), `32` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
+- Cell (3, 0), `128` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
+- Cell (3, 0), `512` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
+- Cell (3, 2), `0.30` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/low_order_2d/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/low_order_2d/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/low_order_2d/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/low_order_2d/math/n`
+- Cell (3, 2), `0.15` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`
+- Cell (3, 2), `0.22` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/qa/n`
+- Cell (3, 4), `0.09` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/n`
+- Cell (3, 4), `0.15` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`
+- Cell (3, 4), `0.14` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
+- Cell (3, 5), `0.35` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n`
+- Cell (3, 5), `0.56` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n`
+- Cell (3, 5), `0.14` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
+- Cell (4, 0), `270` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
+- Cell (4, 0), `1` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
+- Cell (4, 0), `six` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
+- Cell (4, 0), `50` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
+- Cell (4, 0), `200` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
+- Cell (4, 2), `0.07` (identity): `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`
+- Cell (4, 2), `-0.0098` (identity): `results/v70-distill-confirm/compare.json#/groups/0/paired_difference/ci95/0`
+- Cell (4, 2), `-0.0081` (identity): `results/v70-distill-confirm/compare.json#/groups/0/paired_difference/ci95/1`
+- Cell (4, 2), `0.06` (identity): `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`
+- Cell (4, 2), `-0.0235` (identity): `results/v70-distill-confirm/compare.json#/groups/3/paired_difference/ci95/0`
+- Cell (4, 2), `-0.0233` (identity): `results/v70-distill-confirm/compare.json#/groups/3/paired_difference/ci95/1`
+- Cell (4, 2), `0.02` (identity): `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`
+- Cell (4, 2), `0.0025` (identity): `results/v70-distill-confirm/compare.json#/groups/1/paired_difference/ci95/0`
+- Cell (4, 2), `0.0050` (identity): `results/v70-distill-confirm/compare.json#/groups/1/paired_difference/ci95/1`
+- Cell (4, 2), `0.05` (identity): `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`
+- Cell (4, 2), `0.0042` (identity): `results/v70-distill-confirm/compare.json#/groups/4/paired_difference/ci95/0`
+- Cell (4, 2), `0.0050` (identity): `results/v70-distill-confirm/compare.json#/groups/4/paired_difference/ci95/1`
+- Cell (4, 2), `0.51` (identity): `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`
+- Cell (4, 2), `0.0774` (identity): `results/v70-distill-confirm/compare.json#/groups/2/paired_difference/ci95/0`
+- Cell (4, 2), `0.1093` (identity): `results/v70-distill-confirm/compare.json#/groups/2/paired_difference/ci95/1`
+- Cell (4, 2), `0.46` (identity): `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
+- Cell (4, 2), `-0.0198` (identity): `results/v70-distill-confirm/compare.json#/groups/5/paired_difference/ci95/0`
+- Cell (4, 2), `-0.0098` (identity): `results/v70-distill-confirm/compare.json#/groups/5/paired_difference/ci95/1`
+- Cell (4, 4), `0.07` (identity): `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`
+- Cell (4, 4), `0.06` (identity): `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`
+- Cell (4, 4), `0.02` (identity): `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`
+- Cell (4, 4), `0.05` (identity): `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`
+- Cell (4, 4), `0.51` (identity): `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`
+- Cell (4, 4), `0.46` (identity): `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
+- Cell (4, 5), `0.07` (identity): `results/v70-distill-confirm/compare.json#/groups/0/baseline_mae`
+- Cell (4, 5), `0.03` (identity): `results/v70-distill-confirm/compare.json#/groups/3/baseline_mae`
+- Cell (4, 5), `0.02` (identity): `results/v70-distill-confirm/compare.json#/groups/1/baseline_mae`
+- Cell (4, 5), `0.05` (identity): `results/v70-distill-confirm/compare.json#/groups/4/baseline_mae`
+- Cell (4, 5), `0.61` (identity): `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`
+- Cell (4, 5), `0.45` (identity): `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
+- Caption, `270` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`
+- Caption, `1` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`
+
+## Machine-readable numeric inventory
+
+```json
+[
+  {
+    "row": 0,
+    "column": 0,
+    "part": 1,
+    "number": "three",
+    "displayed": "three checkpoints outside every fit; includes 6.9B",
+    "op": "label",
+    "sources": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag"
+    ]
+  },
+  {
+    "row": 0,
+    "column": 0,
+    "part": 1,
+    "number": "6.9",
+    "displayed": "three checkpoints outside every fit; includes 6.9B",
+    "op": "label",
+    "sources": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag"
+    ]
+  },
+  {
+    "row": 0,
+    "column": 2,
+    "part": 0,
+    "number": "0.24",
+    "displayed": "0.24",
+    "op": "mean",
+    "sources": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/math",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/math",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/math"
+    ]
+  },
+  {
+    "row": 0,
+    "column": 2,
+    "part": 2,
+    "number": "0.24",
+    "displayed": "0.24",
+    "op": "mean",
+    "sources": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/code",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/code",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/code"
+    ]
+  },
+  {
+    "row": 0,
+    "column": 2,
+    "part": 4,
+    "number": "0.68",
+    "displayed": "0.68",
+    "op": "mean",
+    "sources": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/qa",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/qa",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/qa"
+    ]
+  },
+  {
+    "row": 0,
+    "column": 4,
+    "part": 0,
+    "number": "0.28",
+    "displayed": "0.28",
+    "op": "mean",
+    "sources": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/math",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/math",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/math"
+    ]
+  },
+  {
+    "row": 0,
+    "column": 4,
+    "part": 2,
+    "number": "0.21",
+    "displayed": "0.21",
+    "op": "mean",
+    "sources": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code"
+    ]
+  },
+  {
+    "row": 0,
+    "column": 4,
+    "part": 4,
+    "number": "0.22",
+    "displayed": "0.22",
+    "op": "mean",
+    "sources": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa"
+    ]
+  },
+  {
+    "row": 0,
+    "column": 5,
+    "part": 0,
+    "number": "0.23",
+    "displayed": "0.23",
+    "op": "mean",
+    "sources": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math"
+    ]
+  },
+  {
+    "row": 0,
+    "column": 5,
+    "part": 2,
+    "number": "0.22",
+    "displayed": "0.22",
+    "op": "mean",
+    "sources": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code"
+    ]
+  },
+  {
+    "row": 0,
+    "column": 5,
+    "part": 4,
+    "number": "0.22",
+    "displayed": "0.22",
+    "op": "mean",
+    "sources": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa"
+    ]
+  },
+  {
+    "row": 1,
+    "column": 0,
+    "part": 1,
+    "number": "160",
+    "displayed": "160M\u20131.4B; bit 4; groups 64 and 256",
+    "op": "label",
+    "sources": [
+      "results/v55-quant-group/register.json#/test_sets/bit_test/states",
+      "results/v55-quant-group/register.json#/test_sets/bit_test/configs"
+    ]
+  },
+  {
+    "row": 1,
+    "column": 0,
+    "part": 1,
+    "number": "1.4",
+    "displayed": "160M\u20131.4B; bit 4; groups 64 and 256",
+    "op": "label",
+    "sources": [
+      "results/v55-quant-group/register.json#/test_sets/bit_test/states",
+      "results/v55-quant-group/register.json#/test_sets/bit_test/configs"
+    ]
+  },
+  {
+    "row": 1,
+    "column": 0,
+    "part": 1,
+    "number": "4",
+    "displayed": "160M\u20131.4B; bit 4; groups 64 and 256",
+    "op": "label",
+    "sources": [
+      "results/v55-quant-group/register.json#/test_sets/bit_test/states",
+      "results/v55-quant-group/register.json#/test_sets/bit_test/configs"
+    ]
+  },
+  {
+    "row": 1,
+    "column": 0,
+    "part": 1,
+    "number": "64",
+    "displayed": "160M\u20131.4B; bit 4; groups 64 and 256",
+    "op": "label",
+    "sources": [
+      "results/v55-quant-group/register.json#/test_sets/bit_test/states",
+      "results/v55-quant-group/register.json#/test_sets/bit_test/configs"
+    ]
+  },
+  {
+    "row": 1,
+    "column": 0,
+    "part": 1,
+    "number": "256",
+    "displayed": "160M\u20131.4B; bit 4; groups 64 and 256",
+    "op": "label",
+    "sources": [
+      "results/v55-quant-group/register.json#/test_sets/bit_test/states",
+      "results/v55-quant-group/register.json#/test_sets/bit_test/configs"
+    ]
+  },
+  {
+    "row": 1,
+    "column": 2,
+    "part": 0,
+    "number": "0.19",
+    "displayed": "0.19",
+    "op": "identity",
+    "sources": [
+      "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math"
+    ]
+  },
+  {
+    "row": 1,
+    "column": 2,
+    "part": 2,
+    "number": "0.21",
+    "displayed": "0.21",
+    "op": "identity",
+    "sources": [
+      "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code"
+    ]
+  },
+  {
+    "row": 1,
+    "column": 2,
+    "part": 4,
+    "number": "0.44",
+    "displayed": "0.44",
+    "op": "identity",
+    "sources": [
+      "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa"
+    ]
+  },
+  {
+    "row": 1,
+    "column": 4,
+    "part": 0,
+    "number": "0.19",
+    "displayed": "0.19",
+    "op": "identity",
+    "sources": [
+      "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math"
+    ]
+  },
+  {
+    "row": 1,
+    "column": 4,
+    "part": 2,
+    "number": "0.21",
+    "displayed": "0.21",
+    "op": "identity",
+    "sources": [
+      "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code"
+    ]
+  },
+  {
+    "row": 1,
+    "column": 4,
+    "part": 4,
+    "number": "0.44",
+    "displayed": "0.44",
+    "op": "identity",
+    "sources": [
+      "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa"
+    ]
+  },
+  {
+    "row": 1,
+    "column": 5,
+    "part": 0,
+    "number": "0.55",
+    "displayed": "0.55",
+    "op": "identity",
+    "sources": [
+      "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/math"
+    ]
+  },
+  {
+    "row": 1,
+    "column": 5,
+    "part": 2,
+    "number": "0.73",
+    "displayed": "0.73",
+    "op": "identity",
+    "sources": [
+      "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/code"
+    ]
+  },
+  {
+    "row": 1,
+    "column": 5,
+    "part": 4,
+    "number": "0.54",
+    "displayed": "0.54",
+    "op": "identity",
+    "sources": [
+      "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/qa"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 0,
+    "part": 2,
+    "number": "410",
+    "displayed": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/0/state",
+      "results/v69-quant-confirm/compare.json#/rows/0/config",
+      "results/v69-quant-confirm/compare.json#/rows/3/config",
+      "results/v69-quant-confirm/compare.json#/rows/6/config",
+      "results/v69-quant-confirm/compare.json#/rows/9/config",
+      "results/v69-quant-confirm/compare.json#/rows/12/config",
+      "results/v69-quant-confirm/compare.json#/rows/15/config",
+      "results/v69-quant-confirm/compare.json#/rows/18/state"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 0,
+    "part": 2,
+    "number": "143",
+    "displayed": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/0/state",
+      "results/v69-quant-confirm/compare.json#/rows/0/config",
+      "results/v69-quant-confirm/compare.json#/rows/3/config",
+      "results/v69-quant-confirm/compare.json#/rows/6/config",
+      "results/v69-quant-confirm/compare.json#/rows/9/config",
+      "results/v69-quant-confirm/compare.json#/rows/12/config",
+      "results/v69-quant-confirm/compare.json#/rows/15/config",
+      "results/v69-quant-confirm/compare.json#/rows/18/state"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 0,
+    "part": 2,
+    "number": "1.4",
+    "displayed": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/0/state",
+      "results/v69-quant-confirm/compare.json#/rows/0/config",
+      "results/v69-quant-confirm/compare.json#/rows/3/config",
+      "results/v69-quant-confirm/compare.json#/rows/6/config",
+      "results/v69-quant-confirm/compare.json#/rows/9/config",
+      "results/v69-quant-confirm/compare.json#/rows/12/config",
+      "results/v69-quant-confirm/compare.json#/rows/15/config",
+      "results/v69-quant-confirm/compare.json#/rows/18/state"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 0,
+    "part": 2,
+    "number": "16",
+    "displayed": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/0/state",
+      "results/v69-quant-confirm/compare.json#/rows/0/config",
+      "results/v69-quant-confirm/compare.json#/rows/3/config",
+      "results/v69-quant-confirm/compare.json#/rows/6/config",
+      "results/v69-quant-confirm/compare.json#/rows/9/config",
+      "results/v69-quant-confirm/compare.json#/rows/12/config",
+      "results/v69-quant-confirm/compare.json#/rows/15/config",
+      "results/v69-quant-confirm/compare.json#/rows/18/state"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 0,
+    "part": 2,
+    "number": "3",
+    "displayed": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/0/state",
+      "results/v69-quant-confirm/compare.json#/rows/0/config",
+      "results/v69-quant-confirm/compare.json#/rows/3/config",
+      "results/v69-quant-confirm/compare.json#/rows/6/config",
+      "results/v69-quant-confirm/compare.json#/rows/9/config",
+      "results/v69-quant-confirm/compare.json#/rows/12/config",
+      "results/v69-quant-confirm/compare.json#/rows/15/config",
+      "results/v69-quant-confirm/compare.json#/rows/18/state"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 0,
+    "part": 2,
+    "number": "5",
+    "displayed": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/0/state",
+      "results/v69-quant-confirm/compare.json#/rows/0/config",
+      "results/v69-quant-confirm/compare.json#/rows/3/config",
+      "results/v69-quant-confirm/compare.json#/rows/6/config",
+      "results/v69-quant-confirm/compare.json#/rows/9/config",
+      "results/v69-quant-confirm/compare.json#/rows/12/config",
+      "results/v69-quant-confirm/compare.json#/rows/15/config",
+      "results/v69-quant-confirm/compare.json#/rows/18/state"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 0,
+    "part": 2,
+    "number": "32",
+    "displayed": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/0/state",
+      "results/v69-quant-confirm/compare.json#/rows/0/config",
+      "results/v69-quant-confirm/compare.json#/rows/3/config",
+      "results/v69-quant-confirm/compare.json#/rows/6/config",
+      "results/v69-quant-confirm/compare.json#/rows/9/config",
+      "results/v69-quant-confirm/compare.json#/rows/12/config",
+      "results/v69-quant-confirm/compare.json#/rows/15/config",
+      "results/v69-quant-confirm/compare.json#/rows/18/state"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 0,
+    "part": 2,
+    "number": "512",
+    "displayed": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/0/state",
+      "results/v69-quant-confirm/compare.json#/rows/0/config",
+      "results/v69-quant-confirm/compare.json#/rows/3/config",
+      "results/v69-quant-confirm/compare.json#/rows/6/config",
+      "results/v69-quant-confirm/compare.json#/rows/9/config",
+      "results/v69-quant-confirm/compare.json#/rows/12/config",
+      "results/v69-quant-confirm/compare.json#/rows/15/config",
+      "results/v69-quant-confirm/compare.json#/rows/18/state"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 2,
+    "part": 0,
+    "number": "0.21",
+    "displayed": "0.21",
+    "op": "identity",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/low_order_2d/math/mae"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 2,
+    "part": 2,
+    "number": "0.56",
+    "displayed": "0.56",
+    "op": "identity",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/code/mae"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 2,
+    "part": 4,
+    "number": "0.46",
+    "displayed": "0.46",
+    "op": "identity",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/qa/mae"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 4,
+    "part": 0,
+    "number": "0.07",
+    "displayed": "0.07",
+    "op": "identity",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/math/mae"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 4,
+    "part": 2,
+    "number": "0.12",
+    "displayed": "0.12",
+    "op": "identity",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 4,
+    "part": 4,
+    "number": "0.46",
+    "displayed": "0.46",
+    "op": "identity",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 5,
+    "part": 0,
+    "number": "0.33",
+    "displayed": "0.33",
+    "op": "identity",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 5,
+    "part": 2,
+    "number": "0.68",
+    "displayed": "0.68",
+    "op": "identity",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 5,
+    "part": 4,
+    "number": "0.46",
+    "displayed": "0.46",
+    "op": "identity",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae"
+    ]
+  },
+  {
+    "row": 3,
+    "column": 0,
+    "part": 2,
+    "number": "1.4",
+    "displayed": "1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/36/state",
+      "results/v69-quant-confirm/compare.json#/rows/36/config",
+      "results/v69-quant-confirm/compare.json#/rows/39/config",
+      "results/v69-quant-confirm/compare.json#/rows/42/config",
+      "results/v69-quant-confirm/compare.json#/rows/45/config",
+      "results/v69-quant-confirm/compare.json#/rows/48/config",
+      "results/v69-quant-confirm/compare.json#/rows/51/config",
+      "results/v69-quant-confirm/compare.json#/rows/54/config",
+      "results/v69-quant-confirm/compare.json#/rows/57/config",
+      "results/v69-quant-confirm/compare.json#/rows/60/config"
+    ]
+  },
+  {
+    "row": 3,
+    "column": 0,
+    "part": 2,
+    "number": "112",
+    "displayed": "1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/36/state",
+      "results/v69-quant-confirm/compare.json#/rows/36/config",
+      "results/v69-quant-confirm/compare.json#/rows/39/config",
+      "results/v69-quant-confirm/compare.json#/rows/42/config",
+      "results/v69-quant-confirm/compare.json#/rows/45/config",
+      "results/v69-quant-confirm/compare.json#/rows/48/config",
+      "results/v69-quant-confirm/compare.json#/rows/51/config",
+      "results/v69-quant-confirm/compare.json#/rows/54/config",
+      "results/v69-quant-confirm/compare.json#/rows/57/config",
+      "results/v69-quant-confirm/compare.json#/rows/60/config"
+    ]
+  },
+  {
+    "row": 3,
+    "column": 0,
+    "part": 2,
+    "number": "3",
+    "displayed": "1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/36/state",
+      "results/v69-quant-confirm/compare.json#/rows/36/config",
+      "results/v69-quant-confirm/compare.json#/rows/39/config",
+      "results/v69-quant-confirm/compare.json#/rows/42/config",
+      "results/v69-quant-confirm/compare.json#/rows/45/config",
+      "results/v69-quant-confirm/compare.json#/rows/48/config",
+      "results/v69-quant-confirm/compare.json#/rows/51/config",
+      "results/v69-quant-confirm/compare.json#/rows/54/config",
+      "results/v69-quant-confirm/compare.json#/rows/57/config",
+      "results/v69-quant-confirm/compare.json#/rows/60/config"
+    ]
+  },
+  {
+    "row": 3,
+    "column": 0,
+    "part": 2,
+    "number": "5",
+    "displayed": "1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/36/state",
+      "results/v69-quant-confirm/compare.json#/rows/36/config",
+      "results/v69-quant-confirm/compare.json#/rows/39/config",
+      "results/v69-quant-confirm/compare.json#/rows/42/config",
+      "results/v69-quant-confirm/compare.json#/rows/45/config",
+      "results/v69-quant-confirm/compare.json#/rows/48/config",
+      "results/v69-quant-confirm/compare.json#/rows/51/config",
+      "results/v69-quant-confirm/compare.json#/rows/54/config",
+      "results/v69-quant-confirm/compare.json#/rows/57/config",
+      "results/v69-quant-confirm/compare.json#/rows/60/config"
+    ]
+  },
+  {
+    "row": 3,
+    "column": 0,
+    "part": 2,
+    "number": "32",
+    "displayed": "1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/36/state",
+      "results/v69-quant-confirm/compare.json#/rows/36/config",
+      "results/v69-quant-confirm/compare.json#/rows/39/config",
+      "results/v69-quant-confirm/compare.json#/rows/42/config",
+      "results/v69-quant-confirm/compare.json#/rows/45/config",
+      "results/v69-quant-confirm/compare.json#/rows/48/config",
+      "results/v69-quant-confirm/compare.json#/rows/51/config",
+      "results/v69-quant-confirm/compare.json#/rows/54/config",
+      "results/v69-quant-confirm/compare.json#/rows/57/config",
+      "results/v69-quant-confirm/compare.json#/rows/60/config"
+    ]
+  },
+  {
+    "row": 3,
+    "column": 0,
+    "part": 2,
+    "number": "128",
+    "displayed": "1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/36/state",
+      "results/v69-quant-confirm/compare.json#/rows/36/config",
+      "results/v69-quant-confirm/compare.json#/rows/39/config",
+      "results/v69-quant-confirm/compare.json#/rows/42/config",
+      "results/v69-quant-confirm/compare.json#/rows/45/config",
+      "results/v69-quant-confirm/compare.json#/rows/48/config",
+      "results/v69-quant-confirm/compare.json#/rows/51/config",
+      "results/v69-quant-confirm/compare.json#/rows/54/config",
+      "results/v69-quant-confirm/compare.json#/rows/57/config",
+      "results/v69-quant-confirm/compare.json#/rows/60/config"
+    ]
+  },
+  {
+    "row": 3,
+    "column": 0,
+    "part": 2,
+    "number": "512",
+    "displayed": "1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/36/state",
+      "results/v69-quant-confirm/compare.json#/rows/36/config",
+      "results/v69-quant-confirm/compare.json#/rows/39/config",
+      "results/v69-quant-confirm/compare.json#/rows/42/config",
+      "results/v69-quant-confirm/compare.json#/rows/45/config",
+      "results/v69-quant-confirm/compare.json#/rows/48/config",
+      "results/v69-quant-confirm/compare.json#/rows/51/config",
+      "results/v69-quant-confirm/compare.json#/rows/54/config",
+      "results/v69-quant-confirm/compare.json#/rows/57/config",
+      "results/v69-quant-confirm/compare.json#/rows/60/config"
+    ]
+  },
+  {
+    "row": 3,
+    "column": 2,
+    "part": 0,
+    "number": "0.30",
+    "displayed": "0.30",
+    "op": "weighted_mean",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/low_order_2d/math/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/low_order_2d/math/n",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/low_order_2d/math/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/low_order_2d/math/n"
+    ]
+  },
+  {
+    "row": 3,
+    "column": 2,
+    "part": 2,
+    "number": "0.15",
+    "displayed": "0.15",
+    "op": "weighted_mean",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n"
+    ]
+  },
+  {
+    "row": 3,
+    "column": 2,
+    "part": 4,
+    "number": "0.22",
+    "displayed": "0.22",
+    "op": "weighted_mean",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/qa/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/qa/n",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/qa/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/qa/n"
+    ]
+  },
+  {
+    "row": 3,
+    "column": 4,
+    "part": 0,
+    "number": "0.09",
+    "displayed": "0.09",
+    "op": "weighted_mean",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/n",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/n"
+    ]
+  },
+  {
+    "row": 3,
+    "column": 4,
+    "part": 2,
+    "number": "0.15",
+    "displayed": "0.15",
+    "op": "weighted_mean",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n"
+    ]
+  },
+  {
+    "row": 3,
+    "column": 4,
+    "part": 4,
+    "number": "0.14",
+    "displayed": "0.14",
+    "op": "weighted_mean",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n"
+    ]
+  },
+  {
+    "row": 3,
+    "column": 5,
+    "part": 0,
+    "number": "0.35",
+    "displayed": "0.35",
+    "op": "weighted_mean",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n"
+    ]
+  },
+  {
+    "row": 3,
+    "column": 5,
+    "part": 2,
+    "number": "0.56",
+    "displayed": "0.56",
+    "op": "weighted_mean",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n"
+    ]
+  },
+  {
+    "row": 3,
+    "column": 5,
+    "part": 4,
+    "number": "0.14",
+    "displayed": "0.14",
+    "op": "weighted_mean",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 0,
+    "part": 1,
+    "number": "270",
+    "displayed": "270M, 1B pairs; six pools; 50k\u2013200k tokens",
+    "op": "label",
+    "sources": [
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
+      "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 0,
+    "part": 1,
+    "number": "1",
+    "displayed": "270M, 1B pairs; six pools; 50k\u2013200k tokens",
+    "op": "label",
+    "sources": [
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
+      "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 0,
+    "part": 1,
+    "number": "six",
+    "displayed": "270M, 1B pairs; six pools; 50k\u2013200k tokens",
+    "op": "label",
+    "sources": [
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
+      "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 0,
+    "part": 1,
+    "number": "50",
+    "displayed": "270M, 1B pairs; six pools; 50k\u2013200k tokens",
+    "op": "label",
+    "sources": [
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
+      "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 0,
+    "part": 1,
+    "number": "200",
+    "displayed": "270M, 1B pairs; six pools; 50k\u2013200k tokens",
+    "op": "label",
+    "sources": [
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
+      "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 0,
+    "number": "0.07",
+    "displayed": "0.07",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/0/candidate_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 2,
+    "number": "-0.0098",
+    "displayed": "-0.0098",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/0/paired_difference/ci95/0"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 4,
+    "number": "-0.0081",
+    "displayed": "-0.0081",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/0/paired_difference/ci95/1"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 7,
+    "number": "0.06",
+    "displayed": "0.06",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/3/candidate_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 9,
+    "number": "-0.0235",
+    "displayed": "-0.0235",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/3/paired_difference/ci95/0"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 11,
+    "number": "-0.0233",
+    "displayed": "-0.0233",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/3/paired_difference/ci95/1"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 14,
+    "number": "0.02",
+    "displayed": "0.02",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/1/candidate_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 16,
+    "number": "0.0025",
+    "displayed": "0.0025",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/1/paired_difference/ci95/0"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 18,
+    "number": "0.0050",
+    "displayed": "0.0050",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/1/paired_difference/ci95/1"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 21,
+    "number": "0.05",
+    "displayed": "0.05",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/4/candidate_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 23,
+    "number": "0.0042",
+    "displayed": "0.0042",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/4/paired_difference/ci95/0"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 25,
+    "number": "0.0050",
+    "displayed": "0.0050",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/4/paired_difference/ci95/1"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 28,
+    "number": "0.51",
+    "displayed": "0.51",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/2/candidate_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 30,
+    "number": "0.0774",
+    "displayed": "0.0774",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/2/paired_difference/ci95/0"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 32,
+    "number": "0.1093",
+    "displayed": "0.1093",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/2/paired_difference/ci95/1"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 35,
+    "number": "0.46",
+    "displayed": "0.46",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/5/candidate_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 37,
+    "number": "-0.0198",
+    "displayed": "-0.0198",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/5/paired_difference/ci95/0"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "part": 39,
+    "number": "-0.0098",
+    "displayed": "-0.0098",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/5/paired_difference/ci95/1"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 4,
+    "part": 0,
+    "number": "0.07",
+    "displayed": "0.07",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/0/candidate_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 4,
+    "part": 2,
+    "number": "0.06",
+    "displayed": "0.06",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/3/candidate_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 4,
+    "part": 4,
+    "number": "0.02",
+    "displayed": "0.02",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/1/candidate_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 4,
+    "part": 6,
+    "number": "0.05",
+    "displayed": "0.05",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/4/candidate_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 4,
+    "part": 8,
+    "number": "0.51",
+    "displayed": "0.51",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/2/candidate_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 4,
+    "part": 10,
+    "number": "0.46",
+    "displayed": "0.46",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/5/candidate_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 5,
+    "part": 0,
+    "number": "0.07",
+    "displayed": "0.07",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/0/baseline_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 5,
+    "part": 2,
+    "number": "0.03",
+    "displayed": "0.03",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/3/baseline_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 5,
+    "part": 4,
+    "number": "0.02",
+    "displayed": "0.02",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/1/baseline_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 5,
+    "part": 6,
+    "number": "0.05",
+    "displayed": "0.05",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/4/baseline_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 5,
+    "part": 8,
+    "number": "0.61",
+    "displayed": "0.61",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/2/baseline_mae"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 5,
+    "part": 10,
+    "number": "0.45",
+    "displayed": "0.45",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/5/baseline_mae"
+    ]
+  },
+  {
+    "location": "caption",
+    "part": 1,
+    "number": "270",
+    "displayed": "270M and 1B",
+    "op": "label",
+    "sources": [
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
+    ]
+  },
+  {
+    "location": "caption",
+    "part": 1,
+    "number": "1",
+    "displayed": "270M and 1B",
+    "op": "label",
+    "sources": [
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
+    ]
+  }
+]
 ```
 
 ## Input hashes
@@ -1892,8 +3033,10 @@ V72 repeats use the same weights; no displayed score uses those repeats.
 - `results/v70-distill-confirm/freeze.json`: `d7b28c7251dbc6113c3de7c957560827e603d4e77a48010f99835a8468db0c24`
 - `results/v72-prune-repeat/compare.json`: `639eef759655038f393e0451b4d7471883dae31d4da08ffe32a6277eaec76fb9`
 - `results/v72-prune-repeat/freeze.json`: `3f4e45d0bd505b7d65815f2246a5c3b343f3a49be465aedf724aaa208b0de8b9`
+- `results/v74-quant-threeway/quant_threeway.json`: `56041ef7efd14235121cc158267abeaecb0f382241ecbea12569cb4f3029b060`
 - `results/v78-rule-confirm/compare.json`: `601669be112c5dd7c016e859423700a98f6a916dcd12c838bb5cd9c8c09686a8`
 - `results/v78-rule-confirm/freeze.json`: `78dd229d7131f485b3a0651eac6978d2671ad139c02fcc2ea753d3420d5f129f`
+- `results/v86-main-table/summary.json`: `15e7c95b6125956e211656a2539db06a0212ec9169b03c09cd0921cc76589e04`
 - `results/v93-confirm-inputs/pythia-1.4b--step32000/code/descriptor_bv.json`: `6dd768ff28a612cb7ccc4bcc89defac8c71bb633934fc66af644563f01273aea`
 - `results/v93-confirm-inputs/pythia-1.4b--step32000/math/descriptor_bv.json`: `15bc1a6e545228cdc8825e624f768418ce7f36e468c7fe1a9f60785539ead4a7`
 - `results/v93-confirm-inputs/pythia-1.4b--step32000/qa/descriptor_bv.json`: `f123b81cda60b9ce7190160e74bc5977c9dcb15fea000ae5f0f8355a2e6f4b66`

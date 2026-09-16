@@ -1,20 +1,20 @@
 % Generated from frozen JSON; see main_prediction_v2_sources.md.
 \begin{table*}[!htbp]\normalfont
-\centering\footnotesize\linespread{0.9}\selectfont
+\centering\footnotesize\linespread{0.85}\selectfont
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{0.92}
 \setlength{\abovecaptionskip}{4pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .19\textwidth-1.52\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .29\textwidth-2.32\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .17\textwidth-1.36\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .12\textwidth-0.96\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .23\textwidth-1.84\tabcolsep\relax}@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .20\textwidth-2.00\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .17\textwidth-1.70\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .245\textwidth-2.45\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .145\textwidth-1.45\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .12\textwidth-1.20\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .12\textwidth-1.20\tabcolsep\relax}@{}}
 \toprule
-Task & Relation (parameters) & Tested range & Error (nats) & Baseline (nats) \\
+Task (test set) & Frozen candidate & Candidate error (Math / Code / QA) & Delivered relation & Delivered error (Math / Code / QA) & Baseline error (Math / Code / QA) \\
 \midrule
-Pruning,\newline new source state & $A_c(\mathbf x)\,((1-d)/0.3)^{\gamma_c}$ (5) & new stages; 6.9B outside size range & 0.24 / 0.24 / 0.68 & per-density / per-density / development median\newline 0.23 / 0.22 / 0.22 \\
-Quantization,\newline unseen bit-width & per-bit source regression (20) & 160M–1.4B; bit 4; groups 64, 256 & 0.19 / 0.21 / 0.44 & development median\newline 0.55 / 0.73 / 0.54 \\
-Quantization,\newline unseen group size & Math: per-bit source regression (20); Code: piecewise interpolation over the $(b,g)$ grid (9); QA: zero change (0) & 410M, 1.4B; bits 3–5; groups 32, 512 & 0.21 / 0.56 / 0.46 & bilinear / zero change / development median\newline 0.33 / 0.68 / 0.46 \\
-Quantization,\newline new state & Math: per-bit source regression (20); Code: piecewise interpolation over the $(b,g)$ grid (9); QA: zero change (0) & 1.4B, step 112000; groups 32, 128, 512 & 0.30 / 0.15 / 0.22 & bilinear / zero change / development median\newline 0.35 / 0.56 / 0.14 \\
-Distillation,\newline new pool & Math, Code: $a_c\log(1+E)$ (1); QA: $u(a+bu+qv)$ (3) & 270M, 1B pairs; six pools; 50000–200000 tokens & 0.07,0.06 / 0.02,0.05 / 0.51,0.46 & budget, loss surface / reuse / reuse, size surface\newline 0.07,0.03 / 0.02,0.05 / 0.61,0.45 \\
+Pruning, new state\newline three checkpoints outside every fit; includes 6.9B & Power form & 0.24 / 0.24 / 0.68 & Source-free median density curve$^{\dagger}$ & 0.28 / 0.21 / 0.22$^{\dagger}$ & 0.23 / 0.22 / 0.22 \\
+Quantization, unseen bit-width\newline 160M–1.4B; bit 4; groups 64 and 256 & Source surface & 0.19 / 0.21 / 0.44 & Source surface (as tested) & 0.19 / 0.21 / 0.44 & 0.55 / 0.73 / 0.54 \\
+Quantization, unseen group size\newline 410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512 & Math: source surface;\newline Code: median;\newline QA: zero change & 0.21 / 0.56 / 0.46 & Math: interpolation;\newline Code: interpolation;\newline QA: median$^{\dagger}$ & 0.07 / 0.12 / 0.46$^{\dagger}$ & 0.33 / 0.68 / 0.46 \\
+Quantization, new state\newline 1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512 & Math: source surface;\newline Code: median;\newline QA: zero change & 0.30 / 0.15 / 0.22 & Median$^{\dagger}$ & 0.09 / 0.15 / 0.14$^{\dagger}$ & 0.35 / 0.56 / 0.14 \\
+Distillation, new pool\newline 270M, 1B pairs; six pools; 50k–200k tokens & Math: reuse;\newline Code: reuse;\newline QA: joint budget/pool & 0.07 [-0.0098, -0.0081],\newline 0.06 [-0.0235, -0.0233] / 0.02 [0.0025, 0.0050],\newline 0.05 [0.0042, 0.0050] / 0.51 [0.0774, 0.1093],\newline 0.46 [-0.0198, -0.0098] & Math: reuse;\newline Code: reuse;\newline QA: joint budget/pool & 0.07, 0.06 / 0.02, 0.05 / 0.51, 0.46 & 0.07, 0.03 / 0.02, 0.05 / 0.61, 0.45 \\
 \bottomrule
 \end{tabular*}
-\caption{\footnotesize Frozen predictions by method and task: relation with parameter count, tested range, mean absolute error in native-token nats on the training probes (Math / Code / QA) against the baseline selected inside the development folds. All rows are predictions frozen before measurement.}
+\caption{\footnotesize Frozen prediction tasks by method. Frozen candidates, delivered relations, and baselines selected within development folds report mean absolute errors in native-token nats (Math / Code / QA) on the same cells. Brackets give stored paired intervals of baseline minus candidate. Daggers mark delivered rules fixed after the test. Distillation entries list the 270M and 1B students in that order.}
 \label{tab:main-prediction-v2}
 \end{table*}
