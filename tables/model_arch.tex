@@ -3,37 +3,38 @@
 \centering
 \small
 \setlength{\tabcolsep}{3pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrrrrr@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.230000000\textwidth-2.300000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.210000000\textwidth-2.100000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.140000000\textwidth-1.400000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.140000000\textwidth-1.400000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.140000000\textwidth-1.400000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.140000000\textwidth-1.400000000\tabcolsep\relax}@{}}
 \toprule
-Model & Class and type & $N_{\rm meta}$ & $N_{\rm active}$ & $N_{\rm unique}$ & $N_{0,\rm matrix}$ & Convention \\
+Model & Class and type & Parameters before tying & Active parameters & Unique parameters & Matrix parameters \\
 \midrule
-\multicolumn{7}{l}{\textit{Original heterogeneous panel (12 models)}} \\
-Gemma-3-270M & G3; dense & 0.436 & 0.436 & 0.268 & 0.100 & M, U, T \\
-Gemma-3-1B & G3; dense & 1.302 & 1.302 & 1.000 & 0.698 & M, U, T \\
-Gemma-3-4B & G3; dense & 4.552 & 4.552 & 3.880 & 3.209 & M, U, T \\
-Gemma-3-12B & G3; dense & 12.773 & 12.773 & 11.766 & 10.758 & M, U, T \\
-Gemma-3-27B & G3; dense & 28.419 & 28.419 & 27.009 & 25.598 & M, U, T \\
-Gemma-4-31B & G4; dense & 32.107 & 32.107 & 30.697 & 29.287 & M, U, T \\
-Muse-30B & MG; dense & 27.855 & 27.855 & 27.855 & 25.164 & M, U, T \\
-OLMo-3-7B & O3; dense & 7.298 & 7.298 & 7.298 & 6.476 & M, U, T \\
-OLMo-3-32B & O3; dense & 32.234 & 32.234 & 32.234 & 31.206 & M, U, T \\
-Qwen3-0.6B & Q3; dense & 0.752 & 0.752 & 0.596 & 0.440 & M, U, T \\
-Qwen3-1.7B & Q3; dense & 2.032 & 2.032 & 1.721 & 1.409 & M, U, T \\
-Qwen3-4B & Q3; dense & 4.411 & 4.411 & 4.022 & 3.633 & M, U, T \\
+\multicolumn{6}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 1.000000000\textwidth-0.000000000\tabcolsep\relax}@{}}{\textit{Original heterogeneous panel (12 models)}} \\
+Gemma-3-270 million & Gemma three; dense & 0.436 & 0.436 & 0.268 & 0.100 \\
+Gemma-3-1 billion & Gemma three; dense & 1.302 & 1.302 & 1.000 & 0.698 \\
+Gemma-3-4 billion & Gemma three; dense & 4.552 & 4.552 & 3.880 & 3.209 \\
+Gemma-3-12 billion & Gemma three; dense & 12.773 & 12.773 & 11.766 & 10.758 \\
+Gemma-3-27 billion & Gemma three; dense & 28.419 & 28.419 & 27.009 & 25.598 \\
+Gemma-4-31 billion & Gemma four; dense & 32.107 & 32.107 & 30.697 & 29.287 \\
+Muse-30 billion & Muse Glimmer; dense & 27.855 & 27.855 & 27.855 & 25.164 \\
+OLMo-3-7 billion & Open Language Model three; dense & 7.298 & 7.298 & 7.298 & 6.476 \\
+OLMo-3-32 billion & Open Language Model three; dense & 32.234 & 32.234 & 32.234 & 31.206 \\
+Qwen3-0.6 billion & Qwen three; dense & 0.752 & 0.752 & 0.596 & 0.440 \\
+Qwen3-1.7 billion & Qwen three; dense & 2.032 & 2.032 & 1.721 & 1.409 \\
+Qwen3-4 billion & Qwen three; dense & 4.411 & 4.411 & 4.022 & 3.633 \\
 \midrule
-\multicolumn{7}{l}{\textit{Pythia architecture sizes (revisions audited separately)}} \\
-Pythia-160M & PN; dense & 0.162 & 0.162 & 0.162 & 0.085 & M, U, T \\
-Pythia-410M & PN; dense & 0.405 & 0.405 & 0.405 & 0.302 & M, U, T \\
-Pythia-1B & PN; dense & 1.012 & 1.012 & 1.012 & 0.805 & M, U, T \\
-Pythia-1.4B & PN; dense & 1.415 & 1.415 & 1.415 & 1.208 & M, U, T \\
-Pythia-2.8B & PN; dense & 2.775 & 2.775 & 2.775 & 2.517 & M, U, T \\
-Pythia-6.9B & PN; dense & 6.857 & 6.857 & 6.857 & 6.442 & M, U, T \\
+\multicolumn{6}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 1.000000000\textwidth-0.000000000\tabcolsep\relax}@{}}{\textit{Pythia architecture sizes (revisions audited separately)}} \\
+Pythia-160 million & Pythia; dense & 0.162 & 0.162 & 0.162 & 0.085 \\
+Pythia-410 million & Pythia; dense & 0.405 & 0.405 & 0.405 & 0.302 \\
+Pythia-1 billion & Pythia; dense & 1.012 & 1.012 & 1.012 & 0.805 \\
+Pythia-1.4 billion & Pythia; dense & 1.415 & 1.415 & 1.415 & 1.208 \\
+Pythia-2.8 billion & Pythia; dense & 2.775 & 2.775 & 2.775 & 2.517 \\
+Pythia-6.9 billion & Pythia; dense & 6.857 & 6.857 & 6.857 & 6.442 \\
 \midrule
-\multicolumn{7}{l}{\textit{Later prospective additions}} \\
-Qwen3-8B & Q3; dense & 8.191 & 8.191 & 8.191 & 6.946 & M, U, T \\
-Qwen3-14B & Q3; dense & 14.768 & 14.768 & 14.768 & 13.212 & M, U, T \\
+\multicolumn{6}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 1.000000000\textwidth-0.000000000\tabcolsep\relax}@{}}{\textit{Later prospective additions}} \\
+Qwen3-8 billion & Qwen three; dense & 8.191 & 8.191 & 8.191 & 6.946 \\
+Qwen3-14 billion & Qwen three; dense & 14.768 & 14.768 & 14.768 & 13.212 \\
 \bottomrule
 \end{tabular*}
-\caption{Cached text-model architectures and parameter counts ($10^9$). M is the meta-device count before restoring tied weights, U the unique count after restoring ties, and T the transformer matrices excluding embeddings, language-model head, norms and biases; Pythia T equals the law covariate $L(4h^2+2hm)$. Multimodal checkpoints use their text decoder only. The frozen Gemma-3 student counts are 0.435870336B, 1.301875840B, and 4.971331952B, the last including 0.419816304B non-text parameters. Class abbreviations: G3 Gemma3ForCausalLM, G4 Gemma4ForCausalLM, MG MuseGlimmerTextModel, O3 Olmo3ForCausalLM, PN GPTNeoXForCausalLM, and Q3 Qwen3ForCausalLM.}
+\caption{The table compares model architectures and parameter counts. Counts are in billions of parameters. The columns distinguish counts before restoring tied weights, active parameters, unique parameters after restoring ties, and transformer matrices.}
+\par\smallskip{\footnotesize Cached text-model architectures and parameter counts ($10^9$). The Pythia matrix count equals the law covariate $L(4h^2+2hm)$. The frozen Gemma-3 student counts are 0.435870336 billion, 1.301875840 billion, and 4.971331952 billion, the last including 0.419816304 billion non-text parameters. \par}
 \label{tab:model_arch}
 \end{table}

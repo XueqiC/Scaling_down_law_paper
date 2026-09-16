@@ -1,10 +1,11 @@
 # Main prediction table: cell sources
 
-Columns: Task (test set); Frozen candidate; Candidate error (Math / Code / QA); Delivered relation; Delivered error (Math / Code / QA); Baseline error (Math / Code / QA).
+Columns: Prediction task; Predictor tested first; Its error (nats); Predictor we deliver; Its error (nats); Simplest comparison
+Math / Code / QA.
 Rendered layout: one row per frozen prediction task. Cell coordinates match the six printed columns; every cell is populated.
-Slash-separated scores follow Math / Code / QA order. Comma-separated distillation pairs follow student order 270M, 1B. Baseline identities and their development selection pointers are recorded in each baseline cell's note/context.
-Daggers mark post-test delivery decisions; frozen candidate predictions remain distinct. Delivered scores reuse the same frozen test cells, not test-error winners. For the earlier bit test, the delivered relation is the source surface as tested and repeats the candidate's stored errors without a dagger. The later delivered model has no matching stored score and its development includes those cells.
-Only stored V70 paired_difference.ci95 endpoints are printed, after their own candidate MAE. The sign is baseline minus candidate; the baseline identities match the frozen development selection. These are not MAE intervals. Missing intervals stay absent; no resampling or invented intervals.
+Error cells use one Math / Code / QA line if it fits the actual column, otherwise three labelled lines. Distillation pairs follow student order 270M, 1B as stated in the caption. Baseline names precede their scores, in the capability order named in the header; where two names differ they follow student order 270M, 1B. Development selection pointers are recorded in each baseline cell's note/context.
+The words 'chosen after this test' mark post-test delivery decisions; first predictors were frozen before measurement. Delivered scores reuse the same frozen test cells, not test-error winners. For the earlier bit test, 'The same predictor' retains the source regression as tested and its exact errors. The later delivered model has no matching stored score and its development includes those cells.
+Stored V70 paired_difference.ci95 endpoints are omitted from Table 1 because they do not fit on the same line as the score. They remain in the appendix tables. The sign is baseline minus candidate; these are not MAE intervals. No refits, resampling or invented intervals.
 All indices are zero-based JSON pointers. `mean` is equal-weight arithmetic; `weighted_mean` pairs each stored subset MAE with its stored cell count, preserving equal cell weights. No refits or resampling.
 Numeric values are formatted directly from the following executable source recipes. Context pointers justify textual labels and freeze identities; incomplete tasks are omitted.
 The `label` operation uses the generator's explicit presentation mappings; `expected` preserves the source values and must match before rendering `label`. Counts always use their own JSON fields.
@@ -34,36 +35,36 @@ V72 repeats use the same weights; no displayed score uses those repeats.
 
 ## Fields per cell
 
-- Cell (0, 0): `results/v53-prune-dev/register.json#/selected_candidate`; `results/v53-prune-dev/register.json#/dev_states`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`
-- Cell (0, 1): `results/v53-prune-dev/register.json#/feature_names`; `results/v53-prune-dev/register.json#/candidate_definitions/power`
+- Cell (0, 0): `results/v53-prune-dev/register.json#/selected_candidate`; `results/v53-prune-dev/register.json#/dev_states`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
+- Cell (0, 1): `results/v53-prune-dev/register.json#/feature_names`; `results/v53-prune-dev/register.json#/candidate_definitions/power`; `results/v53-prune-dev/register.json#/n_params_per_capability/power`; `results/v53-prune-dev/register.json#/n_dev_states`
 - Cell (0, 2): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/qa`
 - Cell (0, 3): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`
 - Cell (0, 4): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
-- Cell (0, 5): `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
+- Cell (0, 5): `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/register.json#/loso_table/2/candidate`; `results/v53-prune-dev/register.json#/loso_table/5/candidate`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
 - Cell (1, 0): `results/v55-quant-group/register.json#/precommitted_rule`; `results/v55-quant-group/register.json#/test_sets/bit_test/states`; `results/v55-quant-group/register.json#/test_sets/bit_test/configs`
-- Cell (1, 1): `results/v55-quant-group/register.json#/feature_names`; `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`
+- Cell (1, 1): `results/v55-quant-group/register.json#/feature_names`; `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v55-quant-group/register.json#/n_params_per_capability/low_order_2d`
 - Cell (1, 2): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa`
 - Cell (1, 3): `results/v55-quant-group/register.json#/precommitted_rule`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v55-quant-group/register.json#/dev_configs`; `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`
 - Cell (1, 4): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa`
-- Cell (1, 5): `results/v55-quant-group/register.json#/loso_table`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/math`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/code`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/qa`
+- Cell (1, 5): `results/v55-quant-group/register.json#/loso_table`; `results/v55-quant-group/register.json#/loso_table/4/candidate`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/math`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/code`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/qa`
 - Cell (2, 0): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`; `results/v69-quant-confirm/compare.json#/rows/0/test_set`; `results/v69-quant-confirm/compare.json#/rows/1/test_set`; `results/v69-quant-confirm/compare.json#/rows/2/test_set`; `results/v69-quant-confirm/compare.json#/rows/3/test_set`; `results/v69-quant-confirm/compare.json#/rows/4/test_set`; `results/v69-quant-confirm/compare.json#/rows/5/test_set`; `results/v69-quant-confirm/compare.json#/rows/6/test_set`; `results/v69-quant-confirm/compare.json#/rows/7/test_set`; `results/v69-quant-confirm/compare.json#/rows/8/test_set`; `results/v69-quant-confirm/compare.json#/rows/9/test_set`; `results/v69-quant-confirm/compare.json#/rows/10/test_set`; `results/v69-quant-confirm/compare.json#/rows/11/test_set`; `results/v69-quant-confirm/compare.json#/rows/12/test_set`; `results/v69-quant-confirm/compare.json#/rows/13/test_set`; `results/v69-quant-confirm/compare.json#/rows/14/test_set`; `results/v69-quant-confirm/compare.json#/rows/15/test_set`; `results/v69-quant-confirm/compare.json#/rows/16/test_set`; `results/v69-quant-confirm/compare.json#/rows/17/test_set`; `results/v69-quant-confirm/compare.json#/rows/18/test_set`; `results/v69-quant-confirm/compare.json#/rows/19/test_set`; `results/v69-quant-confirm/compare.json#/rows/20/test_set`; `results/v69-quant-confirm/compare.json#/rows/21/test_set`; `results/v69-quant-confirm/compare.json#/rows/22/test_set`; `results/v69-quant-confirm/compare.json#/rows/23/test_set`; `results/v69-quant-confirm/compare.json#/rows/24/test_set`; `results/v69-quant-confirm/compare.json#/rows/25/test_set`; `results/v69-quant-confirm/compare.json#/rows/26/test_set`; `results/v69-quant-confirm/compare.json#/rows/27/test_set`; `results/v69-quant-confirm/compare.json#/rows/28/test_set`; `results/v69-quant-confirm/compare.json#/rows/29/test_set`; `results/v69-quant-confirm/compare.json#/rows/30/test_set`; `results/v69-quant-confirm/compare.json#/rows/31/test_set`; `results/v69-quant-confirm/compare.json#/rows/32/test_set`; `results/v69-quant-confirm/compare.json#/rows/33/test_set`; `results/v69-quant-confirm/compare.json#/rows/34/test_set`; `results/v69-quant-confirm/compare.json#/rows/35/test_set`; `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
 - Cell (2, 1): `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v69-quant-confirm/develop.json#/models`; `results/v69-quant-confirm/develop.json#/feature_names`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selected/math/candidate`; `results/v69-quant-confirm/develop.json#/selected/code/candidate`; `results/v69-quant-confirm/develop.json#/selected/qa/candidate`
 - Cell (2, 2): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/low_order_2d/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/qa/mae`
 - Cell (2, 3): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`
 - Cell (2, 4): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
-- Cell (2, 5): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
+- Cell (2, 5): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math`; `results/v69-quant-confirm/develop.json#/loso/scores/zero/code`; `results/v69-quant-confirm/develop.json#/loso/scores/median/qa`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
 - Cell (3, 0): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`; `results/v69-quant-confirm/compare.json#/rows/36/test_set`; `results/v69-quant-confirm/compare.json#/rows/37/test_set`; `results/v69-quant-confirm/compare.json#/rows/38/test_set`; `results/v69-quant-confirm/compare.json#/rows/39/test_set`; `results/v69-quant-confirm/compare.json#/rows/40/test_set`; `results/v69-quant-confirm/compare.json#/rows/41/test_set`; `results/v69-quant-confirm/compare.json#/rows/42/test_set`; `results/v69-quant-confirm/compare.json#/rows/43/test_set`; `results/v69-quant-confirm/compare.json#/rows/44/test_set`; `results/v69-quant-confirm/compare.json#/rows/45/test_set`; `results/v69-quant-confirm/compare.json#/rows/46/test_set`; `results/v69-quant-confirm/compare.json#/rows/47/test_set`; `results/v69-quant-confirm/compare.json#/rows/48/test_set`; `results/v69-quant-confirm/compare.json#/rows/49/test_set`; `results/v69-quant-confirm/compare.json#/rows/50/test_set`; `results/v69-quant-confirm/compare.json#/rows/51/test_set`; `results/v69-quant-confirm/compare.json#/rows/52/test_set`; `results/v69-quant-confirm/compare.json#/rows/53/test_set`; `results/v69-quant-confirm/compare.json#/rows/54/test_set`; `results/v69-quant-confirm/compare.json#/rows/55/test_set`; `results/v69-quant-confirm/compare.json#/rows/56/test_set`; `results/v69-quant-confirm/compare.json#/rows/57/test_set`; `results/v69-quant-confirm/compare.json#/rows/58/test_set`; `results/v69-quant-confirm/compare.json#/rows/59/test_set`; `results/v69-quant-confirm/compare.json#/rows/60/test_set`; `results/v69-quant-confirm/compare.json#/rows/61/test_set`; `results/v69-quant-confirm/compare.json#/rows/62/test_set`; `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
 - Cell (3, 1): `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v69-quant-confirm/develop.json#/models`; `results/v69-quant-confirm/develop.json#/feature_names`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selected/math/candidate`; `results/v69-quant-confirm/develop.json#/selected/code/candidate`; `results/v69-quant-confirm/develop.json#/selected/qa/candidate`
 - Cell (3, 2): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/low_order_2d/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/low_order_2d/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/low_order_2d/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/low_order_2d/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/qa/n`
 - Cell (3, 3): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`
 - Cell (3, 4): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
-- Cell (3, 5): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
+- Cell (3, 5): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math`; `results/v69-quant-confirm/develop.json#/loso/scores/zero/code`; `results/v69-quant-confirm/develop.json#/loso/scores/median/qa`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
 - Cell (4, 0): `results/v70-distill-confirm/freeze.json#/confirmation_register/unused_U_assertion`; `results/v70-distill-confirm/freeze.json#/frozen_at_utc`; `results/v47-p2-register/register.json#/v5_confirm/registered_at_utc`; `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
-- Cell (4, 1): `results/v70-distill-confirm/freeze.json#/selected`; `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/selected/math/method`; `results/v70-distill-confirm/freeze.json#/selected/code/method`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`
-- Cell (4, 2): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/bootstrap`; `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/0/paired_difference/ci95/0`; `results/v70-distill-confirm/compare.json#/groups/0/paired_difference/ci95/1`; `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/3/paired_difference/ci95/0`; `results/v70-distill-confirm/compare.json#/groups/3/paired_difference/ci95/1`; `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/1/paired_difference/ci95/0`; `results/v70-distill-confirm/compare.json#/groups/1/paired_difference/ci95/1`; `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/4/paired_difference/ci95/0`; `results/v70-distill-confirm/compare.json#/groups/4/paired_difference/ci95/1`; `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/2/paired_difference/ci95/0`; `results/v70-distill-confirm/compare.json#/groups/2/paired_difference/ci95/1`; `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/5/paired_difference/ci95/0`; `results/v70-distill-confirm/compare.json#/groups/5/paired_difference/ci95/1`
-- Cell (4, 3): `results/v70-distill-confirm/freeze.json#/selected`; `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/selected/math/method`; `results/v70-distill-confirm/freeze.json#/selected/code/method`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`
+- Cell (4, 1): `results/v70-distill-confirm/freeze.json#/selected`; `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/selected/math/method`; `results/v70-distill-confirm/freeze.json#/selected/math/n_params`; `results/v70-distill-confirm/freeze.json#/selected/code/method`; `results/v70-distill-confirm/freeze.json#/selected/code/n_params`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`; `results/v70-distill-confirm/freeze.json#/selected/qa/n_params`
+- Cell (4, 2): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/bootstrap`; `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
+- Cell (4, 3): `results/v70-distill-confirm/freeze.json#/selected`; `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/selected/math/method`; `results/v70-distill-confirm/freeze.json#/selected/math/n_params`; `results/v70-distill-confirm/freeze.json#/selected/code/method`; `results/v70-distill-confirm/freeze.json#/selected/code/n_params`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`; `results/v70-distill-confirm/freeze.json#/selected/qa/n_params`
 - Cell (4, 4): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
-- Cell (4, 5): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/0/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/3/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/1/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/4/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
+- Cell (4, 5): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/math/method`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/math/method`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/code/method`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/code/method`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/qa/method`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/qa/method`; `results/v70-distill-confirm/compare.json#/groups/0/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/3/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/1/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/4/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
 
 ## Machine-readable cell recipes
 
@@ -73,20 +74,37 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "row": 0,
     "column": 0,
     "parts": [
-      "Pruning, new state\n",
       {
         "sources": [
           "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
+          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities",
           "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag",
-          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag"
+          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities",
+          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag",
+          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities"
         ],
         "op": "label",
         "format": null,
-        "label": "three checkpoints outside every fit; includes 6.9B",
+        "label": "Three Pythia checkpoints unused in fitting (incl. 6.9B), pruned to densities 0.575, 0.675, 0.85",
         "expected": [
           "pythia-410m@step48000",
+          [
+            0.85,
+            0.675,
+            0.575
+          ],
           "pythia-1.4b@step112000",
-          "pythia-6.9b@step80000"
+          [
+            0.85,
+            0.675,
+            0.575
+          ],
+          "pythia-6.9b@step80000",
+          [
+            0.85,
+            0.675,
+            0.575
+          ]
         ]
       }
     ],
@@ -96,7 +114,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities"
     ],
     "note": "All three test checkpoints are absent from every development fit. The 6.9B size occurs at other stages in the expanded register.",
-    "rendered": "Pruning, new state\\newline three checkpoints outside every fit; includes 6.9B"
+    "compact_scores": "",
+    "rendered": "Three Pythia checkpoints unused in fitting (incl. 6.9B), pruned to densities 0.575, 0.675, 0.85"
   },
   {
     "row": 0,
@@ -104,13 +123,17 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "parts": [
       {
         "sources": [
-          "results/v53-prune-dev/register.json#/candidate_definitions/power"
+          "results/v53-prune-dev/register.json#/candidate_definitions/power",
+          "results/v53-prune-dev/register.json#/n_params_per_capability/power",
+          "results/v53-prune-dev/register.json#/n_dev_states"
         ],
         "op": "label",
         "format": null,
-        "label": "Power form",
+        "label": "Five-parameter power form (seventeen development states)",
         "expected": [
-          "(beta.phi) * ((1-d)/0.3)**gamma"
+          "(beta.phi) * ((1-d)/0.3)**gamma",
+          5,
+          17
         ]
       }
     ],
@@ -118,12 +141,14 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v53-prune-dev/register.json#/feature_names"
     ],
     "note": "",
-    "rendered": "Power form"
+    "compact_scores": "",
+    "rendered": "Five-parameter power form (seventeen development states)"
   },
   {
     "row": 0,
     "column": 2,
     "parts": [
+      "Math ",
       {
         "sources": [
           "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/math",
@@ -133,7 +158,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "Code ",
       {
         "sources": [
           "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/code",
@@ -143,7 +169,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "QA ",
       {
         "sources": [
           "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/qa",
@@ -156,7 +183,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "context": [],
     "note": "",
-    "rendered": "0.24 / 0.24 / 0.68"
+    "compact_scores": "labelled",
+    "rendered": "\\TableOneErrors{Math 0.24}{Code 0.24}{QA 0.68}"
   },
   {
     "row": 0,
@@ -179,16 +207,18 @@ V72 repeats use the same weights; no displayed score uses those repeats.
           "median_curve"
         ]
       },
-      "$^{\\dagger}$"
+      " (chosen after this test)"
     ],
     "context": [],
     "note": "New-state source-free median curve, fixed after test; scores use the same three checkpoints and densities as the frozen candidate.",
-    "rendered": "Source-free median density curve$^{\\dagger}$"
+    "compact_scores": "",
+    "rendered": "Source-free median density curve (chosen after this test)"
   },
   {
     "row": 0,
     "column": 4,
     "parts": [
+      "Math ",
       {
         "sources": [
           "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/math",
@@ -198,7 +228,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "Code ",
       {
         "sources": [
           "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code",
@@ -208,7 +239,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "QA ",
       {
         "sources": [
           "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa",
@@ -217,8 +249,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "mean",
         "format": ".2f"
-      },
-      "$^{\\dagger}$"
+      }
     ],
     "context": [
       "results/v86-main-table/summary.json#/main_rows/0/delivered_timing",
@@ -227,12 +258,29 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered"
     ],
     "note": "New-state source-free median curve, fixed after test; scores use the same three checkpoints and densities as the frozen candidate.",
-    "rendered": "0.28 / 0.21 / 0.22$^{\\dagger}$"
+    "compact_scores": "labelled",
+    "rendered": "\\TableOneErrors{Math 0.28}{Code 0.21}{QA 0.22}"
   },
   {
     "row": 0,
     "column": 5,
     "parts": [
+      {
+        "sources": [
+          "results/v53-prune-dev/register.json#/loso_table/2/candidate",
+          "results/v53-prune-dev/register.json#/loso_table/2/candidate",
+          "results/v53-prune-dev/register.json#/loso_table/5/candidate"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Per-density regression; QA: median",
+        "expected": [
+          "A2",
+          "A2",
+          "median_curve"
+        ]
+      },
+      "\n",
       {
         "sources": [
           "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math",
@@ -242,7 +290,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
+      "\n",
       {
         "sources": [
           "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code",
@@ -252,7 +300,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "mean",
         "format": ".2f"
       },
-      " / ",
+      "\n",
       {
         "sources": [
           "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa",
@@ -266,14 +314,14 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "context": [
       "results/v53-prune-dev/register.json#/loso_table"
     ],
-    "note": "Minimum development LOSO MAE excluding power, per capability: per-density / per-density / development median; no test ranking.",
-    "rendered": "0.23 / 0.22 / 0.22"
+    "note": "Minimum development LOSO MAE excluding power, per capability: per-density regression / per-density regression / development median; no test ranking.",
+    "compact_scores": "comparison",
+    "rendered": "Per-density regression; QA: median\\newline \\TableOneErrors{0.23}{0.22}{0.22}"
   },
   {
     "row": 1,
     "column": 0,
     "parts": [
-      "Quantization, unseen bit-width\n",
       {
         "sources": [
           "results/v55-quant-group/register.json#/test_sets/bit_test/states",
@@ -281,7 +329,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "160M\u20131.4B; bit 4; groups 64 and 256",
+        "label": "Pythia 160M to 1.4B at unseen bit width 4, group sizes 64 and 256",
         "expected": [
           [
             "pythia-160m@step16000",
@@ -302,7 +350,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v55-quant-group/register.json#/precommitted_rule"
     ],
     "note": "",
-    "rendered": "Quantization, unseen bit-width\\newline 160M\u20131.4B; bit 4; groups 64 and 256"
+    "compact_scores": "",
+    "rendered": "Pythia 160M to 1.4B at unseen bit width 4, group sizes 64 and 256"
   },
   {
     "row": 1,
@@ -310,13 +359,15 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "parts": [
       {
         "sources": [
-          "results/v55-quant-group/register.json#/candidate_definitions/low_order_2d"
+          "results/v55-quant-group/register.json#/candidate_definitions/low_order_2d",
+          "results/v55-quant-group/register.json#/n_params_per_capability/low_order_2d"
         ],
         "op": "label",
         "format": null,
-        "label": "Source surface",
+        "label": "Source regression across bit widths (twenty coefficients)",
         "expected": [
-          "phi.[a0 + a1*u + a2*v + a3*u*v + a4*u^2]; coefficients ordered by term then phi"
+          "phi.[a0 + a1*u + a2*v + a3*u*v + a4*u^2]; coefficients ordered by term then phi",
+          20
         ]
       }
     ],
@@ -324,12 +375,14 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v55-quant-group/register.json#/feature_names"
     ],
     "note": "",
-    "rendered": "Source surface"
+    "compact_scores": "",
+    "rendered": "Source regression across bit widths (twenty coefficients)"
   },
   {
     "row": 1,
     "column": 2,
     "parts": [
+      "Math ",
       {
         "sources": [
           "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math"
@@ -337,7 +390,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "Code ",
       {
         "sources": [
           "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code"
@@ -345,7 +399,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "QA ",
       {
         "sources": [
           "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa"
@@ -356,7 +411,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "context": [],
     "note": "",
-    "rendered": "0.19 / 0.21 / 0.44"
+    "compact_scores": "labelled",
+    "rendered": "\\TableOneErrors{Math 0.19}{Code 0.21}{QA 0.44}"
   },
   {
     "row": 1,
@@ -368,7 +424,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Source surface (as tested)",
+        "label": "The same predictor",
         "expected": [
           "phi.[a0 + a1*u + a2*v + a3*u*v + a4*u^2]; coefficients ordered by term then phi"
         ]
@@ -380,13 +436,15 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v69-quant-confirm/develop.json#/dev_configs",
       "results/v55-quant-group/register.json#/dev_configs"
     ],
-    "note": "The delivered relation for this task is the source surface as tested; its errors reuse the candidate's exact frozen JSON fields. No post-test dagger applies. The later delivered rule has no matching stored score for this earlier bit test, whose configurations entered its development grid. V55 alternatives use different models and boundary rules and are not substituted for that later rule.",
-    "rendered": "Source surface (as tested)"
+    "note": "The delivered relation for this task is the source regression as tested; its errors reuse the candidate's exact frozen JSON fields. It was fixed before measurement. The later delivered rule has no matching stored score for this earlier bit test, whose configurations entered its development grid. V55 alternatives use different models and boundary rules and are not substituted for that later rule.",
+    "compact_scores": "",
+    "rendered": "The same predictor"
   },
   {
     "row": 1,
     "column": 4,
     "parts": [
+      "Math ",
       {
         "sources": [
           "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math"
@@ -394,7 +452,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "Code ",
       {
         "sources": [
           "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code"
@@ -402,7 +461,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "QA ",
       {
         "sources": [
           "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa"
@@ -412,8 +472,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       }
     ],
     "context": [],
-    "note": "The delivered relation for this task is the source surface as tested; its errors reuse the candidate's exact frozen JSON fields. No post-test dagger applies. The later delivered rule has no matching stored score for this earlier bit test, whose configurations entered its development grid. V55 alternatives use different models and boundary rules and are not substituted for that later rule.",
-    "rendered": "0.19 / 0.21 / 0.44"
+    "note": "The delivered relation for this task is the source regression as tested; its errors reuse the candidate's exact frozen JSON fields. It was fixed before measurement. The later delivered rule has no matching stored score for this earlier bit test, whose configurations entered its development grid. V55 alternatives use different models and boundary rules and are not substituted for that later rule.",
+    "compact_scores": "labelled",
+    "rendered": "\\TableOneErrors{Math 0.19}{Code 0.21}{QA 0.44}"
   },
   {
     "row": 1,
@@ -421,12 +482,28 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "parts": [
       {
         "sources": [
+          "results/v55-quant-group/register.json#/loso_table/4/candidate",
+          "results/v55-quant-group/register.json#/loso_table/4/candidate",
+          "results/v55-quant-group/register.json#/loso_table/4/candidate"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Development median",
+        "expected": [
+          "median",
+          "median",
+          "median"
+        ]
+      },
+      "\n",
+      {
+        "sources": [
           "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/math"
         ],
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "\n",
       {
         "sources": [
           "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/code"
@@ -434,7 +511,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "\n",
       {
         "sources": [
           "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/qa"
@@ -447,14 +524,13 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v55-quant-group/register.json#/loso_table"
     ],
     "note": "Development minimum over registered baselines mean/median/zero: development median / development median / development median.",
-    "rendered": "0.55 / 0.73 / 0.54"
+    "compact_scores": "comparison",
+    "rendered": "Development median\\newline \\TableOneErrors{0.55}{0.73}{0.54}"
   },
   {
     "row": 2,
     "column": 0,
     "parts": [
-      "Quantization, unseen group size",
-      "\n",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/rows/0/state",
@@ -468,7 +544,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
+        "label": "Pythia 410M (143000 steps) and 1.4B (16000 steps) at unseen group sizes 32 and 512, bit widths 3 to 5",
         "expected": [
           "pythia-410m@step143000",
           "b3_g32",
@@ -521,7 +597,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v69-quant-confirm/compare.json#/rows/35/test_set"
     ],
     "note": "",
-    "rendered": "Quantization, unseen group size\\newline 410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512"
+    "compact_scores": "",
+    "rendered": "Pythia 410M (143000 steps) and 1.4B (16000 steps) at unseen group sizes 32 and 512, bit widths 3 to 5"
   },
   {
     "row": 2,
@@ -535,7 +612,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Math: source surface;\nCode: median;\nQA: zero change",
+        "label": "Math source regression; Code development median; QA no change",
         "expected": [
           "low_order_2d",
           "median",
@@ -550,12 +627,14 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v69-quant-confirm/develop.json#/dev_configs"
     ],
     "note": "Frozen candidates unchanged: Math uses the source surface, Code the per-configuration median, QA zero. Median interpolation is source-free and differs from the delivered same-input interpolation.",
-    "rendered": "Math: source surface;\\newline Code: median;\\newline QA: zero change"
+    "compact_scores": "",
+    "rendered": "Math source regression; Code development median; QA no change"
   },
   {
     "row": 2,
     "column": 2,
     "parts": [
+      "Math ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/low_order_2d/math/mae"
@@ -563,7 +642,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "Code ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/code/mae"
@@ -571,7 +651,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "QA ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/qa/mae"
@@ -582,7 +663,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "context": [],
     "note": "",
-    "rendered": "0.21 / 0.56 / 0.46"
+    "compact_scores": "labelled",
+    "rendered": "\\TableOneErrors{Math 0.21}{Code 0.56}{QA 0.46}"
   },
   {
     "row": 2,
@@ -598,7 +680,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Math: interpolation;\nCode: interpolation;\nQA: median",
+        "label": "Math, Code: interpolation on the measured group-size grid; QA: development median",
         "expected": [
           "fixed after test",
           "same_input_interpolation",
@@ -607,16 +689,18 @@ V72 repeats use the same weights; no displayed score uses those repeats.
           "R: piecewise interpolation for math/code on development states; per-configuration median for QA and for all capabilities on new states. Specified post-test rule, not the minimum error in each test panel."
         ]
       },
-      "$^{\\dagger}$"
+      " (chosen after this test)"
     ],
     "context": [],
     "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
-    "rendered": "Math: interpolation;\\newline Code: interpolation;\\newline QA: median$^{\\dagger}$"
+    "compact_scores": "",
+    "rendered": "Math, Code: interpolation on the measured group-size grid; QA: development median (chosen after this test)"
   },
   {
     "row": 2,
     "column": 4,
     "parts": [
+      "Math ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/math/mae"
@@ -624,7 +708,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "Code ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae"
@@ -632,15 +717,15 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "QA ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae"
         ],
         "op": "identity",
         "format": ".2f"
-      },
-      "$^{\\dagger}$"
+      }
     ],
     "context": [
       "results/v86-main-table/summary.json#/main_rows/2/delivered_timing",
@@ -650,7 +735,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
     ],
     "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
-    "rendered": "0.07 / 0.12 / 0.46$^{\\dagger}$"
+    "compact_scores": "labelled",
+    "rendered": "\\TableOneErrors{Math 0.07}{Code 0.12}{QA 0.46}"
   },
   {
     "row": 2,
@@ -658,12 +744,67 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "parts": [
       {
         "sources": [
+          "results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math",
+          "results/v69-quant-confirm/develop.json#/loso/scores/zero/code",
+          "results/v69-quant-confirm/develop.json#/loso/scores/median/qa"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Bilinear regression; Code: no change; QA: median",
+        "expected": [
+          {
+            "n": 54,
+            "n_states": 6,
+            "state_mae": {
+              "pythia-1.4b@step143000": 0.18035555432620828,
+              "pythia-1.4b@step16000": 0.4042579843558109,
+              "pythia-160m@step143000": 3.3985412467109986,
+              "pythia-160m@step16000": 0.43688672544116214,
+              "pythia-410m@step143000": 0.37784637907436774,
+              "pythia-410m@step16000": 0.2598977837534169
+            },
+            "macro_mae": 0.8429642789436608,
+            "mae": 0.8429642789436608
+          },
+          {
+            "n": 54,
+            "n_states": 6,
+            "state_mae": {
+              "pythia-1.4b@step143000": 0.5143543829067956,
+              "pythia-1.4b@step16000": 0.10937458732799844,
+              "pythia-160m@step143000": 6.2735256054723605,
+              "pythia-160m@step16000": 0.3426432136914666,
+              "pythia-410m@step143000": 1.110008451522595,
+              "pythia-410m@step16000": 0.19481419855795895
+            },
+            "macro_mae": 1.4241200732465291,
+            "mae": 1.4241200732465291
+          },
+          {
+            "n": 54,
+            "n_states": 6,
+            "state_mae": {
+              "pythia-1.4b@step143000": 0.16258053443177,
+              "pythia-1.4b@step16000": 0.2355005016899031,
+              "pythia-160m@step143000": 6.541049456062526,
+              "pythia-160m@step16000": 0.09769750739332464,
+              "pythia-410m@step143000": 0.7294274133924797,
+              "pythia-410m@step16000": 0.15231569497253902
+            },
+            "macro_mae": 1.319761851323757,
+            "mae": 1.3197618513237568
+          }
+        ]
+      },
+      "\n",
+      {
+        "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae"
         ],
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "\n",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae"
@@ -671,7 +812,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "\n",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae"
@@ -683,15 +824,14 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "context": [
       "results/v69-quant-confirm/develop.json#/loso/scores"
     ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear / zero change / development median.",
-    "rendered": "0.33 / 0.68 / 0.46"
+    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
+    "compact_scores": "comparison",
+    "rendered": "Bilinear regression; Code: no change; QA: median\\newline \\TableOneErrors{0.33}{0.68}{0.46}"
   },
   {
     "row": 3,
     "column": 0,
     "parts": [
-      "Quantization, new state",
-      "\n",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/rows/36/state",
@@ -707,7 +847,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512",
+        "label": "Pythia 1.4B (112000 steps), unseen in fitting, at bit widths 3 to 5, group sizes 32, 128 and 512",
         "expected": [
           "pythia-1.4b@step112000",
           "b3_g32",
@@ -753,7 +893,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v69-quant-confirm/compare.json#/rows/62/test_set"
     ],
     "note": "",
-    "rendered": "Quantization, new state\\newline 1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512"
+    "compact_scores": "",
+    "rendered": "Pythia 1.4B (112000 steps), unseen in fitting, at bit widths 3 to 5, group sizes 32, 128 and 512"
   },
   {
     "row": 3,
@@ -767,7 +908,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Math: source surface;\nCode: median;\nQA: zero change",
+        "label": "Math source regression; Code development median; QA no change",
         "expected": [
           "low_order_2d",
           "median",
@@ -782,12 +923,14 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v69-quant-confirm/develop.json#/dev_configs"
     ],
     "note": "Frozen candidates unchanged: Math uses the source surface, Code the per-configuration median, QA zero. Median interpolation is source-free and differs from the delivered same-input interpolation.",
-    "rendered": "Math: source surface;\\newline Code: median;\\newline QA: zero change"
+    "compact_scores": "",
+    "rendered": "Math source regression; Code development median; QA no change"
   },
   {
     "row": 3,
     "column": 2,
     "parts": [
+      "Math ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/low_order_2d/math/mae",
@@ -798,7 +941,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "weighted_mean",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "Code ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae",
@@ -809,7 +953,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "weighted_mean",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "QA ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/qa/mae",
@@ -823,7 +968,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "context": [],
     "note": "",
-    "rendered": "0.30 / 0.15 / 0.22"
+    "compact_scores": "labelled",
+    "rendered": "\\TableOneErrors{Math 0.30}{Code 0.15}{QA 0.22}"
   },
   {
     "row": 3,
@@ -839,7 +985,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Median",
+        "label": "Development median",
         "expected": [
           "fixed after test",
           "median",
@@ -848,16 +994,18 @@ V72 repeats use the same weights; no displayed score uses those repeats.
           "R: piecewise interpolation for math/code on development states; per-configuration median for QA and for all capabilities on new states. Specified post-test rule, not the minimum error in each test panel."
         ]
       },
-      "$^{\\dagger}$"
+      " (chosen after this test)"
     ],
     "context": [],
     "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
-    "rendered": "Median$^{\\dagger}$"
+    "compact_scores": "",
+    "rendered": "Development median (chosen after this test)"
   },
   {
     "row": 3,
     "column": 4,
     "parts": [
+      "Math ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/mae",
@@ -868,7 +1016,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "weighted_mean",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "Code ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae",
@@ -879,7 +1028,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "weighted_mean",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "QA ",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae",
@@ -889,8 +1039,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "weighted_mean",
         "format": ".2f"
-      },
-      "$^{\\dagger}$"
+      }
     ],
     "context": [
       "results/v86-main-table/summary.json#/main_rows/3/delivered_timing",
@@ -900,12 +1049,68 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
     ],
     "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
-    "rendered": "0.09 / 0.15 / 0.14$^{\\dagger}$"
+    "compact_scores": "labelled",
+    "rendered": "\\TableOneErrors{Math 0.09}{Code 0.15}{QA 0.14}"
   },
   {
     "row": 3,
     "column": 5,
     "parts": [
+      {
+        "sources": [
+          "results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math",
+          "results/v69-quant-confirm/develop.json#/loso/scores/zero/code",
+          "results/v69-quant-confirm/develop.json#/loso/scores/median/qa"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Bilinear regression; Code: no change; QA: median",
+        "expected": [
+          {
+            "n": 54,
+            "n_states": 6,
+            "state_mae": {
+              "pythia-1.4b@step143000": 0.18035555432620828,
+              "pythia-1.4b@step16000": 0.4042579843558109,
+              "pythia-160m@step143000": 3.3985412467109986,
+              "pythia-160m@step16000": 0.43688672544116214,
+              "pythia-410m@step143000": 0.37784637907436774,
+              "pythia-410m@step16000": 0.2598977837534169
+            },
+            "macro_mae": 0.8429642789436608,
+            "mae": 0.8429642789436608
+          },
+          {
+            "n": 54,
+            "n_states": 6,
+            "state_mae": {
+              "pythia-1.4b@step143000": 0.5143543829067956,
+              "pythia-1.4b@step16000": 0.10937458732799844,
+              "pythia-160m@step143000": 6.2735256054723605,
+              "pythia-160m@step16000": 0.3426432136914666,
+              "pythia-410m@step143000": 1.110008451522595,
+              "pythia-410m@step16000": 0.19481419855795895
+            },
+            "macro_mae": 1.4241200732465291,
+            "mae": 1.4241200732465291
+          },
+          {
+            "n": 54,
+            "n_states": 6,
+            "state_mae": {
+              "pythia-1.4b@step143000": 0.16258053443177,
+              "pythia-1.4b@step16000": 0.2355005016899031,
+              "pythia-160m@step143000": 6.541049456062526,
+              "pythia-160m@step16000": 0.09769750739332464,
+              "pythia-410m@step143000": 0.7294274133924797,
+              "pythia-410m@step16000": 0.15231569497253902
+            },
+            "macro_mae": 1.319761851323757,
+            "mae": 1.3197618513237568
+          }
+        ]
+      },
+      "\n",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae",
@@ -916,7 +1121,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "weighted_mean",
         "format": ".2f"
       },
-      " / ",
+      "\n",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae",
@@ -927,7 +1132,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "weighted_mean",
         "format": ".2f"
       },
-      " / ",
+      "\n",
       {
         "sources": [
           "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae",
@@ -942,14 +1147,14 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "context": [
       "results/v69-quant-confirm/develop.json#/loso/scores"
     ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear / zero change / development median.",
-    "rendered": "0.35 / 0.56 / 0.14"
+    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
+    "compact_scores": "comparison",
+    "rendered": "Bilinear regression; Code: no change; QA: median\\newline \\TableOneErrors{0.35}{0.56}{0.14}"
   },
   {
     "row": 4,
     "column": 0,
     "parts": [
-      "Distillation, new pool\n",
       {
         "sources": [
           "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
@@ -958,7 +1163,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "270M, 1B pairs; six pools; 50k\u2013200k tokens",
+        "label": "Gemma 270M and 1B distilled on six new pools for 50000 to 200000 tokens",
         "expected": [
           [
             "gemma3-270m",
@@ -1298,7 +1503,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v47-p2-register/register.json#/v5_confirm/registered_at_utc"
     ],
     "note": "",
-    "rendered": "Distillation, new pool\\newline 270M, 1B pairs; six pools; 50k\u2013200k tokens"
+    "compact_scores": "",
+    "rendered": "Gemma 270M and 1B distilled on six new pools for 50000 to 200000 tokens"
   },
   {
     "row": 4,
@@ -1307,16 +1513,22 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       {
         "sources": [
           "results/v70-distill-confirm/freeze.json#/selected/math/method",
+          "results/v70-distill-confirm/freeze.json#/selected/math/n_params",
           "results/v70-distill-confirm/freeze.json#/selected/code/method",
-          "results/v70-distill-confirm/freeze.json#/selected/qa/method"
+          "results/v70-distill-confirm/freeze.json#/selected/code/n_params",
+          "results/v70-distill-confirm/freeze.json#/selected/qa/method",
+          "results/v70-distill-confirm/freeze.json#/selected/qa/n_params"
         ],
         "op": "label",
         "format": null,
-        "label": "Math: reuse;\nCode: reuse;\nQA: joint budget/pool",
+        "label": "Math and code: one-coefficient reuse forms; QA: three-coefficient budget-and-pool form",
         "expected": [
           "E",
+          1,
           "E",
-          "joint"
+          1,
+          "joint",
+          3
         ]
       }
     ],
@@ -1325,12 +1537,14 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v70-distill-confirm/freeze.json#/models"
     ],
     "note": "The frozen and delivered forms are identical: one-coefficient zero-anchored reuse for Math/Code, joint budget/pool for QA; fixed before test.",
-    "rendered": "Math: reuse;\\newline Code: reuse;\\newline QA: joint budget/pool"
+    "compact_scores": "",
+    "rendered": "Math and code: one-coefficient reuse forms; QA: three-coefficient budget-and-pool form"
   },
   {
     "row": 4,
     "column": 2,
     "parts": [
+      "Math ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/0/candidate_mae"
@@ -1338,24 +1552,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " [",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/0/paired_difference/ci95/0"
-        ],
-        "op": "identity",
-        "format": ".4f"
-      },
       ", ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/0/paired_difference/ci95/1"
-        ],
-        "op": "identity",
-        "format": ".4f"
-      },
-      "]",
-      ",\n",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/3/candidate_mae"
@@ -1363,24 +1560,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " [",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/3/paired_difference/ci95/0"
-        ],
-        "op": "identity",
-        "format": ".4f"
-      },
-      ", ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/3/paired_difference/ci95/1"
-        ],
-        "op": "identity",
-        "format": ".4f"
-      },
-      "]",
-      " / ",
+      "\n",
+      "Code ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/1/candidate_mae"
@@ -1388,24 +1569,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " [",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/1/paired_difference/ci95/0"
-        ],
-        "op": "identity",
-        "format": ".4f"
-      },
       ", ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/1/paired_difference/ci95/1"
-        ],
-        "op": "identity",
-        "format": ".4f"
-      },
-      "]",
-      ",\n",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/4/candidate_mae"
@@ -1413,24 +1577,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " [",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/4/paired_difference/ci95/0"
-        ],
-        "op": "identity",
-        "format": ".4f"
-      },
-      ", ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/4/paired_difference/ci95/1"
-        ],
-        "op": "identity",
-        "format": ".4f"
-      },
-      "]",
-      " / ",
+      "\n",
+      "QA ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/2/candidate_mae"
@@ -1438,55 +1586,22 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " [",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/2/paired_difference/ci95/0"
-        ],
-        "op": "identity",
-        "format": ".4f"
-      },
       ", ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/2/paired_difference/ci95/1"
-        ],
-        "op": "identity",
-        "format": ".4f"
-      },
-      "]",
-      ",\n",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/5/candidate_mae"
         ],
         "op": "identity",
         "format": ".2f"
-      },
-      " [",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/5/paired_difference/ci95/0"
-        ],
-        "op": "identity",
-        "format": ".4f"
-      },
-      ", ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/5/paired_difference/ci95/1"
-        ],
-        "op": "identity",
-        "format": ".4f"
-      },
-      "]"
+      }
     ],
     "context": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
       "results/v70-distill-confirm/freeze.json#/bootstrap"
     ],
-    "note": "Comma-separated scores follow student order 270M, 1B; no student averaging. Brackets are stored 95% paired baseline-minus-candidate intervals, not MAE intervals; each baseline identity is checked by the reused frozen loader.",
-    "rendered": "0.07 [-0.0098, -0.0081],\\newline 0.06 [-0.0235, -0.0233] / 0.02 [0.0025, 0.0050],\\newline 0.05 [0.0042, 0.0050] / 0.51 [0.0774, 0.1093],\\newline 0.46 [-0.0198, -0.0098]"
+    "note": "Scores follow student order 270M, 1B; no student averaging. Stored paired baseline-minus-candidate intervals do not fit beside these scores and remain in the appendix tables; each baseline identity is checked by the reused frozen loader.",
+    "compact_scores": "labelled",
+    "rendered": "\\TableOneErrors{Math 0.07, 0.06}{Code 0.02, 0.05}{QA 0.51, 0.46}"
   },
   {
     "row": 4,
@@ -1495,16 +1610,22 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       {
         "sources": [
           "results/v70-distill-confirm/freeze.json#/selected/math/method",
+          "results/v70-distill-confirm/freeze.json#/selected/math/n_params",
           "results/v70-distill-confirm/freeze.json#/selected/code/method",
-          "results/v70-distill-confirm/freeze.json#/selected/qa/method"
+          "results/v70-distill-confirm/freeze.json#/selected/code/n_params",
+          "results/v70-distill-confirm/freeze.json#/selected/qa/method",
+          "results/v70-distill-confirm/freeze.json#/selected/qa/n_params"
         ],
         "op": "label",
         "format": null,
-        "label": "Math: reuse;\nCode: reuse;\nQA: joint budget/pool",
+        "label": "The same predictor",
         "expected": [
           "E",
+          1,
           "E",
-          "joint"
+          1,
+          "joint",
+          3
         ]
       }
     ],
@@ -1513,12 +1634,14 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v70-distill-confirm/freeze.json#/models"
     ],
     "note": "The frozen and delivered forms are identical: one-coefficient zero-anchored reuse for Math/Code, joint budget/pool for QA; fixed before test.",
-    "rendered": "Math: reuse;\\newline Code: reuse;\\newline QA: joint budget/pool"
+    "compact_scores": "",
+    "rendered": "The same predictor"
   },
   {
     "row": 4,
     "column": 4,
     "parts": [
+      "Math ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/0/candidate_mae"
@@ -1534,7 +1657,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "Code ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/1/candidate_mae"
@@ -1550,7 +1674,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "\n",
+      "QA ",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/2/candidate_mae"
@@ -1578,12 +1703,35 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered"
     ],
     "note": "Same candidate, same cells; repeat the stored MAEs without the candidate-versus-baseline intervals.",
-    "rendered": "0.07, 0.06 / 0.02, 0.05 / 0.51, 0.46"
+    "compact_scores": "labelled",
+    "rendered": "\\TableOneErrors{Math 0.07, 0.06}{Code 0.02, 0.05}{QA 0.51, 0.46}"
   },
   {
     "row": 4,
     "column": 5,
     "parts": [
+      {
+        "sources": [
+          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/math/method",
+          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/math/method",
+          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/code/method",
+          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/code/method",
+          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/qa/method",
+          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/qa/method"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Regressions: Math budget, loss; Code reuse; QA reuse, size",
+        "expected": [
+          "T-only",
+          "surface:L0",
+          "E-only",
+          "E-only",
+          "E-only",
+          "surface:logN"
+        ]
+      },
+      "\n",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/0/baseline_mae"
@@ -1599,7 +1747,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "\n",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/1/baseline_mae"
@@ -1615,7 +1763,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         "op": "identity",
         "format": ".2f"
       },
-      " / ",
+      "\n",
       {
         "sources": [
           "results/v70-distill-confirm/compare.json#/groups/2/baseline_mae"
@@ -1636,8 +1784,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
       "results/v70-distill-confirm/freeze.json#/baseline_rule",
       "results/v70-distill-confirm/freeze.json#/strongest_baseline"
     ],
-    "note": "Development-fixed baseline identities, student order 270M, 1B: budget, loss surface / reuse / reuse, size surface.",
-    "rendered": "0.07, 0.03 / 0.02, 0.05 / 0.61, 0.45"
+    "note": "Development-fixed baseline identities, student order 270M, 1B: budget regression, loss regression / reuse regression / reuse regression, size regression.",
+    "compact_scores": "comparison",
+    "rendered": "Regressions: Math budget, loss; Code reuse; QA reuse, size\\newline \\TableOneErrors{0.07, 0.03}{0.02, 0.05}{0.61, 0.45}"
   }
 ]
 ```
@@ -1647,7 +1796,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
 ```json
 {
   "parts": [
-    "Frozen prediction tasks by method. Frozen candidates, delivered relations, and baselines selected within development folds report mean absolute errors in native-token nats (Math / Code / QA) on the same cells. Brackets give stored paired intervals of baseline minus candidate. Daggers mark delivered rules fixed after the test. Distillation entries list the ",
+    "Every row is a prediction frozen before measurement; errors are mean absolute errors in nats per token for Math, Code and QA. ``Chosen after this test'' marks a delivered rule fixed after seeing these results; the comparison is the baseline selected during development. Distillation entries give the ",
     {
       "sources": [
         "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
@@ -1673,14 +1822,20 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "results/v70-distill-confirm/freeze.json#/models"
   ],
   "note": "",
-  "rendered": "Frozen prediction tasks by method. Frozen candidates, delivered relations, and baselines selected within development folds report mean absolute errors in native-token nats (Math / Code / QA) on the same cells. Brackets give stored paired intervals of baseline minus candidate. Daggers mark delivered rules fixed after the test. Distillation entries list the 270M and 1B students in that order."
+  "compact_scores": "",
+  "rendered": "Every row is a prediction frozen before measurement; errors are mean absolute errors in nats per token for Math, Code and QA. ``Chosen after this test'' marks a delivered rule fixed after seeing these results; the comparison is the baseline selected during development. Distillation entries give the 270M and 1B students in that order."
 }
 ```
 
 ## Every printed number
 
-- Cell (0, 0), `three` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`
-- Cell (0, 0), `6.9` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`
+- Cell (0, 0), `Three` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
+- Cell (0, 0), `6.9` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
+- Cell (0, 0), `0.575` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
+- Cell (0, 0), `0.675` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
+- Cell (0, 0), `0.85` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
+- Cell (0, 1), `Five` (label): `results/v53-prune-dev/register.json#/candidate_definitions/power`; `results/v53-prune-dev/register.json#/n_params_per_capability/power`; `results/v53-prune-dev/register.json#/n_dev_states`
+- Cell (0, 1), `seventeen` (label): `results/v53-prune-dev/register.json#/candidate_definitions/power`; `results/v53-prune-dev/register.json#/n_params_per_capability/power`; `results/v53-prune-dev/register.json#/n_dev_states`
 - Cell (0, 2), `0.24` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/math`
 - Cell (0, 2), `0.24` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/code`
 - Cell (0, 2), `0.68` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/qa`
@@ -1695,6 +1850,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
 - Cell (1, 0), `4` (label): `results/v55-quant-group/register.json#/test_sets/bit_test/states`; `results/v55-quant-group/register.json#/test_sets/bit_test/configs`
 - Cell (1, 0), `64` (label): `results/v55-quant-group/register.json#/test_sets/bit_test/states`; `results/v55-quant-group/register.json#/test_sets/bit_test/configs`
 - Cell (1, 0), `256` (label): `results/v55-quant-group/register.json#/test_sets/bit_test/states`; `results/v55-quant-group/register.json#/test_sets/bit_test/configs`
+- Cell (1, 1), `twenty` (label): `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v55-quant-group/register.json#/n_params_per_capability/low_order_2d`
 - Cell (1, 2), `0.19` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math`
 - Cell (1, 2), `0.21` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code`
 - Cell (1, 2), `0.44` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa`
@@ -1705,13 +1861,13 @@ V72 repeats use the same weights; no displayed score uses those repeats.
 - Cell (1, 5), `0.73` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/code`
 - Cell (1, 5), `0.54` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/qa`
 - Cell (2, 0), `410` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
-- Cell (2, 0), `143` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
+- Cell (2, 0), `143000` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
 - Cell (2, 0), `1.4` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
-- Cell (2, 0), `16` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
-- Cell (2, 0), `3` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
-- Cell (2, 0), `5` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
+- Cell (2, 0), `16000` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
 - Cell (2, 0), `32` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
 - Cell (2, 0), `512` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
+- Cell (2, 0), `3` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
+- Cell (2, 0), `5` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
 - Cell (2, 2), `0.21` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/low_order_2d/math/mae`
 - Cell (2, 2), `0.56` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/code/mae`
 - Cell (2, 2), `0.46` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/qa/mae`
@@ -1722,7 +1878,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
 - Cell (2, 5), `0.68` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae`
 - Cell (2, 5), `0.46` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
 - Cell (3, 0), `1.4` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
-- Cell (3, 0), `112` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
+- Cell (3, 0), `112000` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
 - Cell (3, 0), `3` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
 - Cell (3, 0), `5` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
 - Cell (3, 0), `32` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
@@ -1740,26 +1896,16 @@ V72 repeats use the same weights; no displayed score uses those repeats.
 - Cell (4, 0), `270` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
 - Cell (4, 0), `1` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
 - Cell (4, 0), `six` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
-- Cell (4, 0), `50` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
-- Cell (4, 0), `200` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
+- Cell (4, 0), `50000` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
+- Cell (4, 0), `200000` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
+- Cell (4, 1), `one` (label): `results/v70-distill-confirm/freeze.json#/selected/math/method`; `results/v70-distill-confirm/freeze.json#/selected/math/n_params`; `results/v70-distill-confirm/freeze.json#/selected/code/method`; `results/v70-distill-confirm/freeze.json#/selected/code/n_params`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`; `results/v70-distill-confirm/freeze.json#/selected/qa/n_params`
+- Cell (4, 1), `three` (label): `results/v70-distill-confirm/freeze.json#/selected/math/method`; `results/v70-distill-confirm/freeze.json#/selected/math/n_params`; `results/v70-distill-confirm/freeze.json#/selected/code/method`; `results/v70-distill-confirm/freeze.json#/selected/code/n_params`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`; `results/v70-distill-confirm/freeze.json#/selected/qa/n_params`
 - Cell (4, 2), `0.07` (identity): `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`
-- Cell (4, 2), `-0.0098` (identity): `results/v70-distill-confirm/compare.json#/groups/0/paired_difference/ci95/0`
-- Cell (4, 2), `-0.0081` (identity): `results/v70-distill-confirm/compare.json#/groups/0/paired_difference/ci95/1`
 - Cell (4, 2), `0.06` (identity): `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`
-- Cell (4, 2), `-0.0235` (identity): `results/v70-distill-confirm/compare.json#/groups/3/paired_difference/ci95/0`
-- Cell (4, 2), `-0.0233` (identity): `results/v70-distill-confirm/compare.json#/groups/3/paired_difference/ci95/1`
 - Cell (4, 2), `0.02` (identity): `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`
-- Cell (4, 2), `0.0025` (identity): `results/v70-distill-confirm/compare.json#/groups/1/paired_difference/ci95/0`
-- Cell (4, 2), `0.0050` (identity): `results/v70-distill-confirm/compare.json#/groups/1/paired_difference/ci95/1`
 - Cell (4, 2), `0.05` (identity): `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`
-- Cell (4, 2), `0.0042` (identity): `results/v70-distill-confirm/compare.json#/groups/4/paired_difference/ci95/0`
-- Cell (4, 2), `0.0050` (identity): `results/v70-distill-confirm/compare.json#/groups/4/paired_difference/ci95/1`
 - Cell (4, 2), `0.51` (identity): `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`
-- Cell (4, 2), `0.0774` (identity): `results/v70-distill-confirm/compare.json#/groups/2/paired_difference/ci95/0`
-- Cell (4, 2), `0.1093` (identity): `results/v70-distill-confirm/compare.json#/groups/2/paired_difference/ci95/1`
 - Cell (4, 2), `0.46` (identity): `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
-- Cell (4, 2), `-0.0198` (identity): `results/v70-distill-confirm/compare.json#/groups/5/paired_difference/ci95/0`
-- Cell (4, 2), `-0.0098` (identity): `results/v70-distill-confirm/compare.json#/groups/5/paired_difference/ci95/1`
 - Cell (4, 4), `0.07` (identity): `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`
 - Cell (4, 4), `0.06` (identity): `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`
 - Cell (4, 4), `0.02` (identity): `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`
@@ -1782,33 +1928,113 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 0,
     "column": 0,
-    "part": 1,
-    "number": "three",
-    "displayed": "three checkpoints outside every fit; includes 6.9B",
+    "part": 0,
+    "number": "Three",
+    "displayed": "Three Pythia checkpoints unused in fitting (incl. 6.9B), pruned to densities 0.575, 0.675, 0.85",
     "op": "label",
     "sources": [
       "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities",
       "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag"
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities"
     ]
   },
   {
     "row": 0,
     "column": 0,
-    "part": 1,
+    "part": 0,
     "number": "6.9",
-    "displayed": "three checkpoints outside every fit; includes 6.9B",
+    "displayed": "Three Pythia checkpoints unused in fitting (incl. 6.9B), pruned to densities 0.575, 0.675, 0.85",
     "op": "label",
     "sources": [
       "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities",
       "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag"
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities"
+    ]
+  },
+  {
+    "row": 0,
+    "column": 0,
+    "part": 0,
+    "number": "0.575",
+    "displayed": "Three Pythia checkpoints unused in fitting (incl. 6.9B), pruned to densities 0.575, 0.675, 0.85",
+    "op": "label",
+    "sources": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities"
+    ]
+  },
+  {
+    "row": 0,
+    "column": 0,
+    "part": 0,
+    "number": "0.675",
+    "displayed": "Three Pythia checkpoints unused in fitting (incl. 6.9B), pruned to densities 0.575, 0.675, 0.85",
+    "op": "label",
+    "sources": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities"
+    ]
+  },
+  {
+    "row": 0,
+    "column": 0,
+    "part": 0,
+    "number": "0.85",
+    "displayed": "Three Pythia checkpoints unused in fitting (incl. 6.9B), pruned to densities 0.575, 0.675, 0.85",
+    "op": "label",
+    "sources": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities"
+    ]
+  },
+  {
+    "row": 0,
+    "column": 1,
+    "part": 0,
+    "number": "Five",
+    "displayed": "Five-parameter power form (seventeen development states)",
+    "op": "label",
+    "sources": [
+      "results/v53-prune-dev/register.json#/candidate_definitions/power",
+      "results/v53-prune-dev/register.json#/n_params_per_capability/power",
+      "results/v53-prune-dev/register.json#/n_dev_states"
+    ]
+  },
+  {
+    "row": 0,
+    "column": 1,
+    "part": 0,
+    "number": "seventeen",
+    "displayed": "Five-parameter power form (seventeen development states)",
+    "op": "label",
+    "sources": [
+      "results/v53-prune-dev/register.json#/candidate_definitions/power",
+      "results/v53-prune-dev/register.json#/n_params_per_capability/power",
+      "results/v53-prune-dev/register.json#/n_dev_states"
     ]
   },
   {
     "row": 0,
     "column": 2,
-    "part": 0,
+    "part": 1,
     "number": "0.24",
     "displayed": "0.24",
     "op": "mean",
@@ -1821,7 +2047,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 0,
     "column": 2,
-    "part": 2,
+    "part": 4,
     "number": "0.24",
     "displayed": "0.24",
     "op": "mean",
@@ -1834,7 +2060,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 0,
     "column": 2,
-    "part": 4,
+    "part": 7,
     "number": "0.68",
     "displayed": "0.68",
     "op": "mean",
@@ -1847,7 +2073,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 0,
     "column": 4,
-    "part": 0,
+    "part": 1,
     "number": "0.28",
     "displayed": "0.28",
     "op": "mean",
@@ -1860,7 +2086,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 0,
     "column": 4,
-    "part": 2,
+    "part": 4,
     "number": "0.21",
     "displayed": "0.21",
     "op": "mean",
@@ -1873,7 +2099,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 0,
     "column": 4,
-    "part": 4,
+    "part": 7,
     "number": "0.22",
     "displayed": "0.22",
     "op": "mean",
@@ -1886,7 +2112,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 0,
     "column": 5,
-    "part": 0,
+    "part": 2,
     "number": "0.23",
     "displayed": "0.23",
     "op": "mean",
@@ -1899,7 +2125,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 0,
     "column": 5,
-    "part": 2,
+    "part": 4,
     "number": "0.22",
     "displayed": "0.22",
     "op": "mean",
@@ -1912,7 +2138,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 0,
     "column": 5,
-    "part": 4,
+    "part": 6,
     "number": "0.22",
     "displayed": "0.22",
     "op": "mean",
@@ -1925,9 +2151,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 1,
     "column": 0,
-    "part": 1,
+    "part": 0,
     "number": "160",
-    "displayed": "160M\u20131.4B; bit 4; groups 64 and 256",
+    "displayed": "Pythia 160M to 1.4B at unseen bit width 4, group sizes 64 and 256",
     "op": "label",
     "sources": [
       "results/v55-quant-group/register.json#/test_sets/bit_test/states",
@@ -1937,9 +2163,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 1,
     "column": 0,
-    "part": 1,
+    "part": 0,
     "number": "1.4",
-    "displayed": "160M\u20131.4B; bit 4; groups 64 and 256",
+    "displayed": "Pythia 160M to 1.4B at unseen bit width 4, group sizes 64 and 256",
     "op": "label",
     "sources": [
       "results/v55-quant-group/register.json#/test_sets/bit_test/states",
@@ -1949,9 +2175,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 1,
     "column": 0,
-    "part": 1,
+    "part": 0,
     "number": "4",
-    "displayed": "160M\u20131.4B; bit 4; groups 64 and 256",
+    "displayed": "Pythia 160M to 1.4B at unseen bit width 4, group sizes 64 and 256",
     "op": "label",
     "sources": [
       "results/v55-quant-group/register.json#/test_sets/bit_test/states",
@@ -1961,9 +2187,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 1,
     "column": 0,
-    "part": 1,
+    "part": 0,
     "number": "64",
-    "displayed": "160M\u20131.4B; bit 4; groups 64 and 256",
+    "displayed": "Pythia 160M to 1.4B at unseen bit width 4, group sizes 64 and 256",
     "op": "label",
     "sources": [
       "results/v55-quant-group/register.json#/test_sets/bit_test/states",
@@ -1973,19 +2199,31 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 1,
     "column": 0,
-    "part": 1,
+    "part": 0,
     "number": "256",
-    "displayed": "160M\u20131.4B; bit 4; groups 64 and 256",
+    "displayed": "Pythia 160M to 1.4B at unseen bit width 4, group sizes 64 and 256",
     "op": "label",
     "sources": [
       "results/v55-quant-group/register.json#/test_sets/bit_test/states",
       "results/v55-quant-group/register.json#/test_sets/bit_test/configs"
+    ]
+  },
+  {
+    "row": 1,
+    "column": 1,
+    "part": 0,
+    "number": "twenty",
+    "displayed": "Source regression across bit widths (twenty coefficients)",
+    "op": "label",
+    "sources": [
+      "results/v55-quant-group/register.json#/candidate_definitions/low_order_2d",
+      "results/v55-quant-group/register.json#/n_params_per_capability/low_order_2d"
     ]
   },
   {
     "row": 1,
     "column": 2,
-    "part": 0,
+    "part": 1,
     "number": "0.19",
     "displayed": "0.19",
     "op": "identity",
@@ -1996,7 +2234,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 1,
     "column": 2,
-    "part": 2,
+    "part": 4,
     "number": "0.21",
     "displayed": "0.21",
     "op": "identity",
@@ -2007,7 +2245,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 1,
     "column": 2,
-    "part": 4,
+    "part": 7,
     "number": "0.44",
     "displayed": "0.44",
     "op": "identity",
@@ -2018,7 +2256,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 1,
     "column": 4,
-    "part": 0,
+    "part": 1,
     "number": "0.19",
     "displayed": "0.19",
     "op": "identity",
@@ -2029,7 +2267,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 1,
     "column": 4,
-    "part": 2,
+    "part": 4,
     "number": "0.21",
     "displayed": "0.21",
     "op": "identity",
@@ -2040,7 +2278,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 1,
     "column": 4,
-    "part": 4,
+    "part": 7,
     "number": "0.44",
     "displayed": "0.44",
     "op": "identity",
@@ -2051,7 +2289,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 1,
     "column": 5,
-    "part": 0,
+    "part": 2,
     "number": "0.55",
     "displayed": "0.55",
     "op": "identity",
@@ -2062,7 +2300,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 1,
     "column": 5,
-    "part": 2,
+    "part": 4,
     "number": "0.73",
     "displayed": "0.73",
     "op": "identity",
@@ -2073,7 +2311,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 1,
     "column": 5,
-    "part": 4,
+    "part": 6,
     "number": "0.54",
     "displayed": "0.54",
     "op": "identity",
@@ -2084,9 +2322,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 2,
     "column": 0,
-    "part": 2,
+    "part": 0,
     "number": "410",
-    "displayed": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
+    "displayed": "Pythia 410M (143000 steps) and 1.4B (16000 steps) at unseen group sizes 32 and 512, bit widths 3 to 5",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/0/state",
@@ -2102,9 +2340,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 2,
     "column": 0,
-    "part": 2,
-    "number": "143",
-    "displayed": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
+    "part": 0,
+    "number": "143000",
+    "displayed": "Pythia 410M (143000 steps) and 1.4B (16000 steps) at unseen group sizes 32 and 512, bit widths 3 to 5",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/0/state",
@@ -2120,9 +2358,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 2,
     "column": 0,
-    "part": 2,
+    "part": 0,
     "number": "1.4",
-    "displayed": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
+    "displayed": "Pythia 410M (143000 steps) and 1.4B (16000 steps) at unseen group sizes 32 and 512, bit widths 3 to 5",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/0/state",
@@ -2138,9 +2376,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 2,
     "column": 0,
-    "part": 2,
-    "number": "16",
-    "displayed": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
+    "part": 0,
+    "number": "16000",
+    "displayed": "Pythia 410M (143000 steps) and 1.4B (16000 steps) at unseen group sizes 32 and 512, bit widths 3 to 5",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/0/state",
@@ -2156,45 +2394,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 2,
     "column": 0,
-    "part": 2,
-    "number": "3",
-    "displayed": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
-    "op": "label",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/rows/0/state",
-      "results/v69-quant-confirm/compare.json#/rows/0/config",
-      "results/v69-quant-confirm/compare.json#/rows/3/config",
-      "results/v69-quant-confirm/compare.json#/rows/6/config",
-      "results/v69-quant-confirm/compare.json#/rows/9/config",
-      "results/v69-quant-confirm/compare.json#/rows/12/config",
-      "results/v69-quant-confirm/compare.json#/rows/15/config",
-      "results/v69-quant-confirm/compare.json#/rows/18/state"
-    ]
-  },
-  {
-    "row": 2,
-    "column": 0,
-    "part": 2,
-    "number": "5",
-    "displayed": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
-    "op": "label",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/rows/0/state",
-      "results/v69-quant-confirm/compare.json#/rows/0/config",
-      "results/v69-quant-confirm/compare.json#/rows/3/config",
-      "results/v69-quant-confirm/compare.json#/rows/6/config",
-      "results/v69-quant-confirm/compare.json#/rows/9/config",
-      "results/v69-quant-confirm/compare.json#/rows/12/config",
-      "results/v69-quant-confirm/compare.json#/rows/15/config",
-      "results/v69-quant-confirm/compare.json#/rows/18/state"
-    ]
-  },
-  {
-    "row": 2,
-    "column": 0,
-    "part": 2,
+    "part": 0,
     "number": "32",
-    "displayed": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
+    "displayed": "Pythia 410M (143000 steps) and 1.4B (16000 steps) at unseen group sizes 32 and 512, bit widths 3 to 5",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/0/state",
@@ -2210,9 +2412,45 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 2,
     "column": 0,
-    "part": 2,
+    "part": 0,
     "number": "512",
-    "displayed": "410M at step 143k, 1.4B at step 16k; bits 3 to 5; groups 32 and 512",
+    "displayed": "Pythia 410M (143000 steps) and 1.4B (16000 steps) at unseen group sizes 32 and 512, bit widths 3 to 5",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/0/state",
+      "results/v69-quant-confirm/compare.json#/rows/0/config",
+      "results/v69-quant-confirm/compare.json#/rows/3/config",
+      "results/v69-quant-confirm/compare.json#/rows/6/config",
+      "results/v69-quant-confirm/compare.json#/rows/9/config",
+      "results/v69-quant-confirm/compare.json#/rows/12/config",
+      "results/v69-quant-confirm/compare.json#/rows/15/config",
+      "results/v69-quant-confirm/compare.json#/rows/18/state"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 0,
+    "part": 0,
+    "number": "3",
+    "displayed": "Pythia 410M (143000 steps) and 1.4B (16000 steps) at unseen group sizes 32 and 512, bit widths 3 to 5",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/0/state",
+      "results/v69-quant-confirm/compare.json#/rows/0/config",
+      "results/v69-quant-confirm/compare.json#/rows/3/config",
+      "results/v69-quant-confirm/compare.json#/rows/6/config",
+      "results/v69-quant-confirm/compare.json#/rows/9/config",
+      "results/v69-quant-confirm/compare.json#/rows/12/config",
+      "results/v69-quant-confirm/compare.json#/rows/15/config",
+      "results/v69-quant-confirm/compare.json#/rows/18/state"
+    ]
+  },
+  {
+    "row": 2,
+    "column": 0,
+    "part": 0,
+    "number": "5",
+    "displayed": "Pythia 410M (143000 steps) and 1.4B (16000 steps) at unseen group sizes 32 and 512, bit widths 3 to 5",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/0/state",
@@ -2228,7 +2466,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 2,
     "column": 2,
-    "part": 0,
+    "part": 1,
     "number": "0.21",
     "displayed": "0.21",
     "op": "identity",
@@ -2239,7 +2477,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 2,
     "column": 2,
-    "part": 2,
+    "part": 4,
     "number": "0.56",
     "displayed": "0.56",
     "op": "identity",
@@ -2250,7 +2488,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 2,
     "column": 2,
-    "part": 4,
+    "part": 7,
     "number": "0.46",
     "displayed": "0.46",
     "op": "identity",
@@ -2261,7 +2499,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 2,
     "column": 4,
-    "part": 0,
+    "part": 1,
     "number": "0.07",
     "displayed": "0.07",
     "op": "identity",
@@ -2272,7 +2510,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 2,
     "column": 4,
-    "part": 2,
+    "part": 4,
     "number": "0.12",
     "displayed": "0.12",
     "op": "identity",
@@ -2283,7 +2521,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 2,
     "column": 4,
-    "part": 4,
+    "part": 7,
     "number": "0.46",
     "displayed": "0.46",
     "op": "identity",
@@ -2294,7 +2532,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 2,
     "column": 5,
-    "part": 0,
+    "part": 2,
     "number": "0.33",
     "displayed": "0.33",
     "op": "identity",
@@ -2305,7 +2543,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 2,
     "column": 5,
-    "part": 2,
+    "part": 4,
     "number": "0.68",
     "displayed": "0.68",
     "op": "identity",
@@ -2316,7 +2554,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 2,
     "column": 5,
-    "part": 4,
+    "part": 6,
     "number": "0.46",
     "displayed": "0.46",
     "op": "identity",
@@ -2327,9 +2565,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 3,
     "column": 0,
-    "part": 2,
+    "part": 0,
     "number": "1.4",
-    "displayed": "1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512",
+    "displayed": "Pythia 1.4B (112000 steps), unseen in fitting, at bit widths 3 to 5, group sizes 32, 128 and 512",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/36/state",
@@ -2347,9 +2585,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 3,
     "column": 0,
-    "part": 2,
-    "number": "112",
-    "displayed": "1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512",
+    "part": 0,
+    "number": "112000",
+    "displayed": "Pythia 1.4B (112000 steps), unseen in fitting, at bit widths 3 to 5, group sizes 32, 128 and 512",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/36/state",
@@ -2367,9 +2605,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 3,
     "column": 0,
-    "part": 2,
+    "part": 0,
     "number": "3",
-    "displayed": "1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512",
+    "displayed": "Pythia 1.4B (112000 steps), unseen in fitting, at bit widths 3 to 5, group sizes 32, 128 and 512",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/36/state",
@@ -2387,9 +2625,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 3,
     "column": 0,
-    "part": 2,
+    "part": 0,
     "number": "5",
-    "displayed": "1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512",
+    "displayed": "Pythia 1.4B (112000 steps), unseen in fitting, at bit widths 3 to 5, group sizes 32, 128 and 512",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/36/state",
@@ -2407,9 +2645,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 3,
     "column": 0,
-    "part": 2,
+    "part": 0,
     "number": "32",
-    "displayed": "1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512",
+    "displayed": "Pythia 1.4B (112000 steps), unseen in fitting, at bit widths 3 to 5, group sizes 32, 128 and 512",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/36/state",
@@ -2427,9 +2665,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 3,
     "column": 0,
-    "part": 2,
+    "part": 0,
     "number": "128",
-    "displayed": "1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512",
+    "displayed": "Pythia 1.4B (112000 steps), unseen in fitting, at bit widths 3 to 5, group sizes 32, 128 and 512",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/36/state",
@@ -2447,9 +2685,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 3,
     "column": 0,
-    "part": 2,
+    "part": 0,
     "number": "512",
-    "displayed": "1.4B at step 112k; bits 3 to 5; groups 32, 128, and 512",
+    "displayed": "Pythia 1.4B (112000 steps), unseen in fitting, at bit widths 3 to 5, group sizes 32, 128 and 512",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/36/state",
@@ -2467,7 +2705,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 3,
     "column": 2,
-    "part": 0,
+    "part": 1,
     "number": "0.30",
     "displayed": "0.30",
     "op": "weighted_mean",
@@ -2481,7 +2719,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 3,
     "column": 2,
-    "part": 2,
+    "part": 4,
     "number": "0.15",
     "displayed": "0.15",
     "op": "weighted_mean",
@@ -2495,7 +2733,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 3,
     "column": 2,
-    "part": 4,
+    "part": 7,
     "number": "0.22",
     "displayed": "0.22",
     "op": "weighted_mean",
@@ -2509,7 +2747,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 3,
     "column": 4,
-    "part": 0,
+    "part": 1,
     "number": "0.09",
     "displayed": "0.09",
     "op": "weighted_mean",
@@ -2523,7 +2761,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 3,
     "column": 4,
-    "part": 2,
+    "part": 4,
     "number": "0.15",
     "displayed": "0.15",
     "op": "weighted_mean",
@@ -2537,7 +2775,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 3,
     "column": 4,
-    "part": 4,
+    "part": 7,
     "number": "0.14",
     "displayed": "0.14",
     "op": "weighted_mean",
@@ -2551,7 +2789,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 3,
     "column": 5,
-    "part": 0,
+    "part": 2,
     "number": "0.35",
     "displayed": "0.35",
     "op": "weighted_mean",
@@ -2565,7 +2803,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 3,
     "column": 5,
-    "part": 2,
+    "part": 4,
     "number": "0.56",
     "displayed": "0.56",
     "op": "weighted_mean",
@@ -2579,7 +2817,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 3,
     "column": 5,
-    "part": 4,
+    "part": 6,
     "number": "0.14",
     "displayed": "0.14",
     "op": "weighted_mean",
@@ -2593,9 +2831,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 0,
-    "part": 1,
+    "part": 0,
     "number": "270",
-    "displayed": "270M, 1B pairs; six pools; 50k\u2013200k tokens",
+    "displayed": "Gemma 270M and 1B distilled on six new pools for 50000 to 200000 tokens",
     "op": "label",
     "sources": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
@@ -2606,9 +2844,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 0,
-    "part": 1,
+    "part": 0,
     "number": "1",
-    "displayed": "270M, 1B pairs; six pools; 50k\u2013200k tokens",
+    "displayed": "Gemma 270M and 1B distilled on six new pools for 50000 to 200000 tokens",
     "op": "label",
     "sources": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
@@ -2619,9 +2857,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 0,
-    "part": 1,
+    "part": 0,
     "number": "six",
-    "displayed": "270M, 1B pairs; six pools; 50k\u2013200k tokens",
+    "displayed": "Gemma 270M and 1B distilled on six new pools for 50000 to 200000 tokens",
     "op": "label",
     "sources": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
@@ -2632,9 +2870,9 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 0,
-    "part": 1,
-    "number": "50",
-    "displayed": "270M, 1B pairs; six pools; 50k\u2013200k tokens",
+    "part": 0,
+    "number": "50000",
+    "displayed": "Gemma 270M and 1B distilled on six new pools for 50000 to 200000 tokens",
     "op": "label",
     "sources": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
@@ -2645,20 +2883,52 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 0,
-    "part": 1,
-    "number": "200",
-    "displayed": "270M, 1B pairs; six pools; 50k\u2013200k tokens",
+    "part": 0,
+    "number": "200000",
+    "displayed": "Gemma 270M and 1B distilled on six new pools for 50000 to 200000 tokens",
     "op": "label",
     "sources": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
       "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
       "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 1,
+    "part": 0,
+    "number": "one",
+    "displayed": "Math and code: one-coefficient reuse forms; QA: three-coefficient budget-and-pool form",
+    "op": "label",
+    "sources": [
+      "results/v70-distill-confirm/freeze.json#/selected/math/method",
+      "results/v70-distill-confirm/freeze.json#/selected/math/n_params",
+      "results/v70-distill-confirm/freeze.json#/selected/code/method",
+      "results/v70-distill-confirm/freeze.json#/selected/code/n_params",
+      "results/v70-distill-confirm/freeze.json#/selected/qa/method",
+      "results/v70-distill-confirm/freeze.json#/selected/qa/n_params"
+    ]
+  },
+  {
+    "row": 4,
+    "column": 1,
+    "part": 0,
+    "number": "three",
+    "displayed": "Math and code: one-coefficient reuse forms; QA: three-coefficient budget-and-pool form",
+    "op": "label",
+    "sources": [
+      "results/v70-distill-confirm/freeze.json#/selected/math/method",
+      "results/v70-distill-confirm/freeze.json#/selected/math/n_params",
+      "results/v70-distill-confirm/freeze.json#/selected/code/method",
+      "results/v70-distill-confirm/freeze.json#/selected/code/n_params",
+      "results/v70-distill-confirm/freeze.json#/selected/qa/method",
+      "results/v70-distill-confirm/freeze.json#/selected/qa/n_params"
     ]
   },
   {
     "row": 4,
     "column": 2,
-    "part": 0,
+    "part": 1,
     "number": "0.07",
     "displayed": "0.07",
     "op": "identity",
@@ -2669,29 +2939,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 2,
-    "part": 2,
-    "number": "-0.0098",
-    "displayed": "-0.0098",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/0/paired_difference/ci95/0"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 2,
-    "part": 4,
-    "number": "-0.0081",
-    "displayed": "-0.0081",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/0/paired_difference/ci95/1"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 2,
-    "part": 7,
+    "part": 3,
     "number": "0.06",
     "displayed": "0.06",
     "op": "identity",
@@ -2702,29 +2950,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 2,
-    "part": 9,
-    "number": "-0.0235",
-    "displayed": "-0.0235",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/3/paired_difference/ci95/0"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 2,
-    "part": 11,
-    "number": "-0.0233",
-    "displayed": "-0.0233",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/3/paired_difference/ci95/1"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 2,
-    "part": 14,
+    "part": 6,
     "number": "0.02",
     "displayed": "0.02",
     "op": "identity",
@@ -2735,29 +2961,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 2,
-    "part": 16,
-    "number": "0.0025",
-    "displayed": "0.0025",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/1/paired_difference/ci95/0"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 2,
-    "part": 18,
-    "number": "0.0050",
-    "displayed": "0.0050",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/1/paired_difference/ci95/1"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 2,
-    "part": 21,
+    "part": 8,
     "number": "0.05",
     "displayed": "0.05",
     "op": "identity",
@@ -2768,29 +2972,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 2,
-    "part": 23,
-    "number": "0.0042",
-    "displayed": "0.0042",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/4/paired_difference/ci95/0"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 2,
-    "part": 25,
-    "number": "0.0050",
-    "displayed": "0.0050",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/4/paired_difference/ci95/1"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 2,
-    "part": 28,
+    "part": 11,
     "number": "0.51",
     "displayed": "0.51",
     "op": "identity",
@@ -2801,29 +2983,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 2,
-    "part": 30,
-    "number": "0.0774",
-    "displayed": "0.0774",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/2/paired_difference/ci95/0"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 2,
-    "part": 32,
-    "number": "0.1093",
-    "displayed": "0.1093",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/2/paired_difference/ci95/1"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 2,
-    "part": 35,
+    "part": 13,
     "number": "0.46",
     "displayed": "0.46",
     "op": "identity",
@@ -2833,30 +2993,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   },
   {
     "row": 4,
-    "column": 2,
-    "part": 37,
-    "number": "-0.0198",
-    "displayed": "-0.0198",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/5/paired_difference/ci95/0"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 2,
-    "part": 39,
-    "number": "-0.0098",
-    "displayed": "-0.0098",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/5/paired_difference/ci95/1"
-    ]
-  },
-  {
-    "row": 4,
     "column": 4,
-    "part": 0,
+    "part": 1,
     "number": "0.07",
     "displayed": "0.07",
     "op": "identity",
@@ -2867,7 +3005,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 4,
-    "part": 2,
+    "part": 3,
     "number": "0.06",
     "displayed": "0.06",
     "op": "identity",
@@ -2878,7 +3016,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 4,
-    "part": 4,
+    "part": 6,
     "number": "0.02",
     "displayed": "0.02",
     "op": "identity",
@@ -2889,7 +3027,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 4,
-    "part": 6,
+    "part": 8,
     "number": "0.05",
     "displayed": "0.05",
     "op": "identity",
@@ -2900,7 +3038,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 4,
-    "part": 8,
+    "part": 11,
     "number": "0.51",
     "displayed": "0.51",
     "op": "identity",
@@ -2911,7 +3049,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 4,
-    "part": 10,
+    "part": 13,
     "number": "0.46",
     "displayed": "0.46",
     "op": "identity",
@@ -2922,7 +3060,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 5,
-    "part": 0,
+    "part": 2,
     "number": "0.07",
     "displayed": "0.07",
     "op": "identity",
@@ -2933,7 +3071,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 5,
-    "part": 2,
+    "part": 4,
     "number": "0.03",
     "displayed": "0.03",
     "op": "identity",
@@ -2944,7 +3082,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 5,
-    "part": 4,
+    "part": 6,
     "number": "0.02",
     "displayed": "0.02",
     "op": "identity",
@@ -2955,7 +3093,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 5,
-    "part": 6,
+    "part": 8,
     "number": "0.05",
     "displayed": "0.05",
     "op": "identity",
@@ -2966,7 +3104,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 5,
-    "part": 8,
+    "part": 10,
     "number": "0.61",
     "displayed": "0.61",
     "op": "identity",
@@ -2977,7 +3115,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 4,
     "column": 5,
-    "part": 10,
+    "part": 12,
     "number": "0.45",
     "displayed": "0.45",
     "op": "identity",
