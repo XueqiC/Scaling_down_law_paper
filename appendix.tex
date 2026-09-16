@@ -157,6 +157,16 @@ as recorded and not recomputed.
 
 \FloatBarrier
 
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figs/lr_pilot_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/lr_pilot_a.pdf}\caption{Final loss change against peak learning rate}\end{subfigure}
+\caption{Learning-rate pilot for the 1B (dashed) and 4B (solid) students at one pool: final-checkpoint
+loss change per capability against the configured peak learning rate; positive values indicate a
+loss above that of the initial student at the same pool and budget.}
+\label{fig:lr_pilot}
+\end{figure}
+
 \section{Measurement Validity}
 \label{sec:app_measure}
 
@@ -494,6 +504,27 @@ main-text figure summarises these cells as paired errors against the development
 Crosses mark the cells whose stored artifact carries no interval estimate.}
 \label{fig:generalization_cells}
 \end{figure}
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figs/corner_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/corner_test_a.pdf}\caption{QA readout}\end{subfigure}\hfill
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/corner_test_b.pdf}\caption{Math and code readouts}\end{subfigure}
+\caption{The four-corner second difference per student and readout on its own scale: the measured
+value with its registered interval, the additive prediction (zero) and the frozen interaction
+prediction. Both predictions lie inside the QA intervals, so the design did not separate the two
+structures; the math and code readouts were registered as underpowered before the trajectories
+were trained.}
+\label{fig:corner_test}
+\end{figure}
+\begin{figure}[!htbp]
+\centering
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/corner_contrasts_a.pdf}\caption{Prediction minus measurement}\end{subfigure}
+\caption{Corner residuals for the two students and the registered additive corner contrasts on the
+fresh 2Wiki, MuSiQue and TriviaQA distributions, whose registered additive prediction is zero; the
+legend of Fig.~\ref{fig:corner_test} applies.}
+\label{fig:corner_contrasts}
+\end{figure}
+
 
 \input{tables/final_deliverables}
 Section S4 of the supplement gives each registered test in three lines (candidate,
@@ -618,6 +649,15 @@ $\dens_c^{*}(N_0,f)$, for size $N_0$ and family $f$, reduces to one critical-ret
 family, so the fitted cliff parameter of the two-regime
 law becomes a measurable order parameter that varies smoothly within each family.
 \preliminary{three models, two families; a multi-model extension is left to future work}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figs/fig5_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig5_a.pdf}\caption{1B student}\end{subfigure}\hfill
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig5_b.pdf}\caption{4B student}\end{subfigure}
+\caption{Falsification of the logarithmic reuse term. The pool-change effect divided by its logarithmic bracket against the supervised budget, per capability, for the (a) 1B and (b) 4B students; the heavy line is the per-budget median over pool pairs and the band their range. A logarithmic reuse term would predict a flat line in budget.}
+\label{fig:drift}
+\end{figure}
 
 \subsection{The logit-displacement account of compression damage}
 \label{sec:app_disp}
@@ -784,8 +824,7 @@ carries math and code at unseen densities and group sizes of seen states and ove
 pruning on new checkpoints, so a calibrated configuration median is the safer default when the state
 is new. The training protocol should be fixed before distillation damage is measured, since the learning rate moves it by
 an order of magnitude. Data-reuse experiments should be designed so that a budget-by-reuse rectangle exists by
-construction. Calibration should be paid for according to what it buys: one point on the target distribution closes most
-of the gap to a source-specific fit, whereas the more expensive dense statistics did not close it in our tests.
+construction. Calibration should be paid for according to what it buys, and per method: one target measurement (a K1 budget, distinct from the K0 predictions) helped the quantization predictor, whereas for pruning a calibration point at the mildest density amplified noise, because an observation near zero damage cannot estimate an amplitude stably; a calibration point must carry enough response signal, and the more expensive dense statistics did not earn their cost.
 
 The limits are equally clear. The relations are conditional on the evaluated distributions and
 implementations. No fitted joint structure for distillation beat a low-order response surface on
@@ -802,9 +841,11 @@ function fitted to the same data would not suffice.
 
 This section records the data cut-off, the registration order, the information budgets and the
 reproduction path. The measurements behind this version were
-completed by 15:55 EDT on 11 September 2026; each frozen prediction
+completed by 15:55 EDT on 11 September 2026 for the development and confirmation rounds, and the
+corner design of \S\ref{sec:why} with its predictions was registered on 14 September 2026 before its
+four trajectories were trained; each frozen prediction
 is cited with the commit that recorded it, and no measurement taken after
-a freeze enters the corresponding prediction.
+a freeze enters the corresponding prediction or the baseline it is compared with.
 \subsection{Registration and provenance codes}
 \label{sec:app_register}
 Prospective tests follow one order: forms, development set,

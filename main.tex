@@ -119,25 +119,24 @@ Address \\
 
 \begin{abstract}
 Specialized workloads require specific capabilities, and the models that serve them are usually
-reference models reduced by pruning, quantization, or distillation. We study, with one endpoint
-and one validation standard across the three methods, the inputs, configurations and evaluation
-scopes under which a parsimonious relation predicts the loss conditioned on a capability and an
-evaluation distribution, and which plausible structures fail under independent tests. Controlled
-measurements on Pythia checkpoints whose size and pretraining stage vary independently, and on Gemma
-students under a fixed distillation protocol, establish the observations that a law must
-reproduce: damage that differs across capabilities with an ordering that changes across models, a
-dependence on the source state that holds inside a range, distillation damage that depends on the
-learning rate, and a cost of reusing a small data pool that grows with the reuse ratio and the
-student size and transfers across question-answering distributions although the gain does not. The relations that pass frozen tests are method-specific and bounded: a five-parameter
-pruning form for math and code inside its density range, a same-input interpolation over the
-measured quantization grid, and one-coefficient reuse forms on the development students. We also identify which
-plausible structures fail and why, which narrows the space of admissible laws: a logarithmic reuse
-term contradicts its own flatness implication, and a fit-free rectangle test gives the first direct
-measurement of the budget-by-reuse interaction. A second-order account explains compression damage
-across three families inside a magnitude boundary but does not predict it. The relations feed a
-capability- and budget-specific selection problem validated prospectively on four fresh states. We
-state the range and calibration cost of each prediction and release coefficients, registered
-predictions, measurements and code at \url{https://anonymous.4open.science/r/scaling_down_law}.
+reference models reduced by pruning, quantization, or distillation. We study, with one
+capability-conditioned endpoint and one validation standard across the three methods, when the loss
+of a capability after compression can be predicted from the initial model state and the
+configuration alone. Controlled measurements on Pythia checkpoints whose size and pretraining stage
+vary independently, and on Gemma students under a fixed distillation protocol, yield three findings.
+Capabilities differ in the shape of their response: under pruning the question-answering response
+changes sign across density and cannot be a scaled copy of the shared math and code curve, which
+decides what structure a law may share. Predicting new configurations of measured models and
+transferring to new model states are different tasks: initial-state inputs carry math and code to
+unseen densities and group sizes, while a source-free configuration curve is the safer predictor for
+new states. The data requirement of distillation depends jointly on training exposure, student and
+evaluation distribution: the cost of reusing a small pool grows with the reuse ratio and the student
+size and reproduces across three question-answering distributions, whereas the net gain is confined
+to one of them. On these findings we build method-specific relations, each with its tested
+range, test them with coefficients and predictions frozen before measurement, and connect them to a
+capability- and budget-specific selection rule confirmed prospectively on four fresh states. We
+release coefficients, registered predictions, measurements and code at
+\url{https://anonymous.4open.science/r/scaling_down_law}.
 \end{abstract}
 
 
@@ -150,6 +149,7 @@ predictions, measurements and code at \url{https://anonymous.4open.science/r/sca
 \input{selection}
 \input{related}
 \input{learned}
+\input{statements}
 
 \phantomsection\label{sec:refs_start}
 \bibliography{references}

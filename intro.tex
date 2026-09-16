@@ -11,43 +11,36 @@ least damaged capability in some series and the most damaged in others
 (Fig.~\ref{fig:heterogeneity}), and the ordering changes with size and family, so capability must
 enter the prediction.
 
-We ask how the capability-conditioned loss after compression
-can be predicted from the initial model state and the configuration of
-the method. The endpoint is the conditional loss of each capability on a fixed probe set relative to a
-reference measured beforehand (Eq.~\ref{eq:interface}); the admitted inputs are the initial state
-(parameter count, pretraining tokens, reference capability losses) and the intervention setting, and
-no measurement of the compressed target is used. Relations are developed on a controlled panel of Pythia checkpoints whose size and pretraining
-stage vary independently, and tested with coefficients and predictions frozen before new
-configurations and states are measured.
+We ask how the capability-conditioned loss after compression can be predicted from the initial
+model state and the configuration of the method. The endpoint is the conditional loss of each
+capability on a fixed probe set relative to a reference measured beforehand
+(Eq.~\ref{eq:interface}); the admitted inputs are the initial state (parameter count, pretraining
+tokens, reference capability losses) and the intervention setting, and no measurement of the
+compressed target is used. Relations are developed on a controlled panel of Pythia checkpoints and
+tested with coefficients and predictions frozen in advance.
 
 The study proceeds in one sequence, from the prediction problem and its admitted inputs, through
 controlled measurement and explanation, to frozen tests and a selection decision. Each relation,
 verdict and recommendation keeps the status assigned before its outcome was measured: development,
 frozen prediction, or post-hoc recommendation.
 
-\paragraph{Contributions.} This paper makes four contributions.
+\paragraph{Contributions.} Three findings, and what they enable, make up the contribution.
 \begin{itemize}
-\item \textbf{A capability-conditioned prediction problem with one endpoint and one validation
-standard across pruning, quantization and distillation.} The endpoint is the conditional loss of each
-capability, the inputs are restricted to the initial state and the configuration, and each relation
-is tested with coefficients and predictions frozen before measurement.
-\item \textbf{Controlled measurements and explanatory evidence that establish what a scaling-down
-law must reproduce.} On Pythia checkpoints whose size and pretraining stage vary independently and
-on Gemma students under one distillation protocol, damage is capability-specific with an ordering
-that changes across models, the source state matters inside a range, the learning rate sets
-distillation damage, and reusing a small data pool carries a cost that grows with reuse and student
-size; a coefficient-free second-order account of logit displacement reproduces compression damage
-across three families, and a fit-free rectangle test gives the first direct measurement of the
-budget-by-reuse interaction.
-\item \textbf{Validated predictive relations for each method and a prospectively confirmed
-selection rule.} A five-parameter pruning form predicts math and code at unseen densities of seen
-states, a same-input interpolation predicts unseen group sizes on the measured quantization grid,
-one-coefficient reuse forms predict distillation on the development students, a one-point
-calibration carries the median configuration curve to new states, and frozen selection maps on four
-fresh Pythia states match the measured oracle within 0.00001, 0.004 and 0.14 nats for math, code
-and QA.
-\item \textbf{Design guidance and an open measurement suite.} We state which inputs to admit for
-which transfer, why the protocol must be fixed before damage is measured, and how to design reuse
-experiments so that the decisive statistic is computable, and we release coefficients, registered
-predictions, measurements and code.
+\item \textbf{Capability responses differ in shape, and the shape decides what a law may share.}
+Math and code follow one shared pruning shape with capability-specific scales, while the
+question-answering response changes sign across density and cannot be a scaled copy of that curve;
+a coefficient-free second-order account of logit displacement explains the measured damage inside a
+stated empirical range.
+\item \textbf{Predicting new configurations of measured models and transferring to new model
+states need different inputs and evidence.} Initial-state inputs carry math and code to unseen
+densities and group sizes of measured states; on new states a source-free configuration curve is as
+good or better, and a rectangle design measures the budget-by-reuse interaction.
+\item \textbf{The data requirement of distillation is defined by training exposure, student and
+evaluation distribution together.} Under one fixed protocol the learning rate sets the size of the
+damage, the cost of reusing a small pool grows with the reuse ratio and the student size and
+reproduces across three question-answering distributions, and the gain appears on one.
+\item \textbf{What the findings enable.} Method-specific relations with their tested ranges
+(Table~\ref{tab:main-prediction-v2}), a selection rule whose frozen maps on four fresh Pythia
+states match the measured oracle within 0.00001, 0.004 and 0.14 nats for math, code and QA, and a
+released suite of coefficients, registered predictions, measurements and code.
 \end{itemize}

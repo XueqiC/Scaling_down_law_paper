@@ -1,25 +1,19 @@
 \section{Independent Tests: Configurations, States, Capabilities}
 \label{sec:general}
 
-The relations of \S\ref{sec:laws} are now tested on three kinds of novelty: new configurations of
-seen states, new model states, and new capabilities or evaluation distributions. Each test scores
-predictions frozen before measurement; Table~\ref{tab:main-prediction-v2} gives the error of each
-relation against its development-stage baseline, and Fig.~\ref{fig:generalization} shows the same
-comparison per row, separated by the kind of novelty each row introduces, from new settings to new states and
-distributions.
+The relations of \S\ref{sec:laws} are now tested on new configurations of seen states and on new
+model states, with predictions frozen before measurement; Table~\ref{tab:main-prediction-v2} gives
+the errors and Fig.~\ref{fig:generalization} shows the same comparison for each row of the table.
 
 
 
 \subsection{Prediction at Unseen Compression Settings}
 \label{sec:unseen_settings}
 
-The first kind of novelty is a new configuration of a seen state. On three Pythia checkpoints that entered no fit, the frozen pruning power form matches the
-per-density regression on math with a quarter of the parameters (0.24 against 0.23 nats), trails the
-median on code, and loses QA to each source-free curve; at $d=0.55$, outside the range, each
-source-conditioned form fails by 0.6 to 4.5 nats. In grouped quantization, with predictions frozen on all 54 cells, unseen group sizes on the
-development states are predicted best by the piecewise interpolation for math and code (0.07 and
-0.12 nats), and on a state absent from the fit by the median for math and QA and the interpolation
-for code. For distillation, at six
+The first kind of novelty is a new configuration of a state that entered the fit. In grouped
+quantization, with predictions frozen on all 54 cells, unseen group sizes on the development states
+are predicted best by the piecewise interpolation for math and code (Table~\ref{tab:main-prediction-v2}
+lists candidates and delivered rule on the same cells). For distillation, at six
 new pools and three new budgets each selected form beats zero change and the gain over the
 development-designated baseline is detected for code on both students (0.004 and 0.005 nats) and for
 QA on the 270M only (Table~\ref{tab:main-prediction-v2}).
@@ -27,9 +21,13 @@ QA on the 270M only (Table~\ref{tab:main-prediction-v2}).
 \subsection{Transfer across Model Sizes and Training Stages}
 \label{sec:unseen_states}
 
-The second kind of novelty is a new model state, and here the range of each relation shows. Inside
-the range the frozen forms and the median curve lie within 0.05 nats of one another at
-unseen stages of a 1B source. Outside it, at a 6.9B source
+The second kind of novelty is a new model state, and here the range of each relation shows. On
+three Pythia checkpoints that entered no fit, the frozen pruning power form matches the per-density
+regression on math with a quarter of the parameters (0.24 against 0.23 nats), trails the median on
+code, and loses QA to each source-free curve; at $d=0.55$, outside the range, each
+source-conditioned form fails by 0.6 to 4.5 nats. In grouped quantization on a state absent from the
+fit, the median wins for math and QA and the interpolation for code. Inside the range the frozen
+forms and the median curve lie within 0.05 nats of one another at unseen stages of a 1B source. Outside it, at a 6.9B source
 five times the development range, the source-conditioned pruning forms lose to the median curve on
 math (0.30 against 0.12) and QA (0.91 against 0.12) and tie on code, the per-bit quantization
 regression is worse than the per-bit median at each bit-width, and on a 2.8B source inside the size
@@ -42,18 +40,17 @@ frozen constant at the unseen pool on each of the three capabilities.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figs/fig3_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{2.2in}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of seen states}\end{subfigure}%
-\begin{subfigure}[t]{1.45in}\centering\includegraphics[width=\linewidth]{figs/fig3_b.pdf}\caption{New sources}\end{subfigure}%
-\begin{subfigure}[t]{1.85in}\centering\includegraphics[width=\linewidth]{figs/fig3_c.pdf}\caption{Corner contrasts}\end{subfigure}
-\caption{Generalization of the frozen relations by kind of novelty. (a, b) Error of each relation (diamonds) against its development-selected baseline (capability markers) on the same cells; the segment is coloured where the relation is lower. (c) Prediction minus measurement for the corner second differences and the registered corner contrasts on fresh distributions, with their registered bands; the primary QA test failed to reject additivity.}
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of seen states}\end{subfigure}\hfill
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig3_b.pdf}\caption{New sources or students}\end{subfigure}
+\caption{Generalization of the frozen relations by kind of novelty. Each row compares the error of
+the relation (diamonds) with that of the development-selected baseline (capability markers) on the
+same cells; the connecting segment is coloured where the relation is lower. The two pruning rows
+marked frozen are the new-state confirmation inside and outside the fitted density range.}
 \label{fig:generalization}
 \end{figure}
-Taken together, Fig.~\ref{fig:generalization} gives each relation its validated range. For new
-configurations of seen states the initial-state inputs are useful: unseen pruning
-densities inside the range and unseen group sizes on development states are predicted within their
-stated error. For new sources and students the source-free median curve with a one-point
-calibration is the reliable default: at five times the development size it beats the
-source-conditioned pruning forms, and the 4B distillation student keeps its QA gain. New evaluation
-distributions split by sign, which the relations state explicitly. Each relation therefore comes
-with the panel on which it was validated, and a one-point calibration carries it to a new state.
+Taken together, Fig.~\ref{fig:generalization} gives each relation its validated range: the
+initial-state inputs pay for new configurations of seen states, the source-free median curve is the
+safer predictor for new sources and students, and new evaluation distributions split by sign.
+Calibration on one target measurement, a K1 budget distinct from the K0 predictions above, helped in
+quantization and was unstable for pruning where the calibration point carried little damage signal.
 

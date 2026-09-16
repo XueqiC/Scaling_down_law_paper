@@ -1,0 +1,26 @@
+\section*{Reproducibility Statement}
+Every number in the paper is produced by a script from a frozen artifact. The public repository
+contains the measurement suite, the development and confirmation results with their registration
+records and hashes, the generators that write each table and figure from those artifacts with a
+sidecar naming the source of each printed value, and the tests that check the printed values
+against their sources. Section~\ref{sec:setup} and Appendix~\ref{sec:app_details} give the probe
+sets, the compression protocols, the checkpoints and the fitting and evaluation rules;
+Appendix~\ref{sec:app_registration} records the registration order and the data cut-off. Complete
+result tables and auxiliary analyses are provided as supplementary material.
+
+\section*{Ethics Statement}
+The study uses publicly released models and public benchmark data, involves no human subjects and
+no personal data, and reports measurements of model capabilities under compression. Compressed
+models can lose capabilities unevenly; the capability-conditioned endpoint of this paper makes such
+losses measurable before deployment, and we see no direct negative application of the results.
+
+\section*{AI Use Statement}
+In this work, we used generative AI tools for implementing methods (the measurement, analysis and
+figure code, verified by unit tests and by regenerating every reported number from the frozen
+artifacts), for designing and providing feedback on experiments (including the corner design of
+\S\ref{sec:why}, which the authors reviewed and registered before the trajectories were run), for
+interpreting results (draft readings that the authors checked against the pre-registered
+criteria), and for drafting and editing the text. We have not used generative AI tools to generate
+synthetic data sets, to formulate or prove mathematical claims, or to translate; qualitative and
+thematic data analysis is not applicable to this work. The authors verified every reported number
+against its source artifact and take full responsibility for the content of the paper.

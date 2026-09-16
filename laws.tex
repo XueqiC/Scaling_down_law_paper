@@ -6,11 +6,10 @@ Each arm delivers one relation in the interface of Eq.~\ref{eq:interface}, and
 Table~\ref{tab:main-prediction-v2} collects the frozen predictions by method and task with the
 relation and its parameter count, the range it was tested on, its error, and the baseline selected
 inside the development folds; development results and post-hoc recommendations are identified as
-such in the text. The anchor $L_{0,c}$ reconstructs an absolute loss; the response $\widehat\Delta_{m,c}$ is
-the predictive claim. Conditioning on the initial state is justified on the pruning panel, where
-a per-setting regression on $(N_0,D_0,L_{0,c})$ lowers the error from 0.41, 0.52 and 0.50 nats to
-0.25, 0.29 and 0.81 for math, code and QA; each arm also
-carries a source-free relation for the cases in which those inputs add nothing to accuracy.
+such in the text. Conditioning on the initial state is justified on the pruning panel, where a per-setting
+regression on $(N_0,D_0,L_{0,c})$ lowers the error from 0.41, 0.52 and 0.50 nats to 0.25, 0.29 and
+0.81 for math, code and QA; each arm also carries a source-free relation for the cases in which
+those inputs add nothing to accuracy.
 
 \input{tables/main_prediction_v2}
 
@@ -24,19 +23,22 @@ For a seen source state (size and stage in the fit) at an unseen density in the 
 A_c(\mathbf x)=\beta_c\cdot\big(1,\tilde{\log N_0},\tilde L_{0,c},\tilde{\log D_0}\big),
 \label{eq:power}
 \end{equation}
-with five parameters per capability (tildes standardized on the
-development set) approximates the twenty-parameter per-density regression A2 for math and code; for any new state (a new size, or a new stage of a seen size, which takes precedence) and for QA everywhere, the delivered relation is the source-free median development curve,
+with five parameters per capability (tildes standardized on the development set) approximates the
+twenty-parameter per-density regression A2 for math and code; for any new state and for QA
+everywhere the delivered relation is the source-free median development curve
 $\widehat L_c=L_{0,c}+\widetilde f_c(d)$.
 \subsection{Quantization}
 \label{sec:law_quant}
 
-Per-channel round-to-nearest offers no continuous axis (int8 and int6 within
-0.01 nats of the reference, int4 0.03 to 0.35, int3 collapse); at a seen bit-width the delivered
-relation is the per-bit source regression on seen states and the per-bit median on new ones. With
+Per-channel round-to-nearest offers no continuous axis (int8 and int6 within 0.01 nats of the
+reference, int4 0.03 to 0.35, int3 collapse); at a seen bit-width the delivered relation is the
+per-bit source regression on seen states and the per-bit median on new ones. With
 groups of $g$ weights per scale as a second axis, the delivered relation for math and code on seen
 states is a same-input piecewise interpolation over the measured $(b,g)$ grid, linear in $\log_2 g$,
 with a zero floor beyond it; for QA, and for each capability on a new state, the per-configuration
-development median under the same rule.
+development median under the same rule. Table~\ref{tab:main-prediction-v2} lists the frozen
+candidates of the confirmation round beside this delivered rule, which was fixed after that round
+and is marked as such.
 \subsection{Distillation}
 \label{sec:law_distill}
 
@@ -49,14 +51,15 @@ tokens $T$, the pool size $D_U$, and the reuse ratio $E=T/D_U$. The delivered re
 \label{eq:kdforms}
 \end{equation}
 with $u=\log(1+T/T_{\mathrm{ref}})$ and $v=\log(D_U/D_{\mathrm{ref}})$ for reference constants fixed on
-the development set: one parameter for math and code, which vanish at zero budget, and three for QA; QA improves under each recipe we ran, and math and
-code move by hundredths to tenths of a nat across the same recipes.
-In practice, Table~\ref{tab:main-prediction-v2} gives one relation per arm and task with its range and its
-error against the development-stage strongest baseline. For pruning at an unseen density of a
-seen source, the power form predicts math and code to about 0.24 nats inside $d\in[0.6,0.9]$, and
-the median curve serves QA. For quantization the measured grid is the predictor: interpolate group
-sizes on a seen state, use the per-bit median on a new state, and expect 0.13 to 0.17 nats. For
-distillation, the one-coefficient reuse forms and the QA joint form hold on the development students
-at the 2Wiki distribution; the budget-doubling and data-change interventions remain open targets. Each row of the table is a
-prediction frozen before its outcome was measured, and \S\ref{sec:general} reports how these
-predictions fared on new configurations, states and distributions.
+the development set: one parameter for math and code, which vanish at zero budget, and three for QA; on the development students at the 2Wiki distribution QA improves under each development recipe
+and math and code move by hundredths to tenths of a nat; at high reuse and on other QA
+distributions the response reverses (\S\ref{sec:observed}).
+In practice, Table~\ref{tab:main-prediction-v2} separates the frozen candidates from the delivered
+rules. For pruning, the five-parameter power form, tested as a frozen candidate on three checkpoints
+outside every fit, predicts math and code to about 0.24 nats inside $d\in[0.6,0.9]$; the delivered
+rule for a new state is nevertheless the source-free median curve, which matches or beats it on
+code and QA, and the power form is delivered only for unseen densities of the states in its fit. For quantization the measured grid is the predictor: interpolate group sizes on a seen state, use
+the per-bit median on a new state, and expect 0.13 to 0.17 nats. For distillation, the
+one-coefficient reuse forms and the QA joint form hold on the development students at the 2Wiki
+distribution; the budget-doubling and data-change interventions remain open targets.
+Section~\ref{sec:general} reports how these frozen predictions fared.
