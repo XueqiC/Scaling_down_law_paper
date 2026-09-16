@@ -1,9 +1,8 @@
 \section{Experimental Setup}
 \label{sec:setup}
 
-This section fixes the three things every later claim depends on: the quantity we predict, the
-models and settings on which it is measured, and the rule by which a prediction counts as
-validated, so that the sections that follow can be read against one fixed standard.
+This section fixes the quantity we predict, the models and settings on which it is measured, and
+the rule by which a prediction counts as validated.
 
 \subsection{Capability-Conditioned Loss}
 \label{sec:loss}
@@ -26,8 +25,7 @@ model. The reference model $M_0$ is the checkpoint before the compression interv
 within-model differences in native nats per token: the damage
 $\Delta L_c=L_c(\text{compressed})-L_c(M_0)$ for pruning and quantization, and for distillation the
 signed transfer $\delta_c=L_c(S_{\mathrm{KD}})-L_c(S_0)$ of a student relative to its own initial
-state; the teacher is not used as the source. The observable is a likelihood, and absolute levels
-from different tokenizers are never placed on one scale.
+state; the teacher is not used as the source. Absolute levels from different tokenizers are never placed on one scale.
 
 \subsection{Models and Compression Settings}
 \label{sec:models}
@@ -60,6 +58,5 @@ Each relation is fit on development states and settings only, with leave-one-sta
 leave-one-source-out folds, and judged on unseen settings and states with forms, coefficients and
 predictions committed before the outcome is measured; each prediction keeps its status as a development result, a frozen prediction or a post-hoc
 recommendation regardless of the outcome. Error is the mean absolute error of $\widehat\Delta$ in nats per token per capability on the same
-cells as source-free references, same-input alternatives and the no-$D_0$ ablation; the strongest
-baseline chosen inside the development folds is the comparator (Appendix~\ref{sec:app_registration}
-lists freeze commits, provenance codes, fold rules and bootstrap units).
+cells as source-free references, same-input alternatives and the no-$D_0$ ablation; the strongest baseline chosen inside the development folds is the comparator.
+Appendix~\ref{sec:app_registration} lists freeze commits and fold rules.

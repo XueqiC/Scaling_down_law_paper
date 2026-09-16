@@ -5,10 +5,9 @@ Deployed language-model agents are specialized systems
 \citep{yao2023react,schick2023toolformer,jimenez2024swebench,liu2024agentbench} whose cost scales
 with each token. The model that serves such a workload is usually a reference model reduced by
 pruning, quantization, or distillation, and choosing the method and its strength currently requires
-measuring each candidate. A single compression ratio does not replace that search, because
-compression does not reduce capabilities uniformly: across twelve public models the same pruning
+measuring each candidate. Compression does not reduce capabilities uniformly: across twelve public models the same pruning
 density leaves QA the least damaged capability in some series and the most damaged in others
-(Fig.~\ref{fig:heterogeneity}), and the ordering changes with size and family.
+(Fig.~\ref{fig:heterogeneity}), and the ordering changes with model size and model family.
 
 Existing compression laws predict an aggregate loss from sparsity, precision, training format, the
 pre-pruning loss or the teacher loss
@@ -17,9 +16,7 @@ and studies of uneven damage document it for single tasks or single quantizers
 \citep{jaiswal2023compressing,liu2025quantization,sengupta2025compression}. Three limitations
 remain: the endpoint is aggregate, so a capability-specific response shape stays invisible; the
 fits mix model states that differ in size and pretraining stage, so it is unclear which inputs a
-relation may use when the state is new; and coefficients are rarely frozen before the test
-measurements. A predictive law for capability-conditioned loss therefore needs its own endpoint, a
-panel that separates size from stage, and a validation standard fixed in advance.
+relation may use when the state is new; and coefficients are rarely frozen before the test measurements.
 
 We ask when the loss of a capability after compression can be predicted from the initial model
 state and the configuration alone. The endpoint is the conditional loss on a fixed probe set
@@ -32,27 +29,25 @@ and on Gemma students under one distillation protocol, establish what a law must
 (\S\ref{sec:why}); method-specific relations are built on the verified findings
 (\S\ref{sec:laws}), tested with coefficients and predictions frozen in advance
 (\S\ref{sec:general}), and carried into a selection rule confirmed prospectively
-(\S\ref{sec:selection}). Each relation keeps
-the status assigned before its outcome was measured, and the findings are stated below as rules
-with the measured cases as their instances.
+(\S\ref{sec:selection}). Each relation keeps the status assigned before its outcome was measured.
 
 \paragraph{Contributions.}
 \begin{itemize}
 \item \textbf{A systematic, capability-conditioned science of scaling down.} We replace the aggregate
 loss of existing compression laws with the loss of each capability, measure pruning, quantization
 and distillation under one endpoint and one validation standard, and hold every relation to
-coefficients and predictions frozen before measurement, so that fitted and predictive accuracy
-are separated and every claim carries the range on which it was tested.
+coefficients and predictions frozen before measurement, so that every claim carries the range on which it was tested and no more.
 \item \textbf{A general account of what a scaling-down law may share and what it may use.} Response
 shapes, and not only response sizes, differ across capabilities, so a law may share structure only
 where shapes agree; and interpolating within a measured model differs from transferring to a new
 model state in the inputs it admits, so source information must be validated separately from
 configuration information. Both principles decide the form of any such law beyond the panels
-studied here.
+studied here, and the compact relation they admit earns its place by measurement efficiency:
+fitted on half of the development configuration measurements, it matches the full-budget
+regression on new states in a registered confirmation.
 \item \textbf{An explanatory link from mechanism and protocol to predictable damage.} Compression
 damage is second-order in logit displacement inside an empirical range, and distillation damage is
 set jointly by training exposure, student and evaluation distribution, with a reuse cost that
-transfers across distributions while the gain does not; these are the conditions under which
-predictive relations hold, and they turn compression choice into a validated, capability-specific
-selection problem.
+transfers across distributions while the gain does not; these conditions bound where predictive relations hold and turn compression choice into a
+validated selection problem for each capability and storage budget.
 \end{itemize}

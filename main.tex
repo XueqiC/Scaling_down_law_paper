@@ -132,9 +132,13 @@ unseen densities and group sizes, while a source-free configuration curve is the
 new states. The data requirement of distillation depends jointly on training exposure, student and
 evaluation distribution: the cost of reusing a small pool grows with the reuse ratio and the student
 size and reproduces across three question-answering distributions, whereas the net gain is confined
-to one of them. On these findings we build method-specific relations, each with its tested
-range, test them with coefficients and predictions frozen before measurement, and connect them to a
-capability- and budget-specific selection rule confirmed prospectively on four fresh states. We
+to one of them. On these findings we build method-specific relations, each with its tested range, test them with
+coefficients and predictions frozen before measurement, and connect them to a capability- and
+budget-specific selection rule confirmed prospectively on four fresh states. A registered
+confirmation shows that the compact pruning form fitted on half of the development configuration
+measurements stays within 0.02 nats of the full-budget regression on four further model states, and
+a registered distillation experiment measures the range of independent data at which a
+capability-specific loss constraint is met. We
 release coefficients, registered predictions, measurements and code at
 \url{https://anonymous.4open.science/r/scaling_down_law}.
 \end{abstract}

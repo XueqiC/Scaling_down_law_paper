@@ -10,59 +10,62 @@ the errors and Fig.~\ref{fig:generalization} shows the same comparison for each 
 \subsection{Prediction at Unseen Compression Settings}
 \label{sec:unseen_settings}
 
-The first kind of novelty is a new configuration of a state that entered the fit. A registered
-follow-up on four further Pythia states outside every fit found the five-parameter pruning form
-fitted on half the density measurements within 0.02 nats of the full-budget per-density regression on math and code, and 0.04 to 0.07 nats better than the median curve
-(Appendix~\ref{tab:a11}). In grouped quantization, with predictions frozen on all 54 cells, unseen group sizes on the development states
+The first kind of novelty is a new configuration of a state that entered the fit; for pruning,
+\S\ref{sec:efficiency} tests the power form at this task. In grouped quantization, with predictions frozen on all 54 cells, unseen group sizes on the development states
 are predicted best by the piecewise interpolation for math and code (Table~\ref{tab:main-prediction-v2}
 lists candidates and delivered rule on the same cells). For distillation, at six
 new pools and three new budgets each selected form beats zero change and the gain over the development-designated baseline is detected for code on both students and for QA on the 270M student only (Table~\ref{tab:main-prediction-v2}).
 
+\subsection{Prediction with Fewer Configuration Measurements}
+\label{sec:efficiency}
+
+The value of the compact pruning form lies in how few development measurements it needs. A subsampling study on the development panel, with the sampling plan fixed in advance, found that
+the five-parameter form reaches 0.25 nats on new states with 18 density measurements per capability
+where the per-density regression needs 36 and cannot be fitted below that; the gain comes from
+measuring fewer densities per source, since dropping sources brings none (Fig.~\ref{fig:efficiency}a). A registered confirmation then froze the form fitted on
+half of the development configuration measurements, the full-budget regression and the median curve
+before four Pythia states outside every earlier fit were pruned at six densities. The half-budget
+form stayed within 0.013 nats of the full-budget regression on math and 0.020 on code, meeting the
+registered criterion, and halved the error of the median curve at the same measurement budget
+(Fig.~\ref{fig:efficiency}b). This is a point-estimate criterion on four states; for QA the median curve remains the predictor.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figs/eff_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_a.pdf}\caption{Error against development measurements}\end{subfigure}\hfill
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_b.pdf}\caption{Registered confirmation on four new states}\end{subfigure}
+\caption{Measurement efficiency of the compact pruning form: error on new states against
+development density measurements per capability, and error per state in the registered
+confirmation with the power form fitted at half of the development measurement budget and the other predictors at full budget.}
+\label{fig:efficiency}
+\end{figure}
+
 \subsection{Transfer across Model Sizes and Training Stages}
 \label{sec:unseen_states}
 
-The second kind of novelty is a new model state, and here the range of each relation shows. On
+The second kind of novelty is a new model state. On
 three Pythia checkpoints that entered no fit, the frozen pruning power form matches the per-density
 regression on math with a quarter of the parameters, trails the median on code, and loses QA to each source-free curve; at $d=0.55$, outside the range, each
 source-conditioned form fails by 0.6 to 4.5 nats. On a new quantization state the median wins for
 math and QA and the interpolation for code; inside the range the frozen forms and the median curve
-agree within 0.05 nats at unseen stages of a 1B source. Outside it, at a 6.9B source
-five times the development range, the source-conditioned pruning forms lose to the median curve on
-math and QA and tie on code, the per-bit quantization
-regression is worse than the per-bit median at each bit-width, and on a 2.8B source inside the size
-range the frozen median density curve predicts within 0.08, 0.05 and 0.07 nats, three to seven
-times better than both source-conditioned forms. For
-distillation the 4B student, 6.6 times the reference size and a development student in the final
-round, keeps only its QA gain at the development pools and is beaten by the
-frozen constant at the unseen pool on each of the three capabilities.
+agree within 0.05 nats at unseen stages of a 1B source. At a 6.9B source five times the development range, the source-conditioned pruning forms lose to
+the median curve on math and QA and tie on code, and the per-bit quantization regression trails the
+per-bit median at each bit-width; on a 2.8B source inside the range the frozen median density curve
+predicts within 0.08 nats, three to seven times better than both source-conditioned forms. For distillation the 4B student keeps only its QA gain at the development pools and loses to the
+frozen constant at the unseen pool.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figs/fig3_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of seen states}\end{subfigure}\\[2pt]
 \begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_b.pdf}\caption{New sources or students}\end{subfigure}
-\caption{Generalization of the frozen relations by kind of novelty. Each row compares the error of
-the relation (hollow diamond) with that of the development-selected baseline (hollow circle) on the
-same cells, one thin sub-row per capability; the connecting segment is coloured where the relation is
-lower.}
+\caption{Generalization of the frozen relations by kind of novelty: each row compares the error of
+the relation, a hollow diamond, with the development-selected baseline, a hollow circle, on the
+same cells, one sub-row per capability; the segment is coloured where the relation is lower.}
 \label{fig:generalization}
 \end{figure}
-Taken together, Fig.~\ref{fig:generalization} gives each relation its validated range: the
+Fig.~\ref{fig:generalization} thus gives each relation its validated range: the
 initial-state inputs pay for new configurations of seen states, the source-free median curve is the
 safer predictor for new sources and students, and new evaluation distributions split by sign.
-Calibration on one target measurement, a K1 budget distinct from the K0 predictions above, helped in
-quantization and was unstable for pruning where the calibration point carried little damage signal.
-\begin{figure}[t]
-\centering
-\includegraphics[width=\textwidth]{figs/fig7_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{1.75in}\centering
-\includegraphics[width=\textwidth]{figs/fig7_a.pdf}\subcaption{Math}\end{subfigure}%
-\begin{subfigure}[t]{1.25in}\centering
-\includegraphics[width=\textwidth]{figs/fig7_b.pdf}\subcaption{Code}\end{subfigure}%
-\begin{subfigure}[t]{1.25in}\centering
-\includegraphics[width=\textwidth]{figs/fig7_c.pdf}\subcaption{QA on 2Wiki}\end{subfigure}%
-\begin{subfigure}[t]{1.25in}\centering
-\includegraphics[width=\textwidth]{figs/fig7_d.pdf}\subcaption{Largest loss increase}\end{subfigure}
-\caption{Selection maps under the frozen rule on four fresh Pythia states at seventeen storage budgets, one panel per objective. Colour is the selected method; an open marker marks a budget at which the measured oracle chooses a different method from the rule.}
-\label{fig:rule_main_v2}
-\end{figure}
+Calibration on one target measurement, a K1 budget distinct from the K0 predictions, helped in
+quantization and was unstable for pruning, where the calibration point carried little damage signal.

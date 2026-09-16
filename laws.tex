@@ -8,8 +8,7 @@ relation and its parameter count, the range it was tested on, its error, and the
 inside the development folds; development results and post-hoc recommendations are identified as
 such in the text. Conditioning on the initial state is justified on the pruning panel, where a per-setting
 regression on $(N_0,D_0,L_{0,c})$ lowers the error from 0.41, 0.52 and 0.50 nats to 0.25, 0.29 and
-0.81 for math, code and QA; each arm also carries a source-free relation for the cases in which
-those inputs add nothing to accuracy.
+0.81 for math, code and QA; each arm also carries a source-free relation for the cases in which those inputs add nothing.
 
 \input{tables/main_prediction_v2}
 
@@ -23,8 +22,7 @@ For a source state in the fit at an unseen density in the development range, the
 A_c(\mathbf x)=\beta_c\cdot\big(1,\tilde{\log N_0},\tilde L_{0,c},\tilde{\log D_0}\big),
 \label{eq:power}
 \end{equation}
-with five parameters per capability, tildes standardized on the development set, approximates
-the twenty-parameter per-density regression A2 for math and code; for any new state and for QA
+with five parameters per capability, tildes standardized on the development set, approximates the twenty-parameter per-density regression for math and code; for any new state and for QA
 everywhere the delivered relation is the source-free median development curve
 $\widehat L_c=L_{0,c}+\widetilde f_c(d)$.
 \subsection{Quantization}
@@ -35,8 +33,7 @@ the reference, int4 costs 0.03 to 0.35 nats and int3 collapses. At a seen bit-wi
 per-bit source regression on seen states and the per-bit median on new ones. With
 groups of $g$ weights per scale as a second axis, the delivered relation for math and code on seen
 states is a piecewise interpolation over the measured $(b,g)$ grid, linear in $\log_2 g$; for QA,
-and for each capability on a new state, it is the per-configuration development median. Table~\ref{tab:main-prediction-v2} lists the frozen candidates of the confirmation round beside
-this delivered rule.
+and for each capability on a new state, it is the per-configuration development median. 
 \subsection{Distillation}
 \label{sec:law_distill}
 
@@ -53,9 +50,8 @@ the development set: one parameter for math and code, which vanish at zero budge
 and math and code move by hundredths to tenths of a nat; at high reuse and on other QA
 distributions the response reverses (\S\ref{sec:observed}).
 In practice, Table~\ref{tab:main-prediction-v2} separates the frozen candidates from the delivered
-rules. For pruning, the five-parameter power form, tested as a frozen candidate on three checkpoints
-outside every fit, predicts math and code to about 0.24 nats inside $d\in[0.6,0.9]$; the delivered
-rule for a new state is nevertheless the source-free median curve, which matches or beats it on
-code and QA, and the power form is delivered only for unseen densities of the states in its fit. For quantization the measured grid is the predictor, with errors of 0.13 to 0.17 nats; for distillation the
-one-coefficient reuse forms and the QA joint form hold on the development students at the 2Wiki
-distribution, and the budget-doubling and data-change interventions remain open targets.
+rules: for pruning the power form is delivered only for unseen densities of the states in its fit
+and the source-free median curve for new states; for quantization the measured grid is the
+predictor; for distillation the reuse forms and the QA joint form hold on the development students
+at the 2Wiki distribution, and the budget-doubling and data-change interventions remain open
+targets.

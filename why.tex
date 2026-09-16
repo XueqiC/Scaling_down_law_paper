@@ -12,8 +12,8 @@ configuration axis, the conditions that change it, and the mechanism behind the 
 \subsection{Function shape}
 \label{sec:why_shape}
 
-The first question is the shape of the response along each configuration axis. Under pruning the
-pre-cliff response, described with gradient information of the dense model with a richer information budget than the initial-state inputs of \S\ref{sec:laws}, is a power law in the deleted capability
+Under pruning the pre-cliff response, described with gradient information of the dense model, a
+richer input than the initial-state inputs of \S\ref{sec:laws}, is a power law in the deleted capability
 mass with a shared exponent that transfers across families; under quantization it is a
 bit-width threshold whose position depends on the group size, so an interpolation over the
 measured grid predicts the response where a smooth surface does not reproduce it.
@@ -22,9 +22,9 @@ Under distillation, a joint form with a logarithmic reuse term,
 $\delta=(a+a'z)\log(1+T/T_{\mathrm{ref}})+(b+b'z)\log(1+E)$ with $z$ the standardized student size
 and $T_{\mathrm{ref}}$ a reference budget, implies that the pool-change effect divided by its log
 bracket is flat in budget; it drifts by a factor of twenty across checkpoints for code on the 1B
-student (Appendix Fig.~\ref{fig:drift}). A free reuse exponent $h_p(E)=((1+E)^p-1)/p$, profiled
-inside training folds, lies near or above one for each capability as Fig.~\ref{fig:explanation}a shows with wide fold ranges, and neither the logarithmic form, the curved
-form nor a single interaction term beats the development-stage strongest baseline on either pre-declared target.
+student (Appendix Fig.~\ref{fig:drift}). A free reuse exponent, profiled inside training folds, lies near or above one for each capability
+with wide fold ranges (Appendix Fig.~\ref{fig:explanation}a), and neither the logarithmic form, the curved
+form nor a single interaction term beats the development-stage strongest baseline on either pre-declared target, so the reuse term is delivered in its logarithmic form rather than a curved one.
 
 Those data cannot say whether additivity itself failed, because a fixed pool and a doubling budget
 grid never place two trajectories on the same budget; four trajectories designed by replaying the
@@ -40,7 +40,7 @@ fell outside its band at readouts that were registered as underpowered in advanc
 \subsection{Source state, protocol, and evaluation distribution}
 \label{sec:why_conditions}
 
-The second question is which conditions change the response. Size and stage carry math and code
+Size and stage carry math and code
 to unseen densities of seen states and over-predict QA, whose density response is not proportional
 to any shared curve; dense pre-compression statistics improve a parametric family in four of nine
 pairs and lose to the source-free median curve in nine of nine. Under distillation
@@ -48,19 +48,19 @@ the learning rate sets the damage magnitude (\S\ref{sec:observed}); at a fixed r
 $E=T/D_U$ is the dominant factor among those varied: the QA cost it sets is monotone, grows with
 student size, and transfers across the three QA distributions while the gain is confined to 2Wiki,
 and a residual dependence on budget, pool composition and student remains. A data requirement phrased as a bound on the loss increase is therefore supportable across
-distributions, whereas a gain claim holds only for 2Wiki.
+distributions, whereas a gain claim holds only for 2Wiki among the distributions tested.
 
 \subsection{Mechanism}
 \label{sec:why_mech}
 
-The third question is mechanism. For pruning and quantization the loss change under a logit displacement $r$ obeys the exact identity
+For pruning and quantization the loss change under a logit displacement $r$ obeys the exact identity
 $\Delta L=(\mathbb{E}_{\pi}[r]-r_y)+\tfrac12\mathrm{Var}_{\pi}(r)+O(\lVert r\rVert^3)$, where $\pi$ is
 the next-token distribution of the reference model and $r_y$ the displacement at the target token,
 and its
 coefficient-free second-order truncation reproduces the measured damage under pruning, grouped
 round-to-nearest and per-channel round-to-nearest quantization with an accuracy that follows the
 damage magnitude on the measured panel: under 5\% median relative error below about 0.1 nats and
-past 20\% by 0.25 (Fig.~\ref{fig:explanation}b). The range is empirical, since the remainder is
+past 20\% by 0.25 (Appendix Fig.~\ref{fig:explanation}b). The range is empirical, since the remainder is
 controlled by the logit displacement and the first- and second-order terms can cancel. Pure logit shrinkage carries about three percent of the response; the residual variance that
 carries the rest needs the compressed model, so the account explains the damage after the fact and
 enters no relation as an input.

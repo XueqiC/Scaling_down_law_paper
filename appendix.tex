@@ -4,6 +4,16 @@
 This appendix records the probes, the compression protocols and the controlled panel in the form
 used throughout the paper, so that each later section can be read against them.
 
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figs/fig4_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_a.pdf}\caption{Pruning}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_b.pdf}\caption{Per-channel quantization}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_c.pdf}\caption{Grouped quantization}\end{subfigure}
+\caption{Compression responses on the controlled Pythia panel. (a) Loss change against retained density on the nine development states, with the median predictions as heavy lines. (b) Loss change against bit-width under per-channel round-to-nearest. (c) Loss change against group size at 3, 4 and 5 bits for one state; groups 32 and 512 were unseen when the predictions were frozen.}
+\label{fig:pythia_responses}
+\end{figure}
+
 \subsection{Probes and loss computation}
 \label{sec:app_probes}
 
@@ -532,6 +542,42 @@ Median density curve (18) & 0.145 & 0.212 & 0.186 \\
 \end{tabular*}
 \end{table}
 
+\begin{table}[!htbp]
+\centering\footnotesize
+\caption{Subsampling study on the nine-state development panel: median mean absolute error in nats
+on the new-state cells over twenty fixed replicates, when each development state keeps 9, 18 or all
+36 density measurements per capability. Where fewer than twenty replicates could be fitted, the count
+is given; a dash means no replicate could be fitted.}
+\label{tab:a9}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}rlrrr@{}}
+\toprule
+Measurements per capability & Predictor & Math & Code & QA \\
+\midrule
+9 & Power form & 0.25 & 0.30 & 0.61 \\
+9 & Per-density regression & -- & -- & -- \\
+9 & Median curve & 0.33 & 0.47 & 0.58 \\
+18 & Power form & 0.20 & 0.17 & 0.52 \\
+18 & Per-density regression & 0.24 (6/20 fits) & 0.28 (6/20 fits) & 0.76 (6/20 fits) \\
+18 & Median curve & 0.21 & 0.21 & 0.33 \\
+36 & Power form & 0.19 & 0.17 & 0.54 \\
+36 & Per-density regression & 0.18 & 0.13 & 0.56 \\
+36 & Median curve & 0.19 & 0.18 & 0.31 \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\subsection{Measured data requirements under distillation}
+\label{sec:app_dreq}
+
+The registered experiment behind Fig.~\ref{fig:dreq} trained eighteen trajectories on the 1B and 4B
+students, three pool tiers each with three seeds, and evaluated every trajectory at 50, 100 and 200
+thousand supervised tokens on six readouts. Table~\ref{tab:dreq-main} lists, for each readout, student and budget at the primary tolerance,
+whether the constraint was crossed inside the tested pool range, the crossing interval or the
+bound, and the distance of each predictor's recommended pool size from the measured interval; the
+supplement gives the full accounting over all tolerances. The boundary relation registered before the run did not predict these intervals better than a
+per-student monotone interpolation, which solved the most requests over the same denominator on
+the QA distributions and on math and code alike.
+\input{tables/dreq_main}
 \section{Mechanisms}
 \label{sec:app_mech}
 
@@ -599,6 +645,19 @@ law becomes a measurable order parameter that varies smoothly within each family
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig5_b.pdf}\caption{4B student}\end{subfigure}
 \caption{Falsification of the logarithmic reuse term. The pool-change effect divided by its logarithmic bracket against the supervised budget, per capability, for the (a) 1B and (b) 4B students; the heavy line is the per-budget median over pool pairs and the band their range. A logarithmic reuse term would predict a flat line in budget.}
 \label{fig:drift}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figs/fig2_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig2_a.pdf}\caption{Reuse-term curvature}\end{subfigure}\hfill
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig2_b.pdf}\caption{Displacement account}\end{subfigure}
+\caption{What shapes the distillation response and what explains compression damage. (a) The reuse
+exponent $p$ across training folds per capability with the full-development value and its
+conditional interval; $p=0$ is the logarithmic term and $p=1$ linear. (b) Median relative error of
+the second-order displacement account as a function of damage magnitude under pruning, grouped and
+per-channel quantization.}
+\label{fig:explanation}
 \end{figure}
 
 \subsection{The logit-displacement account of compression damage}
