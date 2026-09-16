@@ -3,6 +3,7 @@
 
 \input{tables/model_arch}
 
+
 \FloatBarrier
 
 \section{Alternative functional forms and model selection}
@@ -13,7 +14,6 @@ Table~\ref{tab:v53_loso} reports the leave-one-source-out comparison of the prun
 expanded seventeen-state development set, under the pre-committed rule that selected the delivered
 form.
 \input{tables/v53_loso}
-\FloatBarrier
 \subsection{Grouped quantization: leave-one-state-out on six states}
 Table~\ref{tab:v55_loso} reports the leave-one-state-out comparison of the grouped-quantization
 candidates on the six development states.
@@ -48,7 +48,6 @@ test result therefore stands as a result about the delivered
 regularized parametrization, and no curvature in bit-width is
 identified by the development data.
 \input{tables/quant_ident}
-\FloatBarrier
 \subsection{Distillation: descriptor forms and capability conditioning}
 \input{tables/v56_forms}
 
@@ -77,7 +76,6 @@ is best for QA there (0.360, with the reuse-only form at 0.367); at
 the development pools the two descriptor variants disagree on math
 (0.404 with the loss descriptor, 0.122 with the size descriptor), so
 the descriptor choice is not settled by these data.
-\FloatBarrier
 \subsection{Pre-compression statistics as additional inputs}
 \label{sec:app_inputs}
 
@@ -104,6 +102,8 @@ proposed.
 \subsection{Conditioning on the initial model state}
 \label{sec:app_conditioning}
 
+\input{tables/cond_audit}
+
 On the nine-state development panel with one stage held out, a
 per-setting regression of the pruning response on $(N_0,D_0,L_{0,c})$
 lowers the error from 0.413, 0.516, and 0.500 nats to 0.253, 0.292,
@@ -112,11 +112,9 @@ intervals above zero for math and code, adding $D_0$ does not
 (Figure 10A of the main paper). The source-conditioned forms of Section 5 of the main paper use the three inputs per capability, and every
 arm also carries a source-free relation for the cases where the source inputs add nothing.
 
-\FloatBarrier
 
-\FloatBarrier
 \paragraph{Conditioning audit.} The audit behind the capability-conditioning comparison of Appendix~E of the main paper allowed negative scales; the full comparison follows.
-\input{tables/cond_audit}
+
 \FloatBarrier
 
 \section{Capability-loss measurement checks}
@@ -192,6 +190,7 @@ primary sample reproduces'': the 2Wiki gain replicates ($-1.55$,
 $-1.26$, $-0.88$ nats), MuSiQue and TriviaQA rise ($+0.08$ to $+0.34$).
 Pruning and quantization damage agrees in sign on all three sets.
 \input{tables/qa_scope}
+
 
 \FloatBarrier
 
@@ -293,6 +292,17 @@ change is second; both source-conditioned forms over-predict the
 damage.
 \input{tables/prune_repeat}
 
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=5.5in]{figs/input_form_gain_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_a.pdf}\subcaption{Full versus no-$D_0$}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_b.pdf}\subcaption{Source-free comparison}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_c.pdf}\subcaption{Power versus alternatives}\end{subfigure}
+
+\caption{Paired improvements, zero line marked, positive means the first-named model is better. A: full model against its no-$D_0$ variant, per arm and capability; intervals only where a cluster bootstrap was computed (leave-one-stage-out panels), $n$ = evaluated source states. B: source-conditioned candidate against the strongest source-free baseline for all twenty registered tests (hollow = frozen prospective, filled = leave-one-out). C: shared power form against the same-input alternatives A1 and A2 on the pruning configuration tests.}
+\label{fig:gains}
+\end{figure}
+
 The multi-student distillation test of the uniform protocol
 (Section 5.3 of the main paper) is given in Table~\ref{tab:p2v2_test}; the
 frozen predictions of all eight forms for every test point are in the
@@ -307,18 +317,9 @@ errors except for QA at high reuse.
 \input{tables/main_context}
 \input{tables/distill_paired}
 
-\begin{figure}[p]
-\centering
-\includegraphics[width=5.5in]{figs/input_form_gain_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_a.pdf}\subcaption{Full versus no-$D_0$}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_b.pdf}\subcaption{Source-free comparison}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_c.pdf}\subcaption{Power versus alternatives}\end{subfigure}
 
-\caption{Paired improvements, zero line marked, positive means the first-named model is better. A: full model against its no-$D_0$ variant, per arm and capability; intervals only where a cluster bootstrap was computed (leave-one-stage-out panels), $n$ = evaluated source states. B: source-conditioned candidate against the strongest source-free baseline for all twenty registered tests (hollow = frozen prospective, filled = leave-one-out). C: shared power form against the same-input alternatives A1 and A2 on the pruning configuration tests. Generated by \texttt{plot\_fig2\_gains.py} from the frozen result files (Appendix J).}
-\label{fig:gains}
-\end{figure}
 
-\FloatBarrier
+
 
 \FloatBarrier
 
@@ -374,7 +375,7 @@ causally implicated and partially separable; we do not call them proven
 causal carriers; if confirmed, ablation itself is a form of
 \emph{targeted} scaling-down.
 
-\FloatBarrier
+
 
 \FloatBarrier
 
@@ -383,7 +384,6 @@ causal carriers; if confirmed, ablation itself is a form of
 
 \input{tables/rule_confirm_by_state}
 \input{tables/candidate_coverage}
-\FloatBarrier
 
 \paragraph{Resource-ratio models.} A method-agnostic response in the
 storage or active-parameter ratio was tested on the heterogeneous
@@ -443,10 +443,9 @@ rankings survive ($\rho\ge0.98$); (4) item-level damage is smooth
 pre-cliff, ruling out discrete skill deletion at the item level.
 These findings fixed the protocol of Section 2.1 of the main paper.
 
-\FloatBarrier
 
-\FloatBarrier
 \paragraph{Feasible-policy results and rule decomposition.} The per-policy results behind the feasibility figure of Appendix~H of the main paper, and the decomposition of the locked rule's regret by state and budget, follow.
 \input{tables/selection_feasible}
 \input{tables/rule_decomp}
+
 \FloatBarrier

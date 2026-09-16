@@ -69,27 +69,7 @@ processed-token budget for every pool, and the two protocols are never mixed in 
 \subsection{The controlled Pythia panel}
 \label{sec:app_pythia}
 
-The panel uses the public Pythia checkpoints at sizes 160M, 410M and 1.4B and pretraining steps
-16{,}000, 64{,}000 and 143{,}000, which correspond to 33.6B, 134.2B and 299.9B processed tokens at
-the published batch of $1024\times2048$ tokens per step. The size coordinate $N_0$ counts
-transformer-matrix parameters only (the query, key, value, output and MLP matrices of each layer),
-computed from the architecture configuration, and the training-token coordinate is
-$D_0=\text{step}\times2{,}097{,}152$. The sources added for the prospective tests (Pythia-1B at
-steps 32{,}000, 96{,}000 and 112{,}000; Pythia-6.9B at 32{,}000 and 112{,}000; 410M at 48{,}000;
-1.4B at 112{,}000; 6.9B at 80{,}000) entered no fit or model selection before their predictions
-were frozen.
-
-\paragraph{Weight identity.} The weight identity of every checkpoint was verified before use.
-SHA-256 hashes of the safetensors blobs of all 23 Pythia revisions used (30 unique blobs) show that
-every revision with pruning or quantization measurements resolves to a distinct weight set, with one
-exception: the Pythia-2.8B revisions published for steps 16k, 64k and 143k load identical learned
-parameters. Those revisions were excluded from the panel, and the 2.8B repeatability check
-(Appendix~\ref{sec:app_results}) is therefore one state measured twice. The three checkpoints of the
-pruning confirmation panel (410M at 48k, 1.4B at 112k, 6.9B at 80k) have shard hashes that differ
-from every other revision of the same size, and their dense capability vectors differ from those of
-the neighbouring stages.
-
-\begin{table}[H]\normalfont
+\begin{table}[!htbp]\normalfont
 \centering\footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.15}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.176923077\textwidth-1.061538462\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.307692308\textwidth-1.846153846\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.253846154\textwidth-1.523076923\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.261538462\textwidth-1.569230769\tabcolsep\relax}@{}}
 \toprule
@@ -138,7 +118,28 @@ confirmed; nothing is claimed about other revisions.}
 \begin{retargetreferences}{\retargetreference{Eq.~\ref{eq:quant2d}}{Section S2 of the supplement}}
 \input{tables/models_domains}
 \end{retargetreferences}
-\FloatBarrier
+
+The panel uses the public Pythia checkpoints at sizes 160M, 410M and 1.4B and pretraining steps
+16{,}000, 64{,}000 and 143{,}000, which correspond to 33.6B, 134.2B and 299.9B processed tokens at
+the published batch of $1024\times2048$ tokens per step. The size coordinate $N_0$ counts
+transformer-matrix parameters only (the query, key, value, output and MLP matrices of each layer),
+computed from the architecture configuration, and the training-token coordinate is
+$D_0=\text{step}\times2{,}097{,}152$. The sources added for the prospective tests (Pythia-1B at
+steps 32{,}000, 96{,}000 and 112{,}000; Pythia-6.9B at 32{,}000 and 112{,}000; 410M at 48{,}000;
+1.4B at 112{,}000; 6.9B at 80{,}000) entered no fit or model selection before their predictions
+were frozen.
+
+\paragraph{Weight identity.} The weight identity of every checkpoint was verified before use.
+SHA-256 hashes of the safetensors blobs of all 23 Pythia revisions used (30 unique blobs) show that
+every revision with pruning or quantization measurements resolves to a distinct weight set, with one
+exception: the Pythia-2.8B revisions published for steps 16k, 64k and 143k load identical learned
+parameters. Those revisions were excluded from the panel, and the 2.8B repeatability check
+(Appendix~\ref{sec:app_results}) is therefore one state measured twice. The three checkpoints of the
+pruning confirmation panel (410M at 48k, 1.4B at 112k, 6.9B at 80k) have shard hashes that differ
+from every other revision of the same size, and their dense capability vectors differ from those of
+the neighbouring stages.
+
+
 
 \paragraph{Architectures and parameter conventions.} Every model in
 the heterogeneous panel and the controlled panel is a dense
@@ -152,6 +153,7 @@ distillation source term used the metadata parameter count of the student record
 which for Gemma-3-4B includes 0.42B vision and projector parameters
 and counts tied embeddings twice; these frozen covariates are reported
 as recorded and not recomputed.
+
 
 \FloatBarrier
 
@@ -189,7 +191,6 @@ normalization or are reported separately, and no cross-tokenizer
 quantity is treated as a common numerical scale. Negative responses are
 retained as measured; nothing is clipped at zero.
 
-\FloatBarrier
 \begin{figure}[!t]
 \centering
 \includegraphics[width=5.5in]{figs/measurement_support_legend.pdf}\\[1pt]
@@ -200,9 +201,10 @@ retained as measured; nothing is clipped at zero.
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/measurement_support_e.pdf}\subcaption{Code paired gain}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/measurement_support_f.pdf}\subcaption{QA paired gain}\end{subfigure}
 
-\caption{Measurement support for capability specificity. Top: out-of-fold MAE of predicting the secondary-benchmark response of each capability from the primary-benchmark response of the same capability (diamond) or of another capability, against zero and train-mean controls, on the six-model, five-density pruning panel; protocol indices 1--3 are model-out, density-out, and model-and-density-out with all densities, and 4--6 repeat these with $d\ge0.75$ only. Bottom: paired same-over-cross gain with 95\% model-bootstrap intervals (six clusters, fixed out-of-fold fits). Generated by \texttt{plot\_fig4\_measurement.py} from \texttt{v26-loss-validity-pred/summary.json}.}
+\caption{Measurement support for capability specificity. Top: out-of-fold MAE of predicting the secondary-benchmark response of each capability from the primary-benchmark response of the same capability (diamond) or of another capability, against zero and train-mean controls, on the six-model, five-density pruning panel; protocol indices 1--3 are model-out, density-out, and model-and-density-out with all densities, and 4--6 repeat these with $d\ge0.75$ only. Bottom: paired same-over-cross gain with 95\% model-bootstrap intervals (six clusters, fixed out-of-fold fits).}
 \label{fig:measurement}
 \end{figure}
+
 
 \FloatBarrier
 
@@ -287,6 +289,7 @@ spans $+0.02$ (OLMo-3-32B), $+0.17$ (Muse-30B), $+0.68$ (Gemma4-31B),
 $+4.04$ (Gemma3-27B). OLMo-3-32B survives $70\%$ pruning with
 $\le+0.63$ nats on each capability. Family identity is a first-order determinant of prunability on this panel; which training-data or recipe properties carry it was not measured.
 
+
 \FloatBarrier
 
 \section{Fitted Models and Coefficients}
@@ -298,7 +301,7 @@ the distillation source form and pool forms, and the frozen multi-student forms 
 constants in the register files listed in Appendix~\ref{sec:app_registration}.
 \input{tables/round3_coef}
 \input{tables/quant2d_coef}
-\FloatBarrier
+
 
 \FloatBarrier
 
@@ -417,7 +420,13 @@ amplifies noise and is no shortcut (Appendix~\ref{sec:app_shared}).
 
 
 
-\begin{figure}[H]
+
+Table~\ref{tab:shared_structure} reports the shared-family test, the parameter-sharing tests, the three kinds of range (bootstrap confidence intervals of the delivered coefficients; the spread of exponents fitted separately per source; prediction intervals from leave-one-source residuals with their coverage on cells not used to build them), and the one-point calibration (K1) against the uncalibrated predictor (K0); K1 costs one compressed measurement per source.
+\input{tables/shared_structure}
+
+\input{tables/cap_conditioning}
+
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=5.5in]{figs/input_form_compact_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_compact_a.pdf}\subcaption{Adding inputs}\end{subfigure}\hfill
@@ -427,8 +436,6 @@ amplifies noise and is no shortcut (Appendix~\ref{sec:app_shared}).
 \caption{Which inputs and forms matter. A: improvement (nats, positive = better) from adding the dense anchor $L_{0,c}$ to $(N_0,D_0)$ and from adding $D_0$ to $(N_0,L_{0,c})$ on the controlled panel, leave-one-stage-out, with 95\% cluster-bootstrap intervals. B: improvement of the shared power form over the same-input alternatives A2 and A1 on every pruning test (positive = power form better). C: gain of per-capability response shapes over a shared shape at matched parameter count on the distillation development matrix (positive = per-capability better). Intervals only where computed.}
 \label{fig:inputs}
 \end{figure}
-Table~\ref{tab:shared_structure} reports the shared-family test, the parameter-sharing tests, the three kinds of range (bootstrap confidence intervals of the delivered coefficients; the spread of exponents fitted separately per source; prediction intervals from leave-one-source residuals with their coverage on cells not used to build them), and the one-point calibration (K1) against the uncalibrated predictor (K0), generated by \texttt{v59\_shared\_structure.py}; K1 costs one compressed measurement per source.
-\input{tables/shared_structure}
 
 \paragraph{Value of capability conditioning on the confirmation panels.}
 At equal development information, Table~\ref{tab:cap_conditioning}
@@ -449,15 +456,14 @@ QA curve reverses sign across density, a shape no proportional
 baseline can represent; QA's direction also varies across
 development sources, which neither source-free variant captures. The
 ablation is retrospective.
-\input{tables/cap_conditioning}
-\FloatBarrier
+
 
 \FloatBarrier
 
 \section{Frozen Prediction Results}
 \label{sec:app_results}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=5.5in]{figs/frozen_candidates_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/frozen_candidates_a.pdf}\subcaption{Pruning}\end{subfigure}\hfill
@@ -469,7 +475,7 @@ prediction against measurement for every frozen candidate. Hatched bars show MAE
 \label{fig:confirm}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=5.5in]{figs/generalization_cells_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/generalization_cells_a.pdf}\subcaption{New configurations}\end{subfigure}\hfill
@@ -522,7 +528,7 @@ not stored, so an item-level interval cannot be computed; each
 evaluation scores 64 items per capability, and the pool-cluster
 intervals cover pool sampling only.
 \input{tables/distill_confirm}
-\FloatBarrier
+
 
 \FloatBarrier
 
@@ -602,7 +608,6 @@ family, turning the least elegant fitted parameter of the two-regime
 law into a measurable, smoothly evolving order parameter.
 \preliminary{three models, two families; a multi-model extension is left to future work}
 
-\FloatBarrier
 \subsection{The logit-displacement account of compression damage}
 \label{sec:app_disp}
 
@@ -620,7 +625,7 @@ family or the knob (Table~\ref{tab:disp_boundary}): under 5\% wherever the loss 
 0.1 nats, and rising past 20\% by 0.25 nats. Grouped four-bit quantization with fine groups, at 0.06
 nats, sits on the same curve as per-channel four-bit at 0.24 nats.
 
-\begin{table}[H]\normalfont
+\begin{table}[!htbp]\normalfont
 \centering\small
 \caption{Median relative error of the coefficient-free second-order account, by family and
 configuration. Rows identify compression families; the second column pairs each setting with its median relative error in percent. This is a \mbox{post-hoc} analysis of measured damage; density is dimensionless and bit width is in bits.}
@@ -648,13 +653,14 @@ the compressed model. The account therefore explains the damage after the fact a
 relation as an input. Variance dominance is per capability: seventeen cells with negative loss
 change are carried by the first-order term.
 
+
 \FloatBarrier
 
 \section{Capability-Specific Selection}
 \label{sec:app_selection}
 
-Section S6 of the supplement tabulates the per-policy results behind Fig.~\ref{fig:selection}: mean regret against the measured oracle, agreement with the oracle's method, the share of no-clear-winner cells, and the share of cells in which a fixed-method policy cannot meet the budget (such cells are INFEASIBLE, with no fallback, and enter no mean). Regenerated without fallback by \texttt{v64\_selection\_feasible.py}.
-\begin{figure}[H]
+Section S6 of the supplement tabulates the per-policy results behind Fig.~\ref{fig:selection}: mean regret against the measured oracle, agreement with the oracle's method, the share of no-clear-winner cells, and the share of cells in which a fixed-method policy cannot meet the budget (such cells are INFEASIBLE, with no fallback, and enter no mean).
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=5.5in]{figs/selection_feasible_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/selection_feasible_a.pdf}\subcaption{Math}\end{subfigure}\hfill
@@ -665,7 +671,7 @@ Section S6 of the supplement tabulates the per-policy results behind Fig.~\ref{f
 \label{fig:selection}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=5.5in]{figs/rule_maps_main_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_a.pdf}\subcaption{Math}\end{subfigure}\hfill
@@ -715,7 +721,7 @@ configuration's method agreement is the figure quoted in the main
 text.
 \input{tables/locked_rule}
 \input{tables/rule_confirm}
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=5.5in]{figs/rule_regret_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{5.5in}\centering\includegraphics[width=\linewidth]{figs/rule_regret_a.pdf}\subcaption{Mean regret}\end{subfigure}
@@ -723,7 +729,7 @@ text.
 \caption{Mean regret per objective on the four fresh states (log scale) for the locked rule, the earlier laws, quantization-only, and the cheapest feasible configuration.}
 \label{fig:rule_regret}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=5.5in]{figs/rule_maps_full_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_full_a.pdf}\subcaption{Math}\end{subfigure}\hfill
@@ -734,7 +740,7 @@ text.
 \caption{Full selection maps on the four fresh states under the locked rule and under the earlier source-conditioned laws (row pairs), against nominal storage budget; colour = predicted method, hollow circle and cross-hatching = oracle method differs, diagonal hatching = no-clear-winner candidate set. The bottom-right panel is the largest loss increase across capabilities, $\max_c[L_c(M)-L_c(M_0)]$.}
 \label{fig:rule_maps}
 \end{figure}
-\FloatBarrier
+
 
 \FloatBarrier
 
@@ -775,6 +781,7 @@ either pre-declared target, so a validated data-requirement relation is not deli
 student diverged from the smaller on math and code at readouts the design could not resolve.
 Reopening measurement needs a new information source or a mechanism hypothesis, not another reuse
 function.
+
 
 \FloatBarrier
 
@@ -818,7 +825,7 @@ $g\in\{32,512\}$ and a new state, \texttt{6199353}), \texttt{v70}
 text is downgraded and the prediction stays as committed.
 
 \subsection{Information budgets}
-\begin{table}[H]\normalfont
+\begin{table}[!htbp]\normalfont
 \centering\small
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.190839695\textwidth-0.763358779\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.435114504\textwidth-1.740458015\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.374045802\textwidth-1.496183206\tabcolsep\relax}@{}}
 \toprule
@@ -851,7 +858,5 @@ nor a GPU; the repository mirrors the scripts and the result files
 they read, and the main prediction table is produced by a single
 command. Model measurements are reproducible from the recorded
 revisions, probe seeds, and protocols above.
-
-\FloatBarrier
 
 \FloatBarrier

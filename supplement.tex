@@ -20,14 +20,15 @@
 \setlength{\abovecaptionskip}{4pt}
 \setlength{\belowcaptionskip}{0pt}
 \captionsetup[subfigure]{skip=2pt}
-\renewcommand{\topfraction}{0.95}\renewcommand{\bottomfraction}{0.95}\renewcommand{\textfraction}{0.05}\renewcommand{\floatpagefraction}{0.6}
 \usepackage{xcolor}
 \usepackage{enumitem}
 \usepackage{rotating}
 \usepackage{array}
 \usepackage{placeins}
 \usepackage{float}
-\renewcommand{\topfraction}{0.9}\renewcommand{\bottomfraction}{0.6}\renewcommand{\textfraction}{0.07}\renewcommand{\floatpagefraction}{0.75}
+\renewcommand{\topfraction}{0.95}\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0.05}\renewcommand{\floatpagefraction}{0.6}
+\setcounter{topnumber}{3}\setcounter{totalnumber}{3}
 \input{tables/counts}
 
 \newcommand{\Tteacher}{\mathcal{T}}
@@ -104,8 +105,6 @@ The main paper and its appendix are self-contained; this document collects compl
 and auxiliary analyses referenced from them.
 
 \input{supplement_body}
-
-\FloatBarrier
 \bibliography{references}
 \bibliographystyle{iclr2027_conference}
 \end{document}
