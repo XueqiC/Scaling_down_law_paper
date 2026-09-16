@@ -2,7 +2,7 @@
 \label{sec:app_details}
 
 This appendix records the probes, the compression protocols and the controlled panel in the form
-used throughout the paper.
+used throughout the paper, so that each later section can be read against them.
 
 \subsection{Probes and loss computation}
 \label{sec:app_probes}
@@ -35,7 +35,7 @@ The three operations are fixed by protocol. Pruning is global magnitude pruning,
 matrices (attention and MLP projections; embeddings, output head, biases and norms are excluded) to
 a target retained density $\dens$. The global threshold is estimated from a seeded sample of
 absolute weights, which lets the same procedure scale to 30B-parameter models, and each density is
-applied to the same dense reference weights, so the densities are nested rather than sequential.
+applied to the same dense reference weights, so the densities are nested, and each pruned set contains the previous one.
 
 Per-channel quantization fake-quantizes the weights per output channel with symmetric
 round-to-nearest at bit-width $\bits$: integers are clamped to $[-q_{\max},q_{\max}]$ with
@@ -53,7 +53,8 @@ weight matrix into contiguous groups of $g$ input weights, pads the last group w
 not affect the group maximum, and applies the same symmetric round-to-nearest with
 $q_{\max}=2^{b-1}-1$ per group; $g$ equal to the row width reproduces the per-channel quantizer
 exactly. The configurations are $b\in\{3,4,5\}$ and $g\in\{64,128,256\}$, with nominal storage
-computed from $b$ and $g$ under the same convention as the per-channel case.
+computed from $b$ and $g$ under the same convention as the per-channel case, so budgets are
+comparable across the two quantizers.
 
 Distillation, the third operation, fine-tunes students on black-box teacher traces, a frontier API teacher
 answering GSM8K, HotpotQA and CodeAlpaca prompts with 600 traces per domain, under the full-trace
@@ -67,7 +68,7 @@ random sample drawn with a pool-sampling seed independent of the training seed; 
 identified by the sorted hashes of their samples and pairwise overlaps are reported. The historical
 schedule spanned a fixed number of epochs, so its cosine horizon varied with pool size; the
 controlled matrix of \S\ref{sec:law_distill} uses a schedule defined on the same absolute
-processed-token budget for each pool, and the two protocols are not mixed in any fit.
+processed-token budget for each pool, and the two protocols are not mixed in any fit or any table of this paper.
 
 \subsection{The controlled Pythia panel}
 \label{sec:app_pythia}
@@ -169,14 +170,15 @@ across seven pruned models; all four outcomes are compatible with one
 cross-family sigmoid in the loss, with no resolved family-specific
 term. A lower QA loss does not by itself imply better QA behavior: the
 four pruned OLMo-3-32B cells whose QA loss lies below dense show no
-increase in exact match. This audit covers pruning only and is not repeated for the other methods.
+increase in exact match. This audit covers pruning only and is not repeated for the other two methods, whose public panels
+are smaller.
 
 The reference condition was also varied. For a subset of models the
 direct-answer and given-reasoning-answer conditional distributions were
 measured in addition to the full-solution reference; they differ from
 it for math and QA and coincide for code, where the reference is the
 function body, so the numbers in this paper are specific to the
-full-solution reference and are not evidence of robustness to the reference format.
+full-solution reference and should not be read as evidence of robustness to the reference format.
 
 The loss is the conditional cross-entropy of the reference completion
 given the prompt, summed over completion tokens and divided by the
@@ -200,7 +202,7 @@ retained as measured and are not clipped at zero.
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/measurement_support_e.pdf}\subcaption{Code paired gain}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/measurement_support_f.pdf}\subcaption{QA paired gain}\end{subfigure}
 
-\caption{Measurement support for capability specificity. (a)--(c) Out-of-fold MAE of predicting the secondary-benchmark response of a capability from the primary-benchmark response of the same capability (diamond) or of another capability, against zero and train-mean controls, on the six-model, five-density pruning panel; protocols 1--3 hold out models, densities, or both, and 4--6 repeat them at $d\ge0.75$. (d)--(f) Paired same-over-cross gain with 95\% model-bootstrap intervals.}
+\caption{Measurement support for capability specificity. (a)--(c) Out-of-fold MAE of predicting the secondary-benchmark response of a capability from the primary-benchmark response of the same capability (diamond) or of another capability, against zero and train-mean controls, on the six-model, five-density pruning panel; protocols 1--3 hold out models, densities, or both, and 4--6 repeat them at $d\ge0.75$. (d)--(f) Paired same-over-cross gain with 95\% model-bootstrap intervals over models.}
 \label{fig:measurement}
 \end{figure}
 
@@ -212,7 +214,7 @@ retained as measured and are not clipped at zero.
 
 This section reports the twelve-model panel that Fig.~\ref{fig:heterogeneity} summarises, first
 under pruning, then under quantization and distillation, and closes with what the loss endpoint
-does and does not establish about behavior.
+does and does not establish about the behavior of the compressed models.
 
 \input{tables/panel_prune}
 \input{tables/panel_quant}
@@ -258,7 +260,7 @@ math more ($+0.19$ to $+0.22$ against $+0.09$ to $+0.12$ nats relative
 to the initial student) while QA improves under both recipes ($-0.58$
 to $-1.44$); because the recipes differ in supervised tokens and update
 counts, this pairing does not isolate reasoning coverage, and the
-controlled comparisons are those of \S\ref{sec:law_distill}.
+controlled comparisons that do isolate it are the ones reported in \S\ref{sec:law_distill}.
 
 The loss endpoint supports these comparisons within limits. The same
 heterogeneity appears on independent secondary benchmarks for math and
@@ -269,7 +271,7 @@ cross-capability predictor is as good or better
 (Appendix~\ref{sec:app_measure}, Fig.~\ref{fig:measurement}). A lower
 QA loss does not by itself mean better QA behavior: in the four pruned
 OLMo-3-32B cells whose QA loss lies below dense, exact-match accuracy
-does not rise. ``QA improves'' in this paper refers to the loss.
+does not rise. ``QA improves'' in this paper refers to the loss and to nothing else.
 
 
 \subsection{Scale and family structure}
@@ -288,7 +290,7 @@ At matched scale, on the panel of models near 30B parameters, the
 family coefficient dominates: $\Delta\Lc{\text{math}}$ at $\dens=0.7$
 spans $+0.02$ (OLMo-3-32B), $+0.17$ (Muse-30B), $+0.68$ (Gemma4-31B),
 $+4.04$ (Gemma3-27B). OLMo-3-32B survives $70\%$ pruning with
-$\le+0.63$ nats on each capability. Family identity is a first-order determinant of prunability on this panel; which training-data or recipe properties carry it was not measured.
+$\le+0.63$ nats on each capability. Family identity is a first-order determinant of prunability on this panel; which training-data or recipe properties carry it was not measured and is left open on this panel.
 
 
 \FloatBarrier
@@ -323,7 +325,7 @@ and the power form (0.494) tie within 0.02 nats and the rule prefers
 the continuous form that vanishes at $d=1$ (coefficients in
 Appendix~\ref{sec:app_coef}; the exponent $\gamma_c$ is a fitted constant and has not been established as necessary).
 
-Its boundary was then established. Evaluated as a frozen candidate on three new checkpoints, the power form reaches the math error of A2 with five parameters against twenty and does not beat the median curve on code or QA; on a 2.8B source the median curve is three to seven times better than either source form (\S\ref{sec:general}). The compact form trades accuracy for compactness within a tested range; the median curve is the relation for new states, a rule fixed after these tests and reused without change in \S\ref{sec:selection}.
+Its boundary was then established. Evaluated as a frozen candidate on three new checkpoints, the power form reaches the math error of A2 with five parameters against twenty and does not beat the median curve on code or QA; on a 2.8B source the median curve is three to seven times better than either source form (\S\ref{sec:general}). The compact form trades accuracy for compactness within a tested range; the median curve is the relation for new states, a rule fixed after these tests and reused without change in \S\ref{sec:selection} for the selection rule and its confirmation.
 
 For quantization, two parametric candidates were tested first, a
 separable amplitude-times-shape form and a low-order surface in
@@ -340,7 +342,8 @@ Appendix~\ref{sec:app_results}.
 The boundary of the quantization relation follows from the same tests: the interpolation holds at unseen group sizes of
 seen states; on the new state the source-free median is as good or
 better except for code, so source conditioning adds nothing there,
-and the surface is not delivered, as the tests of \S\ref{sec:unseen_settings} confirm.
+and the surface is not delivered, as the tests of \S\ref{sec:unseen_settings} confirm on each
+held-out cell of that panel.
 
 For distillation, eight forms in $T$, $E$, and a source term were
 frozen on twelve development runs and scored on nine unseen-pool
@@ -350,7 +353,7 @@ descriptor-carrying forms were compared retrospectively
 re-selected on all 25 trajectories by a pre-committed
 leave-one-trajectory-out rule and frozen for six new pools of
 $U{=}200$ at three new budgets. A linear form in the student state, fit on nine Pythia states, serves only as the math predictor for the distillation candidates of the selection rule in
-\S\ref{sec:selection}.
+\S\ref{sec:selection}, and enters no other relation.
 
 The boundary of the distillation relation is set by the new-pool test. At the new pool size the
 selected form beats the
@@ -419,7 +422,7 @@ exponents spread widely (3.0 to 6.0 for math); and 80\% prediction
 intervals from leave-one-source residuals
 under-cover (78\% on the 27 confirmation-panel cells, 67\% on the 1B
 and 6.9B pair cells) at a mean full width near 1.5 nats. One-point calibration of the pruning amplitude at the mildest density
-amplifies noise and offers no saving.
+amplifies noise and offers no saving over the uncalibrated predictor.
 
 
 
@@ -466,7 +469,7 @@ development sources, which neither source-free variant captures. The ablation is
 \label{sec:app_results}
 
 This section collects the frozen predictions and their measured outcomes, cell by cell, in the
-order in which the tests were run.
+order in which the tests were run and the predictions were frozen.
 
 \begin{figure}[!htbp]
 \centering
@@ -488,7 +491,7 @@ order in which the tests were run.
 
 \caption{Per-cell prediction minus measurement for each frozen relation, by kind of novelty; the
 main-text figure summarises these cells as paired errors against the development-selected baseline.
-Crosses mark cells whose artifact stores no interval.}
+Crosses mark the cells whose stored artifact carries no interval estimate.}
 \label{fig:generalization_cells}
 \end{figure}
 
@@ -541,7 +544,7 @@ intervals cover pool sampling only.
 
 Four analyses support the mechanism subsection of the main text (\S\ref{sec:why_mech}): a pruning
 law in the deleted capability mass, the sign of its first-order term, the geometry of the cliff, and
-the logit-displacement account.
+the logit-displacement account of the damage, in that order.
 
 \subsection{The pruning law}
 \label{sec:law}
@@ -576,7 +579,7 @@ by the two measured quantities, and the fitted structure is two
 parameters per model. This mechanism form uses gradient
 information of the dense model and is not a K0 predictor; it
 is reported as an upper comparator for the reduced forms of the main
-text and not as a bound.
+text and not as a bound on what the initial state can predict.
 
 \subsection{The signed first-order term predicts, in both directions}
 \label{sec:mech}
@@ -613,7 +616,7 @@ The critical value is family-specific (Gemma: $0.035$--$0.10$ across
 within a family across sizes and capabilities: the cliff boundary
 $\dens_c^{*}(N_0,f)$, for size $N_0$ and family $f$, reduces to one critical-retention constant per
 family, so the fitted cliff parameter of the two-regime
-law becomes a measurable, smoothly varying order parameter.
+law becomes a measurable order parameter that varies smoothly within each family.
 \preliminary{three models, two families; a multi-model extension is left to future work}
 
 \subsection{The logit-displacement account of compression damage}
@@ -688,7 +691,7 @@ and its prospective confirmation. Section S6 of the supplement tabulates the per
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_c.pdf}\subcaption{QA (2Wiki)}\end{subfigure}\hfill
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_d.pdf}\subcaption{Largest loss increase}\end{subfigure}
 
-\caption{Selection maps under the frozen rule on four fresh states at 17 nominal storage budgets each (colour: predicted method; hollow circle with cross-hatching: the measured oracle differs). Math and code select quantization almost everywhere; QA selects pruning at high budgets on the 32k states and distillation on the 1B state at step 64k.}
+\caption{Selection maps under the frozen rule on four fresh states at 17 nominal storage budgets each (colour: predicted method; hollow circle with cross-hatching: the measured oracle differs). Math and code select quantization almost everywhere; QA selects pruning at high budgets on the 32k states and distillation on the 1B state at step 64k, where a distillation candidate exists.}
 \label{fig:rule_main}
 \end{figure}
 
@@ -789,7 +792,7 @@ implementations. No fitted joint structure for distillation beat a low-order res
 either pre-declared target, so a validated data-requirement relation is not delivered; the larger
 student diverged from the smaller on math and code at readouts the design could not resolve.
 Reopening measurement requires a new information source or a mechanism hypothesis; a further reuse
-function would not suffice.
+function fitted to the same data would not suffice.
 
 
 \FloatBarrier
@@ -853,7 +856,7 @@ Oracle diagnostic & Rescaling based on measured target outcomes & No predictive 
 this diagnostic measures form misfit after testing \\
 \bottomrule
 \end{tabular*}
-\caption{Information budgets: rows identify budgets and columns the available information and the costs to disclose. K0 uses no compressed-target calibration and K1 one calibration measurement; predictive budgets are fixed on development data and the oracle row is a \mbox{post-hoc} diagnostic. Losses are in nats per native token, size counts parameters, and pretraining exposure counts tokens; missing inputs are handled by rules fixed on the development panel.}
+\caption{Information budgets: rows identify budgets and columns the available information and the costs to disclose. K0 uses no compressed-target calibration and K1 one calibration measurement; predictive budgets are fixed on development data and the oracle row is a \mbox{post-hoc} diagnostic. Losses are in nats per native token, size counts parameters, and pretraining exposure counts tokens; missing inputs are handled by rules fixed on the development panel and applied unchanged.}
 \label{tab:budgets}
 \end{table}
 
@@ -863,6 +866,6 @@ All tables are generated from machine-readable result files by
 CPU-only scripts that run in seconds and require neither model weights
 nor a GPU; the repository mirrors the scripts and the result files
 they read, and the main prediction table is produced by a single
-command. Model measurements are reproducible from the recorded model revisions, the probe seeds, and the protocols described in this appendix.
+command. Model measurements are reproducible from the recorded model revisions, the probe seeds, and the protocols described in this appendix, with no inputs beyond those listed.
 
 \FloatBarrier
