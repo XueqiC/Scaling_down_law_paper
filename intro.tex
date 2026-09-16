@@ -38,23 +38,21 @@ with the measured cases as their instances.
 
 \paragraph{Contributions.}
 \begin{itemize}
-\item \textbf{A law may share a response shape only across capabilities whose shapes agree;
-capability conditioning is a structural choice and not a scale factor.} Under pruning, math and
-code share one curve with capability-specific scales while question answering changes sign across
-density, so no rescaled shared curve fits it; a coefficient-free second-order account of logit
-displacement explains the measured damage inside an empirical range.
-\item \textbf{Interpolating within a measured model and transferring to a new model state are
-different prediction problems that admit different inputs.} Initial-state inputs pay for unseen
-configurations of measured states; for new states a source-free configuration curve is as good or
-better, and the transferable information must be validated on its own, as the frozen tests and a
-fit-free rectangle design show.
-\item \textbf{The data requirement of distillation is a joint property of training exposure,
-student and evaluation distribution, and the cost of reuse transfers where the gain does not.}
-Under one protocol the learning rate sets the size of the damage, the reuse cost grows with reuse
-and student size and reproduces across three question-answering distributions, and the net gain
-appears on one of them.
-\item \textbf{What these rules deliver.} Method-specific relations with their tested ranges
-(Table~\ref{tab:main-prediction-v2}), a selection rule whose frozen maps on four fresh Pythia
-states match the measured oracle within 0.00001, 0.004 and 0.14 nats for math, code and QA, and a
-released suite of coefficients, registered predictions, measurements and code.
+\item \textbf{A systematic, capability-conditioned science of scaling down.} We replace the aggregate
+loss of existing compression laws with the loss of each capability, measure pruning, quantization
+and distillation under one endpoint and one validation standard, and hold every relation to
+coefficients and predictions frozen before measurement, so that fitted and predictive accuracy
+are separated and every claim carries the range on which it was tested.
+\item \textbf{A general account of what a scaling-down law may share and what it may use.} Response
+shapes, and not only response sizes, differ across capabilities, so a law may share structure only
+where shapes agree; and interpolating within a measured model differs from transferring to a new
+model state in the inputs it admits, so source information must be validated separately from
+configuration information. Both principles decide the form of any such law beyond the panels
+studied here.
+\item \textbf{An explanatory link from mechanism and protocol to predictable damage.} Compression
+damage is second-order in logit displacement inside an empirical range, and distillation damage is
+set jointly by training exposure, student and evaluation distribution, with a reuse cost that
+transfers across distributions while the gain does not; these are the conditions under which
+predictive relations hold, and they turn compression choice into a validated, capability-specific
+selection problem.
 \end{itemize}
