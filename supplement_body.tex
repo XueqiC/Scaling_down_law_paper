@@ -32,7 +32,7 @@ The low-order surface tested for grouped quantization is
 \qquad u=\log_2 q_{\max}(b)\ \text{(centred)},\ v=\log_2\frac{g}{128},
 \label{eq:quant2d}
 \end{equation}
-with one four-vector of state coefficients $\phi(\mathbf x)$ per term (twenty coefficients) and
+with one four-vector of state coefficients $\phi(\mathbf x)$ per term, twenty coefficients in all, and
 $q_{\max}(b)=2^{b-1}-1$ the integer range available at bit-width $b$.
 
 \paragraph{Identifiability of the two-dimensional form.} The
@@ -40,19 +40,15 @@ development bit-widths are $b\in\{3,5\}$, so the centred $u$ takes the
 two values $\pm1.16$ and $u^2$ equals $1.35$ on each development
 cell: the quadratic column is a multiple of the intercept column, the
 design of Eq.~\ref{eq:quant2d} has rank 16 for its 20 coefficients,
-and the ridge penalty resolves the four undetermined directions (the
-effective degrees of freedom are 15.9 per capability;
-Table~\ref{tab:quant_ident}). At the unseen $b=4$, where $u\approx0$
+and the ridge penalty resolves the four undetermined directions, leaving 15.9 effective degrees of freedom per capability, as Table~\ref{tab:quant_ident} records. At the unseen $b=4$, where $u\approx0$
 and $u^2\approx0$, the prediction depends on how the ridge split the
 fitted intercept between the two columns. A same-input design without
 the quadratic term spans the same development column space and gives
-the same development fit, but predicts the unseen bit-width much less
-accurately (bit-test MAE 1.30, 1.39, 1.94 against 0.19, 0.21, 0.44), as do
+the same development fit, but predicts the unseen bit-width much less accurately, with bit-test errors of 1.30, 1.39 and 1.94 nats against 0.19, 0.21 and 0.44, as do
 the bit-only and bit-plus-group additive designs; at $g=128$ all three
 reduced designs coincide because the group terms vanish. The frozen
 test result is a result about the delivered regularized
-parametrization; the development data do not identify any curvature
-in bit-width.
+parametrization; the development data do not identify any curvature in bit-width without the ridge choice.
 \input{tables/quant_ident}
 \subsection{Distillation: descriptor forms and capability conditioning}
 \input{tables/v56_forms}
@@ -67,20 +63,11 @@ weights.
 \input{tables/distill_forms_audit}
 
 In a retrospective comparison, with each form fitted on all 48
-development points and scored on the 52 test points (nine unseen-pool
-trajectories and four held-out student trajectories at the development
-pools; these predictions were specified after the frozen matrix), the
-second form of Equation 4 of the main paper has the lowest error among
-the forms on the 270M unseen-pool trajectories (0.022, 0.020, and 0.316
-nats for math, code, and QA against 0.060, 0.047, and 0.862 for the
-frozen constant) and is second to the reuse-only form for QA on the 1B
-trajectories (0.478 against 0.342). The first form, which has no budget
-term, performs poorly for QA on each group (1.15 to 2.26 nats). On the held-out 4B student the frozen
-constant remains the best predictor for math and code at the unseen
-pool (0.020 and 0.038), and the second form with the loss descriptor
-is best for QA there (0.360, with the reuse-only form at 0.367); at
-the development pools the two descriptor variants disagree on math
-(0.404 with the loss descriptor, 0.122 with the size descriptor), and
+development points and scored on the 52 test points, nine unseen-pool trajectories and four held-out student trajectories at the development pools, with predictions specified after the frozen matrix, the second form of Equation 4 of the main paper has the lowest error among
+the forms on the 270M unseen-pool trajectories, 0.022, 0.020 and 0.316 nats for math, code and QA against 0.060, 0.047 and 0.862 for the frozen constant, and is second to the reuse-only form for QA on the 1B
+trajectories, 0.478 against 0.342. The first form, which has no budget
+term, performs poorly for QA on each group, with errors of 1.15 to 2.26 nats. On the held-out 4B student the frozen
+constant remains the best predictor for math and code at the unseen pool with 0.020 and 0.038, and the second form with the loss descriptor is best for QA there at 0.360, just ahead of the reuse-only form at 0.367; at the development pools the two descriptor variants disagree on math, 0.404 with the loss descriptor against 0.122 with the size descriptor, and
 these data do not settle the choice of descriptor between size and loss.
 \subsection{Pre-compression statistics as additional inputs}
 \label{sec:app_inputs}
@@ -88,13 +75,10 @@ these data do not settle the choice of descriptor between size and loss.
 Three strictly separated input budgets were compared on the nine-state development panel with
 leave-one-source-state-out and leave-one-size-out splits and a rule fixed in advance: the K0 state
 alone; K0 with a dense loss anchor; and K0 with three dense statistics measured by one forward pass
-per state and capability (the reference-token logit margin, the trace of the loss Hessian in logit
-space, and the logit variance). Within a parametric family fitted by ridge regression, the statistics
-improve four of nine arm-and-capability pairs (pruning math and QA, grouped-quantization math and QA),
-each with an interval above zero; in nine of nine pairs both statistics-augmented linear candidates
+per state and capability: the reference-token logit margin, the trace of the loss Hessian in logit space, and the logit variance. Within a parametric family fitted by ridge regression, the statistics
+improve four of nine arm-and-capability pairs, pruning math and QA and grouped-quantization math and QA, each with an interval above zero; in nine of nine pairs both statistics-augmented linear candidates
 have higher error than the source-free median configuration curve. Accuracy at naming the most
-fragile capability falls for pruning (58.3\% to 41.7\%) and rises for grouped quantization (40.7\% to
-49.4\%) when the three statistics are added to the inputs.
+fragile capability falls for pruning from 58.3\% to 41.7\% and rises for grouped quantization from 40.7\% to 49.4\% when the three statistics are added to the inputs.
 
 We then tested one explanation, that the source-dependent candidates lose because they re-learn the
 whole response. Holding the median configuration curve fixed and fitting only a heavily shrunk source
@@ -113,10 +97,8 @@ On the nine-state development panel with one stage held out, a
 per-setting regression of the pruning response on $(N_0,D_0,L_{0,c})$
 lowers the error from 0.413, 0.516, and 0.500 nats to 0.253, 0.292,
 and 0.806 for math, code, and QA; adding $L_{0,c}$ to $(N_0,D_0)$ has
-intervals above zero for math and code, whereas adding $D_0$ does not
-(Figure 10A of the main paper). The source-conditioned forms of Section 5 of the main paper use the three inputs per capability, and each
-arm also carries a source-free relation for the cases in which the source inputs add nothing to
-the accuracy of the prediction.
+intervals above zero for math and code, whereas adding $D_0$ does not; Figure 10A of the main paper shows both comparisons per arm and capability. The source-conditioned forms of Section 5 of the main paper use the three inputs per capability, and each
+arm also carries a source-free relation for the cases in which the source inputs add nothing to the accuracy of the prediction on the tested panels.
 
 
 \paragraph{Conditioning audit.} Table~\ref{tab:cond_audit} gives the full audit behind the capability-conditioning comparison of Appendix~E of the main paper, in which negative scales were allowed.
@@ -128,33 +110,22 @@ the accuracy of the prediction.
 \label{sec:supp_measure}
 
 \paragraph{Capability specificity as a prediction test.} On a
-six-model, five-density pruning panel (retained density $d$ from $0.9$ to $0.7$), the
+six-model, five-density pruning panel with retained density $d$ from $0.9$ to $0.7$, the
 response on the primary benchmark of each capability was used to
 predict the response on the secondary benchmark of the same capability
 through a two-parameter affine map fit out of fold, and compared with
 the best cross-capability predictor chosen the same way. With whole
-models held out, the same-capability gain is $+0.04$ nats for math
-(95\% model-bootstrap interval $[0.03,0.05]$) and $+0.14$ for QA
-($[0.02,0.27]$); with whole densities held out it is $+0.14$
-($[0.03,0.30]$) and $+0.21$ ($[0.02,0.52]$). For code the
-cross-capability predictor is as good or better ($-0.06$,
-$[-0.16,-0.00]$ with densities held out), so code specificity is not
-established at this resolution (Figure 8 of the main paper). Six model clusters give descriptive
+models held out, the same-capability gain is $+0.04$ nats for math, with a 95\% model-bootstrap interval of $[0.03,0.05]$, and $+0.14$ for QA with interval $[0.02,0.27]$; with whole densities held out it is $+0.14$ with interval $[0.03,0.30]$ and $+0.21$ with interval $[0.02,0.52]$. For code the cross-capability predictor is as good or better, $-0.06$ with interval $[-0.16,-0.00]$ when densities are held out, so code specificity is not established at this resolution; Figure 8 of the main paper shows the comparison. Six model clusters give descriptive
 intervals only.
 
 
 
 \paragraph{Same-capability agreement across the three operations.} On
-Gemma-3-1B, six states fixed before the measurement (pruning at
-$d=0.7$, RTN int4, and four distillation checkpoints of the uniform
-protocol at pool sizes $U=75$ and $U=450$ traces per domain) were scored on the main-protocol probe
-and on an independent benchmark of the same capability
-(Table~\ref{tab:p3_check}). Code agrees in sign and size on all six
+Gemma-3-1B, six states fixed before the measurement, pruning at $d=0.7$, RTN int4 and four distillation checkpoints of the uniform protocol at pool sizes $U=75$ and $U=450$ traces per domain, were scored on the main-protocol probe
+and on an independent benchmark of the same capability, as Table~\ref{tab:p3_check} lists. Code agrees in sign and size on all six
 states. Pruning and quantization damage agrees in sign on all three
-capabilities, with sizes that differ on the short secondary probes
-(260 and 328 scored tokens for SVAMP and TriviaQA). The QA improvement
-under distillation on the primary probe ($-0.7$ to $-1.5$ nats) does
-not appear on TriviaQA ($+0.1$ to $+0.4$). The distillation QA
+capabilities, with sizes that differ on the short secondary probes of 260 and 328 scored tokens for SVAMP and TriviaQA. The QA improvement
+under distillation on the primary probe, $-0.7$ to $-1.5$ nats, does not appear on TriviaQA, where the change is $+0.1$ to $+0.4$. The distillation QA
 response reported in Section 5.3 of the main paper is specific to the
 probe distribution, which shares its multi-hop format with the teacher
 pool, and does not indicate a general QA gain. The math response
@@ -168,13 +139,11 @@ of the uniform distillation protocol at its final checkpoint, the
 early checkpoints of the pool study, and the three dense students on 128 MuSiQue
 answerable-dev questions \citep{trivedi2022musique} with the
 supporting paragraphs supplied, under the same template, context
-condition, and probe seed as the primary probe
-(Table~\ref{tab:musique_scope}). The sign reverses on each trajectory:
-at moderate reuse ($E$ of 2.3 to 2.9) the primary loss falls by 0.4 to
+condition, and probe seed as the primary probe; Table~\ref{tab:musique_scope} lists the results. The sign reverses on each trajectory:
+at moderate reuse, $E$ between 2.3 and 2.9, the primary loss falls by 0.4 to
 0.9 nats while the MuSiQue loss rises by 0.1 to 0.9 nats, more for
-larger students; at high reuse ($E\approx14$) both rise by several
-nats; and the 1B early checkpoints already diverge ($-1.0$ to $-1.4$
-against $+0.3$). The distillation QA response predicted by the laws of
+larger students; at high reuse near $E=14$ both rise by several
+nats; and the 1B early checkpoints already diverge, $-1.0$ to $-1.4$ against $+0.3$. The distillation QA response predicted by the laws of
 Section 5.3 of the main paper is the conditional loss on the 2Wiki
 distribution, and it does not carry over to MuSiQue even when the
 supporting paragraphs are supplied. Context
@@ -184,17 +153,12 @@ TriviaQA none.
 \input{tables/musique_scope}
 
 \paragraph{Pre-specified scope check on eight states.} On Gemma-3-1B,
-eight states fixed before measurement (dense; pruning at $d=0.85$ and
-$0.7$; per-channel int4 and grouped $b=4$, $g=128$; the U450
-distillation trajectory at 35k, 140k, and 280k supervised tokens) were
-scored on three sets of 256 references each: a new sample of the
+eight states fixed before measurement, namely the dense model, pruning at $d=0.85$ and $0.7$, per-channel int4, grouped $b=4$ with $g=128$, and the U450 distillation trajectory at 35k, 140k and 280k supervised tokens, were scored on three sets of 256 references each: a new sample of the
 primary 2Wiki distribution that overlaps neither existing probe half,
-MuSiQue answerable-dev with supporting paragraphs (zero overlap with
-the teacher traces), and the TriviaQA control (Table~\ref{tab:qa_scope}). At
+MuSiQue answerable-dev with supporting paragraphs and no overlap with the teacher traces, and the TriviaQA control; Table~\ref{tab:qa_scope} lists the scores. At
 each distillation budget the outcome matches the pre-stated reading, in
-which only the new primary sample reproduces: the 2Wiki gain replicates
-($-1.55$, $-1.26$, $-0.88$ nats), and MuSiQue and TriviaQA rise ($+0.08$ to $+0.34$).
-Pruning and quantization damage agrees in sign on all three evaluation sets, as Table~\ref{tab:qa_scope} shows.
+which only the new primary sample reproduces: the 2Wiki gain replicates at $-1.55$, $-1.26$ and $-0.88$ nats, and MuSiQue and TriviaQA rise by $+0.08$ to $+0.34$.
+Pruning and quantization damage agrees in sign on all three evaluation sets, as Table~\ref{tab:qa_scope} shows for each of the eight measured states.
 \input{tables/qa_scope}
 
 
@@ -211,9 +175,7 @@ Pruning and quantization damage agrees in sign on all three evaluation sets, as 
 \subsection{Pythia-1B and 6.9B pairs under two protocols}
 \label{sec:app_p1v2}
 
-The second frozen round (Table~\ref{tab:p1v2}) added seven pruning
-densities (0.9, 0.8, 0.75, 0.7, 0.65 and 0.6 as interpolation, 0.55 as
-extrapolation) and five bit-widths (8, 6, 5, 4, 3) on Pythia-1B at
+The second frozen round, reported in Table~\ref{tab:p1v2}, added seven pruning densities, six inside the fitted range and 0.55 as extrapolation, and five bit-widths from 8 to 3 on Pythia-1B at
 steps 32k and 112k. Two fitting protocols were frozen at the same time.
 Protocol A fits each candidate on the full nine-state development
 panel. Protocol B fits on development states at step 64k or below, so
@@ -230,32 +192,23 @@ $\{N_0, L_{0,c}, D_0\}$, no-D0 drops the training-stage term, and mean and
 median are per-bit constants from the development panel.
 
 Per capability, at 112k under protocol A the source regression reaches
-MAE 0.111 (math), 0.091 (code) and 0.135 (QA); the strongest
-source-free alternative is strength-only for math (0.117) and the
-median curve for code (0.107) and QA (0.261). At 32k the QA error of
+MAE 0.111 on math, 0.091 on code and 0.135 on QA; the strongest source-free alternative is strength-only for math at 0.117 and the median curve for code and QA at 0.107 and 0.261. At 32k the QA error of
 the source regression rises to 0.339 while the median curve stays at
 0.193, which accounts for most of the aggregate gap. Under protocol B at
-112k the power and A2 forms are ahead of strength-only at $d=0.55$
-(0.96 and 1.00 against 1.33), but with errors near one nat the ordering
+112k the power and A2 forms are ahead of strength-only at $d=0.55$, 0.96 and 1.00 against 1.33, but with errors near one nat the ordering
 has little practical value.
 
 The 6.9B pair, a size extrapolation of about five times, was measured
 under the same freeze. Its
 dense anchors are math 1.27, code 1.30 and QA 5.11 at 32k, and 1.11,
 1.21 and 5.09 at 112k. Per capability under protocol A at 112k, the
-source regression reaches 0.23 (math), 0.19 (code) and 0.96 (QA)
-against 0.05, 0.07 and 0.15 for the median curve. Under protocol B the
-source forms lead on code only (A2 0.058 and 0.083 at the two stages
-against 0.208 and 0.074 for the median curve) and trail on QA (0.32 and
-0.20 against 0.08 and 0.15). At $d=0.55$ the source-free curves are
+source regression reaches 0.23 on math, 0.19 on code and 0.96 on QA against 0.05, 0.07 and 0.15 for the median curve. Under protocol B the
+source forms lead on code only, where A2 reaches 0.058 and 0.083 at the two stages against 0.208 and 0.074 for the median curve, and trail on QA with 0.32 and 0.20 against 0.08 and 0.15. At $d=0.55$ the source-free curves are
 more accurate under both protocols, with source-conditioned errors
 between 0.55 and 2.2 nats. For quantization under protocol A the
-class-indicator candidate is the least accurate, or nearly so, above 3
-bits (0.25 and 0.27 against
-0.03 and 0.04 for the per-bit median) and overshoots by about four nats
+class-indicator candidate is the least accurate, or nearly so, above 3 bits, 0.25 and 0.27 against 0.03 and 0.04 for the per-bit median, and overshoots by about four nats
 at 3 bits. Protocol B compresses the differences above 3 bits to the
-0.02 to 0.05 range and leaves the candidate ahead at 3 bits only for the
-late stage (1.29 against 3.8 to 4.1).
+0.02 to 0.05 range and leaves the candidate ahead at 3 bits only for the late stage, 1.29 against 3.8 to 4.1.
 
 
 
@@ -267,16 +220,7 @@ late stage (1.29 against 3.8 to 4.1).
 \input{tables/round3_quant}
 \input{tables/main_context}
 
-The quantization confirmation round (development on all 54 unblinded
-cells with three bit levels, rank 20 of 20; predictions frozen before
-measurement for 21 cells: two development states and the never-fit
-state 1.4B@112k at $b\in\{3,4,5\}\times g\in\{32,512\}$, and the new
-state at $g=128$) is in Table~\ref{tab:quant_threeway}. Table~\ref{tab:quant_threeway} distinguishes three statuses: the
-score of the frozen development-selected predictor (surface for math,
-per-configuration median for code, zero for QA), the score of each
-frozen candidate, and the post-test recommended rule (interpolation
-for math and code on seen states; median for QA and for new states),
-which is retrospective. The per-configuration median has nine anchors
+The quantization confirmation round used all 54 unblinded cells with three bit levels as its development set, at full rank 20 of 20, and froze predictions before measurement for 21 cells: two development states and the never-fit state 1.4B at step 112k at $b\in\{3,4,5\}$ and $g\in\{32,512\}$, and the new state at $g=128$; Table~\ref{tab:quant_threeway} reports it. Table~\ref{tab:quant_threeway} distinguishes three statuses: the score of the frozen development-selected predictor, the surface for math, the per-configuration median for code and zero for QA; the score of each frozen candidate; and the post-test recommended rule, interpolation for math and code on seen states and the median for QA and for new states, which is retrospective. The per-configuration median has nine anchors
 per capability, the median signed response over the six development
 states at each measured $(b,g)$, and predicts a never-measured group
 size by the same piecewise rule as the interpolation candidate:
@@ -291,18 +235,14 @@ change; no target measurement enters either predictor.
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_b.pdf}\subcaption{Source-free comparison}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_c.pdf}\subcaption{Power versus alternatives}\end{subfigure}
 
-\caption{Paired improvements; positive values favour the first-named model. (a) Full model against its variant without $D_0$, per arm and capability, with cluster-bootstrap intervals where they were computed. (b) Source-conditioned candidate against the strongest source-free baseline on the twenty registered tests (hollow: frozen prospective; filled: leave-one-out). (c) Shared power form against the same-input alternatives A1 and A2 on the pruning configuration tests of the confirmation round.}
+\caption{Paired improvements; positive values favour the first-named model. (a) Full model against its variant without $D_0$, per arm and capability, with cluster-bootstrap intervals where they were computed. (b) Source-conditioned candidate against the strongest source-free baseline on the twenty registered tests; hollow markers are frozen prospective tests and filled markers leave-one-out fits. (c) Shared power form against the same-input alternatives A1 and A2 on the pruning configuration tests of the confirmation round.}
 \label{fig:gains}
 \end{figure}
 
 The pruning repeatability check froze the delivered power form, A2,
 the median development curve, and zero change for Pythia-2.8B, a size
-not used in any pruning fit, at $d\in\{0.85,0.75,0.65\}$ before the
-pruned losses were measured (Table~\ref{tab:prune_repeat}). The two
-cached revisions labelled step 16k and step 143k carry
-identical learned parameters (387 of 388 tensors byte-identical, the
-remaining one differing in the sign of a zero; identical dense and
-pruned losses), so the panel is one state measured twice; the
+not used in any pruning fit, at $d\in\{0.85,0.75,0.65\}$ before the pruned losses were measured; Table~\ref{tab:prune_repeat} gives the results. The two
+cached revisions labelled step 16k and step 143k carry identical learned parameters, 387 of 388 tensors byte-identical and the remaining one differing only in the sign of a zero, with identical dense and pruned losses, so the panel is one state measured twice; the
 weight-identity audit of Appendix A.3 records
 the blob hashes of each Pythia revision used. On this state the
 median curve is the most accurate on each capability by a wide margin
@@ -311,12 +251,9 @@ the damage.
 \input{tables/prune_repeat}
 
 
-The multi-student distillation test of the uniform protocol
-(Section 5.3 of the main paper) is given in Table~\ref{tab:p2v2_test}; the
+The multi-student distillation test of the uniform protocol of Section 5.3 of the main paper is given in Table~\ref{tab:p2v2_test}; the
 frozen predictions of all eight forms for each test point are in the
-mirrored comparison file. Two pre-specified training-seed repeats
-(Gemma-3-270M at $U{=}75$ and Gemma-3-1B at $U{=}450$, data seed 11)
-reproduce the four checkpoints of their originals within 0.017 nats
+mirrored comparison file. Two pre-specified training-seed repeats, Gemma-3-270M at $U{=}75$ and Gemma-3-1B at $U{=}450$ with data seed 11, reproduce the four checkpoints of their originals within 0.017 nats
 for math and 0.030 for code; for QA the difference grows with the
 reuse ratio, from 0.004 to 0.019 at the first two checkpoints to 0.089
 and 0.186 at the last; training-seed noise is well below the law
@@ -336,26 +273,21 @@ errors except for QA at high reuse, where the two are comparable.
 \subsection{Capabilities occupy distinct regions of gradient space}
 \label{sec:regions}
 
-\paragraph{Convergent validity (block structure).} For each of nine
-benchmarks we measure a gradient signature (the benchmark-conditional
-diagonal Fisher) and compare all pairs. After removing the component
+\paragraph{Convergent validity of the block structure.} For each of nine
+benchmarks we measure a gradient signature, the benchmark-conditional diagonal Fisher, and compare all pairs. After removing the component
 shared across benchmarks, signatures of same-capability benchmarks are
-positively aligned (cosine $+0.36$ to $+0.45$) while signatures of
-different capabilities are \emph{anti-aligned} ($-0.23$ to $-0.25$),
-in each of the ten models from five series for which the block analysis was run
-(Figs.~\ref{fig:blocks}--\ref{fig:blocks_olmo3_7b}); the C4 control sits between blocks.\preliminary{point estimates; example-bootstrap, permutation and
+positively aligned, with cosines of $+0.36$ to $+0.45$, while signatures of different capabilities are \emph{anti-aligned} at $-0.23$ to $-0.25$,
+in each of the ten models from five series for which the block analysis was run, shown in Figs.~\ref{fig:blocks}--\ref{fig:blocks_olmo3_7b}; the C4 control sits between blocks.\preliminary{point estimates; example-bootstrap, permutation and
 prompt-stability tests are left to future work and are not part of this analysis} The
 mathematics benchmarks cluster regardless of format, and within-block
-fine structure is consistent with benchmark content (SVAMP, a set of grade-school word problems,
-is the loosest member of the math block). A projected-gradient SVD
+fine structure is consistent with benchmark content: SVAMP, a set of grade-school word problems, is the loosest member of the math block. A projected-gradient SVD
 version gives the same result in subspace terms: principal-angle
 similarity within capability exceeds cross-capability similarity by
 $2$--$4\times$ across the models examined.
 
 \paragraph{Selective ablation.}\preliminary{single model; random, magnitude-matched and global-Fisher control ablations are left to future work and are not reported here} We
 select the top $0.05\%$ of weight coordinates by the \emph{residual}
-Fisher signature of each capability (excluding coordinates shared with
-other capabilities) and zero them. The damage matrix for Gemma-3-1B is nearly diagonal. In the table below, rows identify the ablated
+Fisher signature of each capability, excluding coordinates shared with other capabilities, and zero them. The damage matrix for Gemma-3-1B is nearly diagonal. In the table below, rows identify the ablated
 region and columns the measured capability, with entries given as loss increases in nats per native token:
 
 \begin{center}
@@ -373,8 +305,7 @@ QA   & $+0.01$ & $+0.00$ & $\mathbf{+2.29}$ \\
 \end{center}
 
 Zeroing $0.05\%$ of the weights, selected from gradients alone,
-removes one capability while leaving the others nearly unchanged
-(the QA ablation moves code by $+0.0001$). Pending multi-model
+removes one capability while leaving the others nearly unchanged; the QA ablation moves code by $+0.0001$. Pending multi-model
 replication and the control ablations noted above, we describe the regions as
 causally implicated and partially separable, and we do not regard them as
 established causal carriers; if confirmed, ablation itself would be a form of
@@ -394,7 +325,7 @@ established causal carriers; if confirmed, ablation itself would be a form of
 storage or active-parameter ratio was tested on the heterogeneous
 panel: at the common storage ratio $0.5$, pruning to $d=0.5$ costs
 median $+5.9$, $+8.2$, and $+2.9$ nats while int8 quantization costs
-nothing; over 75 storage-matched pairs (14 with both sides pre-cliff) the
+nothing; over 75 storage-matched pairs, 14 of them with both sides pre-cliff, the
 mean absolute method gap is $9.3$ nats with sign agreement $0.61$, and
 the two shared-law hypotheses fit on pre-cliff cells reach held-out
 sign accuracies of $0.51$ and $0.37$. These models are rejected;
@@ -412,12 +343,9 @@ states.
 \label{sec:recovery}
 \label{sec:app_recovery}
 
-Recovery training on general text is fitted closely by the recovery law, with a recovery exponent
-$\beta'_c$ per capability (Gemma3-270M pruned to $\dens=0.6$; $R^2\approx1.0$):
-$\beta'_{\text{math}}=1.23$, $\beta'_{\text{code}}=1.02$, with
-fitted plateaus under the fixed LoRA recipe and the largest measured
+Recovery training on general text is fitted closely by the recovery law, with a recovery exponent $\beta'_c$ per capability, $\beta'_{\text{math}}=1.23$ and $\beta'_{\text{code}}=1.02$ for Gemma3-270M pruned to $\dens=0.6$ at $R^2\approx1.0$, and with fitted plateaus under the fixed LoRA recipe and the largest measured
 budget of 16M tokens, $\Lc{c}^{\text{plateau}}-\Lc{c}^{\text{dense}}$,
-of $1.21$ (math) and $1.93$ (code) nats; about $80\%$ of this pruning
+of $1.21$ nats for math and $1.93$ for code; about $80\%$ of this pruning
 damage is redeemed within 8M tokens and the remainder persists up to
 the largest budget measured under this recipe, whereas QA recovers
 fully. The plateau is a fitted quantity at 16M tokens and has not been
@@ -426,12 +354,10 @@ non-monotone aligned-data trajectory described below. \preliminary{one model, on
 ladders the largest-budget extrapolation of the saturating form beats a
 carry-forward baseline in only 4 of 9 fits, so the ladder is too sparse
 to claim extrapolation, and a denser multi-model grid is left to future work} Two further results bear on the mechanism.
-Recovery on \emph{aligned} data (teacher traces) proceeds considerably
-faster at small budgets (math $2.76$ against $3.47$ at $0.5$M tokens),
+Recovery on \emph{aligned} data, the teacher traces, proceeds considerably faster at small budgets, math reaching $2.76$ against $3.47$ at $0.5$M tokens,
 as the gradient-overlap prediction requires, but continued training on
-narrow aligned data damages the model again (QA $4.95\to9.75$
-from $0.5$M to $8$M tokens), whereas general-text recovery is monotone. Quantization damage past the bit cliff is considerably less redeemable
-under the same recipe (residuals $\approx2.6$--$2.8$ after int3) than
+narrow aligned data damages the model again, QA rising from $4.95$ to $9.75$ between $0.5$M and $8$M tokens, whereas general-text recovery is monotone. Quantization damage past the bit cliff is considerably less redeemable
+under the same recipe, with residuals of about $2.6$ to $2.8$ nats after int3, than
 pruning damage at matched severity of the initial damage.
 
 \subsection{Re-analysis of an earlier ability-space grid}
@@ -441,13 +367,7 @@ An earlier internal study fitted compression laws directly on Rasch
 abilities from $\sim$100-item panels over a 774-cell Qwen3 grid and
 reported that no derived law had held-out predictive power. Our
 re-analysis attributes much of this outcome to the measurement layer:
-(1) the falsification anchor of that study was driven almost entirely by the
-answer-only recipe (after stratification the anchor holds and the held-out
-error drops from $9.0\times$ to $1.8\times$ the noise floor); (2)
-same-benchmark evaluation inflated the QA gains by roughly one third;
-(3) discrimination heterogeneity invalidates interval-scale ability while
-rankings survive (Spearman $\rho\ge0.98$); (4) item-level damage is smooth
-before the cliff, which excludes discrete skill deletion at the item level.
+first, the falsification anchor of that study was driven almost entirely by the answer-only recipe, and after stratification the anchor holds and the held-out error drops from $9.0\times$ to $1.8\times$ the noise floor; second, same-benchmark evaluation inflated the QA gains by roughly one third; third, discrimination heterogeneity invalidates interval-scale ability while rankings survive with Spearman $\rho\ge0.98$; and fourth, item-level damage is smooth before the cliff, which excludes discrete skill deletion at the item level.
 These findings fixed the measurement protocol described in Section 2.1 of the main paper.
 
 
