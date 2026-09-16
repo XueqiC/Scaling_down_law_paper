@@ -1,0 +1,513 @@
+# v9_blocks_Qwen-Qwen3-1.7B: frozen sources
+
+v9_blocks_Qwen-Qwen3-0.6B_a.pdf: 2.7 x 2.4 in; bold Times New Roman; ticks 8.5 pt, axis labels 9.5 pt, legend 8.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [1.1], 'marker_sizes_pt': [], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
+v9_blocks_Qwen-Qwen3-0.6B_b.pdf: 2.7 x 2.4 in; bold Times New Roman; ticks 8.5 pt, axis labels 9.5 pt, legend 8.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [1.1], 'marker_sizes_pt': [], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
+v9_blocks_Qwen-Qwen3-0.6B_c.pdf: 2.7 x 2.4 in; bold Times New Roman; ticks 8.5 pt, axis labels 9.5 pt, legend 8.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [1.1], 'marker_sizes_pt': [], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
+v9_blocks_Qwen-Qwen3-0.6B_d.pdf: 2.7 x 2.4 in; bold Times New Roman; ticks 8.5 pt, axis labels 9.5 pt, legend 8.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [1.1], 'marker_sizes_pt': [], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
+v9_blocks_Qwen-Qwen3-0.6B_legend.pdf: 5.5 x 0.42 in; bold Times New Roman; ticks 8.5 pt, axis labels 8.5 pt, legend 8.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [], 'marker_sizes_pt': [6.0], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
+Uniform appendix exports: top legend strip, no in-panel titles; source records unchanged. Markers are horizontally separated in display points and drawn after lines with white edges.
+v9_blocks_Qwen-Qwen3-1.7B_a.pdf: 2.7 x 2.4 in; bold Times New Roman; ticks 8.5 pt, axis labels 9.5 pt, legend 8.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [1.1], 'marker_sizes_pt': [], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
+v9_blocks_Qwen-Qwen3-1.7B_b.pdf: 2.7 x 2.4 in; bold Times New Roman; ticks 8.5 pt, axis labels 9.5 pt, legend 8.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [1.1], 'marker_sizes_pt': [], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
+v9_blocks_Qwen-Qwen3-1.7B_c.pdf: 2.7 x 2.4 in; bold Times New Roman; ticks 8.5 pt, axis labels 9.5 pt, legend 8.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [1.1], 'marker_sizes_pt': [], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
+v9_blocks_Qwen-Qwen3-1.7B_d.pdf: 2.7 x 2.4 in; bold Times New Roman; ticks 8.5 pt, axis labels 9.5 pt, legend 8.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [1.1], 'marker_sizes_pt': [], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
+v9_blocks_Qwen-Qwen3-1.7B_legend.pdf: 5.5 x 0.42 in; bold Times New Roman; ticks 8.5 pt, axis labels 8.5 pt, legend 8.5 pt; default lines 1.1 pt, markers 3.8 pt; caps 2 pt. Rendered artist sizes: {'line_widths_pt': [], 'marker_sizes_pt': [3.8], 'errorbar_widths_pt': [], 'cap_sizes_pt': [], 'cap_widths_pt': []}. Full canvas retained; no titles, panel letters, or explanatory annotations.
+
+## Inputs (SHA-256)
+
+- `results/v9-capability-regions/Qwen--Qwen3-0.6B/similarity.json`: `7baa6ae837faff6610c480c19f2f1b1e76085d170a779ee6b15339f7f6b3f436`
+- `results/v9-capability-regions/Qwen--Qwen3-1.7B/similarity.json`: `bc127c5fff1cb67c9d47f17b0db1147b6e6609c645d885f1871c3974fbea6449`
+- `results/v9-capability-regions/Qwen--Qwen3-4B/similarity.json`: `0a428b0c9a5e5a0bff79d960c7e3798e8b82c43b9682a1a54cc605e77ae1a5f0`
+- `results/v9-capability-regions/gemma3-12b/similarity.json`: `0dbca441ac01f828ff9fa8d403734ef58678fa0edeab60d5b3fe9a6cf278ea9e`
+- `results/v9-capability-regions/gemma3-1b/similarity.json`: `3de3aba8fcb6798cdc1a0f06db2320a13224770595a5e0197910bdb980fbe9e8`
+- `results/v9-capability-regions/gemma3-270m/similarity.json`: `b40d1bd098f0da40e9dfc2249e5981775a60201dc10b998b3cd5bc2e46ed27e8`
+- `results/v9-capability-regions/gemma3-4b/similarity.json`: `eedcb25fc7a243a2fb1bacebaed398c6d528f9d09dfb923c13bf7c3f062a2c4e`
+- `results/v9-capability-regions/gemma4-31b/similarity.json`: `611e31974a97e8fb59e247058a5ca3145e769825985c1b85683ffbc973eb97a9`
+- `results/v9-capability-regions/muse-30b/similarity.json`: `7826a91e82c1fa46975674be53a5937c7da3e72788f05a021ecc291f0ad8dc35`
+- `results/v9-capability-regions/olmo3-7b/similarity.json`: `f465be360c4bfee1c428932532b9866a296fd25182d26f01fa417a7cd39db085`
+
+## Plotted records
+
+```json
+[
+  {
+    "model": "Qwen--Qwen3-1.7B",
+    "metric": "raw_cosine",
+    "benchmarks": [
+      "gsm8k",
+      "math500",
+      "svamp",
+      "humaneval",
+      "mbpp",
+      "2wiki",
+      "hotpotqa",
+      "triviaqa",
+      "c4"
+    ],
+    "matrix": [
+      [
+        1.0,
+        0.854739262533044,
+        0.8152785308587478,
+        0.809232847160505,
+        0.7269964404842341,
+        0.5832813253507847,
+        0.72652701972414,
+        0.7032579409316422,
+        0.732480546888211
+      ],
+      [
+        0.854739262533044,
+        1.0,
+        0.7488777358241108,
+        0.8282287374091862,
+        0.7266342384114721,
+        0.5823637763964796,
+        0.7777695122168357,
+        0.7165469570460258,
+        0.7652753829500519
+      ],
+      [
+        0.8152785308587478,
+        0.7488777358241108,
+        1.0,
+        0.7972618050064578,
+        0.7186280909394701,
+        0.6246684088334024,
+        0.6901238433981648,
+        0.7320639443005615,
+        0.7302831657765414
+      ],
+      [
+        0.809232847160505,
+        0.8282287374091862,
+        0.7972618050064578,
+        1.0,
+        0.7969316154508488,
+        0.6558815132033432,
+        0.7866287448266949,
+        0.7803050275177636,
+        0.8279227250054557
+      ],
+      [
+        0.7269964404842341,
+        0.7266342384114721,
+        0.7186280909394701,
+        0.7969316154508488,
+        1.0,
+        0.5708420109271412,
+        0.716982078850663,
+        0.6505998206127156,
+        0.7512360205081805
+      ],
+      [
+        0.5832813253507847,
+        0.5823637763964796,
+        0.6246684088334024,
+        0.6558815132033432,
+        0.5708420109271412,
+        1.0,
+        0.6519813423970222,
+        0.6062278392583637,
+        0.6494424924425916
+      ],
+      [
+        0.72652701972414,
+        0.7777695122168357,
+        0.6901238433981648,
+        0.7866287448266949,
+        0.716982078850663,
+        0.6519813423970222,
+        1.0,
+        0.7087520756801394,
+        0.8275759672211495
+      ],
+      [
+        0.7032579409316422,
+        0.7165469570460258,
+        0.7320639443005615,
+        0.7803050275177636,
+        0.6505998206127156,
+        0.6062278392583637,
+        0.7087520756801394,
+        1.0,
+        0.7407889075982708
+      ],
+      [
+        0.732480546888211,
+        0.7652753829500519,
+        0.7302831657765414,
+        0.8279227250054557,
+        0.7512360205081805,
+        0.6494424924425916,
+        0.8275759672211495,
+        0.7407889075982708,
+        1.0
+      ]
+    ],
+    "normalization": [
+      0.0013563651228417522,
+      1.0
+    ]
+  },
+  {
+    "model": "Qwen--Qwen3-1.7B",
+    "metric": "log_cosine",
+    "benchmarks": [
+      "gsm8k",
+      "math500",
+      "svamp",
+      "humaneval",
+      "mbpp",
+      "2wiki",
+      "hotpotqa",
+      "triviaqa",
+      "c4"
+    ],
+    "matrix": [
+      [
+        1.0,
+        0.996839044262548,
+        0.9727087856806068,
+        0.9960475893144438,
+        0.9957907113297266,
+        0.9821541367907265,
+        0.9807400923214258,
+        0.9744845296278644,
+        0.9924853301374718
+      ],
+      [
+        0.996839044262548,
+        1.0,
+        0.9620901550064985,
+        0.9967864440860129,
+        0.9965756563570779,
+        0.9768690924996888,
+        0.9749899759185762,
+        0.9659915968162966,
+        0.9944757707650824
+      ],
+      [
+        0.9727087856806068,
+        0.9620901550064985,
+        1.0,
+        0.9653809811302753,
+        0.9661634326001473,
+        0.9829044706582274,
+        0.9838171831379817,
+        0.9898546945842285,
+        0.955066512094533
+      ],
+      [
+        0.9960475893144438,
+        0.9967864440860129,
+        0.9653809811302753,
+        1.0,
+        0.9976533542799987,
+        0.978632947100864,
+        0.9769680687120759,
+        0.969239083728522,
+        0.9928647709474581
+      ],
+      [
+        0.9957907113297266,
+        0.9965756563570779,
+        0.9661634326001473,
+        0.9976533542799987,
+        1.0,
+        0.9807658293984005,
+        0.979110383815422,
+        0.9710692944777688,
+        0.9939488950338435
+      ],
+      [
+        0.9821541367907265,
+        0.9768690924996888,
+        0.9829044706582274,
+        0.978632947100864,
+        0.9807658293984005,
+        1.0,
+        0.9938658773190346,
+        0.9898781837519656,
+        0.9781152108433591
+      ],
+      [
+        0.9807400923214258,
+        0.9749899759185762,
+        0.9838171831379817,
+        0.9769680687120759,
+        0.979110383815422,
+        0.9938658773190346,
+        1.0,
+        0.990199129993838,
+        0.9760859338752369
+      ],
+      [
+        0.9744845296278644,
+        0.9659915968162966,
+        0.9898546945842285,
+        0.969239083728522,
+        0.9710692944777688,
+        0.9898781837519656,
+        0.990199129993838,
+        1.0,
+        0.9641178150206441
+      ],
+      [
+        0.9924853301374718,
+        0.9944757707650824,
+        0.955066512094533,
+        0.9928647709474581,
+        0.9939488950338435,
+        0.9781152108433591,
+        0.9760859338752369,
+        0.9641178150206441,
+        1.0
+      ]
+    ],
+    "normalization": [
+      0.955066512094533,
+      1.0
+    ]
+  },
+  {
+    "model": "Qwen--Qwen3-1.7B",
+    "metric": "shared_component_removed_cosine",
+    "benchmarks": [
+      "gsm8k",
+      "math500",
+      "svamp",
+      "humaneval",
+      "mbpp",
+      "2wiki",
+      "hotpotqa",
+      "triviaqa",
+      "c4"
+    ],
+    "matrix": [
+      [
+        1.0,
+        0.8193643715209471,
+        -0.6303324384545175,
+        0.724444791488332,
+        0.6642200177269708,
+        -0.8025558548985487,
+        -0.8107346883585616,
+        -0.7851178983915965,
+        0.5764372265684948
+      ],
+      [
+        0.8193643715209471,
+        1.0,
+        -0.8186302718975891,
+        0.8354671550991487,
+        0.8097904208033946,
+        -0.832091289179928,
+        -0.8514665139761848,
+        -0.8931327086943439,
+        0.742782166554725
+      ],
+      [
+        -0.6303324384545175,
+        -0.8186302718975891,
+        1.0,
+        -0.7693533541798598,
+        -0.7975326271822448,
+        0.614560904515325,
+        0.6516550052091901,
+        0.8118349844047184,
+        -0.8748643760121116
+      ],
+      [
+        0.724444791488332,
+        0.8354671550991487,
+        -0.7693533541798598,
+        1.0,
+        0.8494612835829578,
+        -0.8164391290311246,
+        -0.8300581743628339,
+        -0.8428191791637718,
+        0.6434685047610195
+      ],
+      [
+        0.6642200177269708,
+        0.8097904208033946,
+        -0.7975326271822448,
+        0.8494612835829578,
+        1.0,
+        -0.7769682782077465,
+        -0.795267715711906,
+        -0.8346419360091999,
+        0.6829946122954026
+      ],
+      [
+        -0.8025558548985487,
+        -0.832091289179928,
+        0.614560904515325,
+        -0.8164391290311246,
+        -0.7769682782077465,
+        1.0,
+        0.7843784350680978,
+        0.7411166987861382,
+        -0.6109851742965543
+      ],
+      [
+        -0.8107346883585616,
+        -0.8514665139761848,
+        0.6516550052091901,
+        -0.8300581743628339,
+        -0.795267715711906,
+        0.7843784350680978,
+        1.0,
+        0.7606478432720105,
+        -0.6432735493818356
+      ],
+      [
+        -0.7851178983915965,
+        -0.8931327086943439,
+        0.8118349844047184,
+        -0.8428191791637718,
+        -0.8346419360091999,
+        0.7411166987861382,
+        0.7606478432720105,
+        1.0,
+        -0.7986283608504336
+      ],
+      [
+        0.5764372265684948,
+        0.742782166554725,
+        -0.8748643760121116,
+        0.6434685047610195,
+        0.6829946122954026,
+        -0.6109851742965543,
+        -0.6432735493818356,
+        -0.7986283608504336,
+        1.0
+      ]
+    ],
+    "normalization": [
+      -0.9516840106301454,
+      1.0
+    ]
+  },
+  {
+    "model": "Qwen--Qwen3-1.7B",
+    "metric": "top_0.1pct_jaccard",
+    "benchmarks": [
+      "gsm8k",
+      "math500",
+      "svamp",
+      "humaneval",
+      "mbpp",
+      "2wiki",
+      "hotpotqa",
+      "triviaqa",
+      "c4"
+    ],
+    "matrix": [
+      [
+        1.0,
+        0.4566144285557051,
+        0.3960422029775779,
+        0.27989034512643973,
+        0.266636628743789,
+        0.23223865930334453,
+        0.2661626158244293,
+        0.24689065678692385,
+        0.2646116234385773
+      ],
+      [
+        0.4566144285557051,
+        1.0,
+        0.3250398851830444,
+        0.3153968895960267,
+        0.3047498646297681,
+        0.23221924315017353,
+        0.2733003768203145,
+        0.22065112470897408,
+        0.2773365604849637
+      ],
+      [
+        0.3960422029775779,
+        0.3250398851830444,
+        1.0,
+        0.20650979839386918,
+        0.19831555427242484,
+        0.1826307461131206,
+        0.20573696244448142,
+        0.24519630403920473,
+        0.19759027254742814
+      ],
+      [
+        0.27989034512643973,
+        0.3153968895960267,
+        0.20650979839386918,
+        1.0,
+        0.40900808083620727,
+        0.18721265512957064,
+        0.2161981996502226,
+        0.17639163298817798,
+        0.2268486775791921
+      ],
+      [
+        0.266636628743789,
+        0.3047498646297681,
+        0.19831555427242484,
+        0.40900808083620727,
+        1.0,
+        0.18772326536895892,
+        0.21560999322757707,
+        0.16601298950388987,
+        0.23577640465377703
+      ],
+      [
+        0.23223865930334453,
+        0.23221924315017353,
+        0.1826307461131206,
+        0.18721265512957064,
+        0.18772326536895892,
+        1.0,
+        0.3338571743673495,
+        0.19329998980412122,
+        0.27817070398342975
+      ],
+      [
+        0.2661626158244293,
+        0.2733003768203145,
+        0.20573696244448142,
+        0.2161981996502226,
+        0.21560999322757707,
+        0.3338571743673495,
+        1.0,
+        0.21706414262799256,
+        0.32229938310152406
+      ],
+      [
+        0.24689065678692385,
+        0.22065112470897408,
+        0.24519630403920473,
+        0.17639163298817798,
+        0.16601298950388987,
+        0.19329998980412122,
+        0.21706414262799256,
+        1.0,
+        0.19550316794778966
+      ],
+      [
+        0.2646116234385773,
+        0.2773365604849637,
+        0.19759027254742814,
+        0.2268486775791921,
+        0.23577640465377703,
+        0.27817070398342975,
+        0.32229938310152406,
+        0.19550316794778966,
+        1.0
+      ]
+    ],
+    "normalization": [
+      0.03326738525665808,
+      1.0
+    ]
+  }
+]
+```
