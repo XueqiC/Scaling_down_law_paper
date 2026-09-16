@@ -11,12 +11,12 @@
 
 \subsection{Pruning: expanded development set and the selection rule}
 Table~\ref{tab:v53_loso} reports the leave-one-source-out comparison of the pruning candidates on the
-expanded seventeen-state development set, under the pre-committed rule that selected the delivered
+expanded seventeen-state development set, under the rule committed before the confirmation that selected the delivered
 form.
 \input{tables/v53_loso}
 \subsection{Grouped quantization: leave-one-state-out on six states}
 Table~\ref{tab:v55_loso} reports the leave-one-state-out comparison of the grouped-quantization
-candidates on the six development states.
+candidates on the six development states, one held-out state at a time.
 \begin{retargetreferences}{\retargetreference{\S\ref{sec:unseen_settings}}{Section 6.1 of the main paper}}
 \input{tables/v55_loso}
 \end{retargetreferences}
@@ -75,7 +75,7 @@ pool (0.020 and 0.038), and the second form with the loss descriptor
 is best for QA there (0.360, with the reuse-only form at 0.367); at
 the development pools the two descriptor variants disagree on math
 (0.404 with the loss descriptor, 0.122 with the size descriptor), and
-these data do not settle the choice of descriptor.
+these data do not settle the choice of descriptor between size and loss.
 \subsection{Pre-compression statistics as additional inputs}
 \label{sec:app_inputs}
 
@@ -88,7 +88,7 @@ improve four of nine arm-and-capability pairs (pruning math and QA, grouped-quan
 each with an interval above zero; in nine of nine pairs both statistics-augmented linear candidates
 have higher error than the source-free median configuration curve. Accuracy at naming the most
 fragile capability falls for pruning (58.3\% to 41.7\%) and rises for grouped quantization (40.7\% to
-49.4\%) when the statistics are added.
+49.4\%) when the three statistics are added to the inputs.
 
 We then tested one explanation, that the source-dependent candidates lose because they re-learn the
 whole response. Holding the median configuration curve fixed and fitting only a heavily shrunk source
@@ -110,7 +110,8 @@ lowers the error from 0.413, 0.516, and 0.500 nats to 0.253, 0.292,
 and 0.806 for math, code, and QA; adding $L_{0,c}$ to $(N_0,D_0)$ has
 intervals above zero for math and code, whereas adding $D_0$ does not
 (Figure 10A of the main paper). The source-conditioned forms of Section 5 of the main paper use the three inputs per capability, and each
-arm also carries a source-free relation for the cases in which the source inputs add nothing.
+arm also carries a source-free relation for the cases in which the source inputs add nothing to
+the accuracy of the prediction.
 
 
 \paragraph{Conditioning audit.} Table~\ref{tab:cond_audit} gives the full audit behind the capability-conditioning comparison of Appendix~E of the main paper, in which negative scales were allowed.
@@ -187,7 +188,7 @@ the teacher traces), and the TriviaQA control (Table~\ref{tab:qa_scope}). At
 each distillation budget the outcome matches the pre-stated reading, in
 which only the new primary sample reproduces: the 2Wiki gain replicates
 ($-1.55$, $-1.26$, $-0.88$ nats), and MuSiQue and TriviaQA rise ($+0.08$ to $+0.34$).
-Pruning and quantization damage agrees in sign on all three sets.
+Pruning and quantization damage agrees in sign on all three evaluation sets, as Table~\ref{tab:qa_scope} shows.
 \input{tables/qa_scope}
 
 
@@ -299,7 +300,7 @@ the damage.
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_b.pdf}\subcaption{Source-free comparison}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_c.pdf}\subcaption{Power versus alternatives}\end{subfigure}
 
-\caption{Paired improvements with the zero line marked; positive values mean that the first-named model is better. (a) Full model against its variant without $D_0$, per arm and capability; intervals are shown only where a cluster bootstrap was computed (leave-one-stage-out panels), and $n$ is the number of evaluated source states. (b) Source-conditioned candidate against the strongest source-free baseline for all twenty registered tests (hollow markers: frozen prospective; filled markers: leave-one-out). (c) Shared power form against the same-input alternatives A1 and A2 on the pruning configuration tests.}
+\caption{Paired improvements; positive values favour the first-named model. (a) Full model against its variant without $D_0$, per arm and capability, with cluster-bootstrap intervals where they were computed. (b) Source-conditioned candidate against the strongest source-free baseline on the twenty registered tests (hollow: frozen prospective; filled: leave-one-out). (c) Shared power form against the same-input alternatives A1 and A2 on the pruning configuration tests.}
 \label{fig:gains}
 \end{figure}
 
@@ -310,7 +311,7 @@ mirrored comparison file. Two pre-specified training-seed repeats
 (Gemma-3-270M at $U{=}75$ and Gemma-3-1B at $U{=}450$, data seed 11)
 reproduce the four checkpoints of their originals within 0.017 nats
 for math and 0.030 for code; for QA the difference grows with the
-reuse count, from 0.004 to 0.019 at the first two checkpoints to 0.089
+reuse ratio, from 0.004 to 0.019 at the first two checkpoints to 0.089
 and 0.186 at the last; training-seed noise is well below the law
 errors except for QA at high reuse.
 \input{tables/p2v2_test}
@@ -350,8 +351,8 @@ $2$--$4\times$.
 \paragraph{Selective ablation.}\preliminary{single model; random, magnitude-matched and global-Fisher control ablations are left to future work} We
 select the top $0.05\%$ of weight coordinates by the \emph{residual}
 Fisher signature of each capability (excluding coordinates shared with
-other capabilities) and zero them. The damage matrix is nearly
-diagonal (Gemma-3-1B; rows ablate, columns measure, nats/token):
+other capabilities) and zero them. The damage matrix for Gemma-3-1B is nearly diagonal. In the table below, rows identify the ablated
+region and columns the measured capability, with entries given as loss increases in nats per native token:
 
 \begin{center}
 \small
@@ -364,7 +365,7 @@ Code & $+0.42$ & $\mathbf{+7.14}$ & $+0.00$ \\
 QA   & $+0.01$ & $+0.00$ & $\mathbf{+2.29}$ \\
 \bottomrule
 \end{tabular*}
-\captionof*{table}{\mbox{Post-hoc} selective-ablation measurements. Rows identify the ablated capability region; columns identify the measured capability. Entries are loss increases in nats per native token; bold entries mark the matching capability.}
+\captionof*{table}{\mbox{Post-hoc} selective-ablation measurements. Rows identify the ablated capability region; columns identify the measured capability. Entries are loss increases in nats per native token; bold entries mark the matching capability on the diagonal.}
 \end{center}
 
 Zeroing $0.05\%$ of the weights, selected from gradients alone,
@@ -398,8 +399,8 @@ capability- and cost-aware method selection would use such predictors
 as loss constraints. The offline replay with frozen predictions
 below quantifies the decision cost of prediction error on the
 heterogeneous panel; the held-out selection validation on the
-Pythia panel is reported in Section 7 of the main paper and
-Appendix H.
+Pythia panel is reported in Section 7 and in Appendix H of the main paper, on four fresh Pythia
+states.
 
 \subsection{Recovery arm: redeemable damage and the fitted plateau}
 \label{sec:recovery}
@@ -425,7 +426,7 @@ as the gradient-overlap prediction requires, but continued training on
 narrow aligned data damages the model again (QA $4.95\to9.75$
 from $0.5$M to $8$M tokens), whereas general-text recovery is monotone. Quantization damage past the bit cliff is considerably less redeemable
 under the same recipe (residuals $\approx2.6$--$2.8$ after int3) than
-pruning damage at matched severity.
+pruning damage at matched severity of the initial damage.
 
 \subsection{Re-analysis of an earlier ability-space grid}
 \label{sec:app_cross}

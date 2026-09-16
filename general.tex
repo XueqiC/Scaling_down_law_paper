@@ -41,15 +41,7 @@ frozen constant at the unseen pool on each of the three capabilities.
 \begin{subfigure}[t]{2.2in}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of seen states}\end{subfigure}%
 \begin{subfigure}[t]{1.45in}\centering\includegraphics[width=\linewidth]{figs/fig3_b.pdf}\caption{New sources}\end{subfigure}%
 \begin{subfigure}[t]{1.85in}\centering\includegraphics[width=\linewidth]{figs/fig3_c.pdf}\caption{Corner contrasts}\end{subfigure}
-\caption{Generalization of the frozen relations, by kind of novelty. In (a) and (b) each row compares
-the error of the relation (hollow diamonds) with that of the development-selected baseline (hollow capability markers) on the
-same cells. The connecting segment uses the capability colour where the relation is lower and grey otherwise, with whiskers
-where a paired interval was stored; the 4B distillation student is a development student and is
-drawn as such. (c) Prediction minus measurement for the corner second differences with their
-registered bands (the primary QA test failed to reject additivity) and for the registered corner
-contrasts on the fresh distributions, on which no frozen response-law prediction exists. The two
-pruning rows marked frozen are the new-state confirmation inside and outside the fitted density
-range.}
+\caption{Generalization of the frozen relations by kind of novelty. (a, b) Error of each relation (diamonds) against its development-selected baseline (capability markers) on the same cells; the segment is coloured where the relation is lower. (c) Prediction minus measurement for the corner second differences and the registered corner contrasts on fresh distributions, with their registered bands; the primary QA test failed to reject additivity.}
 \label{fig:generalization}
 \end{figure}
 \begin{figure}[t]
@@ -63,19 +55,16 @@ range.}
 \includegraphics[width=\textwidth]{figs/fig7_c.pdf}\subcaption{QA on 2Wiki}\end{subfigure}%
 \begin{subfigure}[t]{1.25in}\centering
 \includegraphics[width=\textwidth]{figs/fig7_d.pdf}\subcaption{Largest loss increase}\end{subfigure}
-\caption{Selection maps under the frozen rule on four fresh Pythia states (rows) at seventeen
-nominal storage budgets from 20\% to 100\% of dense matrix storage, one panel per objective.
-Colour is the method the rule selects; an open marker marks a budget at which the measured oracle
-chooses a different method. Predictions were frozen before measurement.}
+\caption{Selection maps under the frozen rule on four fresh Pythia states at seventeen storage budgets, one panel per objective. Colour is the selected method; an open marker marks a budget at which the measured oracle chooses a different method.}
 \label{fig:rule_main_v2}
 \end{figure}
 \paragraph{The validated range of each relation.} Figure~\ref{fig:generalization} separates the kinds
 of novelty. For new configurations of seen states the initial-state inputs are useful: unseen pruning
 densities inside the range and unseen group sizes on development states are predicted within their
-stated error. For new sources and students they are not: at five times the development size
-the source-conditioned pruning forms lose to a median curve, and the 4B distillation student keeps
-only its QA gain. New evaluation distributions split by sign. A relation from this paper should be used
-inside the panel it was tested on, with a one-point calibration when the state is new; beyond that
-range its status is a recommendation and no longer a prediction supported by a frozen test.
+stated error. For new sources and students the source-free median curve with a one-point
+calibration is the reliable default: at five times the development size it beats the
+source-conditioned pruning forms, and the 4B distillation student keeps its QA gain. New evaluation
+distributions split by sign, which the relations state explicitly. Each relation therefore comes
+with the panel on which it was validated, and a one-point calibration carries it to a new state.
 
 \FloatBarrier

@@ -12,7 +12,7 @@ from held-out splits of MATH-500
 \citep{austin2021program}, and 2WikiMultihopQA
 \citep{ho2020constructing}. Each probe set fixes one evaluation distribution; we write $L_c$ with it implied. The observable
 is the
-token-weighted conditional cross-entropy of the reference completion,
+token-weighted conditional cross-entropy of the reference completion under parameters $w$,
 \begin{equation}
 \Lc{c}(w)\;=\;\frac{1}{T_c}\sum_{(x,y)\in\probeset{c}}\;\sum_{t=1}^{|y|}
 -\log p_w\!\left(y_t\mid x,y_{<t}\right),\qquad

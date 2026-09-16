@@ -19,19 +19,37 @@ no measurement of the compressed target is used. Relations are developed on a co
 stage vary independently, and tested with coefficients and predictions frozen before new
 configurations and states are measured.
 
-The study proceeds in one sequence: we define the prediction problem and its admitted inputs,
-measure the responses under control, ask which conditions and mechanisms explain their variation,
-build the relations that those measurements permit, test them on new configurations, states and
-distributions, and carry the surviving relations into a selection decision. Three kinds of result
-follow. (1)
-\emph{Responses and relations}: capability-conditioned damage is structured, and where its shape is
-shared across states a bounded relation predicts it, per method, with its tested range stated alongside it. (2) \emph{Understanding gained in building
-reliable laws}: why a logarithmic reuse term fails and additivity was still not rejected; why source
-descriptors fit without transferring; why question answering and code diverge; and what
-identifiability requires of a design, because the data that fitted a curvature exponent contained
-no rectangle on which the additive and interacting readings could be separated. (3) \emph{Guidance for experiment design and configuration choice}: which inputs to admit for
-which transfer, when a calibrated configuration median is the better default, why the protocol must
-be fixed before damage is measured, how to design data-reuse experiments so that the decisive
-statistic is computable, and how far a selection rule has been validated. Each relation, verdict and
-recommendation keeps the status assigned before its outcome was measured: development, frozen
-prediction, or post-hoc recommendation.
+The study proceeds in one sequence, from the prediction problem and its admitted inputs, through
+controlled measurement and explanation, to frozen tests and a selection decision. Each relation,
+verdict and recommendation keeps the status assigned before its outcome was measured: development,
+frozen prediction, or post-hoc recommendation.
+
+\paragraph{Contributions.} This paper makes the following contributions.
+\begin{itemize}
+\item \textbf{A capability-conditioned prediction problem with one endpoint and one validation
+standard across pruning, quantization and distillation.} The endpoint is the conditional loss of each
+capability, the inputs are restricted to the initial state and the configuration, and each relation
+is tested with coefficients and predictions frozen before measurement.
+\item \textbf{Controlled measurements that establish what any scaling-down law must reproduce.} On
+Pythia checkpoints whose size and pretraining stage vary independently and on Gemma students under
+one distillation protocol, we show that damage is capability-specific with an ordering that changes
+across models, that the source state matters inside a range, that the learning rate sets
+distillation damage, and that reusing a small data pool carries a cost that grows with reuse and
+student size and transfers across question-answering distributions.
+\item \textbf{Validated predictive relations for each method, each with its tested range and
+calibration cost.} A five-parameter pruning form predicts math and code at unseen densities of seen
+states, a same-input interpolation predicts unseen group sizes on the measured quantization grid,
+one-coefficient reuse forms predict distillation on the development students, and a one-point
+calibration extends the median configuration curve to new states.
+\item \textbf{Explanatory evidence that separates verified causes from excluded explanations.} A
+coefficient-free second-order account of logit displacement reproduces compression damage across
+three families inside a stated magnitude boundary, and a fit-free rectangle test provides the first
+direct measurement of the budget-by-reuse interaction, which earlier designs could not identify.
+\item \textbf{A capability- and budget-specific selection rule confirmed prospectively.} Frozen
+selection maps on four fresh Pythia states match the measured oracle within 0.00001, 0.004 and 0.14
+nats for math, code and QA.
+\item \textbf{Design guidance and an open measurement suite.} We state which inputs to admit for
+which transfer, why the protocol must be fixed before damage is measured, how to design reuse
+experiments so that the decisive statistic is computable, and we release coefficients, registered
+predictions, measurements and code.
+\end{itemize}

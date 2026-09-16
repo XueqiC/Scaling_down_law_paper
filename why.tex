@@ -16,13 +16,14 @@ bit-width threshold whose position depends on the group size, so an interpolatio
 measured grid predicts the response and a smooth surface does not.
 
 Under distillation, a joint form with a logarithmic reuse term,
-$\delta=(a+a'z)\log(1+T/T_{\mathrm{ref}})+(b+b'z)\log(1+E)$, implies that the pool-change effect
+$\delta=(a+a'z)\log(1+T/T_{\mathrm{ref}})+(b+b'z)\log(1+E)$ with $z$ the standardized student size
+and $T_{\mathrm{ref}}$ a reference budget, implies that the pool-change effect
 divided by its log bracket is flat in budget; it drifts by a factor of twenty across checkpoints for
 code on the 1B student at matching tolerances of 1\% and 0.3\%. A free reuse exponent $h_p(E)=((1+E)^p-1)/p$, profiled inside training folds, lies near or above
 one for each capability (code 0.69, math 1.12, QA 1.44; Fig.~\ref{fig:explanation}a) with wide
 fold ranges and yields no held-out accuracy: neither the logarithmic form, the curved form nor a
 single interaction term beats the development-stage strongest baseline on either pre-declared
-target.
+target of the final confirmation round.
 
 Whether additivity itself failed cannot be determined from those data, because a fixed pool and a
 doubling budget grid do not place two trajectories on the same budget. Four trajectories designed by
@@ -40,12 +41,7 @@ underpowered.
 \includegraphics[width=\textwidth]{figs/fig5_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig5_a.pdf}\caption{1B student}\end{subfigure}\hfill
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig5_b.pdf}\caption{4B student}\end{subfigure}
-\caption{Falsification of the logarithmic reuse term. The measured pool-change effect divided by
-its logarithmic bracket $\log(1+E_2)-\log(1+E_1)$ against the common supervised budget of each
-matched pair, per capability, for the 1B (a) and 4B (b) students. The heavy line joins the
-per-budget median over all pool pairs and the shaded band spans their range; pairs matched within
-1\% and within 0.3\% are pooled. The joint form with a logarithmic reuse term predicts a flat line
-in budget, which the measured ratios do not show.}
+\caption{Falsification of the logarithmic reuse term. The pool-change effect divided by its logarithmic bracket against the supervised budget, per capability, for the (a) 1B and (b) 4B students; the heavy line is the per-budget median over pool pairs and the band their range. A logarithmic reuse term would predict a flat line in budget.}
 \label{fig:drift}
 \end{figure}
 
@@ -65,7 +61,9 @@ distributions, whereas a claim that distillation improves question answering hol
 \label{sec:why_mech}
 
 For pruning and quantization the loss change under a logit displacement $r$ obeys the exact identity
-$\Delta L=(\mathbb{E}_p[r]-r_y)+\tfrac12\mathrm{Var}_p(r)+O(\lVert r\rVert^3)$, and its
+$\Delta L=(\mathbb{E}_{\pi}[r]-r_y)+\tfrac12\mathrm{Var}_{\pi}(r)+O(\lVert r\rVert^3)$, where $\pi$ is
+the next-token distribution of the reference model and $r_y$ the displacement at the target token,
+and its
 coefficient-free second-order truncation reproduces the measured damage across three families with
 one boundary set by damage magnitude, under 5\% median relative error below about 0.1 nats and past
 20\% by 0.25 (Fig.~\ref{fig:explanation}c). Pure logit shrinkage carries about three percent of the response; the residual variance that

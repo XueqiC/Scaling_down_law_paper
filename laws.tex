@@ -43,20 +43,22 @@ development median under the same rule.
 \paragraph{Relation.} The response is the signed transfer $\delta_c$ of
 an existing student relative to its own reference loss; the teacher
 does not enter it, and the coordinates are the supervised completion
-tokens $T$, the pool size $D_U$, and the reuse count $E=T/D_U$. The
+tokens $T$, the pool size $D_U$, and the reuse ratio $E=T/D_U$. The
 delivered relations, frozen for the confirmation, are
 \begin{equation}
 \widehat\delta_c=a_c\log(1+E)\ (\text{math, code}),\qquad \widehat\delta_{\mathrm{QA}}=u\,(a+b\,u+q\,v),
 \label{eq:kdforms}
 \end{equation}
-with $u=\log(1+T/T_{\mathrm{ref}})$ and $v=\log(D_U/D_{\mathrm{ref}})$: one parameter for math and code, which vanish at zero budget, and three for QA; QA improves under each recipe we ran, and math and
-code move by hundredths to tenths of a nat.
+with $u=\log(1+T/T_{\mathrm{ref}})$ and $v=\log(D_U/D_{\mathrm{ref}})$ for reference constants fixed on
+the development set: one parameter for math and code, which vanish at zero budget, and three for QA; QA improves under each recipe we ran, and math and
+code move by hundredths to tenths of a nat across the same recipes.
 \paragraph{Predictions available in practice.} Table~\ref{tab:main-prediction-v2} gives one relation per arm and task with its range and its
 error against the development-stage strongest baseline. For pruning at an unseen density of a
-seen source, the power form predicts math and code to about 0.24 nats and should not be used for QA
-or outside $d\in[0.6,0.9]$. For quantization the measured grid is the predictor: interpolate group
+seen source, the power form predicts math and code to about 0.24 nats inside $d\in[0.6,0.9]$, and
+the median curve serves QA. For quantization the measured grid is the predictor: interpolate group
 sizes on a seen state, use the per-bit median on a new state, and expect 0.13 to 0.17 nats. For
 distillation, the one-coefficient reuse forms and the QA joint form hold on the development students
-at the 2Wiki distribution; the budget-doubling and data-change interventions are not predicted by any
-of the parsimonious forms tried, and the corresponding rows of the table record this. Each row carries its
-status: development, frozen prediction, or post-hoc recommendation.
+at the 2Wiki distribution; the budget-doubling and data-change interventions remain open targets, and the corresponding rows
+of the table record this. Each row carries its
+status as a development result, a frozen prediction, or a post-hoc recommendation made after the
+outcome was known.
