@@ -1,3 +1,8 @@
+Notation follows the main paper: $L_c$ is the capability-conditioned loss of capability $c$,
+$\Delta L_c$ its change under compression, $\delta_c$ the signed transfer of a distilled student,
+$d$ the retained density, $b$ the bit-width, $g$ the group size, and $\mathbf x=(N_0,D_0,L_{0,c})$
+collects the parameter count, pretraining tokens and reference capability loss of the initial state.
+
 \section{Additional experimental details}
 \label{sec:supp_details}
 
@@ -27,7 +32,8 @@ The low-order surface tested for grouped quantization is
 \qquad u=\log_2 q_{\max}(b)\ \text{(centred)},\ v=\log_2\frac{g}{128},
 \label{eq:quant2d}
 \end{equation}
-with one four-vector of state coefficients per term (twenty coefficients).
+with one four-vector of state coefficients $\phi(\mathbf x)$ per term (twenty coefficients) and
+$q_{\max}(b)=2^{b-1}-1$ the integer range at bit-width $b$.
 
 \paragraph{Identifiability of the two-dimensional form.} The
 development bit-widths are $b\in\{3,5\}$, so the centred $u$ takes the
@@ -54,9 +60,9 @@ in bit-width.
 Table~\ref{tab:distill_forms_audit} lists each distillation form with
 its free parameters, intercept, student descriptor, fit data, and
 frozen coefficients. The form selected in the confirmation for math and code,
-$a_c\log(1+E)$, has one parameter and vanishes at zero budget, and the
-baseline it is compared with, $c_c+b_c\log(1+E)$, adds an unpenalized
-intercept; both are fitted on the same 100 development rows with unit
+$a_c\log(1+E)$, with $E=T/D_U$ the reuse ratio of the supervised token budget $T$ to the pool
+tokens $D_U$, has one parameter and vanishes at zero budget, and the baseline it is compared with,
+$\alpha_c+b_c\log(1+E)$, adds an unpenalized intercept; both are fitted on the same 100 development rows with unit
 weights.
 \input{tables/distill_forms_audit}
 
@@ -122,7 +128,7 @@ the accuracy of the prediction.
 \label{sec:supp_measure}
 
 \paragraph{Capability specificity as a prediction test.} On a
-six-model, five-density pruning panel ($d$ from $0.9$ to $0.7$), the
+six-model, five-density pruning panel (retained density $d$ from $0.9$ to $0.7$), the
 response on the primary benchmark of each capability was used to
 predict the response on the secondary benchmark of the same capability
 through a two-parameter affine map fit out of fold, and compared with
@@ -141,7 +147,7 @@ intervals only.
 \paragraph{Same-capability agreement across the three operations.} On
 Gemma-3-1B, six states fixed before the measurement (pruning at
 $d=0.7$, RTN int4, and four distillation checkpoints of the uniform
-protocol at $U=75$ and $U=450$) were scored on the main-protocol probe
+protocol at pool sizes $U=75$ and $U=450$ traces per domain) were scored on the main-protocol probe
 and on an independent benchmark of the same capability
 (Table~\ref{tab:p3_check}). Code agrees in sign and size on all six
 states. Pruning and quantization damage agrees in sign on all three
@@ -217,10 +223,10 @@ fixed rule, the average of its committed 4- and 6-bit predictions,
 chosen so that no 5-bit measurement enters any fit. Candidate names
 follow Section 5.1 of the main paper: power is the shared power form, A2 the
 per-density source regression with a fixed interpolation rule, A1 its
-$\gamma=1$ variant, cont a continuous two-term polynomial in $1-d$, and
+variant with the pruning exponent $\gamma_c$ fixed at 1, cont a continuous two-term polynomial in $1-d$, and
 the three source-free baselines are strength-only, the median
 development curve, and zero change. For quantization, full uses
-$\{N_0, L_0, D_0\}$, no-D0 drops the training-stage term, and mean and
+$\{N_0, L_{0,c}, D_0\}$, no-D0 drops the training-stage term, and mean and
 median are per-bit constants from the development panel.
 
 Per capability, at 112k under protocol A the source regression reaches
@@ -406,8 +412,8 @@ states.
 \label{sec:recovery}
 \label{sec:app_recovery}
 
-Recovery training on general text is fitted closely by the recovery law
-(Gemma3-270M pruned to $\dens=0.6$; $R^2\approx1.0$):
+Recovery training on general text is fitted closely by the recovery law, with a recovery exponent
+$\beta'_c$ per capability (Gemma3-270M pruned to $\dens=0.6$; $R^2\approx1.0$):
 $\beta'_{\text{math}}=1.23$, $\beta'_{\text{code}}=1.02$, with
 fitted plateaus under the fixed LoRA recipe and the largest measured
 budget of 16M tokens, $\Lc{c}^{\text{plateau}}-\Lc{c}^{\text{dense}}$,
@@ -435,12 +441,12 @@ An earlier internal study fitted compression laws directly on Rasch
 abilities from $\sim$100-item panels over a 774-cell Qwen3 grid and
 reported that no derived law had held-out predictive power. Our
 re-analysis attributes much of this outcome to the measurement layer:
-(1) the $r{=}1$ falsification anchor was driven almost entirely by the
+(1) the falsification anchor of that study was driven almost entirely by the
 answer-only recipe (after stratification the anchor holds and the held-out
 error drops from $9.0\times$ to $1.8\times$ the noise floor); (2)
 same-benchmark evaluation inflated the QA gains by roughly one third;
 (3) discrimination heterogeneity invalidates interval-scale ability while
-rankings survive ($\rho\ge0.98$); (4) item-level damage is smooth
+rankings survive (Spearman $\rho\ge0.98$); (4) item-level damage is smooth
 before the cliff, which excludes discrete skill deletion at the item level.
 These findings fixed the protocol of Section 2.1 of the main paper.
 

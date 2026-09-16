@@ -236,11 +236,11 @@ improvement under int4 recurs in five models and exceeds the measurement-noise f
 OLMo-3-7B loses $2.8$ to $4.7$ and OLMo-3-32B only $0.4$ to $1.2$, so
 the collapse is common although not universal, and OLMo-3 is the robust
 series under both interventions. Within the tested bit-widths a learned
-exponential $q_c e^{-kb}$ fits held-out bits better than the fixed
+exponential $q_c e^{-kb}$, with amplitude $q_c$ per capability and rate $k$, fits held-out bits better than the fixed
 $q_c4^{-b}$ shape (pooled MAE $6.7$ against $7.6$ nats), which shows only
 that the fixed base does not describe this quantizer; the squared
 step-size ratio between 4 and 5 bits is $(7/15)^2\approx0.22$
-(Appendix~\ref{sec:app_details}), and a loss ratio would follow only under assumptions about the error distribution that are not tested in this study.
+(Appendix~\ref{sec:app_details}), and a loss ratio would follow only under assumptions about the error distribution that lie outside the scope of this study.
 
 \paragraph{Distillation.} Black-box traces from two API teachers (600
 per domain) train Gemma-3 students under a full-trace and an
@@ -271,7 +271,7 @@ independently.} Gemma-3 robustness peaks at 12B (27B collapses far
 earlier, $+4.0$ vs.\ $+0.68$ at $\dens=0.7$), in line with the earlier
 ability-space observation of a Qwen3 14B peak. A mid-scale robustness peak appears in both families, in the present grid and in the earlier one.
 \paragraph{A candidate predictor that was retired.} The
-top-concentration statistic $\kappa_c$ tracked robustness within the
+top-concentration statistic $\kappa_c$ of the capability gradient tracked robustness within the
 Qwen3 ladder and was pre-registered as a predictor. The full grid does not support it: across families the
 ordering inverts, since OLMo, the most robust family, has the lowest concentration, and within
 Gemma-3 the largest size violates the within-family trend, so the statistic was retired.
@@ -530,12 +530,13 @@ With the measured alignment term subtracted, the curvature residual
 follows a power law in the deleted capability mass $m_c(\dens)$:
 \begin{equation}
 \Delta\Lc{c}(\dens)\;=\;\underbrace{\gbar{c}^{\top}\dw_\dens}_{\text{measured}}
-\;+\;B\,\big[\underbrace{m_c(\dens)}_{\text{measured}}\big]^{\gamma},
+\;+\;C\,\big[\underbrace{m_c(\dens)}_{\text{measured}}\big]^{\eta},
 \label{eq:fitlaw}
 \end{equation}
-with in-sample $R^2 = 0.82$--$0.996$ over 24 capability$\times$model
-fits. The form is tested on the held-out battery (1000-resample cell bootstrap): in \emph{leave-one-family-out} transfer the
-shared-$\gamma$ mechanism form attains MAE $2.17$ nats versus $10.3$
+where $\gbar{c}$ is the mean gradient of the capability loss at the dense weights, $\dw_\dens$ the
+weight change from pruning to density $\dens$, $C$ a fitted amplitude and $\eta$ a fitted exponent,
+with in-sample $R^2 = 0.82$--$0.996$ over 24 capability$\times$model fits. The form is tested on the held-out battery (1000-resample cell bootstrap): in \emph{leave-one-family-out} transfer the
+shared-$\eta$ mechanism form attains MAE $2.17$ nats versus $10.3$
 for per-capability raw sparsity and $8.2$ for the direct-damage
 baseline (both CIs exclude zero), so the deleted-mass coordinate
 transfers across families; it also beats the direct-damage baseline in
@@ -545,9 +546,9 @@ sparsity within-model does not reach significance
 (without the first-order term, QA is unfittable, $R^2\!\le\!0.67$;
 with it, QA joins the law). Two structural results:
 (i) in the deleted-mass coordinate the exponent concentrates at
-$\gamma\in[1.2,2.2]$ across all families, versus $3.2$--$8.7$ in the
+$\eta\in[1.2,2.2]$ across all families, versus $3.2$--$8.7$ in the
 raw $(1-\dens)$ coordinate, which makes
-the form portable; and (ii) \emph{within a model, $\gamma$ is shared
+the form portable; and (ii) \emph{within a model, $\eta$ is shared
 across capabilities} (for example Qwen3-0.6B: $1.41/1.56/1.43$;
 Gemma3-4B: $1.66/1.71$): capability differences appear to be carried
 by the two measured quantities, and the fitted structure is two
@@ -589,7 +590,7 @@ the behavioral cliff occurs where retention crosses a critical value.
 The critical value is family-specific (Gemma: $0.035$--$0.10$ across
 1B/4B and all capabilities; Qwen: $0.13$--$0.23$) but consistent
 within a family across sizes and capabilities: the cliff boundary
-$\dens_c^{*}(N_0,f)$ reduces to one critical-retention constant per
+$\dens_c^{*}(N_0,f)$, for size $N_0$ and family $f$, reduces to one critical-retention constant per
 family, so the fitted cliff parameter of the two-regime
 law becomes a measurable, smoothly varying order parameter.
 \preliminary{three models, two families; a multi-model extension is left to future work}
@@ -629,8 +630,8 @@ Per-channel quantization & 8 bits: 2.5\%; 6 bits: 3.0\%; 5 bits: 4.2\%; 4 bits: 
 
 \end{table}
 
-Two readings of this account are excluded. Projecting the displacement onto the reference logits
-with a shift-invariant estimator, $\epsilon=-\mathrm{Cov}_p(r,z)/\mathrm{Var}_p(z)$ (the uncentred
+Two readings of this account are excluded. Projecting the displacement onto the reference logits $\ell$
+with a shift-invariant estimator, $\epsilon=-\mathrm{Cov}_{\pi}(r,\ell)/\mathrm{Var}_{\pi}(\ell)$ (the uncentred
 version moves by 85\% under a constant logit shift and is not used), the pure-shrinkage account
 fails on magnitude: about three percent of the response lies in the shrinkage direction, and the
 variance of the orthogonal residual carries the rest for math and code. That residual variance is
@@ -819,7 +820,7 @@ Budget & Information available & Cost to disclose \\
 Metadata only (K0) & $N_0$, public $D_0$, architecture, intervention
 configuration & Disclose metadata availability; $D_0$ may be undisclosed \\
 Metadata and dense anchor (K0) & The preceding information plus the dense capability losses
-$\mathbf L_0$, measured once before compression & Disclose the probe count, one
+$L_{0,c}$, measured once before compression & Disclose the probe count, one
 forward pass per probe, and native loss units \\
 One target calibration measurement (K1) & The preceding information plus one pre-specified measurement of the target at one
 compression configuration & Disclose the calibration configuration and its
