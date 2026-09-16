@@ -2,6 +2,20 @@
 \label{sec:selection}
 
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figs/fig7_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{1.75in}\centering
+\includegraphics[width=\textwidth]{figs/fig7_a.pdf}\subcaption{Math}\end{subfigure}%
+\begin{subfigure}[t]{1.25in}\centering
+\includegraphics[width=\textwidth]{figs/fig7_b.pdf}\subcaption{Code}\end{subfigure}%
+\begin{subfigure}[t]{1.25in}\centering
+\includegraphics[width=\textwidth]{figs/fig7_c.pdf}\subcaption{QA on 2Wiki}\end{subfigure}%
+\begin{subfigure}[t]{1.25in}\centering
+\includegraphics[width=\textwidth]{figs/fig7_d.pdf}\subcaption{Largest loss increase}\end{subfigure}
+\caption{Selection maps under the frozen rule on four fresh Pythia states at seventeen storage budgets, one panel per objective. Colour is the selected method; an open marker marks a budget at which the measured oracle chooses a different method from the rule.}
+\label{fig:rule_main_v2}
+\end{figure}
 The relations and their validated ranges turn configuration choice into a computation. Given a
 reference model, a capability and a budget, the decision is
 \begin{equation}
@@ -25,4 +39,4 @@ less than $10^{-5}$ nats, so the rule and the quantization-only baseline coincid
 
 The prospective result establishes the rule on four Pythia states under nominal storage budgets;
 validation across model families with fresh distillation candidates is the natural next step, and
-no historical distillation candidate carries a claim beyond that panel of four Pythia states measured prospectively.
+no historical distillation candidate carries a claim beyond that panel of four Pythia states, which were measured prospectively under the frozen rule.

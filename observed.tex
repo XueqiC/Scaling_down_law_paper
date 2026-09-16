@@ -22,7 +22,7 @@ density, so no scaling of a shared curve represents it (Fig.~\ref{fig:pythia_res
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_a.pdf}\caption{Pruning}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_b.pdf}\caption{Per-channel quantization}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_c.pdf}\caption{Grouped quantization}\end{subfigure}
-\caption{Compression responses on the controlled Pythia panel. (a) Loss change against retained density on the nine development states, with the median predictions as heavy lines. (b) Loss change against bit-width under per-channel round-to-nearest. (c) Loss change against group size at 3, 4 and 5 bits for one state; groups 32 and 512 were unseen at the freeze.}
+\caption{Compression responses on the controlled Pythia panel. (a) Loss change against retained density on the nine development states, with the median predictions as heavy lines. (b) Loss change against bit-width under per-channel round-to-nearest. (c) Loss change against group size at 3, 4 and 5 bits for one state; groups 32 and 512 were unseen when the predictions were frozen.}
 \label{fig:pythia_responses}
 \end{figure}
 The source state shapes this response, but only inside a range. Parameter count and pretraining
@@ -38,7 +38,7 @@ the rate: at $5\times10^{-5}$ the 1B student is almost unharmed ($+0.003$ and $+
 still gains $0.79$ nats on QA, and at $1\times10^{-4}$ the increase is an order of magnitude larger
 ($+0.051$ and $+0.052$). At $1\times10^{-4}$ and $2\times10^{-4}$ the 4B student degrades about
 twice as much as the 1B on math, and at the lowest rate the 4B is harmed ($+0.058$) where the 1B is
-not. Each distillation number below is reported with its rate.
+not. Each distillation number below is reported together with the learning rate at which it was measured.
 
 Once the rate is fixed, the size of the data pool becomes the dominant factor: reusing a small pool
 is costly, the cost rises with student size, and QA bears most of it. At one rate and a matched
@@ -54,7 +54,7 @@ The reuse cost also transfers across QA distributions, whereas the gain does not
 monotonically as reuse falls, for each student, so the reuse cost is not an artefact of the training
 distribution. Only 2Wiki crosses into a gain; MuSiQue flattens near zero and TriviaQA stays positive
 at each reuse level measured, and the 4B student is damaged about twice as much as the 1B at matched
-reuse on all three.
+reuse on all three distributions.
 
 \begin{figure}[t]
 \centering
@@ -71,7 +71,7 @@ reuse on all three.
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig2_a.pdf}\caption{Reuse-term curvature}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig2_b.pdf}\caption{Corner test}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig2_c.pdf}\caption{Displacement account}\end{subfigure}
-\caption{Factors that shape the distillation response and the account of compression damage. (a) The reuse exponent $p$ across training folds per capability; $p=0$ is the logarithmic term and $p=1$ linear. (b) The four-corner second difference per student and readout against the additive prediction (zero), the frozen interaction candidate (diamond) and the registered noise band. (c) Median relative error of the second-order displacement account against damage magnitude.}
+\caption{Factors that shape the distillation response and the account of compression damage. (a) The reuse exponent $p$ across training folds per capability; $p=0$ is the logarithmic term and $p=1$ linear. (b) The four-corner second difference per student and readout against the additive prediction (zero), the frozen interaction candidate (diamond) and the registered noise band. (c) Median relative error of the second-order displacement account as a function of damage magnitude.}
 \label{fig:explanation}
 \end{figure}
 Together these observations fix the requirements on a law. A relation for these responses must
@@ -79,4 +79,4 @@ carry a capability-specific shape under pruning, a threshold with a configuratio
 under quantization, and, under distillation, a reuse cost that is monotone in $E=T/D_U$, grows with
 student size, and separates by evaluation distribution in sign. Section~\ref{sec:why} asks what
 accounts for these features, and the relations of \S\ref{sec:laws} are judged against them on configurations, states and
-distributions that the fits never saw.
+distributions that the fits never saw, as the tests of \S\ref{sec:general} report in detail.

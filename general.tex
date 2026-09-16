@@ -1,11 +1,12 @@
-\section{Independent Tests: Configurations, Model States, and Capabilities}
+\section{Independent Tests: Configurations, States, Capabilities}
 \label{sec:general}
 
 The relations of \S\ref{sec:laws} are now tested on three kinds of novelty: new configurations of
 seen states, new model states, and new capabilities or evaluation distributions. Each test scores
 predictions frozen before measurement; Table~\ref{tab:main-prediction-v2} gives the error of each
 relation against its development-stage baseline, and Fig.~\ref{fig:generalization} shows the same
-comparison per row, separated by the kind of novelty that each row introduces.
+comparison per row, separated by the kind of novelty each row introduces, from new settings to new states and
+distributions.
 
 
 
@@ -47,20 +48,6 @@ frozen constant at the unseen pool on each of the three capabilities.
 \caption{Generalization of the frozen relations by kind of novelty. (a, b) Error of each relation (diamonds) against its development-selected baseline (capability markers) on the same cells; the segment is coloured where the relation is lower. (c) Prediction minus measurement for the corner second differences and the registered corner contrasts on fresh distributions, with their registered bands; the primary QA test failed to reject additivity.}
 \label{fig:generalization}
 \end{figure}
-\begin{figure}[t]
-\centering
-\includegraphics[width=\textwidth]{figs/fig7_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{1.75in}\centering
-\includegraphics[width=\textwidth]{figs/fig7_a.pdf}\subcaption{Math}\end{subfigure}%
-\begin{subfigure}[t]{1.25in}\centering
-\includegraphics[width=\textwidth]{figs/fig7_b.pdf}\subcaption{Code}\end{subfigure}%
-\begin{subfigure}[t]{1.25in}\centering
-\includegraphics[width=\textwidth]{figs/fig7_c.pdf}\subcaption{QA on 2Wiki}\end{subfigure}%
-\begin{subfigure}[t]{1.25in}\centering
-\includegraphics[width=\textwidth]{figs/fig7_d.pdf}\subcaption{Largest loss increase}\end{subfigure}
-\caption{Selection maps under the frozen rule on four fresh Pythia states at seventeen storage budgets, one panel per objective. Colour is the selected method; an open marker marks a budget at which the measured oracle chooses a different method.}
-\label{fig:rule_main_v2}
-\end{figure}
 Taken together, Fig.~\ref{fig:generalization} gives each relation its validated range. For new
 configurations of seen states the initial-state inputs are useful: unseen pruning
 densities inside the range and unseen group sizes on development states are predicted within their
@@ -70,4 +57,3 @@ source-conditioned pruning forms, and the 4B distillation student keeps its QA g
 distributions split by sign, which the relations state explicitly. Each relation therefore comes
 with the panel on which it was validated, and a one-point calibration carries it to a new state.
 
-\FloatBarrier

@@ -8,7 +8,8 @@ quantization, or distillation, and choosing the method and its strength currentl
 measuring each candidate. A single compression ratio does not replace that search, because
 compression does not reduce capabilities uniformly: across twelve public models the same pruning density leaves QA the
 least damaged capability in some series and the most damaged in others
-(Fig.~\ref{fig:heterogeneity}), and the ordering changes with size and family.
+(Fig.~\ref{fig:heterogeneity}), and the ordering changes with size and family, so capability must
+enter the prediction.
 
 We ask how the capability-conditioned loss after compression
 can be predicted from the initial model state and the configuration of
