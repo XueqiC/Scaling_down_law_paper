@@ -87,7 +87,7 @@ Dense & Code & Any valid status & 0 (no loss change) & --- & $L_{0,c}$ \\
 Dense & QA & Any valid status & 0 (no loss change) & --- & $L_{0,c}$ \\
 \bottomrule
 \end{tabular*}
-\caption{The table specifies the exact locked selection rule in \texttt{analysis/final\_rule.py}. Each absolute prediction is the listed anchor plus the response. $L_{0,c}$ is source dense loss; $L_{S0,c}$ is the initial student's dense loss. The fit keys identify the frozen development data below. Rows identify compression families, capabilities, and source-state status; columns specify the response predictor, development fit, and dense-loss anchor. Absolute losses are in nats per native token. This rule was frozen before selection confirmation. Fit keys P, Q, G, and K denote pruning, channel quantization, grouped quantization, and distillation development data, respectively; numbered predictor records identify the original development fits.}
+\caption{The table specifies the locked selection rule. Each absolute prediction is the listed anchor plus the response. $L_{0,c}$ is source dense loss; $L_{S0,c}$ is the initial student's dense loss. The fit keys identify the frozen development data below. Rows identify compression families, capabilities, and source-state status; columns specify the response predictor, development fit, and dense-loss anchor. Absolute losses are in nats per native token. This rule was frozen before selection confirmation. Fit keys P, Q, G, and K denote pruning, channel quantization, grouped quantization, and distillation development data, respectively.}
 \label{tab:locked_rule}
 \end{table}
 \begingroup\small
