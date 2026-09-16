@@ -1,16 +1,12 @@
 \section{What Compression Does to Capabilities}
 \label{sec:observed}
 
-The measurements determine what a law must reproduce.
-
-\paragraph{Damage is uneven across capabilities, and the ordering is not fixed.} Across twelve public
-models the same pruning density leaves QA the least damaged capability in some series and the
-most damaged in others; on the controlled Pythia panel, math and code
-respond to density along one shared shape with a capability-specific scale, while the QA response
-changes sign across density, so no scaling of a shared curve represents it
-(Figs.~\ref{fig:heterogeneity} and \ref{fig:pythia_responses}).
-
-
+The measurements determine what a law must reproduce, and they show first that damage is uneven
+across capabilities and that the ordering is not fixed. Across twelve public models the same pruning
+density leaves QA the least damaged capability in some series and the most damaged in others
+(Fig.~\ref{fig:heterogeneity}). On the controlled Pythia panel, math and code respond to density
+along one shared shape with a capability-specific scale, while the QA response changes sign across
+density, so no scaling of a shared curve represents it (Fig.~\ref{fig:pythia_responses}).
 
 \begin{figure}[t]
 \centering
@@ -29,41 +25,36 @@ changes sign across density, so no scaling of a shared curve represents it
 \caption{Compression responses on the controlled Pythia panel. (a) Loss change against retained density on the nine development states, with the median predictions as heavy lines. (b) Loss change against bit-width under per-channel round-to-nearest. (c) Loss change against group size at 3, 4 and 5 bits for one state; groups 32 and 512 were unseen at the freeze.}
 \label{fig:pythia_responses}
 \end{figure}
-\paragraph{Size and stage of the source shape the response, inside a range.} Parameter count and
-pretraining tokens both enter the pruning amplitude for math and code, and neither improves the QA
-prediction. Inside
-the development range the source-conditioned
-forms, a per-density regression and the median density curve agree within 0.05 nats at unseen
-stages of a 1B source; at a 6.9B source, five times the development range, the source-conditioned
-forms lose to the median curve on math (0.30 against 0.12 nats) and QA (0.91 against 0.12) and tie
-on code, as the tests of \S\ref{sec:general} show.
+The source state shapes this response, but only inside a range. Parameter count and pretraining
+tokens both enter the pruning amplitude for math and code, and neither improves the QA prediction.
+Inside the development range the source-conditioned forms, a per-density regression and the median
+density curve agree within 0.05 nats at unseen stages of a 1B source; at a 6.9B source, five times
+the development range, the source-conditioned forms lose to the median curve on math (0.30 against
+0.12 nats) and QA (0.91 against 0.12) and tie on code, as the tests of \S\ref{sec:general} show.
 
+Distillation adds a dependence on the protocol that is as strong as the dependence on the method.
+With all settings except the learning rate held fixed, the loss increase on math and code grows with
+the rate: at $5\times10^{-5}$ the 1B student is almost unharmed ($+0.003$ and $+0.007$ nats) and
+still gains $0.79$ nats on QA, and at $1\times10^{-4}$ the increase is an order of magnitude larger
+($+0.051$ and $+0.052$). At $1\times10^{-4}$ and $2\times10^{-4}$ the 4B student degrades about
+twice as much as the 1B on math, and at the lowest rate the 4B is harmed ($+0.058$) where the 1B is
+not. Each distillation number below is reported with its rate.
 
+Once the rate is fixed, the size of the data pool becomes the dominant factor: reusing a small pool
+is costly, the cost rises with student size, and QA bears most of it. At one rate and a matched
+budget $T$ near 200k supervised tokens (Fig.~\ref{fig:responses_v2}), a pool of $D_U$ supervised
+tokens reused about twelve times (reuse ratio $E=T/D_U$) costs QA $+0.29$, $+2.55$ and $+4.85$ nats
+on students of 100M, 700M and 3.2B non-embedding parameters, and nine times more independent data
+converts the same budget into a gain near one nat on each student; math and code damage also falls
+monotonically with reuse. Two pool seeds per cell put the pool-draw noise near 0.02 nats on code and
+0.13 nats on QA, small against the reuse cost measured on the same students.
 
-\paragraph{Distillation damage is a property of the protocol as much as of the method.} With all settings except
-the learning rate held fixed, the loss increase on math and code grows with the rate: at
-$5\times10^{-5}$ the 1B student is almost unharmed ($+0.003$ and $+0.007$ nats) and still gains
-$0.79$ nats on QA, and at $1\times10^{-4}$ the increase is an order of magnitude larger ($+0.051$
-and $+0.052$). At $1\times10^{-4}$ and $2\times10^{-4}$ the 4B student degrades about twice as much
-as the 1B on math, and at the lowest rate the 4B is harmed ($+0.058$) where the 1B is not. Each
-distillation number below is reported with its rate.
-
-
-
-\paragraph{Reusing a small pool is costly, the cost rises with student size, and QA bears most of
-it.} At one rate and a matched budget $T$ near 200k supervised tokens (Fig.~\ref{fig:responses_v2}),
-a pool of $D_U$ supervised tokens reused about twelve times (reuse ratio $E=T/D_U$) costs QA $+0.29$, $+2.55$ and $+4.85$ nats on students of 100M, 700M
-and 3.2B non-embedding parameters, and nine times more independent data converts the same budget
-into a gain near one nat on each student; math and code damage also falls monotonically with reuse. Two pool seeds per
-cell put the pool-draw noise near 0.02 nats on code and 0.13 nats on QA, small against the reuse
-cost measured on the same students.
-
-\paragraph{The cost transfers across QA distributions; the gain does not.} Scored on a fresh 2Wiki
-sample, MuSiQue and TriviaQA, all three distributions worsen at high reuse and improve monotonically as
-reuse falls, for each student, so the reuse cost is not an artefact of the training distribution.
-Only 2Wiki crosses into a gain; MuSiQue flattens near zero and TriviaQA stays positive at each reuse
-level measured, and the 4B student is damaged about twice as much as the 1B at matched reuse on all
-three.
+The reuse cost also transfers across QA distributions, whereas the gain does not. Scored on a fresh
+2Wiki sample, MuSiQue and TriviaQA, all three distributions worsen at high reuse and improve
+monotonically as reuse falls, for each student, so the reuse cost is not an artefact of the training
+distribution. Only 2Wiki crosses into a gain; MuSiQue flattens near zero and TriviaQA stays positive
+at each reuse level measured, and the 4B student is damaged about twice as much as the 1B at matched
+reuse on all three.
 
 \begin{figure}[t]
 \centering
@@ -83,8 +74,9 @@ three.
 \caption{Factors that shape the distillation response and the account of compression damage. (a) The reuse exponent $p$ across training folds per capability; $p=0$ is the logarithmic term and $p=1$ linear. (b) The four-corner second difference per student and readout against the additive prediction (zero), the frozen interaction candidate (diamond) and the registered noise band. (c) Median relative error of the second-order displacement account against damage magnitude.}
 \label{fig:explanation}
 \end{figure}
-\paragraph{What a law must reproduce.} A relation for these responses must carry a
-capability-specific shape under pruning, a threshold with a configuration-dependent position under
-quantization, and, under distillation, a reuse cost that is monotone in $E=T/D_U$, grows with student
-size, and separates by evaluation distribution in sign. The relations of \S\ref{sec:laws} are judged against these features and \S\ref{sec:why}
-asks what accounts for them.
+Together these observations fix the requirements on a law. A relation for these responses must
+carry a capability-specific shape under pruning, a threshold with a configuration-dependent position
+under quantization, and, under distillation, a reuse cost that is monotone in $E=T/D_U$, grows with
+student size, and separates by evaluation distribution in sign. Section~\ref{sec:why} asks what
+accounts for these features, and the relations of \S\ref{sec:laws} are judged against them on configurations, states and
+distributions that the fits never saw.

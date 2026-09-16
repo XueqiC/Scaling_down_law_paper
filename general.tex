@@ -1,16 +1,18 @@
 \section{Independent Tests: Configurations, Model States, and Capabilities}
 \label{sec:general}
 
-Each test below scores predictions frozen before measurement. Table~\ref{tab:main-prediction-v2}
-gives the error of each relation against its development-stage baseline with its status;
-Fig.~\ref{fig:generalization} shows the same comparison per row, separated by the kind of novelty.
+The relations of \S\ref{sec:laws} are now tested on three kinds of novelty: new configurations of
+seen states, new model states, and new capabilities or evaluation distributions. Each test scores
+predictions frozen before measurement; Table~\ref{tab:main-prediction-v2} gives the error of each
+relation against its development-stage baseline, and Fig.~\ref{fig:generalization} shows the same
+comparison per row, separated by the kind of novelty that each row introduces.
 
 
 
 \subsection{Prediction at Unseen Compression Settings}
 \label{sec:unseen_settings}
 
-On three Pythia checkpoints that entered no fit, the frozen pruning power form matches the
+The first kind of novelty is a new configuration of a seen state. On three Pythia checkpoints that entered no fit, the frozen pruning power form matches the
 per-density regression on math with a quarter of the parameters (0.24 against 0.23 nats), trails the
 median on code, and loses QA to each source-free curve; at $d=0.55$, outside the range, each
 source-conditioned form fails by 0.6 to 4.5 nats. In grouped quantization, with predictions frozen on all 54 cells, unseen group sizes on the
@@ -24,7 +26,8 @@ QA on the 270M only (Table~\ref{tab:main-prediction-v2}).
 \subsection{Transfer across Model Sizes and Training Stages}
 \label{sec:unseen_states}
 
-Inside the range the frozen forms and the median curve lie within 0.05 nats of one another at
+The second kind of novelty is a new model state, and here the range of each relation shows. Inside
+the range the frozen forms and the median curve lie within 0.05 nats of one another at
 unseen stages of a 1B source. Outside it, at a 6.9B source
 five times the development range, the source-conditioned pruning forms lose to the median curve on
 math (0.30 against 0.12) and QA (0.91 against 0.12) and tie on code, the per-bit quantization
@@ -58,8 +61,8 @@ frozen constant at the unseen pool on each of the three capabilities.
 \caption{Selection maps under the frozen rule on four fresh Pythia states at seventeen storage budgets, one panel per objective. Colour is the selected method; an open marker marks a budget at which the measured oracle chooses a different method.}
 \label{fig:rule_main_v2}
 \end{figure}
-\paragraph{The validated range of each relation.} Figure~\ref{fig:generalization} separates the kinds
-of novelty. For new configurations of seen states the initial-state inputs are useful: unseen pruning
+Taken together, Fig.~\ref{fig:generalization} gives each relation its validated range. For new
+configurations of seen states the initial-state inputs are useful: unseen pruning
 densities inside the range and unseen group sizes on development states are predicted within their
 stated error. For new sources and students the source-free median curve with a one-point
 calibration is the reliable default: at five times the development size it beats the

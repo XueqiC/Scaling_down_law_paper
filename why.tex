@@ -10,7 +10,7 @@ This section asks which conditions and mechanisms account for the variation in
 \subsection{Function shape}
 \label{sec:why_shape}
 
-Under pruning the pre-cliff response is a power law in the deleted capability mass with a shared
+The first question is the shape of the response along each configuration axis. Under pruning the pre-cliff response is a power law in the deleted capability mass with a shared
 exponent that transfers across families; under quantization it is a
 bit-width threshold whose position depends on the group size, so an interpolation over the
 measured grid predicts the response and a smooth surface does not.
@@ -48,7 +48,8 @@ underpowered.
 \subsection{Source state, protocol, and evaluation distribution}
 \label{sec:why_conditions}
 
-Size and stage carry math and code to unseen densities of seen states and over-predict QA, whose
+The second question is which conditions of the source, the protocol and the evaluation change the
+response. Size and stage carry math and code to unseen densities of seen states and over-predict QA, whose
 density response is not proportional to any shared curve. Richer descriptors did not improve transfer: dense pre-compression statistics improve a
 parametric family in four of nine pairs and lose to the source-free median configuration curve in
 nine of nine, with or without a shrunk source correction. Under distillation
@@ -60,7 +61,7 @@ distributions, whereas a claim that distillation improves question answering hol
 \subsection{Mechanism}
 \label{sec:why_mech}
 
-For pruning and quantization the loss change under a logit displacement $r$ obeys the exact identity
+The third question is mechanism. For pruning and quantization the loss change under a logit displacement $r$ obeys the exact identity
 $\Delta L=(\mathbb{E}_{\pi}[r]-r_y)+\tfrac12\mathrm{Var}_{\pi}(r)+O(\lVert r\rVert^3)$, where $\pi$ is
 the next-token distribution of the reference model and $r_y$ the displacement at the target token,
 and its
@@ -68,23 +69,22 @@ coefficient-free second-order truncation reproduces the measured damage across t
 one boundary set by damage magnitude, under 5\% median relative error below about 0.1 nats and past
 20\% by 0.25 (Fig.~\ref{fig:explanation}c). Pure logit shrinkage carries about three percent of the response; the residual variance that
 carries the rest needs the compressed model, so the account explains the damage after the fact and
-enters no relation as an input.
+enters no relation as an input, which keeps the relations free of compressed-model measurements.
 
 \subsection{What is settled, excluded, and open}
 \label{sec:why_summary}
 
-\emph{Verified causes.} The learning rate sets distillation damage magnitude; the reuse ratio sets
-the QA cost, monotonically and with student size; the response shape differs across capabilities
-under pruning, where capability conditioning gains 0.06 nats macro-averaged (0.17 on QA); compression damage
-is second-order in logit displacement inside a magnitude boundary.
-
-\emph{Excluded explanations.} A logarithmic reuse term with budget-independent coefficients. Pure
-logit shrinkage as the damage mechanism. Source descriptors as a general route to cross-source
-transfer within the inputs tested.
-
-\emph{Unidentified.} Whether budget and reuse interact: the QA test neither rejected nor established
-additivity, and neither structure predicted the measured second difference within the registered
-noise. Why the 4B second differences on math and code exceed both predictions while the 1B ones do
-not. The form of the reuse term beyond the finding that it is closer to linear than logarithmic. What
-predicts the data-change intervention; none of the parsimonious forms tried, and no source
-descriptor, predicts it.
+Four findings are verified. The learning rate sets the magnitude of distillation damage; the reuse
+ratio sets the QA cost, monotonically and increasingly with student size; the response shape differs
+across capabilities under pruning, where capability conditioning gains 0.06 nats macro-averaged
+(0.17 on QA); and compression damage is second-order in logit displacement inside a magnitude
+boundary. Three explanations are excluded: a logarithmic reuse term with budget-independent
+coefficients, pure logit shrinkage as the damage mechanism, and source descriptors as a general route
+to cross-source transfer within the inputs tested. Four questions remain open. Whether budget and
+reuse interact is undetermined, because the QA test neither rejected nor established additivity and
+neither structure predicted the measured second difference within the registered noise. The 4B
+second differences on math and code exceed both predictions while the 1B ones do not, for reasons
+the design cannot resolve. The form of the reuse term is known only to be closer to linear than
+logarithmic. And nothing tested, neither the parsimonious forms nor the source descriptors, predicts
+the data-change intervention. The relations of the next section are built on the verified findings
+and stay inside the ranges those findings define.
