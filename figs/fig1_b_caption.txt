@@ -1,22 +1,20 @@
-Capability responses (a) and fresh QA distributions (b). Positive = worse:
-positive loss change means higher loss than the student's own initial state.
-Development endpoints nearest 200k supervised tokens per trajectory; every seed
-shown as a separate marker. Reuse T/D_U is measured in supervised-token passes, and loss
-change in native-token nats. All points, including 4B, are development.
-Colours identify Math, Code and QA in (a), and 2Wiki, MuSiQue and TriviaQA in (b).
-Dotted, dashed and solid lines denote 270M, 1B and 4B students. Circles and squares
-identify the first and second registered pool seeds within each rung; the core
-uses seeds 41/42 and the critical rung uses 51/52. One line per student and
-capability/distribution connects the arithmetic means of the two seeds at each
-pool-size rung (both reuse and loss change are averaged). Marker-only circles
-and squares retain each seed's observed reuse and loss change; there are no
-separate per-seed lines. Every underlying seed value remains in the sidecars.
-The complete shared key is supplied separately as fig1_legend.pdf: colours for
-all capabilities and distributions, student line styles, and S1/S2 for the two
-registered pool seeds. The learning-rate pilot (c) uses the same student styles.
-All three 1.8 x 1.35-inch panels form one row at 5.5-inch text width, with the
-shared legend above. All three axes use the same measured rectangle and compact
-numeric tick format; (a) and (b) share their loss-change range and ticks.
-Data lines are 1.1 pt and seed markers are 3.8 pt.
+Capability responses: (a) Math, (b) Code, (c) QA on the registered
+2Wiki training probe, and (d) QA on fresh 2Wiki, MuSiQue and TriviaQA distributions.
+Positive = worse: positive loss change means higher loss than the student's own
+initial state. Development endpoints nearest 200k supervised tokens per trajectory;
+reuse E = T/D_U in supervised-token passes, loss change in native-token nats.
+All points, including 4B, are development. Each panel has its own loss-change range.
+Colours identify capabilities in (a-c), and the green ramp identifies 2Wiki,
+MuSiQue and TriviaQA in (d). Dotted, dashed and solid lines denote 270M, 1B and 4B.
+Circles and squares identify the first and second registered pool seeds in each
+rung (41/42 in the core, 51/52 at the critical rung). One line per student/readout
+connects arithmetic mean reuse and loss change over both seeds at each pool-size
+rung. Marker-only circles and squares retain each seed's observed coordinates;
+all 132 underlying records remain unchanged in the sidecars.
+Four 1.35 x 1.25-inch panels form one 5.5-inch row with 0.03-inch gaps,
+with fig1_legend.pdf above. Only the first panel carries the shared y label.
+The narrowest style band uses 7-pt ticks and 8-pt axis labels; lines are
+1.1 pt and seed markers 3.8 pt. The learning-rate pilot is a separate appendix
+figure, lr_pilot_a.pdf with lr_pilot_legend.pdf.
 
 Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.
