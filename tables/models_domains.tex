@@ -9,5 +9,5 @@ Quantization, bit width and group size & $\phi(\mathbf x)\cdot[1,\allowbreak u,\
 Distillation, source axis & $\delta_c=\beta_c\cdot\phi(\mathbf x)$ (initial student) & 4 & 9 Pythia students, a fixed pool and budget & 0 & \mbox{held-out} stage; Mathematics only & register fixed-recipe student \\
 Distillation, pool axis & $a_c+b_c\log E$ (and constant, $\log T$, joint) & 2 & Gemma-3-1 billion; pools of 75 and 600 traces per domain & 0 & an unseen pool of 225 traces per domain: Question answering only; multi-student predictions frozen before testing & register single-student pool and multi-student development \\
 \bottomrule\end{tabular*}
-\caption{The table shows which prediction forms apply to each compression method and test range. Loss is measured in nats per native token, bit width in bits, and budgets in tokens. Parameter and calibration columns give counts.}
+\caption{The table shows which prediction forms apply to each compression method and test range. Loss is measured in nats per native token, bit width in bits, and budgets in tokens. Parameter and calibration columns give counts for each prediction family.}
 \label{tab:models}\end{table}

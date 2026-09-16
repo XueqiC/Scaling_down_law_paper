@@ -30,7 +30,7 @@ State & Objective & {Frozen selection rule} & {Source-conditioned predictor} & Q
 \bottomrule
 \end{tabular*}
 \par\smallskip\begin{minipage}{\linewidth}\footnotesize
-All four policies are feasible on all 68 state--budget cells per objective. The maximum-capability objective minimizes $\max_c[L_c(M)-L_c(M_0)]$. Question answering uses 2Wiki. The Pythia-1 billion at step 64 thousand state includes two historical distillation students, which were excluded from the prediction fits. The frozen selection rule uses the locked policy, and the source-conditioned predictor uses the earlier selection laws for every state.
+All four policies are feasible on all 68 state--budget cells per objective. The maximum-capability objective minimizes $\max_c[L_c(M)-L_c(M_0)]$. Question answering uses 2Wiki. The Pythia-1 billion at step 64 thousand state includes two historical distillation students, which were excluded from the prediction fits. The frozen selection rule uses the locked policy, and the source-conditioned predictor uses the earlier selection laws.
 \end{minipage}
 \end{table}
 
@@ -60,6 +60,6 @@ Question answering (2Wiki) & {Frozen selection rule} & 24 & 32 & 12 & 0 & 68/\al
 \bottomrule
 \end{tabular*}
 \par\smallskip\begin{minipage}{\linewidth}\footnotesize
-Sets reuse frozen development leave-one-state-out mean absolute error thresholds; coverage is retrospective, not calibrated uncertainty. On this panel the no-clear-winner flag holds exactly for sets of size $\geq2$. The Source-conditioned predictor for Code at Pythia-1 billion at step 64 thousand and budget 1.00 has four candidates (quantization, dense, pruning, distillation); it is retained explicitly. Oracle method: covered / total (percent) tests whether the measured oracle's method belongs to the candidate methods. Oracle configuration: covered / total (percent) tests whether its exact configuration identifier belongs to the set of one predicted best configuration per included method. Neither column tests the single selected configuration. The frozen selection rule uses the locked policy, and the source-conditioned predictor uses the earlier selection laws for every state.
+Sets reuse frozen development leave-one-state-out mean absolute error thresholds; coverage is retrospective, not calibrated uncertainty. On this panel the no-clear-winner flag holds exactly for sets of size $\geq2$. The Source-conditioned predictor for Code at Pythia-1 billion at step 64 thousand and budget 1.00 has four candidates (quantization, dense, pruning, distillation); it is retained explicitly. Oracle method: covered / total (percent) tests whether the measured oracle's method belongs to the candidate methods. Oracle configuration: covered / total (percent) tests whether its exact configuration identifier belongs to the set of one predicted best configuration per included method. Neither column tests the single selected configuration. The frozen selection rule uses the locked policy, and the source-conditioned predictor uses the earlier selection laws.
 \end{minipage}
 \end{table}

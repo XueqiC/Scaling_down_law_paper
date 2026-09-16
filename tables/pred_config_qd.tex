@@ -21,7 +21,7 @@ Test; what is held out; fold rule (relation / input baseline / simple baseline) 
  & Simple baseline: per-bit mean; per-bit median & 1.466 & 1.537 & \textbf{1.000} \\
 \addlinespace[2pt]
 \bottomrule\end{tabular*}
-\caption*{The table tests quantization and distillation predictions on unseen settings, source states, and pools. Entries are mean absolute errors in nats per native token. Bold marks the lowest error; parentheses give baseline error minus relation error. All specified forms are reported.}
+\caption*{The table tests quantization and distillation predictions on unseen settings, source states, and pools. Entries are mean absolute errors in nats per native token. Bold marks the lowest error; parentheses give baseline error minus relation error. All specified forms are reported, including each baseline frozen before testing.}
 \end{table}
 \begin{table}[!htbp]
 \normalfont\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.02}
@@ -43,7 +43,7 @@ Test; what is held out; fold rule (relation / input baseline / simple baseline) 
  & Simple baseline: constant & \textbf{0.122} & \textbf{0.069} & 1.449 \\
 \addlinespace[2pt]
 \bottomrule\end{tabular*}
-\caption*{The table continues the preceding comparison. Entries are mean absolute errors in nats per native token. Bold marks the lowest error; parentheses give baseline error minus relation error. All specified forms are reported.}
+\caption*{The table continues the preceding comparison. Entries are mean absolute errors in nats per native token. Bold marks the lowest error; parentheses give baseline error minus relation error. All specified forms are reported, including each baseline frozen before testing.}
 \end{table}
 \begin{table}[!htbp]\normalfont\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.02}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.340000000\textwidth-2.720000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.260000000\textwidth-2.080000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333340\textwidth-1.066666720\tabcolsep\relax}@{}}
@@ -63,6 +63,6 @@ Test; what is held out; fold rule (relation / input baseline / simple baseline) 
  & Simple baseline: zero change & 0.153 & 0.178 & 1.167 \\
 \addlinespace[2pt]
 \bottomrule\end{tabular*}
-\caption{The table tests quantization and distillation predictions on unseen settings, source states, and pools. Entries are mean absolute errors in nats per native token. Bold marks the lowest error; parentheses give baseline error minus relation error. All specified forms are reported.}
+\caption{The table tests quantization and distillation predictions on unseen settings, source states, and pools. Entries are mean absolute errors in nats per native token. Bold marks the lowest error; parentheses give baseline error minus relation error. All specified forms are reported, including each baseline frozen before testing.}
 \par\smallskip{\footnotesize Configuration-axis tests for quantization and distillation: unseen sizes and stages at seen bit-widths (protocol A; the 5-bit prediction is a fixed interpolation rule) and unseen distillation pools. For the pool of 375 traces per domain the headline is the frozen form with the lowest per-capability development error, a rule stated after the tests (R), with 12 points per capability and Gemma-3-4 billion \mbox{held-out}.\par}
 \label{tab:pred_config_qd}\end{table}

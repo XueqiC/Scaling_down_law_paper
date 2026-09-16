@@ -1,7 +1,7 @@
 \begin{table}[!htbp]\normalfont
 \centering\small
 \setlength{\tabcolsep}{3pt}
-\caption{The table compares frozen selection policies on the independent confirmation panel. Mean regret is in nats per native token. Feasibility entries give feasible cells out of total cells; agreement and candidate-set coverage are percentages.}
+\caption{The table compares frozen selection policies on the independent confirmation panel. Mean regret is in nats per native token. Feasibility entries give feasible cells out of total cells; agreement and candidate-set coverage are reported as percentages of evaluated cells.}
 \par\smallskip{\footnotesize Question answering is restricted to 2Wiki; policy predictions were frozen before the new measurements.\par}
 \label{tab:rule-confirm}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-1.600000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.280000000\textwidth-2.800000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.110000000\textwidth-1.100000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.120000000\textwidth-1.200000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.180000000\textwidth-1.800000000\tabcolsep\relax}@{}}
@@ -30,6 +30,6 @@ Question answering (2Wiki) & Cheapest feasible & 68/\allowbreak 68 & 1.3518 & 63
 \bottomrule
 \end{tabular*}
 \par\smallskip\begin{minipage}{\linewidth}\footnotesize
-The maximum-capability objective is $\max_c(L_c-L_{0c})$. Quantization only pools both round-to-nearest quantization arms. All four headline policies share the same 68 feasible cells. Heuristic sets use frozen development errors; set coverage is retrospective, not calibrated uncertainty. Verdicts: Mathematics: confirmed; Code: confirmed; Question answering (2Wiki): confirmed. The frozen selection rule uses the locked policy, and the source-conditioned predictor uses the earlier selection laws for every state.
+The maximum-capability objective is $\max_c(L_c-L_{0c})$. Quantization only pools both round-to-nearest quantization arms. All four headline policies share the same 68 feasible cells. Heuristic sets use frozen development errors; set coverage is retrospective, not calibrated uncertainty. Verdicts: Mathematics: confirmed; Code: confirmed; Question answering (2Wiki): confirmed. The frozen selection rule uses the locked policy, and the source-conditioned predictor uses the earlier selection laws.
 \end{minipage}
 \end{table}

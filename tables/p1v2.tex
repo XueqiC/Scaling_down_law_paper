@@ -13,7 +13,7 @@ Source & Development data & Regime & Power form & {Per-density regression} & lin
 {Pythia-1 billion at step 112000} & Early stages only & {Pruning interpolation at densities 0.9 to 0.6} & 0.223 & 0.177 & 0.355 & 0.235 & 0.219 & 0.195 & 0.400 & {Per-density regression} \\
 {Pythia-1 billion at step 112000} & Early stages only & {Pruning extrapolation at density 0.55} & 0.957 & 0.995 & 1.685 & 1.127 & 1.333 & 1.447 & 2.237 & Power form \\
 \bottomrule\end{tabular*}
-\caption{The table compares frozen predictors on new source states under two development-data rules. Entries are mean absolute errors over capabilities, in nats per native token. The final column names the predictor with the lowest observed error, a retrospective ranking.}
+\caption{The table compares frozen predictors on new source states under two development-data rules. Entries are mean absolute errors over capabilities, in nats per native token. The last column reports the retrospective winner, selected by the lowest observed error.}
 \par\smallskip{\footnotesize The full-development protocol fits on the full nine-state development panel; the early-stage protocol fits on steps $\le$64 thousand only, strength only its 112 thousand rows are training-stage extrapolations. The 1 billion sources are in-range sizes and 6.9 billion is a $\sim$5$\times$ size extrapolation.\par}
 \label{tab:p1v2}\end{table}
 \begin{table}[!htbp]\ContinuedFloat
@@ -31,7 +31,7 @@ Source & Development data & Regime & Power form & {Per-density regression} & lin
 {Pythia-6.9 billion at step 112000} & Early stages only & {Pruning interpolation at densities 0.9 to 0.6} & 0.131 & 0.106 & 0.235 & 0.140 & 0.111 & 0.095 & 0.294 & {Development median curve} \\
 {Pythia-6.9 billion at step 112000} & Early stages only & {Pruning extrapolation at density 0.55} & 1.441 & 1.387 & 1.892 & 1.525 & 1.294 & 1.408 & 2.198 & Strength only \\
 \bottomrule\end{tabular*}
-\caption[]{The table continues the preceding comparison. Entries are mean absolute errors over capabilities, in nats per native token. The final column names the predictor with the lowest observed error, a retrospective ranking.}
+\caption[]{The table continues the preceding comparison. Entries are mean absolute errors over capabilities, in nats per native token. The last column reports the retrospective winner, selected by the lowest observed error.}
 \end{table}
 \begin{table}[!htbp]\ContinuedFloat
 \normalfont\centering\scriptsize\setlength{\tabcolsep}{1.6pt}
@@ -49,7 +49,7 @@ Source & Development data & Regime & {Full source regression} & {without pretrai
 {Pythia-1 billion at step 112000} & Full development panel & Quantization at $\ge$4 bits & 0.071 & 0.111 & 0.183 & 0.036 & 0.063 & & & {Per-bit development median} \\
 {Pythia-1 billion at step 112000} & Full development panel & {Quantization at 3 bits} & 0.676 & 3.805 & 0.802 & 1.231 & 5.777 & & & {Full source regression} \\
 \bottomrule\end{tabular*}
-\caption[]{The table continues the preceding comparison. Entries are mean absolute errors over capabilities, in nats per native token. The final column names the predictor with the lowest observed error, a retrospective ranking.}
+\caption[]{The table continues the preceding comparison. Entries are mean absolute errors over capabilities, in nats per native token. The last column reports the retrospective winner, selected by the lowest observed error.}
 \end{table}
 \begin{table}[!htbp]\ContinuedFloat
 \normalfont\centering\scriptsize\setlength{\tabcolsep}{1.6pt}
@@ -67,7 +67,7 @@ Source & Development data & Regime & {Full source regression} & {without pretrai
 {Pythia-6.9 billion at step 32000} & Full development panel & {Quantization at 5 bits (fixed interpolation rule)} & 0.373 & 0.457 & 0.237 & 0.067 & 0.029 & & & Zero change \\
 {Pythia-6.9 billion at step 32000} & Early stages only & Quantization at $\ge$4 bits & 0.033 & 0.050 & 0.029 & 0.025 & 0.033 & & & {Per-bit development median} \\
 \bottomrule\end{tabular*}
-\caption[]{The table continues the preceding comparison. Entries are mean absolute errors over capabilities, in nats per native token. The final column names the predictor with the lowest observed error, a retrospective ranking.}
+\caption[]{The table continues the preceding comparison. Entries are mean absolute errors over capabilities, in nats per native token. The last column reports the retrospective winner, selected by the lowest observed error.}
 \end{table}
 \begin{table}[!htbp]\ContinuedFloat
 \normalfont\centering\scriptsize\setlength{\tabcolsep}{1.6pt}
@@ -85,5 +85,5 @@ Source & Development data & Regime & {Full source regression} & {without pretrai
 {Pythia-6.9 billion at step 112000} & Early stages only & {Quantization at 3 bits} & 1.294 & 4.033 & 3.770 & 4.137 & 6.442 & & & {Full source regression} \\
 {Pythia-6.9 billion at step 112000} & Early stages only & {Quantization at 5 bits (fixed interpolation rule)} & 0.043 & 0.025 & 0.025 & 0.023 & 0.027 & & & {Per-bit development median} \\
 \bottomrule\end{tabular*}
-\caption[]{The table continues the preceding comparison. Entries are mean absolute errors over capabilities, in nats per native token. The final column names the predictor with the lowest observed error, a retrospective ranking.}
+\caption[]{The table continues the preceding comparison. Entries are mean absolute errors over capabilities, in nats per native token. The last column reports the retrospective winner, selected by the lowest observed error.}
 \end{table}
