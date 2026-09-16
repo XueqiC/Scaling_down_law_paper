@@ -1,5 +1,7 @@
-\begin{table}[H]\normalfont\centering\footnotesize
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrrrr@{}}
+\begin{table}[H]
+\setbox2=\vbox{\begin{minipage}{\linewidth}\centering\footnotesize
+\setbox0=\hbox{
+\begin{tabular}{@{}llrrrr@{}}
 \toprule
 Subset & Candidate & Math & Code & QA & Capability mean \\
 \midrule
@@ -17,6 +19,9 @@ All densities & Zero change & 0.812 & 0.852 & 0.602 & 0.755 \\
 \shortstack[l]{Densities off the\\coarse grid} & Strength only & 0.909 & 1.077 & 1.163 & 1.050 \\
 \shortstack[l]{Densities off the\\coarse grid} & \shortstack[l]{Development median\\curve} & 0.758 & 0.790 & 0.901 & 0.816 \\
 \shortstack[l]{Densities off the\\coarse grid} & Zero change & 1.715 & 1.725 & 1.090 & 1.510 \\
-\bottomrule\end{tabular*}
+\bottomrule\end{tabular}
+}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
 \caption{Pruning development on 17 Pythia states is evaluated by leave-one-source-out MAE (nats) over all \mbox{held-out} rows (`all') and over the densities off the coarse grid (0.75, 0.65, 0.55). The \mbox{pre-committed} rule selects the lowest mean over capabilities among the four source-conditioned candidates; a gap below 0.02 nats between the best two is resolved toward the continuous, zero-at-$d{=}1$ form with fewer parameters, which selected the power form over A2 (gap 0.015). Baselines do not select. Rows identify density subsets and candidate predictors; columns give mean absolute error by capability and its capability mean. A1 denotes the linear power form, and A2 denotes per-density regression with interpolation. MAE denotes mean absolute error.}
-\label{tab:v53_loso}\end{table}
+\label{tab:v53_loso}\end{minipage}}
+\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
+\end{table}

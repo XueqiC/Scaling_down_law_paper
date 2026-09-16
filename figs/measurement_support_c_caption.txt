@@ -1,4 +1,0 @@
-QA transfer MAE.
-Top row: every saved primary-to-secondary prediction MAE (all markers hollow). Capability colours identify the primary predictor; grey identifies controls. Diamond = same capability, square = cross-selected, triangle up = zero, triangle down = train mean. Bottom row: measured paired same-over-cross gains with stored 95% model-bootstrap intervals, colour by target capability. Protocol indices 1–3: model / density / model-and-density out, all densities; 4–6: the same protocols at d >= 0.75. Six source model clusters; fixed fits. No fitting or resampling.
-
-Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

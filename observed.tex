@@ -15,8 +15,8 @@ changes sign across density, so no scale of a shared curve represents it
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figs/fig8_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig8_a.pdf}\caption{Pruning at $d=0.7$}\end{subfigure}\hfill
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig8_b.pdf}\caption{Per-channel int4}\end{subfigure}
+\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig8_a.pdf}\caption{Pruning at $d=0.7$}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig8_b.pdf}\caption{Per-channel int4}\end{subfigure}
 \caption{Capability damage across twelve public models, ordered by family and by size within a
 family. Bars are loss changes from each model's own dense loss for math, code and QA under (a)
 pruning to $d=0.7$ and (b) per-channel int4 quantization. The ordering of capabilities changes
@@ -26,9 +26,9 @@ across series and the magnitudes differ by two orders at the same setting. Posit
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figs/fig4_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_a.pdf}\caption{Pruning}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_b.pdf}\caption{Per-channel quantization}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_c.pdf}\caption{Grouped quantization}\end{subfigure}
+\begin{subfigure}[t]{0.32\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig4_a.pdf}\caption{Pruning}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.32\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig4_b.pdf}\caption{Per-channel quantization}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.32\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig4_c.pdf}\caption{Grouped quantization}\end{subfigure}
 \caption{Compression responses on the controlled Pythia panel. (a) Loss change against retained
 density on the nine development states (thin lines, one per state and capability); heavy lines are
 the pointwise median of the state-conditioned power-form predictions for math and code and the
@@ -74,9 +74,9 @@ three.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figs/fig1_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig1_a.pdf}\caption{Capability responses}\label{fig:resp_a}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig1_b.pdf}\caption{Fresh QA distributions}\label{fig:resp_b}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig1_c.pdf}\caption{Learning-rate pilot}\label{fig:resp_c}\end{subfigure}
+\begin{subfigure}[t]{0.32\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig1_a.pdf}\caption{Capability responses}\label{fig:resp_a}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.32\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig1_b.pdf}\caption{Fresh QA distributions}\label{fig:resp_b}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.32\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig1_c.pdf}\caption{Learning-rate pilot}\label{fig:resp_c}\end{subfigure}
 \caption{Distillation responses observed under one protocol. (a) Loss change from each student's own
 initial state against the reuse ratio $E=T/D_U$ at the matched budget nearest 200k supervised tokens,
 for math, code and QA on three students (dotted 270M, dashed 1B, solid 4B); each line joins the
@@ -89,9 +89,9 @@ Positive is worse.}
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figs/fig2_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig2_a.pdf}\caption{Reuse-term curvature}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig2_b.pdf}\caption{Corner test}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig2_c.pdf}\caption{Displacement account}\end{subfigure}
+\begin{subfigure}[t]{0.32\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig2_a.pdf}\caption{Reuse-term curvature}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.32\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig2_b.pdf}\caption{Corner test}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.32\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig2_c.pdf}\caption{Displacement account}\end{subfigure}
 \caption{What shapes the distillation response, and what explains compression damage. (a) The reuse
 exponent $p$ across training folds per capability, with the full-development value and its
 conditional interval; $p=0$ is the logarithmic term, $p=1$ linear; crosses mark boundary hits. (b)

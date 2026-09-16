@@ -1,7 +1,0 @@
-Added inputs.
-Paired improvements; positive favours the first-named model. Each integer test index refers to the corresponding row in the panel sidecar, in the original test order; capabilities are horizontally dodged. All original tests, values, counts and comparator identities are retained. Whiskers are stored 95% intervals, only where computed. Hollow diamonds denote frozen prospective predictions; filled circles denote leave-one-out estimates.
-Added inputs: 1 = Prune +L0; 2 = Quant +L0; 3 = Prune +D0; 4 = Quant +D0.
-Same-input forms: 1 = v42 pooled / A2; 2 = v42 pooled / A1; 3 = 1B pair / A2; 4 = 1B pair / A1; 5 = 6.9B pair / A2; 6 = 6.9B pair / A1; 7 = Confirm. / A2; 8 = Confirm. / A1.
-Capability-specific shape: 1 = E-only; 2 = T+E; 3 = F2.
-
-Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

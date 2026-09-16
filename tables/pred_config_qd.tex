@@ -1,6 +1,7 @@
-\begin{table}[H]
-\normalfont\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.02}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.340000000\textwidth-2.720000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.260000000\textwidth-2.080000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333340\textwidth-1.066666720\tabcolsep\relax}@{}}
+\begin{table}[p]
+\setbox2=\vbox{\begin{minipage}{\linewidth}\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.02}
+\setbox0=\hbox{
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{5.2cm}>{\raggedright\arraybackslash}p{4.0cm}rrr@{}}
 \toprule
 Test; \emph{\mbox{held-out} axis}; [provenance] & Predictor & Math & Code & QA \\
 \midrule
@@ -20,15 +21,6 @@ Test; \emph{\mbox{held-out} axis}; [provenance] & Predictor & Math & Code & QA \
  & Same-input baseline without pretraining tokens & 3.218 & 3.565 & 2.897 \\
  & Simple baseline: per-bit mean; per-bit median & 1.466 & 1.537 & \textbf{1.000} \\
 \addlinespace[2pt]
-\bottomrule\end{tabular*}
-\caption*{Rows identify frozen prediction tests and predictors; columns give mean absolute errors in nats per native token by capability. Parentheses give baseline-minus-candidate improvement; bold marks the lowest error. The provenance letters mean: P, prediction frozen before measurement; F, baseline specified before measurement; R, \mbox{post-hoc} selection; A, all specified forms reported. Pool sizes count traces per domain.}
-\end{table}
-\begin{table}[H]
-\normalfont\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.02}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.340000000\textwidth-2.720000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.260000000\textwidth-2.080000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333340\textwidth-1.066666720\tabcolsep\relax}@{}}
-\toprule
-Test; \emph{\mbox{held-out} axis}; [provenance] & Predictor & Math & Code & QA \\
-\midrule
 \textbf{quantization}: new source Pythia-6.9B at steps 32k and 112k, $b\ge4$ (including 5-bit rule)\newline{\itshape size $5\times$ beyond development range; stages 32k, 112k} [P·F·F·A] & Candidate: configuration-indicator ordinary least squares & 0.181 (-0.14) & 0.177 (-0.13) & 0.428 (-0.39) \\
  & Same-input baseline without pretraining tokens & 0.169 & 0.154 & 0.426 \\
  & Simple baseline: per-bit median; zero change & \textbf{0.036} & \textbf{0.043} & \textbf{0.034} \\
@@ -42,11 +34,16 @@ Test; \emph{\mbox{held-out} axis}; [provenance] & Predictor & Math & Code & QA \
  & Same-input baseline: joint budget and reuse response & 0.215 & 0.145 & 0.710 \\
  & Simple baseline: constant & \textbf{0.122} & \textbf{0.069} & 1.449 \\
 \addlinespace[2pt]
-\bottomrule\end{tabular*}
-\caption*{Continued from the preceding table part.}
+\bottomrule\end{tabular}
+}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
+\caption*{Rows identify frozen prediction tests and predictors; columns give mean absolute errors in nats per native token by capability. Parentheses give baseline-minus-candidate improvement; bold marks the lowest error. The provenance letters mean: P, prediction frozen before measurement; F, baseline specified before measurement; R, \mbox{post-hoc} selection; A, all specified forms reported. Pool sizes count traces per domain.}
+\end{minipage}}
+\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
 \end{table}
-\begin{table}[p]\normalfont\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.02}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.340000000\textwidth-2.720000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.260000000\textwidth-2.080000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333340\textwidth-1.066666720\tabcolsep\relax}@{}}
+\begin{table}[p]
+\setbox2=\vbox{\begin{minipage}{\linewidth}\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.02}
+\setbox0=\hbox{
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{5.2cm}>{\raggedright\arraybackslash}p{4.0cm}rrr@{}}
 \toprule
 Test; \emph{\mbox{held-out} axis}; [provenance] & Predictor & Math & Code & QA \\
 \midrule
@@ -62,6 +59,9 @@ Test; \emph{\mbox{held-out} axis}; [provenance] & Predictor & Math & Code & QA \
  & Same-input baseline: constant & \textbf{0.020} & \textbf{0.038} & \textbf{1.024} \\
  & Simple baseline: zero change & 0.153 & 0.178 & 1.167 \\
 \addlinespace[2pt]
-\bottomrule\end{tabular*}
+\bottomrule\end{tabular}
+}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
 \caption{The configuration-axis tests for quantization and distillation (continued from the preceding table block) cover unseen sizes and stages at seen bit-widths (protocol A; the 5-bit prediction is a fixed interpolation rule), and unseen distillation pools. The pool of 375 traces per domain headline is the frozen form with the lowest per-capability development MAE (joint with a source term for every capability); this selection rule was stated after the tests (R). Each pool of 375 traces per domain group has 12 points per capability; Gemma-3-4B is a \mbox{held-out} student. Format, bold, improvement in parentheses, and origin Code as in Table~\ref{tab:pred_source}. Rows identify frozen prediction tests and predictors; columns give mean absolute errors in nats per native token by capability. Parentheses give baseline-minus-candidate improvement; bold marks the lowest error. The provenance letters mean: P, prediction frozen before measurement; F, baseline specified before measurement; R, \mbox{post-hoc} selection; A, all specified forms reported. Pool sizes count traces per domain. MAE denotes mean absolute error.}
-\label{tab:pred_config_qd}\end{table}
+\label{tab:pred_config_qd}\end{minipage}}
+\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
+\end{table}

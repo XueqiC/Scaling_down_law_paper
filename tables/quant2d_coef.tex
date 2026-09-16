@@ -1,5 +1,7 @@
-\begin{table}[H]\normalfont\centering\footnotesize
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrrrr@{}}
+\begin{table}[H]
+\setbox2=\vbox{\begin{minipage}{\linewidth}\centering\footnotesize
+\setbox0=\hbox{
+\begin{tabular}{@{}llrrrr@{}}
 \toprule
 Capability & Term & $\beta_{0}$ & $\beta_{\log N_0}$ & $\beta_{L_0}$ & $\beta_{\log D_0}$ \\
 \midrule
@@ -20,6 +22,9 @@ QA & $u$ & +21.703 & +1.561 & -16.563 & -0.359 \\
 QA & $v$ & +1.825 & -0.011 & -1.220 & +0.126 \\
 QA & $uv$ & -1.561 & +0.022 & +1.028 & -0.125 \\
 QA & $u^2$ & -13.105 & -0.922 & +9.978 & +0.190 \\
-\bottomrule\end{tabular*}
+\bottomrule\end{tabular}
+}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
 \caption{The grouped-quantization form is $\widehat{\Delta L}_c=\sum_k \beta_{c,k}\cdot\phi(\mathbf x)\,t_k(b,g)$ with terms $t_k\in\{1,u,v,uv,u^2\}$, $u=\log_2 q_{\max}(b)$ centred at the development mean, $v=\log_2(g/128)$; standardization uses centers 19.565, 2.746, 25.332 and scales 1.084, 1.623, 1.095 for $(\log N_0, L_{0,c}, \log D_0)$; the ridge penalty is $10^{-3}$. The register is \texttt{v55-quant-group/register.json}. Rows identify capabilities and basis terms; columns give coefficients of the intercept, source size, initial loss, and pretraining tokens. These development coefficients were frozen for prediction. Loss is in nats per native token, source size is a parameter count, and pretraining exposure is in tokens; the fitted covariates are standardized.}
-\label{tab:quant2d_coef}\end{table}
+\label{tab:quant2d_coef}\end{minipage}}
+\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
+\end{table}

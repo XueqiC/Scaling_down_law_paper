@@ -1,18 +1,23 @@
-\begin{table}[H]\normalfont
+\begin{table}[H]
+\setbox2=\vbox{\begin{minipage}{\linewidth}
 \centering
 \small
-\caption{The frozen distillation confirmation evaluates $U=200$ and supervised $T=50,100,200$k. Each student and capability is evaluated on six sampled pools, with three dependent checkpoints per pool (18 points, not 18 replicates). MAE and paired improvement (baseline minus selected absolute error) are in nats. Both forms and strongest baselines were chosen by development leave-one-run-out before confirmation. Brackets give 95\% percentile intervals from 5,000 paired pool-cluster bootstrap resamples, seed 0; all budgets stay together. Rows identify students and capabilities; columns give selected and baseline forms, their mean absolute errors, and paired improvements. These are frozen prediction results. CI means confidence interval. Pool size counts traces per domain and budgets count supervised tokens; the numbered confirmation identifies the original record. MAE denotes mean absolute error. CI denotes confidence interval.}
+\caption{The V70 distillation confirmation evaluates $U=200$ and supervised $T=50,100,200$k. Each student and capability is evaluated on six sampled pools, with three dependent checkpoints per pool (18 points, not 18 replicates). MAE and paired improvement (baseline minus selected absolute error) are in nats. Both forms and strongest baselines were chosen by development leave-one-run-out before confirmation. Brackets give 95\% percentile intervals from 5,000 paired pool-cluster bootstrap resamples, seed 0; all budgets stay together. Rows identify students and capabilities; columns give selected and baseline forms, their mean absolute errors, and paired improvements. These are frozen prediction results. CI means confidence interval. Pool size counts traces per domain and budgets count supervised tokens; the numbered confirmation identifies the original record. MAE denotes mean absolute error. CI denotes confidence interval.}
 \label{tab:distill_confirm}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.170000000\textwidth-2.040000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.120000000\textwidth-1.440000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.170000000\textwidth-2.040000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.120000000\textwidth-1.440000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.090000000\textwidth-1.080000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.110000000\textwidth-1.320000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.220000000\textwidth-2.640000000\tabcolsep\relax}@{}}
+\setbox0=\hbox{
+\begin{tabular}{@{}ll ll rrr@{}}
 \toprule
 Student & Capability & Selected & Baseline & MAE & Baseline MAE & Improvement [95\% CI] \\
 \midrule
-Gemma-3-270M & Math & Reuse response & Budget only & 0.0743 & 0.0654 & {-0.0088 [-0.0098, -0.0081]} \\
-Gemma-3-270M & Code & Reuse response & Reuse only & 0.0193 & 0.0230 & {0.0038 [0.0025, 0.0050]} \\
-Gemma-3-270M & QA & {Joint budget and pool response} & Reuse only & 0.5150 & 0.6097 & {0.0947 [0.0774, 0.1093]} \\
-Gemma-3-1B & Math & Reuse response & {Response surface with initial loss} & 0.0569 & 0.0335 & {-0.0234 [-0.0235, -0.0233]} \\
-Gemma-3-1B & Code & Reuse response & Reuse only & 0.0485 & 0.0532 & {0.0047 [0.0042, 0.0050]} \\
-Gemma-3-1B & QA & {Joint budget and pool response} & {Response surface with student size} & 0.4634 & 0.4502 & {-0.0132 [-0.0198, -0.0098]} \\
+Gemma-3-270M & Math & Reuse response & Budget only & 0.0743 & 0.0654 & \shortstack[l]{-0.0088 [-0.0098,\\-0.0081]} \\
+Gemma-3-270M & Code & Reuse response & Reuse only & 0.0193 & 0.0230 & \shortstack[l]{0.0038 [0.0025,\\0.0050]} \\
+Gemma-3-270M & QA & \shortstack[l]{Joint budget and\\pool response} & Reuse only & 0.5150 & 0.6097 & \shortstack[l]{0.0947 [0.0774,\\0.1093]} \\
+Gemma-3-1B & Math & Reuse response & \shortstack[l]{Response surface\\with initial loss} & 0.0569 & 0.0335 & \shortstack[l]{-0.0234 [-0.0235,\\-0.0233]} \\
+Gemma-3-1B & Code & Reuse response & Reuse only & 0.0485 & 0.0532 & \shortstack[l]{0.0047 [0.0042,\\0.0050]} \\
+Gemma-3-1B & QA & \shortstack[l]{Joint budget and\\pool response} & \shortstack[l]{Response surface\\with student size} & 0.4634 & 0.4502 & \shortstack[l]{-0.0132 [-0.0198,\\-0.0098]} \\
 \bottomrule
-\end{tabular*}
+\end{tabular}
+}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
+\end{minipage}}
+\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
 \end{table}

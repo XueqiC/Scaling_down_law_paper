@@ -1,3 +1,0 @@
-Frozen candidate gain against the same strongest frozen alternative, per capability. Each method panel retains both registered cohorts, top then bottom; exact candidate/alternative MAEs and cohort names are in the sidecars. Hatched bars are predictions; hollow diamonds show delivered-rule gains where different. Negative gains are retained.
-
-Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.
