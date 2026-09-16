@@ -13,10 +13,12 @@
 % INPUT results/v70-distill-confirm/compare.json sha256=983f53033b07e035b1cb552429b8ce6ab23f8d6aee4365237970e2b46b0a829b
 % INPUT results/v70-distill-confirm/freeze.json sha256=d7b28c7251dbc6113c3de7c957560827e603d4e77a48010f99835a8468db0c24
 % INPUT results/v50-p2v2/compare_test.json sha256=4c07abf0f940e95992a3f46d79b6d9a3ef9524ba55adaefa824b0cdec8a601aa
-\begin{table}[H]\normalfont
+\begin{table}[H]
+\setbox2=\vbox{\begin{minipage}{\linewidth}
 \centering\scriptsize
 \setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1.06}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.127000000\textwidth-1.524000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.230000000\textwidth-2.760000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.097000000\textwidth-1.164000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.163000000\textwidth-1.956000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.073000000\textwidth-0.876000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.130000000\textwidth-1.560000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.180000000\textwidth-2.160000000\tabcolsep\relax}@{}}
+\setbox0=\hbox{
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.127\textwidth-1.524\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.230\textwidth-2.760\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.097\textwidth-1.164\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.163\textwidth-1.956\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.073\textwidth-0.876\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.130\textwidth-1.560\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.180\textwidth-2.160\tabcolsep\relax}@{}}
 \toprule
 Arm and frozen candidate & Test object & Candidate MAE & Strongest frozen alternative (name, MAE) & Gain & Delivered rule & Scope \\
 \midrule
@@ -128,7 +130,10 @@ Distillation context\newline Frozen joint response with student size & Gemma-3-1
 % SOURCE C38-4B delivery timing: rule stated after test; rule mapping/timing from supplied V86 specification and paper/docs/RESULTS_LEDGER.md; new stages use the new-state branch in analysis/final_rule.py#/predict (read only)
 Distillation context\newline Frozen joint response with student size & Gemma-3-4B; 3 pools $U=375$; $T$ 35, 70, 140, 280k & $0.089$\newline $0.050$\newline $1.141$ & Constant $0.020$\newline Budget response $0.033$\newline Joint $0.272$ & $-0.068$\newline $-0.018$\newline $-0.869$ & Not delivered & \emph{\mbox{post-hoc}}\newline \mbox{Held-out} size \\
 \bottomrule
-\end{tabular*}
+\end{tabular}
+}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
 \caption{\scriptsize The table summarizes the earlier distillation tests. Errors are mean absolute errors (MAE) in nats per token; stacked entries give Math, Code, and QA, respectively. The strongest alternative has the lowest pooled test MAE among all predictors frozen in that round except the candidate (hindsight ranking). Gain = alternative minus candidate; negative values favor the alternative. Delivered rules fixed after a test are retrospective for it. The joint with student size rule was stated \mbox{post-hoc} and was not delivered. Rows identify student and pool tests; columns give candidate errors, the strongest frozen alternative, error differences, delivered rules, and their timing and scope. Pool sizes count traces per domain and budgets count supervised tokens. These are frozen predictions with \mbox{post-hoc} ranking and rule selection. MAE denotes mean absolute error.}
 \label{tab:main_context}
+\end{minipage}}
+\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
 \end{table}

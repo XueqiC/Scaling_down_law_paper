@@ -1,33 +1,38 @@
-\begin{table}[H]\normalfont
+\begin{table}[H]
+\setbox2=\vbox{\begin{minipage}{\linewidth}
 \centering
 \small
 \setlength{\tabcolsep}{2pt}
 \renewcommand{\arraystretch}{1.15}
 \caption{The table reports paired distillation errors for the frozen joint with student size candidate. Mean absolute errors and paired differences are in nats; positive differences and relative improvements favor the candidate. Differences are point means of $|e_{\mathrm{baseline}}|-|e_{\mathrm{candidate}}|$; relative improvement is $100(\mathrm{MAE}_{\mathrm{baseline}}-\mathrm{MAE}_{\mathrm{candidate}})/\mathrm{MAE}_{\mathrm{baseline}}$. Brackets show 95\% percentile intervals from 5,000 paired trajectory bootstrap resamples (seed 0); a cluster is student $\times$ pool, with all budgets resampled together. The same draws are used for both baselines and all capabilities within each student and pool-role group, recomputing each ratio per resample. Test rows use 12 points from 3 trajectories; \mbox{held-out}-student development rows use 16 points from 4 trajectories. Intervals have limited resolution with so few trajectories. Rows identify students and capabilities within each pool group; columns give candidate and baseline mean absolute errors, paired differences, and relative improvements in percent. CI means confidence interval. This is a \mbox{post-hoc} paired analysis of frozen predictions. MAE denotes mean absolute error. CI denotes confidence interval.}
 \label{tab:distill_paired}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.142857143\textwidth-2.285714286\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.095238095\textwidth-1.523809524\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.076190476\textwidth-1.219047619\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.076190476\textwidth-1.219047619\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333333\textwidth-2.133333333\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333333\textwidth-2.133333333\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.076190476\textwidth-1.219047619\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333333\textwidth-2.133333333\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333333\textwidth-2.133333333\tabcolsep\relax}@{}}
+\setbox0=\hbox{
+\begin{tabular}{@{}llrrrrrrr@{}}
 \toprule
-Student & Capability & {Candidate MAE} & \multicolumn{3}{>{\centering\arraybackslash\hspace{0pt}}p{\dimexpr 0.342857143\textwidth-1.485714286\tabcolsep\relax}}{Frozen constant baseline} & \multicolumn{3}{>{\centering\arraybackslash\hspace{0pt}}p{\dimexpr 0.342857143\textwidth-1.485714286\tabcolsep\relax}@{}}{Zero baseline} \\
+Student & Capability & \shortstack{Candidate\\MAE} & \multicolumn{3}{c}{Frozen constant baseline} & \multicolumn{3}{c}{Zero baseline} \\
 \cmidrule(lr){4-6}\cmidrule(lr){7-9}
 & & & MAE & Difference [CI] & Relative improvement \% [CI] & MAE & Difference [CI] & Relative improvement \% [CI] \\
 \midrule
-\multicolumn{9}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 1.000000000\textwidth-0.000000000\tabcolsep\relax}@{}}{\textit{Test pools}} \\
-Gemma-3-270M & Math & 0.045 & 0.060 & {$0.015$ $[0.002,\allowbreak 0.027]$} & {$25.2$ $[3.9,\allowbreak 39.9]$} & 0.092 & {$0.046$ $[0.043,\allowbreak 0.049]$} & {$50.5$ $[49.2,\allowbreak 51.5]$} \\
-Gemma-3-270M & Code & 0.036 & 0.047 & {$0.011$ $[0.006,\allowbreak 0.017]$} & {$22.7$ $[14.0,\allowbreak 35.0]$} & 0.138 & {$0.102$ $[0.097,\allowbreak 0.109]$} & {$73.7$ $[72.4,\allowbreak 75.2]$} \\
-Gemma-3-270M & QA & 0.606 & 0.862 & {$0.257$ $[0.173,\allowbreak 0.376]$} & {$29.8$ $[21.5,\allowbreak 39.3]$} & 1.005 & {$0.400$ $[0.316,\allowbreak 0.519]$} & {$39.8$ $[33.4,\allowbreak 47.2]$} \\
+\multicolumn{9}{l}{\textit{Test pools}} \\
+Gemma-3-270M & Math & 0.045 & 0.060 & \shortstack{$0.015$\\$[0.002,0.027]$} & \shortstack{$25.2$\\$[3.9,39.9]$} & 0.092 & \shortstack{$0.046$\\$[0.043,0.049]$} & \shortstack{$50.5$\\$[49.2,51.5]$} \\
+Gemma-3-270M & Code & 0.036 & 0.047 & \shortstack{$0.011$\\$[0.006,0.017]$} & \shortstack{$22.7$\\$[14.0,35.0]$} & 0.138 & \shortstack{$0.102$\\$[0.097,0.109]$} & \shortstack{$73.7$\\$[72.4,75.2]$} \\
+Gemma-3-270M & QA & 0.606 & 0.862 & \shortstack{$0.257$\\$[0.173,0.376]$} & \shortstack{$29.8$\\$[21.5,39.3]$} & 1.005 & \shortstack{$0.400$\\$[0.316,0.519]$} & \shortstack{$39.8$\\$[33.4,47.2]$} \\
 \addlinespace
-Gemma-3-1B & Math & 0.050 & 0.057 & {$0.007$ $[-0.001,\allowbreak 0.015]$} & {$11.8$ $[-1.6,\allowbreak 23.4]$} & 0.095 & {$0.045$ $[0.040,\allowbreak 0.052]$} & {$47.0$ $[42.8,\allowbreak 50.8]$} \\
-Gemma-3-1B & Code & 0.029 & 0.069 & {$0.040$ $[0.032,\allowbreak 0.044]$} & {$58.0$ $[52.5,\allowbreak 64.0]$} & 0.109 & {$0.080$ $[0.068,\allowbreak 0.089]$} & {$73.5$ $[67.3,\allowbreak 77.0]$} \\
-Gemma-3-1B & QA & 0.444 & 1.004 & {$0.560$ $[0.555,\allowbreak 0.566]$} & {$55.8$ $[53.9,\allowbreak 58.0]$} & 1.148 & {$0.704$ $[0.698,\allowbreak 0.709]$} & {$61.3$ $[59.5,\allowbreak 63.4]$} \\
+Gemma-3-1B & Math & 0.050 & 0.057 & \shortstack{$0.007$\\$[-0.001,0.015]$} & \shortstack{$11.8$\\$[-1.6,23.4]$} & 0.095 & \shortstack{$0.045$\\$[0.040,0.052]$} & \shortstack{$47.0$\\$[42.8,50.8]$} \\
+Gemma-3-1B & Code & 0.029 & 0.069 & \shortstack{$0.040$\\$[0.032,0.044]$} & \shortstack{$58.0$\\$[52.5,64.0]$} & 0.109 & \shortstack{$0.080$\\$[0.068,0.089]$} & \shortstack{$73.5$\\$[67.3,77.0]$} \\
+Gemma-3-1B & QA & 0.444 & 1.004 & \shortstack{$0.560$\\$[0.555,0.566]$} & \shortstack{$55.8$\\$[53.9,58.0]$} & 1.148 & \shortstack{$0.704$\\$[0.698,0.709]$} & \shortstack{$61.3$\\$[59.5,63.4]$} \\
 \addlinespace
-Gemma-3-4B & Math & 0.089 & 0.020 & {$-0.068$ $[-0.070,\allowbreak -0.066]$} & {$-333.8$ $[-486.0,\allowbreak -265.6]$} & 0.153 & {$0.064$ $[0.043,\allowbreak 0.080]$} & {$42.0$ $[31.1,\allowbreak 48.8]$} \\
-Gemma-3-4B & Code & 0.050 & 0.038 & {$-0.012$ $[-0.029,\allowbreak -0.003]$} & {$-31.5$ $[-71.8,\allowbreak -7.9]$} & 0.178 & {$0.127$ $[0.117,\allowbreak 0.133]$} & {$71.6$ $[65.4,\allowbreak 76.9]$} \\
-Gemma-3-4B & QA & 1.141 & 1.024 & {$-0.117$ $[-0.119,\allowbreak -0.115]$} & {$-11.4$ $[-11.8,\allowbreak -11.1]$} & 1.167 & {$0.026$ $[0.024,\allowbreak 0.028]$} & {$2.2$ $[2.1,\allowbreak 2.4]$} \\
+Gemma-3-4B & Math & 0.089 & 0.020 & \shortstack{$-0.068$\\$[-0.070,-0.066]$} & \shortstack{$-333.8$\\$[-486.0,-265.6]$} & 0.153 & \shortstack{$0.064$\\$[0.043,0.080]$} & \shortstack{$42.0$\\$[31.1,48.8]$} \\
+Gemma-3-4B & Code & 0.050 & 0.038 & \shortstack{$-0.012$\\$[-0.029,-0.003]$} & \shortstack{$-31.5$\\$[-71.8,-7.9]$} & 0.178 & \shortstack{$0.127$\\$[0.117,0.133]$} & \shortstack{$71.6$\\$[65.4,76.9]$} \\
+Gemma-3-4B & QA & 1.141 & 1.024 & \shortstack{$-0.117$\\$[-0.119,-0.115]$} & \shortstack{$-11.4$\\$[-11.8,-11.1]$} & 1.167 & \shortstack{$0.026$\\$[0.024,0.028]$} & \shortstack{$2.2$\\$[2.1,2.4]$} \\
 \midrule
-\multicolumn{9}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 1.000000000\textwidth-0.000000000\tabcolsep\relax}@{}}{\textit{Development pools, \mbox{held-out} 4B student}} \\
-Gemma-3-4B & Math & 0.106 & 0.156 & {$0.049$ $[-0.068,\allowbreak 0.166]$} & {$31.6$ $[-573.4,\allowbreak 55.6]$} & 0.294 & {$0.187$ $[0.069,\allowbreak 0.306]$} & {$63.8$ $[46.4,\allowbreak 69.7]$} \\
-Gemma-3-4B & Code & 0.048 & 0.098 & {$0.050$ $[-0.019,\allowbreak 0.118]$} & {$50.7$ $[-58.9,\allowbreak 72.0]$} & 0.230 & {$0.182$ $[0.103,\allowbreak 0.261]$} & {$79.1$ $[67.2,\allowbreak 87.0]$} \\
-Gemma-3-4B & QA & 0.958 & 1.790 & {$0.832$ $[0.125,\allowbreak 1.540]$} & {$46.5$ $[11.7,\allowbreak 62.4]$} & 1.862 & {$0.904$ $[0.268,\allowbreak 1.540]$} & {$48.5$ $[22.1,\allowbreak 63.1]$} \\
+\multicolumn{9}{l}{\textit{Development pools, \mbox{held-out} 4B student}} \\
+Gemma-3-4B & Math & 0.106 & 0.156 & \shortstack{$0.049$\\$[-0.068,0.166]$} & \shortstack{$31.6$\\$[-573.4,55.6]$} & 0.294 & \shortstack{$0.187$\\$[0.069,0.306]$} & \shortstack{$63.8$\\$[46.4,69.7]$} \\
+Gemma-3-4B & Code & 0.048 & 0.098 & \shortstack{$0.050$\\$[-0.019,0.118]$} & \shortstack{$50.7$\\$[-58.9,72.0]$} & 0.230 & \shortstack{$0.182$\\$[0.103,0.261]$} & \shortstack{$79.1$\\$[67.2,87.0]$} \\
+Gemma-3-4B & QA & 0.958 & 1.790 & \shortstack{$0.832$\\$[0.125,1.540]$} & \shortstack{$46.5$\\$[11.7,62.4]$} & 1.862 & \shortstack{$0.904$\\$[0.268,1.540]$} & \shortstack{$48.5$\\$[22.1,63.1]$} \\
 \bottomrule
-\end{tabular*}
+\end{tabular}
+}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
+\end{minipage}}
+\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
 \end{table}

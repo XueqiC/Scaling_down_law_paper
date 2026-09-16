@@ -1,28 +1,19 @@
 \begin{table}[H]
-\normalfont
+\setbox2=\vbox{\begin{minipage}{\linewidth}
 \centering\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-1.600000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.190000000\textwidth-1.900000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-1.600000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.190000000\textwidth-1.900000000\tabcolsep\relax}@{}}
+\setbox0=\hbox{
+\begin{tabular}{@{}p{1.9cm}p{1.9cm}p{2.0cm}p{2.5cm}p{2.1cm}p{2.5cm}@{}}
 \toprule
 Law & What is shared & What varies & \mbox{Held-out} MAE, shared versus specific & MAE, K0 versus K1 & 80\% prediction interval coverage and width \\
 \midrule
-Pruning power & Power family & $\beta_c,\allowbreak \gamma_c$ & 0.494 versus 0.494 & --- & --- \\
-Grouped round-to-nearest quantization & Separable family & $\beta_c,\allowbreak p_c,\allowbreak q_c$ & 2.962 versus 2.398 & --- & --- \\
+Pruning power & Power family & $\beta_c,\gamma_c$ & 0.494 versus 0.494 & --- & --- \\
+Grouped round-to-nearest quantization & Separable family & $\beta_c,p_c,q_c$ & 2.962 versus 2.398 & --- & --- \\
 Distillation exposure & $\log(1+E)$ family & $\beta_c$; inactive $D_0$ & 0.542 versus 0.275 & --- & --- \\
 Pruning sharing & One $\gamma$ & $\beta_c$ & 0.491 versus 0.494 & --- & --- \\
 Quantization sharing & two-dimensional term vectors & Capability offsets & 3.999 versus 2.398 & --- & --- \\
-Pruning Math & Power family & Source amplitudes, $\gamma$ & $\gamma$ minimum, median, maximum: 3.00/\allowbreak 4.60/\allowbreak 6.00 & --- & --- \\
-Pruning Code & Power family & Source amplitudes, $\gamma$ & $\gamma$ minimum, median, maximum: 2.30/\allowbreak 5.95/\allowbreak 6.00 & --- & --- \\
-Pruning QA & Power family & Source amplitudes, $\gamma$ & $\gamma$ minimum, median, maximum: 0.50/\allowbreak 3.40/\allowbreak 6.00 & --- & --- \\
-\bottomrule\end{tabular*}
-\caption{The table compares shared structure and one-point calibration. Mean absolute errors and prediction interval widths are in nats, pooled equally over capabilities. Family comparisons use registered development splits: 17 pruning sources, six quantization states, 12 distillation runs. The specific forms are v53 power, v55 low-order two-dimensional form, v56 F2 with $L_0$. Distillation $D_0$ is unavailable (inactive column). Gamma ranges describe within-source fits. Bootstrap parameter confidence intervals are in the accompanying summary. K1 costs one compressed measurement per source; scores exclude that cell. Prediction interval entries give coverage and full width for K0 then K1, from per-capability absolute leave-one-state-out residual quantiles. Confirmation excludes three new sources; independent pair evaluation excludes all four pair sources from fitting and its 13-source interval bank. Quantization tests omit the target source from fitting; response-surface K1 scales its predicted curve and separable K1 calibrates the separable amplitude. Rows identify response families, sharing comparisons, and calibration evaluations; columns describe shared and varying terms and compare errors and interval summaries. This is a \mbox{post-hoc} analysis. K0 denotes no compressed-target calibration and K1 denotes one compressed-target calibration measurement. F2 denotes the saturating budget and logarithmic reuse form; the numbered records identify the original development fits. MAE denotes mean absolute error.}
-\label{tab:shared_structure}
-\end{table}
-\begin{table}[H]\ContinuedFloat
-\normalfont
-\centering\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-1.600000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.190000000\textwidth-1.900000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-1.600000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.190000000\textwidth-1.900000000\tabcolsep\relax}@{}}
-\toprule
-Law & What is shared & What varies & \mbox{Held-out} MAE, shared versus specific & MAE, K0 versus K1 & 80\% prediction interval coverage and width \\
+Pruning Math & Power family & Source amplitudes, $\gamma$ & $\gamma$ minimum, median, maximum: 3.00/4.60/6.00 & --- & --- \\
+Pruning Code & Power family & Source amplitudes, $\gamma$ & $\gamma$ minimum, median, maximum: 2.30/5.95/6.00 & --- & --- \\
+Pruning QA & Power family & Source amplitudes, $\gamma$ & $\gamma$ minimum, median, maximum: 0.50/3.40/6.00 & --- & --- \\
 \midrule
 Pruning development leave-one-state-out & Training $\gamma_c$ & One target amplitude & --- & 0.604 versus 31.406 & --- \\
 Pruning confirmation & Training $\gamma_c$ & One target amplitude & --- & 0.560 versus 0.415 & 77.8\%/1.621 to 100.0\%/3.629 \\
@@ -32,19 +23,14 @@ Quantization surface development leave-one-state-out & Training curve & One targ
 Quantization surface bit-width test & Training curve & One target amplitude & --- & 0.747 versus 6.442 & --- \\
 Quantization surface group-size test & Training curve & One target amplitude & --- & 1.751 versus 14.973 & --- \\
 Quantization surface joint test & Training curve & One target amplitude & --- & 0.344 versus 0.193 & --- \\
-\bottomrule\end{tabular*}
-\caption[]{Continued from the preceding table part.}
-\end{table}
-\begin{table}[H]\ContinuedFloat
-\normalfont
-\centering\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-1.600000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.190000000\textwidth-1.900000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-1.600000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.190000000\textwidth-1.900000000\tabcolsep\relax}@{}}
-\toprule
-Law & What is shared & What varies & \mbox{Held-out} MAE, shared versus specific & MAE, K0 versus K1 & 80\% prediction interval coverage and width \\
-\midrule
 Separable quantization bit-width test & Training curve & One target amplitude & --- & 1.540 versus 0.183 & --- \\
 Separable quantization group-size test & Training curve & One target amplitude & --- & 2.423 versus 0.623 & --- \\
 Separable quantization joint test & Training curve & One target amplitude & --- & 0.724 versus 0.306 & --- \\
-\bottomrule\end{tabular*}
-\caption[]{Continued from the preceding table part.}
+\bottomrule
+\end{tabular}
+}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
+\caption{The table compares shared structure and one-point calibration. Mean absolute errors and prediction interval widths are in nats, pooled equally over capabilities. Family comparisons use registered development splits: 17 pruning sources, six quantization states, 12 distillation runs. The specific forms are v53 power, v55 low-order two-dimensional form, v56 F2 with $L_0$. Distillation $D_0$ is unavailable (inactive column). Gamma ranges describe within-source fits. Bootstrap parameter confidence intervals are in the accompanying summary. K1 costs one compressed measurement per source; scores exclude that cell. Prediction interval entries give coverage and full width for K0 then K1, from per-capability absolute leave-one-state-out residual quantiles. Confirmation excludes three new sources; independent pair evaluation excludes all four pair sources from fitting and its 13-source interval bank. Quantization tests omit the target source from fitting; response-surface K1 scales its predicted curve and separable K1 calibrates the separable amplitude. Rows identify response families, sharing comparisons, and calibration evaluations; columns describe shared and varying terms and compare errors and interval summaries. This is a \mbox{post-hoc} analysis. K0 denotes no compressed-target calibration and K1 denotes one compressed-target calibration measurement. F2 denotes the saturating budget and logarithmic reuse form; the numbered records identify the original development fits. MAE denotes mean absolute error.}
+\label{tab:shared_structure}
+\end{minipage}}
+\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
 \end{table}

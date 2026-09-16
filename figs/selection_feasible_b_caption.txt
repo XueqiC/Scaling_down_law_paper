@@ -1,4 +1,0 @@
-Code.
-Saved selection maps; colour denotes the predicted compression method. A hollow black circle AND cross-hatching mark an oracle method mismatch. Diagonal hatching marks no-clear-winner cells without mismatch; both flags remain in sidecars when they coincide. Infeasible cells use grey cross-hatching without a circle. F = frozen rule; L = earlier source-conditioned laws. Native nominal storage budgets and all states retained; no selection rule is executed.
-
-Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

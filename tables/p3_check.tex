@@ -1,8 +1,10 @@
-\begin{table}[H]\normalfont
+\begin{table}[H]
+\setbox2=\vbox{\begin{minipage}{\linewidth}
 \centering\small
 \caption{The table compares primary and secondary benchmarks on Gemma-3-1B (P3 check). Entries give loss changes from dense in nats per native token on the main-protocol probe and on an independent benchmark of the same capability (Math: SVAMP; Code: HumanEval; QA: TriviaQA; 128 samples, fixed probe seed, existing references). The six states were fixed before any secondary measurement. Scored completion tokens, primary then secondary: Math 13198; 260, Code 4516; 8393, QA 251; 328. Rows identify measured compression states; columns give capability loss changes, with the primary benchmark followed by the secondary benchmark. This is a \mbox{post-hoc} measurement-scope check, with states specified before secondary measurement. Pool sizes count traces per domain; the numbered check identifies the original registration.}
 \label{tab:p3_check}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccc@{}}
+\setbox0=\hbox{
+\begin{tabular}{lccc}
 \toprule
 State & Math & Code & QA \\
 \midrule
@@ -13,5 +15,8 @@ distillation, $U=75$, second milestone & $+0.08$; $+0.31$ & $+0.12$; $+0.07$ & $
 distillation, $U=450$, first milestone & $+0.10$; $-1.36$ & $+0.06$; $+0.06$ & $-1.46$; $+0.21$ \\
 distillation, $U=450$, second milestone & $+0.09$; $-0.30$ & $+0.11$; $+0.07$ & $-1.40$; $+0.37$ \\
 \bottomrule
-\end{tabular*}
+\end{tabular}
+}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi
+\end{minipage}}
+\centering\ifdim\dimexpr\ht2+\dp2\relax>.95\textheight\resizebox*{!}{.95\textheight}{\box2}\else\box2\fi
 \end{table}
