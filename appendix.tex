@@ -524,6 +524,17 @@ median curve is the better predictor for QA at every budget. A registered confir
 five predictors before four Pythia states in no earlier fit or test, listed in Table~\ref{tab:a11}, were pruned to densities 0.65 to 0.9;
 Table~\ref{tab:a11} gives the outcome. The registered rule, that the reduced-budget power form lies within 0.05 nats of the full-budget regression on math and code, is met.
 
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figs/eff_qa_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_qa_a.pdf}\caption{Error against development measurements}\end{subfigure}\hfill
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_qa_b.pdf}\caption{Registered confirmation on four new states}\end{subfigure}
+\caption{Measurement efficiency for question answering, the counterpart of
+Fig.~\ref{fig:efficiency}: the median density curve is the better predictor at every development
+budget and on the four confirmation states, so it remains the delivered rule for this capability.}
+\label{fig:efficiency_qa}
+\end{figure}
+
 \begin{table}[!htbp]
 \centering\footnotesize
 \caption{Registered measurement-efficiency confirmation on four Pythia states outside every fit, 160M at step 80000, 410M at step 112000, 1.4B at step 48000 and 1B at step 48000, with 24 cells per capability: mean absolute error in nats per token of each frozen predictor. The
@@ -833,40 +844,13 @@ function fitted to the same data would not suffice.
 \section{Reproducibility and Prediction Registration}
 \label{sec:app_registration}
 
-This section records the data cut-off, the registration order, the information budgets and the
-reproduction path. The measurements behind this version were
-completed by 15:55 EDT on 11 September 2026 for the development and confirmation rounds, and the
-corner design of \S\ref{sec:why} with its predictions was registered on 14 September 2026 before its
-four trajectories were trained; each frozen prediction
-is cited with the commit that recorded it, and no measurement taken after
-a freeze enters the corresponding prediction or the baseline it is compared with.
-\subsection{Registration and provenance codes}
-\label{sec:app_register}
-Prospective tests follow one order: forms, development set,
-standardization, and coefficients are fixed and committed; for a new
-source the reference capability losses are measured, since they are a
-permitted pre-compression input; the predictions of each candidate
-are written to a versioned file and committed with the hash recorded;
-only then is the compressed or distilled outcome measured. Rows marked retrospective in the tables, meaning leave-one-out panels, baselines or rules stated after a test and the post-test quantization rule, are labeled as such and are not relabeled by outcome. Information budgets
-are reported separately: K0 uses pre-compression information only, K1
-adds one pre-specified target-side calibration point. The freeze records that carry the main conclusions are, in order: \texttt{v36b}, the
-leave-one-step-out source axis; \texttt{v38}, the frozen step-96k coefficients;
-\texttt{v40}/\texttt{v41}, the shared power form, the source-free curves and the four pool forms;
-\texttt{v46}, the 1B state at step 96k; \texttt{v49}, the 1B and 6.9B pairs under protocols A and
-B; \texttt{v53}, the pruning confirmation panel at commit \texttt{40a51b7}; \texttt{v55}, grouped
-quantization at $b=4$ and $g=128$ at commit \texttt{5ad319c}; \texttt{v50}, the multi-student
-distillation test at commit \texttt{33c706c}; \texttt{v69}, the quantization confirmation at
-$g\in\{32,512\}$ and a new state at commit \texttt{6199353}; \texttt{v70}, the distillation
-confirmation at $U{=}200$ at commit \texttt{118d1f8}; \texttt{v72}, the 2.8B pruning repeat at
-commit \texttt{6089efd}; and \texttt{v78}, the locked selection rule and maps for four fresh
-states at commit \texttt{869ec2e}. The retrospective analyses \texttt{v59},
-\texttt{v60}/\texttt{v64}, \texttt{v63}, \texttt{v65}, \texttt{v76}/\texttt{v79},
-\texttt{v80}/\texttt{v81} and \texttt{v84} to \texttt{v86}, which produce the main table, the
-figures and the post-hoc ranking of the frozen alternatives, are audits of those records. Content hashes and the ledger entries C33 to C59 are in
-\texttt{docs/}. When a diagnostic overturns an earlier headline, the text is downgraded and the committed prediction is left unchanged in the record.
-
-\subsection{Information budgets}
-Table~\ref{tab:budgets} defines the information budgets that label each prediction.
+This section records the data cut-off, the reproduction path, the registration order and the
+information budgets that label each prediction, defined in Table~\ref{tab:budgets}. The development and confirmation rounds were
+completed by 11 September 2026, the corner design of \S\ref{sec:why} was registered on 14 September
+2026 before its four trajectories were trained, and the measurement-efficiency confirmation of
+\S\ref{sec:efficiency} and the data-requirement experiment of \S\ref{sec:observed} were registered
+on 16 September 2026 before their states were pruned and their students trained. No measurement
+taken after a freeze enters the corresponding prediction or its baseline.
 \begin{table}[!htbp]\normalfont
 \centering\small
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.190839695\textwidth-0.763358779\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.435114504\textwidth-1.740458015\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.374045802\textwidth-1.496183206\tabcolsep\relax}@{}}
@@ -891,10 +875,36 @@ this diagnostic measures form misfit after testing \\
 
 \subsection{Reproduction}
 \label{sec:app_repro}
-All tables are generated from machine-readable result files by
-CPU-only scripts that run in seconds and require neither model weights
-nor a GPU; the repository mirrors the scripts and the result files
-they read, and the main prediction table is produced by a single
-command. Model measurements are reproducible from the recorded model revisions, the probe seeds, and the protocols described in this appendix, with no inputs beyond those listed.
+All tables are generated from machine-readable result files by CPU-only scripts that run in
+seconds and need neither model weights nor a GPU. Model measurements are reproducible from the
+recorded revisions, probe seeds and protocols.
+
+\subsection{Registration and provenance codes}
+\label{sec:app_register}
+Prospective tests follow one order: forms, development set,
+standardization, and coefficients are fixed and committed; for a new
+source the reference capability losses are measured, since they are a
+permitted pre-compression input; the predictions of each candidate
+are written to a versioned file and committed with the hash recorded;
+only then is the compressed or distilled outcome measured. Rows marked retrospective in the tables, meaning leave-one-out panels and rules stated after a
+test, are labeled as such and are not relabeled by outcome. Information budgets are reported
+separately: K0 uses pre-compression information only, K1
+adds one pre-specified target-side calibration point. The freeze records that carry the main conclusions are, in order: \texttt{v36b}, the
+leave-one-step-out source axis; \texttt{v38}, the frozen step-96k coefficients;
+\texttt{v40}/\texttt{v41}, the shared power form, the source-free curves and the four pool forms;
+\texttt{v46}, the 1B state at step 96k; \texttt{v49}, the 1B and 6.9B pairs under protocols A and
+B; \texttt{v53}, the pruning confirmation panel at commit \texttt{40a51b7}; \texttt{v55}, grouped
+quantization at $b=4$ and $g=128$ at commit \texttt{5ad319c}; \texttt{v50}, the multi-student
+distillation test at commit \texttt{33c706c}; \texttt{v69}, the quantization confirmation at
+$g\in\{32,512\}$ and a new state at commit \texttt{6199353}; \texttt{v70}, the distillation
+confirmation at $U{=}200$ at commit \texttt{118d1f8}; \texttt{v72}, the 2.8B pruning repeat at
+commit \texttt{6089efd}; \texttt{v78}, the locked selection rule and maps for four fresh
+states at commit \texttt{869ec2e}; \texttt{a11}, the measurement-efficiency confirmation on four
+further states; and \texttt{a12}, the data-requirement confirmation with its registered amendment. The retrospective analyses \texttt{v59},
+\texttt{v60}/\texttt{v64}, \texttt{v63}, \texttt{v65}, \texttt{v76}/\texttt{v79},
+\texttt{v80}/\texttt{v81} and \texttt{v84} to \texttt{v86}, which produce the main table, the
+figures and the post-hoc ranking of the frozen alternatives, are audits of those records. Content hashes and the ledger entries are in \texttt{docs/}. When a diagnostic overturns an
+earlier headline, the text is downgraded and the committed prediction is left unchanged.
+
 
 \FloatBarrier
