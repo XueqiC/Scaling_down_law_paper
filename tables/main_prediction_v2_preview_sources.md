@@ -2746,7 +2746,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
 ```json
 {
   "parts": [
-    "Development and frozen prediction evidence by method and prediction task. Each block names a method and task; the left column identifies the field and the right column gives its value. Parentheses after relations give parameter counts. Errors are mean absolute errors in native-token nats on the training probes, with stored intervals in brackets. Source-conditioned forms take the source size, its initial loss and its pretraining tokens together with the configuration; distillation forms take the supervised budget, the pool size and the reuse ratio. The baseline row names the baseline selected inside the development folds and gives its error. Status distinguishes development results, predictions frozen before measurement, and recommendations made after testing. Cells marked not tested have no frozen artifact. Error entries follow the capability order Math, Code, and QA; paired student errors follow the displayed student order. Bit widths are in bits, group sizes count weights, and budgets count supervised tokens."
+    "Development and frozen prediction evidence by method and prediction task. Each block names a method and task and lists the relation (parameter count in parentheses), its tested range, its mean absolute error in native-token nats on the training probes with stored intervals in brackets, the baseline selected inside the development folds, and its status: development, frozen prediction, or post-hoc recommendation. Errors follow the capability order Math, Code, and QA; cells marked not tested have no frozen artifact."
   ],
   "context": [
     "results/v53-prune-dev/register.json#/feature_names",
@@ -2760,7 +2760,7 @@ V72 repeat: same weights, one state. Legacy identity checks still read it, but n
     "results/v70-distill-confirm/freeze.json#/models"
   ],
   "note": "",
-  "rendered": "Development and frozen prediction evidence by method and prediction task. Each block names a method and task; the left column identifies the field and the right column gives its value. Parentheses after relations give parameter counts. Errors are mean absolute errors in native-token nats on the training probes, with stored intervals in brackets. Source-conditioned forms take the source size, its initial loss and its pretraining tokens together with the configuration; distillation forms take the supervised budget, the pool size and the reuse ratio. The baseline row names the baseline selected inside the development folds and gives its error. Status distinguishes development results, predictions frozen before measurement, and recommendations made after testing. Cells marked not tested have no frozen artifact. Error entries follow the capability order Math, Code, and QA; paired student errors follow the displayed student order. Bit widths are in bits, group sizes count weights, and budgets count supervised tokens."
+  "rendered": "Development and frozen prediction evidence by method and prediction task. Each block names a method and task and lists the relation (parameter count in parentheses), its tested range, its mean absolute error in native-token nats on the training probes with stored intervals in brackets, the baseline selected inside the development folds, and its status: development, frozen prediction, or post-hoc recommendation. Errors follow the capability order Math, Code, and QA; cells marked not tested have no frozen artifact."
 }
 ```
 

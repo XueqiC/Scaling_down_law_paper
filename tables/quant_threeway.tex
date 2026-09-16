@@ -2,7 +2,7 @@
 \begin{table}[!htbp]\normalfont
 \centering
 \small
-\caption{The table reports the three-way quantization confirmation. Errors are mean absolute errors in nats, with the measured cells at $b\in\{3,4,5\}$ weighted equally; $n$ counts cells per capability. \textbf{D} is the frozen development leave-one-state-out selection (the response surface for Math, the development median for Code, and zero change for QA), including the 0.02-nat tie rule; F lists all frozen candidates; \textbf{R} is the \mbox{post-hoc} recommended rule (piecewise interpolation for Math and Code on development states; the median for QA and for all capabilities on new states). R reuses frozen candidate predictions, and its choice is retrospective. The development states tested are Pythia-410M at step 143k and Pythia-1.4B at step 16k; the new state is Pythia-1.4B at step 112k. Within each panel, rows identify predictor status and form; columns give capability mean absolute errors. MAE denotes mean absolute error.}
+\caption{Three-way quantization confirmation: mean absolute errors in nats with the measured cells at $b\in\{3,4,5\}$ weighted equally; $n$ counts cells per capability. \textbf{D} is the frozen development leave-one-state-out selection (response surface for Math, development median for Code, zero change for QA, with the 0.02-nat tie rule); F lists all frozen candidates; \textbf{R} is the \mbox{post-hoc} recommended rule (piecewise interpolation for Math and Code on development states, the median otherwise), which reuses frozen candidate predictions. Development states are Pythia-410M at step 143k and Pythia-1.4B at step 16k; the new state is Pythia-1.4B at step 112k.}
 \label{tab:quant_threeway}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrrr@{}}
 \toprule
