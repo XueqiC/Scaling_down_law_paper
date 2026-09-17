@@ -3,7 +3,8 @@
 
 The relations of \S\ref{sec:laws} are now tested on new configurations of seen states and on new
 model states, with predictions frozen before measurement; Table~\ref{tab:main-prediction-v2} gives
-the errors and Fig.~\ref{fig:generalization} shows the same comparison for each row of the table.
+the errors, and Appendix Fig.~\ref{fig:generalization} compares each row of the table with its own
+development-selected baseline.
 
 
 
@@ -11,19 +12,20 @@ the errors and Fig.~\ref{fig:generalization} shows the same comparison for each 
 \label{sec:unseen_settings}
 
 The first kind of novelty is a new configuration of a state that entered the fit; for pruning,
-\S\ref{sec:efficiency} tests the power form at this task. In grouped quantization, with predictions frozen on all 54 cells, unseen group sizes on the development states
-are predicted best by the piecewise interpolation for math and code (Table~\ref{tab:main-prediction-v2}
-lists candidates and delivered rule on the same cells). For distillation, at six
-new pools and three new budgets each selected form beats zero change and the gain over the development-designated baseline is detected for code on both students and for QA on the 270M student only (Table~\ref{tab:main-prediction-v2}).
+\S\ref{sec:efficiency} tests the power form at this task. In grouped quantization, with predictions frozen on all 54 cells, the piecewise interpolation
+predicts unseen group sizes of the development states best for math and code. For distillation, at
+six new pools and three new budgets, each selected form beats zero change, and the gain over the
+development baseline is detected for code on both students and for question answering on the smaller of the two
+students alone.
 
 \subsection{Prediction with Fewer Configuration Measurements}
 \label{sec:efficiency}
 
-The value of the compact pruning form lies in how few development measurements it needs. A subsampling study with the sampling plan fixed in advance found that the five-parameter form
-reaches 0.25 nats on new states with 18 density measurements per capability where the per-density
-regression needs 36; the gain comes from measuring fewer densities per source, not fewer sources
-(Fig.~\ref{fig:efficiency}a). A registered confirmation then froze the form fitted on
-half of the development configuration measurements, the full-budget regression and the median curve
+The value of the compact pruning form lies in how few development measurements it needs. A subsampling study with the sampling plan fixed in advance shows what half of the measurements
+costs: with 18 density measurements per capability the five-parameter form predicts new states to
+0.20 nats on math and 0.17 on code against the 0.18 and 0.13 the per-density regression reaches
+with all 36, and at 9 the regression cannot be fitted at all. The saving comes from measuring fewer
+densities per source, not fewer sources (Fig.~\ref{fig:efficiency}a). A registered confirmation then froze that form, the full-budget regression and the median curve
 before four Pythia states outside every earlier fit were pruned at six densities. The half-budget
 form stayed within 0.013 nats of the full-budget regression on math and 0.020 on code, meeting the
 registered criterion, and halved the error of the median curve at the same measurement budget
@@ -47,22 +49,12 @@ The second kind of novelty is a new model state. On three Pythia checkpoints tha
 the frozen pruning power form matches the per-density regression on math with a quarter of the
 parameters, trails the median on code, and loses QA to each source-free curve; outside the range
 every source-conditioned form fails by 0.6 to 4.5 nats. On a new quantization state the median wins for math and QA and the interpolation for code. At a 6.9B source five times the development range the source-conditioned pruning forms lose to the
-median curve on math and QA, and the per-bit quantization regression trails the per-bit median at
-every bit-width; on a 2.8B source the frozen median curve predicts within 0.08 nats, three to seven
-times better than both source-conditioned forms. For distillation the 4B student keeps only its QA gain at the development pools and loses to the
-frozen constant at the unseen pool.
+median curve on math and QA, the per-bit quantization regression trails the per-bit median at every
+bit-width, and on a 2.8B source the frozen median curve predicts three to seven times better than
+both. For distillation the 4B student keeps only its QA gain at the development pools and loses the
+unseen pool to the frozen constant.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\textwidth]{figs/fig3_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of seen states}\end{subfigure}\\[2pt]
-\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_b.pdf}\caption{New sources or students}\end{subfigure}
-\caption{Generalization of the frozen relations by kind of novelty: each row compares the error of
-the relation, a hollow diamond, with the development-selected baseline, a hollow circle, on the
-same cells, one sub-row per capability; the segment is coloured where the relation is lower.}
-\label{fig:generalization}
-\end{figure}
-Fig.~\ref{fig:generalization} thus gives each relation its validated range: the
+Together these tests give each relation its validated range: the
 initial-state inputs pay for new configurations of seen states, the source-free median curve is the
 safer predictor for new sources and students, and new evaluation distributions split by sign.
 Calibration on one target measurement, a K1 budget distinct from the K0 predictions above, helped

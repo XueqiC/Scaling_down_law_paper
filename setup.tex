@@ -7,11 +7,10 @@ the rule by which a prediction counts as validated.
 \subsection{Capability-Conditioned Loss}
 \label{sec:loss}
 
-We measure three capabilities, mathematical reasoning, code generation and multi-hop question
-answering, through fixed probe sets $\probeset{c}$ of prompt and reference pairs drawn once from
-held-out splits of MATH-500 \citep{hendrycks2021math,lightman2023verify}, MBPP
-\citep{austin2021program} and 2WikiMultihopQA \citep{ho2020constructing}; each probe set fixes one
-evaluation distribution, implied in $L_c$. The observable
+We measure mathematical reasoning, code generation and multi-hop question answering through fixed
+probe sets $\probeset{c}$ drawn once from held-out splits of MATH-500
+\citep{hendrycks2021math,lightman2023verify}, MBPP \citep{austin2021program} and 2WikiMultihopQA
+\citep{ho2020constructing}; each fixes one evaluation distribution, implied in $L_c$. The observable
 is the
 token-weighted conditional cross-entropy of the reference completion for a model with parameters $w$,
 \begin{equation}
@@ -20,12 +19,11 @@ token-weighted conditional cross-entropy of the reference completion for a model
 T_c=\sum_{(x,y)\in\probeset{c}}|y|,
 \label{eq:taskloss}
 \end{equation}
-with prompt tokens masked and the same 64 probes per capability for each state compared within a
-model. The reference model $M_0$ is the checkpoint before the compression intervention. Responses are
-within-model differences in native nats per token: the damage
-$\Delta L_c=L_c(\text{compressed})-L_c(M_0)$ for pruning and quantization, and for distillation the
-signed transfer $\delta_c=L_c(S_{\mathrm{KD}})-L_c(S_0)$ of a student relative to its own initial
-state; the teacher is not used as the source. Absolute levels from different tokenizers are never placed on one scale.
+with prompt tokens masked and the same 64 probes per capability within a model. The reference model
+$M_0$ is the checkpoint before the intervention, and responses are within-model differences in
+native nats per token: the damage $\Delta L_c=L_c(\text{compressed})-L_c(M_0)$ for pruning and
+quantization, and for distillation the signed transfer
+$\delta_c=L_c(S_{\mathrm{KD}})-L_c(S_0)$ of a student against its own initial state. Absolute levels from different tokenizers are never placed on one scale.
 
 \subsection{Models and Compression Settings}
 \label{sec:models}
@@ -36,10 +34,10 @@ training stages, varies size and stage independently and is the development set 
 quantization; distillation is developed on Gemma-3 students. Held-out Pythia states up to 6.9B, new
 configurations and new pools provide the validation of the frozen relations.
 
-The three operations are fixed by protocol (Appendix~\ref{sec:app_details}): global magnitude
-pruning to a retained density $d$; symmetric round-to-nearest quantization per output channel at
-bit-width $b$ or with groups of $g$ weights sharing one scale; and LoRA fine-tuning
-\citep{hu2022lora} of an existing student on teacher traces from a pool of $U$ traces per domain. The inputs admitted to each predictor are the parameter count $N_0$ of the transformer weight
+Three operations are fixed by protocol (Appendix~\ref{sec:app_details}): global magnitude pruning
+to a retained density $d$; symmetric round-to-nearest quantization per output channel at bit-width
+$b$, or with groups of $g$ weights sharing one scale; and LoRA fine-tuning \citep{hu2022lora} of an
+existing student on teacher traces. The inputs admitted to each predictor are the parameter count $N_0$ of the transformer weight
 matrices of $M_0$, the pretraining token count $D_0$ where disclosed, and the reference capability
 losses $L_{0,c}=L_c(M_0)$ measured once; for distillation the initial student plays this role. Each prediction is written as
 \begin{equation}
@@ -56,7 +54,7 @@ and budget.
 
 Each relation is fit on development states and settings only, with leave-one-stage-out and
 leave-one-source-out folds, and judged on unseen settings and states with forms, coefficients and
-predictions committed before the outcome is measured; each prediction keeps its status as a development result, a frozen prediction or a post-hoc
-recommendation regardless of the outcome. Error is the mean absolute error of $\widehat\Delta$ in nats per token per capability on the same
+predictions committed beforehand; each prediction keeps the status it was given, whatever the
+outcome. Error is the mean absolute error of $\widehat\Delta$ in nats per token per capability on the same
 cells as source-free references, same-input alternatives and the no-$D_0$ ablation; the strongest baseline chosen inside the development folds is the comparator.
 Appendix~\ref{sec:app_registration} lists freeze commits and fold rules.

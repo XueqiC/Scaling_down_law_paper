@@ -1,9 +1,10 @@
 \section{What Compression Does to Capabilities}
 \label{sec:observed}
 
-The measurements show first that damage is uneven across capabilities and that the ordering is
-not fixed (Fig.~\ref{fig:heterogeneity}). On the controlled Pythia panel, math and code respond to density along one shared shape with a
-capability-specific scale, while the QA response changes sign across density, as Appendix Fig.~\ref{fig:pythia_responses} shows for every state.
+Damage is uneven across capabilities and the ordering is not fixed
+(Fig.~\ref{fig:heterogeneity}). On the controlled Pythia panel math and code respond to density
+along one shared shape with a capability-specific scale, while the QA response changes sign across
+density, as Appendix Fig.~\ref{fig:pythia_responses} shows for every state.
 
 \begin{figure}[t]
 \centering
@@ -13,8 +14,8 @@ capability-specific scale, while the QA response changes sign across density, as
 \caption{Capability damage across twelve public models under (a) pruning to $d=0.7$ and (b) per-channel int4 quantization, as loss change from each model's dense loss. The ordering of capabilities changes across series and the magnitudes differ by two orders at the same setting.}
 \label{fig:heterogeneity}
 \end{figure}
-The source state shapes this response inside a range: parameter count and pretraining tokens both
-enter the pruning amplitude for math and code, and neither improves the QA prediction.
+The source state shapes this response inside a range: parameter count and pretraining tokens enter
+the pruning amplitude for math and code, and neither improves the QA prediction.
 Inside the development range the source-conditioned forms and the median density curve agree
 within 0.05 nats at unseen stages of a 1B source; far outside it the source-conditioned forms lose to the median curve, as the tests of \S\ref{sec:general} show for every capability.
 
@@ -30,9 +31,10 @@ students of 100M, 700M and 3.2B non-embedding parameters, and nine times more in
 converts the same budget into a gain near one nat on each student. Two pool seeds per cell put the pool-draw noise an order of magnitude below the reuse cost on the
 same students.
 
-The reuse cost also transfers across QA distributions, whereas the gain does not. Scored on a fresh
-2Wiki sample, MuSiQue and TriviaQA, all three worsen at high reuse and improve as reuse falls, for
-each student, but only 2Wiki crosses into a gain: MuSiQue flattens near zero and TriviaQA stays positive at
+The reuse cost also transfers across QA distributions, whereas the gain does not. Rescored on a
+fresh 2Wiki sample disjoint from the probe, on MuSiQue and on TriviaQA, all three worsen at high
+reuse and improve as reuse falls, for each student, but only the fresh 2Wiki sample crosses into a
+gain: MuSiQue flattens near zero and TriviaQA stays positive at
 every reuse level on both students.
 
 \begin{figure}[t]
@@ -43,9 +45,10 @@ every reuse level on both students.
 \begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/fig1_c.pdf}\caption{QA on 2Wiki}\label{fig:resp_c}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/fig1_d.pdf}\caption{QA, three distributions}\label{fig:resp_d}\end{subfigure}
 \caption{Distillation responses under one protocol: loss change from each student's initial state
-against the reuse ratio $E=T/D_U$ at the matched budget nearest 200k supervised tokens, for (a) math,
-(b) code and (c) QA on 2Wiki, each on its own scale (dotted 270M, dashed 1B, solid 4B; markers are
-the two pool seeds), and (d) the same QA trajectories scored on 2Wiki, MuSiQue and TriviaQA.}
+against the reuse ratio $E=T/D_U$ at the matched budget nearest 200k supervised tokens, for (a)
+math, (b) code and (c) QA on the 2Wiki probe used throughout the paper, each on its own scale;
+dotted 270M, dashed 1B, solid 4B, markers the two pool seeds. Panel (d) rescores the same
+trajectories on a fresh 2Wiki sample, MuSiQue and TriviaQA.}
 \label{fig:responses_v2}
 \end{figure}
 These responses can be turned into an empirical data requirement. In a registered experiment, eighteen trajectories on the 1B and 4B students with pools from nine

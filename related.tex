@@ -1,20 +1,17 @@
 \section{Related Work}
 \label{sec:related}
 
-Existing compression laws take sparsity \citep{frantar2023scaling}, precision
-\citep{kumar2024scaling}, training formats \citep{panferov2025unified}, the pre-pruning loss and
-post-training tokens \citep{zhang2024scaling}, or the teacher loss \citep{busbridge2025distillation}
-as inputs and predict an aggregate loss; this study adds a per-capability endpoint, a panel in
-which size and stage vary separately, and held-out tests against same-input baselines. The fixed operations stand in for method families in
-pruning \citep{lecun1989optimal,han2015deep,frankle2019lottery,frantar2023sparsegpt,sun2023simple,ma2023llmpruner,ashkboos2024slicegpt,men2024shortgpt},
-post-training quantization
-\citep{dettmers2022llmint8,frantar2022gptq,xiao2022smoothquant,lin2023awq,chee2023quip,shao2023omniquant,dettmers2023qlora},
-and distillation
-\citep{hinton2015distilling,sanh2019distilbert,hsieh2023distilling,mukherjee2023orca,gu2023minillm,agarwal2023gkd,xu2024survey}.
-Uneven damage is documented for single tasks and quantizers
-\citep{jaiswal2023compressing,liu2025quantization,ouyang2024lowbit,hong2024decoding,sengupta2025compression}. Pretraining loss follows power laws \citep{hestness2017deep,kaplan2020scaling,hoffmann2022training}
-and downstream behaviour is predictable mainly through log-likelihood
-\citep{schaeffer2023emergent,gadre2024language,bhagia2024establishing,lourie2025scaling}, with
-fitted forms depending on the protocol \citep{li2025misfitting,besiroglu2024chinchilla}. Repeated
-tokens are worth less than new ones \citep{muennighoff2023scaling}, a cost \S\ref{sec:observed}
-resolves per capability and student.
+Existing compression laws take sparsity, precision, training formats, the pre-pruning loss and
+post-training tokens, or the teacher loss as inputs and predict an aggregate loss
+\citep{frantar2023scaling,kumar2024scaling,panferov2025unified,zhang2024scaling,busbridge2025distillation};
+this study adds a per-capability endpoint, a panel in which size and stage vary separately, and
+held-out tests against same-input baselines. The fixed operations stand in for method families in pruning, post-training quantization and
+distillation
+\citep{lecun1989optimal,frankle2019lottery,frantar2023sparsegpt,sun2023simple,frantar2022gptq,xiao2022smoothquant,lin2023awq,dettmers2023qlora,hinton2015distilling,hsieh2023distilling,gu2023minillm,agarwal2023gkd},
+and uneven damage is documented for single tasks and quantizers
+\citep{jaiswal2023compressing,liu2025quantization,sengupta2025compression}. Pretraining loss follows power laws and downstream behaviour is predictable mainly through
+log-likelihood
+\citep{kaplan2020scaling,hoffmann2022training,schaeffer2023emergent,bhagia2024establishing},
+with fitted forms depending on the protocol \citep{li2025misfitting,besiroglu2024chinchilla}.
+Repeated tokens are worth less than new ones \citep{muennighoff2023scaling}, a cost
+\S\ref{sec:observed} resolves per capability and student.

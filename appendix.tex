@@ -453,6 +453,17 @@ order in which the tests were run and the predictions were frozen.
 
 \begin{figure}[!htbp]
 \centering
+\includegraphics[width=\textwidth]{figs/fig3_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of model states that entered the fit}\end{subfigure}\\[2pt]
+\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_b.pdf}\caption{Model states that entered no fit}\end{subfigure}
+\caption{Generalization of the frozen relations by kind of novelty: each row compares the error of
+the relation, a hollow diamond, with the development-selected baseline, a hollow circle, on the
+same cells, one sub-row per capability; the segment is coloured where the relation is lower.}
+\label{fig:generalization}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
 \includegraphics[width=5.5in]{figs/generalization_cells_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/generalization_cells_a.pdf}\subcaption{New configurations}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/generalization_cells_b.pdf}\subcaption{New sources/students}\end{subfigure}\hfill
@@ -530,8 +541,10 @@ Table~\ref{tab:a11} gives the outcome. The registered rule, that the reduced-bud
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_qa_a.pdf}\caption{Error against development measurements}\end{subfigure}\hfill
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_qa_b.pdf}\caption{Registered confirmation on four new states}\end{subfigure}
 \caption{Measurement efficiency for question answering, the counterpart of
-Fig.~\ref{fig:efficiency}: the median density curve is the better predictor at every development
-budget and on the four confirmation states, so it remains the delivered rule for this capability.}
+Fig.~\ref{fig:efficiency}. The median density curve is the better predictor at every development
+budget, and on the four confirmation states the three predictors are within 0.006 nats of each
+other, 0.177 for the per-density regression, 0.179 for the power form and 0.183 for the median
+curve, so nothing here displaces the median curve as the delivered rule for this capability.}
 \label{fig:efficiency_qa}
 \end{figure}
 
@@ -721,17 +734,29 @@ change are carried by the first-order term.
 \subsection{Independent cross-method validation}
 \label{sec:app_s3}
 
-The confirmation of \S\ref{sec:selection} used four references that entered no earlier fit, two
-Pythia checkpoints at step 120000 and two Gemma-3 models, each with four pruning densities, six
-quantization settings, the dense model and one student distilled in this round under the recipe on
-which the delivered relation was fitted. Before any outcome, the learned values of all six
+The confirmation of \S\ref{sec:selection} used four references, none of which supplied a
+measurement to the locked rule: two Pythia checkpoints at step 120000, for which the records hold
+no earlier use, and two Gemma-3 models whose weights earlier development measured under other
+interventions. Table~\ref{tab:s3-identity} gives the exact releases, revisions and prior use, and
+separates a new model state from a new intervention on familiar weights. Each reference carried
+four pruning densities, six quantization settings, the dense model and one student distilled in
+this round under the recipe on which the delivered relation was fitted. Before any outcome, the learned values of all six
 snapshots were compared with all thirty revisions used earlier, 180 comparisons in which every
 target proved distinct; the dense reference and pristine student losses were measured on the frozen
 probes; and 144 capability predictions, 48 largest-increase predictions and both selection maps
-were sealed. Table~\ref{tab:s3-selection} reports the outcome for each reference and objective.
-Question answering is the capability with an opportunity to capture, and the rule captures it; the
-other three objectives leave almost nothing on the table for any policy.
+were sealed. Table~\ref{tab:s3-selection} reports the outcome for each reference and objective. Question
+answering is the capability with an opportunity to capture, and the rule captures it; the other
+three objectives leave almost nothing on the table for any policy.
+\input{tables/s3_identity}
 \input{tables/s3_selection}
+
+A further analysis, retrospective and outside the registration, asks how much of that opportunity
+needs the distillation at all. Adding the pristine student to the same candidate set at the same
+storage, Table~\ref{tab:s3-retrospective-control} separates the opportunity that a smaller model supplies by
+itself from the part the training round adds, and records the measured change of each student
+against its own starting point. The frozen rule never saw this candidate, so the control changes no
+registered result.
+\input{tables/s3_control}
 
 
 This section gives the selection rule behind \S\ref{sec:selection}, its retrospective validation
@@ -804,6 +829,7 @@ text.
 \caption{Full selection maps on the four fresh states under the locked rule and under the earlier source-conditioned laws, in row pairs, against nominal storage budget; colour: predicted method; hollow circle with cross-hatching: the oracle differs; diagonal hatching: no clear winner. The last panel uses the largest loss increase across capabilities as the objective.}
 \label{fig:rule_maps}
 \end{figure}
+\input{tables/rule_confirm}
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=5.5in]{figs/rule_regret_legend.pdf}\\[1pt]
@@ -812,10 +838,6 @@ text.
 \caption{Mean regret per objective on the four fresh states, on a logarithmic scale, for the locked rule, the earlier laws, quantization-only, and the cheapest feasible configuration.}
 \label{fig:rule_regret}
 \end{figure}
-\input{tables/rule_confirm}
-
-
-\FloatBarrier
 
 \section{Extended Discussion: Lessons, Guidance and Limits}
 \label{sec:app_learned}
@@ -885,7 +907,9 @@ Oracle diagnostic & Rescaling based on measured target outcomes & No predictive 
 this diagnostic measures form misfit after testing \\
 \bottomrule
 \end{tabular*}
-\caption{Information budgets: rows identify budgets and columns the available information and the costs to disclose. K0 uses no compressed-target calibration and K1 one calibration measurement; predictive budgets are fixed on development data and the oracle row is a \mbox{post-hoc} diagnostic. Losses are in nats per native token, size counts parameters, and pretraining exposure counts tokens; missing inputs are handled by rules fixed on the development panel and applied unchanged.}
+\caption{Information budgets: rows identify budgets and columns the available information and the
+costs to disclose. K0 uses no compressed-target calibration and K1 one calibration measurement;
+predictive budgets are fixed on development data and the oracle row is a post-hoc diagnostic.}
 \label{tab:budgets}
 \end{table}
 
@@ -897,30 +921,16 @@ recorded revisions, probe seeds and protocols.
 
 \subsection{Registration and provenance codes}
 \label{sec:app_register}
-Prospective tests follow one order: forms, development set,
-standardization, and coefficients are fixed and committed; for a new
-source the reference capability losses are measured, since they are a
-permitted pre-compression input; the predictions of each candidate
-are written to a versioned file and committed with the hash recorded;
-only then is the compressed or distilled outcome measured. Rows marked retrospective in the tables, meaning leave-one-out panels and rules stated after a
+Prospective tests follow one order: forms, development set, standardization and coefficients are
+fixed and committed; the reference capability losses of a new source are measured, being a
+permitted pre-compression input; each candidate's predictions are committed with their hash; only
+then is the outcome measured. Rows marked retrospective in the tables, meaning leave-one-out panels and rules stated after a
 test, are labeled as such and are not relabeled by outcome. Information budgets are reported
 separately: K0 uses pre-compression information only, K1
-adds one pre-specified target-side calibration point. The freeze records that carry the main conclusions are, in order: \texttt{v36b}, the
-leave-one-step-out source axis; \texttt{v38}, the frozen step-96k coefficients;
-\texttt{v40}/\texttt{v41}, the shared power form, the source-free curves and the four pool forms;
-\texttt{v46}, the 1B state at step 96k; \texttt{v49}, the 1B and 6.9B pairs under protocols A and
-B; \texttt{v53}, the pruning confirmation panel at commit \texttt{40a51b7}; \texttt{v55}, grouped
-quantization at $b=4$ and $g=128$ at commit \texttt{5ad319c}; \texttt{v50}, the multi-student
-distillation test at commit \texttt{33c706c}; \texttt{v69}, the quantization confirmation at
-$g\in\{32,512\}$ and a new state at commit \texttt{6199353}; \texttt{v70}, the distillation
-confirmation at $U{=}200$ at commit \texttt{118d1f8}; \texttt{v72}, the 2.8B pruning repeat at
-commit \texttt{6089efd}; \texttt{v78}, the locked selection rule and maps for four fresh
-states at commit \texttt{869ec2e}; \texttt{a11}, the measurement-efficiency confirmation on four
-further states; and \texttt{a12}, the data-requirement confirmation with its registered amendment. The retrospective analyses \texttt{v59},
-\texttt{v60}/\texttt{v64}, \texttt{v63}, \texttt{v65}, \texttt{v76}/\texttt{v79},
-\texttt{v80}/\texttt{v81} and \texttt{v84} to \texttt{v86}, which produce the main table, the
-figures and the post-hoc ranking of the frozen alternatives, are audits of those records. Content hashes and the ledger entries are in \texttt{docs/}. When a diagnostic overturns an
-earlier headline, the text is downgraded and the committed prediction is left unchanged.
+adds one pre-specified target-side calibration point. Fifteen freeze records carry the main conclusions, from \texttt{v36b}, the leave-one-step-out
+source axis, to \texttt{s3}, the cross-method selection round whose identity report, dense anchors
+and numeric seals were written in that order before any student was trained. Each names its commit in \texttt{docs/}. Retrospective analyses audit those records, content hashes are in \texttt{docs/}, and a diagnostic
+that overturns an earlier headline downgrades the text while the committed prediction stands.
 
 
 \FloatBarrier

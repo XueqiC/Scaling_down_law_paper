@@ -1,11 +1,11 @@
 # Main prediction table: cell sources
 
-Columns: Prediction task; Predictor tested first; Its error (nats); Predictor we deliver; Its error (nats); Simplest comparison
-Math / Code / QA; Development measurements.
+Columns: Prediction task; Predictor tested first; Its error (nats); Predictor we deliver; Its error (nats); Simplest comparison; Development measurements.
 Rendered layout: one row per frozen prediction task. Cell coordinates match the seven printed columns; every cell is populated.
 Development measurements are distinct development configuration measurements per capability for fitting or selecting the tested candidate, excluding dense anchors and held-out measurements. Counts do not describe the post-test delivered predictor. V53 divides recorded scalar rows by the recorded capability-model count; V55/V69 use n_dev_cells; V70 uses development_structure.n_points authenticated by freeze.json. Shared development sets are not additive across rows.
-Error cells use one Math / Code / QA line if it fits the actual column, otherwise three lines in that order. Distillation pairs follow student order 270M, 1B as stated in the caption. Baseline names precede their scores, in the capability order named in the header; paired baseline names follow student order 270M, 1B. Development selection pointers are recorded in each baseline cell's note/context. Short task labels retain the full state and configuration definitions in their source recipes.
-The words 'post-test' mark delivery chosen after this test; first predictors were frozen before measurement. Delivered scores reuse the same frozen test cells, not test-error winners. For the earlier bit test, 'The same predictor' retains the source regression as tested and its exact errors. The later delivered model has no matching stored score and its development includes those cells.
+Numeric error cells use one math / code / question answering line if it fits the actual column, otherwise three lines in that order. The earlier bit test explicitly states that the delivered error is not stored. Distillation pairs follow student order 270 million, 1 billion as stated in the caption. Baseline names precede their scores, in the capability order named in the caption. Development or registration selection pointers are recorded in each baseline cell's note/context. Short task labels retain the full state and configuration definitions in their source recipes.
+The caption identifies deliveries preceding distillation as chosen after testing; first predictors were frozen before measurement. Delivered scores reuse the same frozen test cells, not test-error winners. For the earlier bit test the delivered interpolation/median rule has no matching stored score; its development includes those cells. The source surface is not delivered, and the older interpolation's different model and boundary rules cannot supply the missing error.
+The efficiency confirmation reads summary.json and per_state.json, authenticates their frozen prediction identity, and checks all per-state means against the same recorded cells. The first predictor uses the reduced budget; the registered regression comparison and the delivered QA median use the full budget. Each new cell has its own executable recipe and context pointers.
 Stored V70 paired_difference.ci95 endpoints are omitted from Table 1 because they do not fit on the same line as the score. They remain in the appendix tables. The sign is baseline minus candidate; these are not MAE intervals. No refits, resampling or invented intervals.
 All indices are zero-based JSON pointers. `mean` is equal-weight arithmetic; `weighted_mean` pairs each stored subset MAE with its stored cell count, preserving equal cell weights. No refits or resampling.
 Numeric values are formatted directly from the following executable source recipes. Context pointers justify textual labels and freeze identities; incomplete tasks are omitted.
@@ -46,8 +46,8 @@ V72 repeats use the same weights; no displayed score uses those repeats.
 - Cell (1, 0): `results/v55-quant-group/register.json#/precommitted_rule`; `results/v55-quant-group/register.json#/test_sets/bit_test/states`; `results/v55-quant-group/register.json#/test_sets/bit_test/configs`
 - Cell (1, 1): `results/v55-quant-group/register.json#/feature_names`; `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v55-quant-group/register.json#/n_params_per_capability/low_order_2d`
 - Cell (1, 2): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa`
-- Cell (1, 3): `results/v55-quant-group/register.json#/precommitted_rule`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v55-quant-group/register.json#/dev_configs`; `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`
-- Cell (1, 4): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa`
+- Cell (1, 3): `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/boundary_rule`; `results/v55-quant-group/register.json#/dev_configs`; `results/v55-quant-group/register.json#/candidate_definitions/same_input_interpolation`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table`; `results/v69-quant-confirm/compare.json#/test_sets`
+- Cell (1, 4): `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/boundary_rule`; `results/v55-quant-group/register.json#/dev_configs`; `results/v55-quant-group/register.json#/candidate_definitions/same_input_interpolation`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table`; `results/v69-quant-confirm/compare.json#/test_sets`
 - Cell (1, 5): `results/v55-quant-group/register.json#/loso_table`; `results/v55-quant-group/register.json#/loso_table/4/candidate`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/math`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/code`; `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/qa`
 - Cell (1, 6): `results/v55-quant-group/register.json#/dev_states`; `results/v55-quant-group/register.json#/dev_configs`; `results/v55-quant-group/register.json#/n_dev_cells`
 - Cell (2, 0): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`; `results/v69-quant-confirm/compare.json#/rows/0/test_set`; `results/v69-quant-confirm/compare.json#/rows/1/test_set`; `results/v69-quant-confirm/compare.json#/rows/2/test_set`; `results/v69-quant-confirm/compare.json#/rows/3/test_set`; `results/v69-quant-confirm/compare.json#/rows/4/test_set`; `results/v69-quant-confirm/compare.json#/rows/5/test_set`; `results/v69-quant-confirm/compare.json#/rows/6/test_set`; `results/v69-quant-confirm/compare.json#/rows/7/test_set`; `results/v69-quant-confirm/compare.json#/rows/8/test_set`; `results/v69-quant-confirm/compare.json#/rows/9/test_set`; `results/v69-quant-confirm/compare.json#/rows/10/test_set`; `results/v69-quant-confirm/compare.json#/rows/11/test_set`; `results/v69-quant-confirm/compare.json#/rows/12/test_set`; `results/v69-quant-confirm/compare.json#/rows/13/test_set`; `results/v69-quant-confirm/compare.json#/rows/14/test_set`; `results/v69-quant-confirm/compare.json#/rows/15/test_set`; `results/v69-quant-confirm/compare.json#/rows/16/test_set`; `results/v69-quant-confirm/compare.json#/rows/17/test_set`; `results/v69-quant-confirm/compare.json#/rows/18/test_set`; `results/v69-quant-confirm/compare.json#/rows/19/test_set`; `results/v69-quant-confirm/compare.json#/rows/20/test_set`; `results/v69-quant-confirm/compare.json#/rows/21/test_set`; `results/v69-quant-confirm/compare.json#/rows/22/test_set`; `results/v69-quant-confirm/compare.json#/rows/23/test_set`; `results/v69-quant-confirm/compare.json#/rows/24/test_set`; `results/v69-quant-confirm/compare.json#/rows/25/test_set`; `results/v69-quant-confirm/compare.json#/rows/26/test_set`; `results/v69-quant-confirm/compare.json#/rows/27/test_set`; `results/v69-quant-confirm/compare.json#/rows/28/test_set`; `results/v69-quant-confirm/compare.json#/rows/29/test_set`; `results/v69-quant-confirm/compare.json#/rows/30/test_set`; `results/v69-quant-confirm/compare.json#/rows/31/test_set`; `results/v69-quant-confirm/compare.json#/rows/32/test_set`; `results/v69-quant-confirm/compare.json#/rows/33/test_set`; `results/v69-quant-confirm/compare.json#/rows/34/test_set`; `results/v69-quant-confirm/compare.json#/rows/35/test_set`; `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
@@ -71,6 +71,13 @@ V72 repeats use the same weights; no displayed score uses those repeats.
 - Cell (4, 4): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
 - Cell (4, 5): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/math/method`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/math/method`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/code/method`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/code/method`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/qa/method`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/qa/method`; `results/v70-distill-confirm/compare.json#/groups/0/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/3/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/1/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/4/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
 - Cell (4, 6): `results/v70-distill-confirm/develop.json#/development_structure`; `results/v70-distill-confirm/develop.json#/points`; `results/v70-distill-confirm/freeze.json#/inputs_sha256/results~1v70-distill-confirm~1develop.json`; `results/v70-distill-confirm/develop.json#/development_structure/n_points`
+- Cell (5, 0): `results/a11-efficiency-confirmation/plan.json#/created_utc`; `results/a11-efficiency-confirmation/plan.json#/exclusion_audit`; `results/a11-efficiency-confirmation/summary.json#/predictions_sha256`; `results/a11-efficiency-confirmation/per_state.json#/state_order`; `results/a11-efficiency-confirmation/per_state.json#/records/0/densities`
+- Cell (5, 1): `results/a11-efficiency-confirmation/summary.json#/decision/candidate`; `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/power_18`; `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/A2_36`
+- Cell (5, 2): `results/a11-efficiency-confirmation/per_state.json#/records/0/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/1/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/2/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/3/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/4/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/5/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/6/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/7/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/8/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/9/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/10/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/11/mae`; `results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/power_18`; `results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/power_18`; `results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/power_18`
+- Cell (5, 3): `results/a11-efficiency-confirmation/summary.json#/decision/primary_capabilities`; `results/a11-efficiency-confirmation/summary.json#/decision/candidate`; `results/a11-efficiency-confirmation/summary.json#/decision/descriptive_capabilities`; `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/median_curve_36`
+- Cell (5, 4): `results/a11-efficiency-confirmation/per_state.json#/records/0/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/1/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/2/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/3/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/4/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/5/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/6/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/7/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/8/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/9/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/10/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/11/mae`; `results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/power_18`; `results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/power_18`; `results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/median_curve_36`
+- Cell (5, 5): `results/a11-efficiency-confirmation/summary.json#/decision`; `results/a11-efficiency-confirmation/per_state.json#/records/0/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/1/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/2/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/3/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/4/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/5/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/6/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/7/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/8/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/9/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/10/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/11/mae`; `results/a11-efficiency-confirmation/summary.json#/decision/comparator`; `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/A2_36`; `results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/A2_36`; `results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/A2_36`; `results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/A2_36`
+- Cell (5, 6): `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/A2_36`; `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/power_18`
 
 ## Machine-readable cell recipes
 
@@ -91,7 +98,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Three checkpoints outside every fit, pruned to densities 0.575, 0.675 and 0.85",
+        "label": "Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85",
         "expected": [
           "pythia-410m@step48000",
           [
@@ -121,7 +128,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "note": "All three test checkpoints are absent from every development fit. The 6.9B size occurs at other stages in the expanded register.",
     "compact_scores": "",
-    "rendered": "Three checkpoints outside every fit, pruned to densities 0.575, 0.675 and 0.85"
+    "rendered": "Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85"
   },
   {
     "row": 0,
@@ -209,13 +216,12 @@ V72 repeats use the same weights; no displayed score uses those repeats.
           "median_curve",
           "median_curve"
         ]
-      },
-      " (chosen after this test)"
+      }
     ],
     "context": [],
     "note": "New-state source-free median curve, fixed after test; scores use the same three checkpoints and densities as the frozen candidate.",
     "compact_scores": "",
-    "rendered": "Source-free median density curve (chosen after this test)"
+    "rendered": "Source-free median density curve"
   },
   {
     "row": 0,
@@ -273,7 +279,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Per-density regression; QA: median",
+        "label": "Per-density regression; question answering: median",
         "expected": [
           "A2",
           "A2",
@@ -316,7 +322,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "note": "Minimum development LOSO MAE excluding power, per capability: per-density regression / per-density regression / development median; no test ranking.",
     "compact_scores": "comparison",
-    "rendered": "Per-density regression; QA: median\\newline \\TableOneErrors{0.23}{0.22}{0.22}"
+    "rendered": "Per-density regression; question answering: median\\newline \\TableOneErrors{0.23}{0.22}{0.22}"
   },
   {
     "row": 0,
@@ -349,7 +355,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Pythia 160M to 1.4B at unseen bit width 4, group sizes 64 and 256",
+        "label": "Pythia 160 million to 1.4 billion at unseen bit width 4, group sizes 64 and 256",
         "expected": [
           [
             "pythia-160m@step16000",
@@ -371,7 +377,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "note": "",
     "compact_scores": "",
-    "rendered": "Pythia 160M to 1.4B at unseen bit width 4, group sizes 64 and 256"
+    "rendered": "Pythia 160 million to 1.4 billion at unseen bit width 4, group sizes 64 and 256"
   },
   {
     "row": 1,
@@ -437,58 +443,47 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "parts": [
       {
         "sources": [
-          "results/v55-quant-group/register.json#/candidate_definitions/low_order_2d"
+          "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
         ],
         "op": "label",
         "format": null,
-        "label": "The same predictor",
+        "label": "Interpolate math and code on seen states; use the median otherwise",
         "expected": [
-          "phi.[a0 + a1*u + a2*v + a3*u*v + a4*u^2]; coefficients ordered by term then phi"
+          "R: piecewise interpolation for math/code on development states; per-configuration median for QA and for all capabilities on new states. Specified post-test rule, not the minimum error in each test panel."
         ]
       }
     ],
     "context": [
-      "results/v55-quant-group/register.json#/precommitted_rule",
       "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule",
       "results/v69-quant-confirm/develop.json#/dev_configs",
-      "results/v55-quant-group/register.json#/dev_configs"
+      "results/v69-quant-confirm/develop.json#/boundary_rule",
+      "results/v55-quant-group/register.json#/dev_configs",
+      "results/v55-quant-group/register.json#/candidate_definitions/same_input_interpolation",
+      "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table",
+      "results/v69-quant-confirm/compare.json#/test_sets"
     ],
-    "note": "The delivered relation for this task is the source regression as tested; its errors reuse the candidate's exact frozen JSON fields. It was fixed before measurement. The later delivered rule has no matching stored score for this earlier bit test, whose configurations entered its development grid. V55 alternatives use different models and boundary rules and are not substituted for that later rule.",
+    "note": "The low-order surface is a tested candidate, not a delivered relation (Appendix E.1: design rank 16 of 20). The later delivered rule has no matching stored score for this earlier bit test, whose configurations entered its development grid. V55 alternatives use different models and boundary rules and are not substituted for that later rule.",
     "compact_scores": "",
-    "rendered": "The same predictor"
+    "rendered": "Interpolate math and code on seen states; use the median otherwise"
   },
   {
     "row": 1,
     "column": 4,
     "parts": [
-      {
-        "sources": [
-          "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      }
+      "No stored error on these test cells"
     ],
-    "context": [],
-    "note": "The delivered relation for this task is the source regression as tested; its errors reuse the candidate's exact frozen JSON fields. It was fixed before measurement. The later delivered rule has no matching stored score for this earlier bit test, whose configurations entered its development grid. V55 alternatives use different models and boundary rules and are not substituted for that later rule.",
-    "compact_scores": "ordered",
-    "rendered": "\\TableOneErrors{0.19}{0.21}{0.44}"
+    "context": [
+      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule",
+      "results/v69-quant-confirm/develop.json#/dev_configs",
+      "results/v69-quant-confirm/develop.json#/boundary_rule",
+      "results/v55-quant-group/register.json#/dev_configs",
+      "results/v55-quant-group/register.json#/candidate_definitions/same_input_interpolation",
+      "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table",
+      "results/v69-quant-confirm/compare.json#/test_sets"
+    ],
+    "note": "The low-order surface is a tested candidate, not a delivered relation (Appendix E.1: design rank 16 of 20). The later delivered rule has no matching stored score for this earlier bit test, whose configurations entered its development grid. V55 alternatives use different models and boundary rules and are not substituted for that later rule.",
+    "compact_scores": "",
+    "rendered": "No stored error on these test cells"
   },
   {
     "row": 1,
@@ -578,7 +573,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Pythia 410M and 1.4B at unseen group sizes 32 and 512, bit widths 3 to 5",
+        "label": "Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5",
         "expected": [
           "pythia-410m@step143000",
           "b3_g32",
@@ -632,7 +627,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "note": "",
     "compact_scores": "",
-    "rendered": "Pythia 410M and 1.4B at unseen group sizes 32 and 512, bit widths 3 to 5"
+    "rendered": "Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5"
   },
   {
     "row": 2,
@@ -646,7 +641,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Math source regression; Code development median; QA no change",
+        "label": "Source regression, the median and no change",
         "expected": [
           "low_order_2d",
           "median",
@@ -662,7 +657,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "note": "Frozen candidates unchanged: Math uses the source surface, Code the per-configuration median, QA zero. Median interpolation is source-free and differs from the delivered same-input interpolation.",
     "compact_scores": "",
-    "rendered": "Math source regression; Code development median; QA no change"
+    "rendered": "Source regression, the median and no change"
   },
   {
     "row": 2,
@@ -711,7 +706,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Math, Code: interpolation on the measured group-size grid; QA: development median",
+        "label": "Interpolate math and code; use the median for question answering",
         "expected": [
           "fixed after test",
           "same_input_interpolation",
@@ -719,13 +714,12 @@ V72 repeats use the same weights; no displayed score uses those repeats.
           "median",
           "R: piecewise interpolation for math/code on development states; per-configuration median for QA and for all capabilities on new states. Specified post-test rule, not the minimum error in each test panel."
         ]
-      },
-      " (chosen after this test)"
+      }
     ],
     "context": [],
     "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
     "compact_scores": "",
-    "rendered": "Math, Code: interpolation on the measured group-size grid; QA: development median (chosen after this test)"
+    "rendered": "Interpolate math and code; use the median for question answering"
   },
   {
     "row": 2,
@@ -778,7 +772,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Bilinear regression; Code: no change; QA: median",
+        "label": "Bilinear regression, no change and the median",
         "expected": [
           {
             "n": 54,
@@ -854,7 +848,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
     "compact_scores": "comparison",
-    "rendered": "Bilinear regression; Code: no change; QA: median\\newline \\TableOneErrors{0.33}{0.68}{0.46}"
+    "rendered": "Bilinear regression, no change and the median\\newline \\TableOneErrors{0.33}{0.68}{0.46}"
   },
   {
     "row": 2,
@@ -896,7 +890,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "A 1.4B stage unseen in fitting, bit widths 3 to 5, group sizes 32 to 512",
+        "label": "An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512",
         "expected": [
           "pythia-1.4b@step112000",
           "b3_g32",
@@ -943,7 +937,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "note": "",
     "compact_scores": "",
-    "rendered": "A 1.4B stage unseen in fitting, bit widths 3 to 5, group sizes 32 to 512"
+    "rendered": "An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512"
   },
   {
     "row": 3,
@@ -957,7 +951,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Math source regression; Code development median; QA no change",
+        "label": "Source regression, the median and no change",
         "expected": [
           "low_order_2d",
           "median",
@@ -973,7 +967,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "note": "Frozen candidates unchanged: Math uses the source surface, Code the per-configuration median, QA zero. Median interpolation is source-free and differs from the delivered same-input interpolation.",
     "compact_scores": "",
-    "rendered": "Math source regression; Code development median; QA no change"
+    "rendered": "Source regression, the median and no change"
   },
   {
     "row": 3,
@@ -1039,13 +1033,12 @@ V72 repeats use the same weights; no displayed score uses those repeats.
           "median",
           "R: piecewise interpolation for math/code on development states; per-configuration median for QA and for all capabilities on new states. Specified post-test rule, not the minimum error in each test panel."
         ]
-      },
-      " (chosen after this test)"
+      }
     ],
     "context": [],
     "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
     "compact_scores": "",
-    "rendered": "Development median (chosen after this test)"
+    "rendered": "Development median"
   },
   {
     "row": 3,
@@ -1107,7 +1100,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Bilinear regression; Code: no change; QA: median",
+        "label": "Bilinear regression, no change and the median",
         "expected": [
           {
             "n": 54,
@@ -1192,7 +1185,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
     "compact_scores": "comparison",
-    "rendered": "Bilinear regression; Code: no change; QA: median\\newline \\TableOneErrors{0.35}{0.56}{0.14}"
+    "rendered": "Bilinear regression, no change and the median\\newline \\TableOneErrors{0.35}{0.56}{0.14}"
   },
   {
     "row": 3,
@@ -1227,7 +1220,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Gemma 270M and 1B distilled on six new pools at 50 to 200 thousand tokens",
+        "label": "Gemma 270 million and 1 billion distilled on six new pools at 50 to 200 thousand tokens",
         "expected": [
           [
             "gemma3-270m",
@@ -1568,7 +1561,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "note": "",
     "compact_scores": "",
-    "rendered": "Gemma 270M and 1B distilled on six new pools at 50 to 200 thousand tokens"
+    "rendered": "Gemma 270 million and 1 billion distilled on six new pools at 50 to 200 thousand tokens"
   },
   {
     "row": 4,
@@ -1585,7 +1578,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Reuse forms for math and code; budget-and-pool form for QA",
+        "label": "Reuse forms, with a budget and pool form for question answering",
         "expected": [
           "E",
           1,
@@ -1602,7 +1595,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "note": "The frozen and delivered forms are identical: one-coefficient zero-anchored reuse for Math/Code, joint budget/pool for QA; fixed before test.",
     "compact_scores": "",
-    "rendered": "Reuse forms for math and code; budget-and-pool form for QA"
+    "rendered": "Reuse forms, with a budget and pool form for question answering"
   },
   {
     "row": 4,
@@ -1779,7 +1772,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
         ],
         "op": "label",
         "format": null,
-        "label": "Regressions on budget and loss, on reuse, and on reuse and size",
+        "label": "Regressions on budget and loss, reuse, and reuse and size",
         "expected": [
           "T-only",
           "surface:L0",
@@ -1844,7 +1837,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ],
     "note": "Development-fixed baseline identities, student order 270M, 1B: budget regression, loss regression / reuse regression / reuse regression, size regression.",
     "compact_scores": "comparison",
-    "rendered": "Regressions on budget and loss, on reuse, and on reuse and size\\newline \\TableOneErrors{0.07, 0.03}{0.02, 0.05}{0.61, 0.45}"
+    "rendered": "Regressions on budget and loss, reuse, and reuse and size\\newline \\TableOneErrors{0.07, 0.03}{0.02, 0.05}{0.61, 0.45}"
   },
   {
     "row": 4,
@@ -1866,6 +1859,280 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "note": "100 registered checkpoints (25 trajectories times four) per capability, pooled across development students for the shared fit; not 100 per test student. The freeze authenticates develop.json; dense anchors excluded.",
     "compact_scores": "",
     "rendered": "100"
+  },
+  {
+    "row": 5,
+    "column": 0,
+    "parts": [
+      {
+        "sources": [
+          "results/a11-efficiency-confirmation/per_state.json#/state_order",
+          "results/a11-efficiency-confirmation/per_state.json#/records/0/densities"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Four unseen Pythia states pruned at six densities",
+        "expected": [
+          [
+            "pythia-160m@step80000",
+            "pythia-410m@step112000",
+            "pythia-1.4b@step48000",
+            "pythia-1b@step48000"
+          ],
+          [
+            0.9,
+            0.85,
+            0.8,
+            0.75,
+            0.7,
+            0.65
+          ]
+        ]
+      }
+    ],
+    "context": [
+      "results/a11-efficiency-confirmation/plan.json#/created_utc",
+      "results/a11-efficiency-confirmation/plan.json#/exclusion_audit",
+      "results/a11-efficiency-confirmation/summary.json#/predictions_sha256"
+    ],
+    "note": "",
+    "compact_scores": "",
+    "rendered": "Four unseen Pythia states pruned at six densities"
+  },
+  {
+    "row": 5,
+    "column": 1,
+    "parts": [
+      {
+        "sources": [
+          "results/a11-efficiency-confirmation/summary.json#/decision/candidate",
+          "results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/power_18",
+          "results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/A2_36"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Compact power form using half the measurements",
+        "expected": [
+          "power_18",
+          18,
+          36
+        ]
+      }
+    ],
+    "context": [],
+    "note": "",
+    "compact_scores": "",
+    "rendered": "Compact power form using half the measurements"
+  },
+  {
+    "row": 5,
+    "column": 2,
+    "parts": [
+      {
+        "sources": [
+          "results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/power_18"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      "\n",
+      {
+        "sources": [
+          "results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/power_18"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      "\n",
+      {
+        "sources": [
+          "results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/power_18"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      }
+    ],
+    "context": [
+      "results/a11-efficiency-confirmation/per_state.json#/records/0/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/1/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/2/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/3/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/4/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/5/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/6/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/7/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/8/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/9/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/10/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/11/mae"
+    ],
+    "note": "Stored unweighted per-capability MAEs, checked against all four per-state means and the identical six-density cells; no refit or test ranking.",
+    "compact_scores": "ordered",
+    "rendered": "\\TableOneErrors{0.07}{0.10}{0.18}"
+  },
+  {
+    "row": 5,
+    "column": 3,
+    "parts": [
+      {
+        "sources": [
+          "results/a11-efficiency-confirmation/summary.json#/decision/primary_capabilities",
+          "results/a11-efficiency-confirmation/summary.json#/decision/candidate",
+          "results/a11-efficiency-confirmation/summary.json#/decision/descriptive_capabilities",
+          "results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/median_curve_36"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "The same power form, with a median density curve for question answering",
+        "expected": [
+          [
+            "math",
+            "code"
+          ],
+          "power_18",
+          [
+            "qa"
+          ],
+          36
+        ]
+      }
+    ],
+    "context": [],
+    "note": "Section 6 measurement-efficiency scope and Appendix E retain the source-free median for QA. Use the full-development median_curve_36 (36 measurements), not median_curve_18; the last column counts the first predictor only. This is the specified delivery, not a claim that the median wins this test.",
+    "compact_scores": "",
+    "rendered": "The same power form, with a median density curve for question answering"
+  },
+  {
+    "row": 5,
+    "column": 4,
+    "parts": [
+      {
+        "sources": [
+          "results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/power_18"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      "\n",
+      {
+        "sources": [
+          "results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/power_18"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      "\n",
+      {
+        "sources": [
+          "results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/median_curve_36"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      }
+    ],
+    "context": [
+      "results/a11-efficiency-confirmation/per_state.json#/records/0/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/1/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/2/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/3/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/4/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/5/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/6/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/7/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/8/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/9/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/10/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/11/mae"
+    ],
+    "note": "Stored unweighted per-capability MAEs, checked against all four per-state means and the identical six-density cells; no refit or test ranking.",
+    "compact_scores": "ordered",
+    "rendered": "\\TableOneErrors{0.07}{0.10}{0.18}"
+  },
+  {
+    "row": 5,
+    "column": 5,
+    "parts": [
+      {
+        "sources": [
+          "results/a11-efficiency-confirmation/summary.json#/decision/comparator"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Per-density regression at full budget",
+        "expected": [
+          "A2_36"
+        ]
+      },
+      " (",
+      {
+        "sources": [
+          "results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/A2_36"
+        ],
+        "op": "identity",
+        "format": null
+      },
+      ")\n",
+      {
+        "sources": [
+          "results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/A2_36"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      "\n",
+      {
+        "sources": [
+          "results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/A2_36"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      },
+      "\n",
+      {
+        "sources": [
+          "results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/A2_36"
+        ],
+        "op": "identity",
+        "format": ".2f"
+      }
+    ],
+    "context": [
+      "results/a11-efficiency-confirmation/summary.json#/decision",
+      "results/a11-efficiency-confirmation/per_state.json#/records/0/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/1/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/2/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/3/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/4/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/5/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/6/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/7/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/8/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/9/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/10/mae",
+      "results/a11-efficiency-confirmation/per_state.json#/records/11/mae"
+    ],
+    "note": "Stored unweighted per-capability MAEs, checked against all four per-state means and the identical six-density cells; no refit or test ranking.",
+    "compact_scores": "comparison",
+    "rendered": "Per-density regression at full budget (36)\\newline \\TableOneErrors{0.06}{0.08}{0.18}"
+  },
+  {
+    "row": 5,
+    "column": 6,
+    "parts": [
+      {
+        "sources": [
+          "results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/power_18"
+        ],
+        "op": "identity",
+        "format": null
+      }
+    ],
+    "context": [
+      "results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/A2_36"
+    ],
+    "note": "18 recorded development configuration measurements per capability for power_18, half the comparator's 36; excludes dense anchors and test measurements.",
+    "compact_scores": "",
+    "rendered": "18"
   }
 ]
 ```
@@ -1875,14 +2142,14 @@ V72 repeats use the same weights; no displayed score uses those repeats.
 ```json
 {
   "parts": [
-    "Every row is a prediction frozen before measurement; errors are mean absolute errors in nats per token for Math, Code and QA. The last column counts the development configuration measurements per capability behind the tested predictor. ``Chosen after this test'' marks a delivered rule fixed after seeing these results; the comparison is the development-selected baseline. Distillation entries give the ",
+    "Errors are mean absolute errors in nats per token, in math, code and question answering order. The first predictor of a row was frozen before its measurement; a delivered rule marked as later was chosen after seeing the result. Interpolation is piecewise on the measured grid, and a median curve uses no source inputs. The last column counts the development configuration measurements per capability behind the first predictor. Distillation entries give the ",
     {
       "sources": [
         "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
       ],
       "op": "label",
       "format": null,
-      "label": "270M and 1B",
+      "label": "270 million and 1 billion",
       "expected": [
         [
           "gemma3-270m",
@@ -1902,7 +2169,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   ],
   "note": "",
   "compact_scores": "",
-  "rendered": "Every row is a prediction frozen before measurement; errors are mean absolute errors in nats per token for Math, Code and QA. The last column counts the development configuration measurements per capability behind the tested predictor. ``Chosen after this test'' marks a delivered rule fixed after seeing these results; the comparison is the development-selected baseline. Distillation entries give the 270M and 1B students in that order."
+  "rendered": "Errors are mean absolute errors in nats per token, in math, code and question answering order. The first predictor of a row was frozen before its measurement; a delivered rule marked as later was chosen after seeing the result. Interpolation is piecewise on the measured grid, and a median curve uses no source inputs. The last column counts the development configuration measurements per capability behind the first predictor. Distillation entries give the 270 million and 1 billion students in that order."
 }
 ```
 
@@ -1932,9 +2199,6 @@ V72 repeats use the same weights; no displayed score uses those repeats.
 - Cell (1, 2), `0.19` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math`
 - Cell (1, 2), `0.21` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code`
 - Cell (1, 2), `0.44` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa`
-- Cell (1, 4), `0.19` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math`
-- Cell (1, 4), `0.21` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code`
-- Cell (1, 4), `0.44` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa`
 - Cell (1, 5), `0.55` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/math`
 - Cell (1, 5), `0.73` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/code`
 - Cell (1, 5), `0.54` (identity): `results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/4/mae/qa`
@@ -1994,6 +2258,20 @@ V72 repeats use the same weights; no displayed score uses those repeats.
 - Cell (4, 5), `0.61` (identity): `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`
 - Cell (4, 5), `0.45` (identity): `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
 - Cell (4, 6), `100` (identity): `results/v70-distill-confirm/develop.json#/development_structure/n_points`
+- Cell (5, 0), `Four` (label): `results/a11-efficiency-confirmation/per_state.json#/state_order`; `results/a11-efficiency-confirmation/per_state.json#/records/0/densities`
+- Cell (5, 0), `six` (label): `results/a11-efficiency-confirmation/per_state.json#/state_order`; `results/a11-efficiency-confirmation/per_state.json#/records/0/densities`
+- Cell (5, 1), `half` (label): `results/a11-efficiency-confirmation/summary.json#/decision/candidate`; `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/power_18`; `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/A2_36`
+- Cell (5, 2), `0.07` (identity): `results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/power_18`
+- Cell (5, 2), `0.10` (identity): `results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/power_18`
+- Cell (5, 2), `0.18` (identity): `results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/power_18`
+- Cell (5, 4), `0.07` (identity): `results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/power_18`
+- Cell (5, 4), `0.10` (identity): `results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/power_18`
+- Cell (5, 4), `0.18` (identity): `results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/median_curve_36`
+- Cell (5, 5), `36` (identity): `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/A2_36`
+- Cell (5, 5), `0.06` (identity): `results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/A2_36`
+- Cell (5, 5), `0.08` (identity): `results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/A2_36`
+- Cell (5, 5), `0.18` (identity): `results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/A2_36`
+- Cell (5, 6), `18` (identity): `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/power_18`
 - Caption, `270` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`
 - Caption, `1` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`
 
@@ -2006,7 +2284,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "Three",
-    "displayed": "Three checkpoints outside every fit, pruned to densities 0.575, 0.675 and 0.85",
+    "displayed": "Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85",
     "op": "label",
     "sources": [
       "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
@@ -2022,7 +2300,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "0.575",
-    "displayed": "Three checkpoints outside every fit, pruned to densities 0.575, 0.675 and 0.85",
+    "displayed": "Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85",
     "op": "label",
     "sources": [
       "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
@@ -2038,7 +2316,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "0.675",
-    "displayed": "Three checkpoints outside every fit, pruned to densities 0.575, 0.675 and 0.85",
+    "displayed": "Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85",
     "op": "label",
     "sources": [
       "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
@@ -2054,7 +2332,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "0.85",
-    "displayed": "Three checkpoints outside every fit, pruned to densities 0.575, 0.675 and 0.85",
+    "displayed": "Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85",
     "op": "label",
     "sources": [
       "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
@@ -2212,7 +2490,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "160",
-    "displayed": "Pythia 160M to 1.4B at unseen bit width 4, group sizes 64 and 256",
+    "displayed": "Pythia 160 million to 1.4 billion at unseen bit width 4, group sizes 64 and 256",
     "op": "label",
     "sources": [
       "results/v55-quant-group/register.json#/test_sets/bit_test/states",
@@ -2224,7 +2502,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "1.4",
-    "displayed": "Pythia 160M to 1.4B at unseen bit width 4, group sizes 64 and 256",
+    "displayed": "Pythia 160 million to 1.4 billion at unseen bit width 4, group sizes 64 and 256",
     "op": "label",
     "sources": [
       "results/v55-quant-group/register.json#/test_sets/bit_test/states",
@@ -2236,7 +2514,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "4",
-    "displayed": "Pythia 160M to 1.4B at unseen bit width 4, group sizes 64 and 256",
+    "displayed": "Pythia 160 million to 1.4 billion at unseen bit width 4, group sizes 64 and 256",
     "op": "label",
     "sources": [
       "results/v55-quant-group/register.json#/test_sets/bit_test/states",
@@ -2248,7 +2526,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "64",
-    "displayed": "Pythia 160M to 1.4B at unseen bit width 4, group sizes 64 and 256",
+    "displayed": "Pythia 160 million to 1.4 billion at unseen bit width 4, group sizes 64 and 256",
     "op": "label",
     "sources": [
       "results/v55-quant-group/register.json#/test_sets/bit_test/states",
@@ -2260,7 +2538,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "256",
-    "displayed": "Pythia 160M to 1.4B at unseen bit width 4, group sizes 64 and 256",
+    "displayed": "Pythia 160 million to 1.4 billion at unseen bit width 4, group sizes 64 and 256",
     "op": "label",
     "sources": [
       "results/v55-quant-group/register.json#/test_sets/bit_test/states",
@@ -2304,39 +2582,6 @@ V72 repeats use the same weights; no displayed score uses those repeats.
   {
     "row": 1,
     "column": 2,
-    "part": 4,
-    "number": "0.44",
-    "displayed": "0.44",
-    "op": "identity",
-    "sources": [
-      "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/qa"
-    ]
-  },
-  {
-    "row": 1,
-    "column": 4,
-    "part": 0,
-    "number": "0.19",
-    "displayed": "0.19",
-    "op": "identity",
-    "sources": [
-      "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/math"
-    ]
-  },
-  {
-    "row": 1,
-    "column": 4,
-    "part": 2,
-    "number": "0.21",
-    "displayed": "0.21",
-    "op": "identity",
-    "sources": [
-      "results/v55-quant-group/compare.json#/test_sets/bit_test/mae_table/1/mae/code"
-    ]
-  },
-  {
-    "row": 1,
-    "column": 4,
     "part": 4,
     "number": "0.44",
     "displayed": "0.44",
@@ -2394,7 +2639,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "410",
-    "displayed": "Pythia 410M and 1.4B at unseen group sizes 32 and 512, bit widths 3 to 5",
+    "displayed": "Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/0/state",
@@ -2412,7 +2657,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "1.4",
-    "displayed": "Pythia 410M and 1.4B at unseen group sizes 32 and 512, bit widths 3 to 5",
+    "displayed": "Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/0/state",
@@ -2430,7 +2675,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "32",
-    "displayed": "Pythia 410M and 1.4B at unseen group sizes 32 and 512, bit widths 3 to 5",
+    "displayed": "Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/0/state",
@@ -2448,7 +2693,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "512",
-    "displayed": "Pythia 410M and 1.4B at unseen group sizes 32 and 512, bit widths 3 to 5",
+    "displayed": "Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/0/state",
@@ -2466,7 +2711,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "3",
-    "displayed": "Pythia 410M and 1.4B at unseen group sizes 32 and 512, bit widths 3 to 5",
+    "displayed": "Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/0/state",
@@ -2484,7 +2729,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "5",
-    "displayed": "Pythia 410M and 1.4B at unseen group sizes 32 and 512, bit widths 3 to 5",
+    "displayed": "Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/0/state",
@@ -2612,7 +2857,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "1.4",
-    "displayed": "A 1.4B stage unseen in fitting, bit widths 3 to 5, group sizes 32 to 512",
+    "displayed": "An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/36/state",
@@ -2632,7 +2877,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "3",
-    "displayed": "A 1.4B stage unseen in fitting, bit widths 3 to 5, group sizes 32 to 512",
+    "displayed": "An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/36/state",
@@ -2652,7 +2897,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "5",
-    "displayed": "A 1.4B stage unseen in fitting, bit widths 3 to 5, group sizes 32 to 512",
+    "displayed": "An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/36/state",
@@ -2672,7 +2917,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "32",
-    "displayed": "A 1.4B stage unseen in fitting, bit widths 3 to 5, group sizes 32 to 512",
+    "displayed": "An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/36/state",
@@ -2692,7 +2937,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "512",
-    "displayed": "A 1.4B stage unseen in fitting, bit widths 3 to 5, group sizes 32 to 512",
+    "displayed": "An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/36/state",
@@ -2849,7 +3094,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "270",
-    "displayed": "Gemma 270M and 1B distilled on six new pools at 50 to 200 thousand tokens",
+    "displayed": "Gemma 270 million and 1 billion distilled on six new pools at 50 to 200 thousand tokens",
     "op": "label",
     "sources": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
@@ -2862,7 +3107,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "1",
-    "displayed": "Gemma 270M and 1B distilled on six new pools at 50 to 200 thousand tokens",
+    "displayed": "Gemma 270 million and 1 billion distilled on six new pools at 50 to 200 thousand tokens",
     "op": "label",
     "sources": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
@@ -2875,7 +3120,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "six",
-    "displayed": "Gemma 270M and 1B distilled on six new pools at 50 to 200 thousand tokens",
+    "displayed": "Gemma 270 million and 1 billion distilled on six new pools at 50 to 200 thousand tokens",
     "op": "label",
     "sources": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
@@ -2888,7 +3133,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "50",
-    "displayed": "Gemma 270M and 1B distilled on six new pools at 50 to 200 thousand tokens",
+    "displayed": "Gemma 270 million and 1 billion distilled on six new pools at 50 to 200 thousand tokens",
     "op": "label",
     "sources": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
@@ -2901,7 +3146,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "column": 0,
     "part": 0,
     "number": "200",
-    "displayed": "Gemma 270M and 1B distilled on six new pools at 50 to 200 thousand tokens",
+    "displayed": "Gemma 270 million and 1 billion distilled on six new pools at 50 to 200 thousand tokens",
     "op": "label",
     "sources": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/students",
@@ -3119,10 +3364,168 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     ]
   },
   {
+    "row": 5,
+    "column": 0,
+    "part": 0,
+    "number": "Four",
+    "displayed": "Four unseen Pythia states pruned at six densities",
+    "op": "label",
+    "sources": [
+      "results/a11-efficiency-confirmation/per_state.json#/state_order",
+      "results/a11-efficiency-confirmation/per_state.json#/records/0/densities"
+    ]
+  },
+  {
+    "row": 5,
+    "column": 0,
+    "part": 0,
+    "number": "six",
+    "displayed": "Four unseen Pythia states pruned at six densities",
+    "op": "label",
+    "sources": [
+      "results/a11-efficiency-confirmation/per_state.json#/state_order",
+      "results/a11-efficiency-confirmation/per_state.json#/records/0/densities"
+    ]
+  },
+  {
+    "row": 5,
+    "column": 1,
+    "part": 0,
+    "number": "half",
+    "displayed": "Compact power form using half the measurements",
+    "op": "label",
+    "sources": [
+      "results/a11-efficiency-confirmation/summary.json#/decision/candidate",
+      "results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/power_18",
+      "results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/A2_36"
+    ]
+  },
+  {
+    "row": 5,
+    "column": 2,
+    "part": 0,
+    "number": "0.07",
+    "displayed": "0.07",
+    "op": "identity",
+    "sources": [
+      "results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/power_18"
+    ]
+  },
+  {
+    "row": 5,
+    "column": 2,
+    "part": 2,
+    "number": "0.10",
+    "displayed": "0.10",
+    "op": "identity",
+    "sources": [
+      "results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/power_18"
+    ]
+  },
+  {
+    "row": 5,
+    "column": 2,
+    "part": 4,
+    "number": "0.18",
+    "displayed": "0.18",
+    "op": "identity",
+    "sources": [
+      "results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/power_18"
+    ]
+  },
+  {
+    "row": 5,
+    "column": 4,
+    "part": 0,
+    "number": "0.07",
+    "displayed": "0.07",
+    "op": "identity",
+    "sources": [
+      "results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/power_18"
+    ]
+  },
+  {
+    "row": 5,
+    "column": 4,
+    "part": 2,
+    "number": "0.10",
+    "displayed": "0.10",
+    "op": "identity",
+    "sources": [
+      "results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/power_18"
+    ]
+  },
+  {
+    "row": 5,
+    "column": 4,
+    "part": 4,
+    "number": "0.18",
+    "displayed": "0.18",
+    "op": "identity",
+    "sources": [
+      "results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/median_curve_36"
+    ]
+  },
+  {
+    "row": 5,
+    "column": 5,
+    "part": 2,
+    "number": "36",
+    "displayed": "36",
+    "op": "identity",
+    "sources": [
+      "results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/A2_36"
+    ]
+  },
+  {
+    "row": 5,
+    "column": 5,
+    "part": 4,
+    "number": "0.06",
+    "displayed": "0.06",
+    "op": "identity",
+    "sources": [
+      "results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/A2_36"
+    ]
+  },
+  {
+    "row": 5,
+    "column": 5,
+    "part": 6,
+    "number": "0.08",
+    "displayed": "0.08",
+    "op": "identity",
+    "sources": [
+      "results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/A2_36"
+    ]
+  },
+  {
+    "row": 5,
+    "column": 5,
+    "part": 8,
+    "number": "0.18",
+    "displayed": "0.18",
+    "op": "identity",
+    "sources": [
+      "results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/A2_36"
+    ]
+  },
+  {
+    "row": 5,
+    "column": 6,
+    "part": 0,
+    "number": "18",
+    "displayed": "18",
+    "op": "identity",
+    "sources": [
+      "results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/power_18"
+    ]
+  },
+  {
     "location": "caption",
     "part": 1,
     "number": "270",
-    "displayed": "270M and 1B",
+    "displayed": "270 million and 1 billion",
     "op": "label",
     "sources": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
@@ -3132,7 +3535,7 @@ V72 repeats use the same weights; no displayed score uses those repeats.
     "location": "caption",
     "part": 1,
     "number": "1",
-    "displayed": "270M and 1B",
+    "displayed": "270 million and 1 billion",
     "op": "label",
     "sources": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
@@ -3143,6 +3546,10 @@ V72 repeats use the same weights; no displayed score uses those repeats.
 
 ## Input hashes
 
+- `results/a11-efficiency-confirmation/per_state.json`: `ea77b4aa2984d9e7a9d947ea2430c0064be33decd36874ad4baa001990083b8f`
+- `results/a11-efficiency-confirmation/plan.json`: `54ffc5000b1091d6f49e9f403d12aa68c6a0c4f0913e2ad74d1219836cc82576`
+- `results/a11-efficiency-confirmation/predictions.json`: `beee08caab31ba9e032b57bbb6dac9f1464c500729980ee0f706aeeb38115dfb`
+- `results/a11-efficiency-confirmation/summary.json`: `899eb866922f28a94fc5e3bbe5dad73b5495a90566df9de3bfb7f379159f9c54`
 - `results/a5-corner-second-difference/summary.json`: `05de90f078ea37d760f256eb9b9cfe37bea734827b2c8099e25f66a689a1bc75`
 - `results/a7-closeout-audit/summary.json`: `14d698bc5348bee38fe593632f421fa64d794ad2a2687a70532bae935a078c9e`
 - `results/v40-prune-strength/register.json`: `2080fb5ddf606f3a0ba8f4af6096ee4044c3bfb370d710c8abd6f04438265c93`
