@@ -40,16 +40,18 @@ and predictions are frozen and tested on held-out states, so each relation carri
 which it was tested and no more. Response shapes, and not only response sizes, differ across
 capabilities, and predicting a new configuration of a measured model is a different problem from
 transferring to a new model state; both are properties that any such law has to respect.
-\item \textbf{A compact pruning relation with a reduced measurement cost.} Fitted on half of
-the development configuration measurements, the five-parameter form predicts four further model
-states as accurately as a regression that uses every measurement, and twice as accurately as the
-source-free curve at the same budget. The saving comes from measuring fewer densities per source, not from measuring fewer sources,
-which is a reusable lesson for designing measurement panels of this kind.
-\item \textbf{Measured data requirements for distillation.} At a fixed protocol
-the cost of reusing a small pool is monotone in reuse, grows with student size, and appears on
-every evaluation distribution we scored, while the net gain appears on one of them. A registered
-experiment measures the range of independent data at which a capability-specific loss constraint is
-met, and reports a bound where the largest pool we could build still fails.
+\item \textbf{Predictive relations that lower the cost of measuring compression.} A relation earns
+its place only if fitting it costs less than measuring the answer directly. We show that a compact
+capability-conditioned relation can carry part of that cost: fitted on half of the development
+configuration measurements it predicts held-out model states as accurately as a regression that
+uses all of them, and the saving comes from measuring fewer settings per model rather than fewer
+models, which is a design principle for any measurement panel of this kind.
+\item \textbf{Compression requirements stated as measured quantities rather than assumptions.} We
+replace qualitative guidance about data and protocol with quantities that can be measured and
+checked: the training exposure at which reuse begins to cost more than it returns, the range of
+independent data at which a capability-specific loss constraint is met, and the bound to report
+when no reachable amount of data meets it. Each is stated with the range and the evaluation
+distribution on which it holds.
 \item \textbf{Conditions under which cross-method selection improves on a single method.} On references that
 supplied no measurement to the rule, in two model families, with every candidate frozen before
 measurement, the capability-specific rule recovers up to 0.89 nats of loss on question answering that
