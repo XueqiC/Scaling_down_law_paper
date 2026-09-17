@@ -744,9 +744,8 @@ this round under the recipe on which the delivered relation was fitted. Before a
 snapshots were compared with all thirty revisions used earlier, 180 comparisons in which every
 target proved distinct; the dense reference and pristine student losses were measured on the frozen
 probes; and 144 capability predictions, 48 largest-increase predictions and both selection maps
-were sealed. Table~\ref{tab:s3-selection} reports the outcome for each reference and objective. Question
-answering is the capability with an opportunity to capture, and the rule captures it; the other
-three objectives leave almost nothing on the table for any policy.
+were sealed. Table~\ref{tab:s3-selection} reports the outcome for each reference and objective. Question answering is the only objective with an opportunity to capture, and the rule captures it;
+on the other three the opportunity is negligible for every policy.
 \input{tables/s3_identity}
 \input{tables/s3_selection}
 
@@ -809,7 +808,8 @@ uses the same candidates, predictor, and feasibility rule with no
 fallback. Predictions under this rule and under the earlier
 source-conditioned laws were frozen for four fresh states before
 measurement (Table~\ref{tab:rule-confirm}; Fig.~\ref{fig:rule_maps});
-the registered criterion confirms a capability when the mean regret of the locked rule over the 68 cells is within that of the source-conditioned map and below that of quantization-only; math, code, and QA meet it, while the multi-capability objective fails the first condition by a hair, 0.0020 against 0.0019, and is reported as prospective and unconfirmed. The distillation candidates on 1B@64k are the
+the registered criterion confirms a capability when the mean regret of the locked rule over the 68 cells is within that of the source-conditioned map and below that of quantization-only; math, code, and QA meet it, while the multi-capability objective misses the first condition by 0.0001 nats, 0.0020 against
+0.0019, and is reported as prospective and unconfirmed. The distillation candidates on 1B@64k are the
 existing students 160M@64k and 410M@64k, whose post-training
 outcomes were purged from the fits that predict them; per-state
 regrets and candidate-set sizes are in
@@ -867,7 +867,7 @@ carries math and code at unseen densities and group sizes of seen states and ove
 pruning on new checkpoints, so a calibrated configuration median is the safer default when the state
 is new. The training protocol should be fixed before distillation damage is measured, since the learning rate moves it by
 an order of magnitude. Data-reuse experiments should be designed so that a budget-by-reuse rectangle exists by
-construction. Calibration should be paid for according to what it buys, and per method: one target measurement, the K1 budget as opposed to the K0 predictions, helped the quantization predictor, whereas for pruning a calibration point at the mildest density amplified noise, because an observation near zero damage cannot estimate an amplitude stably; a calibration point must carry enough response signal, and the more expensive dense statistics did not earn their cost.
+construction. Calibration should be judged per method against the accuracy it provides: one target measurement, the K1 budget as opposed to the K0 predictions, helped the quantization predictor, whereas for pruning a calibration point at the mildest density amplified noise, because an observation near zero damage cannot estimate an amplitude stably; a calibration point must carry enough response signal, and the more expensive dense statistics did not earn their cost.
 
 The limits are equally clear. The relations are conditional on the evaluated distributions and
 implementations. No fitted joint structure for distillation beat a low-order response surface on

@@ -33,26 +33,26 @@ and on Gemma students under one distillation protocol, establish what a law must
 
 \paragraph{Contributions.}
 \begin{itemize}
-\item \textbf{A capability-conditioned standard of evidence for scaling down.} We replace the
+\item \textbf{A capability-conditioned standard of evidence for compression.} We replace the
 aggregate loss of existing compression laws with the loss of each capability, measure pruning,
 quantization and distillation under one endpoint, and admit a relation only after its coefficients
 and predictions are frozen and tested on held-out states, so each relation carries the range on
 which it was tested and no more. Response shapes, and not only response sizes, differ across
 capabilities, and predicting a new configuration of a measured model is a different problem from
 transferring to a new model state; both are properties that any such law has to respect.
-\item \textbf{A compact pruning relation that pays for itself in measurements.} Fitted on half of
+\item \textbf{A compact pruning relation with a reduced measurement cost.} Fitted on half of
 the development configuration measurements, the five-parameter form predicts four further model
 states as accurately as a regression that uses every measurement, and twice as accurately as the
 source-free curve at the same budget. The saving comes from measuring fewer densities per source, not from measuring fewer sources,
 which is a reusable lesson for designing measurement panels of this kind.
-\item \textbf{Data requirements of distillation, measured rather than assumed.} At a fixed protocol
+\item \textbf{Measured data requirements for distillation.} At a fixed protocol
 the cost of reusing a small pool is monotone in reuse, grows with student size, and appears on
 every evaluation distribution we scored, while the net gain appears on one of them. A registered
 experiment measures the range of independent data at which a capability-specific loss constraint is
 met, and reports a bound where the largest pool we could build still fails.
-\item \textbf{A selection rule that is worth its measurements, where it is.} On references that
+\item \textbf{Conditions under which cross-method selection improves on a single method.} On references that
 supplied no measurement to the rule, in two model families, with every candidate frozen before
-measurement, the capability-specific rule captures up to 0.89 nats of quality that quantization
-alone cannot reach on question answering, and is level with quantization elsewhere, which marks the
-boundary of its usefulness as clearly as its value.
+measurement, the capability-specific rule recovers up to 0.89 nats of loss on question answering that
+quantization alone cannot reach, and is indistinguishable from quantization elsewhere, which delimits the range in which the rule is useful as precisely as it establishes the value of
+using it there.
 \end{itemize}

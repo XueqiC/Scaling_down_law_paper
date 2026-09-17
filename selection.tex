@@ -21,20 +21,19 @@ and one new student distilled under the recipe on which the delivered relation w
 carry weights that earlier development measured under other interventions, so there the round tests
 new candidates on familiar weights (Appendix Table~\ref{tab:s3-identity}). The learned weights of every reference and student base were checked against all thirty registered
 earlier revisions, and the predicted loss of every candidate and both maps were sealed before any
-student was trained or any candidate compressed. Write the opportunity at a budget as the loss of the best feasible quantization candidate minus
+student was trained or any candidate compressed. Define the opportunity at a budget as the loss of the best feasible quantization candidate minus
 that of the best feasible candidate of any method, and the regret of a policy as the loss of its
 own choice minus that same candidate. Question answering carries an opportunity of 0.12 to 0.89 nats, and the best candidate there is the
 new student in 59 of the 68 cells that four references and seventeen budgets make; the rule selects
 it in 63 and gives up 0.000 nats on three references and 0.027 on the fourth, against 0.41 to 1.84
 nats for quantization-only, whose selection error inside the quantization family adds to the
 opportunity it forgoes. Comparisons use the 16 budgets per reference at which both policies can select. For mathematics, code and the largest capability increase the opportunity is at most 0.047 nats, so
-quantization already supplies a near-best candidate, the rule ties it, and in three of the 256
-paired cells, all at the budget that admits the dense model, trails it by at most 0.0015 nats. All four references meet the registered criterion.
+quantization already supplies a near-best candidate, the rule matches it, and in three of the 256 paired cells, all at the budget that admits the dense
+model, exceeds its regret by at most 0.0015 nats. All four references meet the registered criterion.
 
-A distilled student is also a smaller model. Adding the student before distillation to the same
-candidate set, retrospectively, leaves 0.084 to 0.650 nats of the question-answering opportunity to
+A distilled student is also a smaller model, so a retrospective analysis adds the student before
+distillation to the same candidate set. It leaves 0.084 to 0.650 nats of the question-answering opportunity to
 the training itself and 0.000 to 0.235 to the smaller model alone, while on mathematics and code
 the distilled student is worse than the one it started from and none of the small opportunity there
-is owed to the distillation data (Appendix Table~\ref{tab:s3-retrospective-control}). Cross-method selection is therefore worth its measurements
-for a capability that responds to added data, and neutral for the capabilities that do not respond
-to it.
+is owed to the distillation data (Appendix Table~\ref{tab:s3-retrospective-control}). Cross-method selection therefore repays its measurements for a capability that responds to added
+data, and is neutral for capabilities that do not.

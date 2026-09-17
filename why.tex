@@ -23,8 +23,8 @@ $\delta=(a+a'z)\log(1+T/T_{\mathrm{ref}})+(b+b'z)\log(1+E)$ with $z$ the standar
 and $T_{\mathrm{ref}}$ a reference budget, implies that the pool-change effect divided by its log
 bracket is flat in budget; it drifts by a factor of twenty across checkpoints for code on the 1B
 student (Appendix Fig.~\ref{fig:drift}). A free reuse exponent, profiled inside training folds, lies near or above one for each capability
-with wide fold ranges (Appendix Fig.~\ref{fig:explanation}a), and neither the logarithmic form, the curved
-form nor a single interaction term beats the development-stage strongest baseline on either pre-declared target, so the reuse term is delivered in its logarithmic form rather than a curved one.
+with wide fold ranges (Appendix Fig.~\ref{fig:explanation}a), and neither the logarithmic form, the curved form nor a single interaction term improves on the
+strongest development-stage baseline at either pre-declared target, so the reuse term is delivered in its logarithmic form rather than a curved one.
 
 Those data cannot say whether additivity itself failed, because a fixed pool and a doubling budget
 grid never place two trajectories on the same budget; four trajectories designed by replaying the
@@ -41,12 +41,13 @@ fell outside its band at readouts that were registered as underpowered in advanc
 \label{sec:why_conditions}
 
 Size and stage carry math and code to unseen densities of seen states and over-predict QA, whose
-density response is not proportional to any shared curve; dense pre-compression statistics lose to
-the source-free median curve in nine of nine pairs. Under distillation the learning rate sets the damage magnitude, and at a fixed rate the reuse ratio
+density response is not proportional to any shared curve; dense pre-compression statistics are less accurate than the source-free median curve in nine of
+nine pairs. Under distillation the learning rate sets the damage magnitude, and at a fixed rate the reuse ratio
 $E=T/D_U$ dominates the factors we varied: the QA cost it sets is monotone, grows with student
 size, and transfers across the three distributions while the gain is confined to 2Wiki, with a
 residual dependence on budget, pool composition and student. A data requirement phrased as a bound on the loss increase is therefore supportable across
-distributions, whereas a gain claim holds only for 2Wiki among the distributions tested.
+distributions, whereas a gain claim holds only for 2Wiki among the three question-answering distributions we
+scored.
 
 \subsection{Mechanism}
 \label{sec:why_mech}

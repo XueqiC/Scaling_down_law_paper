@@ -14,9 +14,8 @@ development-selected baseline.
 The first kind of novelty is a new configuration of a state that entered the fit; for pruning,
 \S\ref{sec:efficiency} tests the power form at this task. In grouped quantization, with predictions frozen on all 54 cells, the piecewise interpolation
 predicts unseen group sizes of the development states best for math and code. For distillation, at
-six new pools and three new budgets, each selected form beats zero change, and the gain over the
-development baseline is detected for code on both students and for question answering on the smaller of the two
-students alone.
+six new pools and three new budgets, each selected form improves on zero change, and the gain over the development baseline is detected
+for code on both students and for question answering on the smaller of the two students alone.
 
 \subsection{Prediction with Fewer Configuration Measurements}
 \label{sec:efficiency}
@@ -47,12 +46,14 @@ confirmation with the power form fitted at half of the development measurement b
 
 The second kind of novelty is a new model state. On three Pythia checkpoints that entered no fit,
 the frozen pruning power form matches the per-density regression on math with a quarter of the
-parameters, trails the median on code, and loses QA to each source-free curve; outside the range
-every source-conditioned form fails by 0.6 to 4.5 nats. On a new quantization state the median wins for math and QA and the interpolation for code. At a 6.9B source five times the development range the source-conditioned pruning forms lose to the
-median curve on math and QA, the per-bit quantization regression trails the per-bit median at every
-bit-width, and on a 2.8B source the frozen median curve predicts three to seven times better than
-both. For distillation the 4B student keeps only its QA gain at the development pools and loses the
-unseen pool to the frozen constant.
+parameters, is less accurate than the median on code, and is less accurate than every source-free
+curve on question answering; outside the range every source-conditioned form errs by 0.6 to 4.5
+nats. On a new quantization state the median is the more accurate predictor for math and question
+answering, and the interpolation for code. At a 6.9B source five times the development range the source-conditioned pruning forms are less
+accurate than the median curve on math and question answering, the per-bit quantization regression
+is less accurate than the per-bit median at every bit-width, and on a 2.8B source the frozen median
+curve reduces the error three to seven times against both. For distillation the 4B student retains only its question-answering gain at the development pools,
+and at the unseen pool the frozen constant is the more accurate predictor.
 
 Together these tests give each relation its validated range: the
 initial-state inputs pay for new configurations of seen states, the source-free median curve is the
