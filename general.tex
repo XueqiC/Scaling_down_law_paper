@@ -19,10 +19,10 @@ new pools and three new budgets each selected form beats zero change and the gai
 \subsection{Prediction with Fewer Configuration Measurements}
 \label{sec:efficiency}
 
-The value of the compact pruning form lies in how few development measurements it needs. A subsampling study on the development panel, with the sampling plan fixed in advance, found that
-the five-parameter form reaches 0.25 nats on new states with 18 density measurements per capability
-where the per-density regression needs 36 and cannot be fitted below that; the gain comes from
-measuring fewer densities per source, since dropping sources brings none (Fig.~\ref{fig:efficiency}a). A registered confirmation then froze the form fitted on
+The value of the compact pruning form lies in how few development measurements it needs. A subsampling study with the sampling plan fixed in advance found that the five-parameter form
+reaches 0.25 nats on new states with 18 density measurements per capability where the per-density
+regression needs 36; the gain comes from measuring fewer densities per source, not fewer sources
+(Fig.~\ref{fig:efficiency}a). A registered confirmation then froze the form fitted on
 half of the development configuration measurements, the full-budget regression and the median curve
 before four Pythia states outside every earlier fit were pruned at six densities. The half-budget
 form stayed within 0.013 nats of the full-budget regression on math and 0.020 on code, meeting the
@@ -43,15 +43,13 @@ confirmation with the power form fitted at half of the development measurement b
 \subsection{Transfer across Model Sizes and Training Stages}
 \label{sec:unseen_states}
 
-The second kind of novelty is a new model state. On
-three Pythia checkpoints that entered no fit, the frozen pruning power form matches the per-density
-regression on math with a quarter of the parameters, trails the median on code, and loses QA to each source-free curve; at $d=0.55$, outside the range, each
-source-conditioned form fails by 0.6 to 4.5 nats. On a new quantization state the median wins for
-math and QA and the interpolation for code; inside the range the frozen forms and the median curve
-agree within 0.05 nats at unseen stages of a 1B source. At a 6.9B source five times the development range, the source-conditioned pruning forms lose to
-the median curve on math and QA and tie on code, and the per-bit quantization regression trails the
-per-bit median at each bit-width; on a 2.8B source inside the range the frozen median density curve
-predicts within 0.08 nats, three to seven times better than both source-conditioned forms. For distillation the 4B student keeps only its QA gain at the development pools and loses to the
+The second kind of novelty is a new model state. On three Pythia checkpoints that entered no fit,
+the frozen pruning power form matches the per-density regression on math with a quarter of the
+parameters, trails the median on code, and loses QA to each source-free curve; outside the range
+every source-conditioned form fails by 0.6 to 4.5 nats. On a new quantization state the median wins for math and QA and the interpolation for code. At a 6.9B source five times the development range the source-conditioned pruning forms lose to the
+median curve on math and QA, and the per-bit quantization regression trails the per-bit median at
+every bit-width; on a 2.8B source the frozen median curve predicts within 0.08 nats, three to seven
+times better than both source-conditioned forms. For distillation the 4B student keeps only its QA gain at the development pools and loses to the
 frozen constant at the unseen pool.
 
 \begin{figure}[t]
@@ -67,5 +65,6 @@ same cells, one sub-row per capability; the segment is coloured where the relati
 Fig.~\ref{fig:generalization} thus gives each relation its validated range: the
 initial-state inputs pay for new configurations of seen states, the source-free median curve is the
 safer predictor for new sources and students, and new evaluation distributions split by sign.
-Calibration on one target measurement, a K1 budget distinct from the K0 predictions, helped in
-quantization and was unstable for pruning, where the calibration point carried little damage signal.
+Calibration on one target measurement, a K1 budget distinct from the K0 predictions above, helped
+in quantization and was unstable for pruning, where the calibration point carried little damage
+signal to estimate from.

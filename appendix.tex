@@ -718,6 +718,22 @@ change are carried by the first-order term.
 \section{Capability-Specific Selection}
 \label{sec:app_selection}
 
+\subsection{Independent cross-method validation}
+\label{sec:app_s3}
+
+The confirmation of \S\ref{sec:selection} used four references that entered no earlier fit, two
+Pythia checkpoints at step 120000 and two Gemma-3 models, each with four pruning densities, six
+quantization settings, the dense model and one student distilled in this round under the recipe on
+which the delivered relation was fitted. Before any outcome, the learned values of all six
+snapshots were compared with all thirty revisions used earlier, 180 comparisons in which every
+target proved distinct; the dense reference and pristine student losses were measured on the frozen
+probes; and 144 capability predictions, 48 largest-increase predictions and both selection maps
+were sealed. Table~\ref{tab:s3-selection} reports the outcome for each reference and objective.
+Question answering is the capability with an opportunity to capture, and the rule captures it; the
+other three objectives leave almost nothing on the table for any policy.
+\input{tables/s3_selection}
+
+
 This section gives the selection rule behind \S\ref{sec:selection}, its retrospective validation
 and its prospective confirmation. Section S6 of the supplement tabulates the per-policy results behind Fig.~\ref{fig:selection}: mean regret against the measured oracle, agreement with the oracle's method, the share of no-clear-winner cells, and the share of cells in which a fixed-method policy cannot meet the budget; such cells are infeasible, have no fallback and enter no mean.
 \begin{figure}[!htbp]

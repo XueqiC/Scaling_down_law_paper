@@ -9,13 +9,26 @@ and a budget, the decision is
 \widehat L_{m,c}(\mathbf x,\boldsymbol\theta_m),
 \label{eq:selection}
 \end{equation}
-where $\mathcal F_m(B)$ holds the settings of method $m$ within
-budget $B$. Retrospectively, on the controlled panel the law-based choice selects the method of the oracle
-in 96\%, 95\% and 73\% of 289 cells for math, code and QA. A complete rule was then locked, the predicted loss of each candidate and the four maps were
-frozen for four fresh Pythia states with 18 configurations each, and only then measured (Appendix Fig.~\ref{fig:rule_main}). Over 68 cells per objective the frozen-rule maps are within 0.00001, 0.004 and 0.14 nats of the
-oracle for math, code and QA, below the source-conditioned maps and below quantization-only under the same candidates, meeting
-the registered criterion; the rule trails quantization-only on one state. The math and code margins come largely from the one state with historical distillation
-candidates; elsewhere the two coincide.
+where $\mathcal F_m(B)$ holds the settings of method $m$ within budget $B$. On the controlled panel the law-based choice selects the method of the measured best candidate in
+96\%, 95\% and 73\% of 289 cells for math, code and QA. A rule was then locked and its maps frozen
+for four fresh Pythia states, where they come within 0.00001, 0.004 and 0.14 nats of the best
+candidate, below quantization-only under the same candidates
+(Appendix Fig.~\ref{fig:rule_main}). Those distillation candidates were historical, so a second
+confirmation repeated the test across two families with candidates trained in the same round.
 
-
-Validation across model families with fresh distillation candidates is the natural next step.
+Four references outside every earlier fit, two Pythia checkpoints at a new training stage and two
+Gemma-3 models, each received twelve candidates at seventeen storage budgets: four pruning
+densities, six quantization settings, the dense model, and one new student distilled under the
+recipe on which the delivered relation was fitted. The learned weights of every reference and student base were checked against all thirty earlier
+revisions, and the predicted loss of every candidate and both maps were sealed before any student
+was trained or any candidate compressed. Write the opportunity at a budget as the loss of the best feasible quantization candidate minus
+that of the best feasible candidate of any method, and the regret of a policy as the loss of its
+own frozen choice minus that same best candidate. Question answering
+carries an opportunity of 0.12 to 0.89 nats, and the best candidate there is the new student in 59
+of 68 cells; the rule selects it in 63 and gives up 0.000 nats on three references and 0.027 on the
+fourth, against 0.41 to 1.84 nats for quantization-only under the same candidates. For mathematics,
+code and the largest capability increase the opportunity is at most 0.047 nats, so quantization
+already supplies a near-best candidate, the rule ties it, and in three of 256 cells trails it by at
+most 0.019 nats. All four references meet the registered criterion. Cross-method selection is
+therefore worth its measurements for a capability that responds to added data, and neutral for the
+capabilities that do not respond to it.

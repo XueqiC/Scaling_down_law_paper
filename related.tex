@@ -12,8 +12,9 @@ post-training quantization
 and distillation
 \citep{hinton2015distilling,sanh2019distilbert,hsieh2023distilling,mukherjee2023orca,gu2023minillm,agarwal2023gkd,xu2024survey}.
 Uneven damage is documented for single tasks and quantizers
-\citep{jaiswal2023compressing,liu2025quantization,ouyang2024lowbit,hong2024decoding,sengupta2025compression}. Pretraining loss follows power laws
-\citep{hestness2017deep,kaplan2020scaling,hoffmann2022training}, downstream behaviour is predictable
-mainly through log-likelihood \citep{schaeffer2023emergent,gadre2024language,bhagia2024establishing,lourie2025scaling},
-fitted forms depend on the fitting protocol \citep{li2025misfitting,besiroglu2024chinchilla}, and
-repeated tokens are worth less than new ones \citep{muennighoff2023scaling}, which \S\ref{sec:observed} resolves per capability and student.
+\citep{jaiswal2023compressing,liu2025quantization,ouyang2024lowbit,hong2024decoding,sengupta2025compression}. Pretraining loss follows power laws \citep{hestness2017deep,kaplan2020scaling,hoffmann2022training}
+and downstream behaviour is predictable mainly through log-likelihood
+\citep{schaeffer2023emergent,gadre2024language,bhagia2024establishing,lourie2025scaling}, with
+fitted forms depending on the protocol \citep{li2025misfitting,besiroglu2024chinchilla}. Repeated
+tokens are worth less than new ones \citep{muennighoff2023scaling}, a cost \S\ref{sec:observed}
+resolves per capability and student.

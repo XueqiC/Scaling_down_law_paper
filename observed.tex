@@ -19,22 +19,21 @@ Inside the development range the source-conditioned forms and the median density
 within 0.05 nats at unseen stages of a 1B source; far outside it the source-conditioned forms lose to the median curve, as the tests of \S\ref{sec:general} show for every capability.
 
 Distillation adds a dependence on the protocol as strong as the dependence on the method. With
-all settings except the learning rate held fixed (Appendix Fig.~\ref{fig:lr_pilot}), the loss increase on math and code grows by an order of magnitude between rates of
-$5\times10^{-5}$ and $1\times10^{-4}$, while at the lowest rate the 1B student is almost unharmed and
-still gains $0.79$ nats on QA; the 4B student degrades about twice as much as the 1B at each of the three rates.
+every other setting fixed (Appendix Fig.~\ref{fig:lr_pilot}), the loss increase on math and code
+grows by an order of magnitude between learning rates of $5\times10^{-5}$ and $1\times10^{-4}$,
+while at the lowest rate the 1B student is almost unharmed and still gains $0.79$ nats on QA.
 
-Once the rate is fixed, the size of the data pool dominates: reusing a small pool is costly, the
-cost rises with student size, and QA bears most of it. At one rate and a matched
-budget $T$ near 200k supervised tokens (Fig.~\ref{fig:responses_v2}), a pool of $D_U$ supervised
-tokens reused about twelve times, a reuse ratio $E=T/D_U$ near twelve, costs QA $+0.29$, $+2.55$ and $+4.85$ nats
-on students of 100M, 700M and 3.2B non-embedding parameters, and nine times more independent data
-converts the same budget into a gain near one nat on each student; math and code damage also falls
-with reuse. Two pool seeds per cell put the pool-draw noise an order of magnitude below the reuse cost.
+Once the rate is fixed, the size of the data pool dominates, and QA bears most of the cost. At a
+matched budget $T$ near 200k supervised tokens (Fig.~\ref{fig:responses_v2}), a pool reused about
+twelve times, a reuse ratio $E=T/D_U$ near twelve, costs QA $+0.29$, $+2.55$ and $+4.85$ nats on
+students of 100M, 700M and 3.2B non-embedding parameters, and nine times more independent data
+converts the same budget into a gain near one nat on each student. Two pool seeds per cell put the pool-draw noise an order of magnitude below the reuse cost on the
+same students.
 
 The reuse cost also transfers across QA distributions, whereas the gain does not. Scored on a fresh
-2Wiki sample, MuSiQue and TriviaQA, all three distributions worsen at high reuse and improve
-monotonically as reuse falls, for each student. Only 2Wiki crosses into a gain; MuSiQue flattens near zero and TriviaQA stays positive at each
-reuse level, and the 4B student is damaged about twice as much as the 1B on all three distributions.
+2Wiki sample, MuSiQue and TriviaQA, all three worsen at high reuse and improve as reuse falls, for
+each student, but only 2Wiki crosses into a gain: MuSiQue flattens near zero and TriviaQA stays positive at
+every reuse level on both students.
 
 \begin{figure}[t]
 \centering
