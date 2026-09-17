@@ -1,10 +1,10 @@
 \section{What Compression Does to Capabilities}
 \label{sec:observed}
 
-Damage is uneven across capabilities and the ordering is not fixed
-(Fig.~\ref{fig:heterogeneity}). On the controlled Pythia panel math and code respond to density
-along one shared shape with a capability-specific scale, while the QA response changes sign across
-density, as Appendix Fig.~\ref{fig:pythia_responses} shows for every state.
+Compression damages capabilities unevenly, and the order in which it damages them is not fixed
+(Fig.~\ref{fig:heterogeneity}). On the controlled Pythia panel, mathematics and code follow one
+shared shape in density with a capability-specific scale, whereas the question-answering response
+changes sign across density, as Appendix Fig.~\ref{fig:pythia_responses} shows at every state.
 
 \begin{figure}[t]
 \centering
@@ -14,52 +14,53 @@ density, as Appendix Fig.~\ref{fig:pythia_responses} shows for every state.
 \caption{Capability damage across twelve public models under (a) pruning to $d=0.7$ and (b) per-channel int4 quantization, as loss change from each model's dense loss. The ordering of capabilities changes across series and the magnitudes differ by two orders at the same setting.}
 \label{fig:heterogeneity}
 \end{figure}
-The source state shapes this response inside a range: parameter count and pretraining tokens enter
-the pruning amplitude for math and code, and neither improves the QA prediction.
-Inside the development range the source-conditioned forms and the median density curve agree
-within 0.05 nats at unseen stages of a 1B source; far outside it the source-conditioned forms are less accurate than the median curve, as the tests
-of \S\ref{sec:general} show for every capability.
+The state of the source model shapes this response, but only within a range. Parameter count and
+pretraining tokens enter the pruning amplitude for mathematics and code, and neither improves the
+question-answering prediction. Inside the development range the source-conditioned forms and the median density curve agree to
+within 0.05 nats at unseen stages of a 1B source, while far outside it the source-conditioned forms
+are the less accurate of the two (\S\ref{sec:general}).
 
-Distillation adds a dependence on the protocol as strong as the dependence on the method. With
-every other setting fixed (Appendix Fig.~\ref{fig:lr_pilot}), the loss increase on math and code
-grows by an order of magnitude between learning rates of $5\times10^{-5}$ and $1\times10^{-4}$,
-while at the lowest rate the 1B student is almost unharmed and still gains $0.79$ nats on QA.
+Distillation adds a dependence on the training protocol that is as strong as the dependence on the
+method itself. With every other setting held fixed (Appendix Fig.~\ref{fig:lr_pilot}), the loss
+increase on mathematics and code grows by an order of magnitude between learning rates of
+$5\times10^{-5}$ and $1\times10^{-4}$. At the lowest of these rates the 1B student is almost unharmed on those two capabilities, and it still gains $0.79$ nats on question answering, the largest gain in the pilot.
 
-Once the rate is fixed, the size of the data pool dominates, and QA bears most of the cost. At a
+Once the learning rate is fixed, the size of the data pool dominates, and question answering bears
+most of the cost. At a
 matched budget $T$ near 200k supervised tokens (Fig.~\ref{fig:responses_v2}), a pool reused about
-twelve times, a reuse ratio $E=T/D_U$ near twelve, costs QA $+0.29$, $+2.55$ and $+4.85$ nats on
+twelve times, a reuse ratio $E=T/D_U$ near twelve, costs question answering $+0.29$, $+2.55$ and $+4.85$ nats on
 students of 100M, 700M and 3.2B non-embedding parameters, and nine times more independent data
-converts the same budget into a gain near one nat on each student. Two pool seeds per cell put the pool-draw noise an order of magnitude below the reuse cost on the
-same students.
+converts the same budget into a gain near one nat on each student. Across the same students and budget, two pool seeds per cell place the noise from the pool draw an
+order of magnitude below this reuse cost on every capability.
 
-The reuse cost also transfers across QA distributions, whereas the gain does not. Rescored on a
-fresh 2Wiki sample disjoint from the probe, on MuSiQue and on TriviaQA, all three worsen at high
-reuse and improve as reuse falls, for each student, but only the fresh 2Wiki sample crosses into a
-gain: MuSiQue flattens near zero and TriviaQA stays positive at
-every reuse level on both students.
+The reuse cost transfers across question-answering distributions; the gain does not. Rescored on a
+fresh 2Wiki sample disjoint from the probe, on MuSiQue and on TriviaQA, all three distributions
+worsen at high reuse and improve as reuse falls, for each student. Only the fresh 2Wiki sample crosses into a gain, because MuSiQue flattens near zero and TriviaQA
+remains positive at every reuse level, on both students and at every budget we scored.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figs/fig1_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/fig1_a.pdf}\caption{Math}\label{fig:resp_a}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/fig1_b.pdf}\caption{Code}\label{fig:resp_b}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/fig1_c.pdf}\caption{QA on 2Wiki}\label{fig:resp_c}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/fig1_d.pdf}\caption{QA, three distributions}\label{fig:resp_d}\end{subfigure}
+\begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/fig1_c.pdf}\caption{Question answering on 2Wiki}\label{fig:resp_c}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/fig1_d.pdf}\caption{Question answering, three distributions}\label{fig:resp_d}\end{subfigure}
 \caption{Distillation responses under one protocol: loss change from each student's initial state
 against the reuse ratio $E=T/D_U$ at the matched budget nearest 200k supervised tokens, for (a)
-math, (b) code and (c) QA on the 2Wiki probe used throughout the paper, each on its own scale;
-dotted 270M, dashed 1B, solid 4B, markers the two pool seeds. Panel (d) rescores the same
-trajectories on a fresh 2Wiki sample, MuSiQue and TriviaQA.}
+mathematics, (b) code and (c) question answering on the 2Wiki probe used throughout the paper, each on its own scale;
+dotted 270M, dashed 1B, solid 4B, markers the two pool seeds. Panel (d) rescores the same trajectories on a fresh 2Wiki sample, on MuSiQue and on TriviaQA, at
+the same budget.}
 \label{fig:responses_v2}
 \end{figure}
-These responses can be turned into an empirical data requirement. In a registered experiment, eighteen trajectories on the 1B and 4B students with pools from nine
-thousand supervised tokens to the full pool of 158 thousand, evaluated at three budgets, measured
-the range of independent data at which a loss constraint is met (Fig.~\ref{fig:dreq}). On 2Wiki the constraint is crossed inside the tested pools for both students at the two larger
-budgets; on MuSiQue the largest pool still fails at tight tolerances and a crossing appears only at
-looser ones; on TriviaQA the largest pool fails for the 4B student at every tolerance, so the
-requirement is a lower bound there. A low-degree boundary relation did not predict these ranges better than a per-student monotone
-interpolation, so the requirement is reported as measured intervals under this data source, pool
-size and protocol.
+These responses can be turned into an empirical data requirement. A registered experiment of
+eighteen trajectories on the 1B and 4B students, with pools from nine thousand supervised tokens to
+the full pool of 158 thousand and three evaluation budgets, measured the range of independent data
+at which a loss constraint is met (Fig.~\ref{fig:dreq}). On 2Wiki the constraint is crossed inside the tested pools for both students at the two larger
+budgets. On MuSiQue the largest pool still fails at tight tolerances, and a crossing appears only
+at looser ones. On TriviaQA the largest pool fails for the 4B student at every tolerance, so the
+requirement is a lower bound. A low-degree boundary relation did not predict these ranges more accurately than a per-student
+monotone interpolation. We therefore report the requirement as measured intervals, which hold for the data source, the
+maximum pool size and the protocol used in these experiments.
 
 \begin{figure}[t]
 \centering
@@ -75,7 +76,8 @@ pool varies the training seed, and the smaller pools vary which traces are drawn
 \label{fig:dreq}
 \end{figure}
 
-Together these observations fix what a law must carry: a capability-specific shape under pruning,
-a configuration-dependent threshold under quantization, and a distillation reuse cost that is
-monotone in $E=T/D_U$, grows with student size and separates by evaluation distribution in sign.
-Section~\ref{sec:why} asks what accounts for these features and \S\ref{sec:laws} builds on them.
+Together these observations fix what a law must carry: a capability-specific shape under pruning, a
+configuration-dependent threshold under quantization, and a distillation reuse cost that grows with
+reuse and with student size and separates by evaluation distribution in sign.
+Section~\ref{sec:why} asks what accounts for these features, and \S\ref{sec:laws} builds the
+relations on them.
