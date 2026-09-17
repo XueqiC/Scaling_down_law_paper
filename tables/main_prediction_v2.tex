@@ -6,9 +6,9 @@
 \setlength{\abovecaptionskip}{4pt}
 \newcommand{\TableOneErrors}[3]{\setbox0=\hbox{#1 / #2 / #3}%
 \ifdim\wd0>\linewidth #1\newline #2\newline #3\else\box0\fi}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .20\textwidth-2.40\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .15\textwidth-1.80\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .09\textwidth-1.08\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .17\textwidth-2.04\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .09\textwidth-1.08\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .17\textwidth-2.04\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .13\textwidth-1.56\tabcolsep\relax}@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .20\textwidth-2.40\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .15\textwidth-1.80\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .10\textwidth-1.20\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .16\textwidth-1.92\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .10\textwidth-1.20\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .16\textwidth-1.92\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .13\textwidth-1.56\tabcolsep\relax}@{}}
 \toprule
-Prediction task & Predictor tested first & Its error (nats) & Predictor we deliver & Its error (nats) & Simplest comparison & Development measurements \\
+Prediction task & Frozen candidate & Candidate error (nats) & Delivered relation & Delivered error (nats) & Development baseline & Development measurements \\
 \midrule
 Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85 & Five-parameter power form & \TableOneErrors{0.24}{0.24}{0.68} & Source-free median density curve & \TableOneErrors{0.28}{0.21}{0.22} & Per-density regression; question answering: median\newline \TableOneErrors{0.23}{0.22}{0.22} & 84 \\
 \midrule
