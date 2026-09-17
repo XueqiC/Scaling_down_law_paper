@@ -74,7 +74,7 @@
 
 \input{split_references}
 
-\title{Developing Capability-Conditioned Scaling-Down Laws for LLM Compression}
+\title{Capability Scaling-Down Laws for LLM Compression}
 
 % Authors must not appear in the submitted version. They should be hidden
 % as long as the \iclrfinalcopy macro remains commented out below.
@@ -118,29 +118,7 @@ Address \\
 \maketitle
 
 \begin{abstract}
-Specialized workloads require specific capabilities, and the models that serve them are usually
-reference models reduced by pruning, quantization, or distillation. We study, with one
-capability-conditioned endpoint and one validation standard across the three methods, when the loss
-of a capability after compression can be predicted from the initial model state and the
-configuration alone. Controlled measurements on Pythia checkpoints whose size and pretraining stage
-vary independently, and on Gemma students under a fixed distillation protocol, yield three findings.
-Capabilities differ in the shape of their response: under pruning the question-answering response
-changes sign across density and cannot be a scaled copy of the shared math and code curve, which
-decides what structure a law may share. Predicting new configurations of measured models and
-transferring to new model states are different tasks: initial-state inputs carry math and code to
-unseen densities and group sizes, while a source-free configuration curve is the safer predictor for
-new states. The data requirement of distillation depends jointly on training exposure, student and
-evaluation distribution: the cost of reusing a small pool grows with the reuse ratio and the student
-size and reproduces across three question-answering distributions, whereas the net gain is confined
-to one of them. On these findings we build method-specific relations, each with its tested range, test them with
-coefficients and predictions frozen before measurement, and connect them to a capability- and
-budget-specific selection rule confirmed prospectively on eight fresh model states of two families,
-where it captures an opportunity of up to 0.89 nats that quantization alone cannot reach. A registered
-confirmation shows that the compact pruning form fitted on half of the development configuration
-measurements stays within 0.02 nats of the full-budget regression on four further model states, and
-a registered distillation experiment measures the range of independent data at which a
-capability-specific loss constraint is met. We
-release coefficients, registered predictions, measurements and code at
+Compressing large language models can lower deployment costs, but its effects on the capabilities required by a workload remain difficult to predict. We present a systematic investigation of capability scaling-down laws across pruning, quantization, and distillation. Using capability-conditioned loss for mathematics, code, and question answering, we develop and evaluate predictive relations from pre-compression model states and intervention settings. Controlled experiments vary model size, pretraining stage, compression configuration, and distillation data exposure, with predictions frozen before independent confirmation and evaluated against strong baselines. Our investigation identifies distinct predictive structures and their conditions of applicability. Under pruning, math and code admit compact response curves, while QA requires a different shape. On four held-out model states, a compact predictor using half the development configuration measurements remains within 0.02 nats of the full-budget regression for math and code. For quantization, precision and grouping jointly shape damage, and configuration-based interpolation remains competitive as additional model-state descriptors provide inconsistent transfer gains. Under a fixed distillation protocol, excessive data reuse incurs student-size-dependent costs across three QA distributions, while net improvements remain distribution-specific. These measurements yield empirical intervals for the independent data needed to satisfy capability-specific loss constraints. Finally, prospective selection tests across Pythia and Gemma show that the resulting predictors capture most of the available cross-method QA benefit within the tested candidate sets and nominal storage budgets. Together, these findings establish when compact scaling-down relations can reduce measurement costs, characterize capability trade-offs, and guide compression choices. Our code is publicly available at:
 \url{https://anonymous.4open.science/r/scaling_down_law}.
 \end{abstract}
 
