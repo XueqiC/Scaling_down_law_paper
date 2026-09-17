@@ -401,7 +401,11 @@ amplifies noise and offers no saving over the uncalibrated predictor.
 
 
 
-Table~\ref{tab:shared_structure} reports the shared-family test, the parameter-sharing tests, the three kinds of range, namely bootstrap confidence intervals of the delivered coefficients, the spread of exponents fitted separately per source, and prediction intervals from leave-one-source residuals with their coverage on cells not used to build them, and the one-point calibration K1 against the uncalibrated predictor K0; K1 costs one compressed measurement per source.
+Table~\ref{tab:shared_structure} reports the shared-family test, the parameter-sharing tests and
+the spread of exponents fitted separately per source. Table~\ref{tab:calibration_k1} reports what
+one target measurement buys: the error of the calibrated predictor against the uncalibrated one,
+and the coverage and width of prediction intervals built from leave-one-source residuals on cells
+that did not enter them.
 \input{tables/shared_structure}
 
 \input{tables/cap_conditioning}
@@ -879,13 +883,23 @@ function fitted to the same data would not suffice.
 \section{Reproducibility and Prediction Registration}
 \label{sec:app_registration}
 
-This section records the data cut-off, the reproduction path, the registration order and the
-information budgets that label each prediction, defined in Table~\ref{tab:budgets}. The development and confirmation rounds were
+This section records the data cut-off, the registration order and the information budgets that
+label each prediction, defined in Table~\ref{tab:budgets}. All tables are generated from
+machine-readable result files by CPU-only scripts that run in seconds and need neither model
+weights nor a GPU, and model measurements are reproducible from the recorded revisions, probe seeds
+and protocols. The development and confirmation rounds were
 completed by 11 September 2026, the corner design of \S\ref{sec:why} was registered on 14 September
 2026 before its four trajectories were trained, and the measurement-efficiency confirmation of
 \S\ref{sec:efficiency} and the data-requirement experiment of \S\ref{sec:observed} were registered
 on 16 September 2026 before their states were pruned and their students trained. No measurement
 taken after a freeze enters the corresponding prediction or its baseline.
+\label{sec:app_register}
+Prospective tests follow one order: forms, development set, standardization and coefficients are
+fixed and committed; the reference capability losses of a new source are measured, since they are
+a permitted pre-compression input; each candidate's predictions are committed with their hash,
+and only then is the outcome measured. Rows marked retrospective are labeled as such, and the
+fifteen freeze records each name their commit in \texttt{docs/}.
+
 \begin{table}[!htbp]\normalfont
 \centering\small
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.190839695\textwidth-0.763358779\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.435114504\textwidth-1.740458015\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.374045802\textwidth-1.496183206\tabcolsep\relax}@{}}
@@ -909,25 +923,5 @@ costs to disclose. K0 uses no compressed-target calibration and K1 one calibrati
 predictive budgets are fixed on development data and the oracle row is a post-hoc diagnostic.}
 \label{tab:budgets}
 \end{table}
-
-\subsection{Reproduction}
-\label{sec:app_repro}
-All tables are generated from machine-readable result files by CPU-only scripts that run in
-seconds and need neither model weights nor a GPU. Model measurements are reproducible from the
-recorded revisions, probe seeds and protocols.
-
-\subsection{Registration and provenance codes}
-\label{sec:app_register}
-Prospective tests follow one order: forms, development set, standardization and coefficients are
-fixed and committed; the reference capability losses of a new source are measured, being a
-permitted pre-compression input; each candidate's predictions are committed with their hash; only
-then is the outcome measured. Rows marked retrospective in the tables, meaning leave-one-out panels and rules stated after a
-test, are labeled as such and are not relabeled by outcome. Information budgets are reported
-separately: K0 uses pre-compression information only, K1
-adds one pre-specified target-side calibration point. Fifteen freeze records carry the main conclusions, from \texttt{v36b}, the leave-one-step-out
-source axis, to \texttt{s3}, the cross-method selection round whose identity report, dense anchors
-and numeric seals were written in that order before any student was trained. Each names its commit in \texttt{docs/}. Retrospective analyses audit those records, content hashes are in \texttt{docs/}, and a diagnostic
-that overturns an earlier headline downgrades the text while the committed prediction stands.
-
 
 \FloatBarrier

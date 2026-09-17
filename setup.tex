@@ -7,8 +7,8 @@ rule by which a prediction counts as validated.
 \subsection{Capability-Conditioned Loss}
 \label{sec:loss}
 
-We measure mathematical reasoning, code generation and multi-hop question answering through fixed
-probe sets $\probeset{c}$ drawn once from held-out splits of MATH-500
+We measure mathematical reasoning (Math), code generation (Code) and multi-hop question answering
+(QA) through fixed probe sets $\probeset{c}$ drawn once from held-out splits of MATH-500
 \citep{hendrycks2021math,lightman2023verify}, MBPP \citep{austin2021program} and 2WikiMultihopQA
 \citep{ho2020constructing}; each fixes one evaluation distribution, implied in $L_c$. The observable
 is the
