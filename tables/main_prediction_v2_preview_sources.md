@@ -1,6 +1,6 @@
 # Main prediction table: cell sources
 
-Columns: Prediction task; Predictor tested first; Its error (nats); Predictor we deliver; Its error (nats); Simplest comparison; Development measurements.
+Columns: Prediction task; Frozen candidate; Candidate error (nats); Delivered relation; Delivered error (nats); Development baseline; Development measurements.
 Rendered layout: one row per frozen prediction task. Cell coordinates match the seven printed columns; every cell is populated.
 Development measurements are distinct development configuration measurements per capability for fitting or selecting the tested candidate, excluding dense anchors and held-out measurements. Counts do not describe the post-test delivered predictor. V53 divides recorded scalar rows by the recorded capability-model count; V55/V69 use n_dev_cells; V70 uses development_structure.n_points authenticated by freeze.json. Shared development sets are not additive across rows.
 Numeric error cells use one math / code / question answering line if it fits the actual column, otherwise three lines in that order. The earlier bit test explicitly states that the delivered error is not stored. Distillation pairs follow student order 270 million, 1 billion as stated in the caption. Baseline names precede their scores, in the capability order named in the caption. Development or registration selection pointers are recorded in each baseline cell's note/context. Short task labels retain the full state and configuration definitions in their source recipes.
