@@ -123,9 +123,6 @@ Describes measured responses. \\
 \caption{Cohorts of models and states, compression interventions, and study roles. Rows distinguish development cohorts, frozen prediction tests, and descriptive \mbox{post-hoc} measurements; each cohort is scored with the same 64 probes per capability. Densities and reuse counts are dimensionless, bit widths are in bits, and budgets are in tokens. The 2.8B Pythia checkpoints are excluded because their available revisions loaded identical weights.}
 \label{tab:cohorts}
 \end{table}
-\begin{retargetreferences}{\retargetreference{Eq.~\ref{eq:quant2d}}{Section S2 of the supplement}}
-\input{tables/models_domains}
-\end{retargetreferences}
 
 The panel uses the public Pythia checkpoints at sizes 160M, 410M and 1.4B and pretraining steps
 16{,}000, 64{,}000 and 143{,}000, which correspond to 33.6B, 134.2B and 299.9B processed tokens at
@@ -500,6 +497,8 @@ legend of Fig.~\ref{fig:corner_test} applies.}
 Section S4 of the supplement gives each registered test in three lines, the candidate, the strongest same-input baseline and the strongest simple baseline, with improvements and provenance codes,
 the per-stage and per-protocol results of the Pythia-1B and 6.9B pairs, the confirmation panel and the
 grouped-quantization tests, and the paired improvements behind Fig.~\ref{fig:inputs}.
+Table~\ref{tab:pred_full} compares every relation with its strongest same-input baseline on
+the same cells.
 \begin{retargetreferences}{\retargetreference{Appendix Tables~\ref{tab:pred_source}--\ref{tab:pred_config_qd}}{Section S4 of the supplement}}
 \input{tables/pred_full}
 \end{retargetreferences}
@@ -532,7 +531,7 @@ evaluation scores 64 items per capability, and the pool-cluster intervals theref
 
 A retrospective subsampling study of the nine-state development panel, with twenty fixed replicates at 25, 50 and 100 percent of the measurements that reduce either the number of sources or the number of densities per source, found that the five-parameter power form reaches 0.25 nats on new states with
 18 density measurements per capability where the per-density regression needs 36, and that the
-median curve is the better predictor for QA at every budget. A registered confirmation then froze
+median curve is the better predictor for QA at every budget. Table~\ref{tab:a9} gives its error at each budget. A registered confirmation then froze
 five predictors before four Pythia states in no earlier fit or test, listed in Table~\ref{tab:a11}, were pruned to densities 0.65 to 0.9;
 Table~\ref{tab:a11} gives the outcome. The registered rule, that the reduced-budget power form lies within 0.05 nats of the full-budget regression on math and code, is met.
 
