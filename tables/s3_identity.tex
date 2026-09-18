@@ -9,17 +9,17 @@
 \toprule
 Role & Model and stage & Matrix parameters & Weights seen in earlier work & What is new in this round \\
 \midrule
-Reference 1 & Pythia 410M, training step 120000 & 302M & No & A model state with no earlier recorded use, compressed here for the first time \\
-Student for reference 1 & Pythia 160M, training step 120000 & 85M & No & A base with no earlier recorded use, trained here for the first time \\
+Reference 1 & Pythia 410M, training step 120000 & 302M & No & No earlier use; first compression \\
+Student for reference 1 & Pythia 160M, training step 120000 & 85M & No & No earlier use; first training \\
 \midrule
-Reference 2 & Pythia 1.4B, training step 120000 & 1.21B & No & A model state with no earlier recorded use, compressed here for the first time \\
-Student for reference 2 & Pythia 410M, training step 120000 & 302M & No & A base with no earlier recorded use, trained here for the first time \\
+Reference 2 & Pythia 1.4B, training step 120000 & 1.21B & No & No earlier use; first compression \\
+Student for reference 2 & Pythia 410M, training step 120000 & 302M & No & No earlier use; first training \\
 \midrule
-Reference 3 & Gemma 3, 1B & 698M & Yes, in earlier development & A new set of candidates on familiar weights \\
-Student for reference 3 & Gemma 3, 270M & 100M & Yes, in earlier development & A student trained again from familiar weights \\
+Reference 3 & Gemma 3, 1B & 698M & Yes & New candidates, familiar weights \\
+Student for reference 3 & Gemma 3, 270M & 100M & Yes & Retrained from familiar weights \\
 \midrule
-Reference 4 & Gemma 3, 4B & 3.21B & Yes, in earlier development & A new set of candidates on familiar weights \\
-Student for reference 4 & Gemma 3, 1B & 698M & Yes, in earlier development & A student trained again from familiar weights \\
+Reference 4 & Gemma 3, 4B & 3.21B & Yes & New candidates, familiar weights \\
+Student for reference 4 & Gemma 3, 1B & 698M & Yes & Retrained from familiar weights \\
 \bottomrule
 \end{tabular*}
 \end{table}
