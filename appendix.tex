@@ -290,12 +290,13 @@ $\le+0.63$ nats on each capability. Family identity is a first-order determinant
 \section{Fitted Models and Coefficients}
 \label{sec:app_coef}
 
-The delivered pruning form (Eq.~\ref{eq:power}) and its standardization are in Table~\ref{tab:round3_coef}; the
-grouped-quantization form (Section S2 of the supplement) in Table~\ref{tab:quant2d_coef}; the per-bit source regressions,
-the distillation source form and pool forms, and the frozen multi-student forms are stored with their standardization
-constants in the register files listed in Appendix~\ref{sec:app_registration}.
+The delivered pruning form (Eq.~\ref{eq:power}) and its standardization are in
+Table~\ref{tab:round3_coef}. The coefficients of the grouped-quantization surface, which is not a
+delivered relation, are in Section S2 of the supplement beside the analysis of its rank. The per-bit
+source regressions, the distillation source and pool forms, and the frozen multi-student forms are
+stored with their standardization constants in the register files listed in
+Appendix~\ref{sec:app_registration}.
 \input{tables/round3_coef}
-\input{tables/quant2d_coef}
 
 \section{Relation Selection, Boundaries and Calibration}
 \label{sec:app_forms}
@@ -495,10 +496,9 @@ legend of Fig.~\ref{fig:corner_test} applies.}
 Section S4 of the supplement gives each registered test in three lines, the candidate, the strongest same-input baseline and the strongest simple baseline, with improvements and provenance codes,
 the per-stage and per-protocol results of the Pythia-1B and 6.9B pairs, the confirmation panel and the
 grouped-quantization tests, and the paired improvements behind Fig.~\ref{fig:inputs}.
-Table~\ref{tab:pred_full} compares every relation with its strongest same-input baseline on
-the same cells.
+The same comparison in one line per test, each relation against its strongest same-input baseline
+on the same cells, is in that section as well.
 \begin{retargetreferences}{\retargetreference{Appendix Tables~\ref{tab:pred_source}--\ref{tab:pred_config_qd}}{Section S4 of the supplement}}
-\input{tables/pred_full}
 
 \begin{figure}[!htbp]
 \centering
