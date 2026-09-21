@@ -24,16 +24,20 @@ second confirmation used candidates trained in the same round.
 \subsection{Independent Evaluation}
 \label{sec:selection_confirm}
 
-\begin{figure}[!htbp]
+\begin{figure}[t]
 \centering
 \includegraphics[width=5.5in]{figs/rule_maps_main_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_c.pdf}\subcaption{Question answering on 2Wiki}\end{subfigure}\hfill
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_d.pdf}\subcaption{Largest loss increase}\end{subfigure}
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_d.pdf}\subcaption{Largest loss increase}\end{subfigure}\\[4pt]
+\includegraphics[width=5.5in]{figs/rule_regret_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{5.5in}\centering\includegraphics[width=\linewidth]{figs/rule_regret_a.pdf}\subcaption{Mean regret per objective, logarithmic}\end{subfigure}
 
-\caption{Selection maps under the frozen rule on four fresh states at 17 nominal storage budgets
-each; colour is the predicted method, a hollow circle a budget where the measured oracle chooses
-another. Mathematics and code select quantization almost everywhere and are in Appendix
-Fig.~\ref{fig:rule_maps}.}
+\caption{What the rule chooses, and what the choice is worth. (a, b) Selection maps on four fresh
+states at 17 nominal storage budgets each; colour is the predicted method, a hollow circle a budget
+where the measured oracle chooses another. Mathematics and code select quantization almost
+everywhere and are in Appendix Fig.~\ref{fig:rule_maps}. (c) Mean regret per objective on the same
+states, in nats per native token on a logarithmic scale, for the locked rule, the earlier
+source-conditioned laws, quantization-only, and the cheapest feasible configuration.}
 \label{fig:rule_main}
 \end{figure}
 

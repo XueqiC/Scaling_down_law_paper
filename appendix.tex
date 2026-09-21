@@ -822,7 +822,7 @@ Selection minimizes the predicted absolute loss over feasible measured
 configurations, or the largest predicted loss increase across
 capabilities for the multi-capability objective
 (Table~\ref{tab:locked_rule} lists the rule as coded, including where
-it departs from the delivered predictors of Table~\ref{tab:final} in \S\ref{sec:laws}); quantization-only
+it departs from the delivered relations of \S\ref{sec:laws}); quantization-only
 uses the same candidates, predictor, and feasibility rule with no
 fallback. Predictions under this rule and under the earlier
 source-conditioned laws were frozen for four fresh states before
@@ -849,14 +849,6 @@ text.
 \label{fig:rule_maps}
 \end{figure}
 \input{tables/rule_confirm}
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=5.5in]{figs/rule_regret_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{5.5in}\centering\includegraphics[width=\linewidth]{figs/rule_regret_a.pdf}\subcaption{Mean regret}\end{subfigure}
-
-\caption{Mean regret per objective on the four fresh states, on a logarithmic scale, for the locked rule, the earlier laws, quantization-only, and the cheapest feasible configuration.}
-\label{fig:rule_regret}
-\end{figure}
 
 \section{Extended Discussion: Lessons, Guidance and Limits}
 \label{sec:app_learned}

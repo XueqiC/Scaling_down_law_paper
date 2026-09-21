@@ -4,15 +4,32 @@
 
 Each method delivers one relation in the interface of Eq.~\ref{eq:interface}, turning the
 observations of \S\ref{sec:observed} into a prediction from the initial state and the configuration.
-Table~\ref{tab:final} lists them with the inputs each uses and the range on which each applies;
-\S\ref{sec:general} reports how they perform on configurations and model states that entered no
+Each is stated below with the inputs it uses and the domain on which it was fitted and tested, and
+\S\ref{sec:general} reports how it performs on configurations and model states that entered no
 fit. Whether the initial state earns its place is decided per capability: on the controlled pruning
 panel, a per-setting regression using parameter count, pretraining tokens and reference capability
 loss reduces the mean absolute error from 0.41 to 0.25 nats for mathematics and from 0.52 to 0.29
 for code, and raises it from 0.50 to 0.81 for question answering.
 
 
-\input{tables/final_deliverables}
+\begin{itemize}[leftmargin=1.2em,itemsep=2pt,topsep=3pt]
+\item \textbf{Pruning.} At unseen densities in $[0.6,0.9]$ of a state in the fit, mathematics and
+code take the power form of Eq.~\ref{eq:power} from the parameter count, the pretraining tokens and
+the reference loss; at new sizes or stages, and for question answering, the delivered relation is
+the frozen development median curve $L_{0,c}+\widetilde f_c(d)$, which reads only the reference
+loss. Fitted and tested on Pythia 160M--1.4B at three pretraining stages, densities 0.6--0.9 and
+tests to 0.55.
+\item \textbf{Quantization.} Per-channel quantization on a new state takes the per-bit development
+median. Grouped quantization on a state in the fit takes a same-input piecewise interpolation over
+the measured bit-width and group-size grid, linear in $\log_2 g$, for mathematics and code; question
+answering, and every capability on a new state, takes the per-configuration median. Fitted and
+tested on the same Pythia states over 3--8 bits and groups of 32--512 weights.
+\item \textbf{Distillation.} The signed transfer response of \S\ref{sec:loss} takes
+$\widehat\delta_c=a_c\log(1+E)$ for mathematics and code and the joint budget-pool form for question
+answering, from the supervised tokens, the unique-pool tokens and the student's own reference loss.
+Fitted and tested on Gemma-3 270M and 1B students under one recipe, with pools to 158k tokens and
+budgets of 50k--200k, and question answering scored on 2Wiki.
+\end{itemize}
 
 \subsection{Pruning}
 \label{sec:law_prune}

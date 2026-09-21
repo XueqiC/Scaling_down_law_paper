@@ -1,6 +1,6 @@
 # Main prediction table: cell sources
 
-Columns: Prediction task; Frozen candidate; Candidate error (nats); Delivered relation; Delivered error (nats); Development baseline; Development measurements.
+Columns: Prediction task; Frozen candidate; Candidate error (nats); Delivered relation; Delivered error (nats); Development measurements.
 Rendered layout: one row per frozen prediction task. Cell coordinates match the seven printed columns; every cell is populated.
 Development measurements are distinct development configuration measurements per capability for fitting or selecting the tested candidate, excluding dense anchors and held-out measurements. Counts do not describe the post-test delivered predictor. V53 divides recorded scalar rows by the recorded capability-model count; V55/V69 use n_dev_cells; V70 uses development_structure.n_points authenticated by freeze.json. Shared development sets are not additive across rows.
 Numeric error cells use one math / code / question answering line if it fits the actual column, otherwise three lines in that order. The earlier bit test explicitly states that the delivered error is not stored. Distillation pairs follow student order 270 million, 1 billion as stated in the caption. Baseline names precede their scores, in the capability order named in the caption. Development or registration selection pointers are recorded in each baseline cell's note/context. Short task labels retain the full state and configuration definitions in their source recipes.
@@ -34,6 +34,11 @@ V70 paired_difference.ci95 is a baseline-minus-candidate interval, never an MAE 
 Development-only density, budget and data-reuse tasks are outside this frozen-prediction table.
 V72 repeats use the same weights; no displayed score uses those repeats.
 The earlier unseen-bit-width test moves to the candidate-form appendix: its cells entered the later development grid, so the delivered rule has no independent error on them. Frozen low-order surface: 0.19 / 0.21 / 0.44 nats against 0.55 / 0.73 / 0.54 for the development-selected baseline (development median / development median / development median), from 24 development configuration measurements per capability.
+Development baseline for Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85: Per-density regression; question answering: median | 0.23 | 0.22 | 0.22
+Development baseline for Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5: Bilinear regression, no change and the median | 0.33 | 0.68 | 0.46
+Development baseline for An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512: Bilinear regression, no change and the median | 0.35 | 0.56 | 0.14
+Development baseline for Gemma 270 million and 1 billion distilled on six new pools at 50 to 200 thousand tokens: Regressions on budget and loss, reuse, and reuse and size | 0.07, 0.03 | 0.02, 0.05 | 0.61, 0.45
+Development baseline for Four unseen Pythia states pruned at six densities: Per-density regression at full budget (36) | 0.06 | 0.08 | 0.18
 
 ## Fields per cell
 
@@ -42,36 +47,31 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
 - Cell (0, 2): `results/a11-efficiency-confirmation/per_state.json#/records/0/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/1/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/2/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/3/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/4/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/5/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/6/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/7/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/8/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/9/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/10/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/11/mae`; `results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/power_18`; `results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/power_18`; `results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/power_18`
 - Cell (0, 3): `results/a11-efficiency-confirmation/summary.json#/decision/primary_capabilities`; `results/a11-efficiency-confirmation/summary.json#/decision/candidate`; `results/a11-efficiency-confirmation/summary.json#/decision/descriptive_capabilities`; `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/median_curve_36`
 - Cell (0, 4): `results/a11-efficiency-confirmation/per_state.json#/records/0/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/1/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/2/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/3/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/4/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/5/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/6/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/7/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/8/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/9/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/10/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/11/mae`; `results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/power_18`; `results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/power_18`; `results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/median_curve_36`
-- Cell (0, 5): `results/a11-efficiency-confirmation/summary.json#/decision`; `results/a11-efficiency-confirmation/per_state.json#/records/0/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/1/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/2/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/3/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/4/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/5/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/6/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/7/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/8/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/9/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/10/mae`; `results/a11-efficiency-confirmation/per_state.json#/records/11/mae`; `results/a11-efficiency-confirmation/summary.json#/decision/comparator`; `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/A2_36`; `results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/A2_36`; `results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/A2_36`; `results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/A2_36`
-- Cell (0, 6): `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/A2_36`; `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/power_18`
+- Cell (0, 5): `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/A2_36`; `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/power_18`
 - Cell (1, 0): `results/v53-prune-dev/register.json#/selected_candidate`; `results/v53-prune-dev/register.json#/dev_states`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
 - Cell (1, 1): `results/v53-prune-dev/register.json#/feature_names`; `results/v53-prune-dev/register.json#/candidate_definitions/power`; `results/v53-prune-dev/register.json#/n_params_per_capability/power`; `results/v53-prune-dev/register.json#/n_dev_states`
 - Cell (1, 2): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/power/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/power/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/power/qa`
 - Cell (1, 3): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`
 - Cell (1, 4): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
-- Cell (1, 5): `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/register.json#/loso_table/2/candidate`; `results/v53-prune-dev/register.json#/loso_table/5/candidate`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
-- Cell (1, 6): `results/v53-prune-dev/register.json#/dev_states`; `results/v53-prune-dev/register.json#/n_dev_rows`; `results/v53-prune-dev/register.json#/models`
+- Cell (1, 5): `results/v53-prune-dev/register.json#/dev_states`; `results/v53-prune-dev/register.json#/n_dev_rows`; `results/v53-prune-dev/register.json#/models`
 - Cell (2, 0): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`; `results/v69-quant-confirm/compare.json#/rows/0/test_set`; `results/v69-quant-confirm/compare.json#/rows/1/test_set`; `results/v69-quant-confirm/compare.json#/rows/2/test_set`; `results/v69-quant-confirm/compare.json#/rows/3/test_set`; `results/v69-quant-confirm/compare.json#/rows/4/test_set`; `results/v69-quant-confirm/compare.json#/rows/5/test_set`; `results/v69-quant-confirm/compare.json#/rows/6/test_set`; `results/v69-quant-confirm/compare.json#/rows/7/test_set`; `results/v69-quant-confirm/compare.json#/rows/8/test_set`; `results/v69-quant-confirm/compare.json#/rows/9/test_set`; `results/v69-quant-confirm/compare.json#/rows/10/test_set`; `results/v69-quant-confirm/compare.json#/rows/11/test_set`; `results/v69-quant-confirm/compare.json#/rows/12/test_set`; `results/v69-quant-confirm/compare.json#/rows/13/test_set`; `results/v69-quant-confirm/compare.json#/rows/14/test_set`; `results/v69-quant-confirm/compare.json#/rows/15/test_set`; `results/v69-quant-confirm/compare.json#/rows/16/test_set`; `results/v69-quant-confirm/compare.json#/rows/17/test_set`; `results/v69-quant-confirm/compare.json#/rows/18/test_set`; `results/v69-quant-confirm/compare.json#/rows/19/test_set`; `results/v69-quant-confirm/compare.json#/rows/20/test_set`; `results/v69-quant-confirm/compare.json#/rows/21/test_set`; `results/v69-quant-confirm/compare.json#/rows/22/test_set`; `results/v69-quant-confirm/compare.json#/rows/23/test_set`; `results/v69-quant-confirm/compare.json#/rows/24/test_set`; `results/v69-quant-confirm/compare.json#/rows/25/test_set`; `results/v69-quant-confirm/compare.json#/rows/26/test_set`; `results/v69-quant-confirm/compare.json#/rows/27/test_set`; `results/v69-quant-confirm/compare.json#/rows/28/test_set`; `results/v69-quant-confirm/compare.json#/rows/29/test_set`; `results/v69-quant-confirm/compare.json#/rows/30/test_set`; `results/v69-quant-confirm/compare.json#/rows/31/test_set`; `results/v69-quant-confirm/compare.json#/rows/32/test_set`; `results/v69-quant-confirm/compare.json#/rows/33/test_set`; `results/v69-quant-confirm/compare.json#/rows/34/test_set`; `results/v69-quant-confirm/compare.json#/rows/35/test_set`; `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
 - Cell (2, 1): `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v69-quant-confirm/develop.json#/models`; `results/v69-quant-confirm/develop.json#/feature_names`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selected/math/candidate`; `results/v69-quant-confirm/develop.json#/selected/code/candidate`; `results/v69-quant-confirm/develop.json#/selected/qa/candidate`
 - Cell (2, 2): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/low_order_2d/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/qa/mae`
 - Cell (2, 3): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`
 - Cell (2, 4): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
-- Cell (2, 5): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math`; `results/v69-quant-confirm/develop.json#/loso/scores/zero/code`; `results/v69-quant-confirm/develop.json#/loso/scores/median/qa`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
-- Cell (2, 6): `results/v69-quant-confirm/develop.json#/dev_states`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selection_rule`; `results/v69-quant-confirm/develop.json#/n_dev_cells`
+- Cell (2, 5): `results/v69-quant-confirm/develop.json#/dev_states`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selection_rule`; `results/v69-quant-confirm/develop.json#/n_dev_cells`
 - Cell (3, 0): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`; `results/v69-quant-confirm/compare.json#/rows/36/test_set`; `results/v69-quant-confirm/compare.json#/rows/37/test_set`; `results/v69-quant-confirm/compare.json#/rows/38/test_set`; `results/v69-quant-confirm/compare.json#/rows/39/test_set`; `results/v69-quant-confirm/compare.json#/rows/40/test_set`; `results/v69-quant-confirm/compare.json#/rows/41/test_set`; `results/v69-quant-confirm/compare.json#/rows/42/test_set`; `results/v69-quant-confirm/compare.json#/rows/43/test_set`; `results/v69-quant-confirm/compare.json#/rows/44/test_set`; `results/v69-quant-confirm/compare.json#/rows/45/test_set`; `results/v69-quant-confirm/compare.json#/rows/46/test_set`; `results/v69-quant-confirm/compare.json#/rows/47/test_set`; `results/v69-quant-confirm/compare.json#/rows/48/test_set`; `results/v69-quant-confirm/compare.json#/rows/49/test_set`; `results/v69-quant-confirm/compare.json#/rows/50/test_set`; `results/v69-quant-confirm/compare.json#/rows/51/test_set`; `results/v69-quant-confirm/compare.json#/rows/52/test_set`; `results/v69-quant-confirm/compare.json#/rows/53/test_set`; `results/v69-quant-confirm/compare.json#/rows/54/test_set`; `results/v69-quant-confirm/compare.json#/rows/55/test_set`; `results/v69-quant-confirm/compare.json#/rows/56/test_set`; `results/v69-quant-confirm/compare.json#/rows/57/test_set`; `results/v69-quant-confirm/compare.json#/rows/58/test_set`; `results/v69-quant-confirm/compare.json#/rows/59/test_set`; `results/v69-quant-confirm/compare.json#/rows/60/test_set`; `results/v69-quant-confirm/compare.json#/rows/61/test_set`; `results/v69-quant-confirm/compare.json#/rows/62/test_set`; `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
 - Cell (3, 1): `results/v55-quant-group/register.json#/candidate_definitions/low_order_2d`; `results/v69-quant-confirm/develop.json#/models`; `results/v69-quant-confirm/develop.json#/feature_names`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selected/math/candidate`; `results/v69-quant-confirm/develop.json#/selected/code/candidate`; `results/v69-quant-confirm/develop.json#/selected/qa/candidate`
 - Cell (3, 2): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/low_order_2d/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/low_order_2d/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/low_order_2d/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/low_order_2d/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/qa/n`
 - Cell (3, 3): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`
 - Cell (3, 4): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
-- Cell (3, 5): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math`; `results/v69-quant-confirm/develop.json#/loso/scores/zero/code`; `results/v69-quant-confirm/develop.json#/loso/scores/median/qa`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
-- Cell (3, 6): `results/v69-quant-confirm/develop.json#/dev_states`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selection_rule`; `results/v69-quant-confirm/develop.json#/n_dev_cells`
+- Cell (3, 5): `results/v69-quant-confirm/develop.json#/dev_states`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selection_rule`; `results/v69-quant-confirm/develop.json#/n_dev_cells`
 - Cell (4, 0): `results/v70-distill-confirm/freeze.json#/confirmation_register/unused_U_assertion`; `results/v70-distill-confirm/freeze.json#/frozen_at_utc`; `results/v47-p2-register/register.json#/v5_confirm/registered_at_utc`; `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
 - Cell (4, 1): `results/v70-distill-confirm/freeze.json#/selected`; `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/selected/math/method`; `results/v70-distill-confirm/freeze.json#/selected/math/n_params`; `results/v70-distill-confirm/freeze.json#/selected/code/method`; `results/v70-distill-confirm/freeze.json#/selected/code/n_params`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`; `results/v70-distill-confirm/freeze.json#/selected/qa/n_params`
 - Cell (4, 2): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/bootstrap`; `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
 - Cell (4, 3): `results/v70-distill-confirm/freeze.json#/selected`; `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/selected/math/method`; `results/v70-distill-confirm/freeze.json#/selected/math/n_params`; `results/v70-distill-confirm/freeze.json#/selected/code/method`; `results/v70-distill-confirm/freeze.json#/selected/code/n_params`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`; `results/v70-distill-confirm/freeze.json#/selected/qa/n_params`
 - Cell (4, 4): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
-- Cell (4, 5): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/math/method`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/math/method`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/code/method`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/code/method`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/qa/method`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/qa/method`; `results/v70-distill-confirm/compare.json#/groups/0/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/3/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/1/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/4/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`; `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
-- Cell (4, 6): `results/v70-distill-confirm/develop.json#/development_structure`; `results/v70-distill-confirm/develop.json#/points`; `results/v70-distill-confirm/freeze.json#/inputs_sha256/results~1v70-distill-confirm~1develop.json`; `results/v70-distill-confirm/develop.json#/development_structure/n_points`
+- Cell (4, 5): `results/v70-distill-confirm/develop.json#/development_structure`; `results/v70-distill-confirm/develop.json#/points`; `results/v70-distill-confirm/freeze.json#/inputs_sha256/results~1v70-distill-confirm~1develop.json`; `results/v70-distill-confirm/develop.json#/development_structure/n_points`
 
 ## Machine-readable cell recipes
 
@@ -268,73 +268,6 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   {
     "row": 0,
     "column": 5,
-    "parts": [
-      {
-        "sources": [
-          "results/a11-efficiency-confirmation/summary.json#/decision/comparator"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Per-density regression at full budget",
-        "expected": [
-          "A2_36"
-        ]
-      },
-      " (",
-      {
-        "sources": [
-          "results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/A2_36"
-        ],
-        "op": "identity",
-        "format": null
-      },
-      ")\n",
-      {
-        "sources": [
-          "results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/A2_36"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      "\n",
-      {
-        "sources": [
-          "results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/A2_36"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      "\n",
-      {
-        "sources": [
-          "results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/A2_36"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      }
-    ],
-    "context": [
-      "results/a11-efficiency-confirmation/summary.json#/decision",
-      "results/a11-efficiency-confirmation/per_state.json#/records/0/mae",
-      "results/a11-efficiency-confirmation/per_state.json#/records/1/mae",
-      "results/a11-efficiency-confirmation/per_state.json#/records/2/mae",
-      "results/a11-efficiency-confirmation/per_state.json#/records/3/mae",
-      "results/a11-efficiency-confirmation/per_state.json#/records/4/mae",
-      "results/a11-efficiency-confirmation/per_state.json#/records/5/mae",
-      "results/a11-efficiency-confirmation/per_state.json#/records/6/mae",
-      "results/a11-efficiency-confirmation/per_state.json#/records/7/mae",
-      "results/a11-efficiency-confirmation/per_state.json#/records/8/mae",
-      "results/a11-efficiency-confirmation/per_state.json#/records/9/mae",
-      "results/a11-efficiency-confirmation/per_state.json#/records/10/mae",
-      "results/a11-efficiency-confirmation/per_state.json#/records/11/mae"
-    ],
-    "note": "Stored unweighted per-capability MAEs, checked against all four per-state means and the identical six-density cells; no refit or test ranking.",
-    "compact_scores": "comparison",
-    "rendered": "Per-density regression at full budget (36)\\newline \\TableOneErrors{0.06}{0.08}{0.18}"
-  },
-  {
-    "row": 0,
-    "column": 6,
     "parts": [
       {
         "sources": [
@@ -550,63 +483,6 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   {
     "row": 1,
     "column": 5,
-    "parts": [
-      {
-        "sources": [
-          "results/v53-prune-dev/register.json#/loso_table/2/candidate",
-          "results/v53-prune-dev/register.json#/loso_table/2/candidate",
-          "results/v53-prune-dev/register.json#/loso_table/5/candidate"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Per-density regression; question answering: median",
-        "expected": [
-          "A2",
-          "A2",
-          "median_curve"
-        ]
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math",
-          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math",
-          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math"
-        ],
-        "op": "mean",
-        "format": ".2f"
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code",
-          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code",
-          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code"
-        ],
-        "op": "mean",
-        "format": ".2f"
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa",
-          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa",
-          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa"
-        ],
-        "op": "mean",
-        "format": ".2f"
-      }
-    ],
-    "context": [
-      "results/v53-prune-dev/register.json#/loso_table"
-    ],
-    "note": "Minimum development LOSO MAE excluding power, per capability: per-density regression / per-density regression / development median; no test ranking.",
-    "compact_scores": "comparison",
-    "rendered": "Per-density regression; question answering: median\\newline \\TableOneErrors{0.23}{0.22}{0.22}"
-  },
-  {
-    "row": 1,
-    "column": 6,
     "parts": [
       {
         "sources": [
@@ -843,96 +719,6 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   {
     "row": 2,
     "column": 5,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math",
-          "results/v69-quant-confirm/develop.json#/loso/scores/zero/code",
-          "results/v69-quant-confirm/develop.json#/loso/scores/median/qa"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Bilinear regression, no change and the median",
-        "expected": [
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.18035555432620828,
-              "pythia-1.4b@step16000": 0.4042579843558109,
-              "pythia-160m@step143000": 3.3985412467109986,
-              "pythia-160m@step16000": 0.43688672544116214,
-              "pythia-410m@step143000": 0.37784637907436774,
-              "pythia-410m@step16000": 0.2598977837534169
-            },
-            "macro_mae": 0.8429642789436608,
-            "mae": 0.8429642789436608
-          },
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.5143543829067956,
-              "pythia-1.4b@step16000": 0.10937458732799844,
-              "pythia-160m@step143000": 6.2735256054723605,
-              "pythia-160m@step16000": 0.3426432136914666,
-              "pythia-410m@step143000": 1.110008451522595,
-              "pythia-410m@step16000": 0.19481419855795895
-            },
-            "macro_mae": 1.4241200732465291,
-            "mae": 1.4241200732465291
-          },
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.16258053443177,
-              "pythia-1.4b@step16000": 0.2355005016899031,
-              "pythia-160m@step143000": 6.541049456062526,
-              "pythia-160m@step16000": 0.09769750739332464,
-              "pythia-410m@step143000": 0.7294274133924797,
-              "pythia-410m@step16000": 0.15231569497253902
-            },
-            "macro_mae": 1.319761851323757,
-            "mae": 1.3197618513237568
-          }
-        ]
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      }
-    ],
-    "context": [
-      "results/v69-quant-confirm/develop.json#/loso/scores"
-    ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
-    "compact_scores": "comparison",
-    "rendered": "Bilinear regression, no change and the median\\newline \\TableOneErrors{0.33}{0.68}{0.46}"
-  },
-  {
-    "row": 2,
-    "column": 6,
     "parts": [
       {
         "sources": [
@@ -1183,105 +969,6 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   {
     "row": 3,
     "column": 5,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math",
-          "results/v69-quant-confirm/develop.json#/loso/scores/zero/code",
-          "results/v69-quant-confirm/develop.json#/loso/scores/median/qa"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Bilinear regression, no change and the median",
-        "expected": [
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.18035555432620828,
-              "pythia-1.4b@step16000": 0.4042579843558109,
-              "pythia-160m@step143000": 3.3985412467109986,
-              "pythia-160m@step16000": 0.43688672544116214,
-              "pythia-410m@step143000": 0.37784637907436774,
-              "pythia-410m@step16000": 0.2598977837534169
-            },
-            "macro_mae": 0.8429642789436608,
-            "mae": 0.8429642789436608
-          },
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.5143543829067956,
-              "pythia-1.4b@step16000": 0.10937458732799844,
-              "pythia-160m@step143000": 6.2735256054723605,
-              "pythia-160m@step16000": 0.3426432136914666,
-              "pythia-410m@step143000": 1.110008451522595,
-              "pythia-410m@step16000": 0.19481419855795895
-            },
-            "macro_mae": 1.4241200732465291,
-            "mae": 1.4241200732465291
-          },
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.16258053443177,
-              "pythia-1.4b@step16000": 0.2355005016899031,
-              "pythia-160m@step143000": 6.541049456062526,
-              "pythia-160m@step16000": 0.09769750739332464,
-              "pythia-410m@step143000": 0.7294274133924797,
-              "pythia-410m@step16000": 0.15231569497253902
-            },
-            "macro_mae": 1.319761851323757,
-            "mae": 1.3197618513237568
-          }
-        ]
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n"
-        ],
-        "op": "weighted_mean",
-        "format": ".2f"
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n"
-        ],
-        "op": "weighted_mean",
-        "format": ".2f"
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n"
-        ],
-        "op": "weighted_mean",
-        "format": ".2f"
-      }
-    ],
-    "context": [
-      "results/v69-quant-confirm/develop.json#/loso/scores"
-    ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
-    "compact_scores": "comparison",
-    "rendered": "Bilinear regression, no change and the median\\newline \\TableOneErrors{0.35}{0.56}{0.14}"
-  },
-  {
-    "row": 3,
-    "column": 6,
     "parts": [
       {
         "sources": [
@@ -1855,88 +1542,6 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
     "parts": [
       {
         "sources": [
-          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/math/method",
-          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/math/method",
-          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/code/method",
-          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/code/method",
-          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/qa/method",
-          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/qa/method"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Regressions on budget and loss, reuse, and reuse and size",
-        "expected": [
-          "T-only",
-          "surface:L0",
-          "E-only",
-          "E-only",
-          "E-only",
-          "surface:logN"
-        ]
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/0/baseline_mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      ", ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/3/baseline_mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/1/baseline_mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      ", ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/4/baseline_mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      "\n",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/2/baseline_mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      },
-      ", ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/5/baseline_mae"
-        ],
-        "op": "identity",
-        "format": ".2f"
-      }
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/baseline_rule",
-      "results/v70-distill-confirm/freeze.json#/strongest_baseline"
-    ],
-    "note": "Development-fixed baseline identities, student order 270M, 1B: budget regression, loss regression / reuse regression / reuse regression, size regression.",
-    "compact_scores": "comparison",
-    "rendered": "Regressions on budget and loss, reuse, and reuse and size\\newline \\TableOneErrors{0.07, 0.03}{0.02, 0.05}{0.61, 0.45}"
-  },
-  {
-    "row": 4,
-    "column": 6,
-    "parts": [
-      {
-        "sources": [
           "results/v70-distill-confirm/develop.json#/development_structure/n_points"
         ],
         "op": "identity",
@@ -1960,7 +1565,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
 ```json
 {
   "parts": [
-    "Errors are mean absolute errors in nats per token, in math, code and question answering order. The frozen candidate was fixed before that row was measured; the delivered relation is the predictor recommended on all the evidence. A delivered relation marked Retrospective was chosen after seeing the result, so its error there is not an independent test. Interpolation is piecewise on the measured grid, and a median curve uses no source inputs. The last column counts the development configuration measurements per capability behind the frozen candidate. Distillation entries give the ",
+    "Errors are mean absolute errors in nats per token, in math, code and question answering order. The frozen candidate was fixed before that row was measured; the delivered relation is the predictor recommended on all the evidence, and a Retrospective label marks a predictor chosen after seeing the result, whose error there is not an independent test. Appendix Fig.~\\ref{fig:generalization} compares each row with the strongest baseline chosen inside the development folds. The last column counts development configuration measurements per capability behind the frozen candidate, and distillation entries give the ",
     {
       "sources": [
         "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
@@ -1987,7 +1592,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   ],
   "note": "",
   "compact_scores": "",
-  "rendered": "Errors are mean absolute errors in nats per token, in math, code and question answering order. The frozen candidate was fixed before that row was measured; the delivered relation is the predictor recommended on all the evidence. A delivered relation marked Retrospective was chosen after seeing the result, so its error there is not an independent test. Interpolation is piecewise on the measured grid, and a median curve uses no source inputs. The last column counts the development configuration measurements per capability behind the frozen candidate. Distillation entries give the 270 million and 1 billion students in that order."
+  "rendered": "Errors are mean absolute errors in nats per token, in math, code and question answering order. The frozen candidate was fixed before that row was measured; the delivered relation is the predictor recommended on all the evidence, and a Retrospective label marks a predictor chosen after seeing the result, whose error there is not an independent test. Appendix Fig.\\textasciitilde{}\\textbackslash{}ref\\{fig:generalization\\} compares each row with the strongest baseline chosen inside the development folds. The last column counts development configuration measurements per capability behind the frozen candidate, and distillation entries give the 270 million and 1 billion students in that order."
 }
 ```
 
@@ -2002,11 +1607,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
 - Cell (0, 4), `0.07` (identity): `results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/power_18`
 - Cell (0, 4), `0.10` (identity): `results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/power_18`
 - Cell (0, 4), `0.18` (identity): `results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/median_curve_36`
-- Cell (0, 5), `36` (identity): `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/A2_36`
-- Cell (0, 5), `0.06` (identity): `results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/A2_36`
-- Cell (0, 5), `0.08` (identity): `results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/A2_36`
-- Cell (0, 5), `0.18` (identity): `results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/A2_36`
-- Cell (0, 6), `18` (identity): `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/power_18`
+- Cell (0, 5), `18` (identity): `results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/power_18`
 - Cell (1, 0), `Three` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
 - Cell (1, 0), `0.575` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
 - Cell (1, 0), `0.675` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
@@ -2018,10 +1619,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
 - Cell (1, 4), `0.28` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/math`
 - Cell (1, 4), `0.21` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code`
 - Cell (1, 4), `0.22` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
-- Cell (1, 5), `0.23` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math`
-- Cell (1, 5), `0.22` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code`
-- Cell (1, 5), `0.22` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
-- Cell (1, 6), `84` (per_capability): `results/v53-prune-dev/register.json#/n_dev_rows`; `results/v53-prune-dev/register.json#/models`
+- Cell (1, 5), `84` (per_capability): `results/v53-prune-dev/register.json#/n_dev_rows`; `results/v53-prune-dev/register.json#/models`
 - Cell (2, 0), `410` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
 - Cell (2, 0), `1.4` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
 - Cell (2, 0), `32` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
@@ -2034,10 +1632,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
 - Cell (2, 4), `0.07` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/math/mae`
 - Cell (2, 4), `0.12` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae`
 - Cell (2, 4), `0.46` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
-- Cell (2, 5), `0.33` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae`
-- Cell (2, 5), `0.68` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae`
-- Cell (2, 5), `0.46` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
-- Cell (2, 6), `54` (identity): `results/v69-quant-confirm/develop.json#/n_dev_cells`
+- Cell (2, 5), `54` (identity): `results/v69-quant-confirm/develop.json#/n_dev_cells`
 - Cell (3, 0), `1.4` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
 - Cell (3, 0), `3` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
 - Cell (3, 0), `5` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
@@ -2049,10 +1644,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
 - Cell (3, 4), `0.09` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/n`
 - Cell (3, 4), `0.15` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`
 - Cell (3, 4), `0.14` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
-- Cell (3, 5), `0.35` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n`
-- Cell (3, 5), `0.56` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n`
-- Cell (3, 5), `0.14` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
-- Cell (3, 6), `54` (identity): `results/v69-quant-confirm/develop.json#/n_dev_cells`
+- Cell (3, 5), `54` (identity): `results/v69-quant-confirm/develop.json#/n_dev_cells`
 - Cell (4, 0), `270` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
 - Cell (4, 0), `1` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
 - Cell (4, 0), `six` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
@@ -2070,13 +1662,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
 - Cell (4, 4), `0.05` (identity): `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`
 - Cell (4, 4), `0.51` (identity): `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`
 - Cell (4, 4), `0.46` (identity): `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
-- Cell (4, 5), `0.07` (identity): `results/v70-distill-confirm/compare.json#/groups/0/baseline_mae`
-- Cell (4, 5), `0.03` (identity): `results/v70-distill-confirm/compare.json#/groups/3/baseline_mae`
-- Cell (4, 5), `0.02` (identity): `results/v70-distill-confirm/compare.json#/groups/1/baseline_mae`
-- Cell (4, 5), `0.05` (identity): `results/v70-distill-confirm/compare.json#/groups/4/baseline_mae`
-- Cell (4, 5), `0.61` (identity): `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`
-- Cell (4, 5), `0.45` (identity): `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
-- Cell (4, 6), `100` (identity): `results/v70-distill-confirm/develop.json#/development_structure/n_points`
+- Cell (4, 5), `100` (identity): `results/v70-distill-confirm/develop.json#/development_structure/n_points`
 - Caption, `270` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`
 - Caption, `1` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`
 
@@ -2190,50 +1776,6 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   {
     "row": 0,
     "column": 5,
-    "part": 2,
-    "number": "36",
-    "displayed": "36",
-    "op": "identity",
-    "sources": [
-      "results/a11-efficiency-confirmation/per_state.json#/development_measurements_per_capability/A2_36"
-    ]
-  },
-  {
-    "row": 0,
-    "column": 5,
-    "part": 4,
-    "number": "0.06",
-    "displayed": "0.06",
-    "op": "identity",
-    "sources": [
-      "results/a11-efficiency-confirmation/summary.json#/by_capability/math/mae/A2_36"
-    ]
-  },
-  {
-    "row": 0,
-    "column": 5,
-    "part": 6,
-    "number": "0.08",
-    "displayed": "0.08",
-    "op": "identity",
-    "sources": [
-      "results/a11-efficiency-confirmation/summary.json#/by_capability/code/mae/A2_36"
-    ]
-  },
-  {
-    "row": 0,
-    "column": 5,
-    "part": 8,
-    "number": "0.18",
-    "displayed": "0.18",
-    "op": "identity",
-    "sources": [
-      "results/a11-efficiency-confirmation/summary.json#/by_capability/qa/mae/A2_36"
-    ]
-  },
-  {
-    "row": 0,
-    "column": 6,
     "part": 0,
     "number": "18",
     "displayed": "18",
@@ -2400,45 +1942,6 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   {
     "row": 1,
     "column": 5,
-    "part": 2,
-    "number": "0.23",
-    "displayed": "0.23",
-    "op": "mean",
-    "sources": [
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math",
-      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math"
-    ]
-  },
-  {
-    "row": 1,
-    "column": 5,
-    "part": 4,
-    "number": "0.22",
-    "displayed": "0.22",
-    "op": "mean",
-    "sources": [
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code",
-      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code"
-    ]
-  },
-  {
-    "row": 1,
-    "column": 5,
-    "part": 6,
-    "number": "0.22",
-    "displayed": "0.22",
-    "op": "mean",
-    "sources": [
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa",
-      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa"
-    ]
-  },
-  {
-    "row": 1,
-    "column": 6,
     "part": 0,
     "number": "84",
     "displayed": "84",
@@ -2625,39 +2128,6 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   {
     "row": 2,
     "column": 5,
-    "part": 2,
-    "number": "0.33",
-    "displayed": "0.33",
-    "op": "identity",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae"
-    ]
-  },
-  {
-    "row": 2,
-    "column": 5,
-    "part": 4,
-    "number": "0.68",
-    "displayed": "0.68",
-    "op": "identity",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae"
-    ]
-  },
-  {
-    "row": 2,
-    "column": 5,
-    "part": 6,
-    "number": "0.46",
-    "displayed": "0.46",
-    "op": "identity",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae"
-    ]
-  },
-  {
-    "row": 2,
-    "column": 6,
     "part": 0,
     "number": "54",
     "displayed": "54",
@@ -2853,48 +2323,6 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   {
     "row": 3,
     "column": 5,
-    "part": 2,
-    "number": "0.35",
-    "displayed": "0.35",
-    "op": "weighted_mean",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n"
-    ]
-  },
-  {
-    "row": 3,
-    "column": 5,
-    "part": 4,
-    "number": "0.56",
-    "displayed": "0.56",
-    "op": "weighted_mean",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n"
-    ]
-  },
-  {
-    "row": 3,
-    "column": 5,
-    "part": 6,
-    "number": "0.14",
-    "displayed": "0.14",
-    "op": "weighted_mean",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n"
-    ]
-  },
-  {
-    "row": 3,
-    "column": 6,
     "part": 0,
     "number": "54",
     "displayed": "54",
@@ -3103,72 +2531,6 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   {
     "row": 4,
     "column": 5,
-    "part": 2,
-    "number": "0.07",
-    "displayed": "0.07",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/0/baseline_mae"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 5,
-    "part": 4,
-    "number": "0.03",
-    "displayed": "0.03",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/3/baseline_mae"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 5,
-    "part": 6,
-    "number": "0.02",
-    "displayed": "0.02",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/1/baseline_mae"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 5,
-    "part": 8,
-    "number": "0.05",
-    "displayed": "0.05",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/4/baseline_mae"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 5,
-    "part": 10,
-    "number": "0.61",
-    "displayed": "0.61",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/2/baseline_mae"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 5,
-    "part": 12,
-    "number": "0.45",
-    "displayed": "0.45",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/5/baseline_mae"
-    ]
-  },
-  {
-    "row": 4,
-    "column": 6,
     "part": 0,
     "number": "100",
     "displayed": "100",
