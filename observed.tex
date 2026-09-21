@@ -35,8 +35,9 @@ order of magnitude below this reuse cost on every capability.
 
 The reuse cost transfers across question-answering distributions; the gain does not. Rescored on a
 fresh 2Wiki sample disjoint from the probe, on MuSiQue and on TriviaQA, all three distributions
-worsen at high reuse and improve as reuse falls, for each student. Only the fresh 2Wiki sample crosses into a gain, because MuSiQue flattens near zero and TriviaQA
-remains positive at every reuse level, on both students and at every budget we scored.
+worsen at high reuse and improve as reuse falls, on each of the three students at the matched
+budget of Fig.~\ref{fig:responses_v2}. Only the fresh 2Wiki sample crosses into a gain there:
+MuSiQue flattens near zero and TriviaQA remains positive at every reuse level we scored.
 
 \begin{figure}[t]
 \centering
@@ -55,17 +56,18 @@ the same budget.}
 These responses can be turned into an empirical data requirement. A registered experiment of
 eighteen trajectories on the 1B and 4B students, with pools from nine thousand supervised tokens to
 the full pool of 158 thousand and three evaluation budgets, measured the range of independent data
-at which a loss constraint is met (Fig.~\ref{fig:dreq}). On 2Wiki the constraint is crossed inside the tested pools for both students at the two larger
-budgets. On MuSiQue the largest pool still fails at tight tolerances, and a crossing appears only
+at which a loss constraint is met on the fresh 2Wiki sample, on MuSiQue and on TriviaQA
+(Fig.~\ref{fig:dreq}). On the fresh 2Wiki sample the constraint is crossed inside the tested pools
+for both students at the two larger budgets. On MuSiQue the largest pool still fails at tight tolerances, and a crossing appears only
 at looser ones. On TriviaQA the largest pool fails for the 4B student at every tolerance, so the
 requirement is a lower bound. A low-degree boundary relation did not predict these ranges more accurately than a per-student
 monotone interpolation. We therefore report the requirement as measured intervals, which hold for the data source, the
-maximum pool size and the protocol used in these experiments.
+maximum pool size and the distillation protocol used in these experiments.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figs/dreq_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/dreq_a.pdf}\caption{2Wiki}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/dreq_a.pdf}\caption{Fresh 2Wiki}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/dreq_b.pdf}\caption{MuSiQue}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/dreq_c.pdf}\caption{TriviaQA}\end{subfigure}
 \caption{Measured data requirements of distillation at a tolerance of 0.25 nats: for each student

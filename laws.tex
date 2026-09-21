@@ -24,8 +24,7 @@ This form uses five parameters per capability, with inputs standardized on the d
 \subsection{Quantization}
 \label{sec:law_quant}
 
-Per-channel round-to-nearest quantization is evaluated at discrete bit widths. Responses range from near-zero changes at higher precision to large, state-dependent damage at low precision. We therefore evaluate prediction separately across bit widths and model states. Int8 and int6 stay within 0.01 nats of the
-reference, int4 costs 0.03 to 0.35 nats, and int3 collapses. At a bit-width that entered the fit,
+Per-channel round-to-nearest quantization is evaluated at discrete bit widths. Responses range from near-zero changes at higher precision to large, state-dependent damage at low precision. We therefore evaluate prediction separately across bit widths and model states. At a bit-width that entered the fit,
 the delivered relation is the per-bit source regression on states in the fit and the per-bit median
 on new ones. With
 groups of $g$ weights per scale as a second axis, the delivered relation for mathematics and code on seen
