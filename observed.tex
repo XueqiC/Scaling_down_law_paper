@@ -41,8 +41,8 @@ entered the fit; the same inputs over-predict question answering, whose density 
 proportional to any shared curve. The state inputs earn their place inside the development range,
 where they and the median density curve agree to within 0.05 nats at unseen stages of a 1B model,
 and lose it outside it (\S\ref{sec:general}). Under quantization the configuration acts through two
-axes at once: the threshold in bit width moves with the group size. A relation therefore needs the
-configuration in full, and the initial state only where it has been shown to help.
+axes at once: the threshold in bit width moves with the group size. A relation therefore needs the configuration in full, and the
+initial state only where it helps.
 
 \subsection{Effects of Training Data and Evaluation Distribution}
 \label{sec:why}
@@ -57,8 +57,7 @@ Once the learning rate is fixed, the size of the data pool dominates and questio
 most of the cost. At a matched budget $T$ near 200k supervised tokens
 (Fig.~\ref{fig:responses_v2}), a reuse ratio $E=T/D_U$ near twelve costs question answering $+0.29$,
 $+2.55$ and $+4.85$ nats on students of 100M, 700M and 3.2B non-embedding parameters, and nine times
-more independent data converts the same budget into a gain near one nat on each. Two pool seeds per
-cell place the noise from the pool draw an order of magnitude below this cost.
+more independent data converts the same budget into a gain near one nat on each.
 
 The reuse cost transfers across question-answering distributions; the gain does not. Rescored on a
 fresh 2Wiki sample disjoint from the probe, on MuSiQue and on TriviaQA, all three distributions
