@@ -1,4 +1,4 @@
-Notation follows the main paper: $L_c$ is the capability-conditioned loss of capability $c$,
+Notation follows the main paper: $L_c$ is the capability loss of capability $c$,
 $\Delta L_c$ its change under compression, $\delta_c$ the signed transfer of a distilled student,
 $d$ the retained density, $b$ the bit-width, $g$ the group size, and $\mathbf x=(N_0,D_0,L_{0,c})$
 collects the parameter count, pretraining tokens and reference capability loss of the initial state.
@@ -297,7 +297,7 @@ $2$--$4\times$ across the models examined.
 
 \paragraph{Selective ablation.}\preliminary{single model; random, magnitude-matched and global-Fisher control ablations are left to future work and are not reported here} We
 select the top $0.05\%$ of weight coordinates by the \emph{residual}
-Fisher signature of each capability, excluding coordinates shared with other capabilities, and zero them. The damage matrix for Gemma-3-1B is nearly diagonal. In the table below, rows identify the ablated
+Fisher signature of each capability, excluding coordinates shared with other capabilities, and zero them. The loss-change matrix for Gemma-3-1B is nearly diagonal. In the table below, rows identify the ablated
 region and columns the measured capability, with entries given as loss increases in nats per native token:
 
 \begin{center}
@@ -377,7 +377,7 @@ An earlier internal study fitted compression laws directly on Rasch
 abilities from $\sim$100-item panels over a 774-cell Qwen3 grid and
 reported that no derived law had held-out predictive power. Our
 re-analysis attributes much of this outcome to the measurement layer:
-first, the falsification anchor of that study was driven almost entirely by the answer-only recipe, and after stratification the anchor holds and the held-out error drops from $9.0\times$ to $1.8\times$ the noise floor; second, same-benchmark evaluation inflated the QA gains by roughly one third; third, discrimination heterogeneity invalidates interval-scale ability while rankings survive with Spearman $\rho\ge0.98$; and fourth, item-level damage is smooth before the cliff, which excludes discrete skill deletion at the item level.
+first, the falsification anchor of that study was driven almost entirely by the answer-only recipe, and after stratification the anchor holds and the held-out error drops from $9.0\times$ to $1.8\times$ the noise floor; second, same-benchmark evaluation inflated the QA gains by roughly one third; third, discrimination heterogeneity invalidates interval-scale ability while rankings survive with Spearman $\rho\ge0.98$; and fourth, the item-level loss change is smooth before the cliff, which excludes discrete skill deletion at the item level.
 These findings fixed the measurement protocol described in Section 2.1 of the main paper.
 
 

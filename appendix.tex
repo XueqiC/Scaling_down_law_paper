@@ -240,7 +240,7 @@ OLMo-3-32B. Robustness is not monotone in size within a series: Gemma-3-12B is t
 A predictor has to reproduce this heterogeneity, which no single property of a model family determines by itself.
 
 Under quantization, Table~\ref{tab:panel_quant} covers
-14 models. Int8 and int6 stay within $0.01$ nats of dense. Int4 damages small models by one to two nats and changes large models by a few tenths; a QA
+14 models. Int8 and int6 stay within $0.01$ nats of dense. Int4 increases the loss of small models by one to two nats and changes large models by a few tenths; a QA
 improvement under int4 recurs in five models and exceeds the measurement-noise floor. Int3 collapses 12 of the 14 models by $4.6$ to $28$ nats;
 OLMo-3-7B loses $2.8$ to $4.7$ and OLMo-3-32B only $0.4$ to $1.2$, so
 the collapse is common although not universal, and OLMo-3 is the robust
@@ -252,7 +252,7 @@ step-size ratio between 4 and 5 bits is $(7/15)^2\approx0.22$
 study.
 
 Under distillation, black-box traces from two API teachers, 600 per domain, train Gemma-3 students under a full-trace and an
-answer-only recipe in a paired design. The answer-only recipe damages math about twice as much as the full recipe, while QA improves by 0.6 to 1.4 nats under both; because the recipes differ in supervised tokens and update
+answer-only recipe in a paired design. The answer-only recipe increases the math loss about twice as much as the full recipe, while QA improves by 0.6 to 1.4 nats under both; because the recipes differ in supervised tokens and update
 counts, this pairing does not isolate reasoning coverage, and the
 controlled comparisons that do isolate it are the ones reported in \S\ref{sec:law_distill}.
 
@@ -366,9 +366,9 @@ and at unseen group sizes of seen states, add nothing on new
 quantization states or in distillation beyond the reference anchor,
 and over-predict the QA pruning response on each new checkpoint. What capability conditioning adds is measurable on the frozen
 confirmation panels (Appendix~\ref{sec:app_shared}): per-capability
-pruning curves beat a shared damage curve with a signed
+pruning curves beat a shared response curve with a signed
 per-capability scale by 0.06 nats macro-averaged, largely through QA at 0.17 nats, whose aggregate curve is not proportional to the tested shared curve:
-it changes sign across density, with damage at $d=0.55$ and improvement from 0.6 to 0.9, so no scale of that curve, including a negative one, represents it, and its direction also varies across sources. For math and
+it changes sign across density, with a loss increase at $d=0.55$ and an improvement from 0.6 to 0.9, so no scale of that curve, including a negative one, represents it, and its direction also varies across sources. For math and
 code a shared curve is as good or better, for grouped quantization the two are indistinguishable, and for distillation the
 comparison is empty because the one-coefficient forms are
 algebraically equivalent. Conditioning matters where the shape of the
@@ -430,7 +430,7 @@ that did not enter them.
 
 The value of capability conditioning can be measured on the same confirmation panels. At equal
 development information, Table~\ref{tab:cap_conditioning}
-compares the delivered per-capability source-free predictors, variant A, with three shared alternatives: one shared damage curve times a signed per-capability scale, variant B; the shared curve plus a per-capability offset, variant C; and the shared curve alone, variant D, all fit on development data only and scored on the
+compares the delivered per-capability source-free predictors, variant A, with three shared alternatives: one shared response curve times a signed per-capability scale, variant B; the shared curve plus a per-capability offset, variant C; and the shared curve alone, variant D, all fit on development data only and scored on the
 frozen confirmation cells. With the two identical 2.8B labels merged into one state, the gain of A over B is 0.059 nats macro-averaged for pruning, 0.168 for QA, and within noise for math and code; 0.003 for quantization; and zero for distillation, where the single-coefficient forms of A and B coincide, which
 supports no conclusion about conditioning there. The audit of this
 comparison (Section S2 of the supplement) shows that negative scales were allowed
@@ -618,7 +618,7 @@ the QA distributions and on math and code alike.
 
 Four analyses develop the mechanism summary of \S\ref{sec:resp_capabilities}: a pruning
 law in the deleted capability mass, the sign of its first-order term, the geometry of the cliff, and
-the logit-displacement account of the damage, in that order.
+the logit-displacement account of the loss change, in that order.
 
 \subsection{The pruning law}
 \label{sec:law}
@@ -687,15 +687,15 @@ law becomes a measurable order parameter that varies smoothly within each family
 \includegraphics[width=\textwidth]{figs/fig2_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig2_a.pdf}\caption{Reuse-term curvature}\end{subfigure}\hfill
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig2_b.pdf}\caption{Displacement account}\end{subfigure}
-\caption{What shapes the distillation response and what explains compression damage. (a) The reuse
+\caption{What shapes the distillation response and what explains the compression loss change. (a) The reuse
 exponent $p$ across training folds per capability with the full-development value and its
 conditional interval; $p=0$ is the logarithmic term and $p=1$ linear. (b) Median relative error of
-the second-order displacement account as a function of damage magnitude under pruning, grouped and
+the second-order displacement account as a function of loss-change magnitude under pruning, grouped and
 per-channel quantization.}
 \label{fig:explanation}
 \end{figure}
 
-\subsection{The logit-displacement account of compression damage}
+\subsection{The logit-displacement account of the compression loss change}
 \label{sec:app_disp}
 
 For a compressed model whose logits are displaced by $r$ from those of the reference, the change
@@ -708,7 +708,7 @@ exactly
 so the first-order term is the signed alignment of the displacement with the target and the
 second-order term is coefficient-free. Evaluated on 339 cells across pruning, grouped quantization
 and per-channel quantization on the development states, the truncation to second order reproduces
-the measured loss change with a median relative error that depends on the damage magnitude and not on the
+the measured loss change with a median relative error that depends on the loss-change magnitude and not on the
 family or the knob (Table~\ref{tab:disp_boundary}): under 5\% wherever the loss change is below about
 0.1 nats, and rising past 20\% by 0.25 nats. Grouped four-bit quantization with fine groups, at 0.06 nats, sits on the same error curve as per-channel four-bit quantization at 0.24 nats of damage.
 
@@ -735,7 +735,7 @@ with a shift-invariant estimator, $\epsilon=-\mathrm{Cov}_{\pi}(r,\ell)/\mathrm{
 fails on magnitude: about three percent of the response lies in the shrinkage direction, and the
 variance of the orthogonal residual carries the rest for math and code. That residual variance is
 not shown to be random noise, and it is not a pre-compression predictor, because computing it needs
-the compressed model. The account explains the damage after the fact and enters no
+the compressed model. The account explains the loss change after the fact and enters no
 relation as an input. Variance dominance is per capability: seventeen cells with negative loss
 change are carried by the first-order term.
 
@@ -862,7 +862,7 @@ This section collects the discussion that the conclusion (\S\ref{sec:learned}) s
 responses and relations the study established, what was learned in trying to build reliable laws,
 the guidance those lessons support, and the limits of the present relations.
 
-The responses and relations come first. Compression damages capabilities unevenly and the unevenness is
+The responses and relations come first. Compression changes capabilities unevenly and the unevenness is
 structured: a capability-specific power form under pruning inside its density range, a
 configuration-dependent quantization threshold that the measured grid predicts better than any
 surface, and a distillation reuse cost that grows with reuse and student size and transfers across
@@ -871,7 +871,7 @@ QA distributions while the gain does not (Table~\ref{tab:main-prediction-v2}).
 Building reliable laws taught four lessons. First, a rejected form is not a rejected class: the logarithmic reuse term failed its own flatness
 implication, yet the fit-free second-difference test on two students did not reject additivity of
 budget and reuse on the QA readout (\S\ref{sec:why}). Second, an explanation is not a
-predictor: the displacement account reproduces damage across three families and needs the
+predictor: the displacement account reproduces the loss change across three families and needs the
 compressed model to compute. Third, source information transfers less than it fits: dense
 pre-compression statistics improve a parametric family in four of nine pairs and lose to a
 source-free configuration curve in nine of nine, with or without a shrunk source correction. Fourth, identifiability is a property of the design: the data that fitted a curvature exponent
@@ -881,9 +881,9 @@ interacting structures was uncomputable until four trajectories were designed to
 These lessons translate into guidance for design and choice. Inputs should be chosen by the transfer needed: the initial state
 carries math and code at unseen densities and group sizes of seen states and over-predicts QA under
 pruning on new checkpoints, so a calibrated configuration median is the safer default when the state
-is new. The training protocol should be fixed before distillation damage is measured, since the learning rate moves it by
+is new. The training protocol should be fixed before the distillation response is measured, since the learning rate moves it by
 an order of magnitude. Data-reuse experiments should be designed so that a budget-by-reuse rectangle exists by
-construction. Calibration should be judged per method against the accuracy it provides: one target measurement, the K1 budget as opposed to the K0 predictions, helped the quantization predictor, whereas for pruning a calibration point at the mildest density amplified noise, because an observation near zero damage cannot estimate an amplitude stably; a calibration point must carry enough response signal, and the more expensive dense statistics did not earn their cost.
+construction. Calibration should be judged per method against the accuracy it provides: one target measurement, the K1 budget as opposed to the K0 predictions, helped the quantization predictor, whereas for pruning a calibration point at the mildest density amplified noise, because an observation near zero loss change cannot estimate an amplitude stably; a calibration point must carry enough response signal, and the more expensive dense statistics did not earn their cost.
 
 The limits are equally clear. The relations are conditional on the evaluated distributions and
 implementations. No fitted joint structure for distillation beat a low-order response surface on

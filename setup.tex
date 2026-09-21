@@ -21,7 +21,7 @@ T_c=\sum_{(x,y)\in\probeset{c}}|y|,
 \end{equation}
 with prompt tokens masked and the same 64 probes per capability within a model. The reference model
 $M_0$ is the checkpoint before the intervention, and responses are within-model differences in
-native nats per token: the damage $\Delta L_c=L_c(\text{compressed})-L_c(M_0)$ for pruning and
+native nats per token: the change in capability loss $\Delta L_c=L_c(\text{compressed})-L_c(M_0)$ for pruning and
 quantization, and for distillation the signed transfer
 $\delta_c=L_c(S_{\mathrm{KD}})-L_c(S_0)$ of a student against its own initial state. Absolute levels from different tokenizers are never placed on one scale.
 
