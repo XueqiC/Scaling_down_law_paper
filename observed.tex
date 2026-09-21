@@ -99,26 +99,12 @@ These responses can be turned into an empirical data requirement. A registered e
 eighteen trajectories on the 1B and 4B students, with pools from nine thousand supervised tokens to
 the full pool of 158 thousand and three evaluation budgets, measured the range of independent data
 at which a loss constraint is met on the fresh 2Wiki sample, on MuSiQue and on TriviaQA
-(Fig.~\ref{fig:dreq}). On the fresh 2Wiki sample the constraint is crossed inside the tested pools
+(Appendix Fig.~\ref{fig:dreq}). On the fresh 2Wiki sample the constraint is crossed inside the tested pools
 for both students at the two larger budgets. On MuSiQue the largest pool still fails at tight tolerances, and a crossing appears only
 at looser ones. On TriviaQA the largest pool fails for the 4B student at every tolerance, so the
 requirement is a lower bound. A low-degree boundary relation did not predict these ranges more accurately than a per-student
 monotone interpolation. We therefore report the requirement as measured intervals, which hold for the data source, the
 maximum pool size and the distillation protocol used in these experiments.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\textwidth]{figs/dreq_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/dreq_a.pdf}\caption{Fresh 2Wiki}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/dreq_b.pdf}\caption{MuSiQue}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/dreq_c.pdf}\caption{TriviaQA}\end{subfigure}
-\caption{Measured data requirements of distillation at a tolerance of 0.25 nats: for each student
-and budget, the range of independent tokens between the largest failing and the smallest passing
-pool; an upward marker at the largest pool means the constraint is not yet met, a downward marker
-at the smallest pool that it is met everywhere, and a cross that the seeds disagree. The largest
-pool varies the training seed, and the smaller pools vary which traces are drawn into the pool.}
-\label{fig:dreq}
-\end{figure}
 
 These observations motivate predictive relations that account for the compression configuration
 while allowing responses to differ across capabilities.

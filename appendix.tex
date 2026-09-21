@@ -461,17 +461,6 @@ order in which the tests were run and the predictions were frozen.
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=\textwidth]{figs/fig3_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of model states that entered the fit}\end{subfigure}\\[2pt]
-\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_b.pdf}\caption{Model states that entered no fit}\end{subfigure}
-\caption{Generalization of the frozen relations by kind of novelty: each row compares the error of
-the relation, a hollow diamond, with the development-selected baseline, a hollow circle, on the
-same cells, one sub-row per capability; the segment is coloured where the relation is lower.}
-\label{fig:generalization}
-\end{figure}
-
-\begin{figure}[!htbp]
-\centering
 \includegraphics[width=5.5in]{figs/generalization_cells_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/generalization_cells_a.pdf}\subcaption{New configurations}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/generalization_cells_b.pdf}\subcaption{New sources/students}\end{subfigure}\hfill
@@ -612,6 +601,21 @@ supplement gives the full accounting over all tolerances. The boundary relation 
 per-student monotone interpolation, which solved the most requests over the same denominator on
 the QA distributions and on math and code alike.
 \input{tables/dreq_main}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figs/dreq_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/dreq_a.pdf}\caption{Fresh 2Wiki}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/dreq_b.pdf}\caption{MuSiQue}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/dreq_c.pdf}\caption{TriviaQA}\end{subfigure}
+\caption{Measured data requirements of distillation at a tolerance of 0.25 nats: for each student
+and budget, the range of independent tokens between the largest failing and the smallest passing
+pool; an upward marker at the largest pool means the constraint is not yet met, a downward marker
+at the smallest pool that it is met everywhere, and a cross that the seeds disagree. The largest
+pool varies the training seed, and the smaller pools vary which traces are drawn into the pool.}
+\label{fig:dreq}
+\end{figure}
+
 \section{Mechanisms}
 \label{sec:app_mech}
 
@@ -784,18 +788,6 @@ and its prospective confirmation. Section S6 of the supplement tabulates the per
 
 \caption{Capability-specific selection maps on held-out Pythia states under the earlier laws, retrospectively and leave-one-state-out. For each state and nominal storage budget the colour is the method with the lowest predicted loss among feasible measured configurations; grey cross-hatching marks cells with no feasible configuration, diagonal hatching the no-clear-winner heuristic, and a hollow circle with cross-hatching a cell in which the measured oracle chooses another method.}
 \label{fig:selection}
-\end{figure}
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=5.5in]{figs/rule_maps_main_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_a.pdf}\subcaption{Math}\end{subfigure}\hfill
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_b.pdf}\subcaption{Code}\end{subfigure}\\[3pt]
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_c.pdf}\subcaption{QA on 2Wiki}\end{subfigure}\hfill
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_d.pdf}\subcaption{Largest loss increase}\end{subfigure}
-
-\caption{Selection maps under the frozen rule on four fresh states at 17 nominal storage budgets each; colour is the predicted method, and a hollow circle marks a budget at which the measured oracle chooses a different method. Math and code select quantization almost everywhere; QA selects pruning at high budgets on the 32k states and distillation on the 1B state at step 64k, where a distillation candidate exists.}
-\label{fig:rule_main}
 \end{figure}
 
 The rule was first validated retrospectively. On the controlled panel of 17 states and budgets from 0.2 to 1, with each law refit with the target held out, the law-based choice is within 0.19, 0.17 and 0.42 nats of

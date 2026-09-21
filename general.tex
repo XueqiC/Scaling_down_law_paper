@@ -4,10 +4,22 @@
 The relations of \S\ref{sec:laws} are now tested on new configurations of seen states and on new
 model states, with predictions frozen before measurement. Table~\ref{tab:main-prediction-v2} gives
 each prediction task with its frozen candidate, the predictor delivered for it, the errors of both
-and the baseline selected inside the development folds; Appendix Fig.~\ref{fig:generalization}
+and the baseline selected inside the development folds; Fig.~\ref{fig:generalization}
 compares each row with that baseline on the same cells.
 
 \input{tables/main_prediction_v2}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figs/fig3_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of model states that entered the fit}\end{subfigure}\\[2pt]
+\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_b.pdf}\caption{Model states that entered no fit}\end{subfigure}
+\caption{Generalization of the frozen relations by kind of novelty: each row compares the error of
+the relation, a hollow diamond, with the development-selected baseline, a hollow circle, on the
+same cells, one sub-row per capability; the segment is coloured where the relation is lower.}
+\label{fig:generalization}
+\end{figure}
+
 
 
 
