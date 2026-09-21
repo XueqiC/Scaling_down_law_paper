@@ -1,4 +1,4 @@
-\section{Independent Tests: Configurations, States, Capabilities}
+\section{Predictive Performance and Generalization}
 \label{sec:general}
 
 The relations of \S\ref{sec:laws} are now tested on new configurations of seen states and on new
@@ -8,7 +8,7 @@ development-selected baseline.
 
 
 
-\subsection{Prediction at Unseen Compression Settings}
+\subsection{Prediction at Unseen Configurations}
 \label{sec:unseen_settings}
 
 We first evaluate prediction at unseen compression configurations and distillation settings. \S\ref{sec:efficiency} separately examines whether a compact pruning relation can reduce development measurements while predicting held-out model states. In grouped quantization, with predictions frozen on all
@@ -18,7 +18,21 @@ three new budgets, every selected form improves on zero change, and the gain ove
 baseline is detected for code on both students and for question answering on the smaller student
 alone.
 
-\subsection{Prediction with Fewer Configuration Measurements}
+\subsection{Transfer across Model States}
+\label{sec:unseen_states}
+
+The second kind of novelty is a new model state. On three Pythia checkpoints that entered no fit,
+the frozen pruning power form matches the per-density regression on mathematics with a quarter of
+the parameters, but is less accurate than the median on code and than every source-free curve on
+question answering; outside the tested density range, every source-conditioned form errs by 0.6 to
+4.5 nats. On a new quantization state the median is the more accurate predictor for mathematics and question
+answering, and the interpolation for code. At a 6.9B source, five times the development range, the source-conditioned pruning forms are less
+accurate than the median curve on mathematics and question answering, and the per-bit quantization
+regression is less accurate than the per-bit median at every bit-width; on a 2.8B source the frozen
+median curve reduces the error by a factor of three to seven against both. For distillation, the 4B student retains only its question-answering gain at the development pools,
+and at the unseen pool the frozen constant predicts more accurately.
+
+\subsection{Measurement Efficiency}
 \label{sec:efficiency}
 
 The value of the compact pruning form lies in how few development measurements it requires. A
@@ -44,17 +58,9 @@ confirmation with the power form fitted at half of the development measurement b
 \label{fig:efficiency}
 \end{figure}
 
-\subsection{Transfer across Model Sizes and Training Stages}
-\label{sec:unseen_states}
-
-The second kind of novelty is a new model state. On three Pythia checkpoints that entered no fit,
-the frozen pruning power form matches the per-density regression on mathematics with a quarter of
-the parameters, but is less accurate than the median on code and than every source-free curve on
-question answering; outside the tested density range, every source-conditioned form errs by 0.6 to
-4.5 nats. On a new quantization state the median is the more accurate predictor for mathematics and question
-answering, and the interpolation for code. At a 6.9B source, five times the development range, the source-conditioned pruning forms are less
-accurate than the median curve on mathematics and question answering, and the per-bit quantization
-regression is less accurate than the per-bit median at every bit-width; on a 2.8B source the frozen
-median curve reduces the error by a factor of three to seven against both. For distillation, the 4B student retains only its question-answering gain at the development pools,
-and at the unseen pool the frozen constant predicts more accurately. Together, these tests distinguish configuration prediction from model-state transfer. Within the controlled pruning domain, initial-state inputs support compact prediction on new configurations and the held-out states of \S\ref{sec:efficiency}. Across broader state changes, their advantage is inconsistent and configuration medians remain strong baselines. Distillation introduces a further dependence on evaluation distribution: net gains on 2Wiki do not consistently extend to the other QA sets.
-
+Together these tests distinguish prediction at a new configuration from transfer to a new
+model state. Within the controlled pruning domain, initial-state inputs support compact
+prediction at new configurations and on the held-out states above. Across broader state
+changes their advantage is inconsistent and configuration medians remain strong baselines.
+Distillation adds a dependence on the evaluation distribution: net gains on 2Wiki do not
+consistently extend to the other evaluation distributions we scored.

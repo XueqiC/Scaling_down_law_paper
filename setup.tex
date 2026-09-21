@@ -1,10 +1,10 @@
-\section{Experimental Setup}
+\section{Problem Formulation and Experimental Design}
 \label{sec:setup}
 
 This section fixes the quantity we predict, the models and settings on which we measure it, and the
 rule by which a prediction counts as validated.
 
-\subsection{Capability-Conditioned Loss}
+\subsection{Capability Loss and Prediction Inputs}
 \label{sec:loss}
 
 We measure mathematical reasoning (Math), code generation (Code) and multi-hop question answering
@@ -25,7 +25,7 @@ native nats per token: the damage $\Delta L_c=L_c(\text{compressed})-L_c(M_0)$ f
 quantization, and for distillation the signed transfer
 $\delta_c=L_c(S_{\mathrm{KD}})-L_c(S_0)$ of a student against its own initial state. Absolute levels from different tokenizers are never placed on one scale.
 
-\subsection{Models and Compression Settings}
+\subsection{Models and Compression Methods}
 \label{sec:models}
 
 A \emph{heterogeneous panel} of twelve public models from 0.6B to 32B establishes the phenomena.

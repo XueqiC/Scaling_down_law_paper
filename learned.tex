@@ -1,6 +1,16 @@
-\section{Conclusion}
+\section{Discussion and Conclusion}
 \label{sec:learned}
 
 This study investigates capability scaling-down laws for LLM compression through controlled measurements, predictive relations, and independent validation. Compact pruning predictors reduce development configuration measurements within a controlled domain, while quantization benefits from configuration-based interpolation and medians. Distillation exhibits reuse penalties that vary with student size and evaluation distribution, motivating empirical data-requirement intervals and bounds. Prospective selection tests and a pristine-student control identify additional QA opportunities under nominal storage constraints. Together, these findings connect predictive accuracy, measurement requirements, and decision value, and clarify where capability-conditioned prediction is useful.
+
+Three boundaries fix where these results apply. Measurement efficiency and stable transfer are
+different properties: the compact pruning form reaches the full-budget regression from half the
+development measurements inside the controlled domain, and does not thereby carry to states far
+outside it. The configuration range, the student state and the evaluation distribution bound each
+relation, which is why the distillation requirement is reported as measured intervals on the
+distributions we scored. The selection evidence holds for the candidate sets and the nominal
+storage budgets tested, and what it returns depends on the capability: where quantization already
+supplies a near-best candidate the cross-method choice has little to add, which is itself part of
+the answer.
 
 \phantomsection\label{sec:learned_end}
