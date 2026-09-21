@@ -316,11 +316,21 @@ Its boundary was then established. Evaluated as a frozen candidate on three new 
 For quantization, two parametric candidates were tested first, a
 separable amplitude-times-shape form and a low-order surface in
 $\log_2 q_{\max}$ and $\log_2 g$; the surface beat zero change at the
-unseen $b=4$ and $g=128$ on the two-bit-level development set, but its quadratic term is unidentified there, with design rank 16 of 20, as Section S2 of the supplement shows. In a confirmation round with all 54
+unseen $b=4$ and $g=128$ on the two-bit-level development set, but its quadratic term is unidentified there, with design rank 16 of 20, as Section S2 of the supplement shows. That earlier round contains the only test of a genuinely unseen bit width, and it is
+reported here rather than in Table~\ref{tab:main-prediction-v2}. On the six development states at
+bit width 4 with group sizes 64 and 256, fitted on 24 development configuration measurements per
+capability, the frozen surface reaches 0.19, 0.21 and 0.44 nats on mathematics, code and question
+answering, against 0.55, 0.73 and 0.54 for the development-selected median. The surface is not the
+delivered relation, and the relation that is delivered can show no error of its own on these cells,
+because they were added to the development grid of the round that selected it; the interpolation
+variant scored on them in the earlier round uses different models and boundary rules and does not
+stand in for it. Table~\ref{tab:main-prediction-v2} therefore carries only tasks on which the
+delivered predictor has an independent error. In a confirmation round with all 54
 unblinded cells as development set and 21 cells frozen at unseen
 group sizes and on a new state, the interpolation won the frozen cells
 for math and code and the median won the new state, so the delivered
-rule was fixed after that round and is labeled retrospective in the tables of
+rule was fixed after that round and is marked Retrospective in
+Table~\ref{tab:main-prediction-v2} and in the tables of
 Appendix~\ref{sec:app_results}.
 
 The boundary of the quantization relation follows from the same tests: the interpolation holds at unseen group sizes of
@@ -529,8 +539,9 @@ evaluation scores 64 items per capability, and the pool-cluster intervals theref
 \subsection{Measurement efficiency of the compact pruning form}
 \label{sec:app_a11}
 
-A retrospective subsampling study of the nine-state development panel, with twenty fixed replicates at 25, 50 and 100 percent of the measurements that reduce either the number of sources or the number of densities per source, found that the five-parameter power form reaches 0.25 nats on new states with
-18 density measurements per capability where the per-density regression needs 36, and that the
+A retrospective subsampling study of the nine-state development panel, with twenty fixed replicates at 25, 50 and 100 percent of the measurements that reduce either the number of sources or the number of densities per source, found that across the replicates the five-parameter power form fitted on 18
+measurements attains median errors of 0.20 nats on mathematics and 0.17 on code, against 0.18 and
+0.13 for the per-density regression fitted on all 36, and that the
 median curve is the better predictor for QA at every budget. Table~\ref{tab:a9} gives its error at each budget. A registered confirmation then froze
 five predictors before four Pythia states in no earlier fit or test, listed in Table~\ref{tab:a11}, were pruned to densities 0.65 to 0.9;
 Table~\ref{tab:a11} gives the outcome. The registered rule, that the reduced-budget power form lies within 0.05 nats of the full-budget regression on math and code, is met.
@@ -569,8 +580,8 @@ Median density curve (18) & 0.145 & 0.212 & 0.186 \\
 \begin{table}[!htbp]
 \centering\footnotesize
 \caption{Subsampling study on the nine-state development panel: median mean absolute error in nats
-on the new-state cells over twenty fixed replicates, when each development state keeps 9, 18 or all
-36 density measurements per capability. Where fewer than twenty replicates could be fitted, the count
+on the new-state cells over twenty fixed replicates, when the nine-state development panel retains
+9, 18 or all 36 density measurements per capability in total. Where fewer than twenty replicates could be fitted, the count
 is given; a dash means no replicate could be fitted.}
 \label{tab:a9}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}rlrrr@{}}
@@ -735,26 +746,31 @@ change are carried by the first-order term.
 \label{sec:app_s3}
 
 The confirmation of \S\ref{sec:selection} used four references, none of which supplied a
-measurement to the locked rule: two Pythia checkpoints at step 120000, for which the records hold
-no earlier use, and two Gemma-3 models whose weights earlier development measured under other
-interventions. Table~\ref{tab:s3-identity} gives the exact releases, revisions and prior use, and
+measurement to the locked rule. Table~\ref{tab:s3-identity} gives the exact releases, revisions and prior use, and
 separates a new model state from a new intervention on familiar weights. Each reference carried
 four pruning densities, six quantization settings, the dense model and one student distilled in
-this round under the recipe on which the delivered relation was fitted. Before any outcome, the learned values of all six
-snapshots were compared with all thirty revisions used earlier, 180 comparisons in which every
-target proved distinct; the dense reference and pristine student losses were measured on the frozen
-probes; and 144 capability predictions, 48 largest-increase predictions and both selection maps
-were sealed. Table~\ref{tab:s3-selection} reports the outcome for each reference and objective. Question answering is the only objective with an opportunity to capture, and the rule captures it;
+this round under the recipe on which the delivered relation was fitted. Two questions were settled
+before any outcome was observed, against two different registered sets. The first is checkpoint
+identity: the learned values of all six snapshots were compared with the thirty Pythia revisions in
+the registered records, 180 comparisons in which no snapshot matched any of them. The second is
+prior use, which Table~\ref{tab:s3-identity} records: the two Pythia step-120000 states
+appear in no earlier record, whereas the Gemma releases were measured in earlier development, so
+for them the round tests new candidates on familiar weights. The dense reference and pristine
+student losses were then measured on the frozen probes, and 144 capability predictions, 48
+largest-increase predictions and both selection maps were sealed. Table~\ref{tab:s3-selection} reports the outcome for each reference and objective. Question answering is the only objective with an opportunity to capture, and the rule captures it;
 on the other three the opportunity is negligible for every policy.
 \input{tables/s3_identity}
 \input{tables/s3_selection}
 
-A further analysis, retrospective and outside the registration, asks how much of that opportunity
-needs the distillation at all. Adding the pristine student to the same candidate set at the same
-storage, Table~\ref{tab:s3-retrospective-control} separates the opportunity that a smaller model supplies by
-itself from the part the training round adds, and records the measured change of each student
-against its own starting point. The frozen rule never saw this candidate, so the control changes no
-registered result.
+A retrospective control, outside the registration, separates the selection opportunity that an
+initial smaller student supplies by itself from the further opportunity associated with the
+distillation. Table~\ref{tab:s3-retrospective-control} compares the best feasible loss when
+quantization is supplemented with the pristine student against the same quantity when it is
+supplemented with the distilled student, at the same nominal storage ratio. Its entries are
+therefore differences in candidate-set opportunity, and not the loss change
+$L(S_{\mathrm{KD}})-L(S_0)$ of a student measured against its own starting point. The frozen rule
+never saw the pristine candidate, so the original frozen selections and the registered results are
+unchanged.
 \input{tables/s3_control}
 
 

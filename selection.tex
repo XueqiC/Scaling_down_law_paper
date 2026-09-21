@@ -22,16 +22,21 @@ at seventeen storage budgets: four pruning densities, six quantization settings,
 and one new student, distilled under the recipe on which the delivered relation was fitted. Two are Pythia checkpoints at a training stage with no earlier recorded use; the two Gemma-3 models
 carry weights that earlier development measured under other interventions, so for them the round
 tests new candidates on familiar weights (Appendix Table~\ref{tab:s3-identity}). Before any outcome was observed, we compared the learned weights of every reference and student
-base against the thirty registered earlier revisions, then sealed every predicted loss and both
+base against the thirty Pythia revisions in the registered records, then sealed every predicted loss and both
 selection maps. Define the opportunity at a budget as the loss of the best feasible quantization candidate minus
 that of the best feasible candidate of any method, and the regret of a policy as the loss of its
-own choice minus that same candidate. Question answering carries an opportunity of 0.12 to 0.89 nats, and the best candidate there is the
-new student in 59 of the 68 cells. The rule selects that candidate in 63 of them, and its regret is 0.000 nats on three references and
-0.027 on the fourth, against 0.41 to 1.84 nats for a policy restricted to quantization, whose
-selection error inside that family adds to the opportunity it forgoes. Comparisons use the 16
-budgets per reference at which both policies select. For mathematics, code and the largest capability increase, the opportunity is at most 0.047 nats.
+own choice minus that same candidate. Question answering carries an opportunity of 0.12 to 0.89 nats. Over all 68 question-answering
+cells, four references at seventeen budgets each, the measured best candidate is the new student in
+59; of the nine remaining cells, three admit no feasible candidate at any method, five prefer
+pruning and one quantization. The two policies are compared on the 64 cells, sixteen budgets per
+reference, at which both find a feasible candidate, and the rule selects the new student in 63 of
+those. Its regret there is 0.000 nats on three references and 0.027 on the fourth, against 0.41 to
+1.84 nats for a policy restricted to quantization, whose selection error inside that family adds to
+the opportunity it forgoes. For mathematics, code and the largest capability increase, the opportunity is at most 0.047 nats.
 Quantization already supplies a near-best candidate there, the rule matches it, and in three of the
-256 paired cells, all at the budget that admits the dense model, the rule exceeds its regret by at
-most 0.0015 nats. All four references meet the criterion registered for this round.
+256 paired cells, those same sixteen budgets across four references and four objectives, all at the
+budget that admits the dense model, the rule exceeds its regret by at most 0.0015 nats. All four references meet the criterion registered for this round.
 
-To distinguish the contribution of distillation from the value of using a smaller model, we retrospectively include the pristine student as a control at the same nominal storage cost. Replacing the pristine student with its distilled counterpart, with quantization available in both candidate sets, increases QA opportunity by 0.084-0.650 nats across the four references. The corresponding opportunity changes for math and code are non-positive (Appendix Table~\ref{tab:s3-retrospective-control}). This control identifies where distillation creates additional selection opportunities and where quantization provides a competitive option.
+To distinguish the contribution of distillation from the value of using a smaller model, we retrospectively include the pristine student as a control at the same nominal storage cost. Replacing the pristine student with its distilled counterpart, with quantization available in both candidate sets, increases the question-answering opportunity by 0.084 to 0.650 nats across the four references. The corresponding opportunity changes for math and code are non-positive (Appendix Table~\ref{tab:s3-retrospective-control}). The quantities are changes in the opportunity available to the candidate set, not the loss change
+of a student against its own starting point. This control identifies where distillation creates
+additional selection opportunity and where quantization already supplies a competitive candidate.

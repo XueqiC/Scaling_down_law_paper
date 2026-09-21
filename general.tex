@@ -11,7 +11,7 @@ development-selected baseline.
 \subsection{Prediction at Unseen Compression Settings}
 \label{sec:unseen_settings}
 
-We first evaluate prediction at unseen compression configurations and distillation settings.  Section~\ref{sec:efficiency} separately examines whether a compact pruning relation can reduce development measurements while predicting held-out model states. In grouped quantization, with predictions frozen on all
+We first evaluate prediction at unseen compression configurations and distillation settings. \S\ref{sec:efficiency} separately examines whether a compact pruning relation can reduce development measurements while predicting held-out model states. In grouped quantization, with predictions frozen on all
 54 cells, the piecewise interpolation is the most accurate predictor of unseen group sizes at the
 development states, for mathematics and for code. For distillation, at six new pools and
 three new budgets, every selected form improves on zero change, and the gain over the development
@@ -56,5 +56,5 @@ answering, and the interpolation for code. At a 6.9B source, five times the deve
 accurate than the median curve on mathematics and question answering, and the per-bit quantization
 regression is less accurate than the per-bit median at every bit-width; on a 2.8B source the frozen
 median curve reduces the error by a factor of three to seven against both. For distillation, the 4B student retains only its question-answering gain at the development pools,
-and at the unseen pool the frozen constant predicts more accurately. Together, these tests distinguish configuration prediction from model-state transfer. Within the controlled pruning domain, initial-state inputs support compact prediction on new configurations and the held-out states of Section 6.2. Across broader state changes, their advantage is inconsistent and configuration medians remain strong baselines. Distillation introduces a further dependence on evaluation distribution: net gains on 2Wiki do not consistently extend to the other QA sets.
+and at the unseen pool the frozen constant predicts more accurately. Together, these tests distinguish configuration prediction from model-state transfer. Within the controlled pruning domain, initial-state inputs support compact prediction on new configurations and the held-out states of \S\ref{sec:efficiency}. Across broader state changes, their advantage is inconsistent and configuration medians remain strong baselines. Distillation introduces a further dependence on evaluation distribution: net gains on 2Wiki do not consistently extend to the other QA sets.
 
