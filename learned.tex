@@ -1,7 +1,17 @@
 \section{Discussion and Conclusion}
 \label{sec:learned}
 
-This study investigates capability scaling-down laws for LLM compression through controlled measurements, predictive relations, and independent validation. Compact pruning predictors reduce development configuration measurements within a controlled domain, while quantization benefits from configuration-based interpolation and medians. Distillation exhibits reuse penalties that vary with student size and evaluation distribution, motivating empirical data-requirement intervals and bounds. Prospective selection tests and a pristine-student control identify additional QA opportunities under nominal storage constraints. Together, these findings connect predictive accuracy, measurement requirements, and decision value, and clarify where capability-conditioned prediction is useful.
+This study set out to make the capability cost of compression predictable, and it returns three
+things. The systematic investigation shows which response shapes capabilities share and which they
+do not: mathematics and code admit one shape under pruning with a capability-specific scale, while
+question answering needs its own, and under distillation the cost of reusing data depends on the
+student and on the evaluation distribution. The predictive relations turn those observations into
+forms that can be fitted and tested, and one of them buys its accuracy back in measurements: inside
+the controlled pruning domain a compact relation matches a regression fitted on twice as many
+development configuration measurements. The selection method carries the predictions into a
+decision and shows, on references that supplied no intervention outcome to the rule, that predicted
+capability losses recover most of the available cross-method benefit for question answering under
+nominal storage constraints.
 
 Three boundaries fix where these results apply. Measurement efficiency and stable transfer are
 different properties: the compact pruning form reaches the full-budget regression from half the

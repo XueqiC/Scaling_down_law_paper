@@ -11,7 +11,10 @@ and a budget, the decision is
 \widehat L_{m,c}(\mathbf x,\boldsymbol\theta_m),
 \label{eq:selection}
 \end{equation}
-where $\mathcal F_m(B)$ holds the settings of method $m$ within budget $B$. On the controlled panel,
+where $\mathcal F_m(B)$ holds the settings of method $m$ whose nominal storage falls within budget
+$B$, nominal in that it counts stored matrix parameters and not runtime memory or sparse indexing.
+For a workload that needs several capabilities at once we use the largest loss increase,
+$\max_c[\widehat L_c(M)-L_c(M_0)]$, as the objective in place of a single $\widehat L_{m,c}$. On the controlled panel,
 the law-based choice selects the method of the measured best candidate in 96\%, 95\% and 73\% of 289
 cells for mathematics, code and question answering. We then locked a complete rule and froze its
 maps for four fresh Pythia states, where they come within 0.14 nats of the best candidate and below
@@ -37,7 +40,7 @@ pruning and one quantization. The two policies are compared on the 64 cells, six
 reference, at which both find a feasible candidate, and the rule selects the new student in 63 of
 those. Its regret there is 0.000 nats on three references and 0.027 on the fourth, against 0.41 to
 1.84 nats for a policy restricted to quantization, whose selection error inside that family adds to
-the opportunity it forgoes. For mathematics, code and the largest capability increase, the opportunity is at most 0.047 nats.
+the opportunity it forgoes. For mathematics, code and the largest loss increase, the opportunity is at most 0.047 nats.
 Quantization already supplies a near-best candidate there, the rule matches it, and in three of the
 256 paired cells, those same sixteen budgets across four references and four objectives, all at the
 budget that admits the dense model, the rule exceeds its regret by at most 0.0015 nats. All four references meet the criterion registered for this round.

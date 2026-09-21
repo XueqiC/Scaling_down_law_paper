@@ -2,13 +2,16 @@
 \label{sec:laws}
 
 
-Each method delivers one relation in the interface of Eq.~\ref{eq:interface}, and
-Table~\ref{tab:main-prediction-v2} collects the frozen predictions by method and task with the
-range on which each was tested, its error and the baseline selected inside the development folds.
-Development results and recommendations made after a test are identified as such in the text. On the controlled pruning panel, a per-setting regression using parameter count, pretraining tokens, and reference capability loss reduces the mean absolute error from 0.41 to 0.25 nats for math and from 0.52 to 0.29 for code, but increases it from 0.50 to 0.81 for QA. We therefore assess the value of model-state inputs separately for each capability and prediction setting.
+Each method delivers one relation in the interface of Eq.~\ref{eq:interface}.
+Table~\ref{tab:final} lists them with the inputs each uses and the range on which each applies;
+\S\ref{sec:general} reports how they perform on configurations and model states that entered no
+fit. Whether the initial state earns its place is decided per capability: on the controlled pruning
+panel, a per-setting regression using parameter count, pretraining tokens and reference capability
+loss reduces the mean absolute error from 0.41 to 0.25 nats for mathematics and from 0.52 to 0.29
+for code, and raises it from 0.50 to 0.81 for question answering.
 
 
-\input{tables/main_prediction_v2}
+\input{tables/final_deliverables}
 
 \subsection{Pruning}
 \label{sec:law_prune}
@@ -44,5 +47,5 @@ answering. On the development students at the 2Wiki distribution, question answe
 every development recipe while mathematics and code move by hundredths to tenths of a nat. At high
 reuse, and on the other question-answering distributions, the response reverses
 (\S\ref{sec:observed}).
-Table~\ref{tab:main-prediction-v2} distinguishes frozen test predictions from the predictors recommended after evaluating the accumulated evidence. The compact pruning form supports measurement-efficient prediction within the controlled domain, including the held-out states in \S\ref{sec:efficiency}. Quantization uses configuration-based interpolation or development medians according to the prediction setting. The distillation relations describe the evaluated students and budget ranges, with QA results specific to 2Wiki. A joint relation that reliably predicts both budget changes and data-pool changes remains unresolved.
+Table~\ref{tab:final} names the predictor delivered for each method and the range on which it applies, and Table~\ref{tab:main-prediction-v2} in \S\ref{sec:general} separates the frozen test predictions from the predictors recommended after the accumulated evidence was in. The compact pruning form supports measurement-efficient prediction within the controlled domain, including the held-out states in \S\ref{sec:efficiency}. Quantization uses configuration-based interpolation or development medians according to the prediction setting. The distillation relations describe the evaluated students and budget ranges, with QA results specific to 2Wiki. A joint relation that reliably predicts both budget changes and data-pool changes remains unresolved.
 

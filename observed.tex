@@ -27,21 +27,26 @@ mass, with an exponent that transfers across families. Under quantization the re
 threshold in bit width whose position depends on the group size, so an interpolation over the
 measured grid predicts it where a smooth surface does not. Both descriptions read measurements of
 the compressed model, so they explain a response rather than predict one; Appendix~\ref{sec:app_mech}
-develops them, including the logit-displacement account of the loss change.
+develops them, including the logit-displacement account of the loss change. For a predictive
+relation the consequence is that mathematics and code may share a shape with a capability-specific
+scale, while question answering needs a shape of its own.
 
 \subsection{Effects of Model State and Compression Configuration}
 \label{sec:state_config}
 
-The initial model state shapes the response, but only within a range. Parameter count and
-pretraining tokens enter the pruning amplitude for mathematics and code, and neither improves the
-question-answering prediction: size and stage carry the first two capabilities to unseen densities
-of states that entered the fit, and over-predict question answering, whose density response is not
-proportional to any shared curve. Inside the development range the source-conditioned forms and the
-median density curve agree to within 0.05 nats at unseen stages of a 1B source, while far outside it
-the source-conditioned forms are the less accurate of the two (\S\ref{sec:general}), and dense
-pre-compression statistics are less accurate than the source-free median curve in nine of nine
-pairs. Under quantization, precision and grouping act together: the threshold in bit width moves
-with the group size, so a configuration is not summarised by its bit width alone.
+Using Pythia checkpoints whose size and training stage vary independently, we examine how the
+initial model state moves the response. Parameter count and pretraining tokens enter the pruning
+amplitude for mathematics and code, and carry those two capabilities to unseen densities of states
+that entered the fit. Question answering behaves differently: the same inputs over-predict it,
+because its density response is not proportional to any shared curve. The state inputs earn their
+place inside the development range, where the state-conditioned forms and the median density curve
+agree to within 0.05 nats at unseen stages of a 1B model, and lose it outside that range, where the
+state-conditioned forms are the less accurate of the two (\S\ref{sec:general}) and dense
+pre-compression statistics trail the state-free median curve in nine of nine pairs. Under
+quantization the configuration acts through two axes at once: the threshold in bit width moves with
+the group size, so a setting is not summarised by its bit width alone. A relation therefore needs
+the configuration in full, and may use the initial state only where the state inputs have been shown
+to help.
 
 \subsection{Effects of Training Data and Evaluation Distribution}
 \label{sec:why}
