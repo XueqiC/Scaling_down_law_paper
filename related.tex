@@ -5,12 +5,12 @@
 Compression laws take sparsity, precision, training format, the pre-pruning loss and post-training
 tokens, or the teacher loss as inputs and predict an aggregate loss
 \citep{frantar2023scaling,kumar2024scaling,panferov2025unified,zhang2024scaling,busbridge2025distillation},
-in the tradition of pretraining laws, where loss follows power laws in scale and downstream
-behaviour is predictable mainly through log-likelihood
-\citep{hestness2017deep,kaplan2020scaling,hoffmann2022training,schaeffer2023emergent,gadre2024language,bhagia2024establishing,lourie2025scaling}
+in the tradition of pretraining laws, where loss follows power laws in scale, downstream behaviour is
+predictable mainly through log-likelihood
+\citep{hestness2017deep,kaplan2020scaling,hoffmann2022training,schaeffer2023emergent,gadre2024language,bhagia2024establishing,lourie2025scaling},
 and the fitted form depends on the fitting protocol \citep{li2025misfitting,besiroglu2024chinchilla}.
-We keep that predictive goal and change the endpoint to a per-capability one, on a panel in which
-model size and training stage vary separately, with held-out tests against same-input baselines.
+We keep that goal and change the endpoint to a per-capability one, on a panel in which model size and
+training stage vary separately.
 
 \paragraph{Compression Effects on Model Capabilities.}
 The fixed operations we study stand in for the method families of pruning, post-training
@@ -18,11 +18,11 @@ quantization and distillation
 \citep{lecun1989optimal,han2015deep,frankle2019lottery,frantar2023sparsegpt,sun2023simple,ma2023llmpruner,ashkboos2024slicegpt,men2024shortgpt,dettmers2022llmint8,frantar2022gptq,xiao2022smoothquant,lin2023awq,chee2023quip,shao2023omniquant,dettmers2023qlora,hinton2015distilling,sanh2019distilbert,hsieh2023distilling,mukherjee2023orca,gu2023minillm,agarwal2023gkd,xu2024survey},
 and uneven capability loss is documented for individual tasks and quantizers
 \citep{jaiswal2023compressing,liu2025quantization,ouyang2024lowbit,hong2024decoding,sengupta2025compression}.
-Those measurements establish that the effect is uneven; \S\ref{sec:observed} measures the shape of
-that unevenness across methods, model states and evaluation distributions on one common endpoint.
+Those measurements establish that the effect is uneven; \S\ref{sec:observed} measures its shape
+across methods, model states and evaluation distributions on one endpoint.
 
 \paragraph{Compression Method Selection.}
-Repeated tokens are worth less than new ones \citep{muennighoff2023scaling}, a result
-\S\ref{sec:observed} resolves per capability and student. Turning such measurements into a choice
-between methods requires predictions that are comparable across them, which \S\ref{sec:selection}
-supplies and evaluates against a single-method policy under a storage constraint.
+Repeated tokens are worth less than new ones \citep{muennighoff2023scaling}, which
+\S\ref{sec:observed} resolves per capability and student. Choosing between methods needs predictions
+comparable across them, which \S\ref{sec:selection} supplies and evaluates against a single-method policy under a storage
+constraint on four independent references.

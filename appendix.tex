@@ -499,6 +499,18 @@ Table~\ref{tab:pred_full} compares every relation with its strongest same-input 
 the same cells.
 \begin{retargetreferences}{\retargetreference{Appendix Tables~\ref{tab:pred_source}--\ref{tab:pred_config_qd}}{Section S4 of the supplement}}
 \input{tables/pred_full}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figs/fig3_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of model states that entered the fit}\end{subfigure}\\[2pt]
+\begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_b.pdf}\caption{Model states that entered no fit}\end{subfigure}
+\caption{Generalization of the frozen relations by kind of novelty: each row compares the error of
+the relation, a hollow diamond, with the development-selected baseline, a hollow circle, on the
+same cells, one sub-row per capability; the segment is coloured where the relation is lower.}
+\label{fig:generalization}
+\end{figure}
+
 \end{retargetreferences}
 
 The second frozen round added seven pruning densities from 0.55 to 0.9, of which 0.55 is an extrapolation, and five bit-widths from 3 to 8 on Pythia-1B at steps 32k and 112k, with protocol A fit

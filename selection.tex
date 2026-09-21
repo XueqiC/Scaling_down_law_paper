@@ -11,10 +11,10 @@ and a budget, the decision is
 \widehat L_{m,c}(\mathbf x,\boldsymbol\theta_m),
 \label{eq:selection}
 \end{equation}
-where $\mathcal F_m(B)$ holds the settings of method $m$ whose nominal storage falls within budget
-$B$, nominal in that it counts stored matrix parameters and not runtime memory or sparse indexing.
-For a workload that needs several capabilities at once we use the largest loss increase,
-$\max_c[\widehat L_c(M)-L_c(M_0)]$, as the objective in place of a single $\widehat L_{m,c}$. On the controlled panel,
+where $\mathcal F_m(B)$ holds the settings of method $m$ whose nominal storage, stored matrix
+parameters rather than runtime memory or sparse indexing, falls within $B$. A workload needing
+several capabilities at once replaces $\widehat L_{m,c}$ by the largest loss increase
+$\max_c[\widehat L_c(M)-L_c(M_0)]$. On the controlled panel,
 the law-based choice selects the method of the measured best candidate in 96\%, 95\% and 73\% of 289
 cells for mathematics, code and question answering. We then locked a complete rule and froze its
 maps for four fresh Pythia states, where they come within 0.14 nats of the best candidate and below
@@ -28,23 +28,24 @@ same round.
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=5.5in]{figs/rule_maps_main_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_a.pdf}\subcaption{Math}\end{subfigure}\hfill
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_b.pdf}\subcaption{Code}\end{subfigure}\\[3pt]
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_c.pdf}\subcaption{QA on 2Wiki}\end{subfigure}\hfill
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_c.pdf}\subcaption{Question answering on 2Wiki}\end{subfigure}\hfill
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_main_d.pdf}\subcaption{Largest loss increase}\end{subfigure}
 
-\caption{Selection maps under the frozen rule on four fresh states at 17 nominal storage budgets each; colour is the predicted method, and a hollow circle marks a budget at which the measured oracle chooses a different method. Math and code select quantization almost everywhere; QA selects pruning at high budgets on the 32k states and distillation on the 1B state at step 64k, where a distillation candidate exists.}
+\caption{Selection maps under the frozen rule on four fresh states at 17 nominal storage budgets
+each; colour is the predicted method and a hollow circle marks a budget at which the measured oracle
+chooses another. Question answering selects pruning at high budgets on the 32k states and
+distillation on the 1B state at step 64k. The mathematics and code maps select quantization almost
+everywhere and are in Appendix Fig.~\ref{fig:rule_maps}.}
 \label{fig:rule_main}
 \end{figure}
 
 
-Four references, none of which supplied a measurement to the rule, each received twelve candidates
-at seventeen storage budgets: four pruning densities, six quantization settings, the dense model
-and one new student, distilled under the recipe on which the delivered relation was fitted. Two are Pythia checkpoints at a training stage with no earlier recorded use; the two Gemma-3 models
-carry weights that earlier development measured under other interventions, so for them the round
-tests new candidates on familiar weights (Appendix Table~\ref{tab:s3-identity}). Before any outcome was observed, we compared the learned weights of every reference and student
-base against the thirty Pythia revisions in the registered records, then sealed every predicted loss and both
-selection maps. Define the opportunity at a budget as the loss of the best feasible quantization candidate minus
+Four references, none of which supplied an intervention outcome to the rule, each received twelve
+candidates at seventeen storage budgets: four pruning densities, six quantization settings, the
+dense model and one student distilled in this round. Two are Pythia checkpoints at a training stage with no earlier recorded use; the two Gemma-3 models
+carry weights measured under other interventions, so for them the round tests new candidates on
+familiar weights (Appendix Table~\ref{tab:s3-identity}). Checkpoint identities were verified and
+every predicted loss and both selection maps were sealed before any outcome was observed. Define the opportunity at a budget as the loss of the best feasible quantization candidate minus
 that of the best feasible candidate of any method, and the regret of a policy as the loss of its
 own choice minus that same candidate. Question answering carries an opportunity of 0.12 to 0.89 nats. Over all 68 question-answering
 cells, four references at seventeen budgets each, the measured best candidate is the new student in
@@ -58,6 +59,6 @@ Quantization already supplies a near-best candidate there, the rule matches it, 
 256 paired cells, those same sixteen budgets across four references and four objectives, all at the
 budget that admits the dense model, the rule exceeds its regret by at most 0.0015 nats. All four references meet the criterion registered for this round.
 
-To distinguish the contribution of distillation from the value of using a smaller model, we retrospectively include the pristine student as a control at the same nominal storage cost. Replacing the pristine student with its distilled counterpart, with quantization available in both candidate sets, increases the question-answering opportunity by 0.084 to 0.650 nats across the four references. The corresponding opportunity changes for math and code are non-positive (Appendix Table~\ref{tab:s3-retrospective-control}). The quantities are changes in the opportunity available to the candidate set, not the loss change
-of a student against its own starting point. This control identifies where distillation creates
-additional selection opportunity and where quantization already supplies a competitive candidate.
+To distinguish the contribution of distillation from the value of using a smaller model, we retrospectively include the pristine student as a control at the same nominal storage cost. Replacing the pristine student with its distilled counterpart, with quantization available in both candidate sets, increases the question-answering opportunity by 0.084 to 0.650 nats across the four references. The corresponding opportunity changes for math and code are non-positive (Appendix Table~\ref{tab:s3-retrospective-control}). These are changes in the opportunity open to the candidate set, not loss changes of a student
+against its own starting point: the control shows where distillation creates selection opportunity
+and where quantization already supplies a competitive candidate.

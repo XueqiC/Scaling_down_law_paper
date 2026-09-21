@@ -23,11 +23,15 @@ Within the controlled pruning domain, we model the response with the compact for
 A_c(\mathbf x)=\beta_c\cdot\big(1,\tilde{\log N_0},\tilde L_{0,c},\tilde{\log D_0}\big),
 \label{eq:power}
 \end{equation}
-This form uses five parameters per capability, with inputs standardized on the development set. \S\ref{sec:efficiency} evaluates its measurement efficiency on four held-out model states: fitting 18 development measurements yields math and code errors within 0.013 and 0.020 nats of the per-density regression fitted on 36 measurements. Its advantage is not consistent under broader model-state transfer. For those settings, and for QA, the source-free development median remains a strong baseline and the default delivered predictor.
+This form uses five parameters per capability, with inputs standardized on the development set, and
+\S\ref{sec:efficiency} evaluates what it costs to fit. Its advantage is not consistent under broader
+model-state transfer; for those settings, and for question answering, the state-free development
+median remains the delivered predictor.
 \subsection{Quantization}
 \label{sec:law_quant}
 
-Per-channel round-to-nearest quantization is evaluated at discrete bit widths. Responses range from near-zero changes at higher precision to large, state-dependent increases in capability loss at low precision. We therefore evaluate prediction separately across bit widths and model states. At a bit-width that entered the fit,
+Per-channel round-to-nearest quantization is evaluated at discrete bit widths, and prediction is
+evaluated separately across bit widths and model states. At a bit width that entered the fit,
 the delivered relation is the per-bit source regression on states in the fit and the per-bit median
 on new ones. With
 groups of $g$ weights per scale as a second axis, the delivered relation for mathematics and code on seen
@@ -36,7 +40,9 @@ development median measured on the same grid.
 \subsection{Distillation}
 \label{sec:law_distill}
 
-The response is the signed loss change of a trained student relative to its own initial checkpoint. The teacher supplies the training targets and is held fixed within the evaluated protocol. We parameterize the response by supervised completion tokens, unique pool tokens, and their ratio, the reuse count. The delivered relations are
+The response is the signed transfer response of \S\ref{sec:loss}, parameterized by supervised
+completion tokens, unique pool tokens and their ratio; the teacher supplies the training targets and
+is fixed within the evaluated protocol. The delivered relations are
 \begin{equation}
 \widehat\delta_c=a_c\log(1+E)\ (\text{math, code}),\qquad \widehat\delta_{\mathrm{QA}}=u\,(a+b\,u+q\,v),
 \label{eq:kdforms}
@@ -47,5 +53,7 @@ answering. On the development students at the 2Wiki distribution, question answe
 every development recipe while mathematics and code move by hundredths to tenths of a nat. At high
 reuse, and on the other question-answering distributions, the response reverses
 (\S\ref{sec:observed}).
-Table~\ref{tab:final} names the predictor delivered for each method and the range on which it applies, and Table~\ref{tab:main-prediction-v2} in \S\ref{sec:general} separates the frozen test predictions from the predictors recommended after the accumulated evidence was in. The compact pruning form supports measurement-efficient prediction within the controlled domain, including the held-out states in \S\ref{sec:efficiency}. Quantization uses configuration-based interpolation or development medians according to the prediction setting. The distillation relations describe the evaluated students and budget ranges, with QA results specific to 2Wiki. A joint relation that reliably predicts both budget changes and data-pool changes remains unresolved.
+The distillation relations describe the evaluated students and budget ranges, and the
+question-answering result is specific to 2Wiki. A joint relation that predicts both budget changes
+and data-pool changes reliably remains unresolved.
 
