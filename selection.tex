@@ -34,9 +34,4 @@ Quantization already supplies a near-best candidate there, the rule matches it, 
 256 paired cells, all at the budget that admits the dense model, the rule exceeds its regret by at
 most 0.0015 nats. All four references meet the criterion registered for this round.
 
-A distilled student is also a smaller model, so a retrospective analysis adds the pristine student
-to the same candidate set. It attributes 0.084 to 0.650 nats of the question-answering opportunity to the training itself and
-0.000 to 0.235 to the smaller model alone. On mathematics and code the distilled student is worse
-than the one it started from, so none of the small opportunity there is owed to the distillation
-data (Appendix Table~\ref{tab:s3-retrospective-control}). Cross-method selection therefore repays its measurements for a capability that responds to added
-data, and is neutral for the rest.
+To distinguish the contribution of distillation from the value of using a smaller model, we retrospectively include the pristine student as a control at the same nominal storage cost. Replacing the pristine student with its distilled counterpart, with quantization available in both candidate sets, increases QA opportunity by 0.084-0.650 nats across the four references. The corresponding opportunity changes for math and code are non-positive (Appendix Table~\ref{tab:s3-retrospective-control}). This control identifies where distillation creates additional selection opportunities and where quantization provides a competitive option.
