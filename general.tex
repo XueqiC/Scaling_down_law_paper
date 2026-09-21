@@ -23,8 +23,8 @@ question answering on the smaller student alone.
 
 The second kind of novelty is a new model state. On three Pythia checkpoints that entered no fit,
 the frozen pruning power form matches the per-density regression on mathematics with a quarter of
-the parameters, and is less accurate than the median on code and than every state-free curve on
-question answering; outside the tested density range every state-conditioned form errs by 0.6 to
+the parameters, and is less accurate than the median on code and than every source-free curve on
+question answering; outside the tested density range every source-conditioned form errs by 0.6 to
 4.5 nats. The pattern holds as the state moves further: at a 6.9B model, five times the development
 range, and at a 2.8B one, the frozen median curve is the more accurate predictor for pruning and
 for per-bit quantization alike, by a factor of three to seven on the 2.8B state. On a new grouped
@@ -34,12 +34,11 @@ code, and the 4B student keeps only its question-answering gain at the developme
 \subsection{Measurement Efficiency}
 \label{sec:efficiency}
 
-The value of the compact pruning form lies in how few development measurements it requires. A
-subsampling study, with the sampling plan fixed in advance, shows what halving them costs: at 18
-density measurements per capability the five-parameter form predicts new states to 0.20 nats on
-mathematics and 0.17 on code, against the 0.18 and 0.13 that the per-density regression reaches
-with all 36, and at 9 the regression cannot be fitted at all. The saving comes from measuring fewer
-densities per source, not fewer sources (Fig.~\ref{fig:efficiency}a). A registered confirmation then froze that form, the full-budget regression and the median curve
+A subsampling study, with the sampling plan fixed in advance, shows what halving the development
+measurements costs: at 18 density measurements per capability the five-parameter form predicts new
+states to 0.20 nats on mathematics and 0.17 on code, against the 0.18 and 0.13 the per-density
+regression reaches with all 36, and at 9 the regression cannot be fitted at all. The saving comes
+from measuring fewer densities per source, not fewer sources (Fig.~\ref{fig:efficiency}a). A registered confirmation then froze that form, the full-budget regression and the median curve
 before four Pythia states outside every earlier fit were pruned at six densities. The half-budget
 form stayed within 0.013 nats of the full-budget regression on mathematics and 0.020 on code,
 meeting the registered criterion, and halved the error of the median curve at the same budget
@@ -59,5 +58,6 @@ predictors at full budget.}
 \end{figure}
 
 Prediction at a new configuration and transfer to a new model state therefore behave differently.
-Initial-state inputs support compact prediction inside the controlled pruning domain; across broader
-state changes their advantage is inconsistent and configuration medians remain strong baselines.
+Source-conditioned forms support compact prediction inside the controlled pruning domain; across broader
+state changes their advantage is inconsistent, and configuration medians remain strong
+baselines on the states we scored.

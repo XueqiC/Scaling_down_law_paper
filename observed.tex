@@ -18,7 +18,7 @@ changes sign across density, as Appendix Fig.~\ref{fig:pythia_responses} shows a
 \includegraphics[width=\textwidth]{figs/fig8_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig8_a.pdf}\caption{Pruning at $d=0.7$}\end{subfigure}\hfill
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig8_b.pdf}\caption{Per-channel int4}\end{subfigure}
-\caption{Capability loss change across twelve public models under (a) pruning to $d=0.7$ and (b) per-channel int4 quantization, as loss change from each model's dense loss. The ordering of capabilities changes across series and the magnitudes differ by two orders at the same setting.}
+\caption{Capability loss change from each model's dense loss across twelve public models, under (a) pruning to $d=0.7$ and (b) per-channel int4. The ordering of capabilities changes across series and the magnitudes differ by two orders at the same setting.}
 \label{fig:heterogeneity}
 \end{figure}
 The two compression axes carry different shapes. Under pruning, once the measured first-order
@@ -53,13 +53,12 @@ grows by an order of magnitude between learning rates of $5\times10^{-5}$ and $1
 the lower rate the 1B student is almost unharmed on those two capabilities and question answering
 improves by $0.79$ nats.
 
-Once the learning rate is fixed, the size of the data pool dominates, and question answering bears
-most of the cost. At a
-matched budget $T$ near 200k supervised tokens (Fig.~\ref{fig:responses_v2}), a pool reused about
-twelve times, a reuse ratio $E=T/D_U$ near twelve, costs question answering $+0.29$, $+2.55$ and $+4.85$ nats on
-students of 100M, 700M and 3.2B non-embedding parameters, and nine times more independent data
-converts the same budget into a gain near one nat on each student. Across the same students and budget, two pool seeds per cell place the noise from the pool draw an
-order of magnitude below this reuse cost on every capability.
+Once the learning rate is fixed, the size of the data pool dominates and question answering bears
+most of the cost. At a matched budget $T$ near 200k supervised tokens
+(Fig.~\ref{fig:responses_v2}), a reuse ratio $E=T/D_U$ near twelve costs question answering $+0.29$,
+$+2.55$ and $+4.85$ nats on students of 100M, 700M and 3.2B non-embedding parameters, and nine times
+more independent data converts the same budget into a gain near one nat on each. Two pool seeds per
+cell place the noise from the pool draw an order of magnitude below this cost.
 
 The reuse cost transfers across question-answering distributions; the gain does not. Rescored on a
 fresh 2Wiki sample disjoint from the probe, on MuSiQue and on TriviaQA, all three distributions
