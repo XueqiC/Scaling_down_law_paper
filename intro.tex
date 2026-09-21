@@ -1,38 +1,19 @@
 \section{Introduction}
 \label{sec:intro}
 
-Deployed language-model agents are specialized systems
-\citep{yao2023react,schick2023toolformer,jimenez2024swebench,liu2024agentbench} whose cost scales
-with each token. Pruning, quantization, and distillation offer different ways to reduce the cost of serving these workloads. Choosing among them requires predicting how each method and configuration changes the capabilities the workload needs. Compression does not reduce capabilities uniformly: across twelve public models the same pruning
-density leaves question answering the least damaged capability in some series and the most damaged in others
-(Fig.~\ref{fig:heterogeneity}), and the ordering changes with model size and model family.
+LLM compression aims to reduce inference costs and memory requirements while preserving the capabilities needed for deployment. These requirements vary across applications: software engineering agents rely on code generation, whereas document question-answering systems require reasoning over retrieved evidence. However, choosing between different LLM compression methods, including pruning, quantization, and distillation, and configurations remains largely empirical because comparable resource reductions can yield substantially different capability profiles. Identifying configurations that satisfy workload-specific requirements therefore often entails repeated compression and evaluation.
 
-Existing compression laws predict an aggregate loss from sparsity, precision, training format, the
-pre-pruning loss or the teacher loss
-\citep{frantar2023scaling,kumar2024scaling,panferov2025unified,zhang2024scaling,busbridge2025distillation},
-and studies of uneven damage document it for single tasks or single quantizers
-\citep{jaiswal2023compressing,liu2025quantization,sengupta2025compression}. Three limitations
-remain: the endpoint is aggregate, so a capability-specific response shape stays invisible; the
-fits mix model states that differ in size and pretraining stage, so it is unclear which inputs a
-relation may use when the state is new; and coefficients are rarely frozen before the test measurements.
+Predictive compression laws seek to reduce this evaluation burden by estimating post-compression loss from model characteristics and intervention settings. Existing laws predict aggregate loss from sparsity, precision, training format, pre-pruning loss, or teacher loss \citep{frantar2023scaling,kumar2024scaling,panferov2025unified,zhang2024scaling,busbridge2025distillation}, while complementary studies document heterogeneous compression effects for individual tasks and quantizers \citep{jaiswal2023compressing,liu2025quantization,sengupta2025compression}. However, aggregate predictions do not resolve how individual capabilities change, and task-specific observations alone do not provide a systematic method for predicting and comparing these changes across compression approaches. Consequently, a configuration that preserves overall performance may still degrade a capability required by the target workload, while existing predictions offer limited guidance on which method and compression level will satisfy those requirements.
 
-We ask when the loss of a capability after compression can be predicted from the initial model
-state and the configuration alone. The endpoint is the conditional loss on a fixed probe set
-relative to a reference measured beforehand (Eq.~\ref{eq:interface}); the admitted inputs are the
-initial state, meaning parameter count, pretraining tokens and reference capability losses, and
-the intervention setting; no measurement of the compressed target is used. The study then proceeds in one
-sequence: controlled measurements on Pythia checkpoints whose size and stage vary independently,
-and on Gemma students under one distillation protocol, establish what a law must reproduce
-(\S\ref{sec:observed}); an analysis of shape, conditions and mechanism explains why
-(\S\ref{sec:why}); method-specific relations are built on the verified findings
-(\S\ref{sec:laws}), tested with coefficients and predictions frozen in advance
-(\S\ref{sec:general}), and carried into a selection rule confirmed prospectively
-(\S\ref{sec:selection}). Each relation keeps the status assigned before its outcome was measured.
+In this paper, we systematically investigate how model capabilities change under compression and develop predictive scaling-down laws to guide the selection of compression methods and configurations. We first establish a common framework for studying pruning, quantization, and distillation through capability-conditioned loss. Within this framework, we vary model size, training stage, compression settings, data availability, and training exposure to identify shared response patterns and their dependence on capability and evaluation distribution. Based on these observations, we develop simple predictive relations and evaluate their accuracy, measurement requirements, and generalization to unseen configurations and model states. To translate these predictions into compression decisions, we further formulate a principled selection method that compares methods and configurations under storage constraints, and validate its decisions through independent evaluations.
 
-\paragraph{Contributions.}
+Overall, our contributions are summarized below:
 \begin{itemize}
-\item \textbf{Capability-dependent compression responses.} We systematically investigate pruning, quantization, and distillation through capability-conditioned loss. Controlled measurements show where response shapes can be shared and where capability-specific relations are needed. Under pruning, the QA response departs from the proportional shapes that describe math and code. Separate tests distinguish prediction at new configurations from transfer across model states.
-\item \textbf{Measurement-efficient predictive relations.} On four independently evaluated model states, a compact pruning predictor fitted on 18 development configuration measurements has math and code mean absolute errors within 0.013 and 0.020 nats, respectively, of a regression fitted on 36 measurements. The subsampling study locates this advantage in reducing density measurements per source while retaining source coverage.
-\item \textbf{Empirical data requirements for distillation.} Controlled student, data-pool, and training-budget experiments reveal how reuse penalties depend on student size and evaluation distribution. The QA cost of high reuse reproduces across three distributions, while net improvements remain specific to 2Wiki. We translate these responses into empirical data-requirement intervals and bounds under explicit loss constraints.
-\item \textbf{Capability-specific compression selection.} Prospective tests in two model families show that a frozen selection rule captures most of the available cross-method opportunity for QA under nominal storage constraints. A retrospective pristine-student control identifies additional opportunity contributed by distillation. Opportunities on math and code are substantially smaller, explaining where cross-method selection adds value.
+\item \textbf{A systematic framework and investigation.} We establish a common methodology for studying capability scaling-down laws and conduct a systematic investigation across pruning, quantization, and distillation, covering different model states, capabilities, and evaluation distributions.
+
+\item \textbf{Predictive capability scaling-down laws.} We develop simple laws that predict capability losses from model states and compression settings, and evaluate their accuracy, measurement efficiency, and generalization through independent tests.
+
+\item \textbf{A principled compression selection method.} We propose a method that selects compression methods and configurations using predicted capability losses under storage constraints, and validate its decisions against baselines in independent evaluations.
 \end{itemize}
+
+
