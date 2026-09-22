@@ -11,9 +11,10 @@ log-likelihood
 with a fitted form that depends on the protocol \citep{li2025misfitting,besiroglu2024chinchilla}.
 Closest to ours, \citet{sengupta2025compression} predicts a task's post-pruning accuracy from its
 unpruned accuracy and the pruning ratio with two coefficients, transferring the exponent to unseen
-models and calibrating the scale on one pruned measurement (refitted on capability loss in Appendix
-Table~\ref{tab:a14-baselines}); we treat three methods in one framework, separate the model state
-from the configuration, and measure what a relation costs to fit.
+models either with no measurement of the new model or with one pruned measurement that resets the
+scale; we treat three methods
+in one framework, separate the model state from the configuration, and measure what a relation costs
+to fit.
 
 \paragraph{Compression Effects on Model Capabilities.}
 The fixed operations we study stand in for the method families of pruning, post-training
@@ -21,7 +22,6 @@ quantization and distillation
 \citep{lecun1989optimal,han2015deep,frankle2019lottery,frantar2023sparsegpt,sun2023simple,ma2023llmpruner,ashkboos2024slicegpt,men2024shortgpt,dettmers2022llmint8,frantar2022gptq,xiao2022smoothquant,lin2023awq,chee2023quip,shao2023omniquant,dettmers2023qlora,hinton2015distilling,sanh2019distilbert,hsieh2023distilling,mukherjee2023orca,gu2023minillm,agarwal2023gkd,xu2024survey},
 and uneven capability loss is documented for individual tasks and quantizers
 \citep{jaiswal2023compressing,liu2025quantization,ouyang2024lowbit,hong2024decoding,sengupta2025compression}.
-Section~\ref{sec:observed} measures the shape of that unevenness on one endpoint.
 
 \paragraph{Compression Method Selection.}
 Prior work compares compression methods by measuring each candidate on the target model:

@@ -41,7 +41,7 @@ checkpoints \citep{ruan2024observational,polo2024tinybenchmarks}.
 \subsection{Compression protocols}
 \label{sec:app_compress}
 
-The three operations are fixed by protocol. Pruning is global magnitude pruning, which removes the smallest weights across the attention and MLP projection matrices, leaving embeddings, output head, biases and norms untouched, to a target retained density $\dens$. The global threshold is estimated from a seeded sample of
+The three operations are fixed by protocol. Pruning is global magnitude pruning over every weight matrix of the language model, the attention and MLP projections together with the embedding and output-head matrices, which removes the smallest weights under one threshold to a target retained density $\dens$; biases and norms are untouched, and the prune scope recorded for each model is its full matrix parameter count. The global threshold is estimated from a seeded sample of
 absolute weights, which lets the same procedure scale to 30B-parameter models, and each density is
 applied to the same dense reference weights, so the densities are nested, and each pruned set contains the previous one.
 
@@ -323,7 +323,7 @@ capabilities it serves, and what structure the relations share.
 The pruning relation was selected on the development panel. Fit on nine states at $d\in\{0.9,0.8,0.7,0.6\}$
 and scored at the unseen 0.65 and 0.55, Eq.~\ref{eq:power} reduces the
 strength-only error by a factor of two to three, and A2 matches it; refit on 17
-states under a pre-specified leave-one-source-out rule, A2 and the power form tie within 0.02 nats, at 0.479 and 0.494, and the rule prefers the continuous form that vanishes at $d=1$; the coefficients are in Appendix~\ref{sec:app_coef}, and the exponent $\gamma_c$ is a fitted constant that has not been established as necessary.
+states under a pre-specified leave-one-source-out rule, A2 and the power form tie within 0.02 nats, at 0.479 and 0.494, and the rule prefers the continuous form that vanishes at $d=1$; the coefficients are in Appendix~\ref{sec:app_coef}, and the exponent $\gamma_c$ is a fitted constant whose value is supported among the same-complexity alternatives tested in Table~\ref{tab:a14-baselines}: forms with the exponent fixed at one or replaced by a quadratic are worse by 0.04 to 0.19 nats on mathematics and code.
 
 Its boundary was then established. Evaluated as a pre-specified candidate on three new checkpoints, the power form reaches the math error of A2 with five parameters against twenty and does not beat the median curve on code or QA; on a 2.8B source the median curve is three to seven times better than either source form (Section~\ref{sec:general}). The compact form trades accuracy for compactness within a tested range; the median curve is the relation for new states, a rule fixed after these tests and reused without change in Section~\ref{sec:selection} for the selection rule and its confirmation.
 
@@ -587,8 +587,8 @@ similar parameter count: the strength relation with the exponent fixed at one, a
 relation, the strength-only curve, the median curve and the per-density regression, and the
 pruning-law relation $L=L_0P_0d^{\alpha}$ of \citet{sengupta2025compression} fitted on capability
 loss with one exponent and one scale per capability. At both budgets the compact form is the most accurate on mathematics and code; the fixed-exponent and
-quadratic forms are worse by 0.04 to 0.19 nats, so the free exponent is what its accuracy rests on,
-and the pruning-law form sits between the strength-only curve and the median. Calibrating one number
+quadratic forms are worse by 0.04 to 0.19 nats, so among the same-complexity alternatives tested the
+compact form's accuracy is supported, and the pruning-law form sits between the strength-only curve and the median. Calibrating one number
 on each target's mildest pruned measurement, the power form's amplitude or the pruning law's $P_0$,
 helps neither form on the remaining densities. These forms were fitted after the confirmation.
 \input{tables/a14_baselines}
@@ -851,9 +851,14 @@ embedding rows, which a small model carries in larger proportion: 0.40 against 0
 under Pythia 410M, and 0.27 against 0.14 for Gemma 3 270M under Gemma 3 1B. Read as a byte budget,
 the same grid changes the feasible set in 40 of the 272 selection cells and the rule's choice in 10,
 all of them student choices at budgets from 0.20 to 0.35; on 25 further cells a per-channel choice
-exceeds its budget by at most 0.2 percent. The rule itself does not depend on the unit: it ranks
-whatever candidates the budget admits, and a deployment that stores sparse weights or counts
-embeddings enters its own costs.
+exceeds its budget by at most 0.2 percent. Re-running the selection with the feasible sets counted
+in bytes, and scoring against the byte-feasible oracle, leaves the picture intact: on question
+answering the opportunity is 0.41 nats against 0.45 nominally, the rule's regret 0.025 against 0.007,
+the difference being the Pythia 410M student, infeasible in bytes at budgets 0.30 and 0.35, where the
+rule falls back to quantization, and the quantization-only regret 0.80 against 0.85; on mathematics,
+code and the largest increase every regret lies within 0.001 nats of zero under both units. The rule
+itself does not depend on the unit: it ranks whatever candidates the budget admits, and a deployment
+that stores sparse weights or counts embeddings enters its own costs.
 \input{tables/storage_accounting}
 
 
