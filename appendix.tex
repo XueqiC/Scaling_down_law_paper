@@ -382,7 +382,7 @@ capabilities costs nothing, whereas quantization coefficients must be
 capability-specific; parameter intervals and 80\% prediction intervals that under-cover are reported in Appendix~\ref{sec:app_shared} together with the one-point calibration and the single measurement that it costs.
 
 
-\begin{figure}[t]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=5.5in]{figs/final_relations_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/final_relations_a.pdf}\subcaption{Pruning}\end{subfigure}\hfill
@@ -399,7 +399,8 @@ capability-specific; parameter intervals and 80\% prediction intervals that unde
 \subsection{Shared structure, parameter ranges, and one-point calibration}
 \label{sec:app_shared}
 
-One function
+Fig.~\ref{fig:responses_relations} plots the measured responses against the delivered relations on
+each method's own configuration axis. One function
 family for all three methods, with method- and capability-specific
 parameters, holds for pruning by construction and fails for the other two arms on
 the same held-out splits. Within pruning one exponent shared across capabilities costs nothing, within 0.02 nats of per-capability exponents, whereas the quantization coefficients must be capability-specific. Three ranges are kept apart: the bootstrap intervals of the pruning coefficients exclude zero for
@@ -410,10 +411,8 @@ amplifies noise and offers no saving over the uncalibrated predictor.
 
 
 Table~\ref{tab:shared_structure} reports the shared-family test, the parameter-sharing tests and
-the spread of exponents fitted separately per source. Table~\ref{tab:calibration_k1} reports what
-one target measurement buys: the error of the calibrated predictor against the uncalibrated one,
-and the coverage and width of prediction intervals built from leave-one-source residuals on cells
-that did not enter them.
+the spread of exponents fitted separately per source. What one target measurement would buy, a
+budget no delivered relation uses, is in Section S2 of the supplement.
 \input{tables/shared_structure}
 
 \input{tables/cap_conditioning}
@@ -451,29 +450,6 @@ order in which the tests were run and the predictions were frozen.
 
 \begin{figure}[tb]
 \centering
-\includegraphics[width=5.5in]{figs/frozen_candidates_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/frozen_candidates_a.pdf}\subcaption{Pruning}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/frozen_candidates_b.pdf}\subcaption{Grouped quantization}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/frozen_candidates_c.pdf}\subcaption{Distillation}\end{subfigure}
-
-\caption{Frozen candidates on the confirmation panels: per-cell prediction against measurement for each frozen candidate. Hatched bars show the MAE of the strongest frozen alternative minus the candidate MAE; hollow diamonds show the delivered-rule gain where it differs from the candidate.}
-\label{fig:confirm}
-\end{figure}
-
-\begin{figure}[tb]
-\centering
-\includegraphics[width=5.5in]{figs/generalization_cells_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/generalization_cells_a.pdf}\subcaption{New configurations}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/generalization_cells_b.pdf}\subcaption{New sources/students}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/generalization_cells_c.pdf}\subcaption{Fresh QA}\end{subfigure}
-
-\caption{Per-cell prediction minus measurement for each frozen relation, by kind of novelty; the
-main-text figure summarises these cells as paired errors against the development-selected baseline.
-Crosses mark the cells whose stored artifact carries no interval estimate.}
-\label{fig:generalization_cells}
-\end{figure}
-\begin{figure}[tb]
-\centering
 \includegraphics[width=\textwidth]{figs/corner_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/corner_test_a.pdf}\caption{QA readout}\end{subfigure}\hfill
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/corner_test_b.pdf}\caption{Math and code readouts}\end{subfigure}
@@ -495,7 +471,8 @@ legend of Fig.~\ref{fig:corner_test} applies.}
 
 Section S4 of the supplement gives each registered test in three lines, the candidate, the strongest same-input baseline and the strongest simple baseline, with improvements and provenance codes,
 the per-stage and per-protocol results of the Pythia-1B and 6.9B pairs, the confirmation panel and the
-grouped-quantization tests, and the paired improvements behind Fig.~\ref{fig:inputs}.
+grouped-quantization tests, and the paired improvements behind Fig.~\ref{fig:inputs};
+Fig.~\ref{fig:corner_contrasts} gives the corner residuals on the fresh distributions.
 The same comparison in one line per test, each relation against its strongest same-input baseline
 on the same cells, is in that section as well.
 \begin{retargetreferences}{\retargetreference{Appendix Tables~\ref{tab:pred_source}--\ref{tab:pred_config_qd}}{Section S4 of the supplement}}
@@ -539,7 +516,7 @@ evaluation scores 64 items per capability, and the pool-cluster intervals theref
 \subsection{Measurement efficiency of the compact pruning form}
 \label{sec:app_a11}
 
-A retrospective subsampling study of the nine-state development panel, with twenty fixed replicates at 25, 50 and 100 percent of the measurements that reduce either the number of sources or the number of densities per source, found that across the replicates the five-parameter power form fitted on 18
+Fig.~\ref{fig:efficiency_qa} gives the question-answering counterpart of the main-text figure. A retrospective subsampling study of the nine-state development panel, with twenty fixed replicates at 25, 50 and 100 percent of the measurements that reduce either the number of sources or the number of densities per source, found that across the replicates the five-parameter power form fitted on 18
 measurements attains median errors of 0.20 nats on mathematics and 0.17 on code, against 0.18 and
 0.13 for the per-density regression fitted on all 36, and that the
 median curve is the better predictor for QA at every budget. Table~\ref{tab:a9} gives its error at each budget. A registered confirmation then froze
@@ -614,7 +591,7 @@ per-student monotone interpolation, which solved the most requests over the same
 the QA distributions and on math and code alike.
 \input{tables/dreq_main}
 
-\begin{figure}[t]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=\textwidth]{figs/dreq_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/dreq_a.pdf}\caption{Fresh 2Wiki}\end{subfigure}\hfill
@@ -652,7 +629,7 @@ with in-sample $R^2 = 0.82$--$0.996$ over 24 capability$\times$model fits. The f
 shared-$\eta$ mechanism form attains MAE $2.17$ nats versus $10.3$
 for per-capability raw sparsity and $8.2$ for the direct-damage baseline, with both intervals excluding zero, so the deleted-mass coordinate
 transfers across families; it also beats the direct-damage baseline in fit-shallow/predict-deep and raw sparsity in leave-largest-model-out, while its edge over raw
-sparsity within-model does not reach significance; without the first-order term QA is unfittable, and with it QA joins the law. Two structural results follow. First, in the deleted-mass coordinate the exponent concentrates at
+sparsity within-model does not reach significance; without the first-order term QA is unfittable, and with it QA joins the law. Fig.~\ref{fig:explanation} shows the fitted reuse exponent and the accuracy of the displacement account against the size of the loss change. Two structural results follow. First, in the deleted-mass coordinate the exponent concentrates at
 $\eta\in[1.2,2.2]$ across all families, versus $3.2$--$8.7$ in the
 raw $(1-\dens)$ coordinate, which makes the form portable. Second, \emph{within a model, $\eta$ is shared across capabilities}: capability differences appear to be carried
 by the two measured quantities, and the fitted structure is two
