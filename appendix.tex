@@ -593,6 +593,26 @@ on each target's mildest pruned measurement, the power form's amplitude or the p
 helps neither form on the remaining densities. These forms were fitted after the confirmation.
 \input{tables/a14_baselines}
 
+\paragraph{Prediction of task accuracy.} The pruning law's own endpoint is task accuracy, and
+Table~\ref{tab:accuracy-comparison} meets it there: on Gemma 3 1B and 4B and Qwen3 1.7B and 4B
+pruned to densities 0.8, 0.7 and 0.6, with accuracy measured by the protocol of
+Appendix~\ref{sec:app_probes} on 64 probes per capability, the law's form fitted leave-one-model-out
+predicts accuracy with a mean absolute error of 0.145 without calibration and
+0.119 with one measurement, whereas the loss route, the final rule's development
+median curve followed by a logistic link from loss to accuracy fitted on the other three models, errs by
+0.264 and 0.312. Each relation is the better instrument on its own
+endpoint: on capability loss the law's form trails the compact power form in every column of
+Table~\ref{tab:a14-baselines}, and on accuracy the loss route trails the law, so neither replaces the
+other and the paper's claims stay on loss. Two features of the accuracy endpoint explain the
+ordering. In 17 of the 36 scored cells the measured accuracy is at most 0.03, a floor that a
+collapsing power form in density reaches by construction and that the loss endpoint still resolves,
+Gemma 3 1B moving from 3.4 to 10.1 nats on question answering across the same densities; and the link
+applied to the measured loss itself errs by 0.147, so a large part of the loss
+route's error is the coarseness of accuracy at this probe count rather than the loss prediction.
+Where accuracy stays informative the picture reverses in places: Qwen3 4B keeps 0.84 on
+mathematics at density 0.8, which the law puts at 0.24 and the loss route at 0.33.
+\input{tables/accuracy_comparison}
+
 \subsection{Measured data requirements under distillation}
 \label{sec:app_dreq}
 
