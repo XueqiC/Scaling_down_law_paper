@@ -2,7 +2,7 @@
 \label{sec:selection}
 
 A relation earns its place by changing a decision. This section turns the relations of
-\S\ref{sec:laws} into a choice among compression configurations under a storage budget and tests
+Section~\ref{sec:laws} into a choice among compression configurations under a storage budget and tests
 that choice frozen, on references that supplied it no outcome.
 
 \subsection{Selection under Storage Constraints}
@@ -63,4 +63,5 @@ Quantization already supplies a near-best candidate there, the rule matches it, 
 budget that admits the dense model, the rule exceeds its regret by at most 0.0015 nats. All four references meet the criterion registered for this round.
 
 To separate the contribution of distillation from the value of a smaller model, we retrospectively add the pristine student as a control at the same nominal storage cost. Replacing the pristine student with its distilled counterpart, with quantization available in both candidate sets, increases the question-answering opportunity by 0.084 to 0.650 nats across the four references. The corresponding opportunity changes for math and code are non-positive (Appendix Table~\ref{tab:s3-retrospective-control}). These are changes in the opportunity open to the candidate set, not loss changes of a student
-against its own starting point.
+against its own starting point: the control marks where distillation creates an opening for
+selection and where quantization already supplies a competitive candidate.

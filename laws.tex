@@ -3,9 +3,9 @@
 
 
 Each method delivers one relation in the interface of Eq.~\ref{eq:interface}, turning the
-observations of \S\ref{sec:observed} into a prediction from the initial state and the configuration.
+observations of Section~\ref{sec:observed} into a prediction from the initial state and the configuration.
 Each is stated below with the inputs it uses and the domain on which it was fitted and tested, and
-\S\ref{sec:general} reports how it performs on configurations and model states that entered no
+Section~\ref{sec:general} reports how it performs on configurations and model states that entered no
 fit. Whether the initial state earns its place is decided per capability: on the controlled pruning
 panel, a per-setting regression using parameter count, pretraining tokens and reference capability
 loss reduces the mean absolute error from 0.41 to 0.25 nats for mathematics and from 0.52 to 0.29
@@ -24,7 +24,7 @@ median. Grouped quantization on a state in the fit takes a same-input piecewise 
 the measured bit-width and group-size grid, linear in $\log_2 g$, for mathematics and code; question
 answering, and every capability on a new state, takes the per-configuration median. Fitted and
 tested on the same Pythia states over 3--8 bits and groups of 32--512 weights.
-\item \textbf{Distillation.} The signed transfer response of \S\ref{sec:loss} takes
+\item \textbf{Distillation.} The signed transfer response of Section~\ref{sec:loss} takes
 $\widehat\delta_c=a_c\log(1+E)$ for mathematics and code and the joint budget-pool form for question
 answering, from the supervised tokens, the unique-pool tokens and the student's own reference loss.
 Fitted and tested on Gemma-3 270M and 1B students under one recipe, with pools to 158k tokens and
@@ -42,7 +42,7 @@ A_c(\mathbf x)=\beta_c\cdot\big(1,\tilde{\log N_0},\tilde L_{0,c},\tilde{\log D_
 \label{eq:power}
 \end{equation}
 This form uses five parameters per capability, with inputs standardized on the development set, and
-\S\ref{sec:efficiency} evaluates what it costs to fit. Its advantage is not consistent under broader
+Section~\ref{sec:efficiency} evaluates what it costs to fit. Its advantage is not consistent under broader
 model-state transfer, so for those settings and for question answering we deliver the source-free
 development median.
 \subsection{Quantization}
@@ -58,7 +58,7 @@ development median measured on the same grid.
 \subsection{Distillation}
 \label{sec:law_distill}
 
-The response is the signed transfer response of \S\ref{sec:loss}, parameterized by supervised
+The response is the signed transfer response of Section~\ref{sec:loss}, parameterized by supervised
 completion tokens, unique pool tokens and their ratio; the teacher supplies the training targets and
 is fixed within the evaluated protocol. The delivered relations are
 \begin{equation}
@@ -70,10 +70,10 @@ the development set: one parameter for mathematics and code, which vanish at zer
 answering. On the development students at the 2Wiki distribution, question answering improves under
 every development recipe while mathematics and code move by hundredths to tenths of a nat. At high
 reuse, and on the other question-answering distributions, the response reverses
-(\S\ref{sec:observed}).
+(Section~\ref{sec:observed}).
 The distillation relations describe the 270M and 1B students at the evaluated budgets and reuse
 counts, not the 4B student or reuse near fourteen, and the question-answering result is specific to
 2Wiki. A joint relation that predicts both budget and data-pool changes reliably remains unresolved.
-\S\ref{sec:general} evaluates these relations on configurations and model states that entered no
+Section~\ref{sec:general} evaluates these relations on configurations and model states that entered no
 fit, and measures the development budget each one needs.
 

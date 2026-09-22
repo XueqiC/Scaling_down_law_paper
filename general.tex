@@ -1,7 +1,7 @@
 \section{Predictive Performance and Generalization}
 \label{sec:general}
 
-The relations of \S\ref{sec:laws} are now tested on new configurations of seen states and on new
+The relations of Section~\ref{sec:laws} are now tested on new configurations of seen states and on new
 model states, with predictions frozen before measurement. Table~\ref{tab:main-prediction-v2} gives
 each prediction task with its frozen candidate, the predictor delivered for it, the errors of both
 and the baseline selected inside the development folds; Appendix Fig.~\ref{fig:generalization}
@@ -59,4 +59,6 @@ predictors at full budget.}
 
 Prediction at a new configuration and transfer to a new model state therefore behave differently:
 source-conditioned forms support compact prediction inside the controlled pruning domain, and across
-broader state changes configuration medians remain the stronger baseline.
+broader state changes configuration medians remain the stronger baseline. Either way the prediction
+costs no measurement of the compressed model, which is what lets
+Section~\ref{sec:selection} compare candidates before any of them is built.

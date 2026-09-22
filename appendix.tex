@@ -56,7 +56,7 @@ error distribution and the local response that we do not test, so the $4^{-\bits
 candidate among others and not a derived reference. Nominal storage ratios are computed from
 bit-widths; no memory or latency was measured.
 
-The grouped variant of the same quantizer (\S\ref{sec:law_quant}) splits each row of a
+The grouped variant of the same quantizer (Section~\ref{sec:law_quant}) splits each row of a
 weight matrix into contiguous groups of $g$ input weights, pads the last group with zeros, which do
 not affect the group maximum, and applies the same symmetric round-to-nearest with
 $q_{\max}=2^{b-1}-1$ per group; $g$ equal to the row width reproduces the per-channel quantizer
@@ -74,7 +74,7 @@ examples per domain is either the first $U$ rows of the trace file, the historic
 random sample drawn with a pool-sampling seed independent of the training seed; pools are
 identified by the sorted hashes of their samples and pairwise overlaps are reported. The historical
 schedule spanned a fixed number of epochs, so its cosine horizon varied with pool size; the
-controlled matrix of \S\ref{sec:law_distill} uses a schedule defined on the same absolute
+controlled matrix of Section~\ref{sec:law_distill} uses a schedule defined on the same absolute
 processed-token budget for each pool, and the two protocols are not mixed in any fit or any table of this paper.
 
 \subsection{The controlled Pythia panel}
@@ -144,7 +144,7 @@ the heterogeneous panel and the controlled panel are dense
 transformers (Section S1 of the supplement); no sparsely activated model
 entered any fit, so total and per-token active parameter counts
 coincide throughout, and the reference-model definition of
-\S\ref{sec:loss} is exercised only on dense architectures. The laws use the transformer-matrix count $N_0$ of the decoder blocks, excluding embeddings, head, biases and norms; the frozen
+Section~\ref{sec:loss} is exercised only on dense architectures. The laws use the transformer-matrix count $N_0$ of the decoder blocks, excluding embeddings, head, biases and norms; the frozen
 distillation source term used the metadata parameter count of the student recorded at the freeze,
 which for Gemma-3-4B includes 0.42B vision and projector parameters
 and counts tied embeddings twice; these frozen covariates are reported as recorded at the freeze.
@@ -252,7 +252,7 @@ study.
 Under distillation, black-box traces from two API teachers, 600 per domain, train Gemma-3 students under a full-trace and an
 answer-only recipe in a paired design. The answer-only recipe increases the math loss about twice as much as the full recipe, while QA improves by 0.6 to 1.4 nats under both; because the recipes differ in supervised tokens and update
 counts, this pairing does not isolate reasoning coverage, and the
-controlled comparisons that do isolate it are the ones reported in \S\ref{sec:law_distill}.
+controlled comparisons that do isolate it are the ones reported in Section~\ref{sec:law_distill}.
 
 The loss endpoint supports these comparisons within limits. The same
 heterogeneity appears on independent secondary benchmarks for math and
@@ -309,7 +309,7 @@ and scored at the unseen 0.65 and 0.55, Eq.~\ref{eq:power} reduces the
 strength-only error by a factor of two to three, and A2 matches it; refit on 17
 states under a pre-committed leave-one-source-out rule, A2 and the power form tie within 0.02 nats, at 0.479 and 0.494, and the rule prefers the continuous form that vanishes at $d=1$; the coefficients are in Appendix~\ref{sec:app_coef}, and the exponent $\gamma_c$ is a fitted constant that has not been established as necessary.
 
-Its boundary was then established. Evaluated as a frozen candidate on three new checkpoints, the power form reaches the math error of A2 with five parameters against twenty and does not beat the median curve on code or QA; on a 2.8B source the median curve is three to seven times better than either source form (\S\ref{sec:general}). The compact form trades accuracy for compactness within a tested range; the median curve is the relation for new states, a rule fixed after these tests and reused without change in \S\ref{sec:selection} for the selection rule and its confirmation.
+Its boundary was then established. Evaluated as a frozen candidate on three new checkpoints, the power form reaches the math error of A2 with five parameters against twenty and does not beat the median curve on code or QA; on a 2.8B source the median curve is three to seven times better than either source form (Section~\ref{sec:general}). The compact form trades accuracy for compactness within a tested range; the median curve is the relation for new states, a rule fixed after these tests and reused without change in Section~\ref{sec:selection} for the selection rule and its confirmation.
 
 For quantization, two parametric candidates were tested first, a
 separable amplitude-times-shape form and a low-order surface in
@@ -334,7 +334,7 @@ Appendix~\ref{sec:app_results}.
 The boundary of the quantization relation follows from the same tests: the interpolation holds at unseen group sizes of
 seen states; on the new state the source-free median is as good or
 better except for code, so source conditioning adds nothing there,
-and the surface is not delivered, as the tests of \S\ref{sec:unseen_settings} confirm on each
+and the surface is not delivered, as the tests of Section~\ref{sec:unseen_settings} confirm on each
 held-out cell of that panel.
 
 For distillation, eight forms in $T$, $E$, and a source term were
@@ -345,7 +345,7 @@ descriptor-carrying forms were compared retrospectively
 re-selected on all 25 trajectories by a pre-committed
 leave-one-trajectory-out rule and frozen for six new pools of
 $U{=}200$ at three new budgets. A linear form in the student state, fit on nine Pythia states, serves only as the math predictor for the distillation candidates of the selection rule in
-\S\ref{sec:selection}, and enters no other relation.
+Section~\ref{sec:selection}, and enters no other relation.
 
 The boundary of the distillation relation is set by the new-pool test. At the new pool size the
 selected form beats the
@@ -593,7 +593,7 @@ pool varies the training seed, and the smaller pools vary which traces are drawn
 \section{Mechanisms}
 \label{sec:app_mech}
 
-Four analyses develop the mechanism summary of \S\ref{sec:resp_capabilities}: a pruning
+Four analyses develop the mechanism summary of Section~\ref{sec:resp_capabilities}: a pruning
 law in the deleted capability mass, the sign of its first-order term, the geometry of the cliff, and
 the logit-displacement account of the loss change, in that order.
 
@@ -722,7 +722,7 @@ change are carried by the first-order term.
 \subsection{Independent cross-method validation}
 \label{sec:app_s3}
 
-The confirmation of \S\ref{sec:selection} used four references, none of which supplied a
+The confirmation of Section~\ref{sec:selection} used four references, none of which supplied a
 measurement to the locked rule. Table~\ref{tab:s3-identity} gives the exact releases, revisions and prior use, and
 separates a new model state from a new intervention on familiar weights. Each reference carried
 four pruning densities, six quantization settings, the dense model and one student distilled in
@@ -751,7 +751,7 @@ unchanged.
 \input{tables/s3_control}
 
 
-This section gives the selection rule behind \S\ref{sec:selection}, its retrospective validation
+This section gives the selection rule behind Section~\ref{sec:selection}, its retrospective validation
 and its prospective confirmation. Section S6 of the supplement tabulates the per-policy results behind Fig.~\ref{fig:selection}: mean regret against the measured oracle, agreement with the oracle's method, the share of no-clear-winner cells, and the share of cells in which a fixed-method policy cannot meet the budget; such cells are infeasible, have no fallback and enter no mean.
 \begin{figure}[tb]
 \centering
@@ -784,7 +784,7 @@ Selection minimizes the predicted absolute loss over feasible measured
 configurations, or the largest predicted loss increase across
 capabilities for the multi-capability objective
 (Table~\ref{tab:locked_rule} lists the rule as coded, including where
-it departs from the delivered relations of \S\ref{sec:laws}); quantization-only
+it departs from the delivered relations of Section~\ref{sec:laws}); quantization-only
 uses the same candidates, predictor, and feasibility rule with no
 fallback. Predictions under this rule and under the earlier
 source-conditioned laws were frozen for four fresh states before
@@ -815,7 +815,7 @@ text.
 \section{Extended Discussion: Lessons, Guidance and Limits}
 \label{sec:app_learned}
 
-This section collects the discussion that the conclusion (\S\ref{sec:learned}) summarises: the
+This section collects the discussion that the conclusion (Section~\ref{sec:learned}) summarises: the
 responses and relations the study established, what was learned in trying to build reliable laws,
 the guidance those lessons support, and the limits of the present relations.
 
@@ -827,7 +827,7 @@ QA distributions while the gain does not (Table~\ref{tab:main-prediction-v2}).
 
 Building reliable laws taught four lessons. First, a rejected form is not a rejected class: the logarithmic reuse term failed its own flatness
 implication, yet the fit-free second-difference test on two students did not reject additivity of
-budget and reuse on the QA readout (\S\ref{sec:why}). Second, an explanation is not a
+budget and reuse on the QA readout (Section~\ref{sec:why}). Second, an explanation is not a
 predictor: the displacement account reproduces the loss change across three families and needs the
 compressed model to compute. Third, source information transfers less than it fits: dense
 pre-compression statistics improve a parametric family in four of nine pairs and lose to a
@@ -860,9 +860,9 @@ label each prediction, defined in Table~\ref{tab:budgets}. All tables are genera
 machine-readable result files by CPU-only scripts that run in seconds and need neither model
 weights nor a GPU, and model measurements are reproducible from the recorded revisions, probe seeds
 and protocols. The development and confirmation rounds were
-completed by 11 September 2026, the corner design of \S\ref{sec:why} was registered on 14 September
+completed by 11 September 2026, the corner design of Section~\ref{sec:why} was registered on 14 September
 2026 before its four trajectories were trained, and the measurement-efficiency confirmation of
-\S\ref{sec:efficiency} and the data-requirement experiment of \S\ref{sec:observed} were registered
+Section~\ref{sec:efficiency} and the data-requirement experiment of Section~\ref{sec:observed} were registered
 on 16 September 2026 before their states were pruned and their students trained. No measurement
 taken after a freeze enters the corresponding prediction or its baseline.
 \label{sec:app_register}
