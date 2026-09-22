@@ -1,0 +1,23 @@
+Measurement efficiency for QA (green), the descriptive appendix counterpart of the main Math/Code figure. (a) Retrospective
+A9 learning curves on the 42 new-state, in-range cells per capability, along the
+densities-reduction axis. The nine development states are retained; the budgets
+are 9, 18 and 36 state-density measurements per capability, excluding dense
+anchors. Lines show median mean absolute error (MAE, nats) across 20 subset
+replicates; light bands show the interquartile range among successful fits.
+The power form, per-density regression A2 and source-free median density curve
+use circle/solid, square/dashed and triangle/dotted encodings. The per-density
+regression (A2) cannot be fitted at 9 measurements (0/20 fits) and has no marker
+there. At 18, hollow squares and the regression band summarize only the 6/20
+fitted replicates (14/20 failed); at 36 all 20/20 fit. These subset bands are not confidence intervals. (b) Registered A11
+confirmation: each marker is the unweighted MAE across the six registered
+densities (0.90, 0.85, 0.80, 0.75, 0.70, 0.65) of the indicated Pythia state.
+Power uses 18 development measurements; A2 and the median curve each use 36.
+States, left to right: 160M step 80k, 410M step 112k, 1.4B step 48k and 1B step
+48k. Within each state, only QA is shown and predictors follow the legend order;
+horizontal positions are categorical. Errors are computed by a11_score from the
+frozen functions and same-job dense/pruned losses, without refitting. No
+independent-seed uncertainty is inferred from this shared-probe panel. The
+registered 0.05-nat comparison is pooled across all four states, not a per-state
+decision. Panels are 2.7 x 1.45 inches; the shared legend is 5.5 x 0.3 inches.
+
+Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

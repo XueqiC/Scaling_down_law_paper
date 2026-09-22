@@ -1,0 +1,15 @@
+Signed prediction minus measurement for corner second differences
+(1B and 4B development) and registered additive corner contrasts on fresh 2Wiki,
+MuSiQue and TriviaQA distributions. Hollow capability-coloured diamonds mark
+frozen F_int residuals for the student rows. The green ramp identifies the fresh
+QA distributions below the separator, whose registered additive predictions are
+zero. Dashed whiskers denote 1B and solid whiskers 4B development. Whiskers reflect
+the registered plus/minus twice-noise measurement bands about the frozen prediction;
+they are not confidence intervals. The symmetric-log axis retains the original
+-2.5 to 2.5 native-token-nat range. No frozen response-law predictions on fresh
+evaluation distributions are available. Primary QA additivity: failed to reject;
+Math is size-dependent and Code unresolved. Fresh secondary readouts are shown
+individually without a shared verdict. All twelve records are unchanged from the
+former Figure 6(c). The 2.7 x 1.6-inch panel uses corner_legend.pdf above.
+
+Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

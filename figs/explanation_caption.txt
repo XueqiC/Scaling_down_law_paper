@@ -1,0 +1,17 @@
+Reuse-term curvature (a) and post-hoc displacement account (b).
+Curvature intervals are conditional on development. The exponent p is unitless.
+Fold estimate circles and Boundary crosses show stored development fits;
+diamonds show the full-development fit with its conditional interval.
+Reference lines mark p = 0 and p = 1. Capability colours identify Math, Code and QA.
+Displacement is a post-hoc account with logarithmic axes. Each configuration shows
+median absolute measured damage and median relative second-order prediction error
+across its stored state/capability records; zero-damage records are excluded.
+The three families are pruning, grouped RTN and per-channel RTN. No distillation
+displacement measurement is available; superseded uncentred and separate cluster
+hardware runs are not pooled. The two 2.7 x 1.45-inch panels form a 5.5-inch row.
+The shared key fig2_legend.pdf sits above: Fold estimate, Boundary and Full apply
+to (a); Group, Channel and Prune denote grouped RTN, per-channel RTN and pruning
+in (b). Lines are 1.1 pt and markers 3.8 pt; error bars use 2-pt caps.
+The registered corner tests and contrasts are separate appendix figures.
+
+Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

@@ -1,0 +1,44 @@
+Model states that entered no fit.
+
+New configurations of model states that entered the fit (a), and
+model states that entered no fit (b). Membership is checked against the development
+records of the fit that produced each frozen prediction, not a later fit or a row label.
+Panel a contains unseen quantization group sizes and the two distillation new-pool
+student rows. Panel b contains pruning at a held-out size, new checkpoints inside
+and outside the density range, new training stages of a seen size, and a new
+quantization model state. MAE axes are logarithmic in native-token nats and share
+one range. Paired markers compare relation and development-selected baseline
+on identical cells with equal cell weights. Math, Code and QA retain their
+capability hues. A hollow circle denotes the development-selected baseline;
+a hollow diamond denotes the frozen relation. The connecting segment uses the capability colour when
+the relation MAE is lower, and reference grey otherwise. Cell counts per capability
+are in generalization_mae_pairs.md and record sidecars.
+Pruning, new checkpoints inside the density range and Pruning, new checkpoints
+outside the range are frozen new-state pruning predictions. These rows have no stored
+development-selected baseline and retain unpaired capability-coloured markers.
+The former label 'Pruning, unseen densities of development states' contradicted the
+records: both V72 Pythia-2.8B targets were excluded from the V53 fit. The corrected
+row is 'Pruning, held-out size inside the density range' in panel b; no seen-state
+pruning-density row remains. Its two revision labels have identical measured
+weights and remain repeated records, not independent source states. Distillation
+classifies the pretrained source student; new pools and budgets are configurations.
+V46 is checked against its original V40 fit, even though its target entered V53 later.
+Within each row, Math, Code and QA occupy sub-rows at -0.25, 0 and +0.25 row units;
+each connecting segment and interval follows its capability's sub-row. Markers
+retain thin white outer edges. Small horizontal display offsets, bounded by the
+shared 1.5% limit, separate any remaining glyph-edge collisions across capabilities;
+true MAEs and offsets are recorded in the sidecars. Connecting segments follow
+the displayed markers. When a baseline and relation
+coincide within 2 percent of the baseline MAE, the diamond is drawn on top and the
+coincidence is recorded in the sidecar.
+Paired gain CIs are translated about the fixed baseline
+MAE: [lo, hi] for baseline-minus-relation is drawn at
+[baseline MAE - hi, baseline MAE - lo]. These are paired gain intervals, not
+marginal MAE confidence intervals; no intervals are averaged across students.
+No A2 development-holdout interval is transplanted to confirmation cells.
+Two 5.5-inch-wide panels are stacked with matching left margins: fig3_a is
+1.0 inches high (three rows), and fig3_b is 1.35 inches high (five rows).
+The 5.5 x 0.3-inch fig3_legend.pdf strip sits above them:
+Baseline, Relation and Lower of pair distinguish the paired MAEs. The locked-rule
+selection row is excluded. Corner second differences and fresh-distribution
+contrasts are shown separately in corner_contrasts_a.pdf.

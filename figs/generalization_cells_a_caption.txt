@@ -1,0 +1,7 @@
+New configurations.
+Per-cell prediction minus measurement for every frozen relation. Colour denotes capability; fresh QA distributions retain distinct green shades. All records retained, including repeated states and development 4B records. Cross = no stored measurement interval; hollow diamond = prediction with the stored registered corner band. No coverage classification is encoded by fill. Whiskers are registered twice-noise bands, not confidence intervals.
+A: 1 = Pruning: density inside range; 2 = Pruning: density outside range; 3 = Quantization: new group size; 4 = Distillation: new-pool budgets; 5 = Distillation: corner budgets (1B).
+B: 1 = Pythia: new stages (power); 2 = Pythia: new quantization state; 3 = Pythia: locked rule on new states; 4 = 4B DEVELOPMENT: corner budgets.
+C: 1 = 2wiki_new; 2 = musique; 3 = triviaqa.
+
+Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

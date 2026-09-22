@@ -1,0 +1,14 @@
+Learning-rate pilot for Gemma-3 1B (dashed) and 4B (solid).
+Colour identifies capability, using the Figure 3 palette. The x axis is the
+configured peak learning rate encoded in the run name, not the decayed lr field
+at the checkpoint. The y axis is the saved delta field at the final positive
+update, with positive values indicating higher loss than the initial student.
+All six pilots use full teacher data with 75 examples per domain and data seed
+11; their final saved update is 8, at 37,903 processed input tokens. These are
+development pilots, with one run per student/rate and no uncertainty estimate.
+The standalone appendix panel lr_pilot_a.pdf is 2.7 x 1.45 inches.
+Lines are 1.1 pt and markers are 3.8 pt. The shared capability and student key
+lr_pilot_legend.pdf sits above; the LR ticks give the configured peak rates,
+and markers denote the final checkpoints.
+
+Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

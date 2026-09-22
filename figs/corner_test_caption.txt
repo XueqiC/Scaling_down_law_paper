@@ -1,0 +1,15 @@
+Registered corner second differences, shown separately for QA (a)
+and Math/Code (b) to retain their different scales. Each student/readout row shows
+the measured second difference (capability-coloured circle), its registered
+plus/minus twice-noise interval (whiskers), the additive prediction (zero tick),
+and the frozen F_int prediction (hollow black diamond). The shaded reference band
+is plus/minus one registered noise about zero; whiskers are not confidence intervals.
+Both linear x axes include every prediction, measurement and full registered interval.
+Dashed whiskers denote 1B; solid whiskers denote the 4B development student.
+Primary QA additivity: failed to reject. This verdict applies only to the primary
+QA test; Math is size-dependent and Code unresolved. All numbers are the stored
+A7 predictions and matching A5 measurements and noise intervals; no fit is rerun.
+Each panel is 2.7 x 1.6 inches; corner_legend.pdf supplies the shared key above.
+Lines are 1.1 pt and markers 3.8 pt, with 2-pt whisker caps.
+
+Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

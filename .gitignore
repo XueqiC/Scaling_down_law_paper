@@ -17,3 +17,11 @@ figs/.mplconfig/
 figs/*.json
 figs/*.md
 figs/*.png
+supplement.aux
+supplement.bbl
+supplement.blg
+supplement.log
+supplement.out
+supplement.pdf
+pdflatex_main.txt
+pdflatex_supplement.txt
