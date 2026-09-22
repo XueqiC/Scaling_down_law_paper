@@ -27,7 +27,9 @@
 \usepackage{placeins}
 \usepackage{float}
 \renewcommand{\topfraction}{0.95}\renewcommand{\bottomfraction}{0.95}
-\renewcommand{\textfraction}{0.05}\renewcommand{\floatpagefraction}{0.6}
+\renewcommand{\textfraction}{0.05}\renewcommand{\floatpagefraction}{0.92}
+% A float needs to fill almost the whole page before LaTeX may give it one:
+% no page in this paper should carry a table and nothing else.
 \setcounter{topnumber}{3}\setcounter{totalnumber}{3}
 \input{tables/counts}
 

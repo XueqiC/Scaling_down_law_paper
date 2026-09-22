@@ -4,7 +4,7 @@
 This appendix records the probes, the compression protocols and the controlled panel in the form
 used throughout the paper, so that each later section can be read against them.
 
-\begin{figure}[!htbp]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=\textwidth]{figs/fig4_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_a.pdf}\caption{Pruning}\end{subfigure}\hfill
@@ -80,7 +80,7 @@ processed-token budget for each pool, and the two protocols are not mixed in any
 \subsection{The controlled Pythia panel}
 \label{sec:app_pythia}
 
-\begin{table}[!htbp]\normalfont
+\begin{table}[tb]\normalfont
 \centering\footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.15}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.176923077\textwidth-1.061538462\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.307692308\textwidth-1.846153846\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.253846154\textwidth-1.523076923\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.261538462\textwidth-1.569230769\tabcolsep\relax}@{}}
 \toprule
@@ -152,7 +152,7 @@ and counts tied embeddings twice; these frozen covariates are reported as record
 
 \FloatBarrier
 
-\begin{figure}[!htbp]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=\textwidth]{figs/lr_pilot_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/lr_pilot_a.pdf}\caption{Final loss change against peak learning rate}\end{subfigure}
@@ -418,7 +418,7 @@ that did not enter them.
 
 \input{tables/cap_conditioning}
 
-\begin{figure}[!htbp]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=5.5in]{figs/input_form_compact_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_compact_a.pdf}\subcaption{Adding inputs}\end{subfigure}\hfill
@@ -449,7 +449,7 @@ development sources, which neither source-free variant captures. The ablation is
 This section collects the frozen predictions and their measured outcomes, cell by cell, in the
 order in which the tests were run and the predictions were frozen.
 
-\begin{figure}[!htbp]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=5.5in]{figs/frozen_candidates_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/frozen_candidates_a.pdf}\subcaption{Pruning}\end{subfigure}\hfill
@@ -460,7 +460,7 @@ order in which the tests were run and the predictions were frozen.
 \label{fig:confirm}
 \end{figure}
 
-\begin{figure}[!htbp]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=5.5in]{figs/generalization_cells_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/generalization_cells_a.pdf}\subcaption{New configurations}\end{subfigure}\hfill
@@ -472,7 +472,7 @@ main-text figure summarises these cells as paired errors against the development
 Crosses mark the cells whose stored artifact carries no interval estimate.}
 \label{fig:generalization_cells}
 \end{figure}
-\begin{figure}[!htbp]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=\textwidth]{figs/corner_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/corner_test_a.pdf}\caption{QA readout}\end{subfigure}\hfill
@@ -483,7 +483,7 @@ structures; the math and code readouts were registered as underpowered before th
 were trained.}
 \label{fig:corner_test}
 \end{figure}
-\begin{figure}[!htbp]
+\begin{figure}[tb]
 \centering
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/corner_contrasts_a.pdf}\caption{Prediction minus measurement}\end{subfigure}
 \caption{Corner residuals for the two students and the registered additive corner contrasts on the
@@ -500,7 +500,7 @@ The same comparison in one line per test, each relation against its strongest sa
 on the same cells, is in that section as well.
 \begin{retargetreferences}{\retargetreference{Appendix Tables~\ref{tab:pred_source}--\ref{tab:pred_config_qd}}{Section S4 of the supplement}}
 
-\begin{figure}[!htbp]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=\textwidth]{figs/fig3_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of model states that entered the fit}\end{subfigure}\\[2pt]
@@ -546,7 +546,7 @@ median curve is the better predictor for QA at every budget. Table~\ref{tab:a9} 
 five predictors before four Pythia states in no earlier fit or test, listed in Table~\ref{tab:a11}, were pruned to densities 0.65 to 0.9;
 Table~\ref{tab:a11} gives the outcome. The registered rule, that the reduced-budget power form lies within 0.05 nats of the full-budget regression on math and code, is met.
 
-\begin{figure}[!htbp]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=\textwidth]{figs/eff_qa_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_qa_a.pdf}\caption{Error against development measurements}\end{subfigure}\hfill
@@ -559,7 +559,7 @@ curve, so nothing here displaces the median curve as the delivered rule for this
 \label{fig:efficiency_qa}
 \end{figure}
 
-\begin{table}[!htbp]
+\begin{table}[tb]
 \centering\footnotesize
 \caption{Registered measurement-efficiency confirmation on four Pythia states outside every fit, 160M at step 80000, 410M at step 112000, 1.4B at step 48000 and 1B at step 48000, with 24 cells per capability: mean absolute error in nats per token of each frozen predictor. The
 reduced-budget power form used the densities 0.9 and 0.7 of each development state, 18 measurements per capability.}
@@ -577,7 +577,7 @@ Median density curve (18) & 0.145 & 0.212 & 0.186 \\
 \end{tabular*}
 \end{table}
 
-\begin{table}[!htbp]
+\begin{table}[tb]
 \centering\footnotesize
 \caption{Subsampling study on the nine-state development panel: median mean absolute error in nats
 on the new-state cells over twenty fixed replicates, when the nine-state development panel retains
@@ -688,7 +688,7 @@ family, so the fitted cliff parameter of the two-regime
 law becomes a measurable order parameter that varies smoothly within each family.
 \preliminary{three models, two families; a multi-model extension is left to future work}
 
-\begin{figure}[!htbp]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=\textwidth]{figs/fig5_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig5_a.pdf}\caption{1B student}\end{subfigure}\hfill
@@ -697,7 +697,7 @@ law becomes a measurable order parameter that varies smoothly within each family
 \label{fig:drift}
 \end{figure}
 
-\begin{figure}[!htbp]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=\textwidth]{figs/fig2_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig2_a.pdf}\caption{Reuse-term curvature}\end{subfigure}\hfill
@@ -727,7 +727,7 @@ the measured loss change with a median relative error that depends on the loss-c
 family or the knob (Table~\ref{tab:disp_boundary}): under 5\% wherever the loss change is below about
 0.1 nats, and rising past 20\% by 0.25 nats. Grouped four-bit quantization with fine groups, at 0.06 nats, sits on the same error curve as per-channel four-bit quantization at 0.24 nats of damage.
 
-\begin{table}[!htbp]\normalfont
+\begin{table}[tb]\normalfont
 \centering\small
 \caption{Median relative error of the coefficient-free second-order account, by family and
 configuration. Rows identify compression families; the second column pairs each setting with its median relative error in percent, from a \mbox{post-hoc} analysis of the measured damage.}
@@ -791,7 +791,7 @@ unchanged.
 
 This section gives the selection rule behind \S\ref{sec:selection}, its retrospective validation
 and its prospective confirmation. Section S6 of the supplement tabulates the per-policy results behind Fig.~\ref{fig:selection}: mean regret against the measured oracle, agreement with the oracle's method, the share of no-clear-winner cells, and the share of cells in which a fixed-method policy cannot meet the budget; such cells are infeasible, have no fallback and enter no mean.
-\begin{figure}[!htbp]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=5.5in]{figs/selection_feasible_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/selection_feasible_a.pdf}\subcaption{Math}\end{subfigure}\hfill
@@ -837,7 +837,7 @@ describe whether the no-clear-winner candidate set contains the oracle's method 
 configuration is the figure quoted in the main
 text.
 \input{tables/locked_rule}
-\begin{figure}[!htbp]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=5.5in]{figs/rule_maps_full_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_full_a.pdf}\subcaption{Math}\end{subfigure}\hfill
@@ -910,7 +910,7 @@ a permitted pre-compression input; each candidate's predictions are committed wi
 and only then is the outcome measured. Rows marked retrospective are labeled as such, and the
 fifteen freeze records each name their commit in \texttt{docs/}.
 
-\begin{table}[!htbp]\normalfont
+\begin{table}[tb]\normalfont
 \centering\small
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.190839695\textwidth-0.763358779\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.435114504\textwidth-1.740458015\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.374045802\textwidth-1.496183206\tabcolsep\relax}@{}}
 \toprule
