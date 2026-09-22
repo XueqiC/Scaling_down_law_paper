@@ -3,7 +3,7 @@
 \centering
 \scriptsize
 \setlength{\tabcolsep}{3pt}
-\caption{The table records the frozen distillation formulas and their fitted coefficients. Responses are loss changes in nats per native token. The first panel specifies the fit; the second lists coefficients in the stated order. The notes define the model inputs and the procedure used to fit each form.}
+\caption{The table records the pre-specified distillation formulas and their fitted coefficients. Responses are loss changes in nats per native token. The first panel specifies the fit; the second lists coefficients in the stated order. The notes define the model inputs and the procedure used to fit each form.}
 \par\smallskip\begin{minipage}{\linewidth}\footnotesize The selected reuse response for Mathematics and Code is $a\log(1+E)$, with one parameter and no intercept; the reuse-only baseline $c+b\log(1+E)$ has an unpenalized intercept.\end{minipage}
 \label{tab:distill_forms_audit}
 \textbf{A. Exact forms and fitting protocol}\par\smallskip
@@ -33,7 +33,7 @@ Reuse only & $c+b w$ & 2 & Yes & No & No descriptor & {development ridge regress
 \begingroup\normalfont\scriptsize
 \par\smallskip
 \begin{minipage}{\textwidth}\scriptsize
-$T=T_c$ is supervised completion-token exposure; $D_U$ is unique-pool completion tokens; $E=T/D_U$, $u=\log(1+T/35000)$, $w=\log(1+E)$, $v=\log(D_U/99504)$, $n=\log(N/N_{\rm ref})$, $N_{\rm ref}=1.4129708903255556\times10^9$. $z_L=(L_{0,s,c}-\mu_{L,c})/\sigma_{L,c}$, $z_N=(\log N_s-\mu_N)/\sigma_N$; $N$ is the frozen multi-student development total meta-device parameter count; descriptor means and standard deviations equally weight the three development students. $s=1-\exp(-T/T_\star)$. All logarithms are natural. The student-size variants introduce student size $n$.
+$T=T_c$ is supervised completion-token exposure; $D_U$ is unique-pool completion tokens; $E=T/D_U$, $u=\log(1+T/35000)$, $w=\log(1+E)$, $v=\log(D_U/99504)$, $n=\log(N/N_{\rm ref})$, $N_{\rm ref}=1.4129708903255556\times10^9$. $z_L=(L_{0,s,c}-\mu_{L,c})/\sigma_{L,c}$, $z_N=(\log N_s-\mu_N)/\sigma_N$; $N$ is the pre-specified multi-student development total meta-device parameter count; descriptor means and standard deviations equally weight the three development students. $s=1-\exp(-T/T_\star)$. All logarithms are natural. The student-size variants introduce student size $n$.
 \par Development fit: all 25 trajectories $\times$ 4 checkpoints (100 responses per capability): 12 former development + 9 former test + 4 former \mbox{held-out}-4 billion trajectories. Raw fitting weights are 1 per row; normalized weights are $1/25$ per trajectory and $1/4$ within trajectory ($1/100$ per row), with no token-count or equal-student weighting. Every listed form uses this same pooled fit; only baseline selection varies by student.
 \par Ordinary least squares: unpenalized ordinary least squares. Ridge regression: $\text{sum of squared errors}+0.001\|\beta_{\rm std,nonint}\|_2^2$; columns use training population standard deviations. Center nonconstant columns only when an intercept exists; descriptor-modulated reuse and saturating budget and reuse have no intercept and no centering. All nonintercept ridge coefficients are penalized. saturating budget and reuse adds one discrete fitted $T_\star\in\{17500,35000,70000,140000,280000\}$, chosen by training sum of squared errors. Selection uses 25 leave-one-run-out folds, refitting on $24\times4$ points per fold.
 \end{minipage}
@@ -45,7 +45,7 @@ $T=T_c$ is supervised completion-token exposure; $D_U$ is unique-pool completion
 \scriptsize
 \setlength{\tabcolsep}{3pt}
 \caption[]{The table continues the preceding comparison. Responses are loss changes in nats per native token. The first panel specifies the fit; the second lists coefficients in the stated order. The notes define the model inputs and the procedure used to fit each form.}
-\textbf{B. Frozen coefficients (order shown; rounded to 8 decimals)}\par\smallskip
+\textbf{B. Pre-specified coefficients (order shown; rounded to 8 decimals)}\par\smallskip
 %
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.350000000\textwidth-2.100000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.170000000\textwidth-1.020000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.280000000\textwidth-1.680000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.200000000\textwidth-1.200000000\tabcolsep\relax}@{}}
 \toprule
@@ -226,5 +226,5 @@ Response surface with student size & QA & Student size & 0.11416459 \\
 \end{tabular*}%
 
 \par\smallskip
-\begin{minipage}{\textwidth}\scriptsize Coefficients multiply the raw bases in panel A, including the uncentered zero-budget forms. Full-precision coefficients, all normalization references, fitting weights, and freeze hashes are in the saved distillation audit. Question answering selects the joint form; Mathematics and Code select the reuse response. Intercepts count toward $k$; estimated descriptor references and column scalings are preprocessing, not additional regression coefficients in distillation confirmation's selection count.\end{minipage}
+\begin{minipage}{\textwidth}\scriptsize Coefficients multiply the raw bases in panel A, including the uncentered zero-budget forms. Full-precision coefficients, all normalization references, fitting weights, and file hashes are in the saved distillation audit. Question answering selects the joint form; Mathematics and Code select the reuse response. Intercepts count toward $k$; estimated descriptor references and column scalings are preprocessing, not additional regression coefficients in distillation confirmation's selection count.\end{minipage}
 \end{table}

@@ -8,7 +8,7 @@
 \ifdim\wd0>\linewidth #1\newline #2\newline #3\else\box0\fi}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .30\textwidth-1.80\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .28\textwidth-1.68\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .14\textwidth-0.84\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .28\textwidth-1.68\tabcolsep\relax}@{}}
 \toprule
-Prediction task & Frozen candidate & Candidate error (nats) & Delivered relation \\
+Prediction task & Pre-specified candidate & Candidate error (nats) & Delivered relation \\
 \midrule
 Four unseen Pythia states pruned at six densities & Compact power form using half the measurements & \TableOneErrors{0.07}{0.10}{0.18} & The same power form, with a median density curve for question answering \\
 \midrule
@@ -21,6 +21,6 @@ An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512 & Source
 Gemma 270 million and 1 billion distilled on six new pools at 50 to 200 thousand tokens & Reuse forms, with a budget and pool form for question answering & \TableOneErrors{0.07, 0.06}{0.02, 0.05}{0.51, 0.46} & The same predictor \\
 \bottomrule
 \end{tabular*}
-\caption{\footnotesize\fontsize{8.5}{10}\selectfont Frozen candidate of each prediction task in Table~\ref{tab:main-prediction-v2}, its error on the same cells, and the relation delivered after the test. Errors are mean absolute errors in nats per token, in math, code and question answering order, and distillation entries give the 270 million and 1 billion students in that order.}
+\caption{\footnotesize\fontsize{8.5}{10}\selectfont Pre-specified candidate of each prediction task in Table~\ref{tab:main-prediction-v2}, its error on the same cells, and the relation delivered after the test. Errors are mean absolute errors in nats per token, in math, code and question answering order, and distillation entries give the 270 million and 1 billion students in that order.}
 \label{tab:main-prediction-candidates}
 \end{table}

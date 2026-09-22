@@ -16,8 +16,8 @@ for code, and raises it from 0.50 to 0.81 for question answering.
 \item \textbf{Pruning.} Mathematics and code take the power form of Eq.~\ref{eq:power} from the
 parameter count, the pretraining tokens and the reference loss, at unseen densities in $[0.6,0.9]$
 of a state in the fit and at new training stages of sizes inside the fitted range, where a
-registered confirmation on four such states supports it (Section~\ref{sec:efficiency}). At sizes
-outside that range, and for question answering, the delivered relation is the frozen development
+pre-specified confirmation on four such states supports it (Section~\ref{sec:efficiency}). At sizes
+outside that range, and for question answering, the delivered relation is the pre-specified development
 median curve $L_{0,c}+\widetilde f_c(d)$, which reads only the reference loss. Fitted and tested on Pythia 160M--1.4B at three
 pretraining stages, densities 0.6--0.9 and tests to 0.55.
 \item \textbf{Quantization.} Per-channel quantization on a new state takes the per-bit development

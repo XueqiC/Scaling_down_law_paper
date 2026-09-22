@@ -10,7 +10,7 @@ used throughout the paper, so that each later section can be read against them.
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_a.pdf}\caption{Pruning}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_b.pdf}\caption{Per-channel quantization}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_c.pdf}\caption{Grouped quantization}\end{subfigure}
-\caption{Compression responses on the controlled Pythia panel. (a) Loss change against retained density on the nine development states, with the median predictions as heavy lines. (b) Loss change against bit-width under per-channel round-to-nearest. (c) Loss change against group size at 3, 4 and 5 bits for one state; groups 32 and 512 were unseen when the predictions were frozen.}
+\caption{Compression responses on the controlled Pythia panel. (a) Loss change against retained density on the nine development states, with the median predictions as heavy lines. (b) Loss change against bit-width under per-channel round-to-nearest. (c) Loss change against group size at 3, 4 and 5 bits for one state; groups 32 and 512 were unseen when the predictions were pre-specified.}
 \label{fig:pythia_responses}
 \end{figure}
 
@@ -120,14 +120,14 @@ Varied distillation recipes. &
 Describes measured responses. \\
 \bottomrule
 \end{tabular*}
-\caption{Cohorts of models and states, compression interventions, and study roles. Rows distinguish development cohorts, frozen prediction tests, and descriptive \mbox{post-hoc} measurements; each cohort is scored with the same 64 probes per capability. Densities and reuse counts are dimensionless, bit widths are in bits, and budgets are in tokens. The 2.8B Pythia checkpoints are excluded because their available revisions loaded identical weights.}
+\caption{Cohorts of models and states, compression interventions, and study roles. Rows distinguish development cohorts, pre-specified prediction tests, and descriptive \mbox{post-hoc} measurements; each cohort is scored with the same 64 probes per capability. Densities and reuse counts are dimensionless, bit widths are in bits, and budgets are in tokens. The 2.8B Pythia checkpoints are excluded because their available revisions loaded identical weights.}
 \label{tab:cohorts}
 \end{table}
 
 The panel uses the public Pythia checkpoints at sizes 160M, 410M and 1.4B and pretraining steps
 16{,}000, 64{,}000 and 143{,}000, which correspond to 33.6B, 134.2B and 299.9B processed tokens at
 the published batch of $1024\times2048$ tokens per step. The size coordinate $N_0$ counts transformer-matrix parameters only, the query, key, value, output and MLP matrices of each layer, computed from the architecture configuration, and the training-token coordinate is
-$D_0=\text{step}\times2{,}097{,}152$. The sources added for the prospective tests, listed in Table~\ref{tab:cohorts}, entered no fit or model selection before their predictions were frozen, and they are reported as frozen tests.
+$D_0=\text{step}\times2{,}097{,}152$. The sources added for the prospective tests, listed in Table~\ref{tab:cohorts}, entered no fit or model selection before their predictions were pre-specified, and they are reported as pre-specified tests.
 
 Before any of these checkpoints entered a fit, the weight identity of each one was verified.
 SHA-256 hashes of the safetensors blobs of all 23 Pythia revisions used, 30 unique blobs, show that
@@ -144,10 +144,10 @@ the heterogeneous panel and the controlled panel are dense
 transformers (Section S1 of the supplement); no sparsely activated model
 entered any fit, so total and per-token active parameter counts
 coincide throughout, and the reference-model definition of
-Section~\ref{sec:loss} is exercised only on dense architectures. The laws use the transformer-matrix count $N_0$ of the decoder blocks, excluding embeddings, head, biases and norms; the frozen
-distillation source term used the metadata parameter count of the student recorded at the freeze,
+Section~\ref{sec:loss} is exercised only on dense architectures. The laws use the transformer-matrix count $N_0$ of the decoder blocks, excluding embeddings, head, biases and norms; the pre-specified
+distillation source term used the metadata parameter count of the student recorded when the predictions were fixed,
 which for Gemma-3-4B includes 0.42B vision and projector parameters
-and counts tied embeddings twice; these frozen covariates are reported as recorded at the freeze.
+and counts tied embeddings twice; these pre-specified covariates are reported as recorded when the predictions were fixed.
 
 
 
@@ -274,7 +274,7 @@ independently: Gemma-3 robustness peaks at 12B and 27B collapses far earlier, in
 ability-space observation of a Qwen3 14B peak. A mid-scale robustness peak appears in both families, in the present grid and in the earlier one.
 One candidate predictor of this structure was retired. The
 top-concentration statistic $\kappa_c$ of the capability gradient tracked robustness within the
-Qwen3 ladder and was pre-registered as a predictor. The full grid does not support it: across families the
+Qwen3 ladder and was pre-specified as a predictor. The full grid does not support it: across families the
 ordering inverts, since OLMo, the most robust family, has the lowest concentration, and within
 Gemma-3 the largest size violates the within-family trend, so the statistic was retired.
 At matched scale, on the panel of models near 30B parameters, the
@@ -290,8 +290,8 @@ $\le+0.63$ nats on each capability. Family identity is a first-order determinant
 The delivered pruning form (Eq.~\ref{eq:power}) and its standardization are in
 Table~\ref{tab:round3_coef}. The coefficients of the grouped-quantization surface, which is not a
 delivered relation, are in Section S2 of the supplement beside the analysis of its rank. The per-bit
-source regressions, the distillation source and pool forms, and the frozen multi-student forms are
-stored with their standardization constants in the register files listed in
+source regressions, the distillation source and pool forms, and the pre-specified multi-student forms are
+stored with their standardization constants in the development files listed in
 Appendix~\ref{sec:app_registration}.
 \input{tables/round3_coef}
 
@@ -307,9 +307,9 @@ capabilities it serves, and what structure the relations share.
 The pruning relation was selected on the development panel. Fit on nine states at $d\in\{0.9,0.8,0.7,0.6\}$
 and scored at the unseen 0.65 and 0.55, Eq.~\ref{eq:power} reduces the
 strength-only error by a factor of two to three, and A2 matches it; refit on 17
-states under a pre-committed leave-one-source-out rule, A2 and the power form tie within 0.02 nats, at 0.479 and 0.494, and the rule prefers the continuous form that vanishes at $d=1$; the coefficients are in Appendix~\ref{sec:app_coef}, and the exponent $\gamma_c$ is a fitted constant that has not been established as necessary.
+states under a pre-specified leave-one-source-out rule, A2 and the power form tie within 0.02 nats, at 0.479 and 0.494, and the rule prefers the continuous form that vanishes at $d=1$; the coefficients are in Appendix~\ref{sec:app_coef}, and the exponent $\gamma_c$ is a fitted constant that has not been established as necessary.
 
-Its boundary was then established. Evaluated as a frozen candidate on three new checkpoints, the power form reaches the math error of A2 with five parameters against twenty and does not beat the median curve on code or QA; on a 2.8B source the median curve is three to seven times better than either source form (Section~\ref{sec:general}). The compact form trades accuracy for compactness within a tested range; the median curve is the relation for new states, a rule fixed after these tests and reused without change in Section~\ref{sec:selection} for the selection rule and its confirmation.
+Its boundary was then established. Evaluated as a pre-specified candidate on three new checkpoints, the power form reaches the math error of A2 with five parameters against twenty and does not beat the median curve on code or QA; on a 2.8B source the median curve is three to seven times better than either source form (Section~\ref{sec:general}). The compact form trades accuracy for compactness within a tested range; the median curve is the relation for new states, a rule fixed after these tests and reused without change in Section~\ref{sec:selection} for the selection rule and its confirmation.
 
 For quantization, two parametric candidates were tested first, a
 separable amplitude-times-shape form and a low-order surface in
@@ -317,19 +317,19 @@ $\log_2 q_{\max}$ and $\log_2 g$; the surface beat zero change at the
 unseen $b=4$ and $g=128$ on the two-bit-level development set, but its quadratic term is unidentified there, with design rank 16 of 20, as Section S2 of the supplement shows. That earlier round contains the only test of a genuinely unseen bit width, and it is
 reported here rather than in Table~\ref{tab:main-prediction-v2}. On the six development states at
 bit width 4 with group sizes 64 and 256, fitted on 24 development configuration measurements per
-capability, the frozen surface reaches 0.19, 0.21 and 0.44 nats on mathematics, code and question
+capability, the pre-specified surface reaches 0.19, 0.21 and 0.44 nats on mathematics, code and question
 answering, against 0.55, 0.73 and 0.54 for the development-selected median. The surface is not the
 delivered relation, and the relation that is delivered can show no error of its own on these cells,
 because they were added to the development grid of the round that selected it; the interpolation
 variant scored on them in the earlier round uses different models and boundary rules and does not
 stand in for it. Table~\ref{tab:main-prediction-v2} therefore carries only tasks on which the
 delivered predictor has an independent error. In a confirmation round with all 54
-unblinded cells as development set and 21 cells frozen at unseen
-group sizes and on a new state, the interpolation won the frozen cells
+unblinded cells as development set and 21 cells pre-specified at unseen
+group sizes and on a new state, the interpolation won the pre-specified cells
 for math and code and the median won the new state, so the delivered
 rule was fixed after that round and is marked Retrospective in
 Table~\ref{tab:main-prediction-v2} and in the tables of
-Appendix~\ref{sec:app_results}. Table~\ref{tab:main-prediction-candidates} lists the frozen
+Appendix~\ref{sec:app_results}. Table~\ref{tab:main-prediction-candidates} lists the pre-specified
 candidate of each task beside the relation delivered after its test.
 \input{tables/main_prediction_candidates}
 
@@ -340,21 +340,21 @@ and the surface is not delivered, as the tests of Section~\ref{sec:unseen_settin
 held-out cell of that panel.
 
 For distillation, eight forms in $T$, $E$, and a source term were
-frozen on twelve development runs and scored on nine unseen-pool
+fixed on twelve development runs and scored on nine unseen-pool
 trajectories with the headline chosen after the test, and two
 descriptor-carrying forms were compared retrospectively
 (Section S2 of the supplement); the delivered forms were then
-re-selected on all 25 trajectories by a pre-committed
-leave-one-trajectory-out rule and frozen for six new pools of
+re-selected on all 25 trajectories by a pre-specified
+leave-one-trajectory-out rule and pre-specified for six new pools of
 $U{=}200$ at three new budgets. A linear form in the student state, fit on nine Pythia states, serves only as the math predictor for the distillation candidates of the selection rule in
 Section~\ref{sec:selection}, and enters no other relation.
 
 The boundary of the distillation relation is set by the new-pool test. At the new pool size the
 selected form beats the
-frozen strongest baseline for code on both students, where that
+pre-specified strongest baseline for code on both students, where that
 baseline is the same $\log(1+E)$ form with an intercept, so the gain
 supports the zero-budget boundary and the parsimony of the form and does not
-establish a full student-data-training law; QA gains on 270M only, math loses to intercept baselines, no selected form is the post-hoc best of the sixteen frozen forms, a minimum selection favours by construction (Section S4 of the supplement); a student 6.6 times the reference size lies outside the tested range.
+establish a full student-data-training law; QA gains on 270M only, math loses to intercept baselines, no selected form is the post-hoc best of the sixteen pre-specified forms, a minimum selection favours by construction (Section S4 of the supplement); a student 6.6 times the reference size lies outside the tested range.
 
 
 \subsection{Applicability across capabilities}
@@ -364,7 +364,7 @@ Where the initial-state inputs help is method- and range-specific:
 they carry math and code at unseen pruning densities of seen sizes
 and at unseen group sizes of seen states, add nothing on new
 quantization states or in distillation beyond the reference anchor,
-and over-predict the QA pruning response on each new checkpoint. What capability conditioning adds is measurable on the frozen
+and over-predict the QA pruning response on each new checkpoint. What capability conditioning adds is measurable on the pre-specified
 confirmation panels (Appendix~\ref{sec:app_shared}): per-capability
 pruning curves beat a shared response curve with a signed
 per-capability scale by 0.06 nats macro-averaged, largely through QA at 0.17 nats, whose aggregate curve is not proportional to the tested shared curve:
@@ -392,7 +392,7 @@ capability-specific; parameter intervals and 80\% prediction intervals that unde
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/final_relations_e.pdf}\subcaption{270M}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/final_relations_f.pdf}\subcaption{1B}\end{subfigure}
 
-\caption{Measured responses and frozen relations on native configuration axes. (a) Pythia-1.4B at step 112k: measured densities, the delivered power form (solid, Eq.~\ref{eq:power}) and the frozen median development curves (dashed); shading marks the refit range $d\in[0.55,0.9]$. (b)--(d) Math responses to group size at 3, 4 and 5 bits on Pythia-410M at 143k (solid) and 1.4B at 16k (dotted): frozen piecewise interpolation, per-configuration medians (dashed), and predictions at the unmeasured $g=32,512$ (hollow) with their later measurements (filled). (e)--(f) Gemma-3 270M and 1B trajectories at $U=200$: measured responses at the recorded reuse ratio, the frozen selected forms (capability colours) and the strongest frozen baseline (grey).}
+\caption{Measured responses and pre-specified relations on native configuration axes. (a) Pythia-1.4B at step 112k: measured densities, the delivered power form (solid, Eq.~\ref{eq:power}) and the pre-specified median development curves (dashed); shading marks the refit range $d\in[0.55,0.9]$. (b)--(d) Math responses to group size at 3, 4 and 5 bits on Pythia-410M at 143k (solid) and 1.4B at 16k (dotted): pre-specified piecewise interpolation, per-configuration medians (dashed), and predictions at the unmeasured $g=32,512$ (hollow) with their later measurements (filled). (e)--(f) Gemma-3 270M and 1B trajectories at $U=200$: measured responses at the recorded reuse ratio, the pre-specified selected forms (capability colours) and the strongest pre-specified baseline (grey).}
 \label{fig:responses_relations}
 \end{figure}
 
@@ -419,7 +419,7 @@ budget no delivered relation uses, is in Section S2 of the supplement.
 The value of capability conditioning can be measured on the same confirmation panels. At equal
 development information, Table~\ref{tab:cap_conditioning}
 compares the delivered per-capability source-free predictors, variant A, with three shared alternatives: one shared response curve times a signed per-capability scale, variant B; the shared curve plus a per-capability offset, variant C; and the shared curve alone, variant D, all fit on development data only and scored on the
-frozen confirmation cells. With the two identical 2.8B labels merged into one state, the gain of A over B is 0.059 nats macro-averaged for pruning, 0.168 for QA, and within noise for math and code; 0.003 for quantization; and zero for distillation, where the single-coefficient forms of A and B coincide, which
+held-out confirmation cells. With the two identical 2.8B labels merged into one state, the gain of A over B is 0.059 nats macro-averaged for pruning, 0.168 for QA, and within noise for math and code; 0.003 for quantization; and zero for distillation, where the single-coefficient forms of A and B coincide, which
 supports no conclusion about conditioning there. The audit of this
 comparison (Section S2 of the supplement) shows that negative scales were allowed
 and none occurred, and that the QA gain arises because the aggregate
@@ -429,11 +429,11 @@ development sources, which neither source-free variant captures. The ablation is
 
 
 
-\section{Frozen Prediction Results}
+\section{Pre-specified Prediction Results}
 \label{sec:app_results}
 
-This section collects the frozen predictions and their measured outcomes, cell by cell, in the
-order in which the tests were run and the predictions were frozen.
+This section collects the pre-specified predictions and their measured outcomes, cell by cell, in the
+order in which the tests were run and the predictions were pre-specified.
 
 \begin{figure}[tb]
 \centering
@@ -441,22 +441,22 @@ order in which the tests were run and the predictions were frozen.
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/corner_test_a.pdf}\caption{QA readout}\end{subfigure}\hfill
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/corner_test_b.pdf}\caption{Math and code readouts}\end{subfigure}
 \caption{The four-corner second difference per student and readout on its own scale: the measured
-value with its registered interval, the additive prediction of zero and the frozen interaction prediction. Both predictions lie inside the QA intervals, so the design did not separate the two
-structures; the math and code readouts were registered as underpowered before the trajectories
+value with its pre-specified interval, the additive prediction of zero and the pre-specified interaction prediction. Both predictions lie inside the QA intervals, so the design did not separate the two
+structures; the math and code readouts were specified in advance as underpowered before the trajectories
 were trained.}
 \label{fig:corner_test}
 \end{figure}
 \begin{figure}[tb]
 \centering
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/corner_contrasts_a.pdf}\caption{Prediction minus measurement}\end{subfigure}
-\caption{Corner residuals for the two students and the registered additive corner contrasts on the
-fresh 2Wiki, MuSiQue and TriviaQA distributions, whose registered additive prediction is zero; the
+\caption{Corner residuals for the two students and the pre-specified additive corner contrasts on the
+fresh 2Wiki, MuSiQue and TriviaQA distributions, whose pre-specified additive prediction is zero; the
 legend of Fig.~\ref{fig:corner_test} applies.}
 \label{fig:corner_contrasts}
 \end{figure}
 
 
-Section S4 of the supplement gives each registered test in three lines, the candidate, the strongest same-input baseline and the strongest simple baseline, with improvements and provenance codes,
+Section S4 of the supplement gives each pre-specified test in three lines, the candidate, the strongest same-input baseline and the strongest simple baseline, with improvements and provenance codes,
 the per-stage and per-protocol results of the Pythia-1B and 6.9B pairs, the confirmation panel and the
 grouped-quantization tests, and the paired improvements from adding each input and from each
 functional form. Fig.~\ref{fig:corner_contrasts} gives the corner residuals on the fresh
@@ -470,7 +470,7 @@ on the same cells, is in that section as well.
 \includegraphics[width=\textwidth]{figs/fig3_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_a.pdf}\caption{New configurations of model states that entered the fit}\end{subfigure}\\[2pt]
 \begin{subfigure}[t]{\textwidth}\centering\includegraphics[width=\linewidth]{figs/fig3_b.pdf}\caption{Model states that entered no fit}\end{subfigure}
-\caption{Generalization of the frozen relations by kind of novelty: each row compares the error of
+\caption{Generalization of the pre-specified relations by kind of novelty: each row compares the error of
 the relation, a hollow diamond, with the development-selected baseline, a hollow circle, on the
 same cells, one sub-row per capability; the segment is coloured where the relation is lower.}
 \label{fig:generalization}
@@ -478,7 +478,7 @@ same cells, one sub-row per capability; the segment is coloured where the relati
 
 \end{retargetreferences}
 
-The second frozen round added seven pruning densities from 0.55 to 0.9, of which 0.55 is an extrapolation, and five bit-widths from 3 to 8 on Pythia-1B at steps 32k and 112k, with protocol A fit
+The second confirmation round added seven pruning densities from 0.55 to 0.9, of which 0.55 is an extrapolation, and five bit-widths from 3 to 8 on Pythia-1B at steps 32k and 112k, with protocol A fit
 on the full nine-state development panel and protocol B on states at step 64k
 or below. The 6.9B pair was a size extrapolation of about five times:
 under protocol A at 112k, the source regression reaches 0.23, 0.19 and 0.96 nats on math, code and QA against 0.05, 0.07 and 0.15 for the median curve;
@@ -488,11 +488,11 @@ protocol A the class-indicator candidate is worst or near worst above 3 bits, an
 by about four nats at 3 bits; protocol B compresses the differences above
 3 bits to the 0.02 to 0.05 range and leaves the candidate ahead at 3 bits only for the late stage. The full two-protocol results are tabulated per stage and protocol in Section S4 of the supplement.
 
-The distillation confirmation round re-selected forms on all 25 trajectories of the uniform protocol under leave-one-trajectory-out folds, with ties within 0.02 nats resolved toward fewer parameters, which gave a reuse form for math and code and the joint form for QA, froze predictions for six new pools
+The distillation confirmation round re-selected forms on all 25 trajectories of the uniform protocol under leave-one-trajectory-out folds, with ties within 0.02 nats resolved toward fewer parameters, which gave a reuse form for math and code and the joint form for QA, fixed predictions for six new pools
 of $U{=}200$ at budgets of 50k, 100k, and 200k supervised tokens, and
-fixed the strongest baseline per student and capability from the same development pass, a development-designated baseline; ranked post hoc over all sixteen frozen forms, a source-conditioned variant has the lowest test error for each student and capability, as Section S4 of the supplement records. Table~\ref{tab:distill_confirm} gives the paired differences with pool-cluster intervals over six independent pools. Dense losses
+fixed the strongest baseline per student and capability from the same development pass, a development-designated baseline; ranked post hoc over all sixteen pre-specified forms, a source-conditioned variant has the lowest test error for each student and capability, as Section S4 of the supplement records. Table~\ref{tab:distill_confirm} gives the paired differences with pool-cluster intervals over six independent pools. Dense losses
 re-measured on a different GPU drift by at most 0.001 nats from the
-frozen descriptor and were tolerated at 0.01; shifting each response
+pre-specified descriptor and were tolerated at 0.01; shifting each response
 by the drift of its trajectory in either direction changes no interval sign in any of the 12 comparisons. Per-example losses are
 not stored, so an item-level interval cannot be computed; each
 evaluation scores 64 items per capability, and the pool-cluster intervals therefore cover the sampling of pools and nothing else.
@@ -506,15 +506,15 @@ evaluation scores 64 items per capability, and the pool-cluster intervals theref
 Fig.~\ref{fig:efficiency_qa} gives the question-answering counterpart of the main-text figure. A retrospective subsampling study of the nine-state development panel, with twenty fixed replicates at 25, 50 and 100 percent of the measurements that reduce either the number of sources or the number of densities per source, found that across the replicates the five-parameter power form fitted on 18
 measurements attains median errors of 0.20 nats on mathematics and 0.17 on code, against 0.18 and
 0.13 for the per-density regression fitted on all 36, and that the
-median curve is the better predictor for QA at every budget. Table~\ref{tab:a9} gives its error at each budget. A registered confirmation then froze
+median curve is the better predictor for QA at every budget. Table~\ref{tab:a9} gives its error at each budget. A pre-specified confirmation then fixed
 five predictors before four Pythia states in no earlier fit or test, listed in Table~\ref{tab:a11}, were pruned to densities 0.65 to 0.9;
-Table~\ref{tab:a11} gives the outcome. The registered rule, that the reduced-budget power form lies within 0.05 nats of the full-budget regression on math and code, is met.
+Table~\ref{tab:a11} gives the outcome. The pre-specified rule, that the reduced-budget power form lies within 0.05 nats of the full-budget regression on math and code, is met.
 
 \begin{figure}[tb]
 \centering
 \includegraphics[width=\textwidth]{figs/eff_qa_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_qa_a.pdf}\caption{Error against development measurements}\end{subfigure}\hfill
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_qa_b.pdf}\caption{Registered confirmation on four new states}\end{subfigure}
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_qa_b.pdf}\caption{Pre-specified confirmation on four new states}\end{subfigure}
 \caption{Measurement efficiency for question answering, the counterpart of
 Fig.~\ref{fig:efficiency}. The median density curve is the better predictor at every development
 budget, and on the four confirmation states the three predictors are within 0.006 nats of each
@@ -525,7 +525,7 @@ curve, so nothing here displaces the median curve as the delivered rule for this
 
 \begin{table}[tb]
 \centering\footnotesize
-\caption{Registered measurement-efficiency confirmation on four Pythia states outside every fit, 160M at step 80000, 410M at step 112000, 1.4B at step 48000 and 1B at step 48000, with 24 cells per capability: mean absolute error in nats per token of each frozen predictor. The
+\caption{Pre-specified measurement-efficiency confirmation on four Pythia states outside every fit, 160M at step 80000, 410M at step 112000, 1.4B at step 48000 and 1B at step 48000, with 24 cells per capability: mean absolute error in nats per token of each pre-specified predictor. The
 reduced-budget power form used the densities 0.9 and 0.7 of each development state, 18 measurements per capability.}
 \label{tab:a11}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrr@{}}
@@ -568,12 +568,12 @@ Measurements per capability & Predictor & Math & Code & QA \\
 \subsection{Measured data requirements under distillation}
 \label{sec:app_dreq}
 
-The registered experiment behind Fig.~\ref{fig:dreq} trained eighteen trajectories on the 1B and 4B
+The pre-specified experiment behind Fig.~\ref{fig:dreq} trained eighteen trajectories on the 1B and 4B
 students, three pool tiers each with three seeds, and evaluated every trajectory at 50, 100 and 200
 thousand supervised tokens on six readouts. Table~\ref{tab:dreq-main} lists, for each readout, student and budget at the primary tolerance,
 whether the constraint was crossed inside the tested pool range, the crossing interval or the
 bound, and the distance of each predictor's recommended pool size from the measured interval; the
-supplement gives the full accounting over all tolerances. The boundary relation registered before the run did not predict these intervals better than a
+supplement gives the full accounting over all tolerances. The boundary relation pre-specified before the run did not predict these intervals better than a
 per-student monotone interpolation, which solved the most requests over the same denominator on
 the QA distributions and on math and code alike.
 \input{tables/dreq_main}
@@ -725,30 +725,30 @@ change are carried by the first-order term.
 \label{sec:app_s3}
 
 The confirmation of Section~\ref{sec:selection} used four references, none of which supplied a
-measurement to the locked rule. Table~\ref{tab:s3-identity} gives the exact releases, revisions and prior use, and
+measurement to the final rule. Table~\ref{tab:s3-identity} gives the exact releases, revisions and prior use, and
 separates a new model state from a new intervention on familiar weights. Each reference carried
 four pruning densities, six quantization settings, the dense model and one student distilled in
 this round under the recipe on which the delivered relation was fitted. Two questions were settled
-before any outcome was observed, against two different registered sets. The first is checkpoint
+before any outcome was observed, against two different pre-specified sets. The first is checkpoint
 identity: the learned values of all six snapshots were compared with the thirty Pythia revisions in
-the registered records, 180 comparisons in which no snapshot matched any of them. The second is
+the earlier records, 180 comparisons in which no snapshot matched any of them. The second is
 prior use, which Table~\ref{tab:s3-identity} records: the two Pythia step-120000 states
 appear in no earlier record, whereas the Gemma releases were measured in earlier development, so
 for them the round tests new candidates on familiar weights. The dense reference and pristine
-student losses were then measured on the frozen probes, and 144 capability predictions, 48
-largest-increase predictions and both selection maps were sealed. Table~\ref{tab:s3-selection} reports the outcome for each reference and objective. Question answering is the only objective with an opportunity to capture, and the rule captures it;
+student losses were then measured on the fixed probes, and 144 capability predictions, 48
+largest-increase predictions and both selection maps were fixed before any outcome was observed. Table~\ref{tab:s3-selection} reports the outcome for each reference and objective. Question answering is the only objective with an opportunity to capture, and the rule captures it;
 on the other three the opportunity is negligible for every policy.
 \input{tables/s3_identity}
 \input{tables/s3_selection}
 
-A retrospective control, outside the registration, separates the selection opportunity that an
+A retrospective control, outside the pre-specified analysis, separates the selection opportunity that an
 initial smaller student supplies by itself from the further opportunity associated with the
 distillation. Table~\ref{tab:s3-retrospective-control} compares the best feasible loss when
 quantization is supplemented with the pristine student against the same quantity when it is
 supplemented with the distilled student, at the same nominal storage ratio. Its entries are
 therefore differences in candidate-set opportunity, and not the loss change
-$L(S_{\mathrm{KD}})-L(S_0)$ of a student measured against its own starting point. The frozen rule
-never saw the pristine candidate, so the original frozen selections and the registered results are
+$L(S_{\mathrm{KD}})-L(S_0)$ of a student measured against its own starting point. The final rule
+never saw the pristine candidate, so the original pre-specified selections and the pre-specified results are
 unchanged.
 \input{tables/s3_control}
 
@@ -771,7 +771,7 @@ the oracle for math, code and QA and picks the oracle's method in 96\%, 95\% and
 quantization-only is close behind.
 
 
-It was then locked and confirmed on independent states. The rule fixed
+It was then fixed and confirmed on independent states. The rule fixed
 before the confirmation panel was measured is as follows:
 pruning uses the power form for math and code and the median curve
 for QA at unseen densities of seen sizes, and the median development
@@ -789,9 +789,9 @@ capabilities for the multi-capability objective
 it departs from the delivered relations of Section~\ref{sec:laws}); quantization-only
 uses the same candidates, predictor, and feasibility rule with no
 fallback. Predictions under this rule and under the earlier
-source-conditioned laws were frozen for four fresh states before
+source-conditioned laws were pre-specified for four fresh states before
 measurement (Table~\ref{tab:rule-confirm}; Fig.~\ref{fig:rule_maps});
-the registered criterion confirms a capability when the mean regret of the locked rule over the 68 cells is within that of the source-conditioned map and below that of quantization-only; math, code, and QA meet it, while the multi-capability objective misses the first condition by 0.0001 nats, 0.0020 against
+the pre-specified criterion confirms a capability when the mean regret of the final rule over the 68 cells is within that of the source-conditioned map and below that of quantization-only; math, code, and QA meet it, while the multi-capability objective misses the first condition by 0.0001 nats, 0.0020 against
 0.0019, and is reported as prospective and unconfirmed. The distillation candidates on 1B@64k are the
 existing students 160M@64k and 410M@64k, whose post-training
 outcomes were purged from the fits that predict them; per-state
@@ -809,7 +809,7 @@ text.
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_full_c.pdf}\subcaption{QA on 2Wiki}\end{subfigure}\hfill
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_full_d.pdf}\subcaption{Largest loss increase}\end{subfigure}
 
-\caption{Full selection maps on the four fresh states under the locked rule and under the earlier source-conditioned laws, in row pairs, against nominal storage budget; colour: predicted method; hollow circle with cross-hatching: the oracle differs; diagonal hatching: no clear winner. The last panel uses the largest loss increase across capabilities as the objective.}
+\caption{Full selection maps on the four fresh states under the final rule and under the earlier source-conditioned laws, in row pairs, against nominal storage budget; colour: predicted method; hollow circle with cross-hatching: the oracle differs; diagonal hatching: no clear winner. The last panel uses the largest loss increase across capabilities as the objective.}
 \label{fig:rule_maps}
 \end{figure}
 \begin{figure}[tb]
@@ -817,7 +817,7 @@ text.
 \includegraphics[width=5.5in]{figs/rule_regret_legend.pdf}\\[1pt]
 \includegraphics[width=5.5in]{figs/rule_regret_a.pdf}
 \caption{Mean regret per objective on the four earlier Pythia states, in nats per native token on
-a logarithmic scale, for the locked rule, the earlier source-conditioned laws, quantization-only
+a logarithmic scale, for the final rule, the earlier source-conditioned laws, quantization-only
 and the cheapest feasible configuration; the saved pooled means of the confirmation round are
 plotted without recomputation.}
 \label{fig:rule_regret}
@@ -864,19 +864,19 @@ function fitted to the same data would not suffice.
 
 
 
-\section{Reproducibility and Prediction Registration}
+\section{Reproducibility and Timing of Predictions}
 \label{sec:app_registration}
 
-This section records the data cut-off, the registration order and the information budgets that
+This section records the data cut-off, the order in which the predictions were fixed and the information budgets that
 label each prediction, defined in Table~\ref{tab:budgets}. All tables are generated from
 machine-readable result files by CPU-only scripts that run in seconds and need neither model
 weights nor a GPU, and model measurements are reproducible from the recorded revisions, probe seeds
 and protocols. The development and confirmation rounds were
-completed by 11 September 2026, the corner design of Section~\ref{sec:why} was registered on 14 September
+completed by 11 September 2026, the corner design of Section~\ref{sec:why} was specified on 14 September
 2026 before its four trajectories were trained, and the measurement-efficiency confirmation of
-Section~\ref{sec:efficiency} and the data-requirement experiment of Section~\ref{sec:observed} were registered
+Section~\ref{sec:efficiency} and the data-requirement experiment of Section~\ref{sec:observed} were specified in advance
 on 16 September 2026 before their states were pruned and their students trained. No measurement
-taken after a freeze enters the corresponding prediction or its baseline.
+taken after its predictions were fixed enters the corresponding prediction or its baseline.
 \label{sec:app_register}
 \begin{table}[H]\normalfont
 \centering\small
@@ -903,9 +903,7 @@ predictive budgets are fixed on development data and the oracle row is a post-ho
 \end{table}
 
 Prospective tests follow one order: forms, development set, standardization and coefficients are
-fixed and committed; the reference capability losses of a new source are measured, since they are
-a permitted pre-compression input; each candidate's predictions are committed with their hash,
+fixed and recorded; the reference capability losses of a new source are measured, since they are
+a permitted pre-compression input; each candidate's predictions are recorded with their hash,
 and only then is the outcome measured. Rows marked retrospective are labeled as such, and each of the
-fifteen freeze records names the commit it was registered at.
-
-\FloatBarrier
+fifteen records names the revision at which its predictions were fixed.

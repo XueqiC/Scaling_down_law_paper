@@ -2,7 +2,7 @@
 \label{sec:selection}
 
 This section applies the relations of Section~\ref{sec:laws} to the choice among compression
-configurations under a storage budget, and tests that choice frozen, on references that supplied
+configurations under a storage budget, and tests that choice, fixed in advance, on references that supplied
 it no outcome.
 
 \subsection{Selection under Storage Constraints}
@@ -15,17 +15,17 @@ Given a reference model, a capability and a budget, the decision is
 \label{eq:selection}
 \end{equation}
 where $\mathcal F_m(B)$ holds the settings of method $m$ whose nominal storage, stored matrix
-parameters rather than runtime memory or sparse indexing, falls within $B$. The frozen rule calls
+parameters rather than runtime memory or sparse indexing, falls within $B$. The final rule calls
 the pruning and quantization relations of Section~\ref{sec:laws} on a seen state and their
 source-free medians on a new one; for distillation, whose candidates are students of one fixed
-recipe, it calls a regression on the student state for mathematics and frozen constants for code
+recipe, it calls a regression on the student state for mathematics and pre-specified constants for code
 and question answering (Appendix Table~\ref{tab:locked_rule}). The budget and pool forms of
-Eq.~\ref{eq:kdforms} enter no selection; the selection results test the rule as frozen, not those
+Eq.~\ref{eq:kdforms} enter no selection; the selection results test the rule as specified, not those
 forms. A workload needing several capabilities at once replaces $\widehat L_{m,c}$ by the largest loss increase
 $\max_c[\widehat L_c(M)-L_c(M_0)]$. On the controlled panel,
 the law-based choice selects the method of the measured best candidate in 96\%, 95\% and 73\% of 289
-cells for mathematics, code and question answering. We then locked a complete rule and froze its
-maps for four fresh Pythia states, where they come within 0.14 nats of the best candidate and below
+cells for mathematics, code and question answering. We then fixed a complete rule and its selection
+maps in advance for four fresh Pythia states, where they come within 0.14 nats of the best candidate and below
 quantization alone (Appendix Fig.~\ref{fig:rule_regret}). Its distillation candidates were historical, so a
 second confirmation used candidates trained in the same round.
 
@@ -39,10 +39,10 @@ second confirmation used candidates trained in the same round.
 \begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/s3_validation_b.pdf}\subcaption{Code}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/s3_validation_c.pdf}\subcaption{Question answering}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/s3_validation_d.pdf}\subcaption{Largest loss increase}\end{subfigure}
-\caption{Selection outcomes under the frozen rule. (a--d) Independent validation on four references
+\caption{Selection outcomes under the final rule. (a--d) Independent validation on four references
 that supplied the rule no outcome (R1, R2: Pythia 410M and 1.4B at step 120000; R3, R4: Gemma 3 1B
 and 4B): per objective, the opportunity that choosing across methods opens over the best
-quantization candidate, and the regret of the frozen rule and of a quantization-only policy, as
+quantization candidate, and the regret of the final rule and of a quantization-only policy, as
 means in nats per native token over the sixteen budgets where both policies find a candidate. The
 earlier four-state confirmation is in Appendix Figs.~\ref{fig:rule_maps} and \ref{fig:rule_regret}.}
 \label{fig:rule_main}
@@ -53,7 +53,7 @@ Each of the four references received twelve candidates at seventeen storage budg
 dense model and one student distilled in this round. Two are Pythia checkpoints at a stage with no
 earlier recorded use; the two Gemma-3 models carry weights measured under other interventions, so
 for them the round tests new candidates on familiar weights (Appendix
-Table~\ref{tab:s3-identity}). Every predicted loss and both selection maps were sealed before any
+Table~\ref{tab:s3-identity}). Every predicted loss and both selection maps were fixed before any
 outcome was observed. Define the opportunity at a budget as the loss of the best feasible quantization candidate minus
 that of the best feasible candidate of any method, and the regret of a policy as the loss of its
 own choice minus that same candidate. Question answering carries an opportunity of 0.12 to 0.89 nats (Fig.~\ref{fig:rule_main}a--d). Over all 68 question-answering
@@ -65,7 +65,7 @@ those. Its regret there is 0.000 nats on three references and 0.027 on the fourt
 1.84 nats for a policy restricted to quantization, which also errs inside that family. For mathematics, code and the largest loss increase, the opportunity is at most 0.047 nats.
 Quantization already supplies a near-best candidate there, the rule matches it, and in three of the
 256 paired cells, those same sixteen budgets across four references and four objectives, all at the
-budget that admits the dense model, the rule exceeds its regret by at most 0.0015 nats. All four references meet the criterion registered for this round.
+budget that admits the dense model, the rule exceeds its regret by at most 0.0015 nats. All four references meet the criterion pre-specified for this round.
 
 To separate the contribution of distillation from the value of a smaller model, we retrospectively add the pristine student as a control at the same nominal storage cost. Replacing the pristine student with its distilled counterpart, with quantization available in both candidate sets, increases the question-answering opportunity by 0.084 to 0.650 nats across the four references. The corresponding opportunity changes for math and code are non-positive (Appendix Table~\ref{tab:s3-retrospective-control}). These are changes in the opportunity open to the candidate set, not loss changes of a student
 against its own starting point: the control marks where distillation creates an opening for

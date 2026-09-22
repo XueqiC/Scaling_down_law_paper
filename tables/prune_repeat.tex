@@ -10,7 +10,7 @@ Predictor & Math mean absolute error & Code mean absolute error & QA mean absolu
 Zero change & 0.218 & 0.145 & 0.326 & 0.230 \\
 \bottomrule
 \end{tabular*}
-\caption{The table compares pruning prediction errors when identical model weights are measured twice. Entries are mean absolute errors in nats per native token, with equal weight per measurement. All predictors were frozen before target measurement.}
+\caption{The table compares pruning prediction errors when identical model weights are measured twice. Entries are mean absolute errors in nats per native token, with equal weight per measurement. All predictors were pre-specified before target measurement.}
 \par\smallskip\begin{minipage}{\linewidth}\footnotesize Pruning repeatability on Pythia-2.8 billion at the final checkpoint, whose two cached revisions carry identical weights; the six cells per capability cover density $\in\{0.85,0.75,0.65\}$ measured on each revision.\end{minipage}
 \label{tab:prune_repeat}
 \end{table}

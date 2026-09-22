@@ -16,7 +16,7 @@ collects the parameter count, pretraining tokens and reference capability loss o
 
 \subsection{Pruning: expanded development set and the selection rule}
 Table~\ref{tab:v53_loso} reports the leave-one-source-out comparison of the pruning candidates on the
-expanded seventeen-state development set, under the rule committed before the confirmation that selected the delivered
+expanded seventeen-state development set, under the rule fixed before the confirmation that selected the delivered
 form for each capability.
 \input{tables/v53_loso}
 \subsection{Grouped quantization: leave-one-state-out on six states}
@@ -46,7 +46,7 @@ fitted intercept between the two columns. A same-input design without
 the quadratic term spans the same development column space and gives
 the same development fit, but predicts the unseen bit-width much less accurately, with bit-test errors of 1.30, 1.39 and 1.94 nats against 0.19, 0.21 and 0.44, as do
 the bit-only and bit-plus-group additive designs; at $g=128$ all three
-reduced designs coincide because the group terms vanish. The frozen
+reduced designs coincide because the group terms vanish. The pre-specified
 test result is a result about the delivered regularized
 parametrization; the development data do not identify any curvature in bit-width without the ridge choice.
 \input{tables/quant_ident}
@@ -57,7 +57,7 @@ parametrization; the development data do not identify any curvature in bit-width
 
 Table~\ref{tab:distill_forms_audit} lists each distillation form with
 its free parameters, intercept, student descriptor, fit data, and
-frozen coefficients. The form selected in the confirmation for math and code,
+pre-specified coefficients. The form selected in the confirmation for math and code,
 $a_c\log(1+E)$, with $E=T/D_U$ the reuse ratio of the supervised token budget $T$ to the pool
 tokens $D_U$, has one parameter and vanishes at zero budget, and the baseline it is compared with,
 $\alpha_c+b_c\log(1+E)$, adds an unpenalized intercept; both are fitted on the same 100 development rows with unit
@@ -65,10 +65,10 @@ weights.
 \input{tables/distill_forms_audit}
 
 In a retrospective comparison, with each form fitted on all 48
-development points and scored on the 52 test points, nine unseen-pool trajectories and four held-out student trajectories at the development pools, with predictions specified after the frozen matrix, the second form of Equation 4 of the main paper has the lowest error among
-the forms on the 270M unseen-pool trajectories, 0.022, 0.020 and 0.316 nats for math, code and QA against 0.060, 0.047 and 0.862 for the frozen constant, and is second to the reuse-only form for QA on the 1B
+development points and scored on the 52 test points, nine unseen-pool trajectories and four held-out student trajectories at the development pools, with predictions specified after the pre-specified matrix, the second form of Equation 4 of the main paper has the lowest error among
+the forms on the 270M unseen-pool trajectories, 0.022, 0.020 and 0.316 nats for math, code and QA against 0.060, 0.047 and 0.862 for the pre-specified constant, and is second to the reuse-only form for QA on the 1B
 trajectories, 0.478 against 0.342. The first form, which has no budget
-term, performs poorly for QA on each group, with errors of 1.15 to 2.26 nats. On the held-out 4B student the frozen
+term, performs poorly for QA on each group, with errors of 1.15 to 2.26 nats. On the held-out 4B student the pre-specified
 constant remains the best predictor for math and code at the unseen pool with 0.020 and 0.038, and the second form with the loss descriptor is best for QA there at 0.360, just ahead of the reuse-only form at 0.367; at the development pools the two descriptor variants disagree on math, 0.404 with the loss descriptor against 0.122 with the size descriptor, and
 these data do not settle the choice of descriptor between size and loss.
 \subsection{Pre-compression statistics as additional inputs}
@@ -187,13 +187,13 @@ tested over. The main paper reports the delivered relation and its error for eac
 \subsection{Pythia-1B and 6.9B pairs under two protocols}
 \label{sec:app_p1v2}
 
-The second frozen round, reported in Table~\ref{tab:p1v2}, added seven pruning densities, six inside the fitted range and 0.55 as extrapolation, and five bit-widths from 8 to 3 on Pythia-1B at
-steps 32k and 112k. Two fitting protocols were frozen at the same time.
+The second confirmation round, reported in Table~\ref{tab:p1v2}, added seven pruning densities, six inside the fitted range and 0.55 as extrapolation, and five bit-widths from 8 to 3 on Pythia-1B at
+steps 32k and 112k. Two fitting protocols were pre-specified at the same time.
 Protocol A fits each candidate on the full nine-state development
 panel. Protocol B fits on development states at step 64k or below, so
 that its 112k rows test a training-stage extrapolation on top of the
 size change. The 5-bit prediction of the class-indicator candidate is a
-fixed rule, the average of its committed 4- and 6-bit predictions,
+fixed rule, the average of its pre-specified 4- and 6-bit predictions,
 chosen so that no 5-bit measurement enters any fit. Candidate names
 follow Section 5.1 of the main paper: power is the shared power form, A2 the
 per-density source regression with a fixed interpolation rule, A1 its
@@ -211,7 +211,7 @@ the source regression rises to 0.339 while the median curve stays at
 has little practical value.
 
 The 6.9B pair, a size extrapolation of about five times, was measured
-under the same freeze. Its
+at the same time. Its
 dense anchors are math 1.27, code 1.30 and QA 5.11 at 32k, and 1.11,
 1.21 and 5.09 at 112k. Per capability under protocol A at 112k, the
 source regression reaches 0.23 on math, 0.19 on code and 0.96 on QA against 0.05, 0.07 and 0.15 for the median curve. Under protocol B the
@@ -232,7 +232,7 @@ at 3 bits. Protocol B compresses the differences above 3 bits to the
 \input{tables/round3_quant}
 \input{tables/main_context}
 
-The quantization confirmation round used all 54 unblinded cells with three bit levels as its development set, at full rank 20 of 20, and froze predictions before measurement for 21 cells: two development states and the never-fit state 1.4B at step 112k at $b\in\{3,4,5\}$ and $g\in\{32,512\}$, and the new state at $g=128$; Table~\ref{tab:quant_threeway} reports it. Table~\ref{tab:quant_threeway} distinguishes three statuses: the score of the frozen development-selected predictor, the surface for math, the per-configuration median for code and zero for QA; the score of each frozen candidate; and the post-test recommended rule, interpolation for math and code on seen states and the median for QA and for new states, which is retrospective. The per-configuration median has nine anchors
+The quantization confirmation round used all 54 unblinded cells with three bit levels as its development set, at full rank 20 of 20, and fixed predictions before measurement for 21 cells: two development states and the never-fit state 1.4B at step 112k at $b\in\{3,4,5\}$ and $g\in\{32,512\}$, and the new state at $g=128$; Table~\ref{tab:quant_threeway} reports it. Table~\ref{tab:quant_threeway} distinguishes three statuses: the score of the pre-specified development-selected predictor, the surface for math, the per-configuration median for code and zero for QA; the score of each pre-specified candidate; and the post-test recommended rule, interpolation for math and code on seen states and the median for QA and for new states, which is retrospective. The per-configuration median has nine anchors
 per capability, the median signed response over the six development
 states at each measured $(b,g)$, and predicts a never-measured group
 size by the same piecewise rule as the interpolation candidate:
@@ -247,11 +247,11 @@ change; no target measurement enters either predictor.
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_b.pdf}\subcaption{Source-free comparison}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_gain_c.pdf}\subcaption{Power versus alternatives}\end{subfigure}
 
-\caption{Paired improvements; positive values favour the first-named model. (a) Full model against its variant without $D_0$, per arm and capability, with cluster-bootstrap intervals where they were computed. (b) Source-conditioned candidate against the strongest source-free baseline on the twenty registered tests; hollow markers are frozen prospective tests and filled markers leave-one-out fits. (c) Shared power form against the same-input alternatives A1 and A2 on the pruning configuration tests of the confirmation round.}
+\caption{Paired improvements; positive values favour the first-named model. (a) Full model against its variant without $D_0$, per arm and capability, with cluster-bootstrap intervals where they were computed. (b) Source-conditioned candidate against the strongest source-free baseline on the twenty pre-specified tests; hollow markers are pre-specified prospective tests and filled markers leave-one-out fits. (c) Shared power form against the same-input alternatives A1 and A2 on the pruning configuration tests of the confirmation round.}
 \label{fig:gains}
 \end{figure}
 
-The pruning repeatability check froze the delivered power form, A2,
+The pruning repeatability check fixed the delivered power form, A2,
 the median development curve, and zero change for Pythia-2.8B, a size
 not used in any pruning fit, at $d\in\{0.85,0.75,0.65\}$ before the pruned losses were measured; Table~\ref{tab:prune_repeat} gives the results. The two
 cached revisions labelled step 16k and step 143k carry identical learned parameters, 387 of 388 tensors byte-identical and the remaining one differing only in the sign of a zero, with identical dense and pruned losses, so the panel is one state measured twice; the
@@ -264,7 +264,7 @@ the damage.
 
 
 The multi-student distillation test of the uniform protocol of Section 5.3 of the main paper is given in Table~\ref{tab:p2v2_test}; the
-frozen predictions of all eight forms for each test point are in the
+pre-specified predictions of all eight forms for each test point are in the
 mirrored comparison file. Two pre-specified training-seed repeats, Gemma-3-270M at $U{=}75$ and Gemma-3-1B at $U{=}450$ with data seed 11, reproduce the four checkpoints of their originals within 0.017 nats
 for math and 0.030 for code; for QA the difference grows with the
 reuse ratio, from 0.004 to 0.019 at the first two checkpoints to 0.089
@@ -343,7 +343,7 @@ the two shared-law hypotheses fit on pre-cliff cells reach held-out
 sign accuracies of $0.51$ and $0.37$. These models are rejected;
 whether another single form could unify the arms remains untested. A
 capability- and cost-aware method selection would use such predictors
-as loss constraints. The offline replay with frozen predictions
+as loss constraints. The offline replay with pre-specified predictions
 below quantifies the decision cost of prediction error on the
 heterogeneous panel; the held-out selection validation on the
 Pythia panel is reported in Section 7 and in Appendix H of the main paper, on four fresh Pythia
@@ -383,7 +383,7 @@ first, the falsification anchor of that study was driven almost entirely by the 
 These findings fixed the measurement protocol described in Section 2.1 of the main paper.
 
 
-\paragraph{Feasible-policy results and rule decomposition.} Tables~\ref{tab:selection-feasible} and~\ref{tab:rule_decomp} give the per-policy results behind the feasibility figure of Appendix~H of the main paper and the decomposition of the regret of the locked rule by state and budget.
+\paragraph{Feasible-policy results and rule decomposition.} Tables~\ref{tab:selection-feasible} and~\ref{tab:rule_decomp} give the per-policy results behind the feasibility figure of Appendix~H of the main paper and the decomposition of the regret of the final rule by state and budget.
 
 
 \section{Measured data requirements: full accounting}

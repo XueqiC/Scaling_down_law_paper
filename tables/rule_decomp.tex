@@ -7,32 +7,32 @@
 Objective & Policy & Step 32 thousand & {Pythia-1 billion at step 64 thousand} & All states \\
  & Cells per objective & 51 & 17 & 68 \\
 \midrule
-Mathematics & Frozen rule & 0.000008 & 0.000000 & 0.000006 \\
+Mathematics & Final rule & 0.000008 & 0.000000 & 0.000006 \\
  & {Source-conditioned predictor} & 0.019778 & 0.000434 & 0.014942 \\
  & Quantization only & 0.000015 & 0.026970 & 0.006754 \\
  & {Cheapest feasible configuration} & 2.252843 & 0.327902 & 1.771608 \\
- & {Frozen rule minus quantization only} & -0.000007 & -0.026970 & -0.006748 \\
+ & {Final rule minus quantization only} & -0.000007 & -0.026970 & -0.006748 \\
 \addlinespace
-Code & Frozen rule & 0.004329 & 0.004321 & 0.004327 \\
+Code & Final rule & 0.004329 & 0.004321 & 0.004327 \\
  & {Source-conditioned predictor} & 0.141263 & 0.025644 & 0.112358 \\
  & Quantization only & 0.004328 & 0.027814 & 0.010199 \\
  & {Cheapest feasible configuration} & 3.115947 & 0.390606 & 2.434612 \\
- & {Frozen rule minus quantization only} & +0.000001 & -0.023494 & -0.005873 \\
+ & {Final rule minus quantization only} & +0.000001 & -0.023494 & -0.005873 \\
 \addlinespace
-Question answering & Frozen rule & 0.170533 & 0.052428 & 0.141007 \\
+Question answering & Final rule & 0.170533 & 0.052428 & 0.141007 \\
  & {Source-conditioned predictor} & 0.282961 & 0.005406 & 0.213573 \\
  & Quantization only & 0.243316 & 0.280362 & 0.252577 \\
  & {Cheapest feasible configuration} & 1.784897 & 0.052428 & 1.351780 \\
- & {Frozen rule minus quantization only} & -0.072783 & -0.227934 & -0.111571 \\
+ & {Final rule minus quantization only} & -0.072783 & -0.227934 & -0.111571 \\
 \addlinespace
-{Maximum across capabilities} & Frozen rule & 0.002697 & 0.000000 & 0.002023 \\
+{Maximum across capabilities} & Final rule & 0.002697 & 0.000000 & 0.002023 \\
  & {Source-conditioned predictor} & 0.002467 & 0.000000 & 0.001850 \\
  & Quantization only & 0.002954 & 0.023494 & 0.008089 \\
  & {Cheapest feasible configuration} & 3.107499 & 0.382624 & 2.426280 \\
- & {Frozen rule minus quantization only} & -0.000256 & -0.023494 & -0.006066 \\
+ & {Final rule minus quantization only} & -0.000256 & -0.023494 & -0.006066 \\
 \bottomrule
 \end{tabular*}
-\caption{The table separates selection regret by source-state subset and policy. Mean regret and policy differences are in nats per native token, with equal weight per state and storage budget. Negative differences favor the frozen rule.}
+\caption{The table separates selection regret by source-state subset and policy. Mean regret and policy differences are in nats per native token, with equal weight per state and storage budget. Negative differences favor the final rule.}
 \par\smallskip\begin{minipage}{\linewidth}\footnotesize Decomposition of selection regret in native-token nats (lower is better) over 17 storage budgets (0.20--1.00 in steps of 0.05), weighting each state--budget cell equally; all-state means weight the step-32 thousand subset (160 million, 410 million, 1.4 billion, with newly measured pruning and quantization candidates) and Pythia-1 billion at step 64 thousand (which adds two historical distillation candidates) 3:1.\end{minipage}
 \label{tab:rule_decomp}
 \end{table}

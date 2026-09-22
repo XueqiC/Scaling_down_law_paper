@@ -79,11 +79,11 @@ two pool seeds. Panel (d) rescores the same trajectories at that budget on three
 a fresh 2Wiki sample disjoint from the probe, MuSiQue and TriviaQA.}
 \label{fig:responses_v2}
 \end{figure}
-Two registered checks bound how this response may be written. A joint form with separate
+Two pre-specified checks bound how this response may be written. A joint form with separate
 logarithmic pool and budget terms implies a pool-change effect that is flat in budget; for code on
 the 1B student it drifts by a factor of twenty (Appendix Fig.~\ref{fig:drift}). A four-trajectory
 rectangle built by replaying the trainer's update boundaries then tested additivity directly: its
-second difference, zero for any additive structure, lands inside the pre-registered band on
+second difference, zero for any additive structure, lands inside the pre-specified band on
 question answering for both students, so the test neither rejects nor establishes additivity
 (Appendix Fig.~\ref{fig:corner_test}). Neither check licenses the joint structure, and neither is
 the basis for the delivered form. That basis is the development comparison: under
@@ -92,7 +92,7 @@ code and the joint budget and pool form only for question answering (Appendix
 Table~\ref{tab:distill_confirm}). The logarithmic reuse term is therefore kept as a local
 approximation at the tested budgets and pools, with no claim of additive joint structure.
 
-These responses can be turned into an empirical data requirement. A registered experiment of
+These responses can be turned into an empirical data requirement. A pre-specified experiment of
 eighteen trajectories on the 1B and 4B students, with pools from nine thousand to 158 thousand
 supervised tokens and three evaluation budgets, measured the range of independent data at which a
 loss constraint is met (Appendix Fig.~\ref{fig:dreq}). The constraint is crossed inside the tested

@@ -14,12 +14,12 @@ Test; what is held out; fold rule (relation / input baseline / simple baseline) 
  & Simple baseline: per-configuration median & 1.410 & 1.553 & \textbf{1.473} \\
 \addlinespace[2pt]
 \midrule
-\textbf{pruning}: new stage 96 thousand on 160 million and 1.4 billion, all measured density\newline{\itshape stage 96 thousand (interpolation between 64 thousand and 143 thousand)} [Frozen / fixed / retrospective] & Candidate: configuration-indicator ordinary least squares & \textbf{0.090} (+0.25) & \textbf{0.128} (+0.05) & \textbf{0.426} (+0.01) \\
+\textbf{pruning}: new stage 96 thousand on 160 million and 1.4 billion, all measured density\newline{\itshape stage 96 thousand (interpolation between 64 thousand and 143 thousand)} [Pre-specified / fixed / retrospective] & Candidate: configuration-indicator ordinary least squares & \textbf{0.090} (+0.25) & \textbf{0.128} (+0.05) & \textbf{0.426} (+0.01) \\
  & Same-input baseline without pretraining tokens & 0.343 & 0.179 & 0.438 \\
  & Simple baseline: per-configuration median & 0.367 & 0.438 & 0.832 \\
 \addlinespace[2pt]
 \midrule
-\textbf{quantization}: new stage 96 thousand on 160 million, 410 million, 1.4 billion; bit width $\ge4$ (near-zero regime)\newline{\itshape stage 96 thousand (interpolation)} [Frozen / absent / retrospective] & Candidate: configuration-indicator ordinary least squares & \textbf{0.029} (+0.06) & 0.104 (-0.01) & 0.173 (-0.04) \\
+\textbf{quantization}: new stage 96 thousand on 160 million, 410 million, 1.4 billion; bit width $\ge4$ (near-zero regime)\newline{\itshape stage 96 thousand (interpolation)} [Pre-specified / absent / retrospective] & Candidate: configuration-indicator ordinary least squares & \textbf{0.029} (+0.06) & 0.104 (-0.01) & 0.173 (-0.04) \\
 \bottomrule\end{tabular*}
 \caption{The table tests predictions for unseen source states at fixed compression settings. Entries are mean absolute errors in nats per native token. Bold marks the lowest error; parentheses give improvement over the strongest baseline. Asterisks mark confidence intervals excluding zero. All specified forms are reported.}
 \par\smallskip\begin{minipage}{\linewidth}\footnotesize Entries are mean absolute errors in nats per native token per capability; bold marks the smallest error in the group; parentheses give the improvement of the candidate over the strongest listed baseline, with an asterisk where the bootstrap 95\% interval excludes zero.\end{minipage}
@@ -33,7 +33,7 @@ Test; what is held out; fold rule (relation / input baseline / simple baseline) 
  & Same-input baseline: none available & -- & -- & -- \\
  & Simple baseline: per-bit median & 0.084 & \textbf{0.094} & \textbf{0.134} \\
 \addlinespace[2pt]
-\textbf{quantization}: new stage 96 thousand on 160 million, 410 million, 1.4 billion; 3 bits (collapse regime)\newline{\itshape stage 96 thousand (interpolation)} [Frozen / absent / retrospective] & Candidate: configuration-indicator ordinary least squares & \textbf{1.488} (+0.45) & 1.963 (-1.12) & 2.046 (-0.32) \\
+\textbf{quantization}: new stage 96 thousand on 160 million, 410 million, 1.4 billion; 3 bits (collapse regime)\newline{\itshape stage 96 thousand (interpolation)} [Pre-specified / absent / retrospective] & Candidate: configuration-indicator ordinary least squares & \textbf{1.488} (+0.45) & 1.963 (-1.12) & 2.046 (-0.32) \\
  & Same-input baseline: none available & -- & -- & -- \\
  & Simple baseline: per-bit median & 1.934 & \textbf{0.843} & \textbf{1.727} \\
 \addlinespace[2pt]

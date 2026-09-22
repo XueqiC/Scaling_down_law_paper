@@ -1,7 +1,7 @@
 # Main prediction table: cell sources
 
 Columns: Prediction task; Delivered relation; Delivered error (nats); Strongest development baseline (nats); Development measurements.
-Rendered layout: one row per frozen prediction task. Cell coordinates match the five printed columns of the main table; every cell is populated. The appendix candidates table prints columns Prediction task; Frozen candidate; Candidate error (nats); Delivered relation from the same assembled rows; its recipes follow the main table's.
+Rendered layout: one row per frozen prediction task. Cell coordinates match the five printed columns of the main table; every cell is populated. The appendix candidates table prints columns Prediction task; Pre-specified candidate; Candidate error (nats); Delivered relation from the same assembled rows; its recipes follow the main table's.
 Development measurements are distinct development configuration measurements per capability for fitting or selecting the tested candidate, excluding dense anchors and held-out measurements. Counts do not describe the post-test delivered predictor. V53 divides recorded scalar rows by the recorded capability-model count; V55/V69 use n_dev_cells; V70 uses development_structure.n_points authenticated by freeze.json. Shared development sets are not additive across rows.
 Numeric error cells use one math / code / question answering line if it fits the actual column, otherwise three lines in that order. The earlier bit test explicitly states that the delivered error is not stored. Distillation pairs follow student order 270 million, 1 billion as stated in the caption. Baseline names precede their scores, in the capability order named in the caption. Development or registration selection pointers are recorded in each baseline cell's note/context. Short task labels retain the full state and configuration definitions in their source recipes.
 The caption identifies deliveries preceding distillation as chosen after testing; first predictors were frozen before measurement. Delivered scores reuse the same frozen test cells, not test-error winners. For the earlier bit test the delivered interpolation/median rule has no matching stored score; its development includes those cells. The source surface is not delivered, and the older interpolation's different model and boundary rules cannot supply the missing error.
@@ -1599,7 +1599,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
         ]
       ]
     },
-    " students in that order. Appendix Table~\\ref{tab:main-prediction-candidates} lists each task's frozen candidate; Fig.~\\ref{fig:generalization} compares each row with its baseline."
+    " students in that order. Appendix Table~\\ref{tab:main-prediction-candidates} lists each task's pre-specified candidate; Fig.~\\ref{fig:generalization} compares each row with its baseline."
   ],
   "context": [
     "results/v53-prune-dev/register.json#/feature_names",
@@ -1611,7 +1611,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   ],
   "note": "",
   "compact_scores": "",
-  "rendered": "Errors are mean absolute errors in nats per token, in math, code and question answering order. The delivered relation is the predictor recommended on all evidence; a Retrospective label marks a predictor chosen after seeing the result, whose error is not an independent test. The strongest development baseline was chosen inside the development folds, before the test, and scored on the same cells. The last column counts development configuration measurements per capability; distillation entries give the 270 million and 1 billion students in that order. Appendix Table~\\ref{tab:main-prediction-candidates} lists each task's frozen candidate; Fig.~\\ref{fig:generalization} compares each row with its baseline."
+  "rendered": "Errors are mean absolute errors in nats per token, in math, code and question answering order. The delivered relation is the predictor recommended on all evidence; a Retrospective label marks a predictor chosen after seeing the result, whose error is not an independent test. The strongest development baseline was chosen inside the development folds, before the test, and scored on the same cells. The last column counts development configuration measurements per capability; distillation entries give the 270 million and 1 billion students in that order. Appendix Table~\\ref{tab:main-prediction-candidates} lists each task's pre-specified candidate; Fig.~\\ref{fig:generalization} compares each row with its baseline."
 }
 ```
 
@@ -2762,7 +2762,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
 ```json
 {
   "parts": [
-    "Frozen candidate of each prediction task in Table~\\ref{tab:main-prediction-v2}, its error on the same cells, and the relation delivered after the test. Errors are mean absolute errors in nats per token, in math, code and question answering order, and distillation entries give the ",
+    "Pre-specified candidate of each prediction task in Table~\\ref{tab:main-prediction-v2}, its error on the same cells, and the relation delivered after the test. Errors are mean absolute errors in nats per token, in math, code and question answering order, and distillation entries give the ",
     {
       "sources": [
         "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
@@ -2789,7 +2789,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   ],
   "note": "",
   "compact_scores": "",
-  "rendered": "Frozen candidate of each prediction task in Table~\\ref{tab:main-prediction-v2}, its error on the same cells, and the relation delivered after the test. Errors are mean absolute errors in nats per token, in math, code and question answering order, and distillation entries give the 270 million and 1 billion students in that order."
+  "rendered": "Pre-specified candidate of each prediction task in Table~\\ref{tab:main-prediction-v2}, its error on the same cells, and the relation delivered after the test. Errors are mean absolute errors in nats per token, in math, code and question answering order, and distillation entries give the 270 million and 1 billion students in that order."
 }
 ```
 

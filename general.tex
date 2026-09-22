@@ -2,8 +2,8 @@
 \label{sec:general}
 
 The relations of Section~\ref{sec:laws} are now tested on new configurations of seen states and on new
-model states, with predictions frozen before measurement. Table~\ref{tab:main-prediction-v2} gives
-each prediction task with its frozen candidate, the predictor delivered for it, the errors of both
+model states, with predictions pre-specified before measurement. Table~\ref{tab:main-prediction-v2} gives
+each prediction task with its pre-specified candidate, the predictor delivered for it, the errors of both
 and the baseline selected inside the development folds; Appendix Fig.~\ref{fig:generalization}
 compares each row with that baseline on the same cells.
 
@@ -12,7 +12,7 @@ compares each row with that baseline on the same cells.
 \subsection{Prediction at Unseen Configurations}
 \label{sec:unseen_settings}
 
-In grouped quantization, with 54 development cells and predictions frozen on 21 cells at unseen
+In grouped quantization, with 54 development cells and predictions pre-specified on 21 cells at unseen
 group sizes and a new state, the piecewise interpolation is the
 most accurate predictor of unseen group sizes at the development states for mathematics and code.
 For distillation, at six new pools and three new budgets, every selected form improves on zero
@@ -23,11 +23,11 @@ question answering on the smaller student alone.
 \label{sec:unseen_states}
 
 The second kind of novelty is a new model state. On three Pythia checkpoints that entered no fit,
-the frozen pruning power form matches the per-density regression on mathematics with a quarter of
+the pre-specified pruning power form matches the per-density regression on mathematics with a quarter of
 the parameters, and is less accurate than the median on code and than every source-free curve on
 question answering; outside the tested density range every source-conditioned form errs by 0.6 to
 4.5 nats. The pattern holds as the state moves further: at a 6.9B model, five times the development
-range, and at a 2.8B one, the frozen median curve is the more accurate predictor for pruning and
+range, and at a 2.8B one, the pre-specified median curve is the more accurate predictor for pruning and
 for per-bit quantization alike, by a factor of three to seven on the 2.8B state. On a new grouped
 quantization state the median wins for mathematics and question answering and the interpolation for
 code, and the 4B student keeps only its question-answering gain at the development pools.
@@ -39,10 +39,10 @@ A subsampling study, with the sampling plan fixed in advance, shows what halving
 measurements costs: at 18 density measurements per capability the five-parameter form predicts new
 states to 0.20 nats on mathematics and 0.17 on code, against the 0.18 and 0.13 the per-density
 regression reaches with all 36, and at 9 the regression cannot be fitted at all. The saving comes
-from measuring fewer densities per source, not fewer sources (Fig.~\ref{fig:efficiency}a). A registered confirmation then froze that form, the full-budget regression and the median curve
+from measuring fewer densities per source, not fewer sources (Fig.~\ref{fig:efficiency}a). A pre-specified confirmation then fixed that form, the full-budget regression and the median curve
 before four Pythia states outside every earlier fit were pruned at six densities. The half-budget
 form stayed within 0.013 nats of the full-budget regression on mathematics and 0.020 on code,
-meeting the registered criterion, and halved the error of the median curve at the same budget
+meeting the pre-specified criterion, and halved the error of the median curve at the same budget
 (Fig.~\ref{fig:efficiency}b). That criterion is a point estimate on four states, not a claim of
 statistical equivalence, and question answering keeps the median curve as its delivered predictor.
 This is the evidence behind the compact form on new states inside the fitted range; beyond it the
@@ -52,10 +52,10 @@ median curve remains the default (Section~\ref{sec:unseen_states}).
 \centering
 \includegraphics[width=\textwidth]{figs/eff_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_a.pdf}\caption{Error against development measurements}\end{subfigure}\hfill
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_b.pdf}\caption{Registered confirmation on four new states}\end{subfigure}
+\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_b.pdf}\caption{Pre-specified confirmation on four new states}\end{subfigure}
 \caption{Measurement efficiency of the compact pruning form, in nats per native token: error on new
 states against development density measurements per capability, and error per state in the
-registered confirmation, with the power form fitted at half the development budget and the other
+pre-specified confirmation, with the power form fitted at half the development budget and the other
 predictors at full budget.}
 \label{fig:efficiency}
 \end{figure}
