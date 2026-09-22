@@ -25,11 +25,10 @@ and uneven capability loss is documented for individual tasks and quantizers
 
 \paragraph{Compression Method Selection.}
 Prior work compares compression methods by measuring each candidate on the target model:
-\citet{jaiswal2023compressing} evaluate pruned and quantized models on knowledge-intensive tasks and
-find quantization to retain more at the same compression ratio, and \citet{panferov2025unified}
-place sparsity and precision on one capacity scale so that their aggregate losses can be compared
-before training. \citet{muennighoff2023scaling} show that repeated tokens are
-worth less than new ones; our reuse response measures that exchange rate per capability and per
-student (Section~\ref{sec:observed}). None of them states which method a given model, capability and budget should receive without measuring every candidate. This paper supplies
-that decision: Section~\ref{sec:selection} turns the relations of Section~\ref{sec:laws} into a
-selection rule under a storage constraint and tests it on four references against a quantization-only policy.
+\citet{jaiswal2023compressing} find quantization to retain more than pruning at the same ratio on
+knowledge-intensive tasks, and \citet{panferov2025unified} place sparsity and precision on one
+capacity scale; \citet{muennighoff2023scaling} show that repeated tokens are worth less than new
+ones, and our reuse response measures that exchange rate per capability and per student
+(Section~\ref{sec:observed}). None of them states which method a given model, capability and budget
+should receive without measuring every candidate; Section~\ref{sec:selection} supplies that decision
+and tests it on four references against a quantization-only policy.

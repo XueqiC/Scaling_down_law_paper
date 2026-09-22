@@ -2,8 +2,15 @@
 \label{sec:laws}
 
 
-Each method delivers one relation in the interface of Eq.~\ref{eq:interface}, turning the
-observations of Section~\ref{sec:observed} into a prediction from the initial state and the configuration.
+The three methods support different prediction structures. Under pruning a compact relation keeps
+its accuracy on new model states with fewer density measurements (Section~\ref{sec:efficiency}); its
+exponent belongs to the tested Pythia domain, not to every family. Under quantization bit width and
+group size act jointly, and a piecewise interpolation over the measured grid and the configuration
+medians are competitive predictors; no new parametric quantization law is claimed. Under distillation
+data reuse, the student state and the evaluation distribution shape the response, a finding in its
+own right, and part of it admits a low-parameter relation with a small predictive gain; no joint law
+in student, data and budget is claimed. Each method delivers one relation in the interface of
+Eq.~\ref{eq:interface}, a prediction from the initial state and the configuration.
 Each is stated below with its inputs and its fitted and tested domain; Section~\ref{sec:general}
 reports how it performs on configurations and model states that entered no fit. Whether the initial state earns its place is decided per capability: on the controlled pruning
 panel, a per-setting regression using parameter count, pretraining tokens and reference capability
@@ -49,14 +56,11 @@ of Section~\ref{sec:selection} calls that median on every new state, as its cons
 \subsection{Quantization}
 \label{sec:law_quant}
 
-Per-channel round-to-nearest quantization is evaluated at discrete bit widths, and prediction is
-evaluated separately across bit widths and model states. At a bit width that entered the fit,
-the delivered relation is the per-bit source regression on states in the fit and the per-bit median
-on new ones. With
-groups of $g$ weights per scale as a second axis, the delivered relation for mathematics and code on seen
-states is a piecewise interpolation over the measured $(b,g)$ grid, linear in $\log_2 g$; for question answering, and for every capability at a new state, it is the per-configuration
-development median measured on the same grid. 
-\subsection{Distillation}
+Per-channel quantization is predicted per bit width, by the per-bit source regression on states in
+the fit and the per-bit median on new ones. Grouped quantization adds the group size $g$ as a second
+axis: for mathematics and code on seen states the delivered relation is a piecewise interpolation
+over the measured $(b,g)$ grid, linear in $\log_2 g$, and otherwise it is the per-configuration
+development median measured on the same grid. \subsection{Distillation}
 \label{sec:law_distill}
 
 The response is the signed transfer response of Section~\ref{sec:loss}, parameterized by supervised

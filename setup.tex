@@ -24,7 +24,7 @@ $M_0$ is the checkpoint before the intervention, and responses are within-model 
 native nats per token: the change in capability loss $\Delta L_c=L_c(\text{compressed})-L_c(M_0)$ for pruning and
 quantization, and for distillation the signed transfer response
 $\delta_c=L_c(S_{\mathrm{KD}})-L_c(S_0)$ of a trained student against the initial student $S_0$ it
-started from, not against the teacher. Absolute levels from different tokenizers are never placed on one scale.
+started from, not against the teacher. Absolute levels from different tokenizers are never placed on one scale. We use capability loss to denote reference-completion cross-entropy on an evaluation distribution associated with a capability. This continuous endpoint supports the study of compression responses and predictive relations; task accuracy and execution success are evaluated separately.
 
 \subsection{Models and Compression Methods}
 \label{sec:models}

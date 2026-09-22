@@ -1,8 +1,7 @@
 \section{Compression Method Selection}
 \label{sec:selection}
 
-This section applies the relations of Section~\ref{sec:laws} to the choice of compression
-configuration under a storage budget and tests that choice on references that supplied it no outcome.
+We evaluate the decision value of the empirical prediction framework under nominal storage constraints. The selection rule compares feasible candidates using estimates appropriate to each prediction setting. Independent evaluation identifies substantial cross-method opportunity for question-answering loss, while a retrospective ablation shows that a development-derived method-priority policy attains the same question-answering regret as the final rule; numeric predictions provide a smaller additional benefit for mathematics. These results distinguish settings in which stable method preferences suffice from those in which configuration-level prediction improves selection. The measurement-efficiency evidence of Section~\ref{sec:efficiency} rests on a separate experiment, and the selection results test no form that enters no selection.
 
 \subsection{Selection under Storage Constraints}
 \label{sec:selection_rule}
@@ -13,13 +12,10 @@ Given a reference model, a capability and a budget, the decision is
 \widehat L_{m,c}(\mathbf x,\boldsymbol\theta_m),
 \label{eq:selection}
 \end{equation}
-where $\mathcal F_m(B)$ holds the settings of method $m$ whose nominal storage, stored matrix
-parameters rather than runtime memory or sparse indexing, falls within $B$. The final rule calls
+where $\mathcal F_m(B)$ holds the settings of method $m$ whose nominal storage, counted in stored matrix parameters, falls within $B$. The final rule calls
 the pruning and quantization relations of Section~\ref{sec:laws} on a seen state and their
-source-free medians on a new one; for distillation, whose candidates are students of one fixed
-recipe, it calls a regression on the student state for mathematics and pre-specified constants for code
-and question answering (Appendix Table~\ref{tab:locked_rule}). The budget and pool forms of Eq.~\ref{eq:kdforms} enter no selection. A workload needing several capabilities at once replaces $\widehat L_{m,c}$ by the largest loss increase
-$\max_c[\widehat L_c(M)-L_c(M_0)]$. On the controlled panel the law-based choice selects the measured best method in 96\%, 95\% and 73\% of 289 cells for mathematics, code and question answering, and a rule fixed in advance for four fresh Pythia states comes within 0.14 nats of the best candidate (Appendix Fig.~\ref{fig:rule_regret}).
+source-free medians on a new one; for distillation it calls a regression on the student state for mathematics and pre-specified constants otherwise (Appendix Table~\ref{tab:locked_rule}). A workload needing several capabilities at once replaces $\widehat L_{m,c}$ by the largest loss increase
+$\max_c[\widehat L_c(M)-L_c(M_0)]$. On the controlled panel the choice selects the measured best method in 96\%, 95\% and 73\% of 289 cells, and on four fresh Pythia states it comes within 0.14 nats of the best candidate (Appendix Fig.~\ref{fig:rule_regret}).
 
 \subsection{Independent Evaluation}
 \label{sec:selection_confirm}
@@ -32,17 +28,13 @@ $\max_c[\widehat L_c(M)-L_c(M_0)]$. On the controlled panel the law-based choice
 \begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/s3_validation_c.pdf}\subcaption{Question answering}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/s3_validation_d.pdf}\subcaption{Largest loss increase}\end{subfigure}
 \caption{Independent validation of the final rule on four references that supplied it no outcome
-(R1--R4: Pythia 410M and 1.4B at step 120000, Gemma 3 1B and 4B). Per objective: the opportunity over the best quantization candidate, and the regret of the final rule and of a quantization-only policy, as means in nats per native token over the sixteen budgets where both find a candidate.}
+(R1--R4: Pythia 410M and 1.4B at step 120000, Gemma 3 1B and 4B): per objective, the opportunity over the best quantization candidate and the regret of the final rule and of a quantization-only policy, means in nats per native token over the sixteen budgets where both find a candidate.}
 \label{fig:rule_main}
 \end{figure}
 
 
-Each of the four references received twelve candidates at seventeen storage budgets: four pruning densities, six quantization settings, the
-dense model and one student distilled in this round. Two are Pythia checkpoints with no earlier recorded use and two are Gemma-3 models with new candidates (Appendix Table~\ref{tab:s3-identity}). The opportunity at a budget is the loss of the best feasible quantization
+Each reference carries twelve candidates, four pruning densities, six quantization settings, the dense model and one student distilled in this round, at seventeen storage budgets (Appendix Table~\ref{tab:s3-identity}). The opportunity at a budget is the loss of the best feasible quantization
 candidate minus that of the best feasible candidate of any method; a policy's regret is the loss of
-its choice minus that same candidate. Question answering carries an opportunity of 0.12 to 0.89 nats (Fig.~\ref{fig:rule_main}a--d). On the 64 cells at which both policies find a feasible candidate, the rule selects the new student in 63. Its regret there is 0.000 nats on three references and 0.027 on the fourth, against 0.41 to
-1.84 nats for a policy restricted to quantization. For mathematics, code and the largest loss increase the opportunity is at most 0.047 nats and the rule matches quantization to within 0.0015 nats. All four references meet the criterion pre-specified for this round. On 384 fresh question-answering items scored after the round, the rule's choice is ahead of the quantization-only choice by 0.47 to 2.43 nats on three references and level on the fourth, and a generation readout with room to answer puts the same students ahead of that choice on exact match on three references, behind on the fourth and level with their initial students, so the gain is in reference-answer likelihood and generation accuracy remains a separate endpoint (Appendix Table~\ref{tab:p1-behaviour}). A retrospective ablation (Appendix Table~\ref{tab:s3-ablation}) shows that the rule's choices
-coincide with those of a development-fixed heuristic, the student first for question answering and
-the largest feasible quantization otherwise, so they rest on a stable difference between methods
-rather than on fine margins; the medians the rule uses add 0.012 nats on mathematics, and even a
-perfect quantization selection trails the rule's choice by 0.09 to 0.89 nats on question answering.
+its choice minus that same candidate. On the 64 cells at which both policies find a feasible candidate, the rule selects the new student in 63. Its regret there is 0.000 nats on three references and 0.027 on the fourth, against 0.41 to
+1.84 nats for a policy restricted to quantization. For mathematics, code and the largest loss increase the opportunity is at most 0.047 nats and the rule matches quantization to within 0.0015 nats. All four references meet the criterion pre-specified for this round. On 384 fresh question-answering items scored after the round, the rule's choice has a lower loss than the quantization-only choice by 0.45 to 1.82 nats on three references and is level on the fourth; a generation readout puts the same students ahead of that choice on exact match on three references and behind on one, and no better than their initial students, so the loss gain does not convert reliably into generation accuracy, and which endpoint the selector optimises decides which model it recommends (Appendix Table~\ref{tab:p1-behaviour}). The quantization-only regret decomposes into selection error inside quantization and cross-method opportunity: on Pythia 410M its 0.59 nats are 0.47 and 0.12, and the rule's choice is 0.09 nats better than the best quantization candidate. Table~\ref{tab:s3-ablation-body} compares policies on the same candidates: on question answering a development-derived method priority with no numeric prediction, the development medians and the final rule reach the same regret, 0.007 nats against 0.853 for quantization only, so the benefit rests on a stable difference between methods rather than on fine loss margins; on mathematics the medians are 0.012 nats better than the priority alone, and the source-conditioned relations improve on neither.
+\input{tables/s3_ablation_body}

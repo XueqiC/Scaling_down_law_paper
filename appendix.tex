@@ -823,29 +823,36 @@ measurement efficiency (Section~\ref{sec:efficiency}) rather than in selection.
 \paragraph{Fresh-item check of the chosen models.} After the round, every model that a policy chose
 for question answering, with each reference's dense model and initial student, was scored on 384
 2WikiMultihopQA validation items that no probe, sample, teacher trace or few-shot exemplar had used
-(Table~\ref{tab:p1-behaviour}). The loss endpoint replicates: the distilled student the rule chose
-has a lower completion loss than the quantization-only choice by 0.47, 0.60 and 2.43 nats on Pythia
-410M, Pythia 1.4B and Gemma 3 1B, with paired 95\% intervals excluding zero, and is within 0.04 nats
-of it on Gemma 3 4B. The same items were then read out by greedy generation, an endpoint the
-selection never targeted, under two protocols. The first, the 32-token protocol of
-Appendix~\ref{sec:app_probes}, scores the whole block before the next question marker; under it the
-students, which answer in the teacher's longer style, reach exact match of 0.029, 0.065, 0.000 and
-0.003 against 0.044, 0.167, 0.036 and 0.086 for the quantization-only choices. The second gives 96
-tokens and applies one gold-blind extraction rule to every model, the first sentence of the first
-line with markdown removed, and records whether a generation reached the cap without a stop
-marker. Under that readout the students score 0.089, 0.091, 0.115 and 0.172, ahead of the
-quantization-only choice by 0.04, 0.07 and 0.09 on Pythia 410M, Gemma 3 1B and Gemma 3 4B, with
-paired intervals excluding zero, and behind it by 0.06 on Pythia 1.4B, where the 4-bit model is
-strong; against their own initial students they are level on three references and 0.09 behind on
-Pythia 1.4B. The students reach the 96-token cap on 63 to 99 percent of items, since they rarely
-emit a stop marker, but their first sentence carries the answer. A reading of 20 sampled items per
-model, recorded with the results, found the students' first answer correct on 4, 7, 5 and 6 items
-against 3, 4, 2 and 5 for the quantization-only choices, with the difference between correct
-content and exact match confined to run-on sentences and initials that the rule now handles; the
-remaining student errors are wrong answers. The two endpoints thus agree in direction on three of
-the four references under a readout with room to answer, and disagree on Pythia 1.4B; the rule
-optimises the likelihood of reference answers, and a deployment that needs a particular answer
-format or length enters it as its own constraint.
+(Table~\ref{tab:p1-behaviour}). Losses and their differences are token-weighted means in the sense
+of Eq.~\ref{eq:taskloss}, the differences bootstrapped over items. The loss endpoint replicates: the
+distilled student the rule chose has a lower loss than the quantization-only choice by 0.55, 0.45 and
+1.82 nats on Pythia 410M, Pythia 1.4B and Gemma 3 1B, with paired 95\% intervals excluding zero, and
+by 0.19 on Gemma 3 4B with an interval that includes zero; against its own initial student it is lower
+by 0.37, 1.05 and 0.91 nats on Pythia 1.4B, Gemma 3 1B and Gemma 3 4B and unchanged on Pythia 410M,
+whose initial student already carries the advantage, so the initial student separates the part of the
+gain that comes from the smaller model from the part that distillation adds. The same items were
+then read out by greedy generation, an endpoint the selection never targeted, under two protocols.
+The first, the 32-token protocol of Appendix~\ref{sec:app_probes}, scores the whole block before
+the next question marker; under it the students, which answer in the teacher's longer style, reach
+exact match of 0.029, 0.065, 0.000 and 0.003 against 0.044, 0.167, 0.036 and 0.086 for the
+quantization-only choices. The second gives 96 tokens and applies one gold-blind extraction rule
+to every model, the first sentence of the first line with markdown removed, and records whether a
+generation reached the cap without a stop marker. Under that readout the students score 0.089,
+0.091, 0.115 and 0.172, ahead of the quantization-only choice by 0.04, 0.07 and 0.09 on Pythia
+410M, Gemma 3 1B and Gemma 3 4B, with paired intervals excluding zero, and behind it by 0.06 on
+Pythia 1.4B; against their own initial students they are level on three references and 0.09 behind
+on Pythia 1.4B, so the loss gains over the initial student do not convert into exact-match gains.
+The students reach the 96-token cap on 63 to 99 percent of items, since they rarely emit a stop
+marker. A reading of 20 sampled items per model, recorded with the results, found the students'
+first answer correct on 4, 7, 5 and 6 items against 3, 4, 2 and 5 for the quantization-only
+choices, with the difference between correct content and exact match confined to run-on sentences
+and initials that the rule now handles; the remaining student errors are wrong answers. The two
+readouts disagree by up to 0.14 in exact match on the same models, so generation accuracy is
+sensitive to the protocol, and its ordering of the candidates does not follow the loss ordering
+on every reference. Reference-answer likelihood and generation correctness are therefore different
+endpoints, and which of them a selector optimises decides which model it recommends; the rule of
+Section~\ref{sec:selection} optimises the former, and a deployment that needs a particular answer
+format or accuracy enters that endpoint as its own objective.
 \input{tables/p1_behaviour}
 
 \paragraph{Storage in bytes.} The selection states its budget in nominal storage, the fraction of
