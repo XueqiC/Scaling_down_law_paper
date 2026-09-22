@@ -2,31 +2,31 @@
 \centering\small
 \setlength{\tabcolsep}{3pt}
 \caption{The table compares pre-specified selection policies on the independent confirmation panel. Mean regret is in nats per native token. Feasibility entries give feasible cells out of total cells; agreement and candidate-set coverage are reported as percentages of evaluated cells.}
-\par\smallskip\begin{minipage}{\linewidth}\footnotesize Question answering is restricted to 2Wiki; policy predictions were pre-specified before the new measurements.\end{minipage}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize Question answering is restricted to 2Wiki; policy predictions were pre-specified before the new measurements. The two candidate-set policies contain the oracle's method in every cell, except the source-conditioned policy on question answering, which contains it in 97.1 percent of cells.\end{minipage}
 \label{tab:rule-confirm}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-1.600000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.280000000\textwidth-2.800000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.110000000\textwidth-1.100000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.120000000\textwidth-1.200000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.180000000\textwidth-1.800000000\tabcolsep\relax}@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.220000000\textwidth-1.760000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.380000000\textwidth-3.040000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.180000000\textwidth-1.440000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.220000000\textwidth-1.760000000\tabcolsep\relax}@{}}
 \toprule
-Capability & Policy & Regret & {Method agreement (percent)} & {Set contains oracle method (percent)} \\
+Capability & Policy & Regret & {Method agreement (percent)} \\
 \midrule
-Math & {Final selection rule} & 0.0000 & 98.5 & 100.0 \\
-Math & {Source-conditioned} & 0.0149 & 98.5 & 100.0 \\
-Math & Quantization only & 0.0068 & 94.1 & --- \\
-Math & Cheapest feasible & 1.7716 & 73.5 & --- \\
+Math & {Final selection rule} & 0.0000 & 98.5 \\
+Math & {Source-conditioned} & 0.0149 & 98.5 \\
+Math & Quantization only & 0.0068 & 94.1 \\
+Math & Cheapest feasible & 1.7716 & 73.5 \\
 \midrule
-Code & {Final selection rule} & 0.0043 & 95.6 & 100.0 \\
-Code & {Source-conditioned} & 0.1124 & 100.0 & 100.0 \\
-Code & Quantization only & 0.0102 & 97.1 & --- \\
-Code & Cheapest feasible & 2.4346 & 75.0 & --- \\
+Code & {Final selection rule} & 0.0043 & 95.6 \\
+Code & {Source-conditioned} & 0.1124 & 100.0 \\
+Code & Quantization only & 0.0102 & 97.1 \\
+Code & Cheapest feasible & 2.4346 & 75.0 \\
 \midrule
-QA  & {Final selection rule} & 0.1410 & 76.5 & 100.0 \\
-QA  & {Source-conditioned} & 0.2136 & 61.8 & 97.1 \\
-QA  & Quantization only & 0.2526 & 48.5 & --- \\
-QA & Cheapest feasible & 1.3518 & 63.2 & --- \\
+QA  & {Final selection rule} & 0.1410 & 76.5 \\
+QA  & {Source-conditioned} & 0.2136 & 61.8 \\
+QA  & Quantization only & 0.2526 & 48.5 \\
+QA & Cheapest feasible & 1.3518 & 63.2 \\
 \midrule
-{Largest increase} & {Final selection rule} & 0.0020 & 100.0 & 100.0 \\
-{Largest increase} & {Source-conditioned} & 0.0019 & 97.1 & 100.0 \\
-{Largest increase} & Quantization only & 0.0081 & 92.6 & --- \\
-{Largest increase} & Cheapest feasible & 2.4263 & 72.1 & --- \\
+{Largest increase} & {Final selection rule} & 0.0020 & 100.0 \\
+{Largest increase} & {Source-conditioned} & 0.0019 & 97.1 \\
+{Largest increase} & Quantization only & 0.0081 & 92.6 \\
+{Largest increase} & Cheapest feasible & 2.4263 & 72.1 \\
 \bottomrule
 \end{tabular*}
 \par\smallskip\begin{minipage}{\linewidth}\footnotesize

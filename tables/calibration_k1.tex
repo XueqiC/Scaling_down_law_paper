@@ -1,33 +1,33 @@
 \begin{table}[tb]\normalfont
 \centering\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-1.600000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.190000000\textwidth-1.900000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-1.600000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.190000000\textwidth-1.900000000\tabcolsep\relax}@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.340000000\textwidth-2.040000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.260000000\textwidth-1.560000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.400000000\textwidth-2.400000000\tabcolsep\relax}@{}}
 \toprule
-Panel & What is shared & Error without and with one target measurement & 80\% interval: coverage and width, without then with that measurement \\
+Panel & What is shared & Error without and with one target measurement\\
 \midrule
-Pruning development leave-one-state-out & Training Exponent & 0.604 against 31.406 & ---\\
+Pruning development leave-one-state-out & Training Exponent & 0.604 against 31.406\\
 \midrule
-Pruning confirmation & Training Exponent & 0.560 against 0.415 & 77.8\%/1.621 to 100.0\%/3.629\\
+Pruning confirmation & Training Exponent & 0.560 against 0.415\\
 \midrule
-Pruning pairs: 17-source out-of-fold predictions & Training Exponent & 0.517 against 0.763 & ---\\
+Pruning pairs: 17-source out-of-fold predictions & Training Exponent & 0.517 against 0.763\\
 \midrule
-Pruning pairs: independent 13 & Training Exponent & 0.707 against 0.772 & 66.7\%/1.523 to 87.5\%/4.277\\
+Pruning pairs: independent 13 & Training Exponent & 0.707 against 0.772\\
 \midrule
-Quantization surface development leave-one-state-out & Training curve & 3.143 against 26.177 & ---\\
+Quantization surface development leave-one-state-out & Training curve & 3.143 against 26.177\\
 \midrule
-Quantization surface bit-width test & Training curve & 0.747 against 6.442 & ---\\
+Quantization surface bit-width test & Training curve & 0.747 against 6.442\\
 \midrule
-Quantization surface group-size test & Training curve & 1.751 against 14.973 & ---\\
+Quantization surface group-size test & Training curve & 1.751 against 14.973\\
 \midrule
-Quantization surface joint test & Training curve & 0.344 against 0.193 & ---\\
+Quantization surface joint test & Training curve & 0.344 against 0.193\\
 \midrule
-Separable quantization bit-width test & Training curve & 1.540 against 0.183 & ---\\
+Separable quantization bit-width test & Training curve & 1.540 against 0.183\\
 \midrule
-Separable quantization group-size test & Training curve & 2.423 against 0.623 & ---\\
+Separable quantization group-size test & Training curve & 2.423 against 0.623\\
 \midrule
-Separable quantization joint test & Training curve & 0.724 against 0.306 & ---\\
+Separable quantization joint test & Training curve & 0.724 against 0.306\\
 \bottomrule
 \end{tabular*}
 \caption{The table reports the effect of one target measurement. Errors are mean absolute errors in nats per native token, interval widths are in the same units, and coverage is a percentage. The calibration cell itself is excluded from scoring.}
-\par\smallskip\begin{minipage}{\linewidth}\footnotesize The confirmation panel excludes three new sources, and the independent pair panel excludes all four pair sources from fitting and from its 13-source interval bank.\end{minipage}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize The confirmation panel excludes three new sources, and the independent pair panel excludes all four pair sources from fitting and from its 13-source interval bank. Eighty-percent intervals exist for two panels: on the pruning confirmation panel coverage and width move from 77.8 percent and 1.621 nats without the measurement to 100.0 percent and 3.629 nats with it; on the independent pair panel from 66.7 percent and 1.523 nats without the measurement to 87.5 percent and 4.277 nats with it.\end{minipage}
 \label{tab:calibration_k1}
 \end{table}
