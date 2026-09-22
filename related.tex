@@ -24,6 +24,13 @@ and uneven capability loss is documented for individual tasks and quantizers
 Section~\ref{sec:observed} measures the shape of that unevenness on one endpoint.
 
 \paragraph{Compression Method Selection.}
-Repeated tokens are worth less than new ones \citep{muennighoff2023scaling}, which
-Section~\ref{sec:observed} resolves per capability and student; choosing between methods needs
-predictions comparable across them, which Section~\ref{sec:selection} supplies and tests on four independent references.
+Prior work compares compression methods by measuring each candidate on the target model:
+\citet{jaiswal2023compressing} evaluate pruned and quantized models on knowledge-intensive tasks and
+find quantization to retain more at the same compression ratio, and \citet{panferov2025unified}
+place sparsity and precision on one capacity scale so that their aggregate losses can be compared
+before training. For distillation, \citet{muennighoff2023scaling} show that repeated tokens are
+worth less than new ones; our reuse response measures that exchange rate per capability and per
+student (Section~\ref{sec:observed}). None of them states which method a given model, capability and budget should receive without measuring every candidate. This paper supplies
+that decision: Section~\ref{sec:selection} turns the relations of Section~\ref{sec:laws} into a
+selection rule under a storage constraint, tests it on four references against a quantization-only
+policy, and measures the cross-method benefit it recovers.

@@ -231,10 +231,8 @@ and in Muse-30B, QA is the most-damaged capability at the mildest densities, by 
 OLMo-3-7B lies in between with differences of at most $0.15$ nats. A
 measurement-noise floor sets the scale: the median $|\Delta L|$ at $d=0.9$ is
 $0.013$ nats, and 29 of the 62 nominal improvement cells across all
-arms exceed twice that median; the rest are treated as zero. Cliffs
-occur between $d=0.5$ and $0.7$ for Qwen3 and Gemma, at $0.55$ for
-Muse-30B and $0.35$ for OLMo-3-7B, and had not occurred by $d=0.3$ for
-OLMo-3-32B. Robustness is not monotone in size within a series: Gemma-3-12B is the most robust Gemma-3 size and 27B collapses earlier.
+arms exceed twice that median; the rest are treated as zero. Cliffs occur between $d=0.4$ and $0.7$ for Qwen3 and Gemma, at $0.55$ for Muse-30B, $0.35$ for
+OLMo-3-7B and $0.2$ for OLMo-3-32B. Robustness is not monotone in size within a series: Gemma-3-12B is the most robust Gemma-3 size and 27B collapses earlier.
 A predictor has to reproduce this heterogeneity, which no single property of a model family determines by itself.
 
 Under quantization, Table~\ref{tab:panel_quant} covers
