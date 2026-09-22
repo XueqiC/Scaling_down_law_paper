@@ -28,6 +28,8 @@
 \normalfont
 \centering\small
 \setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.05}
+\caption{The table gives the selection predictor for each compression method, capability and source-state status. A prediction adds the listed response, in nats per native token, to a dense anchor: the source loss for pruning and quantization, the initial student's loss for distillation. Each method is fitted on its own development panel, listed below. The rule was pre-specified before confirmation.}
+\label{tab:locked_rule}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.190000000\textwidth-1.900000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.130000000\textwidth-1.300000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-1.600000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.220000000\textwidth-2.200000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.170000000\textwidth-1.700000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.130000000\textwidth-1.300000000\tabcolsep\relax}@{}}
 \toprule
 Compression method & Capability & State status & Response predictor \\
@@ -61,8 +63,6 @@ Pruning & Question answering & {New size or new stage} & {Pruning development me
 % anchors = {k: float(np.dot(beta, z)) for k, beta in
 %                        f["models"][c]["same_input_interpolation"]["anchors"].items()}
 \bottomrule\end{tabular*}
-\caption{The table gives the selection predictor for each compression method, capability and source-state status. A prediction adds the listed response, in nats per native token, to a dense anchor: the source loss for pruning and quantization, the initial student's loss for distillation. Each method is fitted on its own development panel, listed below. The rule was pre-specified before confirmation.}
-\label{tab:locked_rule}
 \end{table}
 \begin{table}[tb]\ContinuedFloat
 \normalfont

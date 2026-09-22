@@ -13,9 +13,12 @@
 % INPUT results/v70-distill-confirm/compare.json sha256=983f53033b07e035b1cb552429b8ce6ab23f8d6aee4365237970e2b46b0a829b
 % INPUT results/v70-distill-confirm/freeze.json sha256=d7b28c7251dbc6113c3de7c957560827e603d4e77a48010f99835a8468db0c24
 % INPUT results/v50-p2v2/compare_test.json sha256=4c07abf0f940e95992a3f46d79b6d9a3ef9524ba55adaefa824b0cdec8a601aa
-\begin{table}[tb]\normalfont
+\begin{table}[tb]
+\normalfont
 \centering\scriptsize
 \setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1.06}
+\caption{The table compares the earlier distillation relation with pre-specified alternatives on unseen pools and students. Mean absolute errors and gains are in nats per native token. Lists follow mathematics, code, and question answering. Gain is alternative error minus relation error; these rules were not delivered.}
+\label{tab:main_context}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.130000000\textwidth-1.560000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.200000000\textwidth-2.400000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.120000000\textwidth-1.440000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.180000000\textwidth-2.160000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.110000000\textwidth-1.320000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.130000000\textwidth-1.560000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.130000000\textwidth-1.560000000\tabcolsep\relax}@{}}
 \toprule
 Compression method and pre-specified candidate & Test object & Relation error (Math / code / QA) & Named baseline and error (Math / code / QA) & Gain (Math / code / QA) & Delivered rule (Math / code / QA) & Scope \\
@@ -129,6 +132,4 @@ Distillation context\newline Pre-specified joint response with student size & Ge
 Distillation context\newline Pre-specified joint response with student size & Gemma-3-4 billion; 3 pools pool size 375; supervised tokens 35, 70, 140, 280 thousand & $0.089$ / $0.050$ / $1.141$ & Constant $0.020$ / Budget response $0.033$ / Joint $0.272$ & $-0.068$ / $-0.018$ / $-0.869$ & Not delivered & \emph{\mbox{post-hoc}}\newline \mbox{Held-out} size \\
 \bottomrule
 \end{tabular*}
-\caption{The table compares the earlier distillation relation with pre-specified alternatives on unseen pools and students. Mean absolute errors and gains are in nats per native token. Lists follow mathematics, code, and question answering. Gain is alternative error minus relation error; these rules were not delivered.}
-\label{tab:main_context}
 \end{table}

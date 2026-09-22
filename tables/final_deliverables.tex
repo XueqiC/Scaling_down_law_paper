@@ -1,5 +1,8 @@
-\begin{table}[tb]\normalfont
+\begin{table}[tb]
+\normalfont
 \centering\scriptsize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.05}
+\caption{The table summarizes delivered predictors, their inputs, evidence, and applicable settings. Prediction errors and gains are in nats per native token, relative to the strongest baseline using the same information. Rules chosen after testing are marked retrospective.}
+\label{tab:final}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.120000000\textwidth-1.200000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.230000000\textwidth-2.300000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.140000000\textwidth-1.400000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.170000000\textwidth-1.700000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.200000000\textwidth-2.000000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.140000000\textwidth-1.400000000\tabcolsep\relax}@{}}
 \toprule
 Compression method & Delivered predictor & Inputs & Evaluation domain \\
@@ -13,6 +16,4 @@ Quantization & Per-channel on new states: per-bit development median. Grouped on
 Distillation & On development students: $\widehat\delta_c=a_c\log(1+E)$ (Mathematics, Code) and the joint budget-pool form (Question answering); reference is the initial student. & supervised tokens, unique-pool tokens (reuse is supervised tokens divided by unique-pool tokens); initial loss of the student & Gemma-3 270 million and 1 billion students, one recipe; pools to 158 thousand tokens, budgets 50 thousand--200 thousand; Question answering on 2Wiki\\
 \bottomrule
 \end{tabular*}
-\caption{The table summarizes delivered predictors, their inputs, evidence, and applicable settings. Prediction errors and gains are in nats per native token, relative to the strongest baseline using the same information. Rules chosen after testing are marked retrospective.}
-\label{tab:final}
 \end{table}

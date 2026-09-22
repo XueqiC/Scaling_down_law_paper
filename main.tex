@@ -144,6 +144,12 @@ LLM compression reduces inference costs and memory requirements, but selecting a
 
 \appendix
 \newpage
+% Appendix-only float packing: float pages fill from the top, and a float page must be at least 80% full.
+\makeatletter
+\setlength{\@fptop}{0pt}\setlength{\@fpsep}{10pt plus 4pt}\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+\renewcommand{\topfraction}{0.95}\renewcommand{\bottomfraction}{0.95}\renewcommand{\textfraction}{0.03}\renewcommand{\floatpagefraction}{0.6}
+\setcounter{topnumber}{4}\setcounter{bottomnumber}{4}\setcounter{totalnumber}{6}
 \section*{Appendix}
 % Keep the opening of the appendix at the top of its page.
 \suppressfloats[t]

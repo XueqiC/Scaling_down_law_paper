@@ -1,7 +1,7 @@
-\begin{table}[tb]\normalfont
+\begin{table}[tb]
+\normalfont
 \centering\small
 \caption{The table compares loss changes on primary and independent secondary benchmarks. Each pair lists the primary benchmark followed by the named secondary benchmark, in nats per native token. Compression states were specified before secondary measurement.}
-\par\smallskip\begin{minipage}{\linewidth}\footnotesize Primary and secondary benchmarks on Gemma-3-1 billion: loss change from dense in nats per native token on the main-protocol probe followed by an independent benchmark of the same capability (Mathematics: SVAMP; Question answering: TriviaQA; 128 samples, fixed probe seed). Scored completion tokens, primary then secondary, are 13198 and 260 for Mathematics, 4516 and 8393 for Code, and 251 and 328 for Question answering, in the same benchmark order.\end{minipage}
 \label{tab:p3_check}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.310000000\textwidth-1.860000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.230000000\textwidth-1.380000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.230000000\textwidth-1.380000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.230000000\textwidth-1.380000000\tabcolsep\relax}@{}}
 \toprule
@@ -15,4 +15,5 @@ distillation, pool size 450, first milestone & $+0.10$ / $-1.36$ & $+0.06$ / $+0
 distillation, pool size 450, second milestone & $+0.09$ / $-0.30$ & $+0.11$ / $+0.07$ & $-1.40$ / $+0.37$ \\
 \bottomrule
 \end{tabular*}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize Primary and secondary benchmarks on Gemma-3-1 billion: loss change from dense in nats per native token on the main-protocol probe followed by an independent benchmark of the same capability (Mathematics: SVAMP; Question answering: TriviaQA; 128 samples, fixed probe seed). Scored completion tokens, primary then secondary, are 13198 and 260 for Mathematics, 4516 and 8393 for Code, and 251 and 328 for Question answering, in the same benchmark order.\end{minipage}
 \end{table}

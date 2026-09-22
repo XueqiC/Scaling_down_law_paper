@@ -1,8 +1,8 @@
-\begin{table}[tb]\normalfont
+\begin{table}[tb]
+\normalfont
 \centering\small
 \setlength{\tabcolsep}{3pt}
 \caption{The table compares policy regret for each source state and objective. Mean regret is in nats per native token, averaged over storage budgets. The final column counts distinct configurations selected by the final rule.}
-\par\smallskip\begin{minipage}{\linewidth}\footnotesize Regret by source state and objective on the independent panel: the mean over the 17 nominal storage budgets (0.20--1.00 in steps of 0.05), in nats, and Selected configurations, the number of distinct configurations selected by the final rule across these budgets.\end{minipage}
 \label{tab:rule-confirm-by-state}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.230000000\textwidth-2.760000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.800000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.130000000\textwidth-1.560000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.130000000\textwidth-1.560000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.130000000\textwidth-1.560000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.130000000\textwidth-1.560000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.100000000\textwidth-1.200000000\tabcolsep\relax}@{}}
 \toprule
@@ -29,16 +29,17 @@ State & Objective & {Final selection rule} & {Source-conditioned} & Quantization
  & {Largest increase} & 0.000000 & 0.000000 & 0.023494 & 0.382624 & 7 \\
 \bottomrule
 \end{tabular*}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize Regret by source state and objective on the independent panel: the mean over the 17 nominal storage budgets (0.20--1.00 in steps of 0.05), in nats, and Selected configurations, the number of distinct configurations selected by the final rule across these budgets.\end{minipage}
 \par\smallskip\begin{minipage}{\linewidth}\footnotesize
 All four policies are feasible on all 68 state--budget cells per objective. The maximum-capability objective minimizes $\max_c[L_c(M)-L_c(M_0)]$. Question answering uses 2Wiki. The Pythia-1 billion at step 64 thousand state includes two historical distillation students, which were excluded from the prediction fits. The final selection rule uses the final policy, and the source-conditioned predictor uses the earlier selection laws.
 \end{minipage}
 \end{table}
 
-\begin{table}[tb]\normalfont
+\begin{table}[tb]
+\normalfont
 \centering\small
 \setlength{\tabcolsep}{3pt}
 \caption{The table shows candidate-set sizes and coverage of the measured oracle. Set sizes count compression methods. Coverage entries give covered cells out of total cells, followed by the percentage in parentheses. This is a retrospective diagnostic of pre-specified predictions.}
-\par\smallskip\begin{minipage}{\linewidth}\footnotesize Heuristic candidate-set sizes and oracle coverage on all 68 cells per objective. Size columns count methods in the no-clear-winner candidate set, including singletons; coverage columns give the count out of 68 and the percentage of sets containing the oracle method.\end{minipage}
 \label{tab:rule-confirm-candidate-sizes}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-2.240000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.260000000\textwidth-3.640000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.060000000\textwidth-0.840000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.060000000\textwidth-0.840000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.060000000\textwidth-0.840000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.060000000\textwidth-0.840000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.170000000\textwidth-2.380000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.170000000\textwidth-2.380000000\tabcolsep\relax}@{}}
 \toprule
@@ -59,6 +60,7 @@ QA (2Wiki) & {Final selection rule} & 24 & 32 & 12 & 0 & 68/\allowbreak 68 (100.
  & {Source-conditioned} & 32 & 26 & 10 & 0 & 68/\allowbreak 68 (100.0) & 62/\allowbreak 68 (91.2) \\
 \bottomrule
 \end{tabular*}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize Heuristic candidate-set sizes and oracle coverage on all 68 cells per objective. Size columns count methods in the no-clear-winner candidate set, including singletons; coverage columns give the count out of 68 and the percentage of sets containing the oracle method.\end{minipage}
 \par\smallskip\begin{minipage}{\linewidth}\footnotesize
 Sets reuse pre-specified development leave-one-state-out mean absolute error thresholds; coverage is retrospective, not calibrated uncertainty. On this panel the no-clear-winner flag holds exactly for sets of size $\geq2$. The Source-conditioned predictor for Code at Pythia-1 billion at step 64 thousand and budget 1.00 has four candidates (quantization, dense, pruning, distillation); it is retained explicitly. Oracle method: covered / total (percent) tests whether the measured oracle's method belongs to the candidate methods. Oracle configuration: covered / total (percent) tests whether its exact configuration identifier belongs to the set of one predicted best configuration per included method. Neither column tests the single selected configuration. The final selection rule uses the final policy, and the source-conditioned predictor uses the earlier selection laws.
 \end{minipage}

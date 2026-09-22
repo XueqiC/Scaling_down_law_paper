@@ -1,5 +1,8 @@
-\begin{table}[tb]\normalfont
+\begin{table}[tb]
+\normalfont
 \centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{The table compares a shared response family with capability-specific responses, and reports the spread of exponents fitted separately per source. Errors are mean absolute errors in nats per native token, pooled equally over capabilities. Distillation carries no pretraining-token input, so that term is inactive.}
+\label{tab:shared_structure}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.170000000\textwidth-1.700000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.130000000\textwidth-1.300000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.140000000\textwidth-1.400000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.180000000\textwidth-1.800000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.180000000\textwidth-1.800000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.200000000\textwidth-2.000000000\tabcolsep\relax}@{}}
 \toprule
 Law & What is shared & What varies & \mbox{Held-out} error, shared against capability-specific \\
@@ -21,6 +24,4 @@ Pruning Code & Power family & Source amplitudes, Exponent & Exponent minimum, me
 Pruning QA & Power family & Source amplitudes, Exponent & Exponent minimum, median, maximum: 0.50, 3.40, 6.00\\
 \bottomrule
 \end{tabular*}
-\caption{The table compares a shared response family with capability-specific responses, and reports the spread of exponents fitted separately per source. Errors are mean absolute errors in nats per native token, pooled equally over capabilities. Distillation carries no pretraining-token input, strength only that term is inactive.}
-\label{tab:shared_structure}
 \end{table}

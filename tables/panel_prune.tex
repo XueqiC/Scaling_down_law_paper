@@ -1,4 +1,7 @@
-\begin{table}[tb]\normalfont\centering\footnotesize\setlength{\tabcolsep}{3.5pt}
+\begin{table}[tb]
+\normalfont\centering\footnotesize\setlength{\tabcolsep}{3.5pt}
+\caption{The table compares the pruning loss change across models and capabilities. Loss changes are in nats per native token; density is dimensionless. Ranking cells count least-affected and most-affected outcomes out of measured densities.}
+\label{tab:panel_prune}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.210000000\textwidth-2.940000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.080000000\textwidth-1.120000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.080000000\textwidth-1.120000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.080000000\textwidth-1.120000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.110000000\textwidth-1.540000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.130000000\textwidth-1.820000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-2.100000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-2.240000000\tabcolsep\relax}@{}}
 \toprule
 Model & \multicolumn{3}{>{\centering\arraybackslash\hspace{0pt}}p{\dimexpr 0.240000000\textwidth--0.640000000\tabcolsep\relax}}{Loss change at density 0.7} & {Math at density 0.5} & Threshold density & {QA least; most affected} & Lowest QA change (density) \\
@@ -32,6 +35,5 @@ OLMo-3-7 billion & +0.03 & +0.03 & +0.14 & +0.22 & 0.35 & 4/\allowbreak 8; 3/\al
 \midrule
 OLMo-3-32 billion & +0.01 & +0.03 & +0.02 & +0.09 & 0.20 & 7/\allowbreak 10; 0/\allowbreak 10 & -0.24 (0.30)\\
 \bottomrule\end{tabular*}
-\caption{The table compares the pruning loss change across models and capabilities. Loss changes are in nats per native token; density is dimensionless. Ranking cells count least-affected and most-affected outcomes out of measured densities.}
 \par\smallskip\begin{minipage}{\linewidth}\footnotesize Threshold density is the largest measured density with $\Delta L_{\mathrm{math}}\ge 1$; the Question answering ranking columns count, over the pre-cliff densities, how often Question answering is the least and the most affected capability; the last column gives the most negative Question answering response and its density.\end{minipage}
-\label{tab:panel_prune}\end{table}
+\end{table}

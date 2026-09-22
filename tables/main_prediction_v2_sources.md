@@ -1584,7 +1584,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
 ```json
 {
   "parts": [
-    "Errors are mean absolute errors in nats per token, in math, code and question answering order. The delivered relation is the predictor recommended on all evidence; a Retrospective label marks a predictor chosen after seeing the result, whose error is not an independent test. The strongest development baseline was chosen inside the development folds, before the test, and scored on the same cells. The last column counts development configuration measurements per capability; distillation entries give the ",
+    "Delivered relations and their errors against the strongest development baseline. Errors are mean absolute errors in nats per token, in math, code and question answering order. The delivered relation is the predictor recommended on all evidence; a Retrospective label marks a predictor chosen after seeing the result. The strongest development baseline was chosen inside the development folds and scored on the same cells. The last column counts development configuration measurements per capability; distillation entries give the ",
     {
       "sources": [
         "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
@@ -1611,7 +1611,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   ],
   "note": "",
   "compact_scores": "",
-  "rendered": "Errors are mean absolute errors in nats per token, in math, code and question answering order. The delivered relation is the predictor recommended on all evidence; a Retrospective label marks a predictor chosen after seeing the result, whose error is not an independent test. The strongest development baseline was chosen inside the development folds, before the test, and scored on the same cells. The last column counts development configuration measurements per capability; distillation entries give the 270 million and 1 billion students in that order. Appendix Table~\\ref{tab:main-prediction-candidates} lists each task's pre-specified candidate; Fig.~\\ref{fig:generalization} compares each row with its baseline."
+  "rendered": "Delivered relations and their errors against the strongest development baseline. Errors are mean absolute errors in nats per token, in math, code and question answering order. The delivered relation is the predictor recommended on all evidence; a Retrospective label marks a predictor chosen after seeing the result. The strongest development baseline was chosen inside the development folds and scored on the same cells. The last column counts development configuration measurements per capability; distillation entries give the 270 million and 1 billion students in that order. Appendix Table~\\ref{tab:main-prediction-candidates} lists each task's pre-specified candidate; Fig.~\\ref{fig:generalization} compares each row with its baseline."
 }
 ```
 

@@ -1,5 +1,8 @@
-\begin{table}[tb]\normalfont
+\begin{table}[tb]
+\normalfont
 \centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{The table reports the effect of one target measurement. Errors are mean absolute errors in nats per native token, interval widths are in the same units, and coverage is a percentage. The calibration cell itself is excluded from scoring.}
+\label{tab:calibration_k1}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.340000000\textwidth-2.040000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.260000000\textwidth-1.560000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.400000000\textwidth-2.400000000\tabcolsep\relax}@{}}
 \toprule
 Panel & What is shared & Error without and with one target measurement\\
@@ -27,7 +30,5 @@ Separable quantization group-size test & Training curve & 2.423 against 0.623\\
 Separable quantization joint test & Training curve & 0.724 against 0.306\\
 \bottomrule
 \end{tabular*}
-\caption{The table reports the effect of one target measurement. Errors are mean absolute errors in nats per native token, interval widths are in the same units, and coverage is a percentage. The calibration cell itself is excluded from scoring.}
 \par\smallskip\begin{minipage}{\linewidth}\footnotesize The confirmation panel excludes three new sources, and the independent pair panel excludes all four pair sources from fitting and from its 13-source interval bank. Eighty-percent intervals exist for two panels: on the pruning confirmation panel coverage and width move from 77.8 percent and 1.621 nats without the measurement to 100.0 percent and 3.629 nats with it; on the independent pair panel from 66.7 percent and 1.523 nats without the measurement to 87.5 percent and 4.277 nats with it.\end{minipage}
-\label{tab:calibration_k1}
 \end{table}

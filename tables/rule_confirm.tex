@@ -1,8 +1,8 @@
-\begin{table}[tb]\normalfont
+\begin{table}[tb]
+\normalfont
 \centering\small
 \setlength{\tabcolsep}{3pt}
-\caption{The table compares pre-specified selection policies on the independent confirmation panel. Mean regret is in nats per native token. Feasibility entries give feasible cells out of total cells; agreement and candidate-set coverage are reported as percentages of evaluated cells.}
-\par\smallskip\begin{minipage}{\linewidth}\footnotesize Question answering is restricted to 2Wiki; policy predictions were pre-specified before the new measurements. The two candidate-set policies contain the oracle's method in every cell, except the source-conditioned policy on question answering, which contains it in 97.1 percent of cells.\end{minipage}
+\caption{The table compares pre-specified selection policies on the independent confirmation panel. Mean regret is in nats per native token, and method agreement is the percentage of evaluated cells in which the policy's method matches the oracle's.}
 \label{tab:rule-confirm}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.220000000\textwidth-1.760000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.380000000\textwidth-3.040000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.180000000\textwidth-1.440000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.220000000\textwidth-1.760000000\tabcolsep\relax}@{}}
 \toprule
@@ -29,6 +29,7 @@ QA & Cheapest feasible & 1.3518 & 63.2 \\
 {Largest increase} & Cheapest feasible & 2.4263 & 72.1 \\
 \bottomrule
 \end{tabular*}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize Question answering is restricted to 2Wiki; policy predictions were pre-specified before the new measurements. The two candidate-set policies contain the oracle's method in every cell, except the source-conditioned policy on question answering, which contains it in 97.1 percent of cells.\end{minipage}
 \par\smallskip\begin{minipage}{\linewidth}\footnotesize
 The maximum-capability objective is $\max_c(L_c-L_{0c})$. Quantization only pools both round-to-nearest quantization arms. All four headline policies share the same 68 feasible cells. Heuristic sets use pre-specified development errors; set coverage is retrospective, not calibrated uncertainty. Verdicts: Mathematics: confirmed; Code: confirmed; Question answering (2Wiki): confirmed. The final selection rule uses the final policy, and the source-conditioned predictor uses the earlier selection laws.
 \end{minipage}

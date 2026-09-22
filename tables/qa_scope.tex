@@ -1,8 +1,8 @@
-\begin{table}[tb]\normalfont
+\begin{table}[tb]
+\normalfont
 \centering
 \small
 \caption{The table compares question-answering loss across benchmarks and compression states. Loss and change from the dense model are in nats per native token. Negative changes indicate improvement. Distillation budgets count the supervised tokens used for training.}
-\par\smallskip\begin{minipage}{\linewidth}\footnotesize Question answering measurement scope on Gemma-3-1 billion: conditional loss and Loss change from dense in native-token nats (negative is improvement) with 256 fixed references per set. 2Wiki supplies all context, MuSiQue supplies supporting paragraphs, and TriviaQA is the no-context control; distillation labels give nominal supervised-token budgets. All 24 cells of the \mbox{pre-specified} states were measured.\end{minipage}
 \label{tab:qa_scope}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.340000000\textwidth-4.080000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.110000000\textwidth-1.320000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.110000000\textwidth-1.320000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.110000000\textwidth-1.320000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.110000000\textwidth-1.320000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.110000000\textwidth-1.320000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.110000000\textwidth-1.320000000\tabcolsep\relax}@{}}
 \toprule
@@ -19,4 +19,5 @@ Dense & 5.796 & +0.000 & 1.919 & +0.000 & 2.714 & +0.000 \\
 {Distillation at supervised budget 280 thousand} & 4.917 & -0.878 & 2.124 & +0.204 & 2.967 & +0.253 \\
 \bottomrule
 \end{tabular*}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize Question answering measurement scope on Gemma-3-1 billion: conditional loss and Loss change from dense in native-token nats (negative is improvement) with 256 fixed references per set. 2Wiki supplies all context, MuSiQue supplies supporting paragraphs, and TriviaQA is the no-context control; distillation labels give nominal supervised-token budgets. All 24 cells of the \mbox{pre-specified} states were measured.\end{minipage}
 \end{table}

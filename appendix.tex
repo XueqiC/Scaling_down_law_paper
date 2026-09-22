@@ -80,8 +80,11 @@ processed-token budget for each pool, and the two protocols are not mixed in any
 \subsection{The controlled Pythia panel}
 \label{sec:app_pythia}
 
-\begin{table}[tb]\normalfont
+\begin{table}[tb]
+\normalfont
 \centering\footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.15}
+\caption{Cohorts of models and states, compression interventions, and study roles. Rows distinguish development cohorts, pre-specified prediction tests, and descriptive \mbox{post-hoc} measurements; each cohort is scored with the same 64 probes per capability. Densities and reuse counts are dimensionless, bit widths are in bits, and budgets are in tokens. The 2.8B Pythia checkpoints are excluded because their available revisions loaded identical weights.}
+\label{tab:cohorts}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.176923077\textwidth-1.061538462\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.307692308\textwidth-1.846153846\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.253846154\textwidth-1.523076923\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.261538462\textwidth-1.569230769\tabcolsep\relax}@{}}
 \toprule
 Cohort & Models and states & Interventions & Role in the study \\
@@ -120,8 +123,6 @@ Varied distillation recipes. &
 Describes measured responses. \\
 \bottomrule
 \end{tabular*}
-\caption{Cohorts of models and states, compression interventions, and study roles. Rows distinguish development cohorts, pre-specified prediction tests, and descriptive \mbox{post-hoc} measurements; each cohort is scored with the same 64 probes per capability. Densities and reuse counts are dimensionless, bit widths are in bits, and budgets are in tokens. The 2.8B Pythia checkpoints are excluded because their available revisions loaded identical weights.}
-\label{tab:cohorts}
 \end{table}
 
 The panel uses the public Pythia checkpoints at sizes 160M, 410M and 1.4B and pretraining steps
@@ -544,14 +545,14 @@ Median density curve (18) & 0.145 & 0.212 & 0.186 \\
 \caption{Subsampling study on the nine-state development panel: median mean absolute error in nats
 on the new-state cells over twenty fixed replicates, when the nine-state development panel retains
 9, 18 or all 36 density measurements per capability in total. Where fewer than twenty replicates could be fitted, the count
-is given; a dash means no replicate could be fitted.}
+is given; a slash means no replicate could be fitted.}
 \label{tab:a9}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}rlrrr@{}}
 \toprule
 Measurements per capability & Predictor & Math & Code & QA \\
 \midrule
 9 & Power form & 0.25 & 0.30 & 0.61 \\
-9 & Per-density regression & -- & -- & -- \\
+9 & Per-density regression & / & / & / \\
 9 & Median curve & 0.33 & 0.47 & 0.58 \\
 18 & Power form & 0.20 & 0.17 & 0.52 \\
 18 & Per-density regression & 0.24 (6/20 fits) & 0.28 (6/20 fits) & 0.76 (6/20 fits) \\
@@ -701,12 +702,13 @@ the measured loss change with a median relative error that depends on the loss-c
 family or the knob (Table~\ref{tab:disp_boundary}): under 5\% wherever the loss change is below about
 0.1 nats, and rising past 20\% by 0.25 nats. Grouped four-bit quantization with fine groups, at 0.06 nats, sits on the same error curve as per-channel four-bit quantization at 0.24 nats of damage.
 
-\begin{table}[tb]\normalfont
+\begin{table}[tb]
+\normalfont
 \centering\small
+%
 \caption{Median relative error of the coefficient-free second-order account, by family and
 configuration. Rows identify compression families; the second column pairs each setting with its median relative error in percent, from a \mbox{post-hoc} analysis of the measured damage.}
 \label{tab:disp_boundary}
-%
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.250000000\textwidth-0.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.750000000\textwidth-1.500000000\tabcolsep\relax}@{}}
 \toprule
 Family & Configuration: median relative error \\
@@ -715,8 +717,8 @@ Pruning & $d=0.9$: 0.9\%; 0.85: 4.3\%; 0.8: 5.3\%; 0.75: 11.1\%; 0.7: 16.0\%; 0.
 Grouped quantization & 5 bits: 1.6--2.7\% at each group size; 4 bits: 3.3\% to 9.2\% by group size; 3 bits: 35.9\% \\
 Per-channel quantization & 8 bits: 2.5\%; 6 bits: 3.0\%; 5 bits: 4.2\%; 4 bits: 23.8\%; 3 bits: 53.9\% \\
 \bottomrule
-\end{tabular*}%
-
+\end{tabular*}
+%
 \end{table}
 
 Two readings of this account are excluded. Projecting the displacement onto the reference logits $\ell$
@@ -851,6 +853,16 @@ text.
 \input{tables/locked_rule}
 \begin{figure}[tb]
 \centering
+\includegraphics[width=5.5in]{figs/rule_regret_legend.pdf}\\[1pt]
+\includegraphics[width=5.5in]{figs/rule_regret_a.pdf}
+\caption{Mean regret per objective on the four earlier Pythia states, in nats per native token on
+a logarithmic scale, for the final rule, the earlier source-conditioned laws, quantization-only
+and the cheapest feasible configuration; the saved pooled means of the confirmation round are
+plotted without recomputation.}
+\label{fig:rule_regret}
+\end{figure}
+\begin{figure}[tb]
+\centering
 \includegraphics[width=5.5in]{figs/rule_maps_full_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_full_a.pdf}\subcaption{Math}\end{subfigure}\hfill
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/rule_maps_full_b.pdf}\subcaption{Code}\end{subfigure}\\[3pt]
@@ -859,16 +871,6 @@ text.
 
 \caption{Full selection maps on the four fresh states under the final rule and under the earlier source-conditioned laws, in row pairs, against nominal storage budget; colour: predicted method; hollow circle with cross-hatching: the oracle differs; diagonal hatching: no clear winner. The last panel uses the largest loss increase across capabilities as the objective.}
 \label{fig:rule_maps}
-\end{figure}
-\begin{figure}[tb]
-\centering
-\includegraphics[width=5.5in]{figs/rule_regret_legend.pdf}\\[1pt]
-\includegraphics[width=5.5in]{figs/rule_regret_a.pdf}
-\caption{Mean regret per objective on the four earlier Pythia states, in nats per native token on
-a logarithmic scale, for the final rule, the earlier source-conditioned laws, quantization-only
-and the cheapest feasible configuration; the saved pooled means of the confirmation round are
-plotted without recomputation.}
-\label{fig:rule_regret}
 \end{figure}
 \input{tables/rule_confirm}
 
@@ -881,8 +883,12 @@ Section~\ref{sec:efficiency} and the data-requirement experiment of Section~\ref
 September, each before its models were trained or pruned; no measurement taken after a prediction
 was fixed enters that prediction or its baseline.
 \label{sec:app_register}
-\begin{table}[tb]\normalfont
+\begin{table}[tb]
+\normalfont
 \centering\footnotesize
+\caption{Information budgets: K0 uses no compressed-target calibration, K1 one calibration
+measurement, and the oracle row is a post-hoc diagnostic.}
+\label{tab:budgets}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.26\textwidth-1.04\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.40\textwidth-1.60\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.34\textwidth-1.36\tabcolsep\relax}@{}}
 \toprule
 Budget & Information available & Cost to disclose \\
@@ -897,9 +903,6 @@ Oracle diagnostic & Rescaling on measured target outcomes & No predictive budget
 of form misfit \\
 \bottomrule
 \end{tabular*}
-\caption{Information budgets: K0 uses no compressed-target calibration, K1 one calibration
-measurement, and the oracle row is a post-hoc diagnostic.}
-\label{tab:budgets}
 \end{table}
 
 Prospective tests follow one order: forms, development set, standardization and coefficients are fixed; the reference losses of a new source are measured; each candidate's predictions are recorded with their hash; only then is the outcome measured.

@@ -1,5 +1,7 @@
 \begin{table}[tb]
 \normalfont\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.02}
+\caption{The table tests predictions for unseen source states at fixed compression settings. Entries are mean absolute errors in nats per native token. Bold marks the lowest error; parentheses give improvement over the strongest baseline. Asterisks mark confidence intervals excluding zero. All specified forms are reported.}
+\label{tab:pred_source}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.340000000\textwidth-2.720000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.260000000\textwidth-2.080000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333340\textwidth-1.066666720\tabcolsep\relax}@{}}
 \toprule
 Test; what is held out; fold rule (relation / input baseline / simple baseline) & Predictor & Math & Code & QA \\
@@ -21,9 +23,8 @@ Test; what is held out; fold rule (relation / input baseline / simple baseline) 
 \midrule
 \textbf{quantization}: new stage 96 thousand on 160 million, 410 million, 1.4 billion; bit width $\ge4$ (near-zero regime)\newline{\itshape stage 96 thousand (interpolation)} [Pre-specified / absent / retrospective] & Candidate: configuration-indicator ordinary least squares & \textbf{0.029} (+0.06) & 0.104 (-0.01) & 0.173 (-0.04) \\
 \bottomrule\end{tabular*}
-\caption{The table tests predictions for unseen source states at fixed compression settings. Entries are mean absolute errors in nats per native token. Bold marks the lowest error; parentheses give improvement over the strongest baseline. Asterisks mark confidence intervals excluding zero. All specified forms are reported.}
 \par\smallskip\begin{minipage}{\linewidth}\footnotesize Entries are mean absolute errors in nats per native token per capability; bold marks the smallest error in the group; parentheses give the improvement of the candidate over the strongest listed baseline, with an asterisk where the bootstrap 95\% interval excludes zero.\end{minipage}
-\label{tab:pred_source}\end{table}
+\end{table}
 \begin{table}[tb]\ContinuedFloat
 \normalfont\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.02}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.340000000\textwidth-2.720000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.260000000\textwidth-2.080000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333330\textwidth-1.066666640\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.133333340\textwidth-1.066666720\tabcolsep\relax}@{}}

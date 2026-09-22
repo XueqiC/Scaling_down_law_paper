@@ -1,4 +1,7 @@
-\begin{table}[tb]\normalfont\centering\footnotesize
+\begin{table}[tb]
+\normalfont\centering\footnotesize
+\caption{The table gives pre-specified grouped-quantization coefficients by capability and response term. Coefficients act on standardized inputs; the resulting loss change is in nats per native token. The note gives the prediction formula and the constants used to standardize each input.}
+\label{tab:quant2d_coef}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.250000000\textwidth-2.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.140000000\textwidth-1.400000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-1.600000000\tabcolsep\relax}@{}}
 \toprule
 Capability & Term & Intercept & Source size & Initial loss & Pretraining tokens \\
@@ -21,6 +24,5 @@ QA & Group-size response & +1.825 & -0.011 & -1.220 & +0.126 \\
 QA & Bit and group interaction & -1.561 & +0.022 & +1.028 & -0.125 \\
 QA & Squared bit response ($u^2$) & -13.105 & -0.922 & +9.978 & +0.190 \\
 \bottomrule\end{tabular*}
-\caption{The table gives pre-specified grouped-quantization coefficients by capability and response term. Coefficients act on standardized inputs; the resulting loss change is in nats per native token. The note gives the prediction formula and the constants used to standardize each input.}
 \par\smallskip\begin{minipage}{\linewidth}\footnotesize Pre-specified coefficients of the grouped-quantization form $\widehat{\Delta L}_c=\sum_k \beta_{c,k}\cdot\phi(\mathbf x)\,t_k(b,g)$ with $t_k\in\{1,u,v,uv,u^2\}$, $u=\log_2 q_{\max}(b)$ centred at the development mean, and $v=\log_2(g/128)$; standardization uses centers 19.565, 2.746, 25.332 and scales 1.084, 1.623, 1.095 for $(\log N_0, L_{0,c}, \log D_0)$, with ridge penalty $10^{-3}$ in the fit on standardized inputs.\end{minipage}
-\label{tab:quant2d_coef}\end{table}
+\end{table}

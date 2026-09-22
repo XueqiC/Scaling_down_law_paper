@@ -1,4 +1,7 @@
-\begin{table}[tb]\normalfont\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{table}[tb]
+\normalfont\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{The table shows which prediction forms apply to each compression method and test range. Loss is measured in nats per native token, bit width in bits, and budgets in tokens. Parameter and calibration columns give counts for each prediction family.}
+\label{tab:models}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.120000000\textwidth-1.440000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.250000000\textwidth-3.000000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.100000000\textwidth-1.200000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.180000000\textwidth-2.160000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.090000000\textwidth-1.080000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.800000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.110000000\textwidth-1.320000000\tabcolsep\relax}@{}}
 \toprule
 Compression method & Prediction form & Parameters per capability & Varied setting; development states & Tested range & Coefficients \\
@@ -13,5 +16,4 @@ Distillation, source axis & $\delta_c=\beta_c\cdot\phi(\mathbf x)$ (initial stud
 \midrule
 Distillation, pool axis & $a_c+b_c\log E$ (and constant, $\log T$, joint) & 2 & Gemma-3-1 billion; pools of 75 and 600 traces per domain & an unseen pool of 225 traces per domain: QA only; multi-student predictions pre-specified before testing & the single-student pool and multi-student development set\\
 \bottomrule\end{tabular*}
-\caption{The table shows which prediction forms apply to each compression method and test range. Loss is measured in nats per native token, bit width in bits, and budgets in tokens. Parameter and calibration columns give counts for each prediction family.}
-\label{tab:models}\end{table}
+\end{table}

@@ -1,8 +1,8 @@
-\begin{table}[tb]\normalfont
+\begin{table}[tb]
+\normalfont
 \centering
 \small
 \caption{The table compares distillation relations with baselines selected before confirmation. Mean absolute errors and paired improvements are in nats per native token. Improvement is baseline error minus relation error; brackets give paired confidence intervals. Pool sizes count traces per domain; budgets count supervised tokens.}
-\par\smallskip\begin{minipage}{\linewidth}\footnotesize Pre-specified distillation confirmation at pool size 200 and supervised tokens 50,100,200 thousand. Columns give the selected and baseline forms, chosen by development leave-one-run-out before confirmation, their mean absolute errors in nats, and the paired improvement (baseline minus selected) with 95\% percentile intervals from 5,000 paired pool-cluster bootstrap resamples.\end{minipage}
 \label{tab:distill_confirm}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.130000000\textwidth-1.560000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.120000000\textwidth-1.440000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.170000000\textwidth-2.040000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.170000000\textwidth-2.040000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.100000000\textwidth-1.200000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.100000000\textwidth-1.200000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.210000000\textwidth-2.520000000\tabcolsep\relax}@{}}
 \toprule
@@ -17,4 +17,5 @@ Gemma-3-1 billion & Math & Reuse response & {Response surface, initial loss} & 0
  & QA & {Joint budget-pool response} & {Response surface, student size} & 0.4634 & 0.4502 & {-0.0132 [-0.0198, -0.0098]} \\
 \bottomrule
 \end{tabular*}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize Pre-specified distillation confirmation at pool size 200 and supervised tokens 50,100,200 thousand. Columns give the selected and baseline forms, chosen by development leave-one-run-out before confirmation, their mean absolute errors in nats, and the paired improvement (baseline minus selected) with 95\% percentile intervals from 5,000 paired pool-cluster bootstrap resamples.\end{minipage}
 \end{table}

@@ -1,5 +1,7 @@
 \begin{table}[tb]
 \normalfont\centering\footnotesize\setlength{\tabcolsep}{2.5pt}\renewcommand{\arraystretch}{1.02}
+\caption{The table compares relations with the named strongest baselines across all prediction tests. Pairs give relation error followed by baseline error, in nats per native token; bold marks the lower error. All specified forms are reported. Fold rules distinguish frozen predictions, fixed baselines, and retrospective fits.}
+\label{tab:pred_full}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.270000000\textwidth-2.700000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.110000000\textwidth-1.100000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.170000000\textwidth-1.700000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}@{}}
 \toprule
 Test & What is held out & Fold rule: relation / input baseline / simple baseline & Math & Code & QA \\
@@ -21,9 +23,8 @@ Pruning: Pythia-1 billion at step 96 thousand, density 0.65 & size, stage, densi
 Pruning: Pythia-1 billion at step 96 thousand, density 0.55 & size, stage, density & Frozen / fixed / fixed & \textit{Relation / strength only}\newline 0.930 / \textbf{0.273} & \textit{Relation / strength only}\newline 1.550 / \textbf{0.018} & \textit{Relation / strength only}\newline 1.426 / \textbf{0.530} \\
 \addlinespace[1.5pt]
 \bottomrule\end{tabular*}
-\caption{The table compares relations with the named strongest baselines across all prediction tests. Pairs give relation error followed by baseline error, in nats per native token; bold marks the lower error. All specified forms are reported. Fold rules distinguish frozen predictions, fixed baselines, and retrospective fits.}
 \par\smallskip\begin{minipage}{\linewidth}\footnotesize The zero-change baseline predicts 0; the linear power form fixes $\gamma{=}1$. Improvements and uncertainty intervals appear in Appendix Tables~\ref{tab:pred_source}--\ref{tab:pred_config_qd}.\end{minipage}
-\label{tab:pred_full}\end{table}
+\end{table}
 \begin{table}[tb]\ContinuedFloat
 \normalfont\centering\footnotesize\setlength{\tabcolsep}{2.5pt}\renewcommand{\arraystretch}{1.02}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.270000000\textwidth-2.700000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.110000000\textwidth-1.100000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.170000000\textwidth-1.700000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.150000000\textwidth-1.500000000\tabcolsep\relax}@{}}
