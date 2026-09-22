@@ -776,9 +776,11 @@ $\widehat Q$ for the quantization-only choice, $Q^*$ for the best quantization c
 for the best candidate of any method, the quantization-only regret decomposes as
 $L(\widehat Q)-L(A^*)=[L(\widehat Q)-L(Q^*)]+[L(Q^*)-L(A^*)]$, the selection error inside the family
 plus the opportunity; the last column of the table reports $L(Q^*)-L(\widehat A)$ for the rule's
-choice $\widehat A$, the gain that survives a perfect quantization selection. On these references the heuristic matches the rule wherever the opportunity sits in one method, the
-medians add value on mathematics for Gemma 3 1B, where the rule's choice outside quantization is what
-the heuristic misses, and the source-conditioned relations are never better than the medians.
+choice $\widehat A$, the gain that survives a perfect quantization selection. On these references the heuristic matches the rule wherever the opportunity sits in one method, and
+the medians add value on mathematics for Gemma 3 1B, where the rule's choice outside quantization is
+what the heuristic misses; the numeric value of prediction is thus carried by the development
+medians the rule already uses, and the contribution of the source-conditioned relations lies in
+measurement efficiency (Section~\ref{sec:efficiency}) rather than in selection.
 \input{tables/s3_ablation}
 
 

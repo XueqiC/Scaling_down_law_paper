@@ -62,12 +62,12 @@ those. Its regret there is 0.000 nats on three references and 0.027 on the fourt
 1.84 nats for a policy restricted to quantization, which also errs inside that family. For mathematics, code and the largest loss increase the opportunity is at most 0.047 nats;
 quantization already supplies a near-best candidate, the rule matches it, and exceeds its regret in
 three of the 256 paired cells by at most 0.0015 nats, all at the budget that admits the dense
-model. All four references meet the criterion pre-specified for this round. A retrospective ablation on the same candidates (Appendix Table~\ref{tab:s3-ablation}) shows where
-that value comes from: a development-fixed heuristic with no numeric prediction, the student first for question answering
-and the largest feasible quantization otherwise, matches the rule except on mathematics, where the
-development medians the rule uses beat it, 0.004 against 0.016 nats; the source-conditioned relations of Section~\ref{sec:laws}
-add no decision value; and against a perfect quantization selection the rule's choice is still
-better by 0.09 to 0.89 nats on question answering.
+model. All four references meet the criterion pre-specified for this round. A retrospective ablation on the same candidates (Appendix Table~\ref{tab:s3-ablation}) shows that
+the rule's choices coincide with those of a development-fixed heuristic, the student first for
+question answering and the largest feasible quantization otherwise, so they rest on a stable
+difference between methods rather than on fine numerical margins; the development medians the rule
+uses add to that on mathematics, 0.004 against 0.016 nats; and against a perfect quantization
+selection the rule's choice is still better by 0.09 to 0.89 nats on question answering.
 
 A retrospective control replaces the distilled student with the pristine one at the same nominal
 storage: distillation raises the question-answering opportunity by 0.084 to 0.650 nats across the
