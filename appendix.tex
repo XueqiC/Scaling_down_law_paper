@@ -581,6 +581,43 @@ Measurements per capability & Predictor & Math & Code & QA \\
 \end{tabular*}
 \end{table}
 
+\paragraph{Second family.} The measurement-efficiency result of Section~\ref{sec:efficiency}
+rests on Pythia, so a pre-registered replication repeats the reduced-grid comparison on OLMo-2, whose
+stage-1 checkpoints carry their pretraining token counts in their names and differ in weights by
+construction; the shards of every checkpoint were hashed before measurement. Six development states,
+OLMo-2 1B after 399, 1993 and 3608 billion tokens and 7B after 391, 1947 and 3507 billion, were pruned
+at densities 0.9, 0.8, 0.7 and 0.6, the full grid of 24 configurations; the reduced grid keeps the same
+six states at 0.9 and 0.7, 12 configurations. Four test states, 1B after 1196 and 2811 billion tokens
+and 7B after 1167 and 2727 billion, enter no fit and were pruned at three densities fixed in advance,
+0.85, 0.75 and 0.65, after every predictor had been frozen. The five predictors that share the compact
+form's inputs were refitted on each grid with the same labels, the same exponent and curvature grids
+and one estimator for every linear-in-feature form, ridge on the standardized inputs with the weight
+chosen by leave-one-state-out; this estimator was fixed before any 7B or test state entered a fit,
+after an unregularised dry fit on the three 1B states alone had produced code predictions of tens of
+nats. Losses were measured on the development probes and on 64 new items per capability drawn from no
+earlier probe, sample, teacher trace or few-shot exemplar. Table~\ref{tab:second-family} gives the
+outcome over the four states and twelve cells per capability. Fitted on the reduced grid, the compact
+form errs by 0.017 nats on mathematics and 0.020 on code against 0.019 and 0.027 for the per-density
+regression fitted on the full grid, and by 0.062 against 0.060 on question answering; on the new items
+the pairs are 0.012 against 0.013, 0.029 against 0.036 and 0.045 against 0.036. A paired item
+bootstrap with the four states fixed puts the difference at $-0.002$ [$-0.005$, $+0.001$] on
+mathematics, $-0.007$ [$-0.010$, $-0.004$] on code and $+0.006$ [$+0.000$, $+0.014$] on question
+answering. Per state, the compact form's code error is below the regression's on three of the four
+states and 0.001 above on the fourth, and its mathematics error is below on two and at most 0.004
+above on the other two. Among the five reduced-grid predictors the compact form is the most accurate
+on mathematics and code and within 0.001 nats of the best on question answering. Question answering is
+the noisiest endpoint on this family: in two of the twelve test cells the measured response is smaller
+at the harsher density than at the milder one, and every predictor's error there is two to three
+times its mathematics error. The reduced grid took 59 percent of the full grid's GPU seconds and 60
+percent of its evaluation tokens with dense anchors and model loading included, so half the
+configuration measurements is not half the compute. The Pythia coefficients applied to OLMo-2 without
+refitting err by 0.72, 1.88 and 0.38 nats. The pre-specified question, whether the reduced-grid
+compact form stays within the 0.020 nats of the full-grid regression that the Pythia confirmation
+reached on mathematics and code, is answered in the affirmative, and on this family the form is
+below the regression on both; the response structure and its measurement saving replicate across
+families, and the coefficients do not transfer without refitting.
+\input{tables/second_family}
+
 \paragraph{Same-complexity baselines.} Table~\ref{tab:a14-baselines} refits, on the same development
 rows and with the same estimator as the compact power form, every form that shares its inputs and a
 similar parameter count: the strength relation with the exponent fixed at one, a quadratic strength

@@ -18,22 +18,23 @@ full-budget regression. With 18 measurements
 per capability, half the development configuration measurements, its mathematics and code errors are
 0.013 and 0.020 nats per token above those of a per-density regression fitted on all 36, on four
 Pythia states outside every earlier fit, pruned at six densities after the form, the regression and
-the median curve had been fixed (Fig.~\ref{fig:efficiency}b); at that budget it has half the error
-of the median curve. The saving comes from sharing response structure across densities while
-retaining coverage of model states: in the preceding subsampling study the form on 18 measurements
-predicts new states to 0.20 nats on mathematics and 0.17 on code against 0.18 and 0.13 for the
-regression on 36, and at 9 the regression cannot be fitted (Fig.~\ref{fig:efficiency}a). The
-confirmation is a point estimate on four states, and question answering keeps the median curve. A
-retrospective comparison ranks the compact form first among forms of similar complexity on the
-same rows and cells at 18 measurements, 0.073 and 0.104 nats on mathematics and code against 0.098
-and 0.166 for the strength-only curve and 0.116 and 0.164 for the pruning-law form (Appendix
-Table~\ref{tab:a14-baselines}).
+the median curve had been fixed (Fig.~\ref{fig:efficiency}b). The saving comes from sharing response structure across densities
+while retaining coverage of model states; at 9 measurements the per-density regression cannot be
+fitted at all (Fig.~\ref{fig:efficiency}a). The confirmation is a point estimate on four states,
+and question answering keeps the median curve. A
+pre-registered replication on OLMo-2, six development states of 1B and 7B and four test states in no
+fit, repeats the comparison with every predictor refitted on that family: on 12 configurations the
+compact form errs by 0.017 and 0.020 nats on mathematics and code against 0.019 and 0.027 for the
+per-density regression on all 24, at 59 percent of the full grid's GPU seconds (Appendix
+Table~\ref{tab:second-family}); the Pythia coefficients do not transfer without refitting (0.4 to
+1.9 nats). A retrospective comparison at 18 measurements ranks the compact form first among forms of
+similar complexity (Appendix Table~\ref{tab:a14-baselines}).
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figs/eff_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_a.pdf}\caption{Error against development measurements}\end{subfigure}\hfill
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_b.pdf}\caption{Pre-specified confirmation on four new states}\end{subfigure}
+\begin{subfigure}[t]{2.55in}\centering\includegraphics[width=\linewidth]{figs/eff_a.pdf}\caption{Error against development measurements}\end{subfigure}\hfill
+\begin{subfigure}[t]{2.55in}\centering\includegraphics[width=\linewidth]{figs/eff_b.pdf}\caption{Pre-specified confirmation on four new states}\end{subfigure}
 \caption{Measurement efficiency of the compact pruning form, in nats per native token: error on new
 states against development density measurements per capability, and error per state in the
 pre-specified confirmation, with the power form fitted at half the development budget and the other
