@@ -783,6 +783,25 @@ medians the rule already uses, and the contribution of the source-conditioned re
 measurement efficiency (Section~\ref{sec:efficiency}) rather than in selection.
 \input{tables/s3_ablation}
 
+\paragraph{Fresh-item check of the chosen models.} After the round, every model that a policy chose
+for question answering, with each reference's dense model and initial student, was scored on 384
+2WikiMultihopQA validation items that no probe, sample, teacher trace or few-shot exemplar had used
+(Table~\ref{tab:p1-behaviour}). The loss endpoint replicates: the distilled student the rule chose
+has a lower completion loss than the quantization-only choice by 0.47, 0.60 and 2.43 nats on Pythia
+410M, Pythia 1.4B and Gemma 3 1B, with paired 95\% intervals excluding zero, and is within 0.04 nats
+of it on Gemma 3 4B; against its own initial student it gains 0.67 to 1.83 nats on three references,
+and on Pythia 410M the initial student already carries the advantage. The same items carry a
+second endpoint that the selection never targeted, greedy four-shot short-answer generation scored
+by exact match and token F1. There the quantized and pruned models keep the dense model's answer
+format, whereas the distilled students answer in the teacher's longer, formatted style, so strict
+span matching scores them low although their likelihood of the reference answer is the best in the
+pool; a lenient readout that strips the formatting and keeps the first sentence recovers part of the
+difference, 0.07 to 0.16 exact match, and the rest is a matter of answer style. The two readouts separate what the rule optimises from what a deployment may also require:
+the relations and the rule predict and improve the likelihood of reference answers, and a
+behavioural requirement such as answer length or format is a separate objective, to be entered into
+the selection as a constraint rather than read from the loss.
+\input{tables/p1_behaviour}
+
 
 This section gives the selection rule behind Section~\ref{sec:selection}, its retrospective validation
 and its prospective confirmation. Section S6 of the supplement tabulates the per-policy results behind Fig.~\ref{fig:selection}: mean regret against the measured oracle, agreement with the oracle's method, the share of no-clear-winner cells, and the share of cells in which a fixed-method policy cannot meet the budget; such cells are infeasible, have no fallback and enter no mean.
@@ -855,46 +874,6 @@ plotted without recomputation.}
 \end{figure}
 \input{tables/rule_confirm}
 
-\section{Extended Discussion: Lessons, Guidance and Limits}
-\label{sec:app_learned}
-
-This section collects the discussion that the conclusion (Section~\ref{sec:learned}) summarises: the
-responses and relations the study established, what was learned in trying to build reliable laws,
-the guidance those lessons support, and the limits of the present relations.
-
-The responses and relations come first. Compression changes capabilities unevenly and the unevenness is
-structured: a capability-specific power form under pruning inside its density range, a
-configuration-dependent quantization threshold that the measured grid predicts better than any
-surface, and a distillation reuse cost that grows with reuse and student size and transfers across
-QA distributions while the gain does not (Table~\ref{tab:main-prediction-v2}).
-
-Building reliable laws taught four lessons. First, a rejected form is not a rejected class: the logarithmic reuse term failed its own flatness
-implication, yet the fit-free second-difference test on two students did not reject additivity of
-budget and reuse on the QA readout (Section~\ref{sec:why}). Second, an explanation is not a
-predictor: the displacement account reproduces the loss change across three families and needs the
-compressed model to compute. Third, source information transfers less than it fits: dense
-pre-compression statistics improve a parametric family in four of nine pairs and lose to a
-source-free configuration curve in nine of nine, with or without a shrunk source correction. Fourth, identifiability is a property of the design: the data that fitted a curvature exponent
-contained no budget-by-reuse rectangle, so the one fit-free statistic that separates additive from
-interacting structures was uncomputable until four trajectories were designed to land on one.
-
-These lessons translate into guidance for design and choice. Inputs should be chosen by the transfer needed: the initial state
-carries math and code at unseen densities and group sizes of seen states and over-predicts QA under
-pruning on new checkpoints, so a calibrated configuration median is the safer default when the state
-is new. The training protocol should be fixed before the distillation response is measured, since the learning rate moves it by
-an order of magnitude. Data-reuse experiments should be designed so that a budget-by-reuse rectangle exists by
-construction. Calibration should be judged per method against the accuracy it provides: one target measurement, the K1 budget as opposed to the K0 predictions, helped the quantization predictor, whereas for pruning a calibration point at the mildest density amplified noise, because an observation near zero loss change cannot estimate an amplitude stably; a calibration point must carry enough response signal, and the more expensive dense statistics did not earn their cost.
-
-The limits are equally clear. The relations are conditional on the evaluated distributions and
-implementations. No fitted joint structure for distillation beat a low-order response surface on
-either pre-declared target, so a validated data-requirement relation is not delivered; the larger
-student diverged from the smaller on math and code at readouts the design could not resolve.
-Reopening measurement requires a new information source or a mechanism hypothesis; a further reuse
-function fitted to the same data would not suffice.
-
-
-
-
 \section{Reproducibility and Timing of Predictions}
 \label{sec:app_registration}
 
@@ -926,3 +905,22 @@ measurement, and the oracle row is a post-hoc diagnostic.}
 \end{table}
 
 Prospective tests follow one order: forms, development set, standardization and coefficients are fixed; the reference losses of a new source are measured; each candidate's predictions are recorded with their hash; only then is the outcome measured.
+
+\section{Discussion}
+\label{sec:app_learned}
+
+Four lessons from building the relations bear on how such laws should be built and used. A
+rejected form is not a rejected class: the logarithmic reuse term failed its own flatness
+implication, while a fit-free second-difference test on two students did not reject additivity of
+budget and reuse (Section~\ref{sec:why}), so the class stays open to designs that can resolve it.
+An explanation is not a predictor: the displacement account reproduces the loss change across
+three families but needs the compressed model to compute, which is why the delivered relations
+read only what is known before compression. Source information transfers less than it fits: dense
+pre-compression statistics improve a parametric family in four of nine pairs and lose to a
+source-free configuration curve in nine of nine, which is why the selection rule calls that
+curve's medians on every new state. Identifiability is a property of the design: the one fit-free
+statistic that separates additive from interacting distillation structures was uncomputable until
+four trajectories were designed to land on a budget-by-reuse rectangle. Each relation holds for the
+evaluated distributions, implementations and configuration ranges stated with it, and extending the
+set to a new compression algorithm, capability or data source is a matter of the same protocol, one
+development panel and one pre-specified test, rather than of a new theory.

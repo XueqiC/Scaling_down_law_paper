@@ -19,14 +19,8 @@ parameters rather than runtime memory or sparse indexing, falls within $B$. The 
 the pruning and quantization relations of Section~\ref{sec:laws} on a seen state and their
 source-free medians on a new one; for distillation, whose candidates are students of one fixed
 recipe, it calls a regression on the student state for mathematics and pre-specified constants for code
-and question answering (Appendix Table~\ref{tab:locked_rule}). The budget and pool forms of
-Eq.~\ref{eq:kdforms} enter no selection; the selection results test the rule as specified, not those
-forms. A workload needing several capabilities at once replaces $\widehat L_{m,c}$ by the largest loss increase
-$\max_c[\widehat L_c(M)-L_c(M_0)]$. On the controlled panel,
-the law-based choice selects the method of the measured best candidate in 96\%, 95\% and 73\% of 289
-cells for mathematics, code and question answering. We then fixed a complete rule and its selection
-maps in advance for four fresh Pythia states, where they come within 0.14 nats of the best candidate and below
-quantization alone (Appendix Fig.~\ref{fig:rule_regret}). Its distillation candidates were historical, so a second confirmation trained new ones.
+and question answering (Appendix Table~\ref{tab:locked_rule}). The budget and pool forms of Eq.~\ref{eq:kdforms} enter no selection. A workload needing several capabilities at once replaces $\widehat L_{m,c}$ by the largest loss increase
+$\max_c[\widehat L_c(M)-L_c(M_0)]$. On the controlled panel the law-based choice selects the method of the measured best candidate in 96\%, 95\% and 73\% of 289 cells for mathematics, code and question answering, and a rule fixed in advance for four fresh Pythia states comes within 0.14 nats of the best candidate and below quantization alone (Appendix Fig.~\ref{fig:rule_regret}); its distillation candidates were historical, so a second confirmation trained new ones.
 
 \subsection{Independent Evaluation}
 \label{sec:selection_confirm}
@@ -42,35 +36,25 @@ quantization alone (Appendix Fig.~\ref{fig:rule_regret}). Its distillation candi
 (R1--R4: Pythia 410M and 1.4B at step 120000, Gemma 3 1B and 4B). Per objective: the
 opportunity that choosing across methods opens over the best quantization candidate, and the regret
 of the final rule and of a quantization-only policy, as means in nats per native token over the
-sixteen budgets where both find a candidate. The earlier four-state confirmation is in Appendix
-Figs.~\ref{fig:rule_maps} and \ref{fig:rule_regret}.}
+sixteen budgets where both find a candidate.}
 \label{fig:rule_main}
 \end{figure}
 
 
 Each of the four references received twelve candidates at seventeen storage budgets: four pruning densities, six quantization settings, the
-dense model and one student distilled in this round. Two are Pythia checkpoints with no earlier
-recorded use; the two Gemma-3 models carry familiar weights and receive new candidates (Appendix
-Table~\ref{tab:s3-identity}), with every predicted loss and both selection maps fixed before any
-outcome was observed. The opportunity at a budget is the loss of the best feasible quantization
+dense model and one student distilled in this round. Two are Pythia checkpoints with no earlier recorded use and two are Gemma-3 models with new candidates (Appendix Table~\ref{tab:s3-identity}); every predicted loss and both selection maps were fixed before any outcome was observed. The opportunity at a budget is the loss of the best feasible quantization
 candidate minus that of the best feasible candidate of any method; a policy's regret is the loss of
-its choice minus that same candidate. Question answering carries an opportunity of 0.12 to 0.89 nats (Fig.~\ref{fig:rule_main}a--d). Over all 68 question-answering cells, four references at seventeen budgets, the measured best
-candidate is the new student in 59; of the other nine, three admit no feasible candidate, five
-prefer pruning and one quantization. The two policies are compared on the 64 cells, sixteen budgets per
-reference, at which both find a feasible candidate, and the rule selects the new student in 63 of
-those. Its regret there is 0.000 nats on three references and 0.027 on the fourth, against 0.41 to
-1.84 nats for a policy restricted to quantization, which also errs inside that family. For mathematics, code and the largest loss increase the opportunity is at most 0.047 nats;
+its choice minus that same candidate. Question answering carries an opportunity of 0.12 to 0.89 nats (Fig.~\ref{fig:rule_main}a--d). Over all 68 question-answering cells the measured best candidate is the new student in 59; of the other nine, three admit no feasible candidate, five
+prefer pruning and one quantization. On the 64 cells, sixteen budgets per reference, at which both policies find a feasible candidate, the rule selects the new student in 63. Its regret there is 0.000 nats on three references and 0.027 on the fourth, against 0.41 to
+1.84 nats for a policy restricted to quantization. For mathematics, code and the largest loss increase the opportunity is at most 0.047 nats;
 quantization already supplies a near-best candidate, the rule matches it, and exceeds its regret in
 three of the 256 paired cells by at most 0.0015 nats, all at the budget that admits the dense
-model. All four references meet the criterion pre-specified for this round. A retrospective ablation on the same candidates (Appendix Table~\ref{tab:s3-ablation}) shows that
-the rule's choices coincide with those of a development-fixed heuristic, the student first for
-question answering and the largest feasible quantization otherwise, so they rest on a stable
-difference between methods rather than on fine numerical margins; the development medians the rule
-uses add to that on mathematics, 0.004 against 0.016 nats; and against a perfect quantization
-selection the rule's choice is still better by 0.09 to 0.89 nats on question answering.
-
-A retrospective control replaces the distilled student with the pristine one at the same nominal
-storage: distillation raises the question-answering opportunity by 0.084 to 0.650 nats across the
-four references and leaves mathematics and code unchanged or lower (Appendix
-Table~\ref{tab:s3-retrospective-control}); these are changes in the candidate set's opportunity,
-not in a student's own loss.
+model. All four references meet the criterion pre-specified for this round. On 384 fresh question-answering items scored after the round, the rule's choice is ahead of the quantization-only choice by 0.47 to 2.43 nats on three references, intervals excluding zero, and level on the fourth (Appendix Table~\ref{tab:p1-behaviour}). A retrospective ablation (Appendix Table~\ref{tab:s3-ablation}) shows that the rule's choices
+coincide with those of a development-fixed heuristic, the student first for question answering and
+the largest feasible quantization otherwise, so they rest on a stable difference between methods
+rather than on fine margins; the medians the rule uses add to that on mathematics, 0.004 against
+0.016 nats, and even a perfect quantization selection trails the rule's choice by 0.09 to 0.89 nats
+on question answering. A retrospective control with the pristine student in place of the distilled
+one at the same nominal storage shows that distillation raises the question-answering opportunity
+by 0.084 to 0.650 nats and leaves mathematics and code unchanged or lower (Appendix
+Table~\ref{tab:s3-retrospective-control}).
