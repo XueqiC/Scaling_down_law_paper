@@ -802,6 +802,23 @@ behavioural requirement such as answer length or format is a separate objective,
 the selection as a constraint rather than read from the loss.
 \input{tables/p1_behaviour}
 
+\paragraph{Storage in bytes.} The selection states its budget in nominal storage, the fraction of
+stored matrix parameters: the retained density for pruning, $b/16$ plus the 16-bit group scales for
+quantization, and the ratio of block-matrix parameter counts for a student.
+Table~\ref{tab:storage-accounting} prices the same candidates in bytes on one base, every weight
+matrix of the model in 16-bit precision. Grouped quantization is exact and per-channel quantization
+is within 0.1 percent of its nominal ratio, since its row scales are few. Unstructured pruning needs
+an index: a bitmap adds one sixteenth at every density, and a compressed sparse row format doubles
+the cost, so it pays only below density 0.5. A student's bytes exceed its nominal ratio by its
+embedding rows, which a small model carries in larger proportion: 0.40 against 0.28 for Pythia 160M
+under Pythia 410M, and 0.27 against 0.14 for Gemma 3 270M under Gemma 3 1B. Read as a byte budget,
+the same grid changes the feasible set in 40 of the 272 selection cells and the rule's choice in 10,
+all of them student choices at budgets from 0.20 to 0.35; on 25 further cells a per-channel choice
+exceeds its budget by at most 0.2 percent. The rule itself does not depend on the unit: it ranks
+whatever candidates the budget admits, and a deployment that stores sparse weights or counts
+embeddings enters its own costs.
+\input{tables/storage_accounting}
+
 
 This section gives the selection rule behind Section~\ref{sec:selection}, its retrospective validation
 and its prospective confirmation. Section S6 of the supplement tabulates the per-policy results behind Fig.~\ref{fig:selection}: mean regret against the measured oracle, agreement with the oracle's method, the share of no-clear-winner cells, and the share of cells in which a fixed-method policy cannot meet the budget; such cells are infeasible, have no fallback and enter no mean.
