@@ -236,6 +236,23 @@ arms exceed twice that median; the rest are treated as zero. Cliffs occur betwee
 OLMo-3-7B and $0.2$ for OLMo-3-32B. Robustness is not monotone in size within a series: Gemma-3-12B is the most robust Gemma-3 size and 27B collapses earlier.
 A predictor has to reproduce this heterogeneity, which no single property of a model family determines by itself.
 
+\paragraph{A second pruning criterion.} Wanda \citep{sun2023simple} scores each weight by its
+magnitude times the norm of its input activation and prunes each output row of the block linear
+layers, leaving embeddings dense, so its density counts a different scope from the panel's global
+magnitude criterion. Table~\ref{tab:wanda-panel} measures it on Qwen3 4B and Gemma 3 4B at seven
+densities. The criterion moves the amplitude of the response by an order of magnitude: at density
+0.3 Gemma 3 4B loses 20.6 nats on mathematics under magnitude pruning and 2.1 under Wanda, and
+Qwen3 4B 12.3 against 1.7. The shape in density travels better than the amplitude: with the exponent
+of the power form pooled from the magnitude cells and only the scale refit, the Wanda responses are
+matched to 0.15 and 0.08 nats on mathematics and 0.23 and 0.29 on code over the seven densities,
+against 0.18, 0.14, 0.26 and 0.17 with a free exponent. A relation fitted under one criterion thus
+transfers its shape and not its scale, and the scale has to be measured under the new criterion; a
+single calibration at the mildest density does not supply it, for the reason given in
+Section~\ref{sec:efficiency}, that the response there lies within measurement noise. Question
+answering keeps its own sign: under Wanda it improves on both models at every density from 0.5
+down, where magnitude pruning improves it only on Qwen3 and only above density 0.5.
+\input{tables/wanda_panel}
+
 Under quantization, Table~\ref{tab:panel_quant} covers
 14 models. Int8 and int6 stay within $0.01$ nats of dense. Int4 increases the loss of small models by one to two nats and changes large models by a few tenths; a QA
 improvement under int4 recurs in five models and exceeds the measurement-noise floor. Int3 collapses 12 of the 14 models by $4.6$ to $28$ nats;
