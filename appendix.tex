@@ -752,6 +752,24 @@ never saw the pristine candidate, so the original pre-specified selections and t
 unchanged.
 \input{tables/s3_control}
 
+\paragraph{Policy ablation.} A retrospective ablation scores three policies, defined after the
+round from development data alone, on the same candidates, budgets and outcomes
+(Table~\ref{tab:s3-ablation}): a development-fixed method priority with no numeric prediction,
+which ranks methods by their oracle win rate on the development panel and takes the largest
+feasible storage within the method; development-median predictions for every candidate, with the
+development constant for the student; and the source-conditioned relations of
+Section~\ref{sec:laws} where their inputs exist, which excludes the two Gemma references without a
+disclosed pretraining token count, with the selected distillation forms for the student. Writing
+$\widehat Q$ for the quantization-only choice, $Q^*$ for the best quantization candidate and $A^*$
+for the best candidate of any method, the quantization-only regret decomposes as
+$L(\widehat Q)-L(A^*)=[L(\widehat Q)-L(Q^*)]+[L(Q^*)-L(A^*)]$, the selection error inside the family
+plus the opportunity; the last column of the table reports $L(Q^*)-L(\widehat A)$ for the rule's
+choice $\widehat A$, the gain that survives a perfect quantization selection. On these references
+the heuristic matches the rule wherever the opportunity sits in one method; the medians add value
+on mathematics for Gemma 3 1B, where the rule's choice of a candidate outside quantization is what
+the heuristic misses; and the source-conditioned relations are never better than the medians.
+\input{tables/s3_ablation}
+
 
 This section gives the selection rule behind Section~\ref{sec:selection}, its retrospective validation
 and its prospective confirmation. Section S6 of the supplement tabulates the per-policy results behind Fig.~\ref{fig:selection}: mean regret against the measured oracle, agreement with the oracle's method, the share of no-clear-winner cells, and the share of cells in which a fixed-method policy cannot meet the budget; such cells are infeasible, have no fallback and enter no mean.

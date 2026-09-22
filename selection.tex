@@ -50,9 +50,8 @@ earlier four-state confirmation is in Appendix Figs.~\ref{fig:rule_maps} and \re
 
 
 Each of the four references received twelve candidates at seventeen storage budgets: four pruning densities, six quantization settings, the
-dense model and one student distilled in this round. Two are Pythia checkpoints at a stage with no
-earlier recorded use; the two Gemma-3 models carry weights measured under other interventions, so
-for them the round tests new candidates on familiar weights (Appendix
+dense model and one student distilled in this round. Two are Pythia checkpoints with no earlier
+recorded use; the two Gemma-3 models carry familiar weights and receive new candidates (Appendix
 Table~\ref{tab:s3-identity}). Every predicted loss and both selection maps were fixed before any
 outcome was observed. Define the opportunity at a budget as the loss of the best feasible quantization candidate minus
 that of the best feasible candidate of any method, and the regret of a policy as the loss of its
@@ -62,11 +61,20 @@ cells, four references at seventeen budgets each, the measured best candidate is
 pruning and one quantization. The two policies are compared on the 64 cells, sixteen budgets per
 reference, at which both find a feasible candidate, and the rule selects the new student in 63 of
 those. Its regret there is 0.000 nats on three references and 0.027 on the fourth, against 0.41 to
-1.84 nats for a policy restricted to quantization, which also errs inside that family. For mathematics, code and the largest loss increase, the opportunity is at most 0.047 nats.
-Quantization already supplies a near-best candidate there, the rule matches it, and in three of the
-256 paired cells, those same sixteen budgets across four references and four objectives, all at the
-budget that admits the dense model, the rule exceeds its regret by at most 0.0015 nats. All four references meet the criterion pre-specified for this round.
+1.84 nats for a policy restricted to quantization, which also errs inside that family. For mathematics, code and the largest loss increase the opportunity is at most 0.047 nats;
+quantization already supplies a near-best candidate, the rule matches it, and exceeds its regret in
+three of the 256 paired cells by at most 0.0015 nats, all at the budget that admits the dense
+model. All four references meet the criterion pre-specified for this round. A retrospective
+ablation on the same candidates asks where that value comes from (Appendix
+Table~\ref{tab:s3-ablation}). A development-fixed heuristic with no numeric prediction, the student
+first for question answering and the largest feasible quantization otherwise, matches the rule on
+question answering, code and the largest increase; the development-median predictions the rule
+uses beat it on mathematics, 0.004 against 0.016 nats, and the source-conditioned relations of
+Section~\ref{sec:laws} add no decision value on any objective. Against a quantization selection
+made perfectly, the rule's choice is still better by 0.09 to 0.89 nats on question answering.
 
-To separate the contribution of distillation from the value of a smaller model, we retrospectively add the pristine student as a control at the same nominal storage cost. Replacing the pristine student with its distilled counterpart, with quantization available in both candidate sets, increases the question-answering opportunity by 0.084 to 0.650 nats across the four references. The corresponding opportunity changes for math and code are non-positive (Appendix Table~\ref{tab:s3-retrospective-control}). These are changes in the opportunity open to the candidate set, not loss changes of a student
-against its own starting point: the control marks where distillation creates an opening for
-selection and where quantization already supplies a competitive candidate.
+A retrospective control replaces the distilled student with the pristine one at the same nominal
+storage: distillation raises the question-answering opportunity by 0.084 to 0.650 nats across the
+four references and leaves mathematics and code unchanged or lower (Appendix
+Table~\ref{tab:s3-retrospective-control}); these are changes in the opportunity open to the
+candidate set, not in a student's own loss.
