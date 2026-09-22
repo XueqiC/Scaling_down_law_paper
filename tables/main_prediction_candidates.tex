@@ -10,15 +10,15 @@
 \toprule
 Prediction task & Pre-specified candidate & Candidate error (nats) & Delivered relation \\
 \midrule
-Four unseen Pythia states pruned at six densities & Compact power form using half the measurements & \TableOneErrors{0.07}{0.10}{0.18} & The same power form, with a median density curve for question answering \\
+Four unseen Pythia states pruned at six densities & Compact power form using half the measurements & \TableOneErrors{0.073}{0.104}{0.179} & The same power form, with a median density curve for question answering \\
 \midrule
-Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85 & Five-parameter power form & \TableOneErrors{0.24}{0.24}{0.68} & Source-free median density curve\newline Retrospective \\
+Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85 & Five-parameter power form & \TableOneErrors{0.243}{0.236}{0.678} & Source-free median density curve\newline Retrospective \\
 \midrule
-Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5 & Source regression, the median and no change & \TableOneErrors{0.21}{0.56}{0.46} & Interpolate math and code; use the median for question answering\newline Retrospective \\
+Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5 & Source regression, the median and no change & \TableOneErrors{0.215}{0.557}{0.457} & Interpolate math and code; use the median for question answering\newline Retrospective \\
 \midrule
-An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512 & Source regression, the median and no change & \TableOneErrors{0.30}{0.15}{0.22} & Development median\newline Retrospective \\
+An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512 & Source regression, the median and no change & \TableOneErrors{0.303}{0.153}{0.222} & Development median\newline Retrospective \\
 \midrule
-Gemma 270 million and 1 billion distilled on six new pools at 50 to 200 thousand tokens & Reuse forms, with a budget and pool form for question answering & \TableOneErrors{0.07, 0.06}{0.02, 0.05}{0.51, 0.46} & The same predictor \\
+Gemma 270 million and 1 billion distilled on six new pools at 50 to 200 thousand tokens & Reuse forms, with a budget and pool form for question answering & \TableOneErrors{0.074, 0.057}{0.019, 0.049}{0.515, 0.463} & The same predictor \\
 \bottomrule
 \end{tabular*}
 \caption{\footnotesize\fontsize{8.5}{10}\selectfont Pre-specified candidate of each prediction task in Table~\ref{tab:main-prediction-v2}, its error on the same cells, and the relation delivered after the test. Errors are mean absolute errors in nats per token, in math, code and question answering order, and distillation entries give the 270 million and 1 billion students in that order.}

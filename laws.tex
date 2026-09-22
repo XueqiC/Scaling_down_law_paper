@@ -2,15 +2,14 @@
 \label{sec:laws}
 
 
-The three methods support different prediction structures. Under pruning a compact relation keeps
-its accuracy on new model states with fewer density measurements (Section~\ref{sec:efficiency}); its
-exponent belongs to the tested Pythia domain, not to every family. Under quantization bit width and
+The three methods support different prediction structures. Under pruning a compact relation fitted on half the density measurements predicts new model states
+within 0.020 nats per token of the full-budget regression (Section~\ref{sec:efficiency}); its exponent
+belongs to the tested Pythia domain, not to every family. Under quantization bit width and
 group size act jointly, and a piecewise interpolation over the measured grid and the configuration
 medians are competitive predictors; no new parametric quantization law is claimed. Under distillation
 data reuse, the student state and the evaluation distribution shape the response, a finding in its
 own right, and part of it admits a low-parameter relation with a small predictive gain; no joint law
-in student, data and budget is claimed. Each method delivers one relation in the interface of
-Eq.~\ref{eq:interface}, a prediction from the initial state and the configuration.
+in student, data and budget is claimed.
 Each is stated below with its inputs and its fitted and tested domain; Section~\ref{sec:general}
 reports how it performs on configurations and model states that entered no fit. Whether the initial state earns its place is decided per capability: on the controlled pruning
 panel, a per-setting regression using parameter count, pretraining tokens and reference capability
@@ -48,11 +47,10 @@ Within the controlled pruning domain, we model the response with the compact for
 A_c(\mathbf x)=\beta_c\cdot\big(1,\tilde{\log N_0},\tilde L_{0,c},\tilde{\log D_0}\big),
 \label{eq:power}
 \end{equation}
-This form uses five parameters per capability, with inputs standardized on the development set, and
-Section~\ref{sec:efficiency} evaluates what it costs to fit. Its advantage holds at new stages of
-sizes inside the fitted range but not under broader model-state transfer, so at sizes outside the
-range and for question answering we deliver the source-free development median; the selection rule
-of Section~\ref{sec:selection} calls that median on every new state, as its conservative default.
+This form uses five parameters per capability with inputs standardized on the development set. Its
+advantage holds at new stages of sizes inside the fitted range and not under broader state transfer,
+so at sizes outside the range and for question answering the delivered predictor is the source-free
+development median, which the selection rule of Section~\ref{sec:selection} calls on every new state.
 \subsection{Quantization}
 \label{sec:law_quant}
 
@@ -76,9 +74,7 @@ answering. On the development students at the 2Wiki distribution, question answe
 every development recipe while mathematics and code move by hundredths to tenths of a nat. At high
 reuse, and on the other question-answering distributions, the response reverses
 (Section~\ref{sec:observed}).
-The distillation relations describe the 270M and 1B students at the evaluated budgets and reuse
-counts, not the 4B student or reuse near fourteen, and the question-answering result is specific to
-2Wiki. A joint relation that predicts both budget and data-pool changes reliably remains unresolved.
-Section~\ref{sec:general} evaluates these relations on configurations and model states that entered no
-fit, and measures the development budget each one needs.
+The relations describe the 270M and 1B students at the evaluated budgets and reuse counts and the
+2Wiki distribution, not the 4B student or reuse near fourteen; a joint relation in budget and pool
+remains unresolved.
 

@@ -24,16 +24,14 @@ The two compression axes carry different shapes. Under pruning, once the measure
 alignment term is subtracted, the residual before the cliff is a power law in the deleted capability
 mass, with an exponent that transfers across families. Under quantization the response is instead a
 threshold in bit width whose position depends on the group size, so an interpolation over the
-measured grid predicts it where a smooth surface does not. Both descriptions read measurements of
-the compressed model, so they explain a response rather than predict one; Appendix~\ref{sec:app_mech}
-develops them, including the logit-displacement account of the loss change.
+measured grid predicts it where a smooth surface does not. Both read measurements of the compressed model, so they explain rather than predict
+(Appendix~\ref{sec:app_mech}).
 
 \subsection{Effects of Model State and Compression Configuration}
 \label{sec:state_config}
 
-Using Pythia checkpoints whose size and training stage vary independently, we examine how the
-initial model state moves the response. Parameter count and pretraining tokens enter the pruning
-amplitude for mathematics and code and carry those capabilities to unseen densities of states that
+On Pythia checkpoints whose size and training stage vary independently, parameter count and
+pretraining tokens enter the pruning amplitude for mathematics and code and carry those capabilities to unseen densities of states that
 entered the fit; the same inputs over-predict question answering, whose density response is not
 proportional to any shared curve. The state inputs earn their place inside the development range,
 where they and the median density curve agree to within 0.05 nats at unseen stages of a 1B model,
@@ -53,7 +51,7 @@ improves by $0.79$ nats.
 Once the learning rate is fixed, the size of the data pool dominates and question answering bears
 most of the cost. At a matched budget $T$ near 200k supervised tokens
 (Fig.~\ref{fig:responses_v2}), a reuse ratio $E=T/D_U$ near twelve costs question answering $+0.29$,
-$+2.55$ and $+4.85$ nats on students of 100M, 700M and 3.2B non-embedding parameters, and nine times
+$+2.55$ and $+4.85$ nats on students of 100M, 700M and 3.2B non-embedding parameters under the fixed training protocol, and nine times
 more independent data converts the same budget into a gain near one nat on each.
 
 The reuse cost transfers across question-answering distributions; the gain does not. Rescored on a
@@ -91,9 +89,9 @@ These responses can be turned into an empirical data requirement. A pre-specifie
 eighteen trajectories on the 1B and 4B students, with pools from nine thousand to 158 thousand
 supervised tokens and three evaluation budgets, measured the range of independent data at which a
 loss constraint is met (Appendix Fig.~\ref{fig:dreq}). The constraint is crossed inside the tested
-pools on the fresh 2Wiki sample for both students at the two larger budgets; on MuSiQue a crossing
-appears only at looser tolerances, and on TriviaQA the largest pool fails for the 4B student at
-every tolerance, so there the requirement is a lower bound. A low-degree boundary relation did not
+pools on the fresh 2Wiki sample for both students at the two larger budgets, on MuSiQue only at
+looser tolerances, and on TriviaQA not at all for the 4B student, where the requirement is a lower
+bound. A low-degree boundary relation did not
 predict these ranges better than a per-student monotone interpolation, so we report the requirement as measured intervals.
 
 

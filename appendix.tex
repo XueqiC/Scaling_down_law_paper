@@ -843,7 +843,9 @@ generation reached the cap without a stop marker. Under that readout the student
 Pythia 1.4B; against their own initial students they are level on three references and 0.09 behind
 on Pythia 1.4B, so the loss gains over the initial student do not convert into exact-match gains.
 The students reach the 96-token cap on 63 to 99 percent of items, since they rarely emit a stop
-marker. A reading of 20 sampled items per model, recorded with the results, found the students'
+marker: a protocol audit, recorded with the results, found that their training targets carry no
+end-of-answer marker, while the stop handling, few-shot format and extraction rule are the same for
+every candidate, so no re-evaluation was warranted. A reading of 20 sampled items per model, recorded with the results, found the students'
 first answer correct on 4, 7, 5 and 6 items against 3, 4, 2 and 5 for the quantization-only
 choices, with the difference between correct content and exact match confined to run-on sentences
 and initials that the rule now handles; the remaining student errors are wrong answers. The two
@@ -872,7 +874,9 @@ in bytes, and scoring against the byte-feasible oracle, leaves the picture intac
 answering the opportunity is 0.41 nats against 0.45 nominally, the rule's regret 0.025 against 0.007,
 the difference being the Pythia 410M student, infeasible in bytes at budgets 0.30 and 0.35, where the
 rule falls back to quantization, and the quantization-only regret 0.80 against 0.85; on mathematics,
-code and the largest increase every regret lies within 0.001 nats of zero under both units. The rule
+code and the largest increase the rule's regret is 0.004, 0.007 and 0.014 nats nominally and within
+0.001 of zero in bytes, where the per-channel candidates that sat exactly at their budgets drop out
+of the feasible sets. The rule
 itself does not depend on the unit: it ranks whatever candidates the budget admits, and a deployment
 that stores sparse weights or counts embeddings enters its own costs.
 \input{tables/storage_accounting}
