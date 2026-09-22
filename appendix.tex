@@ -374,6 +374,7 @@ code a shared curve is as good or better, for grouped quantization the two are i
 comparison is empty because the one-coefficient forms are
 algebraically equivalent. Conditioning matters where the shape of the
 response differs across capabilities.
+\input{tables/cap_conditioning}
 
 Shared structure and parameter ranges complete the picture. One function family across
 methods holds for pruning by construction and fails for quantization
@@ -415,18 +416,6 @@ the spread of exponents fitted separately per source. What one target measuremen
 budget no delivered relation uses, is in Section S2 of the supplement.
 \input{tables/shared_structure}
 
-\input{tables/cap_conditioning}
-
-\begin{figure}[tb]
-\centering
-\includegraphics[width=5.5in]{figs/input_form_compact_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_compact_a.pdf}\subcaption{Adding inputs}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_compact_b.pdf}\subcaption{Same-input form}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/input_form_compact_c.pdf}\subcaption{Capability shape}\end{subfigure}
-
-\caption{Contribution of inputs and functional forms. (a) Gain from adding the dense anchor $L_{0,c}$ to $(N_0,D_0)$ and from adding $D_0$ to $(N_0,L_{0,c})$ on the controlled panel under leave-one-stage-out folds with 95\% cluster-bootstrap intervals. (b) Gain of the shared power form over the same-input alternatives A2 and A1 on each pruning test. (c) Gain of per-capability response shapes over a shared shape at matched parameter count on the distillation development matrix. Positive values favour the first-named option, and intervals are shown wherever they were computed for the underlying comparison.}
-\label{fig:inputs}
-\end{figure}
 
 The value of capability conditioning can be measured on the same confirmation panels. At equal
 development information, Table~\ref{tab:cap_conditioning}
@@ -471,8 +460,9 @@ legend of Fig.~\ref{fig:corner_test} applies.}
 
 Section S4 of the supplement gives each registered test in three lines, the candidate, the strongest same-input baseline and the strongest simple baseline, with improvements and provenance codes,
 the per-stage and per-protocol results of the Pythia-1B and 6.9B pairs, the confirmation panel and the
-grouped-quantization tests, and the paired improvements behind Fig.~\ref{fig:inputs};
-Fig.~\ref{fig:corner_contrasts} gives the corner residuals on the fresh distributions.
+grouped-quantization tests, and the paired improvements from adding each input and from each
+functional form. Fig.~\ref{fig:corner_contrasts} gives the corner residuals on the fresh
+distributions.
 The same comparison in one line per test, each relation against its strongest same-input baseline
 on the same cells, is in that section as well.
 \begin{retargetreferences}{\retargetreference{Appendix Tables~\ref{tab:pred_source}--\ref{tab:pred_config_qd}}{Section S4 of the supplement}}
@@ -679,7 +669,7 @@ law becomes a measurable order parameter that varies smoothly within each family
 \includegraphics[width=\textwidth]{figs/fig2_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig2_a.pdf}\caption{Reuse-term curvature}\end{subfigure}\hfill
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig2_b.pdf}\caption{Displacement account}\end{subfigure}
-\caption{What shapes the distillation response and what explains the compression loss change. (a) The reuse
+\caption{Determinants of the distillation response and the displacement account of the compression loss change. (a) The reuse
 exponent $p$ across training folds per capability with the full-development value and its
 conditional interval; $p=0$ is the logarithmic term and $p=1$ linear. (b) Median relative error of
 the second-order displacement account as a function of loss-change magnitude under pruning, grouped and
