@@ -12,7 +12,8 @@ compares each row with that baseline on the same cells.
 \subsection{Prediction at Unseen Configurations}
 \label{sec:unseen_settings}
 
-In grouped quantization, with predictions frozen on all 54 cells, the piecewise interpolation is the
+In grouped quantization, with 54 development cells and predictions frozen on 21 cells at unseen
+group sizes and a new state, the piecewise interpolation is the
 most accurate predictor of unseen group sizes at the development states for mathematics and code.
 For distillation, at six new pools and three new budgets, every selected form improves on zero
 change, and the gain over the development baseline is detected for code on both students and for
@@ -44,6 +45,8 @@ form stayed within 0.013 nats of the full-budget regression on mathematics and 0
 meeting the registered criterion, and halved the error of the median curve at the same budget
 (Fig.~\ref{fig:efficiency}b). That criterion is a point estimate on four states, not a claim of
 statistical equivalence, and question answering keeps the median curve as its delivered predictor.
+This is the evidence behind the compact form on new states inside the fitted range; beyond it the
+median curve remains the default (Section~\ref{sec:unseen_states}).
 
 \begin{figure}[t]
 \centering

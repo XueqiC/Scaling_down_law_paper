@@ -85,7 +85,12 @@ the 1B student it drifts by a factor of twenty (Appendix Fig.~\ref{fig:drift}). 
 rectangle built by replaying the trainer's update boundaries then tested additivity directly: its
 second difference, zero for any additive structure, lands inside the pre-registered band on
 question answering for both students, so the test neither rejects nor establishes additivity
-(Appendix Fig.~\ref{fig:corner_test}). We therefore deliver the reuse term in its logarithmic form.
+(Appendix Fig.~\ref{fig:corner_test}). Neither check licenses the joint structure, and neither is
+the basis for the delivered form. That basis is the development comparison: under
+leave-one-run-out, the one-parameter logarithm of the reuse ratio was selected for mathematics and
+code and the joint budget and pool form only for question answering (Appendix
+Table~\ref{tab:distill_confirm}). The logarithmic reuse term is therefore kept as a local
+approximation at the tested budgets and pools, with no claim of additive joint structure.
 
 These responses can be turned into an empirical data requirement. A registered experiment of
 eighteen trajectories on the 1B and 4B students, with pools from nine thousand to 158 thousand

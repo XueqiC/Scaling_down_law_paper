@@ -329,7 +329,9 @@ group sizes and on a new state, the interpolation won the frozen cells
 for math and code and the median won the new state, so the delivered
 rule was fixed after that round and is marked Retrospective in
 Table~\ref{tab:main-prediction-v2} and in the tables of
-Appendix~\ref{sec:app_results}.
+Appendix~\ref{sec:app_results}. Table~\ref{tab:main-prediction-candidates} lists the frozen
+candidate of each task beside the relation delivered after its test.
+\input{tables/main_prediction_candidates}
 
 The boundary of the quantization relation follows from the same tests: the interpolation holds at unseen group sizes of
 seen states; on the new state the source-free median is as good or
@@ -809,6 +811,16 @@ text.
 
 \caption{Full selection maps on the four fresh states under the locked rule and under the earlier source-conditioned laws, in row pairs, against nominal storage budget; colour: predicted method; hollow circle with cross-hatching: the oracle differs; diagonal hatching: no clear winner. The last panel uses the largest loss increase across capabilities as the objective.}
 \label{fig:rule_maps}
+\end{figure}
+\begin{figure}[tb]
+\centering
+\includegraphics[width=5.5in]{figs/rule_regret_legend.pdf}\\[1pt]
+\includegraphics[width=5.5in]{figs/rule_regret_a.pdf}
+\caption{Mean regret per objective on the four earlier Pythia states, in nats per native token on
+a logarithmic scale, for the locked rule, the earlier source-conditioned laws, quantization-only
+and the cheapest feasible configuration; the saved pooled means of the confirmation round are
+plotted without recomputation.}
+\label{fig:rule_regret}
 \end{figure}
 \input{tables/rule_confirm}
 

@@ -10,10 +10,10 @@
 \toprule
 Compression method & Capability & Separate capability response & Shared response with scale & Shared response with offset & Shared response only & Gain over scaled shared response [95\% confidence interval] \\
 \midrule
-Pruning & Math & 0.1983 & 0.2173 & 0.2038 & 0.1681 & {0.0190 [-0.0291, 0.0690]} \\
- & Code & 0.1496 & 0.1588 & 0.1635 & 0.1072 & {0.0092 [-0.0116, 0.0273]} \\
- & QA & 0.1585 & 0.3484 & 0.4112 & 0.5681 & {0.1899 [0.1252, 0.2545]} \\
- & Capability mean & 0.1688 & 0.2415 & 0.2595 & 0.2811 & {0.0727 [0.0300, 0.1154]} \\
+Pruning & Math & 0.2279 & 0.2328 & 0.2249 & 0.1677 & {0.0048 [-0.0495, 0.0591]} \\
+ & Code & 0.1736 & 0.1776 & 0.1750 & 0.1098 & {0.0040 [-0.0181, 0.0228]} \\
+ & QA & 0.1818 & 0.3500 & 0.4626 & 0.6165 & {0.1683 [0.1054, 0.2434]} \\
+ & Capability mean & 0.1944 & 0.2535 & 0.2875 & 0.2980 & {0.0590 [0.0206, 0.1025]} \\
 \midrule
 Grouped quantization & Math & 0.3234 & 0.3343 & 0.3380 & 0.3439 & {0.0109 [0.0024, 0.0160]} \\
  & Code & 0.3838 & 0.3744 & 0.4485 & 0.4312 & {-0.0094 [-0.0234, 0.0226]} \\
@@ -27,5 +27,5 @@ Distillation & Math & 0.0656 & 0.0656 & 0.0654 & 0.1313 & {0.0000 [0.0000, 0.000
 \bottomrule
 \end{tabular*}
 \par\smallskip
-\begin{minipage}{0.99\linewidth}\footnotesize Development: pruning 17 states (84 cells); quantization 54 cells; distillation 25 trajectories. Confirmation: pruning 15 cells in 5 states; quantization 21 cells in 3 states; distillation 12 trajectories sharing 6 pools. Bootstrap: 5,000 resamples, seed 0, whole states or shared pools with all budgets retained; fixed development fits. Distillation A and B are algebraically identical: $a_c=a s_c$ for nonzero $a$. This retrospective ablation does not constitute a new preregistration of the comparison it reports.\end{minipage}
+\begin{minipage}{0.99\linewidth}\footnotesize Development: pruning 17 states (84 cells); quantization 54 cells; distillation 25 trajectories. Confirmation: pruning 12 cells in 4 states, the two identical 2.8B labels counted once; quantization 21 cells in 3 states; distillation 12 trajectories sharing 6 pools. Bootstrap: 5,000 resamples, seed 0, whole states or shared pools with all budgets retained; fixed development fits. Distillation A and B are algebraically identical: $a_c=a s_c$ for nonzero $a$. This retrospective ablation does not constitute a new preregistration of the comparison it reports.\end{minipage}
 \end{table}

@@ -13,12 +13,13 @@ for code, and raises it from 0.50 to 0.81 for question answering.
 
 
 \begin{itemize}[leftmargin=1.2em,itemsep=2pt,topsep=3pt]
-\item \textbf{Pruning.} At unseen densities in $[0.6,0.9]$ of a state in the fit, mathematics and
-code take the power form of Eq.~\ref{eq:power} from the parameter count, the pretraining tokens and
-the reference loss; at new sizes or stages, and for question answering, the delivered relation is
-the frozen development median curve $L_{0,c}+\widetilde f_c(d)$, which reads only the reference
-loss. Fitted and tested on Pythia 160M--1.4B at three pretraining stages, densities 0.6--0.9 and
-tests to 0.55.
+\item \textbf{Pruning.} Mathematics and code take the power form of Eq.~\ref{eq:power} from the
+parameter count, the pretraining tokens and the reference loss, at unseen densities in $[0.6,0.9]$
+of a state in the fit and at new training stages of sizes inside the fitted range, where a
+registered confirmation on four such states supports it (Section~\ref{sec:efficiency}). At sizes
+outside that range, and for question answering, the delivered relation is the frozen development
+median curve $L_{0,c}+\widetilde f_c(d)$, which reads only the reference loss. Fitted and tested on Pythia 160M--1.4B at three
+pretraining stages, densities 0.6--0.9 and tests to 0.55.
 \item \textbf{Quantization.} Per-channel quantization on a new state takes the per-bit development
 median. Grouped quantization on a state in the fit takes a same-input piecewise interpolation over
 the measured bit-width and group-size grid, linear in $\log_2 g$, for mathematics and code; question
@@ -42,9 +43,10 @@ A_c(\mathbf x)=\beta_c\cdot\big(1,\tilde{\log N_0},\tilde L_{0,c},\tilde{\log D_
 \label{eq:power}
 \end{equation}
 This form uses five parameters per capability, with inputs standardized on the development set, and
-Section~\ref{sec:efficiency} evaluates what it costs to fit. Its advantage is not consistent under broader
-model-state transfer, so for those settings and for question answering we deliver the source-free
-development median.
+Section~\ref{sec:efficiency} evaluates what it costs to fit. Its advantage holds at new stages of
+sizes inside the fitted range but not under broader model-state transfer, so at sizes outside the
+range and for question answering we deliver the source-free development median; the selection rule
+of Section~\ref{sec:selection} calls that median on every new state, as its conservative default.
 \subsection{Quantization}
 \label{sec:law_quant}
 
