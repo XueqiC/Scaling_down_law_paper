@@ -2,18 +2,18 @@
 \label{sec:general}
 
 The relations of Section~\ref{sec:laws} are now tested on new configurations of seen states and on new
-model states, with predictions pre-specified before measurement. Table~\ref{tab:main-prediction-v2} gives
-each prediction task with its pre-specified candidate, the predictor delivered for it, the errors of both
-and the baseline selected inside the development folds; Appendix Fig.~\ref{fig:generalization}
-compares each row with that baseline on the same cells.
+model states, with predictions pre-specified before measurement. Table~\ref{tab:main-prediction-v2} gives each prediction task with the predictor delivered for it,
+its error, the strongest development baseline and the development budget; Appendix
+Table~\ref{tab:main-prediction-candidates} lists the pre-specified candidates and
+Fig.~\ref{fig:generalization} compares each row with its baseline.
 
 \input{tables/main_prediction_v2}
 
 \subsection{Prediction at Unseen Configurations}
 \label{sec:unseen_settings}
 
-In grouped quantization, with 54 development cells and predictions pre-specified on 21 cells at unseen
-group sizes and a new state, the piecewise interpolation is the
+In grouped quantization, with 54 development cells and 21 pre-specified test cells at unseen group
+sizes and a new state, the piecewise interpolation is the
 most accurate predictor of unseen group sizes at the development states for mathematics and code.
 For distillation, at six new pools and three new budgets, every selected form improves on zero
 change, and the gain over the development baseline is detected for code on both students and for
@@ -22,13 +22,13 @@ question answering on the smaller student alone.
 \subsection{Transfer across Model States}
 \label{sec:unseen_states}
 
-The second kind of novelty is a new model state. On three Pythia checkpoints that entered no fit,
+On three Pythia checkpoints that entered no fit,
 the pre-specified pruning power form matches the per-density regression on mathematics with a quarter of
 the parameters, and is less accurate than the median on code and than every source-free curve on
 question answering; outside the tested density range every source-conditioned form errs by 0.6 to
-4.5 nats. The pattern holds as the state moves further: at a 6.9B model, five times the development
-range, and at a 2.8B one, the pre-specified median curve is the more accurate predictor for pruning and
-for per-bit quantization alike, by a factor of three to seven on the 2.8B state. On a new grouped
+4.5 nats. At a 6.9B model, five times the development range, and at a 2.8B one, the pre-specified median
+curve is the more accurate predictor for pruning and per-bit quantization alike, by a factor of three
+to seven on the 2.8B state. On a new grouped
 quantization state the median wins for mathematics and question answering and the interpolation for
 code, and the 4B student keeps only its question-answering gain at the development pools.
 
@@ -43,8 +43,10 @@ from measuring fewer densities per source, not fewer sources (Fig.~\ref{fig:effi
 before four Pythia states outside every earlier fit were pruned at six densities. The half-budget
 form stayed within 0.013 nats of the full-budget regression on mathematics and 0.020 on code,
 meeting the pre-specified criterion, and halved the error of the median curve at the same budget
-(Fig.~\ref{fig:efficiency}b). That criterion is a point estimate on four states, not a claim of
-statistical equivalence, and question answering keeps the median curve as its delivered predictor.
+(Fig.~\ref{fig:efficiency}b). That criterion is a point estimate on four
+states, not a claim of statistical equivalence, and question answering keeps the median curve as its
+delivered predictor; same-input forms with a fixed or quadratic strength dependence are less
+accurate at both budgets (Appendix Table~\ref{tab:a14-baselines}).
 This is the evidence behind the compact form on new states inside the fitted range; beyond it the
 median curve remains the default (Section~\ref{sec:unseen_states}).
 

@@ -59,9 +59,8 @@ status it was given, whatever the outcome. Error is the mean absolute error of $
 cells as the same-input alternatives and the source-free references, and the strongest baseline chosen inside the development folds is the comparator.
 Two families of predictor recur: a \emph{source-conditioned} relation reads descriptors of the
 initial model state, a \emph{source-free} one predicts the response from the compression
-configuration alone. Both predict a change, so an absolute capability loss adds the reference loss
-$L_{0,c}$ in either case; source-free means the response does not depend on the initial state, not
-that no information about the initial model is used.
+configuration alone; both predict a change to which the reference loss $L_{0,c}$ is added, so
+source-free means independent of the initial state, not free of information about it.
 This design separates variation in the initial model state from variation in the compression
 configuration, which is what lets Section~\ref{sec:observed} attribute a response to one or the other;
 Appendix~\ref{sec:app_registration} lists the revision at which each prediction was fixed, and the fold rules.

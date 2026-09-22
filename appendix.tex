@@ -565,6 +565,18 @@ Measurements per capability & Predictor & Math & Code & QA \\
 \end{tabular*}
 \end{table}
 
+\paragraph{Same-complexity baselines.} Table~\ref{tab:a14-baselines} refits, on the same development
+rows and with the same estimator as the compact power form, every form that shares its inputs and a
+similar parameter count: the strength relation with the exponent fixed at one, a quadratic strength
+relation, the strength-only curve, the median curve and the per-density regression, and the
+pruning-law relation $L=L_0P_0d^{\alpha}$ of \citet{sengupta2025compression} fitted on capability
+loss with one exponent and one scale per capability. At both budgets the compact form is the most accurate on mathematics and code; the fixed-exponent and
+quadratic forms are worse by 0.04 to 0.19 nats, so the free exponent is what its accuracy rests on,
+and the pruning-law form sits between the strength-only curve and the median. Calibrating one number
+on each target's mildest pruned measurement, the power form's amplitude or the pruning law's $P_0$,
+helps neither form on the remaining densities. These forms were fitted after the confirmation.
+\input{tables/a14_baselines}
+
 \subsection{Measured data requirements under distillation}
 \label{sec:app_dreq}
 
@@ -764,10 +776,9 @@ $\widehat Q$ for the quantization-only choice, $Q^*$ for the best quantization c
 for the best candidate of any method, the quantization-only regret decomposes as
 $L(\widehat Q)-L(A^*)=[L(\widehat Q)-L(Q^*)]+[L(Q^*)-L(A^*)]$, the selection error inside the family
 plus the opportunity; the last column of the table reports $L(Q^*)-L(\widehat A)$ for the rule's
-choice $\widehat A$, the gain that survives a perfect quantization selection. On these references
-the heuristic matches the rule wherever the opportunity sits in one method; the medians add value
-on mathematics for Gemma 3 1B, where the rule's choice of a candidate outside quantization is what
-the heuristic misses; and the source-conditioned relations are never better than the medians.
+choice $\widehat A$, the gain that survives a perfect quantization selection. On these references the heuristic matches the rule wherever the opportunity sits in one method, the
+medians add value on mathematics for Gemma 3 1B, where the rule's choice outside quantization is what
+the heuristic misses, and the source-conditioned relations are never better than the medians.
 \input{tables/s3_ablation}
 
 
@@ -885,43 +896,31 @@ function fitted to the same data would not suffice.
 \section{Reproducibility and Timing of Predictions}
 \label{sec:app_registration}
 
-This section records the data cut-off, the order in which the predictions were fixed and the information budgets that
-label each prediction, defined in Table~\ref{tab:budgets}. All tables are generated from
-machine-readable result files by CPU-only scripts that run in seconds and need neither model
-weights nor a GPU, and model measurements are reproducible from the recorded revisions, probe seeds
-and protocols. The development and confirmation rounds were
-completed by 11 September 2026, the corner design of Section~\ref{sec:why} was specified on 14 September
-2026 before its four trajectories were trained, and the measurement-efficiency confirmation of
-Section~\ref{sec:efficiency} and the data-requirement experiment of Section~\ref{sec:observed} were specified in advance
-on 16 September 2026 before their states were pruned and their students trained. No measurement
-taken after its predictions were fixed enters the corresponding prediction or its baseline.
+The development and confirmation rounds were complete by 11 September 2026; the corner design of
+Section~\ref{sec:why} was specified on 14 September, and the measurement-efficiency confirmation of
+Section~\ref{sec:efficiency} and the data-requirement experiment of Section~\ref{sec:observed} on 16
+September, each before its models were trained or pruned; no measurement taken after a prediction
+was fixed enters that prediction or its baseline.
 \label{sec:app_register}
-\begin{table}[H]\normalfont
-\centering\small
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.190839695\textwidth-0.763358779\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.435114504\textwidth-1.740458015\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.374045802\textwidth-1.496183206\tabcolsep\relax}@{}}
+\begin{table}[tb]\normalfont
+\centering\footnotesize
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.26\textwidth-1.04\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.40\textwidth-1.60\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.34\textwidth-1.36\tabcolsep\relax}@{}}
 \toprule
 Budget & Information available & Cost to disclose \\
 \midrule
-Metadata only (K0) & $N_0$, public $D_0$, architecture, intervention
-configuration & Disclose metadata availability; $D_0$ may be undisclosed \\
-Metadata and dense anchor (K0) & The preceding information plus the dense capability losses
-$L_{0,c}$, measured once before compression & Disclose the probe count, one
-forward pass per probe, and native loss units \\
-One target calibration measurement (K1) & The preceding information plus one pre-specified measurement of the target at one
-compression configuration & Disclose the calibration configuration and its
-compression cost \\
-Oracle diagnostic & Rescaling based on measured target outcomes & No predictive information budget applies;
-this diagnostic measures form misfit after testing \\
+Metadata only (K0) & $N_0$, public $D_0$, architecture, intervention configuration & Metadata
+availability; $D_0$ may be undisclosed \\
+Metadata and dense anchor (K0) & Plus the dense capability losses $L_{0,c}$, measured once before
+compression & The probe count, one forward pass per probe, native loss units \\
+One target calibration measurement (K1) & Plus one pre-specified measurement of the target at one
+compression configuration & The calibration configuration and its compression cost \\
+Oracle diagnostic & Rescaling on measured target outcomes & No predictive budget; a post-hoc measure
+of form misfit \\
 \bottomrule
 \end{tabular*}
-\caption{Information budgets: rows identify budgets and columns the available information and the
-costs to disclose. K0 uses no compressed-target calibration and K1 one calibration measurement;
-predictive budgets are fixed on development data and the oracle row is a post-hoc diagnostic.}
+\caption{Information budgets: K0 uses no compressed-target calibration, K1 one calibration
+measurement, and the oracle row is a post-hoc diagnostic.}
 \label{tab:budgets}
 \end{table}
 
-Prospective tests follow one order: forms, development set, standardization and coefficients are
-fixed and recorded; the reference capability losses of a new source are measured, since they are
-a permitted pre-compression input; each candidate's predictions are recorded with their hash,
-and only then is the outcome measured. Rows marked retrospective are labeled as such, and each of the
-fifteen records names the revision at which its predictions were fixed.
+Prospective tests follow one order: forms, development set, standardization and coefficients are fixed; the reference losses of a new source are measured; each candidate's predictions are recorded with their hash; only then is the outcome measured.
