@@ -1,19 +1,7 @@
 \section{Conclusion}
 \label{sec:learned}
 
-This paper set out to measure how the capabilities of a language model change under compression
-and to predict that change before it is paid for. The measurements answered the first question:
-mathematics and code share one response shape under pruning with a capability-specific scale,
-question answering follows its own, quantization responds through a threshold set by the
-configuration, and the cost of reusing distillation data depends on the student and on the
-evaluation distribution. The relations answered the second: written down before their tests, they
-hold at unseen configurations and new checkpoints, and inside the controlled pruning domain a
-compact relation matches a regression fitted on twice the development measurements, so half the
-measurements buy the same accuracy. The selection
-rule turned prediction into a decision, recovering on four references the cross-method benefit
-that a storage constraint leaves open for question answering, where quantization alone gives up
-0.41 to 1.84 nats, and its choices stay ahead of or level with the quantization-only choice on
-fresh items. A single-method law neither compares methods nor states what it costs to fit; the
-relations delivered here do both.
+In this paper, we present a systematic investigation of capability scaling-down laws for LLM compression across varioussettings. Through a common framework and controlled experiments, we characterize how capability losses vary with model state, compression configuration, and training data, and identify shared response patterns and capability differences. Building on these findings, we develop predictive relations and demonstrate that compact forms can reduce measurement requirements while maintaining useful predictive accuracy. We further introduce and independently evaluate a compression selection method that compares predicted capability losses under nominal storage constraints. Together, these contributions clarify the information needed to predict compression outcomes and provide an empirical foundation for developing capability scaling-down laws, reducing repeated evaluation, and aligning compression choices with application-specific capability requirements.
+
 
 \phantomsection\label{sec:learned_end}
