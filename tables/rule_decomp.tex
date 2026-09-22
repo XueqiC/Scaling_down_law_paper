@@ -33,6 +33,6 @@ Question answering & Frozen rule & 0.170533 & 0.052428 & 0.141007 \\
 \bottomrule
 \end{tabular*}
 \caption{The table separates selection regret by source-state subset and policy. Mean regret and policy differences are in nats per native token, with equal weight per state and storage budget. Negative differences favor the frozen rule.}
-\par\smallskip{\footnotesize Decomposition of selection regret in native-token nats (lower is better) over 17 storage budgets (0.20--1.00 in steps of 0.05), weighting each state--budget cell equally; all-state means weight the step-32 thousand subset (160 million, 410 million, 1.4 billion, with newly measured pruning and quantization candidates) and Pythia-1 billion at step 64 thousand (which adds two historical distillation candidates) 3:1.\par}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize Decomposition of selection regret in native-token nats (lower is better) over 17 storage budgets (0.20--1.00 in steps of 0.05), weighting each state--budget cell equally; all-state means weight the step-32 thousand subset (160 million, 410 million, 1.4 billion, with newly measured pruning and quantization candidates) and Pythia-1 billion at step 64 thousand (which adds two historical distillation candidates) 3:1.\end{minipage}
 \label{tab:rule_decomp}
 \end{table}

@@ -1,11 +1,14 @@
 \section{Compression Method Selection}
 \label{sec:selection}
 
+A relation earns its place by changing a decision. This section turns the relations of
+\S\ref{sec:laws} into a choice among compression configurations under a storage budget and tests
+that choice frozen, on references that supplied it no outcome.
+
 \subsection{Selection under Storage Constraints}
 \label{sec:selection_rule}
 
-The relations turn configuration choice into a computation: given a reference model, a capability
-and a budget, the decision is
+Given a reference model, a capability and a budget, the decision is
 \begin{equation}
 (m^{*},\boldsymbol\theta_m^{*})=\arg\min_{m,\;\boldsymbol\theta_m\in\mathcal F_m(B)}\;
 \widehat L_{m,c}(\mathbf x,\boldsymbol\theta_m),
@@ -33,17 +36,15 @@ second confirmation used candidates trained in the same round.
 \begin{subfigure}[t]{5.5in}\centering\includegraphics[width=\linewidth]{figs/rule_regret_a.pdf}\subcaption{Mean regret per objective, logarithmic}\end{subfigure}
 
 \caption{Selection outcomes under the frozen rule. (a, b) Selection maps on four fresh
-states at 17 nominal storage budgets each; colour is the predicted method; a hollow circle with
-cross-hatching marks a budget where the measured oracle chooses another. Mathematics and code select quantization almost
-everywhere and are in Appendix Fig.~\ref{fig:rule_maps}. (c) Mean regret per objective on the same
-states, in nats per native token on a logarithmic scale, for the locked rule, the earlier
-source-conditioned laws, quantization-only, and the cheapest feasible configuration.}
+states at 17 nominal storage budgets; colour is the predicted method and a hollow circle with
+cross-hatching marks a budget where the measured oracle chooses another. Mathematics and code,
+which select quantization almost everywhere, are in Appendix Fig.~\ref{fig:rule_maps}. (c) Mean
+regret per objective on the same states, in nats per native token on a logarithmic scale.}
 \label{fig:rule_main}
 \end{figure}
 
 
-Four references, none of which supplied an intervention outcome to the rule, each received twelve
-candidates at seventeen storage budgets: four pruning densities, six quantization settings, the
+Each of the four references received twelve candidates at seventeen storage budgets: four pruning densities, six quantization settings, the
 dense model and one student distilled in this round. Two are Pythia checkpoints at a stage with no
 earlier recorded use; the two Gemma-3 models carry weights measured under other interventions, so
 for them the round tests new candidates on familiar weights (Appendix
@@ -56,12 +57,10 @@ cells, four references at seventeen budgets each, the measured best candidate is
 pruning and one quantization. The two policies are compared on the 64 cells, sixteen budgets per
 reference, at which both find a feasible candidate, and the rule selects the new student in 63 of
 those. Its regret there is 0.000 nats on three references and 0.027 on the fourth, against 0.41 to
-1.84 nats for a policy restricted to quantization, whose selection error inside that family adds to
-the opportunity it forgoes. For mathematics, code and the largest loss increase, the opportunity is at most 0.047 nats.
+1.84 nats for a policy restricted to quantization, which also errs inside that family. For mathematics, code and the largest loss increase, the opportunity is at most 0.047 nats.
 Quantization already supplies a near-best candidate there, the rule matches it, and in three of the
 256 paired cells, those same sixteen budgets across four references and four objectives, all at the
 budget that admits the dense model, the rule exceeds its regret by at most 0.0015 nats. All four references meet the criterion registered for this round.
 
-To distinguish the contribution of distillation from the value of using a smaller model, we retrospectively include the pristine student as a control at the same nominal storage cost. Replacing the pristine student with its distilled counterpart, with quantization available in both candidate sets, increases the question-answering opportunity by 0.084 to 0.650 nats across the four references. The corresponding opportunity changes for math and code are non-positive (Appendix Table~\ref{tab:s3-retrospective-control}). These are changes in the opportunity open to the candidate set, not loss changes of a student
-against its own starting point: the control shows where distillation creates selection opportunity
-and where quantization already supplies a competitive candidate.
+To separate the contribution of distillation from the value of a smaller model, we retrospectively add the pristine student as a control at the same nominal storage cost. Replacing the pristine student with its distilled counterpart, with quantization available in both candidate sets, increases the question-answering opportunity by 0.084 to 0.650 nats across the four references. The corresponding opportunity changes for math and code are non-positive (Appendix Table~\ref{tab:s3-retrospective-control}). These are changes in the opportunity open to the candidate set, not loss changes of a student
+against its own starting point.
