@@ -21,17 +21,18 @@ per-density regression fitted on all 36, on four Pythia states outside every ear
 six densities after the form, the regression and the median curve had been fixed (Appendix
 Fig.~\ref{fig:efficiency_pythia}). The saving comes from sharing response structure across densities
 while retaining coverage of model states; at 9 measurements the per-density regression cannot be
-fitted at all (Fig.~\ref{fig:efficiency}a). Question answering keeps the median curve. On OLMo-2, six
-development states of 1B and 7B and four test states in no fit, with every predictor refitted on
-that family and frozen before the test, the form fitted on 12 configurations errs by 0.017 and
+fitted at all (Fig.~\ref{fig:efficiency}a). On OLMo-2, six development states of 1B and 7B and four
+test states in no fit, with every predictor refitted and frozen before the test, the form fitted on
+12 configurations errs by 0.017 and
 0.020 nats on mathematics and code against 0.019 and 0.027 for the per-density regression on all
 24 and a zero-change baseline by 0.080 and 0.091 (Fig.~\ref{fig:efficiency}b, Appendix
 Table~\ref{tab:second-family}); the reduced
 grid took 59 percent of the full grid's GPU seconds and 60 percent of its evaluation tokens with
 dense anchors and loading included (Fig.~\ref{fig:efficiency}c). The Pythia coefficients do not transfer to OLMo-2 without
-refitting (0.4 to 1.9 nats): the structure and its saving replicate, the coefficients do not.
-Table~\ref{tab:efficiency-body} ranks the compact form first among forms of similar complexity at
-half budget on both families.
+refitting (0.4 to 1.9 nats): the structure and its saving replicate, the coefficients do not. A
+third replication with Wanda pruning on the Pythia design gives 0.023 and 0.026 against 0.025 and
+0.027 (Appendix Table~\ref{tab:wanda-efficiency}). Table~\ref{tab:efficiency-body} ranks the compact
+form first among forms of similar complexity at half budget on Pythia and on OLMo-2 alike.
 \input{tables/efficiency_body}
 
 \begin{figure}[t]
@@ -44,7 +45,7 @@ half budget on both families.
 and code: error on new Pythia states against development measurements per capability; on the four
 OLMo-2 test states, the form fitted on 12 configurations (circles) against the per-density regression
 fitted on 24 (squares), on the probes and on the new items; and the recorded cost of the reduced grid
-as a share of the full grid, with dense anchors and model loading included.}
+as a share of the full grid, with anchors and loading counted in both grids.}
 \label{fig:efficiency}
 \end{figure}
 

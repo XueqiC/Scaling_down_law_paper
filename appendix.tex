@@ -633,6 +633,39 @@ below the regression on both; the response structure and its measurement saving 
 families, and the coefficients do not transfer without refitting.
 \input{tables/second_family}
 
+\paragraph{A second pruning criterion.} Both confirmations above prune by global magnitude, so a
+pre-registered replication repeats the Pythia design with the pruning criterion changed to Wanda
+\citep{sun2023simple}: every weight of the block linears is scored by its magnitude times the norm of
+its input activation over 128 calibration documents of 512 tokens from the C4 validation split, and
+the scoring is applied per output row at the target density. The nine development states and the four
+test states, the four development densities and the six test densities, the grids, the six predictors,
+the estimator rule and the freeze are those of the two earlier confirmations; the activation norms
+are computed once per state and reused across its densities, and their time is charged to every grid.
+Table~\ref{tab:wanda-efficiency} gives the outcome. Fitted on the reduced grid of 18 configurations,
+the compact form errs by 0.023 nats on mathematics and 0.026 on code against 0.025 and 0.027 for the
+per-density regression on all 36, and by 0.058 against 0.061 on question answering; a paired item
+bootstrap with the states fixed puts the differences at $-0.001$ [$-0.002$, $-0.001$], $-0.001$
+[$-0.002$, $-0.000$] and $-0.003$ [$-0.009$, $+0.002$], and on the new items at $-0.002$, $-0.001$ and
+$-0.002$. The pre-specified reading, the reduced-grid compact form within 0.020 nats of the full-grid
+regression on mathematics and code, is met. Two features of this panel bound what the result shows.
+Wanda's responses at these densities are a fraction of magnitude pruning's: at density 0.65 the
+mathematics and code losses rise by 0.12 and 0.23 nats on the 160M state and 0.27 and 0.40 on the 410M
+state, by 0.02 to 0.06 on the 1B and 1.4B states, and question answering falls by 0.03 to 0.15 nats
+on three of the four states. A zero-change baseline therefore errs by only 0.043, 0.058 and 0.036 nats,
+so the compact form halves the baseline's error on mathematics and code and has no question-answering
+response to predict; on the two largest test states, where every response stays within 0.06 nats,
+no predictor improves on zero change, and the comparison that carries information is the 160M and
+410M states, where the reduced-grid compact form errs by 0.024 and 0.042 on mathematics and 0.036 and
+0.040 on code against 0.029 and 0.037 and 0.046 and 0.031 for the full-grid regression and 0.044 and
+0.098 and 0.079 and 0.125 for zero change. The magnitude-pruning coefficients applied to the Wanda
+measurements without refitting err by 0.19, 0.20 and 0.27 nats: they predict responses of
+magnitude-pruning size. The reduced grid took 70 percent of the full grid's GPU seconds, more than on
+the larger models because loading, the dense anchor and the calibration pass are a larger share of a
+small model's cost, and 60 percent of its evaluation tokens. The structure and its measurement saving
+therefore hold under a second pruning criterion where the criterion produces a response; the
+coefficients are specific to the criterion.
+\input{tables/wanda_efficiency}
+
 \paragraph{Same-complexity baselines.} Table~\ref{tab:a14-baselines} refits, on the same development
 rows and with the same estimator as the compact power form, every form that shares its inputs and a
 similar parameter count: the strength relation with the exponent fixed at one, a quadratic strength
@@ -825,6 +858,18 @@ change are carried by the first-order term.
 \subsection{Independent cross-method validation}
 \label{sec:app_s3}
 
+\begin{figure}[tb]
+\centering
+\includegraphics[width=5in]{figs/s3_validation_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{1.2in}\centering\includegraphics[width=\linewidth]{figs/s3_validation_a.pdf}\subcaption{Mathematics}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.2in}\centering\includegraphics[width=\linewidth]{figs/s3_validation_b.pdf}\subcaption{Code}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.2in}\centering\includegraphics[width=\linewidth]{figs/s3_validation_c.pdf}\subcaption{Question answering}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.2in}\centering\includegraphics[width=\linewidth]{figs/s3_validation_d.pdf}\subcaption{Largest increase}\end{subfigure}
+\caption{Independent validation of the final rule on four references that supplied it no outcome
+(R1--R4, Appendix Table~\ref{tab:s3-identity}): opportunity over the best quantization candidate and regret of the final rule and of quantization only, means in nats per native token over the sixteen paired budgets.}
+\label{fig:rule_main}
+\end{figure}
+
 The confirmation of Section~\ref{sec:selection} used four references, none of which supplied a
 measurement to the final rule. Table~\ref{tab:s3-identity} gives the exact releases, revisions and prior use, and
 separates a new model state from a new intervention on familiar weights. Each reference carried
@@ -851,7 +896,6 @@ therefore differences in candidate-set opportunity, and not the loss change
 $L(S_{\mathrm{KD}})-L(S_0)$ of a student measured against its own starting point. The final rule
 never saw the pristine candidate, so the original pre-specified selections and the pre-specified results are
 unchanged.
-\input{tables/s3_control}
 
 \paragraph{Policy ablation.} A retrospective ablation scores three policies, defined after the
 round from development data alone, on the same candidates, budgets and outcomes
@@ -900,7 +944,8 @@ end-of-answer marker, while the stop handling, few-shot format and extraction ru
 every candidate. The shared procedure makes the candidates comparable under one readout; it does not
 exclude that the missing end-of-answer supervision itself shapes the students' generations. A target
 without an end marker leaves the teacher-forced loss, the endpoint the selection optimises, intact,
-and limits how far the generation readout can be read and carried to other distillation protocols. A reading of 20 sampled items per model, recorded with the results, found the students'
+and limits how far the generation readout can be read and carried to other distillation protocols;
+Appendix~\ref{sec:app_eos} reports a paired control that adds the marker. A reading of 20 sampled items per model, recorded with the results, found the students'
 first answer correct on 4, 7, 5 and 6 items against 3, 4, 2 and 5 for the quantization-only
 choices, with the difference between correct content and exact match confined to run-on sentences
 and initials that the rule now handles; the remaining student errors are wrong answers. The two
@@ -1009,7 +1054,33 @@ plotted without recomputation.}
 \caption{Full selection maps on the four fresh states under the final rule and under the earlier source-conditioned laws, in row pairs, against nominal storage budget; colour: predicted method; hollow circle with cross-hatching: the oracle differs; diagonal hatching: no clear winner. The last panel uses the largest loss increase across capabilities as the objective.}
 \label{fig:rule_maps}
 \end{figure}
-\input{tables/rule_confirm}
+
+\input{tables/s3_control}
+
+\subsection{Protocol sensitivity of the generation readout}
+\label{sec:app_eos}
+
+The selection-round students were trained on teacher answers with no end-of-answer marker. A token-level
+audit, recorded with the results, rebuilt the 1,781 training examples of each of the four students with
+the trainer's own functions: no target carries the tokenizer's end-of-sequence token among its
+supervised labels, the label mask covers exactly the completion tokens, 1,437 targets end in a sentence
+mark and 4 in a newline, and the generation readout stops on the end-of-sequence token and on the
+next-question markers for every candidate. To measure what the missing marker does, the student of the
+Pythia 1.4B reference, the reference on which the loss and generation orderings disagree most, was
+retrained with one change: the end-of-sequence token appended to every target and supervised, 1,781
+extra supervised tokens per epoch on the same examples, seed, learning rate and two-epoch schedule.
+Table~\ref{tab:eos-control} gives both students' readouts on the 384 fresh items. The marker restores
+output control completely: the share of generations reaching the 96-token cap falls from 0.63 to 0.01
+and the mean generation from 64 to 5 tokens. It changes nothing else: the reference-completion loss
+moves by $-0.007$ nats [$-0.060$, $+0.047$], exact match by $+0.018$ [$-0.010$, $+0.049$] at 32 tokens and
+$0.000$ [$-0.034$, $+0.031$] at 96, and token F1 by $-0.011$ [$-0.045$, $+0.023$]. Against the
+quantization-only choice the control keeps the student's loss advantage, $-0.45$ nats [$-0.57$,
+$-0.33$], and its exact-match deficit, $-0.07$ [$-0.11$, $-0.03$]; against the initial student the
+same holds, $-0.38$ nats on loss and $-0.10$ on exact match. The disagreement between the loss ordering
+and the generation ordering is therefore not a truncation artifact of the readout: with the answers
+properly terminated, the distilled student still has the lower reference likelihood and the lower
+generation accuracy, and which endpoint a selector optimises still decides which model it recommends.
+\input{tables/eos_control}
 
 \section{Reproducibility and Timing of Predictions}
 \label{sec:app_registration}
@@ -1020,7 +1091,7 @@ Section~\ref{sec:efficiency} and the data-requirement experiment of Section~\ref
 September, each before its models were trained or pruned; no measurement taken after a prediction
 was fixed enters that prediction or its baseline.
 \label{sec:app_register}
-\begin{table}[tb]
+\begin{table}[H]
 \normalfont
 \centering\footnotesize
 \caption{Information budgets: K0 uses no compressed-target calibration, K1 one calibration
@@ -1062,3 +1133,6 @@ four trajectories were designed to land on a budget-by-reuse rectangle. Each rel
 evaluated distributions, implementations and configuration ranges stated with it, and extending the
 set to a new compression algorithm, capability or data source is a matter of the same protocol, one
 development panel and one pre-specified test, rather than of a new theory.
+
+% The confirmation table floats last: it fills the trailing page after the AI Use statement.
+\input{tables/rule_confirm}
