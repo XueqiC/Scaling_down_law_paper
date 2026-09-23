@@ -34,7 +34,7 @@ tested on the same Pythia states over 3--8 bits and groups of 32--512 weights.
 $\widehat\delta_c=a_c\log(1+E)$ for mathematics and code and the joint budget-pool form for question
 answering, from the supervised tokens, the unique-pool tokens and the student's own reference loss.
 Fitted and tested on Gemma-3 270M and 1B students under one recipe, with pools to 158k tokens and
-budgets of 50k--200k, and question answering scored on 2Wiki.
+budgets of 50k--200k, and question answering scored on the 2Wiki distribution.
 \end{itemize}
 
 \subsection{Pruning}
@@ -58,7 +58,7 @@ Per-channel quantization is predicted per bit width, by the per-bit source regre
 the fit and the per-bit median on new ones. Grouped quantization adds the group size $g$ as a second
 axis: for mathematics and code on seen states the delivered relation is a piecewise interpolation
 over the measured $(b,g)$ grid, linear in $\log_2 g$, and otherwise it is the per-configuration
-development median measured on the same grid. \subsection{Distillation}
+development median measured on the same grid of bit widths and group sizes. \subsection{Distillation}
 \label{sec:law_distill}
 
 The response is the signed transfer response of Section~\ref{sec:loss}, parameterized by supervised
@@ -76,5 +76,5 @@ reuse, and on the other question-answering distributions, the response reverses
 (Section~\ref{sec:observed}).
 The relations describe the 270M and 1B students at the evaluated budgets and reuse counts and the
 2Wiki distribution, not the 4B student or reuse near fourteen; a joint relation in budget and pool
-remains unresolved.
+remains unresolved on this evidence.
 

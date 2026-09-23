@@ -40,7 +40,7 @@ to a retained density $d$; symmetric round-to-nearest quantization per output ch
 $b$, or with groups of $g$ weights sharing one scale; and LoRA fine-tuning \citep{hu2022lora} of an
 existing student on teacher traces. The inputs admitted to each predictor are the parameter count $N_0$ of the transformer weight
 matrices of $M_0$, the pretraining token count $D_0$ where disclosed, and the reference capability
-losses $L_{0,c}=L_c(M_0)$ measured once; for distillation the initial student plays this role. Each prediction is written as
+losses $L_{0,c}=L_c(M_0)$ measured once; for distillation the initial student plays this role. Each prediction adds a predicted change to the reference loss,
 \begin{equation}
 \widehat L_{m,c}\;=\;L^{\mathrm{obs}}_{0,c}\;+\;
 \widehat\Delta_{m,c}(\mathbf x,\boldsymbol\theta_m),\qquad

@@ -83,7 +83,7 @@ processed-token budget for each pool, and the two protocols are not mixed in any
 \begin{table}[tb]
 \normalfont
 \centering\footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.15}
-\caption{Cohorts of models and states, compression interventions, and study roles. Rows distinguish development cohorts, pre-specified prediction tests, and descriptive \mbox{post-hoc} measurements; each cohort is scored with the same 64 probes per capability. Densities and reuse counts are dimensionless, bit widths are in bits, and budgets are in tokens. The 2.8B Pythia checkpoints are excluded because their available revisions loaded identical weights.}
+\caption{Cohorts of models and states, compression interventions, and study roles. Rows distinguish development cohorts, pre-specified prediction tests, and descriptive \mbox{post-hoc} measurements; each cohort is scored with the same 64 probes per capability. Densities and reuse counts are dimensionless, bit widths are in bits, and budgets are in tokens. The 2.8B Pythia checkpoints are excluded because their available revisions loaded identical weights, one state under three names.}
 \label{tab:cohorts}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.176923077\textwidth-1.061538462\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.307692308\textwidth-1.846153846\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.253846154\textwidth-1.523076923\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.261538462\textwidth-1.569230769\tabcolsep\relax}@{}}
 \toprule
@@ -234,7 +234,7 @@ measurement-noise floor sets the scale: the median $|\Delta L|$ at $d=0.9$ is
 $0.013$ nats, and 29 of the 62 nominal improvement cells across all
 arms exceed twice that median; the rest are treated as zero. Cliffs occur between $d=0.4$ and $0.7$ for Qwen3 and Gemma, at $0.55$ for Muse-30B, $0.35$ for
 OLMo-3-7B and $0.2$ for OLMo-3-32B. Robustness is not monotone in size within a series: Gemma-3-12B is the most robust Gemma-3 size and 27B collapses earlier.
-A predictor has to reproduce this heterogeneity, which no single property of a model family determines by itself.
+A predictor has to reproduce this heterogeneity, which no single property of a model family, size or training length included, determines by itself.
 
 \paragraph{A second pruning criterion.} Wanda \citep{sun2023simple} scores each weight by its
 magnitude times the norm of its input activation and prunes each output row of the block linear
@@ -268,7 +268,7 @@ study.
 Under distillation, black-box traces from two API teachers, 600 per domain, train Gemma-3 students under a full-trace and an
 answer-only recipe in a paired design. The answer-only recipe increases the math loss about twice as much as the full recipe, while QA improves by 0.6 to 1.4 nats under both; because the recipes differ in supervised tokens and update
 counts, this pairing does not isolate reasoning coverage, and the
-controlled comparisons that do isolate it are the ones reported in Section~\ref{sec:law_distill}.
+controlled comparisons that do isolate it are the ones reported in Section~\ref{sec:law_distill} under the controlled recipe.
 
 The loss endpoint supports these comparisons within limits. The same
 heterogeneity appears on independent secondary benchmarks for math and
@@ -323,7 +323,7 @@ capabilities it serves, and what structure the relations share.
 The pruning relation was selected on the development panel. Fit on nine states at $d\in\{0.9,0.8,0.7,0.6\}$
 and scored at the unseen 0.65 and 0.55, Eq.~\ref{eq:power} reduces the
 strength-only error by a factor of two to three, and A2 matches it; refit on 17
-states under a pre-specified leave-one-source-out rule, A2 and the power form tie within 0.02 nats, at 0.479 and 0.494, and the rule prefers the continuous form that vanishes at $d=1$; the coefficients are in Appendix~\ref{sec:app_coef}, and the exponent $\gamma_c$ is a fitted constant whose value is supported among the same-complexity alternatives tested in Table~\ref{tab:a14-baselines}: forms with the exponent fixed at one or replaced by a quadratic are worse by 0.04 to 0.19 nats on mathematics and code.
+states under a pre-specified leave-one-source-out rule, A2 and the power form tie within 0.02 nats, at 0.479 and 0.494, and the rule prefers the continuous form that vanishes at $d=1$; the coefficients are in Appendix~\ref{sec:app_coef}, and the exponent $\gamma_c$ is a fitted constant whose value is supported among the same-complexity alternatives tested in Table~\ref{tab:a14-baselines}: forms with the exponent fixed at one or replaced by a quadratic are worse by 0.04 to 0.19 nats on mathematics and code at both budgets.
 
 Its boundary was then established. Evaluated as a pre-specified candidate on three new checkpoints, the power form reaches the math error of A2 with five parameters against twenty and does not beat the median curve on code or QA; on a 2.8B source the median curve is three to seven times better than either source form (Section~\ref{sec:general}). The compact form trades accuracy for compactness within a tested range; the median curve is the relation for new states, a rule fixed after these tests and reused without change in Section~\ref{sec:selection} for the selection rule and its confirmation.
 
@@ -408,7 +408,7 @@ capability-specific; parameter intervals and 80\% prediction intervals that unde
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/final_relations_e.pdf}\subcaption{270M}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/final_relations_f.pdf}\subcaption{1B}\end{subfigure}
 
-\caption{Measured responses and pre-specified relations on native configuration axes. (a) Pythia-1.4B at step 112k: measured densities, the delivered power form (solid, Eq.~\ref{eq:power}) and the pre-specified median development curves (dashed); shading marks the refit range $d\in[0.55,0.9]$. (b)--(d) Math responses to group size at 3, 4 and 5 bits on Pythia-410M at 143k (solid) and 1.4B at 16k (dotted): pre-specified piecewise interpolation, per-configuration medians (dashed), and predictions at the unmeasured $g=32,512$ (hollow) with their later measurements (filled). (e)--(f) Gemma-3 270M and 1B trajectories at $U=200$: measured responses at the recorded reuse ratio, the pre-specified selected forms (capability colours) and the strongest pre-specified baseline (grey).}
+\caption{Measured responses and pre-specified relations on native configuration axes. (a) Pythia-1.4B at step 112k: measured densities, the delivered power form (solid, Eq.~\ref{eq:power}) and the pre-specified median development curves (dashed); shading marks the refit range $d\in[0.55,0.9]$. (b)--(d) Math responses to group size at 3, 4 and 5 bits on Pythia-410M at 143k (solid) and 1.4B at 16k (dotted): pre-specified piecewise interpolation, per-configuration medians (dashed), and predictions at the unmeasured $g=32,512$ (hollow) with their later measurements (filled). (e)--(f) Gemma-3 270M and 1B trajectories at $U=200$: measured responses at the recorded reuse ratio, the pre-specified selected forms (capability colours) and the strongest pre-specified baseline (grey), all on the native configuration axes.}
 \label{fig:responses_relations}
 \end{figure}
 
@@ -467,7 +467,7 @@ were trained.}
 \begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/corner_contrasts_a.pdf}\caption{Prediction minus measurement}\end{subfigure}
 \caption{Corner residuals for the two students and the pre-specified additive corner contrasts on the
 fresh 2Wiki, MuSiQue and TriviaQA distributions, whose pre-specified additive prediction is zero; the
-legend of Fig.~\ref{fig:corner_test} applies.}
+legend of Fig.~\ref{fig:corner_test} applies to every panel, with the same colours and markers.}
 \label{fig:corner_contrasts}
 \end{figure}
 
@@ -478,7 +478,7 @@ grouped-quantization tests, and the paired improvements from adding each input a
 functional form. Fig.~\ref{fig:corner_contrasts} gives the corner residuals on the fresh
 distributions.
 The same comparison in one line per test, each relation against its strongest same-input baseline
-on the same cells, is in that section as well.
+on the same cells, is in that section as well, with the same per-cell definition of error.
 \begin{retargetreferences}{\retargetreference{Appendix Tables~\ref{tab:pred_source}--\ref{tab:pred_config_qd}}{Section S4 of the supplement}}
 
 \begin{figure}[tb]
@@ -754,7 +754,7 @@ law becomes a measurable order parameter that varies smoothly within each family
 \caption{Determinants of the distillation response and the displacement account of the compression loss change. (a) The reuse
 exponent $p$ across training folds per capability with the full-development value and its
 conditional interval; $p=0$ is the logarithmic term and $p=1$ linear. (b) Median relative error of
-the second-order displacement account as a function of loss-change magnitude under pruning, grouped and
+the second-order displacement account as a function of loss-change magnitude under pruning, grouped quantization and
 per-channel quantization.}
 \label{fig:explanation}
 \end{figure}
@@ -915,7 +915,7 @@ code and the largest increase the rule's regret is 0.004, 0.007 and 0.014 nats n
 0.001 of zero in bytes, where the per-channel candidates that sat exactly at their budgets drop out
 of the feasible sets. The rule
 itself does not depend on the unit: it ranks whatever candidates the budget admits, and a deployment
-that stores sparse weights or counts embeddings enters its own costs.
+that stores sparse weights or counts embeddings enters its own byte costs in place of the nominal ones.
 \input{tables/storage_accounting}
 
 
