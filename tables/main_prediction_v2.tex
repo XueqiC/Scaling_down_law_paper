@@ -2,7 +2,7 @@
 \begin{table*}[t]\normalfont
 \centering\footnotesize\fontsize{8}{9.5}\selectfont\linespread{0.85}\selectfont
 \setlength{\tabcolsep}{1.5pt}
-\renewcommand{\arraystretch}{0.92}
+\renewcommand{\arraystretch}{0.88}
 \setlength{\abovecaptionskip}{4pt}
 \newcommand{\TableOneErrors}[3]{\setbox0=\hbox{#1 / #2 / #3}%
 \ifdim\wd0>\linewidth #1\newline #2\newline #3\else\box0\fi}
@@ -10,7 +10,7 @@
 \toprule
 Prediction task & Delivered relation & Delivered error (nats) & Strongest development baseline (nats) & Improvement (nats) & Development measurements \\
 \midrule
-Four unseen Pythia states pruned at six densities & The same power form, with a median density curve for question answering & \TableOneErrors{0.073}{0.104}{0.183} & Per-density regression at full budget (36)\newline \TableOneErrors{0.060}{0.084}{0.177} & \TableOneErrors{-0.013}{-0.020}{-0.005} & 18 \\
+Four unseen Pythia states pruned at six densities & The same power form, with a median density curve for question answering & \TableOneErrors{0.073}{0.104}{0.183} & Per-density regression at full budget (36)\newline \TableOneErrors{0.060}{0.084}{0.177} & \TableOneErrors{-0.013}{-0.020}{-0.005} & 18 (math, code); 36 (question answering) \\
 \midrule
 Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85 & Source-free median density curve\newline Retrospective & \TableOneErrors{0.277}{0.214}{0.221} & Per-density regression; question answering: median\newline \TableOneErrors{0.230}{0.222}{0.221} & \TableOneErrors{-0.047}{+0.008}{+0.000} & 84 \\
 \midrule
@@ -18,7 +18,9 @@ Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 
 \midrule
 An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512 & Development median\newline Retrospective & \TableOneErrors{0.088}{0.153}{0.141} & Bilinear regression, no change and the median\newline \TableOneErrors{0.350}{0.563}{0.141} & \TableOneErrors{+0.262}{+0.410}{+0.000} & 54 \\
 \midrule
-Gemma 270 million and 1 billion distilled on six new pools at 50 to 200 thousand tokens & The same predictor & \TableOneErrors{0.074, 0.057}{0.019, 0.049}{0.515, 0.463} & Regressions on budget and loss, reuse, and reuse and size\newline \TableOneErrors{0.065, 0.033}{0.023, 0.053}{0.610, 0.450} & \TableOneErrors{+0.005}{+0.095}{-0.013} & 100 \\
+Gemma 270 million distilled on six new pools at 50 to 200 thousand tokens & The same predictor & \TableOneErrors{0.074}{0.019}{0.515} & Budget regression; reuse regression for code and question answering\newline \TableOneErrors{0.065}{0.023}{0.610} & \TableOneErrors{-0.009}{+0.004}{+0.095} & 100 \\
+\midrule
+Gemma 1 billion distilled on six new pools at 50 to 200 thousand tokens & The same predictor & \TableOneErrors{0.057}{0.049}{0.463} & Regressions on loss, reuse and size\newline \TableOneErrors{0.033}{0.053}{0.450} & \TableOneErrors{-0.023}{+0.005}{-0.013} & 100 \\
 \bottomrule
 \end{tabular*}
 \caption{\footnotesize\fontsize{8.5}{10}\selectfont Delivered relations and their errors against the strongest development baseline. Errors are mean absolute errors in nats per token, in math, code and question answering order. The delivered relation is the predictor recommended on all evidence; a Retrospective label marks a predictor chosen after seeing the result. The strongest development baseline was chosen inside the development folds and scored on the same cells. The last column counts development configuration measurements per capability; distillation entries give the 270 million and 1 billion students in that order. Appendix Table~\ref{tab:main-prediction-candidates} lists each task's pre-specified candidate; Fig.~\ref{fig:generalization} compares each row with its baseline.}

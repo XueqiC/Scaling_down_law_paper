@@ -528,14 +528,27 @@ Table~\ref{tab:a11} gives the outcome. The pre-specified rule, that the reduced-
 
 \begin{figure}[tb]
 \centering
+\includegraphics[width=\textwidth]{figs/eff_legend.pdf}\\[1pt]
+\includegraphics[width=2.7in]{figs/eff_confirm.pdf}
+\caption{Pre-specified confirmation of the compact pruning form on four new Pythia states, the
+mathematics and code counterpart of Fig.~\ref{fig:efficiency}: error per state, with the power form
+fitted at half the development budget and the other predictors at full budget, six densities per state.}
+\label{fig:efficiency_pythia}
+\end{figure}
+
+\begin{figure}[tb]
+\centering
 \includegraphics[width=\textwidth]{figs/eff_qa_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_qa_a.pdf}\caption{Error against development measurements}\end{subfigure}\hfill
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/eff_qa_b.pdf}\caption{Pre-specified confirmation on four new states}\end{subfigure}
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/eff_qa_a.pdf}\caption{Error against budget}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/eff_qa_b.pdf}\caption{Four new Pythia states}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/eff_qa_c.pdf}\caption{OLMo-2, half against full grid}\end{subfigure}
 \caption{Measurement efficiency for question answering, the counterpart of
 Fig.~\ref{fig:efficiency}. The median density curve is the better predictor at every development
 budget, and on the four confirmation states the three predictors are within 0.006 nats of each
 other, 0.177 for the per-density regression, 0.179 for the power form and 0.183 for the median
-curve, so nothing here displaces the median curve as the delivered rule for this capability.}
+curve, so nothing here displaces the median curve as the delivered rule for this capability; on
+OLMo-2 the reduced-grid form and the full-grid regression are within 0.002 nats on the probes and
+0.009 apart on the new items, both far below the zero-change baseline of 0.13 and 0.16.}
 \label{fig:efficiency_qa}
 \end{figure}
 
@@ -610,8 +623,10 @@ the noisiest endpoint on this family: in two of the twelve test cells the measur
 at the harsher density than at the milder one, and every predictor's error there is two to three
 times its mathematics error. The reduced grid took 59 percent of the full grid's GPU seconds and 60
 percent of its evaluation tokens with dense anchors and model loading included, so half the
-configuration measurements is not half the compute. The Pythia coefficients applied to OLMo-2 without
-refitting err by 0.72, 1.88 and 0.38 nats. The pre-specified question, whether the reduced-grid
+configuration measurements is not half the compute. A zero-change baseline errs by 0.080, 0.091 and 0.132 nats on the probes and by 0.087, 0.108 and
+0.161 on the new items, so the compact form's error is four to five times smaller on mathematics and
+code and half as large on question answering: the panel's responses are not trivial. The Pythia
+coefficients applied to OLMo-2 without refitting err by 0.72, 1.88 and 0.38 nats. The pre-specified question, whether the reduced-grid
 compact form stays within the 0.020 nats of the full-grid regression that the Pythia confirmation
 reached on mathematics and code, is answered in the affirmative, and on this family the form is
 below the regression on both; the response structure and its measurement saving replicate across
@@ -882,7 +897,10 @@ on Pythia 1.4B, so the loss gains over the initial student do not convert into e
 The students reach the 96-token cap on 63 to 99 percent of items, since they rarely emit a stop
 marker: a protocol audit, recorded with the results, found that their training targets carry no
 end-of-answer marker, while the stop handling, few-shot format and extraction rule are the same for
-every candidate, so no re-evaluation was warranted. A reading of 20 sampled items per model, recorded with the results, found the students'
+every candidate. The shared procedure makes the candidates comparable under one readout; it does not
+exclude that the missing end-of-answer supervision itself shapes the students' generations. A target
+without an end marker leaves the teacher-forced loss, the endpoint the selection optimises, intact,
+and limits how far the generation readout can be read and carried to other distillation protocols. A reading of 20 sampled items per model, recorded with the results, found the students'
 first answer correct on 4, 7, 5 and 6 items against 3, 4, 2 and 5 for the quantization-only
 choices, with the difference between correct content and exact match confined to run-on sentences
 and initials that the rule now handles; the remaining student errors are wrong answers. The two
@@ -907,13 +925,16 @@ under Pythia 410M, and 0.27 against 0.14 for Gemma 3 270M under Gemma 3 1B. Read
 the same grid changes the feasible set in 40 of the 272 selection cells and the rule's choice in 10,
 all of them student choices at budgets from 0.20 to 0.35; on 25 further cells a per-channel choice
 exceeds its budget by at most 0.2 percent. Re-running the selection with the feasible sets counted
-in bytes, and scoring against the byte-feasible oracle, leaves the picture intact: on question
-answering the opportunity is 0.41 nats against 0.45 nominally, the rule's regret 0.025 against 0.007,
-the difference being the Pythia 410M student, infeasible in bytes at budgets 0.30 and 0.35, where the
-rule falls back to quantization, and the quantization-only regret 0.80 against 0.85; on mathematics,
-code and the largest increase the rule's regret is 0.004, 0.007 and 0.014 nats nominally and within
-0.001 of zero in bytes, where the per-channel candidates that sat exactly at their budgets drop out
-of the feasible sets. The rule
+in bytes, and scoring against the byte-feasible oracle, leaves the picture intact within each family,
+native nats never pooled across tokenizers: on question answering the Pythia pair's opportunity is
+0.31 nats against 0.34 nominally and the rule's regret 0.050 against 0.014, the difference being the
+Pythia 410M student, infeasible in bytes at budgets 0.30 and 0.35, where the rule falls back to
+quantization, with the quantization-only regret 0.54 against 0.58; the Gemma pair's opportunity is
+0.51 against 0.55, the rule's regret zero under both units and the quantization-only regret 1.05
+against 1.12. On mathematics, code and the largest increase the Pythia pair has no opportunity under
+either unit, and the Gemma pair's rule regret of 0.008, 0.014 and 0.028 nats nominally falls to zero
+in bytes, where the per-channel candidates that sat exactly at their budgets drop out of the
+feasible sets. The rule
 itself does not depend on the unit: it ranks whatever candidates the budget admits, and a deployment
 that stores sparse weights or counts embeddings enters its own byte costs in place of the nominal ones.
 \input{tables/storage_accounting}

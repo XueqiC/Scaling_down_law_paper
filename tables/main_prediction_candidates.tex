@@ -2,7 +2,7 @@
 \begin{table}[t]\normalfont
 \centering\footnotesize\fontsize{8}{9.5}\selectfont\linespread{0.85}\selectfont
 \setlength{\tabcolsep}{1.5pt}
-\renewcommand{\arraystretch}{0.92}
+\renewcommand{\arraystretch}{0.88}
 \setlength{\abovecaptionskip}{4pt}
 \newcommand{\TableOneErrors}[3]{\setbox0=\hbox{#1 / #2 / #3}%
 \ifdim\wd0>\linewidth #1\newline #2\newline #3\else\box0\fi}
@@ -18,9 +18,11 @@ Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 
 \midrule
 An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512 & Source regression, the median and no change & \TableOneErrors{0.303}{0.153}{0.222} & Development median\newline Retrospective \\
 \midrule
-Gemma 270 million and 1 billion distilled on six new pools at 50 to 200 thousand tokens & Reuse forms, with a budget and pool form for question answering & \TableOneErrors{0.074, 0.057}{0.019, 0.049}{0.515, 0.463} & The same predictor \\
+Gemma 270 million distilled on six new pools at 50 to 200 thousand tokens & Reuse forms, with a budget and pool form for question answering & \TableOneErrors{0.074}{0.019}{0.515} & The same predictor \\
+\midrule
+Gemma 1 billion distilled on six new pools at 50 to 200 thousand tokens & Reuse forms, with a budget and pool form for question answering & \TableOneErrors{0.057}{0.049}{0.463} & The same predictor \\
 \bottomrule
 \end{tabular*}
-\caption{\footnotesize\fontsize{8.5}{10}\selectfont Pre-specified candidate of each prediction task in Table~\ref{tab:main-prediction-v2}, its error on the same cells, and the relation delivered after the test. Errors are mean absolute errors in nats per token, in math, code and question answering order, and distillation entries give the 270 million and 1 billion students in that order.}
+\caption{\footnotesize\fontsize{8.5}{10}\selectfont Pre-specified candidate of each prediction task in Table~\ref{tab:main-prediction-v2}, its error on the same cells, and the relation delivered after the test. Errors are mean absolute errors in nats per token, in math, code and question answering order; the two distillation rows are the 270 million and 1 billion students.}
 \label{tab:main-prediction-candidates}
 \end{table}
