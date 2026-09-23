@@ -874,6 +874,7 @@ therefore differences in candidate-set opportunity, and not the loss change
 $L(S_{\mathrm{KD}})-L(S_0)$ of a student measured against its own starting point. The final rule
 never saw the pristine candidate, so the original pre-specified selections and the pre-specified results are
 unchanged.
+\input{tables/s3_control}
 
 \paragraph{Policy ablation.} A retrospective ablation scores three policies, defined after the
 round from development data alone, on the same candidates, budgets and outcomes
@@ -1010,6 +1011,7 @@ Section S6 of the supplement; the coverage columns there
 describe whether the no-clear-winner candidate set contains the oracle's method or configuration, and the method agreement of the single chosen
 configuration is the figure quoted in the main
 text.
+\input{tables/rule_confirm}
 \input{tables/locked_rule}
 \begin{figure}[tb]
 \centering
@@ -1033,7 +1035,6 @@ plotted without recomputation.}
 \label{fig:rule_maps}
 \end{figure}
 
-\input{tables/s3_control}
 
 \subsection{Protocol sensitivity of the generation readout}
 \label{sec:app_eos}
@@ -1100,6 +1101,7 @@ of form misfit \\
 
 Prospective tests follow one order: forms, development set, standardization and coefficients are fixed; the reference losses of a new source are measured; each candidate's predictions are recorded with their hash; only then is the outcome measured.
 
+\FloatBarrier
 \section{Discussion}
 \label{sec:app_learned}
 
@@ -1119,5 +1121,3 @@ evaluated distributions, implementations and configuration ranges stated with it
 set to a new compression algorithm, capability or data source is a matter of the same protocol, one
 development panel and one pre-specified test, rather than of a new theory.
 
-% The confirmation table floats last: it fills the trailing page after the AI Use statement.
-\input{tables/rule_confirm}
