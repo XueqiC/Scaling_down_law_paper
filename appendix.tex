@@ -1065,21 +1065,28 @@ audit, recorded with the results, rebuilt the 1,781 training examples of each of
 the trainer's own functions: no target carries the tokenizer's end-of-sequence token among its
 supervised labels, the label mask covers exactly the completion tokens, 1,437 targets end in a sentence
 mark and 4 in a newline, and the generation readout stops on the end-of-sequence token and on the
-next-question markers for every candidate. To measure what the missing marker does, the student of the
-Pythia 1.4B reference, the reference on which the loss and generation orderings disagree most, was
-retrained with one change: the end-of-sequence token appended to every target and supervised, 1,781
-extra supervised tokens per epoch on the same examples, seed, learning rate and two-epoch schedule.
-Table~\ref{tab:eos-control} gives both students' readouts on the 384 fresh items. The marker restores
-output control completely: the share of generations reaching the 96-token cap falls from 0.63 to 0.01
-and the mean generation from 64 to 5 tokens. It changes nothing else: the reference-completion loss
-moves by $-0.007$ nats [$-0.060$, $+0.047$], exact match by $+0.018$ [$-0.010$, $+0.049$] at 32 tokens and
-$0.000$ [$-0.034$, $+0.031$] at 96, and token F1 by $-0.011$ [$-0.045$, $+0.023$]. Against the
-quantization-only choice the control keeps the student's loss advantage, $-0.45$ nats [$-0.57$,
-$-0.33$], and its exact-match deficit, $-0.07$ [$-0.11$, $-0.03$]; against the initial student the
-same holds, $-0.38$ nats on loss and $-0.10$ on exact match. The disagreement between the loss ordering
-and the generation ordering is therefore not a truncation artifact of the readout: with the answers
-properly terminated, the distilled student still has the lower reference likelihood and the lower
-generation accuracy, and which endpoint a selector optimises still decides which model it recommends.
+next-question markers for every candidate. To measure what the missing marker does, two students were retrained with one change, the
+end-of-sequence token appended to every target and supervised, 1,781 extra supervised tokens per
+epoch on the same examples, seed, learning rate and two-epoch schedule: the student of the Pythia
+1.4B reference, on which the loss and generation orderings disagree most, and the student of the
+Gemma 3 1B reference, which reached the 96-token cap on 99 percent of items.
+Table~\ref{tab:eos-control} gives both pairs' readouts on the 384 fresh items. The marker restores
+output control on both: the share of generations reaching the cap falls from 0.63 and 0.99 to 0.01
+and 0.00, and the mean generation from 64 and 96 tokens to 5 and 8. It leaves the
+reference-completion loss where it was, $-0.007$ nats [$-0.060$, $+0.047$] on Pythia and $+0.008$
+[$-0.022$, $+0.037$] on Gemma. On generation accuracy the two students differ. The Pythia student's
+exact match is unchanged, $+0.018$ [$-0.010$, $+0.049$] at 32 tokens and $0.000$ [$-0.034$,
+$+0.031$] at 96; it keeps its loss advantage over the quantization-only choice, $-0.45$ nats, with
+its exact-match deficit, $-0.07$ [$-0.11$, $-0.03$], and the same against its initial student,
+$-0.38$ nats and $-0.10$. The Gemma student, whose untreated generations never stopped, gains
+$+0.120$ [$+0.089$, $+0.154$] at 32 tokens and $+0.044$ [$+0.021$, $+0.068$] at 96, which puts it
+ahead of the quantization-only choice on exact match by $0.086$ [$0.049$, $0.122$] as well as on loss
+by $1.81$ nats, and level with its initial student on exact match, $-0.003$ [$-0.042$, $+0.036$],
+while $1.05$ nats ahead on loss. The missing marker therefore costs generation accuracy where the
+untreated student never terminates and nothing where it sometimes does; in neither case does the
+loss gain over the initial student convert into an exact-match gain, and on Pythia 1.4B the
+disagreement between the loss ordering and the generation ordering stands with the answers properly
+terminated. Which endpoint a selector optimises still decides which model it recommends.
 \input{tables/eos_control}
 
 \section{Reproducibility and Timing of Predictions}

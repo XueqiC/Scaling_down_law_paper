@@ -2,18 +2,27 @@
 \begin{table}[tb]
 \normalfont
 \centering\footnotesize
-\caption{End-marker control on the 384 fresh question-answering items for the selection-round student of the Pythia 1.4B reference, student Pythia 410M: the original student against a student retrained on the same 1,800 teacher answers, recipe, seed and schedule with the tokenizer's end-of-sequence token appended to every target and supervised, 1,781 extra supervised tokens per epoch. Differences are control minus original, with 95 percent intervals from a paired item bootstrap; the loss is token-weighted as in Eq. 1.}
+\caption{End-marker control on the 384 fresh question-answering items for the selection-round students of the Pythia 1.4B and Gemma 3 1B references: the original student against a student retrained on the same 1,800 teacher answers, recipe, seed and schedule with the tokenizer's end-of-sequence token appended to every target and supervised, 1,781 extra supervised tokens per epoch. Differences are control minus original, with 95 percent intervals from a paired item bootstrap; the loss is token-weighted as in Eq. 1.}
 \label{tab:eos-control}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.400000000\textwidth-2.400000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.180000000\textwidth-1.080000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.200000000\textwidth-1.200000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.220000000\textwidth-1.320000000\tabcolsep\relax}@{}}
 \toprule
 Readout & Original student & Control with end marker & Difference [95\%] \\
 \midrule
+\multicolumn{4}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 1.000000000\textwidth-0.000000000\tabcolsep\relax}@{}}{\emph{Pythia 1.4B reference, student Pythia 410M}} \\
 Reference-completion loss (nats per token) & 4.860 & 4.853 & -0.007 [-0.060, +0.047] \\
 Exact match, 32 new tokens & 0.065 & 0.083 & +0.018 [-0.010, +0.049] \\
 Exact match, 96 new tokens & 0.076 & 0.076 & +0.000 [-0.034, +0.031] \\
 Token F1, 96 new tokens & 0.117 & 0.106 & -0.011 [-0.045, +0.023] \\
 Share reaching the 96-token cap & 0.628 & 0.005 & -0.622 [-0.672, -0.573] \\
 Generated tokens, mean & 63.8 & 4.6 & -59.122 [-63.214, -54.807] \\
+\\midrule
+\multicolumn{4}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 1.000000000\textwidth-0.000000000\tabcolsep\relax}@{}}{\emph{Gemma 3 1B reference, student Gemma 3 270M}} \\
+Reference-completion loss (nats per token) & 5.458 & 5.465 & +0.008 [-0.022, +0.037] \\
+Exact match, 32 new tokens & 0.000 & 0.120 & +0.120 [+0.089, +0.154] \\
+Exact match, 96 new tokens & 0.083 & 0.128 & +0.044 [+0.021, +0.068] \\
+Token F1, 96 new tokens & 0.134 & 0.182 & +0.047 [+0.025, +0.071] \\
+Share reaching the 96-token cap & 0.990 & 0.000 & -0.990 [-0.997, -0.979] \\
+Generated tokens, mean & 96.0 & 7.9 & -88.143 [-88.607, -87.622] \\
 \bottomrule
 \end{tabular*}
 \end{table}
