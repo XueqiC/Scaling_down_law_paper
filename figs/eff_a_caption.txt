@@ -1,12 +1,10 @@
 Measurement efficiency for Math (blue) and Code (orange); QA is
 shown separately in the appendix panels eff_qa_a and eff_qa_b. Main panels: (a) the retrospective
-A9 learning curves below; (b) the pre-registered second-family confirmation on OLMo-2 (A18): mean
-absolute error of the compact power form fitted on the reduced grid of 12 configurations (circles)
-against the per-density regression fitted on the full grid of 24 (squares), over the four test
-states at densities 0.85, 0.75 and 0.65, on the development probes and on the new items; (c) the
-recorded cost of the reduced grid as a share of the full grid: configuration cells, evaluation tokens and
-GPU seconds, dense anchors and model loading included. The Pythia confirmation panel (eff_confirm)
-is the former main panel (b) and now sits in the appendix. (a) Retrospective
+A9 learning curves below; (b) the registered A11 confirmation, one group per Pythia test state in the
+order named below; (c) the pre-registered second-family confirmation on OLMo-2 (A18): mean absolute
+error of the compact power form fitted on the reduced grid of 12 configurations (circles) against the
+per-density regression fitted on the full grid of 24 (squares), over the four test states at densities
+0.85, 0.75 and 0.65, on the development probes (P) and on the new items (N). (a) Retrospective
 A9 learning curves on the 42 new-state, in-range cells per capability, along the
 densities-reduction axis. The nine development states are retained; the budgets
 are 9, 18 and 36 state-density measurements per capability, excluding dense

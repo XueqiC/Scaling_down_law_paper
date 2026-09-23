@@ -53,10 +53,9 @@ most of the cost. At a matched budget $T$ near 200k supervised tokens
 $+2.55$ and $+4.85$ nats on students of 100M, 700M and 3.2B non-embedding parameters under the fixed training protocol, and nine times
 more independent data converts the same budget into a gain near one nat on each.
 
-The reuse cost transfers across question-answering distributions; the gain does not. Rescored on a
-fresh 2Wiki sample disjoint from the probe, on MuSiQue and on TriviaQA, all three worsen at high
-reuse and improve as reuse falls on each student at the matched budget of
-Fig.~\ref{fig:responses_v2}, but only the fresh 2Wiki sample crosses into a gain.
+The reuse cost transfers across question-answering distributions; the gain does not. Rescored on a fresh 2Wiki sample, on MuSiQue and on TriviaQA at the matched budget of
+Fig.~\ref{fig:responses_v2}, all three worsen at high reuse and improve as reuse falls, but only the
+fresh 2Wiki sample crosses into a gain.
 
 \begin{figure}[t]
 \centering

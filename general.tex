@@ -14,21 +14,17 @@ Fig.~\ref{fig:generalization} compares each row with its baseline).
 
 Using controlled Pythia checkpoints, we show that a compact pruning relation can reduce development
 density measurements while predicting new model states within 0.020 nats per token of the
-full-budget regression, and a pre-registered replication on a second family repeats the saving at a
-recorded cost. With 18 measurements per capability, half the development configuration measurements,
-the form's mathematics and code errors are 0.013 and 0.020 nats per token above those of a
-per-density regression fitted on all 36, on four Pythia states outside every earlier fit, pruned at
-six densities after the form, the regression and the median curve had been fixed (Appendix
-Fig.~\ref{fig:efficiency_pythia}). The saving comes from sharing response structure across densities
+full-budget regression. With 18 measurements per capability, half the development budget, its
+mathematics and code errors are 0.013 and 0.020 nats per token above those of a per-density
+regression fitted on all 36, on four Pythia states outside every earlier fit and pruned only after
+every predictor had been fixed (Fig.~\ref{fig:efficiency}b). The saving comes from sharing response structure across densities
 while retaining coverage of model states; at 9 measurements the per-density regression cannot be
-fitted at all (Fig.~\ref{fig:efficiency}a). On OLMo-2, six development states of 1B and 7B and four
-test states in no fit, with every predictor refitted and frozen before the test, the form fitted on
-12 configurations errs by 0.017 and
-0.020 nats on mathematics and code against 0.019 and 0.027 for the per-density regression on all
-24 and a zero-change baseline by 0.080 and 0.091 (Fig.~\ref{fig:efficiency}b, Appendix
+fitted at all (Fig.~\ref{fig:efficiency}a). On OLMo-2, six development states and four test states in no fit, with every predictor refitted and
+frozen before the test, the form fitted on 12 configurations errs by 0.017 and 0.020 nats against
+0.019 and 0.027 for the per-density regression on all 24, and a zero-change baseline by 0.080 and 0.091 (Fig.~\ref{fig:efficiency}c, Appendix
 Table~\ref{tab:second-family}); the reduced
-grid took 59 percent of the full grid's GPU seconds and 60 percent of its evaluation tokens with
-dense anchors and loading included (Fig.~\ref{fig:efficiency}c). The Pythia coefficients do not transfer to OLMo-2 without
+grid took 59 percent of the full grid's GPU seconds and 60 percent of its evaluation tokens, anchors
+and loading included. The Pythia coefficients do not transfer to OLMo-2 without
 refitting (0.4 to 1.9 nats): the structure and its saving replicate, the coefficients do not. A
 third replication with Wanda pruning on the Pythia design gives 0.023 and 0.026 against 0.025 and
 0.027 (Appendix Table~\ref{tab:wanda-efficiency}). Table~\ref{tab:efficiency-body} ranks the compact
@@ -39,13 +35,14 @@ form first among forms of similar complexity at half budget on Pythia and on OLM
 \centering
 \includegraphics[width=\textwidth]{figs/eff_legend.pdf}\\[1pt]
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/eff_a.pdf}\caption{Pythia, error against budget}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/eff_b.pdf}\caption{OLMo-2, half against full grid}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/eff_c.pdf}\caption{Cost of the reduced grid}\end{subfigure}
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/eff_b.pdf}\caption{Pythia, four new states}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/eff_c.pdf}\caption{OLMo-2, half against full}\end{subfigure}
 \caption{Measurement efficiency of the compact pruning form, in nats per native token, on mathematics
-and code: error on new Pythia states against development measurements per capability; on the four
-OLMo-2 test states, the form fitted on 12 configurations (circles) against the per-density regression
-fitted on 24 (squares), on the probes and on the new items; and the recorded cost of the reduced grid
-as a share of the full grid, with anchors and loading counted in both grids.}
+and code: error on new Pythia states against development measurements per capability; error per state
+in the pre-specified Pythia confirmation, states 1 to 4 being 160M at step 80k, 410M at step 112k,
+1.4B at step 48k and 1B at step 48k, with the power form at half budget and the other predictors at
+full budget; and, on the four OLMo-2 test states, the form fitted on 12 configurations (circles)
+against the per-density regression fitted on 24 (squares), on the probes (P) and on the new items (N).}
 \label{fig:efficiency}
 \end{figure}
 
@@ -63,9 +60,8 @@ students and for question answering on the smaller one.
 
 On three Pythia checkpoints that entered no fit,
 the pre-specified pruning power form matches the per-density regression on mathematics with a quarter of
-the parameters, and is less accurate than the median on code and than every source-free curve on
-question answering; outside the tested density range every source-conditioned form errs by 0.6 to
-4.5 nats. At 2.8B and 6.9B models, beyond the development range, the pre-specified median curve is the more accurate predictor for pruning and per-bit quantization alike, and on a new grouped quantization state it wins for mathematics and question answering, the interpolation for code.
+the parameters, and trails the median on code and every source-free curve on question answering; outside the tested density range every source-conditioned form errs by 0.6 to
+4.5 nats. At 2.8B and 6.9B models, beyond the development range, the pre-specified median curve is the more accurate predictor for pruning and per-bit quantization alike, and on a new grouped quantization state it wins for mathematics and question answering, with the interpolation ahead for code.
 
 
 
