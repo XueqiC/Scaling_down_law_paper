@@ -19,10 +19,6 @@ and uneven capability loss is documented for individual tasks and quantizers
 \citep{jaiswal2023compressing,liu2025quantization,ouyang2024lowbit,hong2024decoding,sengupta2025compression}.
 
 \paragraph{Compression Method Selection.}
-Prior work compares compression methods by measuring each candidate on the target model, finding
-quantization to retain more than pruning at the same ratio \citep{jaiswal2023compressing} or placing
+Prior work compares compression methods by measuring each candidate on the target model, finding quantization retains more than pruning at equal ratio \citep{jaiswal2023compressing} or placing
 sparsity and precision on one capacity scale \citep{panferov2025unified}; repeated tokens are worth
-less than new ones \citep{muennighoff2023scaling}, an exchange rate our reuse response measures per
-capability and student (Section~\ref{sec:observed}). None states which method a given model,
-capability and budget should receive without measuring every candidate; Section~\ref{sec:selection}
-tests that decision on independent candidate sets.
+less than new ones \citep{muennighoff2023scaling}, an exchange rate our reuse response measures per capability (Section~\ref{sec:observed}). None states which method a model, capability and budget should receive without measuring every candidate; Section~\ref{sec:selection} tests that decision on independent candidates.
