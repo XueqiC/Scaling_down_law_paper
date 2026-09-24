@@ -947,10 +947,10 @@ is within 0.1 percent of its nominal ratio, since its row scales are few. Unstru
 an index: a bitmap adds one sixteenth at every density, and a compressed sparse row format doubles
 the cost, so it pays only below density 0.5. A student's bytes exceed its nominal ratio by its
 embedding rows, which a small model carries in larger proportion: 0.40 against 0.28 for Pythia 160M
-under Pythia 410M, and 0.27 against 0.14 for Gemma 3 270M under Gemma 3 1B. Read as a byte budget,
-the same grid changes the feasible set in 40 of the 272 selection cells and the rule's choice in 10,
-all of them student choices at budgets from 0.20 to 0.35; on 25 further cells a per-channel choice
-exceeds its budget by at most 0.2 percent. Re-running the selection with the feasible sets counted
+under Pythia 410M, and 0.27 against 0.14 for Gemma 3 270M under Gemma 3 1B. Read as a byte budget, the grid changes the feasible set in 176 of the 272 selection cells, 128 of
+them only through a pruned candidate's index, and moves the rule's choice out of it in 10, all
+student choices at budgets 0.20 to 0.35; in 25 more the choice exceeds its budget by at most 0.32
+percent, 24 per-channel candidates and one student. Re-running the selection with the feasible sets counted
 in bytes, and scoring against the byte-feasible oracle, leaves the picture intact within each family,
 native nats never pooled across tokenizers: on question answering the Pythia pair's opportunity is
 0.31 nats against 0.34 nominally and the rule's regret 0.050 against 0.014, the difference being the
