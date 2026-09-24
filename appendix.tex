@@ -323,7 +323,7 @@ capabilities it serves, and what structure the relations share.
 The pruning relation was selected on the development panel. Fit on nine states at $d\in\{0.9,0.8,0.7,0.6\}$
 and scored at the unseen 0.65 and 0.55, Eq.~\ref{eq:power} reduces the
 strength-only error by a factor of two to three, and A2 matches it; refit on 17
-states under a pre-specified leave-one-source-out rule, A2 and the power form tie within 0.02 nats, at 0.479 and 0.494, and the rule prefers the continuous form that vanishes at $d=1$; the coefficients are in Appendix~\ref{sec:app_coef}, and the exponent $\gamma_c$ is a fitted constant whose value is supported among the same-complexity alternatives tested in Table~\ref{tab:a14-baselines}: forms with the exponent fixed at one or replaced by a quadratic are worse by 0.04 to 0.19 nats on mathematics and code at both budgets.
+states under a pre-specified leave-one-source-out rule, A2 and the power form tie within 0.02 nats, at 0.479 and 0.494, and the rule prefers the continuous form that vanishes at $d=1$; the coefficients are in Appendix~\ref{sec:app_coef}, and the exponent $\gamma_c$ is a fitted constant whose value is supported among the same-complexity alternatives tested in Table~\ref{tab:a14-baselines}: forms with the exponent fixed at one or replaced by a quadratic are worse by 0.04 to 0.20 nats on mathematics and code at both budgets.
 
 Its boundary was then established. Evaluated as a pre-specified candidate on three new checkpoints, the power form reaches the math error of A2 with five parameters against twenty and does not beat the median curve on code or QA; on a 2.8B source the median curve is three to seven times better than either source form (Section~\ref{sec:general}). The compact form trades accuracy for compactness within a tested range; the median curve is the relation for new states, a rule fixed after these tests and reused without change in Section~\ref{sec:selection} for the selection rule and its confirmation.
 
@@ -661,9 +661,11 @@ rows and with the same estimator as the compact power form, every form that shar
 similar parameter count: the strength relation with the exponent fixed at one, a quadratic strength
 relation, the strength-only curve, the median curve and the per-density regression, and the
 pruning-law relation $L=L_0P_0d^{\alpha}$ of \citet{sengupta2025compression} fitted on capability
-loss with one exponent and one scale per capability. At both budgets the compact form is the most accurate on mathematics and code; the fixed-exponent and
-quadratic forms are worse by 0.04 to 0.19 nats, so among the same-complexity alternatives tested the
-compact form's accuracy is supported, and the pruning-law form sits between the strength-only curve and the median. Calibrating one number
+loss with one exponent and one scale per capability. At 18 measurements the compact form is the most accurate on mathematics and code, 0.036 and 0.033
+nats ahead of the per-density regression on the same rows; at 36 that regression leads by 0.002 and
+0.025, the comparison of Section~\ref{sec:efficiency}, so the compact form's advantage is the
+measurements it saves. The fixed-exponent and quadratic forms trail it by 0.04 to 0.20 nats and the
+pruning-law form by 0.04 to 0.06 at either budget. Calibrating one number
 on each target's mildest pruned measurement, the power form's amplitude or the pruning law's $P_0$,
 helps neither form on the remaining densities. These forms were fitted after the confirmation.
 \input{tables/a14_baselines}
