@@ -365,6 +365,14 @@ leave-one-trajectory-out rule and pre-specified for six new pools of
 $U{=}200$ at three new budgets. A linear form in the student state, fit on nine Pythia states, serves only as the math predictor for the distillation candidates of the selection rule in
 Section~\ref{sec:selection}, and enters no other relation.
 
+Two pre-specified checks bound the joint distillation response. A form with separate logarithmic pool
+and budget terms implies a pool-change effect flat in budget, yet for code on the 1B student that
+effect drifts by a factor of twenty (Fig.~\ref{fig:drift}). A four-trajectory rectangle replaying the
+trainer's update boundaries puts the second difference, zero under additivity, inside the
+pre-specified band on question answering for both students (Fig.~\ref{fig:corner_test}), neither
+rejecting nor establishing additivity. The delivered forms therefore rest on the leave-one-run-out
+comparison of Table~\ref{tab:distill_confirm} and claim no additive joint structure.
+
 The boundary of the distillation relation is set by the new-pool test. At the new pool size the
 selected form beats the
 pre-specified strongest baseline for code on both students, where that
@@ -616,11 +624,10 @@ percent of its evaluation tokens with dense anchors and model loading included, 
 configuration measurements is not half the compute. A zero-change baseline errs by 0.080, 0.091 and 0.132 nats on the probes and by 0.087, 0.108 and
 0.161 on the new items, so the compact form's error is four to five times smaller on mathematics and
 code and half as large on question answering: the panel's responses are not trivial. The Pythia
-coefficients applied to OLMo-2 without refitting err by 0.72, 1.88 and 0.38 nats. The pre-specified question, whether the reduced-grid
-compact form stays within the 0.020 nats of the full-grid regression that the Pythia confirmation
-reached on mathematics and code, is answered in the affirmative, and on this family the form is
-below the regression on both; the response structure and its measurement saving replicate across
-families, and the coefficients do not transfer without refitting.
+coefficients applied to OLMo-2 without refitting err by 0.72, 1.88 and 0.38 nats. The pre-specified reading, the reduced-grid compact form within
+0.020 nats of the full-grid regression on mathematics and code, is met with the form below the
+regression on both: the structure and its measurement saving replicate across families, and the
+coefficients do not transfer without refitting.
 \input{tables/second_family}
 
 \paragraph{A second pruning criterion.} Both confirmations above prune by global magnitude, so a
@@ -890,7 +897,7 @@ $\widehat Q$ for the quantization-only choice, $Q^*$ for the best quantization c
 for the best candidate of any method, the quantization-only regret decomposes as
 $L(\widehat Q)-L(A^*)=[L(\widehat Q)-L(Q^*)]+[L(Q^*)-L(A^*)]$, the selection error inside the family
 plus the opportunity; the last column of the table reports $L(Q^*)-L(\widehat A)$ for the rule's
-choice $\widehat A$, the gain that survives a perfect quantization selection. On these references the heuristic matches the rule wherever the opportunity sits in one method, and
+choice $\widehat A$, the gain that survives a perfect quantization selection. On Pythia 410M the quantization-only regret of 0.59 nats splits into 0.47 of selection error and 0.12 of opportunity, and the rule's choice beats the best quantization candidate by 0.09 nats. On these references the heuristic matches the rule wherever the opportunity sits in one method, and
 the medians add value on mathematics for Gemma 3 1B, where the rule's choice outside quantization is
 what the heuristic misses; the numeric value of prediction is thus carried by the development
 medians the rule already uses, and the contribution of the source-conditioned relations lies in
@@ -1073,11 +1080,11 @@ terminated. Which endpoint a selector optimises still decides which model it rec
 \section{Reproducibility and Timing of Predictions}
 \label{sec:app_registration}
 
-The development and confirmation rounds were complete by 11 September 2026; the corner design of
-Section~\ref{sec:why} was specified on 14 September, and the measurement-efficiency confirmation of
+Development and confirmation rounds ended by 11 September 2026; the corner design of
+Appendix~\ref{sec:app_selbound} was specified on 14 September, and the measurement-efficiency confirmation of
 Section~\ref{sec:efficiency} and the data-requirement experiment of Section~\ref{sec:observed} on 16
 September, each before its models were trained or pruned; no measurement taken after a prediction
-was fixed enters that prediction or its baseline.
+was fixed enters it or its baseline.
 \label{sec:app_register}
 \begin{table}[H]
 \normalfont
@@ -1085,32 +1092,27 @@ was fixed enters that prediction or its baseline.
 \caption{Information budgets: K0 uses no compressed-target calibration, K1 one calibration
 measurement, and the oracle row is a post-hoc diagnostic.}
 \label{tab:budgets}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.26\textwidth-1.04\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.40\textwidth-1.60\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.34\textwidth-1.36\tabcolsep\relax}@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.29\textwidth-1.16\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.40\textwidth-1.60\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.31\textwidth-1.24\tabcolsep\relax}@{}}
 \toprule
 Budget & Information available & Cost to disclose \\
 \midrule
-Metadata only (K0) & $N_0$, public $D_0$, architecture, intervention configuration & Metadata
-availability; $D_0$ may be undisclosed \\
-Metadata and dense anchor (K0) & Plus the dense capability losses $L_{0,c}$, measured once before
-compression & The probe count, one forward pass per probe, native loss units \\
-One target calibration measurement (K1) & Plus one pre-specified measurement of the target at one
-compression configuration & The calibration configuration and its compression cost \\
-Oracle diagnostic & Rescaling on measured target outcomes & No predictive budget; a post-hoc measure
-of form misfit \\
+Metadata only (K0) & $N_0$, public $D_0$, architecture, configuration & $D_0$ may be undisclosed \\
+Plus dense anchor (K0) & Plus the dense losses $L_{0,c}$, measured once & One forward pass per probe \\
+One target calibration (K1) & Plus one pre-specified target measurement & Its configuration and cost \\
+Oracle diagnostic & Rescaling on measured target outcomes & None; measures form misfit \\
 \bottomrule
 \end{tabular*}
 \end{table}
 
 Prospective tests follow one order: forms, development set, standardization and coefficients are fixed; the reference losses of a new source are measured; each candidate's predictions are recorded with their hash; only then is the outcome measured.
 
-\FloatBarrier
 \section{Discussion}
 \label{sec:app_learned}
 
-Four lessons from building the relations bear on how such laws should be built and used. A
-rejected form is not a rejected class: the logarithmic reuse term failed its own flatness
-implication, while a fit-free second-difference test on two students did not reject additivity of
-budget and reuse (Section~\ref{sec:why}), so the class stays open to designs that can resolve it.
+Four lessons bear on how such laws should be built and used. A
+rejected form is not a rejected class: the checks of Appendix~\ref{sec:app_selbound} reject the
+logarithmic reuse term but not additivity of budget and reuse, so the class stays open to designs
+that can resolve it.
 An explanation is not a predictor: the displacement account reproduces the loss change across
 three families but needs the compressed model to compute, which is why the delivered relations
 read only what is known before compression. Source information transfers less than it fits: dense

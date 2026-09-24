@@ -1,7 +1,10 @@
 \section{Compression Method Selection}
 \label{sec:selection}
 
-We evaluate the decision value of the empirical prediction framework under nominal storage constraints. The selection rule compares feasible candidates using estimates appropriate to each prediction setting. Independent evaluation identifies substantial cross-method opportunity for question-answering loss, while a retrospective ablation shows that a development-derived method-priority policy attains the same question-answering regret as the final rule; numeric predictions provide a smaller additional benefit for mathematics. These results distinguish settings in which stable method preferences suffice from those in which configuration-level prediction improves selection; measurement efficiency (Section~\ref{sec:efficiency}) rests on a separate experiment.
+How precise must a loss prediction be to change a compression choice? We answer this under nominal
+storage constraints by comparing, on the same candidates, selection with parametric predictions (the
+source-conditioned relations of Section~\ref{sec:laws}), with empirical predictions (development
+configuration medians), and with a fixed method priority that uses no numerical prediction.
 
 \subsection{Selection under Storage Constraints}
 \label{sec:selection_rule}
@@ -31,4 +34,15 @@ source-free medians on a new one; for distillation it calls a regression on the 
 \label{fig:rule_main}
 \end{figure}
 
-Each reference carries twelve candidates at seventeen storage budgets (Appendix Table~\ref{tab:s3-identity}). Opportunity is the loss of the best feasible quantization candidate minus that of the best feasible candidate of any method, and a policy's regret is the loss of its choice minus that best candidate. On the 64 cells at which both policies find a feasible candidate the rule selects the new student in 63, with regret 0.000 nats on three references and 0.027 on the fourth against 0.41 to 1.84 for quantization only, meeting the pre-specified criterion (Fig.~\ref{fig:rule_main}); on mathematics, code and the largest loss increase the opportunity is at most 0.047 nats and the rule matches quantization within 0.0015. On 384 fresh question-answering items scored after the round, the rule's choice has a lower loss than the quantization-only choice on three references and is level on the fourth, while a generation readout puts the same students ahead on exact match on three, behind on one and no better than their initial students, with or without a terminating end marker (Appendix~\ref{sec:app_eos}): the endpoint the selector optimises decides its recommendation. The quantization-only regret decomposes into selection error inside quantization and cross-method opportunity: on Pythia 410M its 0.59 nats are 0.47 and 0.12, and the rule's choice is 0.09 nats better than the best quantization candidate. A retrospective comparison of policies on the same candidates (Appendix Table~\ref{tab:s3-ablation}) finds that on question answering a development-derived method priority with no numeric prediction, the development medians and the final rule reach the same regret, 0.014 nats on the Pythia pair and 0.000 on the Gemma pair, against 0.58 and 1.12 for quantization only, so the benefit rests on a stable difference between methods rather than fine loss margins; on mathematics the medians beat the priority by 0.024 nats on the Gemma pair, and the source-conditioned relations improve on neither.
+Each reference carries twelve candidates at seventeen storage budgets (Appendix Table~\ref{tab:s3-identity}). Opportunity is the loss of the best feasible quantization candidate minus that of the best feasible candidate of any method, and a policy's regret is the loss of its choice minus that best candidate. On the 64 cells at which both policies find a feasible candidate the rule selects the new student in 63, with regret 0.000 nats on three references and 0.027 on the fourth against 0.41 to 1.84 for quantization only, meeting the pre-specified criterion (Fig.~\ref{fig:rule_main}); on mathematics, code and the largest loss increase the opportunity is at most 0.047 nats and the rule matches quantization within 0.0015. On 384 fresh question-answering items scored after the round, the rule's choice has a lower loss than the quantization-only choice on three references and is level on the fourth, while a generation readout puts the same students ahead on exact match on three, behind on one and no better than their initial students. Termination and the evaluation target are separate factors: a supervised end marker restores termination and raises the Gemma student's exact match, while the Pythia disagreement between loss and exact match persists (Appendix~\ref{sec:app_eos}), so a selector has to state the endpoint it optimises. 
+\subsection{Decision Value of Numerical Prediction}
+\label{sec:selection_value}
+
+A retrospective comparison of the three policies on the same candidates (Appendix
+Table~\ref{tab:s3-ablation}) shows how fine a prediction selection needs. On question answering the
+fixed method priority, the development medians and the final rule reach the same regret, 0.014 nats on
+the Pythia pair and 0.000 on the Gemma pair, against 0.58 and 1.12 for quantization only: the benefit
+rests on a stable difference between methods rather than on fine loss margins. On mathematics the
+medians beat the priority by 0.024 nats on the Gemma pair, the smaller benefit that
+configuration-level estimates add. The parametric relations improve on neither, so their contribution
+lies in measurement efficiency (Section~\ref{sec:efficiency}) rather than in selection.

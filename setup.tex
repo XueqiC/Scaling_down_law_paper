@@ -29,16 +29,12 @@ started from, not against the teacher. Absolute levels from different tokenizers
 \subsection{Models and Compression Methods}
 \label{sec:models}
 
-A \emph{heterogeneous panel} of twelve public models from 0.6B to 32B establishes the phenomena.
-A \emph{controlled panel} of Pythia checkpoints \citep{biderman2023pythia}, three sizes at three
-training stages, varies size and stage independently and is the development set for pruning and
-quantization; distillation is developed on Gemma-3 students. Held-out Pythia states up to 6.9B, new
-configurations and new pools provide the validation of the pre-specified relations.
+We study pruning, quantization, and distillation through controlled implementations that expose their main intervention variables: weight density, numerical precision and group size, and training data and exposure. Pythia checkpoints \citep{biderman2023pythia} provide a setting in which model size and training stage can be varied separately, while Gemma students support controlled comparisons of data availability and reuse. We use additional model families, a second pruning criterion, and independent evaluation distributions to examine which findings extend beyond these initial settings.
 
-Three operations are fixed by protocol (Appendix~\ref{sec:app_details}): global magnitude pruning
-to a retained density $d$; symmetric round-to-nearest quantization per output channel at bit-width
+The implementations are fixed by protocol (Appendix~\ref{sec:app_details}): global magnitude pruning
+to a retained density $d$, with Wanda \citep{sun2023simple} as the second criterion; symmetric round-to-nearest quantization per output channel at bit-width
 $b$, or with groups of $g$ weights sharing one scale; and LoRA fine-tuning \citep{hu2022lora} of an
-existing student on teacher traces. The inputs admitted to each predictor are the parameter count $N_0$ of the transformer weight
+existing student on teacher traces. Pythia development states span three sizes at three training stages; held-out Pythia states up to 6.9B and OLMo-2 checkpoints \citep{olmo2025olmo2} test transfer, and a heterogeneous panel of twelve public models from 0.6B to 32B establishes the phenomena of Section~\ref{sec:observed}. The inputs admitted to each predictor are the parameter count $N_0$ of the transformer weight
 matrices of $M_0$, the pretraining token count $D_0$ where disclosed, and the reference capability
 losses $L_{0,c}=L_c(M_0)$ measured once; for distillation the initial student plays this role. Each prediction adds a predicted change to the reference loss,
 \begin{equation}

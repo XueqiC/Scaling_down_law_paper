@@ -1,33 +1,18 @@
 \section{Predictive Performance and Generalization}
 \label{sec:general}
 
-The relations of Section~\ref{sec:laws} are tested on new configurations of seen states and on new
-model states, with predictions pre-specified before measurement; Table~\ref{tab:main-prediction-v2}
-gives each task's delivered predictor, its error, the strongest development baseline and the
-development budget (candidates in Appendix Table~\ref{tab:main-prediction-candidates};
-Fig.~\ref{fig:generalization} compares each row with its baseline).
+We test the relations of Section~\ref{sec:laws} with every prediction fixed before measurement: first
+how far sharing the pruning response structure reduces the development measurements, then how each
+delivered relation compares with the strongest development baseline at the same budget on new
+configurations and new model states (Table~\ref{tab:main-prediction-v2}; candidates in Appendix
+Table~\ref{tab:main-prediction-candidates}; Fig.~\ref{fig:generalization}).
 
 \input{tables/main_prediction_v2}
 
 \subsection{Measurement Efficiency}
 \label{sec:efficiency}
 
-Using controlled Pythia checkpoints, we show that a compact pruning relation can reduce development
-density measurements while predicting new model states within 0.020 nats per token of the
-full-budget regression. With 18 measurements per capability, half the development budget, its
-mathematics and code errors are 0.013 and 0.020 nats per token above those of a per-density
-regression fitted on all 36, on four Pythia states outside every earlier fit and pruned only after
-every predictor had been fixed (Fig.~\ref{fig:efficiency}b). The saving comes from sharing response structure across densities
-while retaining coverage of model states; at 9 measurements the per-density regression cannot be
-fitted at all (Fig.~\ref{fig:efficiency}a). On OLMo-2, six development states and four test states in no fit, with every predictor refitted and
-frozen before the test, the form fitted on 12 configurations errs by 0.017 and 0.020 nats against
-0.019 and 0.027 for the per-density regression on all 24, and a zero-change baseline by 0.080 and 0.091 (Fig.~\ref{fig:efficiency}c, Appendix
-Table~\ref{tab:second-family}); the reduced
-grid took 59 percent of the full grid's GPU seconds and 60 percent of its evaluation tokens, anchors
-and loading included. The Pythia coefficients do not transfer to OLMo-2 without refitting (0.4 to 1.9 nats). A
-third replication with Wanda pruning on the Pythia design gives 0.023 and 0.026 against 0.025 and
-0.027 (Appendix Table~\ref{tab:wanda-efficiency}). Table~\ref{tab:efficiency-body} ranks the compact
-form first among forms of similar complexity at half budget on Pythia and on OLMo-2 alike.
+Sharing response structure across densities reduces the measurements needed to fit the pruning predictor while retaining coverage of model states. This finding is reproduced in three evaluations (Table~\ref{tab:efficiency-body}, Fig.~\ref{fig:efficiency}): magnitude pruning on Pythia, magnitude pruning on OLMo-2, and Wanda pruning on Pythia. With coefficients refitted on each development panel, the compact form uses half the configuration measurements and yields math and code errors within 0.020 nats per token of the full-grid regression. The reduced grids require 59\% of the full-grid GPU time on OLMo-2 and 70\% under Wanda, including reference measurements, loading, and calibration. These results support reuse of the predictive form and fitting strategy, with coefficients estimated for each setting.
 \input{tables/efficiency_body}
 
 \begin{figure}[t]
@@ -43,6 +28,21 @@ the pre-specified Pythia confirmation (states 1 to 4: 160M at step 80k, 410M at 
 form fitted on 12 configurations (circles) against the per-density regression fitted on 24 (squares).}
 \label{fig:efficiency}
 \end{figure}
+
+Three conditions qualify this finding. The reduction is in density measurements per state: every
+reduced grid keeps all development states, so the saving comes from sharing the density response
+rather than from dropping states; at 9 measurements the per-density regression cannot be fitted at all
+(Fig.~\ref{fig:efficiency}a). Where the response is near zero, complex prediction does not beat zero
+change: under Wanda the 1B and 1.4B test states move by at
+most 0.06 nats and no predictor improves on zero change there (Appendix~\ref{sec:app_a11}). The errors
+are compared on independent panels and are not tests of statistical equivalence. Among forms of
+similar complexity fitted on the same half grid, the compact form has the lowest mathematics and code
+error in all three evaluations. Three kinds of transfer are thus separated: the research
+method, with its inputs, measurement budget and independent validation, applies to all three
+compression methods; the predictive form and fitting strategy reproduce across two families and two
+pruning criteria; and the coefficients are estimated for each setting, since without refitting the
+Pythia coefficients err by 0.4 to 1.9 nats on OLMo-2 and the magnitude-pruning coefficients by 0.19 to
+0.27 nats under Wanda.
 
 \subsection{Prediction at Unseen Configurations}
 \label{sec:unseen_settings}

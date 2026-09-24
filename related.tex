@@ -12,8 +12,8 @@ with a fitted form that depends on the protocol \citep{li2025misfitting,besirogl
 Closest to ours, \citet{sengupta2025compression} predict a task's post-pruning accuracy from its unpruned accuracy and the pruning ratio, transferring the exponent to unseen models with or without one calibrating measurement, and \citet{zhou2026task} fit task-stratified quantization laws that join model size, bit width, group size and calibration-set size, validated at unseen sizes. Capability-specific responses and the joint action of bit width and group size are therefore established; this paper adds how much information and how many measurements a capability-loss prediction needs, separated into unseen configurations and model-state transfer across three methods, and the prediction's decision value.
 
 \paragraph{Compression Effects on Model Capabilities.}
-The fixed operations we study stand in for the method families of pruning, post-training
-quantization and distillation
+We study controlled implementations of pruning, post-training quantization and
+distillation
 \citep{lecun1989optimal,han2015deep,frankle2019lottery,frantar2023sparsegpt,sun2023simple,ma2023llmpruner,ashkboos2024slicegpt,men2024shortgpt,dettmers2022llmint8,frantar2022gptq,xiao2022smoothquant,lin2023awq,chee2023quip,shao2023omniquant,dettmers2023qlora,hinton2015distilling,sanh2019distilbert,hsieh2023distilling,mukherjee2023orca,gu2023minillm,agarwal2023gkd,xu2024survey},
 and uneven capability loss is documented for individual tasks and quantizers
 \citep{jaiswal2023compressing,liu2025quantization,ouyang2024lowbit,hong2024decoding,sengupta2025compression}.

@@ -3,19 +3,21 @@
 \normalfont
 \centering
 \small
-\caption{Same-complexity forms at half the development budget, mean absolute error in nats per token, on the four Pythia confirmation states with 18 measurements (retrospective refits except the power form) and on the four OLMo-2 test states with 12 configurations, where every form was pre-specified before the test.}
+\caption{Measurement efficiency of the compact pruning form in three evaluations, mean absolute error in nats per token on four test states in no fit. The half grid keeps every development state at half the densities, 18 of 36 configurations per capability on Pythia and 12 of 24 on OLMo-2; the full-grid per-density regression is the pre-specified comparator. On OLMo-2 and under Wanda every form was pre-specified before the test; on the Pythia magnitude panel the forms other than the compact form are retrospective refits.}
 \label{tab:efficiency-body}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.360000000\textwidth-2.880000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-1.280000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-1.280000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-1.280000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.160000000\textwidth-1.280000000\tabcolsep\relax}@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.270000000\textwidth-3.780000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.090000000\textwidth-1.260000000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.106700000\textwidth-1.493800000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.106700000\textwidth-1.493800000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.106700000\textwidth-1.493800000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.106700000\textwidth-1.493800000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.106600000\textwidth-1.492400000\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr 0.106600000\textwidth-1.492400000\tabcolsep\relax}@{}}
 \toprule
-& \multicolumn{2}{>{\centering\arraybackslash\hspace{0pt}}p{\dimexpr 0.320000000\textwidth-0.560000000\tabcolsep\relax}}{Pythia, 18 measurements} & \multicolumn{2}{>{\centering\arraybackslash\hspace{0pt}}p{\dimexpr 0.320000000\textwidth-0.560000000\tabcolsep\relax}@{}}{OLMo-2, 12 configurations} \\
-\cmidrule(lr){2-3}\cmidrule(lr){4-5}
-Form & Math & Code & Math & Code \\
+& & \multicolumn{2}{>{\centering\arraybackslash\hspace{0pt}}p{\dimexpr 0.213400000\textwidth-0.987600000\tabcolsep\relax}}{Pythia, magnitude} & \multicolumn{2}{>{\centering\arraybackslash\hspace{0pt}}p{\dimexpr 0.213400000\textwidth-0.987600000\tabcolsep\relax}}{OLMo-2, magnitude} & \multicolumn{2}{>{\centering\arraybackslash\hspace{0pt}}p{\dimexpr 0.213200000\textwidth-0.984800000\tabcolsep\relax}@{}}{Pythia, Wanda} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+Form & Grid & Math & Code & Math & Code & Math & Code \\
 \midrule
-Compact power form & 0.073 & 0.104 & 0.017 & 0.020 \\
-Quadratic strength form & 0.115 & 0.142 & 0.026 & 0.045 \\
-Strength only & 0.098 & 0.166 & 0.018 & 0.029 \\
-Median density curve & 0.145 & 0.212 & 0.026 & 0.039 \\
-Per-density regression & 0.108 & 0.136 & 0.025 & 0.035 \\
+Compact power form & Half & 0.073 & 0.104 & 0.017 & 0.020 & 0.023 & 0.026 \\
+Quadratic strength form & Half & 0.115 & 0.142 & 0.026 & 0.045 & 0.026 & 0.048 \\
+Strength only & Half & 0.098 & 0.166 & 0.018 & 0.029 & 0.031 & 0.046 \\
+Median density curve & Half & 0.145 & 0.212 & 0.026 & 0.039 & 0.029 & 0.046 \\
+Per-density regression & Half & 0.108 & 0.136 & 0.025 & 0.035 & 0.024 & 0.032 \\
+\midrule
+Per-density regression & Full & 0.060 & 0.084 & 0.019 & 0.027 & 0.025 & 0.027 \\
 \bottomrule
 \end{tabular*}
 \end{table}

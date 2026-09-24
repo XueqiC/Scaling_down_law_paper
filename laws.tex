@@ -1,77 +1,70 @@
 \section{Capability Scaling-Down Laws}
 \label{sec:laws}
 
-
-The three methods support different prediction structures. Under pruning a compact relation fitted on half the density measurements predicts new model states
-within 0.020 nats per token of the full-budget regression (Section~\ref{sec:efficiency}); its exponent
-belongs to the tested Pythia domain, not to every family. Under quantization bit width and
-group size act jointly, and a piecewise interpolation over the measured grid and the configuration
-medians are competitive predictors; no new parametric quantization law is claimed. Under distillation
-data reuse, the student state and the evaluation distribution shape the response, a finding in its
-own right, and part of it admits a low-parameter relation with a small predictive gain; no joint law
-in student, data and budget is claimed.
-Each is stated below with its inputs and its fitted and tested domain; Section~\ref{sec:general}
-reports how it performs on configurations and model states that entered no fit. Whether the initial state earns its place is decided per capability: on the controlled pruning
-panel, a per-setting regression using parameter count, pretraining tokens and reference capability
-loss reduces the mean absolute error from 0.41 to 0.25 nats for mathematics and from 0.52 to 0.29
-for code, and raises it from 0.50 to 0.81 for question answering.
-
-
-\begin{itemize}[leftmargin=1.2em,itemsep=2pt,topsep=3pt]
-\item \textbf{Pruning.} Mathematics and code take the power form of Eq.~\ref{eq:power} from the
-parameter count, the pretraining tokens and the reference loss, at unseen densities in $[0.6,0.9]$
-of a state in the fit and at new training stages of sizes inside the fitted range (confirmed on four
-such states, Section~\ref{sec:efficiency}). At sizes
-outside that range, and for question answering, the delivered relation is the pre-specified development
-median curve $L_{0,c}+\widetilde f_c(d)$, which reads only the reference loss. Fitted and tested on Pythia 160M--1.4B at three
-pretraining stages, densities 0.6--0.9 and tests to 0.55.
-\item \textbf{Quantization.} Per-channel quantization on a new state takes the per-bit development
-median. Grouped quantization on a state in the fit takes a same-input piecewise interpolation over
-the measured bit-width and group-size grid, linear in $\log_2 g$, for mathematics and code; question
-answering, and every capability on a new state, takes the per-configuration median. Fitted and
-tested on the same Pythia states over 3--8 bits and groups of 32--512 weights.
-\item \textbf{Distillation.} The signed transfer response of Section~\ref{sec:loss} takes
-$\widehat\delta_c=a_c\log(1+E)$ for mathematics and code and the joint budget-pool form for question
-answering, from the supervised tokens, the unique-pool tokens and the student's own reference loss.
-Fitted and tested on Gemma-3 270M and 1B students under one recipe, with pools to 158k tokens and
-budgets of 50k--200k, and question answering scored on the 2Wiki distribution.
-\end{itemize}
+Each predictor is built from the response structure of Section~\ref{sec:observed}: the observed
+structure fixes the form, the inputs of Section~\ref{sec:models} fill it, and a validation target
+decides how Section~\ref{sec:general} judges it. The initial state enters a relation only for
+capabilities where it lowered development error (Section~\ref{sec:state_config}).
 
 \subsection{Pruning}
 \label{sec:law_prune}
 
-Within the controlled pruning domain, we model the response with the compact form
+Mathematics and code share one density shape whose scale depends on the model state
+(Section~\ref{sec:state_config}), so we write their response as a state-dependent amplitude times a
+density term shared across states,
 \begin{equation}
 \widehat{\Delta L}_c(\mathbf x,d)=A_c(\mathbf x)\,\Big(\frac{1-d}{0.3}\Big)^{\gamma_c},
 \qquad
 A_c(\mathbf x)=\beta_c\cdot\big(1,\tilde{\log N_0},\tilde L_{0,c},\tilde{\log D_0}\big),
 \label{eq:power}
 \end{equation}
-This form uses five parameters per capability with inputs standardized on the development set. Its
-advantage holds at new stages inside the fitted size range and not under broader transfer, so outside
-that range and for question answering the delivered predictor is the source-free development median, which the selection rule of Section~\ref{sec:selection} calls on every new state.
+with five parameters per capability and inputs standardized on the development set. Because the
+density term is shared, a development grid can keep every state while measuring fewer densities per
+state, and the validation target is the error at half the development measurements against the
+full-grid regression on states in no fit (Section~\ref{sec:efficiency}). The form is fitted on Pythia
+160M--1.4B at three pretraining stages over densities 0.6--0.9 and holds at new stages of sizes inside
+that range. At sizes outside it, and for question answering, whose density response follows no
+shared curve, the predictor is the pre-specified development median curve
+$L_{0,c}+\widetilde f_c(d)$, which reads only the reference loss and which the selection rule of
+Section~\ref{sec:selection} calls on every new state. On another family or pruning criterion the form
+and its fitting strategy are reused and the coefficients are estimated anew (Section~\ref{sec:efficiency}).
+
 \subsection{Quantization}
 \label{sec:law_quant}
 
-Per-channel quantization is predicted per bit width, by the per-bit source regression on states in
-the fit and the per-bit median on new ones. Grouped quantization adds the group size $g$ as a second
-axis: for mathematics and code on seen states the delivered relation is a piecewise interpolation
-over the measured $(b,g)$ grid, linear in $\log_2 g$, and otherwise it is the per-configuration
-development median measured on the same grid of bit widths and group sizes. \subsection{Distillation}
+Under quantization the response is a threshold in bit width whose position moves with the group size
+(Section~\ref{sec:resp_capabilities}), so the predictors work on the measured configuration grid
+rather than on a smooth surface. Per-channel quantization is predicted per bit width, by the per-bit
+source regression on states in the fit and the per-bit median on new ones. Grouped quantization adds
+the group size $g$ as a second axis: for mathematics and code on seen states the relation is a
+piecewise interpolation over the measured $(b,g)$ grid, linear in $\log_2 g$, and otherwise it is the
+per-configuration development median. Both are fitted on the Pythia states over 3--8 bits and groups
+of 32--512 weights and validated at unseen group sizes of seen states and on a new state
+(Sections~\ref{sec:unseen_settings} and~\ref{sec:unseen_states}). Here a complete description of the
+configuration and coverage of its grid matter more than a parametric form, and the configuration
+medians are the strong baseline that any quantization relation has to beat.
+
+\subsection{Distillation}
 \label{sec:law_distill}
 
-The response is the signed transfer response of Section~\ref{sec:loss}, parameterized by supervised
-completion tokens, unique pool tokens and their ratio; the teacher supplies the training targets and
-is fixed within the evaluated protocol. The delivered relations are
+Predicting the loss after distillation requires separating the amount of independent data, the
+cumulative training exposure and the evaluation distribution (Section~\ref{sec:why}). The relations
+therefore read supervised completion tokens $T$, unique pool tokens $D_U$ and their ratio, and predict
+the signed transfer response of Section~\ref{sec:loss}; the teacher supplies the training targets and
+is fixed within the evaluated protocol. They are
 \begin{equation}
 \widehat\delta_c=a_c\log(1+E)\ (\text{math, code}),\qquad \widehat\delta_{\mathrm{QA}}=u\,(a+b\,u+q\,v),
 \label{eq:kdforms}
 \end{equation}
 with $u=\log(1+T/T_{\mathrm{ref}})$ and $v=\log(D_U/D_{\mathrm{ref}})$ for reference constants fixed on
 the development set: one parameter for mathematics and code, which vanish at zero budget, and three for question
-answering. On the development students at the 2Wiki distribution, question answering improves under every recipe while mathematics and code move by hundredths to tenths of a nat. At high
-reuse, and on the other question-answering distributions, the response reverses
-(Section~\ref{sec:observed}).
-The relations describe the 270M and 1B students at the evaluated budgets, reuse counts and 2Wiki
-distribution, not the 4B student or reuse near fourteen; a joint relation in budget and pool remains unresolved.
-
+answering. Pre-specified structural checks neither reject nor establish an additive joint form in
+budget and pool (Appendix~\ref{sec:app_selbound}), so the forms rest on the development comparison:
+leave-one-run-out selected the logarithm of the reuse ratio for mathematics and code and the joint
+budget and pool form only for question answering (Appendix Table~\ref{tab:distill_confirm}), a local
+approximation at the tested budgets and pools. The validation target is new pools and budgets of the
+development students (Section~\ref{sec:unseen_settings}). The relations describe the Gemma-3 270M and
+1B students under one recipe, with pools to 158k tokens, budgets of 50k--200k and question answering
+scored on 2Wiki. There question answering improves under both training recipes tested while mathematics
+and code move by hundredths to tenths of a nat; at high reuse and on the other question-answering distributions the response
+reverses (Section~\ref{sec:why}), and the 4B student and reuse near fourteen lie outside this domain.

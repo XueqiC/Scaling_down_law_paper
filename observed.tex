@@ -1,7 +1,7 @@
 \section{Empirical Analysis of Capability Loss}
 \label{sec:observed}
 
-This section reports what the controlled measurements show: which response shapes capabilities share, how the initial model state and the compression configuration move those
+This section describes the response structure that a predictor has to capture: which response shapes capabilities share, how the initial model state and the compression configuration move those
 responses, and how training data and the evaluation distribution move them under distillation.
 
 \subsection{Compression Responses across Capabilities}
@@ -30,32 +30,30 @@ measured grid predicts it where a smooth surface does not. Both read measurement
 \subsection{Effects of Model State and Compression Configuration}
 \label{sec:state_config}
 
-On Pythia checkpoints whose size and training stage vary independently, parameter count and
+Model state sets the scale of the pruning response for mathematics and code, and the quantization response depends on the full configuration. On Pythia checkpoints whose size and training stage vary independently, parameter count and
 pretraining tokens enter the pruning amplitude for mathematics and code and carry those capabilities to unseen densities of states that
 entered the fit; the same inputs over-predict question answering, whose density response is not
-proportional to any shared curve. The state inputs earn their place inside the development range and lose it outside it
-(Section~\ref{sec:general}). Under quantization the configuration acts through two axes at once, the threshold in bit width
+proportional to any shared curve. A per-setting regression on parameter count, pretraining tokens and reference loss
+reduces the mean absolute error from 0.41 to 0.25 nats for mathematics and from 0.52 to 0.29
+for code, and raises it from 0.50 to 0.81 for question answering. Under quantization the configuration acts through two axes at once, the threshold in bit width
 moving with the group size, so a relation needs the configuration in full and the initial state only
 where it helps.
 
 \subsection{Effects of Training Data and Evaluation Distribution}
 \label{sec:why}
 
-Distillation depends on the training protocol as strongly as on the method itself. With every other
+The cost of heavy data reuse recurs across question-answering distributions, while the net benefit of distillation depends on the evaluation distribution. At a matched budget $T$ near 200k supervised tokens
+(Fig.~\ref{fig:responses_v2}), a reuse ratio $E=T/D_U$ near twelve costs question answering $+0.29$,
+$+2.55$ and $+4.85$ nats on students of 100M, 700M and 3.2B non-embedding parameters, and nine times
+more independent data converts the same budget into a gain near one nat on each. Rescored on a fresh 2Wiki sample, on MuSiQue and on TriviaQA at the same budget,
+all three distributions worsen at high reuse and improve as reuse falls, but only the
+fresh 2Wiki sample crosses into a gain.
+
+The training recipe is a further condition to consider when extending these relations. With every other
 setting held fixed (Appendix Fig.~\ref{fig:lr_pilot}), the loss increase on mathematics and code
 grows by an order of magnitude between learning rates of $5\times10^{-5}$ and $1\times10^{-4}$; at
 the lower rate the 1B student is almost unharmed on those two capabilities and question answering
-improves by $0.79$ nats.
-
-Once the learning rate is fixed, the size of the data pool dominates and question answering bears
-most of the cost. At a matched budget $T$ near 200k supervised tokens
-(Fig.~\ref{fig:responses_v2}), a reuse ratio $E=T/D_U$ near twelve costs question answering $+0.29$,
-$+2.55$ and $+4.85$ nats on students of 100M, 700M and 3.2B non-embedding parameters under the fixed training protocol, and nine times
-more independent data converts the same budget into a gain near one nat on each.
-
-The reuse cost transfers across question-answering distributions; the gain does not. Rescored on a fresh 2Wiki sample, on MuSiQue and on TriviaQA at the matched budget of
-Fig.~\ref{fig:responses_v2}, all three worsen at high reuse and improve as reuse falls, but only the
-fresh 2Wiki sample crosses into a gain.
+improves by $0.79$ nats. The responses of Fig.~\ref{fig:responses_v2} are therefore measured under one fixed recipe.
 
 \begin{figure}[t]
 \centering
@@ -71,17 +69,10 @@ two pool seeds. Panel (d) rescores the same trajectories at that budget on three
 a fresh 2Wiki sample disjoint from the probe, MuSiQue and TriviaQA.}
 \label{fig:responses_v2}
 \end{figure}
-Two pre-specified checks bound how this response may be written: a joint form with separate
-logarithmic pool and budget terms implies a pool-change effect that is flat in budget, and for code on
-the 1B student it drifts by a factor of twenty (Appendix Fig.~\ref{fig:drift}); a four-trajectory
-rectangle replaying the trainer's update boundaries tested additivity directly, and its second difference, zero under additivity, lands inside the pre-specified band on question
-answering for both students, neither rejecting nor establishing additivity (Appendix
-Fig.~\ref{fig:corner_test}). The delivered form therefore rests on the development comparison: leave-one-run-out selected the
-one-parameter logarithm of the reuse ratio for mathematics and code and the joint budget and pool form only for question answering (Appendix
-Table~\ref{tab:distill_confirm}), a local approximation at the tested budgets and pools that claims no additive joint structure.
+These responses motivate predictors that account jointly for data availability and training exposure, with student state and evaluation distribution determining their range of transfer.
 
-These responses can be turned into an empirical data requirement. A pre-specified experiment of
-eighteen trajectories on the 1B and 4B students, with pools from nine thousand to 158 thousand
+The reuse response also yields an empirical data requirement. A pre-specified experiment of
+eighteen trajectories on the 1B and 4B students, with pools from 9k to 158k
 supervised tokens and three evaluation budgets, measured the range of independent data at which a
 loss constraint is met (Appendix Fig.~\ref{fig:dreq}): it is crossed inside the tested pools on the
 fresh 2Wiki sample for both students at the two larger budgets, on MuSiQue only at looser tolerances,
