@@ -1,6 +1,13 @@
 \section{Empirical Analysis of Capability Loss}
 \label{sec:observed}
 
+\rev{This section describes the response structure that the predictors of Section~\ref{sec:laws} build
+on, measured on the heterogeneous panel and the controlled Pythia and Gemma panels of
+Section~\ref{sec:models}. Section~\ref{sec:resp_capabilities} shows which response shapes pruning and
+quantization share across capabilities and model states, and Section~\ref{sec:why} shows how training
+data, exposure and the evaluation distribution shape the response to distillation and what that asks
+of its predictors.}
+
 \subsection{\texorpdfstring{\rev{Responses to Pruning and Quantization}}{Responses to Pruning and Quantization}}
 \label{sec:resp_capabilities}\label{sec:state_config}
 
@@ -56,15 +63,10 @@ distillation depends on the evaluation distribution. At a matched budget $T$ nea
 $+2.55$ and $+4.85$ nats on students of 100M, 700M and 3.2B non-embedding parameters, and nine times
 more independent data converts the same budget into a gain near one nat on each. Rescored on a fresh
 2Wiki sample, on MuSiQue and on TriviaQA at the same budget, all three distributions worsen at high
-reuse and improve as reuse falls, but only the fresh 2Wiki sample crosses into a gain. The reuse
-response also fixes an empirical data requirement: a pre-specified experiment of eighteen trajectories
-on the 1B and 4B students, with pools from 9k to 158k supervised tokens and three evaluation budgets,
-measured the range of independent data at which a loss constraint is met (Appendix
-Fig.~\ref{fig:dreq}). It is crossed inside the tested pools on the fresh 2Wiki sample for
-both students at the two larger budgets, on MuSiQue only at looser tolerances, and on TriviaQA not at
-all for the 4B student, where the requirement is a lower bound; because a low-degree boundary relation
-did not predict these ranges better than a per-student monotone interpolation, we report measured
-intervals.}
+reuse and improve as reuse falls, but only the fresh 2Wiki sample crosses into a gain. The reuse response also fixes an empirical data requirement: in a pre-specified experiment of eighteen
+trajectories on the 1B and 4B students (Appendix Fig.~\ref{fig:dreq}), the independent data at which a
+loss constraint is met lies inside the tested pools on the fresh 2Wiki sample for both students at the
+two larger budgets, and we report it as measured intervals.}
 
 \rev{The training recipe is a further condition to consider when extending these relations. With every
 other setting held fixed (Appendix Fig.~\ref{fig:lr_pilot}), the loss increase on mathematics and code
