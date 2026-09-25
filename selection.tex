@@ -1,15 +1,10 @@
 \section{Compression Method Selection}
 \label{sec:selection}
 
-How precise must a loss prediction be to change a compression choice? We answer this under nominal
+\rev{How precise must a loss prediction be to change a compression choice? We answer this under nominal
 storage constraints by comparing, on the same candidates, selection with parametric predictions (the
 source-conditioned relations of Section~\ref{sec:laws}), with empirical predictions (development
-configuration medians), and with a fixed method priority that uses no numerical prediction.
-
-\subsection{Selection under Storage Constraints}
-\label{sec:selection_rule}
-
-Given a reference model, a capability and a budget, the decision is
+configuration medians), and with a fixed method priority that uses no numerical prediction. Given a reference model, a capability and a budget, the decision is
 \begin{equation}
 (m^{*},\boldsymbol\theta_m^{*})=\arg\min_{m,\;\boldsymbol\theta_m\in\mathcal F_m(B)}\;
 \widehat L_{m,c}(\mathbf x,\boldsymbol\theta_m),
@@ -17,10 +12,7 @@ Given a reference model, a capability and a budget, the decision is
 \end{equation}
 where $\mathcal F_m(B)$ holds the settings of method $m$ whose nominal storage, counted in stored matrix parameters, falls within $B$. The final rule calls
 the pruning and quantization relations of Section~\ref{sec:laws} on a seen state and their
-source-free medians on a new one; for distillation it calls a regression on the student state for mathematics and pre-specified constants otherwise (Appendix Table~\ref{tab:locked_rule}); a workload needing several capabilities replaces $\widehat L_{m,c}$ by $\max_c[\widehat L_c(M)-L_c(M_0)]$.
-
-\subsection{Independent Evaluation}
-\label{sec:selection_confirm}
+source-free medians on a new one; for distillation it calls a regression on the student state for mathematics and pre-specified constants otherwise (Appendix Table~\ref{tab:locked_rule}); a workload needing several capabilities replaces $\widehat L_{m,c}$ by $\max_c[\widehat L_c(M)-L_c(M_0)]$.}
 
 \begin{figure}[t]
 \centering
@@ -34,9 +26,7 @@ source-free medians on a new one; for distillation it calls a regression on the 
 \label{fig:rule_main}
 \end{figure}
 
-Each reference carries twelve candidates at seventeen storage budgets (Appendix Table~\ref{tab:s3-identity}). Opportunity is the loss of the best feasible quantization candidate minus that of the best feasible candidate of any method, and a policy's regret is the loss of its choice minus that best candidate. On the 64 cells at which both policies find a feasible candidate the rule selects the new student in 63, with regret 0.000 nats on three references and 0.027 on the fourth against 0.41 to 1.84 for quantization only, meeting the pre-specified criterion (Fig.~\ref{fig:rule_main}); on mathematics, code and the largest loss increase the opportunity is at most 0.047 nats and the rule matches quantization within 0.0015. On 384 fresh question-answering items scored after the round, the rule's choice has a lower loss than the quantization-only choice on three references and is level on the fourth, while a generation readout puts the same students ahead on exact match on three, behind on one and no better than their initial students. Termination and the evaluation target are separate factors: a supervised end marker restores termination and raises the Gemma student's exact match, while the Pythia disagreement between loss and exact match persists (Appendix~\ref{sec:app_eos}), so a selector has to state the endpoint it optimises. 
-\subsection{Decision Value of Numerical Prediction}
-\label{sec:selection_value}
+\rev{On four references that supplied it no outcome, the final rule captures most of the cross-method opportunity for question answering.} Each reference carries twelve candidates at seventeen storage budgets (Appendix Table~\ref{tab:s3-identity}). Opportunity is the loss of the best feasible quantization candidate minus that of the best feasible candidate of any method, and a policy's regret is the loss of its choice minus that best candidate. On the 64 cells at which both policies find a feasible candidate the rule selects the new student in 63, with regret 0.000 nats on three references and 0.027 on the fourth against 0.41 to 1.84 for quantization only, meeting the pre-specified criterion (Fig.~\ref{fig:rule_main}); on mathematics, code and the largest loss increase the opportunity is at most 0.047 nats and the rule matches quantization within 0.0015. On 384 fresh question-answering items scored after the round, the rule's choice has a lower loss than the quantization-only choice on three references and is level on the fourth, while a generation readout puts the same students ahead on exact match on three, behind on one and no better than their initial students. Termination and the evaluation target are separate factors: a supervised end marker restores termination and raises the Gemma student's exact match, while the Pythia disagreement between loss and exact match persists (Appendix~\ref{sec:app_eos}), so a selector has to state whether it optimises loss or exact match. 
 
 A retrospective comparison of the three policies on the same candidates (Appendix
 Table~\ref{tab:s3-ablation}) shows how fine a prediction selection needs. On question answering the

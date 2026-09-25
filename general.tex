@@ -1,12 +1,6 @@
 \section{Predictive Performance and Generalization}
 \label{sec:general}
 
-We test the relations of Section~\ref{sec:laws} with every prediction fixed before measurement: first
-how far sharing the pruning response structure reduces the development measurements, then how each
-delivered relation compares with the strongest development baseline at the same budget on new
-configurations and new model states (Table~\ref{tab:main-prediction-v2}; candidates in Appendix
-Table~\ref{tab:main-prediction-candidates}; Fig.~\ref{fig:generalization}).
-
 \input{tables/main_prediction_v2}
 
 \subsection{Measurement Efficiency}
@@ -44,22 +38,22 @@ pruning criteria; and the coefficients are estimated for each setting, since wit
 Pythia coefficients err by 0.4 to 1.9 nats on OLMo-2 and the magnitude-pruning coefficients by 0.19 to
 0.27 nats under Wanda.
 
-\subsection{Prediction at Unseen Configurations}
-\label{sec:unseen_settings}
+\subsection{\texorpdfstring{\rev{Prediction at Unseen Configurations and Model States}}{Prediction at Unseen Configurations and Model States}}
+\label{sec:unseen_settings}\label{sec:unseen_states}
 
-In grouped quantization, with 54 development and 21 pre-specified test cells, the piecewise
-interpolation is the most accurate predictor of unseen group sizes at the development states for
-mathematics and code. For distillation, at six new pools and three new budgets, every selected form
-improves on zero change, with a detected gain over the development baseline for code on both
-students and for question answering on the smaller one.
-
-\subsection{Transfer across Model States}
-\label{sec:unseen_states}
-
-On three Pythia checkpoints in no fit,
-the pre-specified pruning power form matches the per-density regression on mathematics with a quarter of
-the parameters, and trails the median on code and every source-free curve on question answering; outside the tested density range every source-conditioned form errs by 0.6 to
-4.5 nats. At 2.8B and 6.9B, beyond the development range, the pre-specified median curve predicts pruning and per-bit quantization more accurately, and on a new grouped quantization state it wins for mathematics and question answering and the interpolation for code.
-
-
-
+\rev{At equal development budget and with every prediction fixed before measurement, the relations that
+read the initial state help at unseen configurations of seen states, while on new model states the
+source-free medians predict as well or better (Table~\ref{tab:main-prediction-v2}; pre-specified candidates in Appendix
+Table~\ref{tab:main-prediction-candidates}; Fig.~\ref{fig:generalization} compares each task with its
+baseline). In grouped quantization, with 54
+development and 21 pre-specified test cells, the piecewise interpolation is the most accurate
+predictor of unseen group sizes at the development states for mathematics and code. For distillation,
+at six new pools and three new budgets, every selected form improves on zero change, with a detected
+gain over the development baseline for code on both students and for question answering on the
+smaller one. On three Pythia checkpoints in no fit, the pre-specified pruning power form matches the
+per-density regression on mathematics with a quarter of the parameters, and trails the median on code
+and every source-free curve on question answering; outside the tested density range every
+source-conditioned form errs by 0.6 to 4.5 nats. At 2.8B and 6.9B, beyond the development range, the
+pre-specified median curve predicts pruning and per-bit quantization more accurately, and on a new
+grouped quantization state it wins for mathematics and question answering and the interpolation for
+code.}

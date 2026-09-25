@@ -3,8 +3,27 @@
 
 Each predictor is built from the response structure of Section~\ref{sec:observed}: the observed
 structure fixes the form, the inputs of Section~\ref{sec:models} fill it, and a validation target
-decides how Section~\ref{sec:general} judges it. The initial state enters a relation only for
-capabilities where it lowered development error (Section~\ref{sec:state_config}).
+decides how Section~\ref{sec:general} judges it. \rev{The observed structure differs by method: pruning
+shares one density shape across states, quantization acts through the full configuration, and
+distillation separates independent data, training exposure and evaluation distribution.} The initial
+state enters a relation only for capabilities where it lowered development error
+(Section~\ref{sec:state_config}); \rev{elsewhere the relation predicts the response from the
+configuration alone.}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figs/fig1_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/fig1_a.pdf}\caption{Math}\label{fig:resp_a}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/fig1_b.pdf}\caption{Code}\label{fig:resp_b}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/fig1_c.pdf}\caption{QA on 2Wiki}\label{fig:resp_c}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/fig1_d.pdf}\caption{QA, three distributions}\label{fig:resp_d}\end{subfigure}
+\caption{Distillation transfer responses under one protocol: loss change in nats per native token
+from each student's initial state against the reuse ratio $E=T/D_U$, at the matched budget nearest
+200k supervised tokens, each panel on its own scale; dotted 270M, dashed 1B, solid 4B, markers the
+two pool seeds. Panel (d) rescores the same trajectories at that budget on three question-answering distributions:
+a fresh 2Wiki sample disjoint from the probe, MuSiQue and TriviaQA.}
+\label{fig:responses_v2}
+\end{figure}
 
 \subsection{Pruning}
 \label{sec:law_prune}
@@ -23,7 +42,7 @@ density term is shared, a development grid can keep every state while measuring 
 state, and the validation target is the error at half the development measurements against the
 full-grid regression on states in no fit (Section~\ref{sec:efficiency}). The form is fitted on Pythia
 160M--1.4B at three pretraining stages over densities 0.6--0.9 and holds at new stages of sizes inside
-that range. At sizes outside it, and for question answering, whose density response follows no
+that range\rev{; Appendix~\ref{sec:app_selbound} gives its selection among forms of the same complexity}. At sizes outside it, and for question answering, whose density response follows no
 shared curve, the predictor is the pre-specified development median curve
 $L_{0,c}+\widetilde f_c(d)$, which reads only the reference loss and which the selection rule of
 Section~\ref{sec:selection} calls on every new state. On another family or pruning criterion the form
@@ -40,7 +59,7 @@ the group size $g$ as a second axis: for mathematics and code on seen states the
 piecewise interpolation over the measured $(b,g)$ grid, linear in $\log_2 g$, and otherwise it is the
 per-configuration development median. Both are fitted on the Pythia states over 3--8 bits and groups
 of 32--512 weights and validated at unseen group sizes of seen states and on a new state
-(Sections~\ref{sec:unseen_settings} and~\ref{sec:unseen_states}). Here a complete description of the
+(\rev{Section~\ref{sec:unseen_settings}}). Here a complete description of the
 configuration and coverage of its grid matter more than a parametric form, and the configuration
 medians are the strong baseline that any quantization relation has to beat.
 
@@ -48,10 +67,10 @@ medians are the strong baseline that any quantization relation has to beat.
 \label{sec:law_distill}
 
 Predicting the loss after distillation requires separating the amount of independent data, the
-cumulative training exposure and the evaluation distribution (Section~\ref{sec:why}). The relations
-therefore read supervised completion tokens $T$, unique pool tokens $D_U$ and their ratio, and predict
-the signed transfer response of Section~\ref{sec:loss}; the teacher supplies the training targets and
-is fixed within the evaluated protocol. They are
+cumulative training exposure and the evaluation distribution (Section~\ref{sec:why}). \rev{The teacher
+supplies the training targets and is fixed within the evaluated protocol, and the relations read
+supervised completion tokens $T$, unique pool tokens $D_U$ and their ratio to predict the signed
+transfer response of Section~\ref{sec:loss} as}
 \begin{equation}
 \widehat\delta_c=a_c\log(1+E)\ (\text{math, code}),\qquad \widehat\delta_{\mathrm{QA}}=u\,(a+b\,u+q\,v),
 \label{eq:kdforms}

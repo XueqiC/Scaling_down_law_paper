@@ -21,6 +21,9 @@
 \setlength{\belowcaptionskip}{0pt}
 \captionsetup[subfigure]{skip=2pt}
 \usepackage{xcolor}
+% Revision marking for the author's review (2026-09-25): revised passages print in red.
+% To remove the colour once reviewed, change the definition to \newcommand{\rev}[1]{#1}.
+\newcommand{\rev}[1]{\leavevmode{\color{red}#1}}
 \usepackage{enumitem}
 \usepackage{rotating}
 \usepackage{array}
@@ -144,6 +147,7 @@ LLM compression reduces inference costs and memory requirements, but selecting a
 
 \appendix
 \newpage
+\raggedbottom
 % Appendix-only float packing: float pages fill from the top, and a float page must be at least 80% full.
 \makeatletter
 \setlength{\@fptop}{0pt}\setlength{\@fpsep}{10pt plus 4pt}\setlength{\@fpbot}{0pt plus 1fil}

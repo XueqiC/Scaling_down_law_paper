@@ -11,14 +11,18 @@ log-likelihood
 with a fitted form that depends on the protocol \citep{li2025misfitting,besiroglu2024chinchilla}.
 Closest to ours, \citet{sengupta2025compression} predict a task's post-pruning accuracy from its unpruned accuracy and the pruning ratio, transferring the exponent to unseen models with or without one calibrating measurement, and \citet{zhou2026task} fit task-stratified quantization laws that join model size, bit width, group size and calibration-set size, validated at unseen sizes. Capability-specific responses and the joint action of bit width and group size are therefore established; this paper adds how much information and how many measurements a capability-loss prediction needs, separated into unseen configurations and model-state transfer across three methods, and the prediction's decision value.
 
-\paragraph{Compression Effects on Model Capabilities.}
-We study controlled implementations of pruning, post-training quantization and
+\paragraph{\rev{Compression Effects and Method Selection.}}
+\rev{We study controlled implementations of pruning, post-training quantization and
 distillation
 \citep{lecun1989optimal,han2015deep,frankle2019lottery,frantar2023sparsegpt,sun2023simple,ma2023llmpruner,ashkboos2024slicegpt,men2024shortgpt,dettmers2022llmint8,frantar2022gptq,xiao2022smoothquant,lin2023awq,chee2023quip,shao2023omniquant,dettmers2023qlora,hinton2015distilling,sanh2019distilbert,hsieh2023distilling,mukherjee2023orca,gu2023minillm,agarwal2023gkd,xu2024survey},
-and uneven capability loss is documented for individual tasks and quantizers
+whose capability losses are documented as uneven for individual tasks and quantizers
 \citep{jaiswal2023compressing,liu2025quantization,ouyang2024lowbit,hong2024decoding,sengupta2025compression}.
-
-\paragraph{Compression Method Selection.}
-Prior work compares compression methods by measuring each candidate on the target model, finding quantization retains more than pruning at equal ratio \citep{jaiswal2023compressing} or placing
-sparsity and precision on one capacity scale \citep{panferov2025unified}; repeated tokens are worth
-less than new ones \citep{muennighoff2023scaling}, an exchange rate our reuse response measures per capability (Section~\ref{sec:observed}). None states which method a model, capability and budget should receive without measuring every candidate; Section~\ref{sec:selection} tests that decision on independent candidates.
+Comparisons between methods measure each candidate on the target model, finding that quantization
+retains more than pruning at equal ratio \citep{jaiswal2023compressing} or placing sparsity and
+precision on one capacity scale \citep{panferov2025unified}, and controlled re-evaluations find that
+reported efficiency gains depend on the evaluation setup \citep{zhang2026rethinking}; repeated
+tokens are worth less than new ones \citep{muennighoff2023scaling}, an exchange rate our reuse response measures per capability
+(Section~\ref{sec:observed}). Model routing chooses among models per query by predicting each
+model's utility before seeing its answer \citep{cheng2026latentrouter}, but for compression none states
+which method a model, capability and budget should receive without measuring every candidate;
+Section~\ref{sec:selection} tests that decision on independent candidates.}

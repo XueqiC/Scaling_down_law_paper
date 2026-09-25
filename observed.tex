@@ -1,16 +1,19 @@
 \section{Empirical Analysis of Capability Loss}
 \label{sec:observed}
 
-This section describes the response structure that a predictor has to capture: which response shapes capabilities share, how the initial model state and the compression configuration move those
-responses, and how training data and the evaluation distribution move them under distillation.
+\subsection{\texorpdfstring{\rev{Responses to Pruning and Quantization}}{Responses to Pruning and Quantization}}
+\label{sec:resp_capabilities}\label{sec:state_config}
 
-\subsection{Compression Responses across Capabilities}
-\label{sec:resp_capabilities}
-
-Compression changes capabilities unevenly and in no fixed order (Fig.~\ref{fig:heterogeneity}). On
-the controlled Pythia panel, mathematics and code share one shape in density with a
-capability-specific scale, whereas the question-answering response changes sign across density at
-every state (Appendix Fig.~\ref{fig:pythia_responses}).
+\rev{Compression changes capabilities unevenly and in no fixed order (Fig.~\ref{fig:heterogeneity}), which is
+the first structure a predictor has to capture. On the controlled Pythia panel, mathematics and code
+share one shape in density with a capability-specific scale, whereas the question-answering response
+changes sign across density at every state (Appendix Fig.~\ref{fig:pythia_responses}). The two
+compression axes also carry different shapes. Under pruning, once the measured first-order alignment
+term is subtracted, the residual before the cliff is a power law in the deleted capability mass, with an
+exponent that transfers across families. Under quantization the response is instead a threshold in bit
+width whose position depends on the group size, so an interpolation over the measured grid predicts it
+where a smooth surface does not. Both accounts read measurements of the compressed model, so they
+explain rather than predict (Appendix~\ref{sec:app_mech}).}
 
 \begin{figure}[t]
 \centering
@@ -20,16 +23,6 @@ every state (Appendix Fig.~\ref{fig:pythia_responses}).
 \caption{Capability loss change from each model's dense loss across twelve public models, under (a) pruning to $d=0.7$ and (b) per-channel int4. The ordering of capabilities changes across series and the magnitudes differ by two orders of magnitude at the same setting.}
 \label{fig:heterogeneity}
 \end{figure}
-The two compression axes carry different shapes. Under pruning, once the measured first-order
-alignment term is subtracted, the residual before the cliff is a power law in the deleted capability
-mass, with an exponent that transfers across families. Under quantization the response is instead a
-threshold in bit width whose position depends on the group size, so an interpolation over the
-measured grid predicts it where a smooth surface does not. Both read measurements of the compressed model, so they explain rather than predict
-(Appendix~\ref{sec:app_mech}).
-
-\subsection{Effects of Model State and Compression Configuration}
-\label{sec:state_config}
-
 Model state sets the scale of the pruning response for mathematics and code, and the quantization response depends on the full configuration. On Pythia checkpoints whose size and training stage vary independently, parameter count and
 pretraining tokens enter the pruning amplitude for mathematics and code and carry those capabilities to unseen densities of states that
 entered the fit; the same inputs over-predict question answering, whose density response is not
@@ -42,42 +35,26 @@ where it helps.
 \subsection{Effects of Training Data and Evaluation Distribution}
 \label{sec:why}
 
-The cost of heavy data reuse recurs across question-answering distributions, while the net benefit of distillation depends on the evaluation distribution. At a matched budget $T$ near 200k supervised tokens
+\rev{The cost of heavy data reuse recurs across question-answering distributions, while the net benefit of
+distillation depends on the evaluation distribution. At a matched budget $T$ near 200k supervised tokens
 (Fig.~\ref{fig:responses_v2}), a reuse ratio $E=T/D_U$ near twelve costs question answering $+0.29$,
 $+2.55$ and $+4.85$ nats on students of 100M, 700M and 3.2B non-embedding parameters, and nine times
-more independent data converts the same budget into a gain near one nat on each. Rescored on a fresh 2Wiki sample, on MuSiQue and on TriviaQA at the same budget,
-all three distributions worsen at high reuse and improve as reuse falls, but only the
-fresh 2Wiki sample crosses into a gain.
+more independent data converts the same budget into a gain near one nat on each. Rescored on a fresh
+2Wiki sample, on MuSiQue and on TriviaQA at the same budget, all three distributions worsen at high
+reuse and improve as reuse falls, but only the fresh 2Wiki sample crosses into a gain. The reuse
+response also fixes an empirical data requirement: a pre-specified experiment of eighteen trajectories
+on the 1B and 4B students, with pools from 9k to 158k supervised tokens and three evaluation budgets,
+measured the range of independent data at which a loss constraint is met (Appendix
+Fig.~\ref{fig:dreq}). It is crossed inside the tested pools on the fresh 2Wiki sample for
+both students at the two larger budgets, on MuSiQue only at looser tolerances, and on TriviaQA not at
+all for the 4B student, where the requirement is a lower bound; because a low-degree boundary relation
+did not predict these ranges better than a per-student monotone interpolation, we report measured
+intervals.}
 
-The training recipe is a further condition to consider when extending these relations. With every other
-setting held fixed (Appendix Fig.~\ref{fig:lr_pilot}), the loss increase on mathematics and code
-grows by an order of magnitude between learning rates of $5\times10^{-5}$ and $1\times10^{-4}$; at
-the lower rate the 1B student is almost unharmed on those two capabilities and question answering
-improves by $0.79$ nats. The responses of Fig.~\ref{fig:responses_v2} are therefore measured under one fixed recipe.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\textwidth]{figs/fig1_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/fig1_a.pdf}\caption{Math}\label{fig:resp_a}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/fig1_b.pdf}\caption{Code}\label{fig:resp_b}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/fig1_c.pdf}\caption{QA on 2Wiki}\label{fig:resp_c}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.35in}\centering\includegraphics[width=\linewidth]{figs/fig1_d.pdf}\caption{QA, three distributions}\label{fig:resp_d}\end{subfigure}
-\caption{Distillation transfer responses under one protocol: loss change in nats per native token
-from each student's initial state against the reuse ratio $E=T/D_U$, at the matched budget nearest
-200k supervised tokens, each panel on its own scale; dotted 270M, dashed 1B, solid 4B, markers the
-two pool seeds. Panel (d) rescores the same trajectories at that budget on three question-answering distributions:
-a fresh 2Wiki sample disjoint from the probe, MuSiQue and TriviaQA.}
-\label{fig:responses_v2}
-\end{figure}
-These responses motivate predictors that account jointly for data availability and training exposure, with student state and evaluation distribution determining their range of transfer.
-
-The reuse response also yields an empirical data requirement. A pre-specified experiment of
-eighteen trajectories on the 1B and 4B students, with pools from 9k to 158k
-supervised tokens and three evaluation budgets, measured the range of independent data at which a
-loss constraint is met (Appendix Fig.~\ref{fig:dreq}): it is crossed inside the tested pools on the
-fresh 2Wiki sample for both students at the two larger budgets, on MuSiQue only at looser tolerances,
-and on TriviaQA not at all for the 4B student, where the requirement is a lower bound. A low-degree
-boundary relation did not predict these ranges better than a per-student monotone interpolation, so
-we report the requirement as measured intervals.
-
-
+\rev{The training recipe is a further condition to consider when extending these relations. With every
+other setting held fixed (Appendix Fig.~\ref{fig:lr_pilot}), the loss increase on mathematics and code
+grows by an order of magnitude between learning rates of $5\times10^{-5}$ and $1\times10^{-4}$; at the
+lower rate the 1B student is almost unharmed on those two capabilities and question answering improves
+by $0.79$ nats, so the responses of Fig.~\ref{fig:responses_v2} are measured under one fixed recipe.
+These responses motivate predictors that account jointly for data availability and training exposure,
+with student state and evaluation distribution determining their range of transfer.}
