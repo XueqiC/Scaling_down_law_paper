@@ -24,10 +24,10 @@ form fitted on 12 configurations (circles) against the per-density regression fi
 Three conditions qualify this finding. The reduction is in density measurements per state: every
 reduced grid keeps all development states, so the saving comes from sharing the density response
 rather than from dropping states; at 9 measurements the per-density regression cannot be fitted at all
-(Fig.~\ref{fig:efficiency}a). \rev{In a retrospective subsampling of the development panel, the compact
+(Fig.~\ref{fig:efficiency}a). In a retrospective subsampling of the development panel, the compact
 form's median error falls from 0.25 to 0.20 nats on mathematics and from 0.30 to 0.17 on code between 9
 and 18 measurements and barely moves between 18 and 36, so half the grid already sits where further
-measurements stop paying (Appendix Table~\ref{tab:a9}).} Where the response is near zero, complex prediction does not beat zero
+measurements stop paying (Appendix Table~\ref{tab:a9}). Where the response is near zero, complex prediction does not beat zero
 change: under Wanda the 1B and 1.4B test states move by at
 most 0.06 nats and no predictor improves on zero change there (Appendix~\ref{sec:app_a11}). The errors
 are compared on independent panels and are not tests of statistical equivalence. Among forms of
@@ -39,12 +39,12 @@ pruning criteria; and the coefficients are estimated for each setting, since wit
 Pythia coefficients err by 0.4 to 1.9 nats on OLMo-2 and the magnitude-pruning coefficients by 0.19 to
 0.27 nats under Wanda.
 
-\subsection{\texorpdfstring{\rev{Prediction at Unseen Configurations and Model States}}{Prediction at Unseen Configurations and Model States}}
+\subsection{Prediction at Unseen Configurations and Model States}
 \label{sec:unseen_settings}\label{sec:unseen_states}
 
 \input{tables/main_prediction_v2}
 
-\rev{At equal development budget and with every prediction fixed before measurement, the relations that
+At equal development budget and with every prediction fixed before measurement, the relations that
 read the initial state help at unseen configurations of seen states, while on new model states the
 source-free medians predict as well or better (Table~\ref{tab:main-prediction-v2}; pre-specified candidates in Appendix
 Table~\ref{tab:main-prediction-candidates}; Fig.~\ref{fig:generalization} compares each task with its
@@ -62,4 +62,4 @@ source-conditioned form errs by 0.6 to 4.5 nats. At 2.8B and 6.9B, beyond the de
 pre-specified median curve predicts pruning and per-bit quantization more accurately (at 6.9B and step 112k,
 0.05, 0.07 and 0.15 nats against 0.23, 0.19 and 0.96 for the source regression), and on a new
 grouped quantization state it wins for mathematics and question answering, while the interpolation keeps its lead
-on code.}
+on code.
