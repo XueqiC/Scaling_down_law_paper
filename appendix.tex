@@ -4,16 +4,6 @@
 This appendix records the probes, the compression protocols and the controlled panel in the form
 used throughout the paper, so that each later section can be read against them.
 
-\begin{figure}[tb]
-\centering
-\includegraphics[width=\textwidth]{figs/fig4_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_a.pdf}\caption{Pruning}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_b.pdf}\caption{Per-channel quantization}\end{subfigure}\hfill
-\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_c.pdf}\caption{Grouped quantization}\end{subfigure}
-\caption{Compression responses on the controlled Pythia panel. (a) Loss change against retained density on the nine development states, with the median predictions as heavy lines. (b) Loss change against bit-width under per-channel round-to-nearest. (c) Loss change against group size at 3, 4 and 5 bits for one state; groups 32 and 512 were unseen when the predictions were pre-specified.}
-\label{fig:pythia_responses}
-\end{figure}
-
 \subsection{Probes and loss computation}
 \label{sec:app_probes}
 
@@ -138,8 +128,6 @@ parameters. Those revisions were excluded from the panel, and the 2.8B repeatabi
 (Appendix~\ref{sec:app_results}) is one state measured twice. The three checkpoints of the pruning confirmation panel have shard hashes that differ
 from all other revisions of the same size, and their dense capability vectors differ from those of the neighbouring stages of the same size.
 
-
-
 The parameter conventions follow from the architectures. All models in
 the heterogeneous panel and the controlled panel are dense
 transformers (Section S1 of the supplement); no sparsely activated model
@@ -149,8 +137,6 @@ Section~\ref{sec:loss} is exercised only on dense architectures. The laws use th
 distillation source term used the metadata parameter count of the student recorded when the predictions were fixed,
 which for Gemma-3-4B includes 0.42B vision and projector parameters
 and counts tied embeddings twice; these pre-specified covariates are reported as recorded when the predictions were fixed.
-
-
 
 \begin{figure}[tb]
 \centering
@@ -210,8 +196,6 @@ retained as measured and are not clipped at zero.
 \caption{Measurement support for capability specificity. (a)--(c) Out-of-fold MAE of predicting the secondary-benchmark response of a capability from the primary-benchmark response of the same capability (diamond) or of another capability, against zero and train-mean controls, on the six-model, five-density pruning panel; protocols 1--3 hold out models, densities, or both, and 4--6 repeat them at $d\ge0.75$. (d)--(f) Paired same-over-cross gain with 95\% model-bootstrap intervals over models.}
 \label{fig:measurement}
 \end{figure}
-
-
 
 \section{Heterogeneous-Model Results}
 \label{sec:app_hetero}
@@ -281,7 +265,6 @@ QA loss does not by itself mean better QA behavior: in the four pruned
 OLMo-3-32B cells whose QA loss lies below dense, exact-match accuracy
 does not rise. ``QA improves'' in this paper refers to the loss and to nothing else.
 
-
 \subsection{Scale and family structure}
 \label{sec:family}
 
@@ -297,8 +280,6 @@ At matched scale, on the panel of models near 30B parameters, the
 family coefficient dominates: $\Delta\Lc{\text{math}}$ at $\dens=0.7$
 spans two orders of magnitude, from 0.02 nats on OLMo-3-32B through 0.17 on Muse-30B and 0.68 on Gemma-4-31B to 4.04 on Gemma-3-27B. OLMo-3-32B survives $70\%$ pruning with
 $\le+0.63$ nats on each capability. Family identity is a first-order determinant of prunability on this panel; which training-data or recipe properties carry it was not measured and is left open on this panel.
-
-
 
 \section{Fitted Models and Coefficients}
 \label{sec:app_coef}
@@ -380,7 +361,6 @@ baseline is the same $\log(1+E)$ form with an intercept, so the gain
 supports the zero-budget boundary and the parsimony of the form and does not
 establish a full student-data-training law; QA gains on 270M only, math loses to intercept baselines, no selected form is the post-hoc best of the sixteen pre-specified forms, a minimum selection favours by construction (Section S4 of the supplement); a student 6.6 times the reference size lies outside the tested range.
 
-
 \subsection{Applicability across capabilities}
 \label{sec:app_applic}
 
@@ -404,7 +384,6 @@ methods holds for pruning by construction and fails for quantization
 and distillation; within pruning one exponent shared across
 capabilities costs nothing, whereas quantization coefficients must be
 capability-specific; parameter intervals and 80\% prediction intervals that under-cover are reported in Appendix~\ref{sec:app_shared} together with the one-point calibration and the single measurement that it costs.
-
 
 \begin{figure}[tb]
 \centering
@@ -431,14 +410,10 @@ the same held-out splits. Within pruning one exponent shared across capabilities
 the dense-anchor term on math and code and not on QA; per-source exponents spread widely, from 3.0 to 6.0 for math; and 80\% prediction intervals from leave-one-source residuals cover only 67 to 78 percent of held-out cells at a mean full width near 1.5 nats. One-point calibration of the pruning amplitude at the mildest density
 amplifies noise and offers no saving over the uncalibrated predictor.
 
-
-
-
 Table~\ref{tab:shared_structure} reports the shared-family test, the parameter-sharing tests and
 the spread of exponents fitted separately per source. What one target measurement would buy, a
 budget no delivered relation uses, is in Section S2 of the supplement.
 \input{tables/shared_structure}
-
 
 The value of capability conditioning can be measured on the same confirmation panels. At equal
 development information, Table~\ref{tab:cap_conditioning}
@@ -450,8 +425,6 @@ and none occurred, and that the QA gain arises because the aggregate
 QA curve reverses sign across density, a shape no proportional
 baseline can represent; the direction of QA also varies across
 development sources, which neither source-free variant captures. The ablation is retrospective and is reported as such.
-
-
 
 \section{Pre-specified Prediction Results}
 \label{sec:app_results}
@@ -478,7 +451,6 @@ fresh 2Wiki, MuSiQue and TriviaQA distributions, whose pre-specified additive pr
 legend of Fig.~\ref{fig:corner_test} applies to every panel, with the same colours and markers.}
 \label{fig:corner_contrasts}
 \end{figure}
-
 
 Section S4 of the supplement gives each pre-specified test in three lines, the candidate, the strongest same-input baseline and the strongest simple baseline, with improvements and provenance codes,
 the per-stage and per-protocol results of the Pythia-1B and 6.9B pairs, the confirmation panel and the
@@ -521,8 +493,6 @@ by the drift of its trajectory in either direction changes no interval sign in a
 not stored, so an item-level interval cannot be computed; each
 evaluation scores 64 items per capability, and the pool-cluster intervals therefore cover the sampling of pools and nothing else.
 \input{tables/distill_confirm}
-
-
 
 \subsection{Measurement efficiency of the compact pruning form}
 \label{sec:app_a11}
@@ -897,7 +867,7 @@ $\widehat Q$ for the quantization-only choice, $Q^*$ for the best quantization c
 for the best candidate of any method, the quantization-only regret decomposes as
 $L(\widehat Q)-L(A^*)=[L(\widehat Q)-L(Q^*)]+[L(Q^*)-L(A^*)]$, the selection error inside the family
 plus the opportunity; the last column of the table reports $L(Q^*)-L(\widehat A)$ for the rule's
-choice $\widehat A$, the gain that survives a perfect quantization selection. On Pythia 410M the quantization-only regret of 0.59 nats splits into 0.47 of selection error and 0.12 of opportunity, and the rule's choice beats the best quantization candidate by 0.09 nats. On these references the heuristic matches the rule wherever the opportunity sits in one method, and
+choice $\widehat A$, the gain that survives a perfect quantization selection. On these references the heuristic matches the rule wherever the opportunity sits in one method, and
 the medians add value on mathematics for Gemma 3 1B, where the rule's choice outside quantization is
 what the heuristic misses; the numeric value of prediction is thus carried by the development
 medians the rule already uses, and the contribution of the source-conditioned relations lies in
@@ -972,7 +942,6 @@ itself does not depend on the unit: it ranks whatever candidates the budget admi
 that stores sparse weights or counts embeddings enters its own byte costs in place of the nominal ones.
 \input{tables/storage_accounting}
 
-
 This section gives the selection rule behind Section~\ref{sec:selection}, its retrospective validation
 and its prospective confirmation. Section S6 of the supplement tabulates the per-policy results behind Fig.~\ref{fig:selection}: mean regret against the measured oracle, agreement with the oracle's method, the share of no-clear-winner cells, and the share of cells in which a fixed-method policy cannot meet the budget; such cells are infeasible, have no fallback and enter no mean.
 \begin{figure}[tb]
@@ -989,7 +958,6 @@ and its prospective confirmation. Section S6 of the supplement tabulates the per
 The rule was first validated retrospectively. On the controlled panel of 17 states and budgets from 0.2 to 1, with each law refit with the target held out, the law-based choice is within 0.19, 0.17 and 0.42 nats of
 the oracle for math, code and QA and picks the oracle's method in 96\%, 95\% and 73\% of 289 cells;
 quantization-only is close behind.
-
 
 It was then fixed and confirmed on independent states. The rule fixed
 before the confirmation panel was measured is as follows:
@@ -1043,7 +1011,6 @@ plotted without recomputation.}
 \caption{Full selection maps on the four fresh states under the final rule and under the earlier source-conditioned laws, in row pairs, against nominal storage budget; colour: predicted method; hollow circle with cross-hatching: the oracle differs; diagonal hatching: no clear winner. The last panel uses the largest loss increase across capabilities as the objective.}
 \label{fig:rule_maps}
 \end{figure}
-
 
 \subsection{Protocol sensitivity of the generation readout}
 \label{sec:app_eos}

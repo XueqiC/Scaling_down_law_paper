@@ -9,7 +9,7 @@ following pretraining laws in which loss follows power laws in scale and downstr
 log-likelihood
 \citep{hestness2017deep,kaplan2020scaling,hoffmann2022training,schaeffer2023emergent,gadre2024language,bhagia2024establishing,lourie2025scaling},
 with a fitted form that depends on the protocol \citep{li2025misfitting,besiroglu2024chinchilla}.
-Closest to ours, \citet{sengupta2025compression} predict a task's post-pruning accuracy from its unpruned accuracy and the pruning ratio, transferring the exponent to unseen models with or without one calibrating measurement, and \citet{zhou2026task} fit task-stratified quantization laws that join model size, bit width, group size and calibration-set size, validated at unseen sizes. Capability-specific responses and the joint action of bit width and group size are therefore established; this paper adds how much information and how many measurements a capability-loss prediction needs, separated into unseen configurations and model-state transfer across three methods, and the prediction's decision value.
+Closest to ours, \citet{sengupta2025compression} predict a task's post-pruning accuracy from its unpruned accuracy and the pruning ratio, transferring the exponent to unseen models with or without one calibrating measurement, and \citet{zhou2026task} fit task-stratified quantization laws that join model size, bit width, group size and calibration-set size, validated at unseen sizes. Capability-specific responses and the joint action of bit width and group size are therefore established; this paper adds how much information and how many measurements a capability-loss prediction needs, separated into unseen configurations and model-state transfer across three methods, \rev{which parts of a fitted relation carry over to another model family and pruning criterion,} and the prediction's decision value.
 
 \paragraph{\rev{Compression Effects and Method Selection.}}
 \rev{We study controlled implementations of pruning, post-training quantization and
@@ -23,6 +23,7 @@ precision on one capacity scale \citep{panferov2025unified}, and controlled re-e
 reported efficiency gains depend on the evaluation setup \citep{zhang2026rethinking}; repeated
 tokens are worth less than new ones \citep{muennighoff2023scaling}, an exchange rate our reuse response measures per capability
 (Section~\ref{sec:observed}). Model routing chooses among models per query by predicting each
-model's utility before seeing its answer \citep{cheng2026latentrouter}, but for compression none states
+model's utility before seeing its answer, instead of querying every candidate model
+\citep{cheng2026latentrouter}, but for compression none states
 which method a model, capability and budget should receive without measuring every candidate;
 Section~\ref{sec:selection} tests that decision on independent candidates.}

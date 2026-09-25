@@ -7,13 +7,16 @@
 \rev{Compression changes capabilities unevenly and in no fixed order (Fig.~\ref{fig:heterogeneity}), which is
 the first structure a predictor has to capture. On the controlled Pythia panel, mathematics and code
 share one shape in density with a capability-specific scale, whereas the question-answering response
-changes sign across density at every state (Appendix Fig.~\ref{fig:pythia_responses}). The two
+changes sign across density at every state (Fig.~\ref{fig:pythia_responses}). The two
 compression axes also carry different shapes. Under pruning, once the measured first-order alignment
 term is subtracted, the residual before the cliff is a power law in the deleted capability mass, with an
 exponent that transfers across families. Under quantization the response is instead a threshold in bit
 width whose position depends on the group size, so an interpolation over the measured grid predicts it
-where a smooth surface does not. Both accounts read measurements of the compressed model, so they
-explain rather than predict (Appendix~\ref{sec:app_mech}).}
+where a smooth surface does not. Fig.~\ref{fig:pythia_responses} shows both shapes on the development
+states: pruning losses rise steeply once density falls below 0.8, per-channel losses are large at 3 bits
+and small from 4 bits on, and at 3 bits the grouped response grows with the group size while at 4 and 5
+bits it stays near zero. Both accounts read measurements of the compressed model, so they explain rather than predict
+(Appendix~\ref{sec:app_mech}).}
 
 \begin{figure}[t]
 \centering
@@ -30,7 +33,19 @@ proportional to any shared curve. A per-setting regression on parameter count, p
 reduces the mean absolute error from 0.41 to 0.25 nats for mathematics and from 0.52 to 0.29
 for code, and raises it from 0.50 to 0.81 for question answering. Under quantization the configuration acts through two axes at once, the threshold in bit width
 moving with the group size, so a relation needs the configuration in full and the initial state only
-where it helps.
+where it helps. \rev{Because the pruning shape is shared across states, a predictor can learn a state's scale
+from a few densities and take the shape from the others, which is the measurement saving that
+Section~\ref{sec:efficiency} tests.}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figs/fig4_legend.pdf}\\[1pt]
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_a.pdf}\caption{Pruning}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_b.pdf}\caption{Per-channel quantization}\end{subfigure}\hfill
+\begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_c.pdf}\caption{Grouped quantization}\end{subfigure}
+\caption{\rev{Compression responses on the controlled Pythia panel, the structure the predictors of Section~\ref{sec:laws} build on.} (a) Loss change against retained density on the nine development states, with the median predictions as heavy lines\rev{: mathematics and code rise along one shape with a state-dependent scale}. (b) Loss change against bit-width under per-channel round-to-nearest. (c) Loss change against group size at 3, 4 and 5 bits for one state; groups 32 and 512 were unseen when the predictions were pre-specified.}
+\label{fig:pythia_responses}
+\end{figure}
 
 \subsection{Effects of Training Data and Evaluation Distribution}
 \label{sec:why}
