@@ -7,6 +7,6 @@ collapse, on a symmetric log axis with a 0.1-nat linear threshold. The inputs ar
 V10 quant_losses.json files listed in V36's summary; plot_fig1_final.py does
 not itself read a per-channel panel, so V36 supplies this additional artifact.
 Colour follows Figure 1; positive loss change means worse performance.
-Three 1.8 x 1.35-inch panels in one 5.5-inch row; fig4_legend.pdf is the shared capability, bit-width and one-state key above the panels. State traces are 0.5 pt at alpha 0.3; median lines are 1.5 pt with 3.2-pt markers.
+Three 1.8 x 1.5-inch panels in one 5.5-inch row; fig4_legend.pdf is the shared capability, bit-width and one-state key above the panels. State traces are 0.5 pt at alpha 0.3; median lines are 1.5 pt with 3.2-pt markers.
 
 Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

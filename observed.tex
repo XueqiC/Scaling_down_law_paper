@@ -28,9 +28,8 @@ bits it stays near zero. Both accounts read measurements of the compressed model
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figs/fig8_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{3.0in}\centering\includegraphics[width=\linewidth]{figs/fig8_a.pdf}\caption{Pruning at $d=0.7$}\end{subfigure}\hfill
-\begin{subfigure}[t]{2.45in}\centering\includegraphics[width=\linewidth]{figs/fig8_b.pdf}\caption{Per-channel int4}\end{subfigure}
-\caption{Capability loss change from each model's dense loss across twelve public models, under (a) pruning to $d=0.7$ and (b) per-channel int4, on a symmetric logarithmic axis that is linear within $\pm0.1$ nats; models are grouped by family and a grey bar spans each model's three responses. The ordering of capabilities changes across series and the magnitudes differ by two orders of magnitude at the same setting.}
+\includegraphics[width=\textwidth]{figs/fig8_a.pdf}
+\caption{Capability loss change from each model's dense loss across twelve public models, under pruning to $d=0.7$ (filled markers, left in each model's slot) and per-channel int4 (open markers, right), on a symmetric logarithmic axis that is linear within $\pm0.1$ nats; grey bars span each model's three responses under each method. The ordering of capabilities changes across series, and at the same setting the magnitudes differ by two orders of magnitude across all twelve models.}
 \label{fig:heterogeneity}
 \end{figure}
 Model state sets the scale of the pruning response for mathematics and code, and the quantization response depends on the full configuration. On Pythia checkpoints whose size and training stage vary independently, parameter count and

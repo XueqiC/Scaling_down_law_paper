@@ -7,6 +7,6 @@ sizes 64, 128 and 256, measured in all six states. All 54 measured rows come
 from develop.json; compare.json is excluded. These are the frozen development artifacts
 read by plot_fig1_final.py. Group size uses a base-2 logarithmic axis and loss
 uses a symmetric log axis with a 0.1-nat linear threshold.
-Three 1.8 x 1.35-inch panels in one 5.5-inch row; fig4_legend.pdf is the shared capability, bit-width and one-state key above the panels. State traces are 0.5 pt at alpha 0.3; median lines are 1.5 pt with 3.2-pt markers.
+Three 1.8 x 1.5-inch panels in one 5.5-inch row; fig4_legend.pdf is the shared capability, bit-width and one-state key above the panels. State traces are 0.5 pt at alpha 0.3; median lines are 1.5 pt with 3.2-pt markers.
 
 Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.
