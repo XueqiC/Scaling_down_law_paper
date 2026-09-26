@@ -1,10 +1,10 @@
 # Main prediction table: cell sources
 
-Columns: Capability; Delivered relation; Error; Strongest development baseline; Error; Improvement.
-Rendered layout: six columns, with an italic task group line spanning all six columns followed by Mathematics, Code and Question answering rows. Coordinates are zero-based physical body rows and columns, excluding headers and rules: group lines occupy rows 0, 4, 8, 12 and 16 at column 0 with column_span 6; capability rows occupy the following three rows. Every cell is populated. The appendix candidates table prints columns Prediction task; Pre-specified candidate; Candidate error (nats); Delivered relation from the same assembled rows; its recipes follow the main table's.
+Columns: Test; Delivered relation; Math; Code; QA; Math; Code; QA.
+Rendered layout: nine columns: Test, Delivered relation, Error (Math, Code, QA), Gain over baseline (Math, Code, QA), n. Italic method headings span all nine columns, followed by one row per task. Coordinates are zero-based physical body rows and columns, excluding headers and rules. With all tasks present, method headings occupy rows 0, 2 and 5 at column 0 with column_span 9; task rows occupy rows 1, 3, 4, 6 and 7. Every cell is populated. The appendix candidates table prints columns Prediction task; Pre-specified candidate; Candidate error (nats); Delivered relation; Strongest development baseline from the same assembled rows; its recipes follow the main table's.
 Development measurements are distinct development configuration measurements per capability for fitting or selecting the tested candidate, excluding dense anchors and held-out measurements. Counts do not describe the post-test delivered predictor. V53 divides recorded scalar rows by the recorded capability-model count; V55/V69 use n_dev_cells; V70 uses development_structure.n_points authenticated by freeze.json. Shared development sets are not additive across rows.
-Each capability row has a delivered identity, delivered error, baseline identity, baseline error and signed improvement (baseline minus delivered, computed before rounding). These cells retain their individual frozen JSON recipes. The group line retains the task's configuration numbers and development measurement count. Development or registration selection pointers are recorded in each baseline cell's note/context. Short task labels retain the full state and configuration definitions in their source recipes.
-Retrospective appears in the group line only when the stored delivered timing says fixed after test; first predictors were frozen before measurement. Delivered scores reuse the same frozen test cells, not test-error winners. For the earlier bit test the delivered interpolation/median rule has no matching stored score; its development includes those cells. The source surface is not delivered, and the older interpolation's different model and boundary rules cannot supply the missing error.
+Each task row has a short test label (column 0), a delivered identity summarized from its three capability selections (column 1), delivered errors (columns 2--4), signed gains (columns 5--7), and a development measurement count (column 8). Gains retain both recorded operands and compute baseline minus delivered before rounding. The appendix's baseline column preserves each capability's development-selected identity and selection pointers; its original four columns are unchanged. Short test labels retain the full state and configuration definitions in their source recipes.
+A dagger follows the main-table delivered relation only when the stored delivered timing says fixed after test; the appendix retains the word Retrospective. First predictors were frozen before measurement. Delivered scores reuse the same frozen test cells, not test-error winners. For the earlier bit test the delivered interpolation/median rule has no matching stored score; its development includes those cells. The source surface is not delivered, and the older interpolation's different model and boundary rules cannot supply the missing error.
 Stored V70 paired_difference.ci95 endpoints are omitted from Table 1 because they do not fit on the same line as the score. They remain in the appendix tables. The sign is baseline minus candidate; these are not MAE intervals. No refits, resampling or invented intervals.
 All indices are zero-based. The numeric inventory identifies the table, physical row/column and recipe part, so appendix and main-table coordinates are distinct. `mean` is equal-weight arithmetic; `weighted_mean` pairs each stored subset MAE with its stored cell count, preserving equal cell weights. No refits or resampling.
 Numeric values are formatted directly from the following executable source recipes. Context pointers justify textual labels and freeze identities; incomplete tasks are omitted.
@@ -36,101 +36,49 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
 
 ## Fields per cell
 
-- Cell (0, 0): `results/v53-prune-dev/register.json#/selected_candidate`; `results/v53-prune-dev/register.json#/dev_states`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`; `results/v53-prune-dev/register.json#/n_dev_rows`; `results/v53-prune-dev/register.json#/models`; `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`
-- Cell (1, 0): `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`
-- Cell (1, 1): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`
+- Cell (0, 0): `results/v53-prune-dev/register.json#/selected_candidate`; `results/v53-prune-dev/register.json#/dev_states`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`; `results/v53-prune-dev/register.json#/n_dev_rows`; `results/v53-prune-dev/register.json#/models`
+- Cell (1, 0): `results/v53-prune-dev/register.json#/selected_candidate`; `results/v53-prune-dev/register.json#/dev_states`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
+- Cell (1, 1): `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`
 - Cell (1, 2): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/math`
-- Cell (1, 3): `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/register.json#/loso_table/2/candidate`
-- Cell (1, 4): `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math`
+- Cell (1, 3): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code`
+- Cell (1, 4): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
 - Cell (1, 5): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`; `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math`
-- Cell (2, 0): `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`
-- Cell (2, 1): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`
-- Cell (2, 2): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code`
-- Cell (2, 3): `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/register.json#/loso_table/2/candidate`
-- Cell (2, 4): `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code`
-- Cell (2, 5): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`; `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code`
-- Cell (3, 0): `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`
-- Cell (3, 1): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`
-- Cell (3, 2): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
-- Cell (3, 3): `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/register.json#/loso_table/5/candidate`
-- Cell (3, 4): `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
-- Cell (3, 5): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`; `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
-- Cell (4, 0): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`; `results/v69-quant-confirm/compare.json#/rows/0/test_set`; `results/v69-quant-confirm/compare.json#/rows/1/test_set`; `results/v69-quant-confirm/compare.json#/rows/2/test_set`; `results/v69-quant-confirm/compare.json#/rows/3/test_set`; `results/v69-quant-confirm/compare.json#/rows/4/test_set`; `results/v69-quant-confirm/compare.json#/rows/5/test_set`; `results/v69-quant-confirm/compare.json#/rows/6/test_set`; `results/v69-quant-confirm/compare.json#/rows/7/test_set`; `results/v69-quant-confirm/compare.json#/rows/8/test_set`; `results/v69-quant-confirm/compare.json#/rows/9/test_set`; `results/v69-quant-confirm/compare.json#/rows/10/test_set`; `results/v69-quant-confirm/compare.json#/rows/11/test_set`; `results/v69-quant-confirm/compare.json#/rows/12/test_set`; `results/v69-quant-confirm/compare.json#/rows/13/test_set`; `results/v69-quant-confirm/compare.json#/rows/14/test_set`; `results/v69-quant-confirm/compare.json#/rows/15/test_set`; `results/v69-quant-confirm/compare.json#/rows/16/test_set`; `results/v69-quant-confirm/compare.json#/rows/17/test_set`; `results/v69-quant-confirm/compare.json#/rows/18/test_set`; `results/v69-quant-confirm/compare.json#/rows/19/test_set`; `results/v69-quant-confirm/compare.json#/rows/20/test_set`; `results/v69-quant-confirm/compare.json#/rows/21/test_set`; `results/v69-quant-confirm/compare.json#/rows/22/test_set`; `results/v69-quant-confirm/compare.json#/rows/23/test_set`; `results/v69-quant-confirm/compare.json#/rows/24/test_set`; `results/v69-quant-confirm/compare.json#/rows/25/test_set`; `results/v69-quant-confirm/compare.json#/rows/26/test_set`; `results/v69-quant-confirm/compare.json#/rows/27/test_set`; `results/v69-quant-confirm/compare.json#/rows/28/test_set`; `results/v69-quant-confirm/compare.json#/rows/29/test_set`; `results/v69-quant-confirm/compare.json#/rows/30/test_set`; `results/v69-quant-confirm/compare.json#/rows/31/test_set`; `results/v69-quant-confirm/compare.json#/rows/32/test_set`; `results/v69-quant-confirm/compare.json#/rows/33/test_set`; `results/v69-quant-confirm/compare.json#/rows/34/test_set`; `results/v69-quant-confirm/compare.json#/rows/35/test_set`; `results/v69-quant-confirm/develop.json#/dev_states`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selection_rule`; `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`; `results/v69-quant-confirm/develop.json#/n_dev_cells`; `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`
-- Cell (5, 0): `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`
-- Cell (5, 1): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`
-- Cell (5, 2): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/math/mae`
-- Cell (5, 3): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math`
-- Cell (5, 4): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae`
-- Cell (5, 5): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae`
-- Cell (6, 0): `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`
-- Cell (6, 1): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`
-- Cell (6, 2): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae`
-- Cell (6, 3): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/develop.json#/loso/scores/zero/code`
-- Cell (6, 4): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae`
-- Cell (6, 5): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae`
-- Cell (7, 0): `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`
-- Cell (7, 1): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`
-- Cell (7, 2): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
-- Cell (7, 3): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/develop.json#/loso/scores/median/qa`
-- Cell (7, 4): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
-- Cell (7, 5): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
-- Cell (8, 0): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`; `results/v69-quant-confirm/compare.json#/rows/36/test_set`; `results/v69-quant-confirm/compare.json#/rows/37/test_set`; `results/v69-quant-confirm/compare.json#/rows/38/test_set`; `results/v69-quant-confirm/compare.json#/rows/39/test_set`; `results/v69-quant-confirm/compare.json#/rows/40/test_set`; `results/v69-quant-confirm/compare.json#/rows/41/test_set`; `results/v69-quant-confirm/compare.json#/rows/42/test_set`; `results/v69-quant-confirm/compare.json#/rows/43/test_set`; `results/v69-quant-confirm/compare.json#/rows/44/test_set`; `results/v69-quant-confirm/compare.json#/rows/45/test_set`; `results/v69-quant-confirm/compare.json#/rows/46/test_set`; `results/v69-quant-confirm/compare.json#/rows/47/test_set`; `results/v69-quant-confirm/compare.json#/rows/48/test_set`; `results/v69-quant-confirm/compare.json#/rows/49/test_set`; `results/v69-quant-confirm/compare.json#/rows/50/test_set`; `results/v69-quant-confirm/compare.json#/rows/51/test_set`; `results/v69-quant-confirm/compare.json#/rows/52/test_set`; `results/v69-quant-confirm/compare.json#/rows/53/test_set`; `results/v69-quant-confirm/compare.json#/rows/54/test_set`; `results/v69-quant-confirm/compare.json#/rows/55/test_set`; `results/v69-quant-confirm/compare.json#/rows/56/test_set`; `results/v69-quant-confirm/compare.json#/rows/57/test_set`; `results/v69-quant-confirm/compare.json#/rows/58/test_set`; `results/v69-quant-confirm/compare.json#/rows/59/test_set`; `results/v69-quant-confirm/compare.json#/rows/60/test_set`; `results/v69-quant-confirm/compare.json#/rows/61/test_set`; `results/v69-quant-confirm/compare.json#/rows/62/test_set`; `results/v69-quant-confirm/develop.json#/dev_states`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selection_rule`; `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`; `results/v69-quant-confirm/develop.json#/n_dev_cells`; `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`
-- Cell (9, 0): `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`
-- Cell (9, 1): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`
-- Cell (9, 2): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/n`
-- Cell (9, 3): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math`
-- Cell (9, 4): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n`
-- Cell (9, 5): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n`
-- Cell (10, 0): `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`
-- Cell (10, 1): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`
-- Cell (10, 2): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`
-- Cell (10, 3): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/develop.json#/loso/scores/zero/code`
-- Cell (10, 4): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n`
-- Cell (10, 5): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n`
-- Cell (11, 0): `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`
-- Cell (11, 1): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`
-- Cell (11, 2): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
-- Cell (11, 3): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/develop.json#/loso/scores/median/qa`
-- Cell (11, 4): `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
-- Cell (11, 5): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
-- Cell (12, 0): `results/v70-distill-confirm/freeze.json#/confirmation_register/unused_U_assertion`; `results/v70-distill-confirm/freeze.json#/frozen_at_utc`; `results/v47-p2-register/register.json#/v5_confirm/registered_at_utc`; `results/v70-distill-confirm/develop.json#/development_structure`; `results/v70-distill-confirm/develop.json#/points`; `results/v70-distill-confirm/freeze.json#/inputs_sha256/results~1v70-distill-confirm~1develop.json`; `results/v70-distill-confirm/freeze.json#/confirmation_register/students/0`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`; `results/v70-distill-confirm/develop.json#/development_structure/n_points`
-- Cell (13, 0): `results/v70-distill-confirm/freeze.json#/selected/math/method`
-- Cell (13, 1): `results/v70-distill-confirm/freeze.json#/selected`; `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/selected/math/method`
-- Cell (13, 2): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`
-- Cell (13, 3): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/math/method`
-- Cell (13, 4): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/0/baseline_mae`
-- Cell (13, 5): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/0/baseline_mae`
-- Cell (14, 0): `results/v70-distill-confirm/freeze.json#/selected/code/method`
-- Cell (14, 1): `results/v70-distill-confirm/freeze.json#/selected`; `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/selected/code/method`
-- Cell (14, 2): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`
-- Cell (14, 3): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/code/method`
-- Cell (14, 4): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/1/baseline_mae`
-- Cell (14, 5): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/1/baseline_mae`
-- Cell (15, 0): `results/v70-distill-confirm/freeze.json#/selected/qa/method`
-- Cell (15, 1): `results/v70-distill-confirm/freeze.json#/selected`; `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`
-- Cell (15, 2): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`
-- Cell (15, 3): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/qa/method`
-- Cell (15, 4): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`
-- Cell (15, 5): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`
-- Cell (16, 0): `results/v70-distill-confirm/freeze.json#/confirmation_register/unused_U_assertion`; `results/v70-distill-confirm/freeze.json#/frozen_at_utc`; `results/v47-p2-register/register.json#/v5_confirm/registered_at_utc`; `results/v70-distill-confirm/develop.json#/development_structure`; `results/v70-distill-confirm/develop.json#/points`; `results/v70-distill-confirm/freeze.json#/inputs_sha256/results~1v70-distill-confirm~1develop.json`; `results/v70-distill-confirm/freeze.json#/confirmation_register/students/1`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`; `results/v70-distill-confirm/develop.json#/development_structure/n_points`
-- Cell (17, 0): `results/v70-distill-confirm/freeze.json#/selected/math/method`
-- Cell (17, 1): `results/v70-distill-confirm/freeze.json#/selected`; `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/selected/math/method`
-- Cell (17, 2): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`
-- Cell (17, 3): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/math/method`
-- Cell (17, 4): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/3/baseline_mae`
-- Cell (17, 5): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/3/baseline_mae`
-- Cell (18, 0): `results/v70-distill-confirm/freeze.json#/selected/code/method`
-- Cell (18, 1): `results/v70-distill-confirm/freeze.json#/selected`; `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/selected/code/method`
-- Cell (18, 2): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`
-- Cell (18, 3): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/code/method`
-- Cell (18, 4): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/4/baseline_mae`
-- Cell (18, 5): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/4/baseline_mae`
-- Cell (19, 0): `results/v70-distill-confirm/freeze.json#/selected/qa/method`
-- Cell (19, 1): `results/v70-distill-confirm/freeze.json#/selected`; `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`
-- Cell (19, 2): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
-- Cell (19, 3): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/qa/method`
-- Cell (19, 4): `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
-- Cell (19, 5): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
+- Cell (1, 6): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`; `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code`
+- Cell (1, 7): `results/v86-main-table/summary.json#/main_rows/0/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered`; `results/v53-prune-dev/register.json#/loso_table`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
+- Cell (2, 0): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`; `results/v69-quant-confirm/compare.json#/rows/0/test_set`; `results/v69-quant-confirm/compare.json#/rows/1/test_set`; `results/v69-quant-confirm/compare.json#/rows/2/test_set`; `results/v69-quant-confirm/compare.json#/rows/3/test_set`; `results/v69-quant-confirm/compare.json#/rows/4/test_set`; `results/v69-quant-confirm/compare.json#/rows/5/test_set`; `results/v69-quant-confirm/compare.json#/rows/6/test_set`; `results/v69-quant-confirm/compare.json#/rows/7/test_set`; `results/v69-quant-confirm/compare.json#/rows/8/test_set`; `results/v69-quant-confirm/compare.json#/rows/9/test_set`; `results/v69-quant-confirm/compare.json#/rows/10/test_set`; `results/v69-quant-confirm/compare.json#/rows/11/test_set`; `results/v69-quant-confirm/compare.json#/rows/12/test_set`; `results/v69-quant-confirm/compare.json#/rows/13/test_set`; `results/v69-quant-confirm/compare.json#/rows/14/test_set`; `results/v69-quant-confirm/compare.json#/rows/15/test_set`; `results/v69-quant-confirm/compare.json#/rows/16/test_set`; `results/v69-quant-confirm/compare.json#/rows/17/test_set`; `results/v69-quant-confirm/compare.json#/rows/18/test_set`; `results/v69-quant-confirm/compare.json#/rows/19/test_set`; `results/v69-quant-confirm/compare.json#/rows/20/test_set`; `results/v69-quant-confirm/compare.json#/rows/21/test_set`; `results/v69-quant-confirm/compare.json#/rows/22/test_set`; `results/v69-quant-confirm/compare.json#/rows/23/test_set`; `results/v69-quant-confirm/compare.json#/rows/24/test_set`; `results/v69-quant-confirm/compare.json#/rows/25/test_set`; `results/v69-quant-confirm/compare.json#/rows/26/test_set`; `results/v69-quant-confirm/compare.json#/rows/27/test_set`; `results/v69-quant-confirm/compare.json#/rows/28/test_set`; `results/v69-quant-confirm/compare.json#/rows/29/test_set`; `results/v69-quant-confirm/compare.json#/rows/30/test_set`; `results/v69-quant-confirm/compare.json#/rows/31/test_set`; `results/v69-quant-confirm/compare.json#/rows/32/test_set`; `results/v69-quant-confirm/compare.json#/rows/33/test_set`; `results/v69-quant-confirm/compare.json#/rows/34/test_set`; `results/v69-quant-confirm/compare.json#/rows/35/test_set`; `results/v69-quant-confirm/develop.json#/dev_states`; `results/v69-quant-confirm/develop.json#/dev_configs`; `results/v69-quant-confirm/develop.json#/selection_rule`; `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`; `results/v69-quant-confirm/develop.json#/n_dev_cells`
+- Cell (3, 0): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`; `results/v69-quant-confirm/compare.json#/rows/0/test_set`; `results/v69-quant-confirm/compare.json#/rows/1/test_set`; `results/v69-quant-confirm/compare.json#/rows/2/test_set`; `results/v69-quant-confirm/compare.json#/rows/3/test_set`; `results/v69-quant-confirm/compare.json#/rows/4/test_set`; `results/v69-quant-confirm/compare.json#/rows/5/test_set`; `results/v69-quant-confirm/compare.json#/rows/6/test_set`; `results/v69-quant-confirm/compare.json#/rows/7/test_set`; `results/v69-quant-confirm/compare.json#/rows/8/test_set`; `results/v69-quant-confirm/compare.json#/rows/9/test_set`; `results/v69-quant-confirm/compare.json#/rows/10/test_set`; `results/v69-quant-confirm/compare.json#/rows/11/test_set`; `results/v69-quant-confirm/compare.json#/rows/12/test_set`; `results/v69-quant-confirm/compare.json#/rows/13/test_set`; `results/v69-quant-confirm/compare.json#/rows/14/test_set`; `results/v69-quant-confirm/compare.json#/rows/15/test_set`; `results/v69-quant-confirm/compare.json#/rows/16/test_set`; `results/v69-quant-confirm/compare.json#/rows/17/test_set`; `results/v69-quant-confirm/compare.json#/rows/18/test_set`; `results/v69-quant-confirm/compare.json#/rows/19/test_set`; `results/v69-quant-confirm/compare.json#/rows/20/test_set`; `results/v69-quant-confirm/compare.json#/rows/21/test_set`; `results/v69-quant-confirm/compare.json#/rows/22/test_set`; `results/v69-quant-confirm/compare.json#/rows/23/test_set`; `results/v69-quant-confirm/compare.json#/rows/24/test_set`; `results/v69-quant-confirm/compare.json#/rows/25/test_set`; `results/v69-quant-confirm/compare.json#/rows/26/test_set`; `results/v69-quant-confirm/compare.json#/rows/27/test_set`; `results/v69-quant-confirm/compare.json#/rows/28/test_set`; `results/v69-quant-confirm/compare.json#/rows/29/test_set`; `results/v69-quant-confirm/compare.json#/rows/30/test_set`; `results/v69-quant-confirm/compare.json#/rows/31/test_set`; `results/v69-quant-confirm/compare.json#/rows/32/test_set`; `results/v69-quant-confirm/compare.json#/rows/33/test_set`; `results/v69-quant-confirm/compare.json#/rows/34/test_set`; `results/v69-quant-confirm/compare.json#/rows/35/test_set`; `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
+- Cell (3, 1): `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`
+- Cell (3, 2): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/math/mae`
+- Cell (3, 3): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae`
+- Cell (3, 4): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
+- Cell (3, 5): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae`
+- Cell (3, 6): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae`
+- Cell (3, 7): `results/v86-main-table/summary.json#/main_rows/2/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
+- Cell (4, 0): `results/v69-quant-confirm/freeze.json#/frozen_at_utc`; `results/v69-quant-confirm/compare.json#/rows/36/test_set`; `results/v69-quant-confirm/compare.json#/rows/37/test_set`; `results/v69-quant-confirm/compare.json#/rows/38/test_set`; `results/v69-quant-confirm/compare.json#/rows/39/test_set`; `results/v69-quant-confirm/compare.json#/rows/40/test_set`; `results/v69-quant-confirm/compare.json#/rows/41/test_set`; `results/v69-quant-confirm/compare.json#/rows/42/test_set`; `results/v69-quant-confirm/compare.json#/rows/43/test_set`; `results/v69-quant-confirm/compare.json#/rows/44/test_set`; `results/v69-quant-confirm/compare.json#/rows/45/test_set`; `results/v69-quant-confirm/compare.json#/rows/46/test_set`; `results/v69-quant-confirm/compare.json#/rows/47/test_set`; `results/v69-quant-confirm/compare.json#/rows/48/test_set`; `results/v69-quant-confirm/compare.json#/rows/49/test_set`; `results/v69-quant-confirm/compare.json#/rows/50/test_set`; `results/v69-quant-confirm/compare.json#/rows/51/test_set`; `results/v69-quant-confirm/compare.json#/rows/52/test_set`; `results/v69-quant-confirm/compare.json#/rows/53/test_set`; `results/v69-quant-confirm/compare.json#/rows/54/test_set`; `results/v69-quant-confirm/compare.json#/rows/55/test_set`; `results/v69-quant-confirm/compare.json#/rows/56/test_set`; `results/v69-quant-confirm/compare.json#/rows/57/test_set`; `results/v69-quant-confirm/compare.json#/rows/58/test_set`; `results/v69-quant-confirm/compare.json#/rows/59/test_set`; `results/v69-quant-confirm/compare.json#/rows/60/test_set`; `results/v69-quant-confirm/compare.json#/rows/61/test_set`; `results/v69-quant-confirm/compare.json#/rows/62/test_set`; `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
+- Cell (4, 1): `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`
+- Cell (4, 2): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/n`
+- Cell (4, 3): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`
+- Cell (4, 4): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
+- Cell (4, 5): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n`
+- Cell (4, 6): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n`
+- Cell (4, 7): `results/v86-main-table/summary.json#/main_rows/3/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered`; `results/v74-quant-threeway/quant_threeway.json#/recommendation_rule`; `results/v69-quant-confirm/develop.json#/loso/scores`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
+- Cell (5, 0): `results/v70-distill-confirm/freeze.json#/confirmation_register/unused_U_assertion`; `results/v70-distill-confirm/freeze.json#/frozen_at_utc`; `results/v47-p2-register/register.json#/v5_confirm/registered_at_utc`; `results/v70-distill-confirm/develop.json#/development_structure`; `results/v70-distill-confirm/develop.json#/points`; `results/v70-distill-confirm/freeze.json#/inputs_sha256/results~1v70-distill-confirm~1develop.json`; `results/v70-distill-confirm/freeze.json#/confirmation_register/students/0`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`; `results/v70-distill-confirm/develop.json#/development_structure/n_points`
+- Cell (6, 0): `results/v70-distill-confirm/freeze.json#/confirmation_register/unused_U_assertion`; `results/v70-distill-confirm/freeze.json#/frozen_at_utc`; `results/v47-p2-register/register.json#/v5_confirm/registered_at_utc`; `results/v70-distill-confirm/freeze.json#/confirmation_register/students/0`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
+- Cell (6, 1): `results/v70-distill-confirm/freeze.json#/selected`; `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/selected/math/method`; `results/v70-distill-confirm/freeze.json#/selected/code/method`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`
+- Cell (6, 2): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`
+- Cell (6, 3): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`
+- Cell (6, 4): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`
+- Cell (6, 5): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/0/baseline_mae`
+- Cell (6, 6): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/1/baseline_mae`
+- Cell (6, 7): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`
+- Cell (7, 0): `results/v70-distill-confirm/freeze.json#/confirmation_register/unused_U_assertion`; `results/v70-distill-confirm/freeze.json#/frozen_at_utc`; `results/v47-p2-register/register.json#/v5_confirm/registered_at_utc`; `results/v70-distill-confirm/freeze.json#/confirmation_register/students/1`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
+- Cell (7, 1): `results/v70-distill-confirm/freeze.json#/selected`; `results/v70-distill-confirm/freeze.json#/models`; `results/v70-distill-confirm/freeze.json#/selected/math/method`; `results/v70-distill-confirm/freeze.json#/selected/code/method`; `results/v70-distill-confirm/freeze.json#/selected/qa/method`
+- Cell (7, 2): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`
+- Cell (7, 3): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`
+- Cell (7, 4): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
+- Cell (7, 5): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/3/baseline_mae`
+- Cell (7, 6): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/4/baseline_mae`
+- Cell (7, 7): `results/v86-main-table/summary.json#/main_rows/4/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered`; `results/v86-main-table/summary.json#/main_rows/5/delivered_timing`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered`; `results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered`; `results/v70-distill-confirm/freeze.json#/baseline_rule`; `results/v70-distill-confirm/freeze.json#/strongest_baseline`; `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
 
 ## Machine-readable cell recipes
 
@@ -152,7 +100,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
         ],
         "op": "label",
         "format": null,
-        "label": "Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85",
+        "label": "Pruning",
         "expected": [
           "pythia-410m@step48000",
           [
@@ -174,7 +122,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
           ]
         ]
       },
-      "; ",
+      ", $n=",
       {
         "sources": [
           "results/v53-prune-dev/register.json#/n_dev_rows",
@@ -183,19 +131,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
         "op": "per_capability",
         "format": null
       },
-      " measurements",
-      "; ",
-      {
-        "sources": [
-          "results/v86-main-table/summary.json#/main_rows/0/delivered_timing"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Retrospective",
-        "expected": [
-          "fixed after test; reused frozen in Sec. 5"
-        ]
-      }
+      "$"
     ],
     "context": [
       "results/v53-prune-dev/register.json#/selected_candidate",
@@ -203,24 +139,58 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
       "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities",
       "results/v53-prune-dev/register.json#/dev_states"
     ],
-    "note": "All three test checkpoints are absent from every development fit. The 6.9B size occurs at other stages in the expanded register. 252 recorded scalar rows / three capability models = 84 state-density configurations per capability; cross-checked against dev_states[*].densities. This is the V53 17-state fit, not A9/A11's 36-cell panel. Dense anchors excluded.",
+    "note": "",
     "compact_scores": "",
-    "rendered": "\\multicolumn{6}{@{}>{\\raggedright\\arraybackslash}p{\\dimexpr\\textwidth-0pt\\relax}@{}}{\\textit{Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85; 84 measurements; Retrospective}}",
-    "column_span": 6
+    "rendered": "\\multicolumn{8}{@{}l@{}}{\\textit{Pruning, $n=84$}}",
+    "column_span": 8
   },
   {
     "table": "tab:main-prediction-v2",
     "row": 1,
     "column": 0,
     "parts": [
-      "Mathematics"
+      {
+        "sources": [
+          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
+          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities",
+          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag",
+          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities",
+          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag",
+          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Three new checkpoints",
+        "expected": [
+          "pythia-410m@step48000",
+          [
+            0.85,
+            0.675,
+            0.575
+          ],
+          "pythia-1.4b@step112000",
+          [
+            0.85,
+            0.675,
+            0.575
+          ],
+          "pythia-6.9b@step80000",
+          [
+            0.85,
+            0.675,
+            0.575
+          ]
+        ]
+      }
     ],
     "context": [
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered"
+      "results/v53-prune-dev/register.json#/selected_candidate",
+      "results/v53-prune-dev/register.json#/dev_states",
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities"
     ],
-    "note": "",
+    "note": "All three test checkpoints are absent from every development fit. The 6.9B size occurs at other stages in the expanded register.",
     "compact_scores": "",
-    "rendered": "Mathematics"
+    "rendered": "Three new checkpoints"
   },
   {
     "table": "tab:main-prediction-v2",
@@ -229,25 +199,35 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
     "parts": [
       {
         "sources": [
-          "results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered"
+          "results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered",
+          "results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered",
+          "results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered"
         ],
         "op": "label",
         "format": null,
-        "label": "Source-free median density curve",
+        "label": "Median density curve",
         "expected": [
+          "median_curve",
+          "median_curve",
           "median_curve"
+        ]
+      },
+      {
+        "sources": [
+          "results/v86-main-table/summary.json#/main_rows/0/delivered_timing"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "$^{\\dagger}$",
+        "expected": [
+          "fixed after test; reused frozen in Sec. 5"
         ]
       }
     ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/0/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered"
-    ],
+    "context": [],
     "note": "New-state source-free median curve, fixed after test; scores use the same three checkpoints and densities as the frozen candidate.",
     "compact_scores": "",
-    "rendered": "Source-free median density curve"
+    "rendered": "Median density curve$^{\\dagger}$"
   },
   {
     "table": "tab:main-prediction-v2",
@@ -281,22 +261,23 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
     "parts": [
       {
         "sources": [
-          "results/v53-prune-dev/register.json#/loso_table/2/candidate"
+          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code",
+          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code",
+          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code"
         ],
-        "op": "label",
-        "format": null,
-        "label": "Per-density regression",
-        "expected": [
-          "A2"
-        ]
+        "op": "mean",
+        "format": ".3f"
       }
     ],
     "context": [
-      "results/v53-prune-dev/register.json#/loso_table"
+      "results/v86-main-table/summary.json#/main_rows/0/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered"
     ],
-    "note": "Minimum development LOSO MAE excluding power, per capability: per-density regression / per-density regression / development median; no test ranking.",
+    "note": "New-state source-free median curve, fixed after test; scores use the same three checkpoints and densities as the frozen candidate.",
     "compact_scores": "",
-    "rendered": "Per-density regression"
+    "rendered": "0.214"
   },
   {
     "table": "tab:main-prediction-v2",
@@ -305,20 +286,23 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
     "parts": [
       {
         "sources": [
-          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math",
-          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math",
-          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math"
+          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa",
+          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa",
+          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa"
         ],
         "op": "mean",
         "format": ".3f"
       }
     ],
     "context": [
-      "results/v53-prune-dev/register.json#/loso_table"
+      "results/v86-main-table/summary.json#/main_rows/0/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered"
     ],
-    "note": "Minimum development LOSO MAE excluding power, per capability: per-density regression / per-density regression / development median; no test ranking.",
+    "note": "New-state source-free median curve, fixed after test; scores use the same three checkpoints and densities as the frozen candidate.",
     "compact_scores": "",
-    "rendered": "0.230"
+    "rendered": "0.221"
   },
   {
     "table": "tab:main-prediction-v2",
@@ -371,120 +355,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 2,
-    "column": 0,
-    "parts": [
-      "Code"
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered"
-    ],
-    "note": "",
-    "compact_scores": "",
-    "rendered": "Code"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 2,
-    "column": 1,
-    "parts": [
-      {
-        "sources": [
-          "results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Source-free median density curve",
-        "expected": [
-          "median_curve"
-        ]
-      }
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/0/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered"
-    ],
-    "note": "New-state source-free median curve, fixed after test; scores use the same three checkpoints and densities as the frozen candidate.",
-    "compact_scores": "",
-    "rendered": "Source-free median density curve"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 2,
-    "column": 2,
-    "parts": [
-      {
-        "sources": [
-          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code",
-          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code",
-          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code"
-        ],
-        "op": "mean",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/0/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered"
-    ],
-    "note": "New-state source-free median curve, fixed after test; scores use the same three checkpoints and densities as the frozen candidate.",
-    "compact_scores": "",
-    "rendered": "0.214"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 2,
-    "column": 3,
-    "parts": [
-      {
-        "sources": [
-          "results/v53-prune-dev/register.json#/loso_table/2/candidate"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Per-density regression",
-        "expected": [
-          "A2"
-        ]
-      }
-    ],
-    "context": [
-      "results/v53-prune-dev/register.json#/loso_table"
-    ],
-    "note": "Minimum development LOSO MAE excluding power, per capability: per-density regression / per-density regression / development median; no test ranking.",
-    "compact_scores": "",
-    "rendered": "Per-density regression"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 2,
-    "column": 4,
-    "parts": [
-      {
-        "sources": [
-          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code",
-          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code",
-          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code"
-        ],
-        "op": "mean",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v53-prune-dev/register.json#/loso_table"
-    ],
-    "note": "Minimum development LOSO MAE excluding power, per capability: per-density regression / per-density regression / development median; no test ranking.",
-    "compact_scores": "",
-    "rendered": "0.222"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 2,
-    "column": 5,
+    "row": 1,
+    "column": 6,
     "parts": [
       {
         "sources": [
@@ -532,120 +404,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 3,
-    "column": 0,
-    "parts": [
-      "Question answering"
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered"
-    ],
-    "note": "",
-    "compact_scores": "",
-    "rendered": "Question answering"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 3,
-    "column": 1,
-    "parts": [
-      {
-        "sources": [
-          "results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Source-free median density curve",
-        "expected": [
-          "median_curve"
-        ]
-      }
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/0/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered"
-    ],
-    "note": "New-state source-free median curve, fixed after test; scores use the same three checkpoints and densities as the frozen candidate.",
-    "compact_scores": "",
-    "rendered": "Source-free median density curve"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 3,
-    "column": 2,
-    "parts": [
-      {
-        "sources": [
-          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa",
-          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa",
-          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa"
-        ],
-        "op": "mean",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/0/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/0/capabilities/qa/delivered"
-    ],
-    "note": "New-state source-free median curve, fixed after test; scores use the same three checkpoints and densities as the frozen candidate.",
-    "compact_scores": "",
-    "rendered": "0.221"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 3,
-    "column": 3,
-    "parts": [
-      {
-        "sources": [
-          "results/v53-prune-dev/register.json#/loso_table/5/candidate"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Development median",
-        "expected": [
-          "median_curve"
-        ]
-      }
-    ],
-    "context": [
-      "results/v53-prune-dev/register.json#/loso_table"
-    ],
-    "note": "Minimum development LOSO MAE excluding power, per capability: per-density regression / per-density regression / development median; no test ranking.",
-    "compact_scores": "",
-    "rendered": "Development median"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 3,
-    "column": 4,
-    "parts": [
-      {
-        "sources": [
-          "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa",
-          "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa",
-          "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa"
-        ],
-        "op": "mean",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v53-prune-dev/register.json#/loso_table"
-    ],
-    "note": "Minimum development LOSO MAE excluding power, per capability: per-density regression / per-density regression / development median; no test ranking.",
-    "compact_scores": "",
-    "rendered": "0.221"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 3,
-    "column": 5,
+    "row": 1,
+    "column": 7,
     "parts": [
       {
         "sources": [
@@ -693,7 +453,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 4,
+    "row": 2,
     "column": 0,
     "parts": [
       {
@@ -709,7 +469,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
         ],
         "op": "label",
         "format": null,
-        "label": "Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5",
+        "label": "Quantization",
         "expected": [
           "pythia-410m@step143000",
           "b3_g32",
@@ -721,7 +481,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
           "pythia-1.4b@step16000"
         ]
       },
-      "; ",
+      ", $n=",
       {
         "sources": [
           "results/v69-quant-confirm/develop.json#/n_dev_cells"
@@ -729,19 +489,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
         "op": "identity",
         "format": null
       },
-      " measurements",
-      "; ",
-      {
-        "sources": [
-          "results/v86-main-table/summary.json#/main_rows/2/delivered_timing"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Retrospective",
-        "expected": [
-          "fixed after test"
-        ]
-      }
+      "$"
     ],
     "context": [
       "results/v69-quant-confirm/freeze.json#/frozen_at_utc",
@@ -785,56 +533,125 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
       "results/v69-quant-confirm/develop.json#/dev_configs",
       "results/v69-quant-confirm/develop.json#/selection_rule"
     ],
-    "note": " Recorded configuration count; six states times nine configurations per capability. Includes development selection of QA's zero rule, which fits no coefficients. The same development panel supports both tests; counts are not additive.",
-    "compact_scores": "",
-    "rendered": "\\multicolumn{6}{@{}>{\\raggedright\\arraybackslash}p{\\dimexpr\\textwidth-0pt\\relax}@{}}{\\textit{Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5; 54 measurements; Retrospective}}",
-    "column_span": 6
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 5,
-    "column": 0,
-    "parts": [
-      "Mathematics"
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered"
-    ],
     "note": "",
     "compact_scores": "",
-    "rendered": "Mathematics"
+    "rendered": "\\multicolumn{8}{@{}l@{}}{\\textit{Quantization, $n=54$}}",
+    "column_span": 8
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 5,
-    "column": 1,
+    "row": 3,
+    "column": 0,
     "parts": [
       {
         "sources": [
-          "results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered"
+          "results/v69-quant-confirm/compare.json#/rows/0/state",
+          "results/v69-quant-confirm/compare.json#/rows/0/config",
+          "results/v69-quant-confirm/compare.json#/rows/3/config",
+          "results/v69-quant-confirm/compare.json#/rows/6/config",
+          "results/v69-quant-confirm/compare.json#/rows/9/config",
+          "results/v69-quant-confirm/compare.json#/rows/12/config",
+          "results/v69-quant-confirm/compare.json#/rows/15/config",
+          "results/v69-quant-confirm/compare.json#/rows/18/state"
         ],
         "op": "label",
         "format": null,
-        "label": "Interpolation",
+        "label": "Group sizes 32 and 512",
         "expected": [
-          "same_input_interpolation"
+          "pythia-410m@step143000",
+          "b3_g32",
+          "b3_g512",
+          "b4_g32",
+          "b4_g512",
+          "b5_g32",
+          "b5_g512",
+          "pythia-1.4b@step16000"
         ]
       }
     ],
     "context": [
-      "results/v86-main-table/summary.json#/main_rows/2/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered",
-      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
+      "results/v69-quant-confirm/freeze.json#/frozen_at_utc",
+      "results/v69-quant-confirm/compare.json#/rows/0/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/1/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/2/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/3/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/4/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/5/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/6/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/7/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/8/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/9/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/10/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/11/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/12/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/13/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/14/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/15/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/16/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/17/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/18/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/19/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/20/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/21/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/22/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/23/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/24/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/25/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/26/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/27/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/28/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/29/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/30/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/31/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/32/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/33/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/34/test_set",
+      "results/v69-quant-confirm/compare.json#/rows/35/test_set"
     ],
-    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
+    "note": "",
     "compact_scores": "",
-    "rendered": "Interpolation"
+    "rendered": "Group sizes 32 and 512"
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 5,
+    "row": 3,
+    "column": 1,
+    "parts": [
+      {
+        "sources": [
+          "results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered",
+          "results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered",
+          "results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Interpolation; median for QA",
+        "expected": [
+          "same_input_interpolation",
+          "same_input_interpolation",
+          "median"
+        ]
+      },
+      {
+        "sources": [
+          "results/v86-main-table/summary.json#/main_rows/2/delivered_timing"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "$^{\\dagger}$",
+        "expected": [
+          "fixed after test"
+        ]
+      }
+    ],
+    "context": [],
+    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
+    "compact_scores": "",
+    "rendered": "Interpolation; median for QA$^{\\dagger}$"
+  },
+  {
+    "table": "tab:main-prediction-v2",
+    "row": 3,
     "column": 2,
     "parts": [
       {
@@ -858,64 +675,55 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 5,
+    "row": 3,
     "column": 3,
     "parts": [
       {
         "sources": [
-          "results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Bilinear regression",
-        "expected": [
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.18035555432620828,
-              "pythia-1.4b@step16000": 0.4042579843558109,
-              "pythia-160m@step143000": 3.3985412467109986,
-              "pythia-160m@step16000": 0.43688672544116214,
-              "pythia-410m@step143000": 0.37784637907436774,
-              "pythia-410m@step16000": 0.2598977837534169
-            },
-            "macro_mae": 0.8429642789436608,
-            "mae": 0.8429642789436608
-          }
-        ]
-      }
-    ],
-    "context": [
-      "results/v69-quant-confirm/develop.json#/loso/scores"
-    ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
-    "compact_scores": "",
-    "rendered": "Bilinear regression"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 5,
-    "column": 4,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae"
+          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae"
         ],
         "op": "identity",
         "format": ".3f"
       }
     ],
     "context": [
-      "results/v69-quant-confirm/develop.json#/loso/scores"
+      "results/v86-main-table/summary.json#/main_rows/2/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered",
+      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
     ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
+    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
     "compact_scores": "",
-    "rendered": "0.333"
+    "rendered": "0.116"
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 5,
+    "row": 3,
+    "column": 4,
+    "parts": [
+      {
+        "sources": [
+          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae"
+        ],
+        "op": "identity",
+        "format": ".3f"
+      }
+    ],
+    "context": [
+      "results/v86-main-table/summary.json#/main_rows/2/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered",
+      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
+    ],
+    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
+    "compact_scores": "",
+    "rendered": "0.458"
+  },
+  {
+    "table": "tab:main-prediction-v2",
+    "row": 3,
     "column": 5,
     "parts": [
       {
@@ -957,131 +765,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 6,
-    "column": 0,
-    "parts": [
-      "Code"
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered"
-    ],
-    "note": "",
-    "compact_scores": "",
-    "rendered": "Code"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 6,
-    "column": 1,
-    "parts": [
-      {
-        "sources": [
-          "results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Interpolation",
-        "expected": [
-          "same_input_interpolation"
-        ]
-      }
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/2/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered",
-      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
-    ],
-    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
-    "compact_scores": "",
-    "rendered": "Interpolation"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 6,
-    "column": 2,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae"
-        ],
-        "op": "identity",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/2/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered",
-      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
-    ],
-    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
-    "compact_scores": "",
-    "rendered": "0.116"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 6,
-    "column": 3,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/loso/scores/zero/code"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "No change",
-        "expected": [
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.5143543829067956,
-              "pythia-1.4b@step16000": 0.10937458732799844,
-              "pythia-160m@step143000": 6.2735256054723605,
-              "pythia-160m@step16000": 0.3426432136914666,
-              "pythia-410m@step143000": 1.110008451522595,
-              "pythia-410m@step16000": 0.19481419855795895
-            },
-            "macro_mae": 1.4241200732465291,
-            "mae": 1.4241200732465291
-          }
-        ]
-      }
-    ],
-    "context": [
-      "results/v69-quant-confirm/develop.json#/loso/scores"
-    ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
-    "compact_scores": "",
-    "rendered": "No change"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 6,
-    "column": 4,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae"
-        ],
-        "op": "identity",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v69-quant-confirm/develop.json#/loso/scores"
-    ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
-    "compact_scores": "",
-    "rendered": "0.678"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 6,
-    "column": 5,
+    "row": 3,
+    "column": 6,
     "parts": [
       {
         "sources": [
@@ -1122,131 +807,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 7,
-    "column": 0,
-    "parts": [
-      "Question answering"
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered"
-    ],
-    "note": "",
-    "compact_scores": "",
-    "rendered": "Question answering"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 7,
-    "column": 1,
-    "parts": [
-      {
-        "sources": [
-          "results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Development median",
-        "expected": [
-          "median"
-        ]
-      }
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/2/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered",
-      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
-    ],
-    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
-    "compact_scores": "",
-    "rendered": "Development median"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 7,
-    "column": 2,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae"
-        ],
-        "op": "identity",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/2/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/2/capabilities/qa/delivered",
-      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
-    ],
-    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
-    "compact_scores": "",
-    "rendered": "0.458"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 7,
-    "column": 3,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/loso/scores/median/qa"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Development median",
-        "expected": [
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.16258053443177,
-              "pythia-1.4b@step16000": 0.2355005016899031,
-              "pythia-160m@step143000": 6.541049456062526,
-              "pythia-160m@step16000": 0.09769750739332464,
-              "pythia-410m@step143000": 0.7294274133924797,
-              "pythia-410m@step16000": 0.15231569497253902
-            },
-            "macro_mae": 1.319761851323757,
-            "mae": 1.3197618513237568
-          }
-        ]
-      }
-    ],
-    "context": [
-      "results/v69-quant-confirm/develop.json#/loso/scores"
-    ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
-    "compact_scores": "",
-    "rendered": "Development median"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 7,
-    "column": 4,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae"
-        ],
-        "op": "identity",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v69-quant-confirm/develop.json#/loso/scores"
-    ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
-    "compact_scores": "",
-    "rendered": "0.458"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 7,
-    "column": 5,
+    "row": 3,
+    "column": 7,
     "parts": [
       {
         "sources": [
@@ -1287,7 +849,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 8,
+    "row": 4,
     "column": 0,
     "parts": [
       {
@@ -1305,7 +867,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
         ],
         "op": "label",
         "format": null,
-        "label": "An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512",
+        "label": "A new 1.4 billion stage",
         "expected": [
           "pythia-1.4b@step112000",
           "b3_g32",
@@ -1317,27 +879,6 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
           "b3_g128",
           "b4_g128",
           "b5_g128"
-        ]
-      },
-      "; ",
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/n_dev_cells"
-        ],
-        "op": "identity",
-        "format": null
-      },
-      " measurements",
-      "; ",
-      {
-        "sources": [
-          "results/v86-main-table/summary.json#/main_rows/3/delivered_timing"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Retrospective",
-        "expected": [
-          "fixed after test"
         ]
       }
     ],
@@ -1369,61 +910,52 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
       "results/v69-quant-confirm/compare.json#/rows/59/test_set",
       "results/v69-quant-confirm/compare.json#/rows/60/test_set",
       "results/v69-quant-confirm/compare.json#/rows/61/test_set",
-      "results/v69-quant-confirm/compare.json#/rows/62/test_set",
-      "results/v69-quant-confirm/develop.json#/dev_states",
-      "results/v69-quant-confirm/develop.json#/dev_configs",
-      "results/v69-quant-confirm/develop.json#/selection_rule"
-    ],
-    "note": " Recorded configuration count; six states times nine configurations per capability. Includes development selection of QA's zero rule, which fits no coefficients. The same development panel supports both tests; counts are not additive.",
-    "compact_scores": "",
-    "rendered": "\\multicolumn{6}{@{}>{\\raggedright\\arraybackslash}p{\\dimexpr\\textwidth-0pt\\relax}@{}}{\\textit{An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512; 54 measurements; Retrospective}}",
-    "column_span": 6
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 9,
-    "column": 0,
-    "parts": [
-      "Mathematics"
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered"
+      "results/v69-quant-confirm/compare.json#/rows/62/test_set"
     ],
     "note": "",
     "compact_scores": "",
-    "rendered": "Mathematics"
+    "rendered": "A new 1.4 billion stage"
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 9,
+    "row": 4,
     "column": 1,
     "parts": [
       {
         "sources": [
-          "results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered"
+          "results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered",
+          "results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered",
+          "results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered"
         ],
         "op": "label",
         "format": null,
         "label": "Development median",
         "expected": [
+          "median",
+          "median",
           "median"
+        ]
+      },
+      {
+        "sources": [
+          "results/v86-main-table/summary.json#/main_rows/3/delivered_timing"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "$^{\\dagger}$",
+        "expected": [
+          "fixed after test"
         ]
       }
     ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/3/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered",
-      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
-    ],
+    "context": [],
     "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
     "compact_scores": "",
-    "rendered": "Development median"
+    "rendered": "Development median$^{\\dagger}$"
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 9,
+    "row": 4,
     "column": 2,
     "parts": [
       {
@@ -1450,67 +982,61 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 9,
+    "row": 4,
     "column": 3,
     "parts": [
       {
         "sources": [
-          "results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Bilinear regression",
-        "expected": [
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.18035555432620828,
-              "pythia-1.4b@step16000": 0.4042579843558109,
-              "pythia-160m@step143000": 3.3985412467109986,
-              "pythia-160m@step16000": 0.43688672544116214,
-              "pythia-410m@step143000": 0.37784637907436774,
-              "pythia-410m@step16000": 0.2598977837534169
-            },
-            "macro_mae": 0.8429642789436608,
-            "mae": 0.8429642789436608
-          }
-        ]
-      }
-    ],
-    "context": [
-      "results/v69-quant-confirm/develop.json#/loso/scores"
-    ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
-    "compact_scores": "",
-    "rendered": "Bilinear regression"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 9,
-    "column": 4,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n"
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n"
         ],
         "op": "weighted_mean",
         "format": ".3f"
       }
     ],
     "context": [
-      "results/v69-quant-confirm/develop.json#/loso/scores"
+      "results/v86-main-table/summary.json#/main_rows/3/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered",
+      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
     ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
+    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
     "compact_scores": "",
-    "rendered": "0.350"
+    "rendered": "0.153"
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 9,
+    "row": 4,
+    "column": 4,
+    "parts": [
+      {
+        "sources": [
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae",
+          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n"
+        ],
+        "op": "weighted_mean",
+        "format": ".3f"
+      }
+    ],
+    "context": [
+      "results/v86-main-table/summary.json#/main_rows/3/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered",
+      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
+    ],
+    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
+    "compact_scores": "",
+    "rendered": "0.141"
+  },
+  {
+    "table": "tab:main-prediction-v2",
+    "row": 4,
     "column": 5,
     "parts": [
       {
@@ -1564,137 +1090,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 10,
-    "column": 0,
-    "parts": [
-      "Code"
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered"
-    ],
-    "note": "",
-    "compact_scores": "",
-    "rendered": "Code"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 10,
-    "column": 1,
-    "parts": [
-      {
-        "sources": [
-          "results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Development median",
-        "expected": [
-          "median"
-        ]
-      }
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/3/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered",
-      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
-    ],
-    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
-    "compact_scores": "",
-    "rendered": "Development median"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 10,
-    "column": 2,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n"
-        ],
-        "op": "weighted_mean",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/3/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered",
-      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
-    ],
-    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
-    "compact_scores": "",
-    "rendered": "0.153"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 10,
-    "column": 3,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/loso/scores/zero/code"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "No change",
-        "expected": [
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.5143543829067956,
-              "pythia-1.4b@step16000": 0.10937458732799844,
-              "pythia-160m@step143000": 6.2735256054723605,
-              "pythia-160m@step16000": 0.3426432136914666,
-              "pythia-410m@step143000": 1.110008451522595,
-              "pythia-410m@step16000": 0.19481419855795895
-            },
-            "macro_mae": 1.4241200732465291,
-            "mae": 1.4241200732465291
-          }
-        ]
-      }
-    ],
-    "context": [
-      "results/v69-quant-confirm/develop.json#/loso/scores"
-    ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
-    "compact_scores": "",
-    "rendered": "No change"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 10,
-    "column": 4,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n"
-        ],
-        "op": "weighted_mean",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v69-quant-confirm/develop.json#/loso/scores"
-    ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
-    "compact_scores": "",
-    "rendered": "0.563"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 10,
-    "column": 5,
+    "row": 4,
+    "column": 6,
     "parts": [
       {
         "sources": [
@@ -1747,137 +1144,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 11,
-    "column": 0,
-    "parts": [
-      "Question answering"
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered"
-    ],
-    "note": "",
-    "compact_scores": "",
-    "rendered": "Question answering"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 11,
-    "column": 1,
-    "parts": [
-      {
-        "sources": [
-          "results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Development median",
-        "expected": [
-          "median"
-        ]
-      }
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/3/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered",
-      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
-    ],
-    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
-    "compact_scores": "",
-    "rendered": "Development median"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 11,
-    "column": 2,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n"
-        ],
-        "op": "weighted_mean",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/3/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/3/capabilities/qa/delivered",
-      "results/v74-quant-threeway/quant_threeway.json#/recommendation_rule"
-    ],
-    "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
-    "compact_scores": "",
-    "rendered": "0.141"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 11,
-    "column": 3,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/develop.json#/loso/scores/median/qa"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Development median",
-        "expected": [
-          {
-            "n": 54,
-            "n_states": 6,
-            "state_mae": {
-              "pythia-1.4b@step143000": 0.16258053443177,
-              "pythia-1.4b@step16000": 0.2355005016899031,
-              "pythia-160m@step143000": 6.541049456062526,
-              "pythia-160m@step16000": 0.09769750739332464,
-              "pythia-410m@step143000": 0.7294274133924797,
-              "pythia-410m@step16000": 0.15231569497253902
-            },
-            "macro_mae": 1.319761851323757,
-            "mae": 1.3197618513237568
-          }
-        ]
-      }
-    ],
-    "context": [
-      "results/v69-quant-confirm/develop.json#/loso/scores"
-    ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
-    "compact_scores": "",
-    "rendered": "Development median"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 11,
-    "column": 4,
-    "parts": [
-      {
-        "sources": [
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae",
-          "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n"
-        ],
-        "op": "weighted_mean",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v69-quant-confirm/develop.json#/loso/scores"
-    ],
-    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
-    "compact_scores": "",
-    "rendered": "0.141"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 11,
-    "column": 5,
+    "row": 4,
+    "column": 7,
     "parts": [
       {
         "sources": [
@@ -1930,7 +1198,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 12,
+    "row": 5,
     "column": 0,
     "parts": [
       {
@@ -1941,7 +1209,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
         ],
         "op": "label",
         "format": null,
-        "label": "Gemma 270 million distilled on six new pools at 50 to 200 thousand tokens",
+        "label": "Distillation",
         "expected": [
           "gemma3-270m",
           {
@@ -2271,7 +1539,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
           ]
         ]
       },
-      "; ",
+      ", $n=",
       {
         "sources": [
           "results/v70-distill-confirm/develop.json#/development_structure/n_points"
@@ -2279,7 +1547,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
         "op": "identity",
         "format": null
       },
-      " measurements"
+      "$"
     ],
     "context": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/unused_U_assertion",
@@ -2289,39 +1557,382 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
       "results/v70-distill-confirm/develop.json#/points",
       "results/v70-distill-confirm/freeze.json#/inputs_sha256/results~1v70-distill-confirm~1develop.json"
     ],
-    "note": " 100 registered checkpoints (25 trajectories times four) per capability, pooled across development students for the shared fit; not 100 per test student. The freeze authenticates develop.json; dense anchors excluded.",
+    "note": "",
     "compact_scores": "",
-    "rendered": "\\multicolumn{6}{@{}>{\\raggedright\\arraybackslash}p{\\dimexpr\\textwidth-0pt\\relax}@{}}{\\textit{Gemma 270 million distilled on six new pools at 50 to 200 thousand tokens; 100 measurements}}",
-    "column_span": 6
+    "rendered": "\\multicolumn{8}{@{}l@{}}{\\textit{Distillation, $n=100$}}",
+    "column_span": 8
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 13,
+    "row": 6,
     "column": 0,
     "parts": [
-      "Mathematics"
+      {
+        "sources": [
+          "results/v70-distill-confirm/freeze.json#/confirmation_register/students/0",
+          "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
+          "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Six new pools, 270 million student",
+        "expected": [
+          "gemma3-270m",
+          {
+            "U200_s31": {
+              "U": 200,
+              "data_seed": 31,
+              "role": "confirmation",
+              "n_examples": 597,
+              "n_training_examples": 597,
+              "pool_processed_tokens": 179688,
+              "D_U_completion": 52958,
+              "completion_processed_ratio": 0.2947219625128,
+              "domain_counts": {
+                "code": 198,
+                "qa": 199,
+                "math": 200
+              },
+              "id_set_sha256": "248cea90980ec9e921a9d8b2869cfbd558ab6910ba5509996f56d1486d5100a7",
+              "data_pool_sha256": "111a5a9e84816cb050c3f7ce921eda2d06cc2581bb22075e1a486714e7801a8e",
+              "source_counts": {
+                "math": {
+                  "source_rows": 200,
+                  "training_rows": 200,
+                  "coverage_deleted_rows": 0
+                },
+                "qa": {
+                  "source_rows": 200,
+                  "training_rows": 199,
+                  "coverage_deleted_rows": 1
+                },
+                "code": {
+                  "source_rows": 200,
+                  "training_rows": 198,
+                  "coverage_deleted_rows": 2
+                }
+              },
+              "planned_milestones": [
+                {
+                  "planned_T_completion": 50000,
+                  "trigger_processed": 169652,
+                  "E_completion_convention": 0.9441444163299219
+                },
+                {
+                  "planned_T_completion": 100000,
+                  "trigger_processed": 339303,
+                  "E_completion_convention": 1.8882888326598437
+                },
+                {
+                  "planned_T_completion": 200000,
+                  "trigger_processed": 678606,
+                  "E_completion_convention": 3.7765776653196874
+                }
+              ],
+              "schedule_updates": 212,
+              "planned_epochs": 6
+            },
+            "U200_s32": {
+              "U": 200,
+              "data_seed": 32,
+              "role": "confirmation",
+              "n_examples": 594,
+              "n_training_examples": 594,
+              "pool_processed_tokens": 176885,
+              "D_U_completion": 52964,
+              "completion_processed_ratio": 0.299426180851966,
+              "domain_counts": {
+                "code": 199,
+                "math": 200,
+                "qa": 195
+              },
+              "id_set_sha256": "d7361b13114591e3e246acc73ac57650c5694929659ca7c898a88955c99327bc",
+              "data_pool_sha256": "babaee54e739cf5878333cad113ce15a3ddb331f6f133f1a360ae1d22d8e94e3",
+              "source_counts": {
+                "math": {
+                  "source_rows": 200,
+                  "training_rows": 200,
+                  "coverage_deleted_rows": 0
+                },
+                "qa": {
+                  "source_rows": 200,
+                  "training_rows": 195,
+                  "coverage_deleted_rows": 5
+                },
+                "code": {
+                  "source_rows": 200,
+                  "training_rows": 199,
+                  "coverage_deleted_rows": 1
+                }
+              },
+              "planned_milestones": [
+                {
+                  "planned_T_completion": 50000,
+                  "trigger_processed": 166987,
+                  "E_completion_convention": 0.9440374594063893
+                },
+                {
+                  "planned_T_completion": 100000,
+                  "trigger_processed": 333973,
+                  "E_completion_convention": 1.8880749188127786
+                },
+                {
+                  "planned_T_completion": 200000,
+                  "trigger_processed": 667945,
+                  "E_completion_convention": 3.776149837625557
+                }
+              ],
+              "schedule_updates": 215,
+              "planned_epochs": 6
+            },
+            "U200_s33": {
+              "U": 200,
+              "data_seed": 33,
+              "role": "confirmation",
+              "n_examples": 595,
+              "n_training_examples": 595,
+              "pool_processed_tokens": 176898,
+              "D_U_completion": 51800,
+              "completion_processed_ratio": 0.292824113330846,
+              "domain_counts": {
+                "code": 198,
+                "math": 200,
+                "qa": 197
+              },
+              "id_set_sha256": "0f2c000781217cd4e671ab4f776cdf4d24405c23ed5c4d080e7c2e158aa38add",
+              "data_pool_sha256": "9080a1f0baed5031f2095ff583da9fe720bd341ff79874c51576c266f99cceb0",
+              "source_counts": {
+                "math": {
+                  "source_rows": 200,
+                  "training_rows": 200,
+                  "coverage_deleted_rows": 0
+                },
+                "qa": {
+                  "source_rows": 200,
+                  "training_rows": 197,
+                  "coverage_deleted_rows": 3
+                },
+                "code": {
+                  "source_rows": 200,
+                  "training_rows": 198,
+                  "coverage_deleted_rows": 2
+                }
+              },
+              "planned_milestones": [
+                {
+                  "planned_T_completion": 50000,
+                  "trigger_processed": 170751,
+                  "E_completion_convention": 0.9652509652509652
+                },
+                {
+                  "planned_T_completion": 100000,
+                  "trigger_processed": 341502,
+                  "E_completion_convention": 1.9305019305019304
+                },
+                {
+                  "planned_T_completion": 200000,
+                  "trigger_processed": 683004,
+                  "E_completion_convention": 3.861003861003861
+                }
+              ],
+              "schedule_updates": 215,
+              "planned_epochs": 6
+            },
+            "U200_s34": {
+              "U": 200,
+              "data_seed": 34,
+              "role": "confirmation",
+              "n_examples": 592,
+              "n_training_examples": 592,
+              "pool_processed_tokens": 178516,
+              "D_U_completion": 53528,
+              "completion_processed_ratio": 0.29984987340070357,
+              "domain_counts": {
+                "code": 195,
+                "qa": 197,
+                "math": 200
+              },
+              "id_set_sha256": "576e944e2480472b1f1a0676f7c4a16e79c4eb13ee608a33460bde406ece69ba",
+              "data_pool_sha256": "d19eb5f62d1f8015b7811f2e52f24efcfb597f41ca00c3cdad1f914ec96050ac",
+              "source_counts": {
+                "math": {
+                  "source_rows": 200,
+                  "training_rows": 200,
+                  "coverage_deleted_rows": 0
+                },
+                "qa": {
+                  "source_rows": 200,
+                  "training_rows": 197,
+                  "coverage_deleted_rows": 3
+                },
+                "code": {
+                  "source_rows": 200,
+                  "training_rows": 195,
+                  "coverage_deleted_rows": 5
+                }
+              },
+              "planned_milestones": [
+                {
+                  "planned_T_completion": 50000,
+                  "trigger_processed": 166751,
+                  "E_completion_convention": 0.9340905694216112
+                },
+                {
+                  "planned_T_completion": 100000,
+                  "trigger_processed": 333501,
+                  "E_completion_convention": 1.8681811388432223
+                },
+                {
+                  "planned_T_completion": 200000,
+                  "trigger_processed": 667001,
+                  "E_completion_convention": 3.7363622776864447
+                }
+              ],
+              "schedule_updates": 208,
+              "planned_epochs": 6
+            },
+            "U200_s35": {
+              "U": 200,
+              "data_seed": 35,
+              "role": "confirmation",
+              "n_examples": 592,
+              "n_training_examples": 592,
+              "pool_processed_tokens": 178670,
+              "D_U_completion": 53332,
+              "completion_processed_ratio": 0.2984944310740471,
+              "domain_counts": {
+                "code": 195,
+                "qa": 197,
+                "math": 200
+              },
+              "id_set_sha256": "193e60a043f4a126fe14b75a2aae18b07e919a3e89cba039fb1ad03c6a18db7d",
+              "data_pool_sha256": "01742c467573d627517885096f6a984e76f97d76e66460d6874fd2c96154f801",
+              "source_counts": {
+                "math": {
+                  "source_rows": 200,
+                  "training_rows": 200,
+                  "coverage_deleted_rows": 0
+                },
+                "qa": {
+                  "source_rows": 200,
+                  "training_rows": 197,
+                  "coverage_deleted_rows": 3
+                },
+                "code": {
+                  "source_rows": 200,
+                  "training_rows": 195,
+                  "coverage_deleted_rows": 5
+                }
+              },
+              "planned_milestones": [
+                {
+                  "planned_T_completion": 50000,
+                  "trigger_processed": 167508,
+                  "E_completion_convention": 0.9375234380859522
+                },
+                {
+                  "planned_T_completion": 100000,
+                  "trigger_processed": 335015,
+                  "E_completion_convention": 1.8750468761719044
+                },
+                {
+                  "planned_T_completion": 200000,
+                  "trigger_processed": 670030,
+                  "E_completion_convention": 3.7500937523438087
+                }
+              ],
+              "schedule_updates": 208,
+              "planned_epochs": 6
+            },
+            "U200_s36": {
+              "U": 200,
+              "data_seed": 36,
+              "role": "confirmation",
+              "n_examples": 592,
+              "n_training_examples": 592,
+              "pool_processed_tokens": 178194,
+              "D_U_completion": 53411,
+              "completion_processed_ratio": 0.2997351201499489,
+              "domain_counts": {
+                "code": 198,
+                "qa": 194,
+                "math": 200
+              },
+              "id_set_sha256": "a7448d221b5d68cf287b65959825d9f2d8d7d0cf93ad787d8bffd2cdff16771e",
+              "data_pool_sha256": "c5eca315c67c25841f15d7ca701c7b12a81d28c2b2635b3864c8b748b2cda0b1",
+              "source_counts": {
+                "math": {
+                  "source_rows": 200,
+                  "training_rows": 200,
+                  "coverage_deleted_rows": 0
+                },
+                "qa": {
+                  "source_rows": 200,
+                  "training_rows": 194,
+                  "coverage_deleted_rows": 6
+                },
+                "code": {
+                  "source_rows": 200,
+                  "training_rows": 198,
+                  "coverage_deleted_rows": 2
+                }
+              },
+              "planned_milestones": [
+                {
+                  "planned_T_completion": 50000,
+                  "trigger_processed": 166814,
+                  "E_completion_convention": 0.9361367508565651
+                },
+                {
+                  "planned_T_completion": 100000,
+                  "trigger_processed": 333628,
+                  "E_completion_convention": 1.8722735017131302
+                },
+                {
+                  "planned_T_completion": 200000,
+                  "trigger_processed": 667256,
+                  "E_completion_convention": 3.7445470034262605
+                }
+              ],
+              "schedule_updates": 208,
+              "planned_epochs": 6
+            }
+          },
+          [
+            50000,
+            100000,
+            200000
+          ]
+        ]
+      }
     ],
     "context": [
-      "results/v70-distill-confirm/freeze.json#/selected/math/method"
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/unused_U_assertion",
+      "results/v70-distill-confirm/freeze.json#/frozen_at_utc",
+      "results/v47-p2-register/register.json#/v5_confirm/registered_at_utc"
     ],
     "note": "",
     "compact_scores": "",
-    "rendered": "Mathematics"
+    "rendered": "Six new pools, 270 million student"
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 13,
+    "row": 6,
     "column": 1,
     "parts": [
       {
         "sources": [
-          "results/v70-distill-confirm/freeze.json#/selected/math/method"
+          "results/v70-distill-confirm/freeze.json#/selected/math/method",
+          "results/v70-distill-confirm/freeze.json#/selected/code/method",
+          "results/v70-distill-confirm/freeze.json#/selected/qa/method"
         ],
         "op": "label",
         "format": null,
-        "label": "Reuse form",
+        "label": "Reuse; budget and pool for QA",
         "expected": [
-          "E"
+          "E",
+          "E",
+          "joint"
         ]
       }
     ],
@@ -2331,11 +1942,11 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
     ],
     "note": "The frozen and delivered forms are identical: one-coefficient zero-anchored reuse for Math/Code, joint budget/pool for QA; fixed before test.",
     "compact_scores": "",
-    "rendered": "Reuse form"
+    "rendered": "Reuse; budget and pool for QA"
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 13,
+    "row": 6,
     "column": 2,
     "parts": [
       {
@@ -2362,53 +1973,61 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 13,
+    "row": 6,
     "column": 3,
     "parts": [
       {
         "sources": [
-          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/math/method"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Budget regression",
-        "expected": [
-          "T-only"
-        ]
-      }
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/baseline_rule",
-      "results/v70-distill-confirm/freeze.json#/strongest_baseline"
-    ],
-    "note": "Development-fixed baseline identities for this student: budget regression / reuse regression / reuse regression.",
-    "compact_scores": "",
-    "rendered": "Budget regression"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 13,
-    "column": 4,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/0/baseline_mae"
+          "results/v70-distill-confirm/compare.json#/groups/1/candidate_mae"
         ],
         "op": "identity",
         "format": ".3f"
       }
     ],
     "context": [
-      "results/v70-distill-confirm/freeze.json#/baseline_rule",
-      "results/v70-distill-confirm/freeze.json#/strongest_baseline"
+      "results/v86-main-table/summary.json#/main_rows/4/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered",
+      "results/v86-main-table/summary.json#/main_rows/5/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered"
     ],
-    "note": "Development-fixed baseline identities for this student: budget regression / reuse regression / reuse regression.",
+    "note": "Same candidate, same cells; repeat the stored MAEs without the candidate-versus-baseline intervals.",
     "compact_scores": "",
-    "rendered": "0.065"
+    "rendered": "0.019"
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 13,
+    "row": 6,
+    "column": 4,
+    "parts": [
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/2/candidate_mae"
+        ],
+        "op": "identity",
+        "format": ".3f"
+      }
+    ],
+    "context": [
+      "results/v86-main-table/summary.json#/main_rows/4/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered",
+      "results/v86-main-table/summary.json#/main_rows/5/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered"
+    ],
+    "note": "Same candidate, same cells; repeat the stored MAEs without the candidate-versus-baseline intervals.",
+    "compact_scores": "",
+    "rendered": "0.515"
+  },
+  {
+    "table": "tab:main-prediction-v2",
+    "row": 6,
     "column": 5,
     "parts": [
       {
@@ -2454,120 +2073,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 14,
-    "column": 0,
-    "parts": [
-      "Code"
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/selected/code/method"
-    ],
-    "note": "",
-    "compact_scores": "",
-    "rendered": "Code"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 14,
-    "column": 1,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/freeze.json#/selected/code/method"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Reuse form",
-        "expected": [
-          "E"
-        ]
-      }
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/selected",
-      "results/v70-distill-confirm/freeze.json#/models"
-    ],
-    "note": "The frozen and delivered forms are identical: one-coefficient zero-anchored reuse for Math/Code, joint budget/pool for QA; fixed before test.",
-    "compact_scores": "",
-    "rendered": "Reuse form"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 14,
-    "column": 2,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/1/candidate_mae"
-        ],
-        "op": "identity",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/4/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered",
-      "results/v86-main-table/summary.json#/main_rows/5/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered"
-    ],
-    "note": "Same candidate, same cells; repeat the stored MAEs without the candidate-versus-baseline intervals.",
-    "compact_scores": "",
-    "rendered": "0.019"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 14,
-    "column": 3,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/code/method"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Reuse regression",
-        "expected": [
-          "E-only"
-        ]
-      }
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/baseline_rule",
-      "results/v70-distill-confirm/freeze.json#/strongest_baseline"
-    ],
-    "note": "Development-fixed baseline identities for this student: budget regression / reuse regression / reuse regression.",
-    "compact_scores": "",
-    "rendered": "Reuse regression"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 14,
-    "column": 4,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/1/baseline_mae"
-        ],
-        "op": "identity",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/baseline_rule",
-      "results/v70-distill-confirm/freeze.json#/strongest_baseline"
-    ],
-    "note": "Development-fixed baseline identities for this student: budget regression / reuse regression / reuse regression.",
-    "compact_scores": "",
-    "rendered": "0.023"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 14,
-    "column": 5,
+    "row": 6,
+    "column": 6,
     "parts": [
       {
         "sources": [
@@ -2612,120 +2119,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 15,
-    "column": 0,
-    "parts": [
-      "Question answering"
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/selected/qa/method"
-    ],
-    "note": "",
-    "compact_scores": "",
-    "rendered": "Question answering"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 15,
-    "column": 1,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/freeze.json#/selected/qa/method"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Budget and pool form",
-        "expected": [
-          "joint"
-        ]
-      }
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/selected",
-      "results/v70-distill-confirm/freeze.json#/models"
-    ],
-    "note": "The frozen and delivered forms are identical: one-coefficient zero-anchored reuse for Math/Code, joint budget/pool for QA; fixed before test.",
-    "compact_scores": "",
-    "rendered": "Budget and pool form"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 15,
-    "column": 2,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/2/candidate_mae"
-        ],
-        "op": "identity",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/4/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered",
-      "results/v86-main-table/summary.json#/main_rows/5/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered"
-    ],
-    "note": "Same candidate, same cells; repeat the stored MAEs without the candidate-versus-baseline intervals.",
-    "compact_scores": "",
-    "rendered": "0.515"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 15,
-    "column": 3,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/qa/method"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Reuse regression",
-        "expected": [
-          "E-only"
-        ]
-      }
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/baseline_rule",
-      "results/v70-distill-confirm/freeze.json#/strongest_baseline"
-    ],
-    "note": "Development-fixed baseline identities for this student: budget regression / reuse regression / reuse regression.",
-    "compact_scores": "",
-    "rendered": "Reuse regression"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 15,
-    "column": 4,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/2/baseline_mae"
-        ],
-        "op": "identity",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/baseline_rule",
-      "results/v70-distill-confirm/freeze.json#/strongest_baseline"
-    ],
-    "note": "Development-fixed baseline identities for this student: budget regression / reuse regression / reuse regression.",
-    "compact_scores": "",
-    "rendered": "0.610"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 15,
-    "column": 5,
+    "row": 6,
+    "column": 7,
     "parts": [
       {
         "sources": [
@@ -2770,7 +2165,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 16,
+    "row": 7,
     "column": 0,
     "parts": [
       {
@@ -2781,7 +2176,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
         ],
         "op": "label",
         "format": null,
-        "label": "Gemma 1 billion distilled on six new pools at 50 to 200 thousand tokens",
+        "label": "Six new pools, 1 billion student",
         "expected": [
           "gemma3-1b",
           {
@@ -3110,58 +2505,35 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
             200000
           ]
         ]
-      },
-      "; ",
-      {
-        "sources": [
-          "results/v70-distill-confirm/develop.json#/development_structure/n_points"
-        ],
-        "op": "identity",
-        "format": null
-      },
-      " measurements"
+      }
     ],
     "context": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/unused_U_assertion",
       "results/v70-distill-confirm/freeze.json#/frozen_at_utc",
-      "results/v47-p2-register/register.json#/v5_confirm/registered_at_utc",
-      "results/v70-distill-confirm/develop.json#/development_structure",
-      "results/v70-distill-confirm/develop.json#/points",
-      "results/v70-distill-confirm/freeze.json#/inputs_sha256/results~1v70-distill-confirm~1develop.json"
-    ],
-    "note": " 100 registered checkpoints (25 trajectories times four) per capability, pooled across development students for the shared fit; not 100 per test student. The freeze authenticates develop.json; dense anchors excluded.",
-    "compact_scores": "",
-    "rendered": "\\multicolumn{6}{@{}>{\\raggedright\\arraybackslash}p{\\dimexpr\\textwidth-0pt\\relax}@{}}{\\textit{Gemma 1 billion distilled on six new pools at 50 to 200 thousand tokens; 100 measurements}}",
-    "column_span": 6
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 17,
-    "column": 0,
-    "parts": [
-      "Mathematics"
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/selected/math/method"
+      "results/v47-p2-register/register.json#/v5_confirm/registered_at_utc"
     ],
     "note": "",
     "compact_scores": "",
-    "rendered": "Mathematics"
+    "rendered": "Six new pools, 1 billion student"
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 17,
+    "row": 7,
     "column": 1,
     "parts": [
       {
         "sources": [
-          "results/v70-distill-confirm/freeze.json#/selected/math/method"
+          "results/v70-distill-confirm/freeze.json#/selected/math/method",
+          "results/v70-distill-confirm/freeze.json#/selected/code/method",
+          "results/v70-distill-confirm/freeze.json#/selected/qa/method"
         ],
         "op": "label",
         "format": null,
-        "label": "Reuse form",
+        "label": "Reuse; budget and pool for QA",
         "expected": [
-          "E"
+          "E",
+          "E",
+          "joint"
         ]
       }
     ],
@@ -3171,11 +2543,11 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
     ],
     "note": "The frozen and delivered forms are identical: one-coefficient zero-anchored reuse for Math/Code, joint budget/pool for QA; fixed before test.",
     "compact_scores": "",
-    "rendered": "Reuse form"
+    "rendered": "Reuse; budget and pool for QA"
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 17,
+    "row": 7,
     "column": 2,
     "parts": [
       {
@@ -3202,53 +2574,61 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 17,
+    "row": 7,
     "column": 3,
     "parts": [
       {
         "sources": [
-          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/math/method"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Loss regression",
-        "expected": [
-          "surface:L0"
-        ]
-      }
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/baseline_rule",
-      "results/v70-distill-confirm/freeze.json#/strongest_baseline"
-    ],
-    "note": "Development-fixed baseline identities for this student: loss regression / reuse regression / size regression.",
-    "compact_scores": "",
-    "rendered": "Loss regression"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 17,
-    "column": 4,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/3/baseline_mae"
+          "results/v70-distill-confirm/compare.json#/groups/4/candidate_mae"
         ],
         "op": "identity",
         "format": ".3f"
       }
     ],
     "context": [
-      "results/v70-distill-confirm/freeze.json#/baseline_rule",
-      "results/v70-distill-confirm/freeze.json#/strongest_baseline"
+      "results/v86-main-table/summary.json#/main_rows/4/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered",
+      "results/v86-main-table/summary.json#/main_rows/5/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered"
     ],
-    "note": "Development-fixed baseline identities for this student: loss regression / reuse regression / size regression.",
+    "note": "Same candidate, same cells; repeat the stored MAEs without the candidate-versus-baseline intervals.",
     "compact_scores": "",
-    "rendered": "0.033"
+    "rendered": "0.049"
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 17,
+    "row": 7,
+    "column": 4,
+    "parts": [
+      {
+        "sources": [
+          "results/v70-distill-confirm/compare.json#/groups/5/candidate_mae"
+        ],
+        "op": "identity",
+        "format": ".3f"
+      }
+    ],
+    "context": [
+      "results/v86-main-table/summary.json#/main_rows/4/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered",
+      "results/v86-main-table/summary.json#/main_rows/5/delivered_timing",
+      "results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered",
+      "results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered",
+      "results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered"
+    ],
+    "note": "Same candidate, same cells; repeat the stored MAEs without the candidate-versus-baseline intervals.",
+    "compact_scores": "",
+    "rendered": "0.463"
+  },
+  {
+    "table": "tab:main-prediction-v2",
+    "row": 7,
     "column": 5,
     "parts": [
       {
@@ -3294,120 +2674,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 18,
-    "column": 0,
-    "parts": [
-      "Code"
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/selected/code/method"
-    ],
-    "note": "",
-    "compact_scores": "",
-    "rendered": "Code"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 18,
-    "column": 1,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/freeze.json#/selected/code/method"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Reuse form",
-        "expected": [
-          "E"
-        ]
-      }
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/selected",
-      "results/v70-distill-confirm/freeze.json#/models"
-    ],
-    "note": "The frozen and delivered forms are identical: one-coefficient zero-anchored reuse for Math/Code, joint budget/pool for QA; fixed before test.",
-    "compact_scores": "",
-    "rendered": "Reuse form"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 18,
-    "column": 2,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/4/candidate_mae"
-        ],
-        "op": "identity",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/4/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered",
-      "results/v86-main-table/summary.json#/main_rows/5/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered"
-    ],
-    "note": "Same candidate, same cells; repeat the stored MAEs without the candidate-versus-baseline intervals.",
-    "compact_scores": "",
-    "rendered": "0.049"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 18,
-    "column": 3,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/code/method"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Reuse regression",
-        "expected": [
-          "E-only"
-        ]
-      }
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/baseline_rule",
-      "results/v70-distill-confirm/freeze.json#/strongest_baseline"
-    ],
-    "note": "Development-fixed baseline identities for this student: loss regression / reuse regression / size regression.",
-    "compact_scores": "",
-    "rendered": "Reuse regression"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 18,
-    "column": 4,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/4/baseline_mae"
-        ],
-        "op": "identity",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/baseline_rule",
-      "results/v70-distill-confirm/freeze.json#/strongest_baseline"
-    ],
-    "note": "Development-fixed baseline identities for this student: loss regression / reuse regression / size regression.",
-    "compact_scores": "",
-    "rendered": "0.053"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 18,
-    "column": 5,
+    "row": 7,
+    "column": 6,
     "parts": [
       {
         "sources": [
@@ -3452,120 +2720,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 19,
-    "column": 0,
-    "parts": [
-      "Question answering"
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/selected/qa/method"
-    ],
-    "note": "",
-    "compact_scores": "",
-    "rendered": "Question answering"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 19,
-    "column": 1,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/freeze.json#/selected/qa/method"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Budget and pool form",
-        "expected": [
-          "joint"
-        ]
-      }
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/selected",
-      "results/v70-distill-confirm/freeze.json#/models"
-    ],
-    "note": "The frozen and delivered forms are identical: one-coefficient zero-anchored reuse for Math/Code, joint budget/pool for QA; fixed before test.",
-    "compact_scores": "",
-    "rendered": "Budget and pool form"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 19,
-    "column": 2,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/5/candidate_mae"
-        ],
-        "op": "identity",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v86-main-table/summary.json#/main_rows/4/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/4/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/4/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/4/capabilities/qa/delivered",
-      "results/v86-main-table/summary.json#/main_rows/5/delivered_timing",
-      "results/v86-main-table/summary.json#/main_rows/5/capabilities/math/delivered",
-      "results/v86-main-table/summary.json#/main_rows/5/capabilities/code/delivered",
-      "results/v86-main-table/summary.json#/main_rows/5/capabilities/qa/delivered"
-    ],
-    "note": "Same candidate, same cells; repeat the stored MAEs without the candidate-versus-baseline intervals.",
-    "compact_scores": "",
-    "rendered": "0.463"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 19,
-    "column": 3,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/qa/method"
-        ],
-        "op": "label",
-        "format": null,
-        "label": "Size regression",
-        "expected": [
-          "surface:logN"
-        ]
-      }
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/baseline_rule",
-      "results/v70-distill-confirm/freeze.json#/strongest_baseline"
-    ],
-    "note": "Development-fixed baseline identities for this student: loss regression / reuse regression / size regression.",
-    "compact_scores": "",
-    "rendered": "Size regression"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 19,
-    "column": 4,
-    "parts": [
-      {
-        "sources": [
-          "results/v70-distill-confirm/compare.json#/groups/5/baseline_mae"
-        ],
-        "op": "identity",
-        "format": ".3f"
-      }
-    ],
-    "context": [
-      "results/v70-distill-confirm/freeze.json#/baseline_rule",
-      "results/v70-distill-confirm/freeze.json#/strongest_baseline"
-    ],
-    "note": "Development-fixed baseline identities for this student: loss regression / reuse regression / size regression.",
-    "compact_scores": "",
-    "rendered": "0.450"
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 19,
-    "column": 5,
+    "row": 7,
+    "column": 7,
     "parts": [
       {
         "sources": [
@@ -3617,22 +2773,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
 {
   "table": "tab:main-prediction-v2",
   "parts": [
-    "Delivered relations versus baselines at equal budget, by capability. Errors are mean absolute errors in nats per token; improvement is baseline minus delivered. Group lines give the task, development configuration measurements per capability, and Retrospective for a relation chosen after seeing the result. The baseline was chosen inside the development folds and scored on the same cells. Distillation students: ",
-    {
-      "sources": [
-        "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
-      ],
-      "op": "label",
-      "format": null,
-      "label": "270 million and 1 billion",
-      "expected": [
-        [
-          "gemma3-270m",
-          "gemma3-1b"
-        ]
-      ]
-    },
-    ". Appendix Table~\\ref{tab:main-prediction-candidates} lists each task's pre-specified candidate; Fig.~\\ref{fig:generalization} compares each row with its baseline."
+    "Prediction at equal development budget. Test: configurations or states unseen by the relation. Delivered relation: predictor recommended on all evidence; a dagger marks selection after seeing test results. Error: test mean absolute error in nats per token, per capability (QA: question answering). Gain: strongest development baseline error minus delivered error; positive favours the delivered relation. Baselines are chosen inside the development folds and scored on the same cells. $n$, on each method line: development configuration measurements per capability. Appendix Table~\\ref{tab:main-prediction-candidates} names baselines and pre-specified candidates; Fig.~\\ref{fig:generalization} compares each row with its baseline."
   ],
   "context": [
     "results/v53-prune-dev/register.json#/feature_names",
@@ -3644,7 +2785,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   ],
   "note": "",
   "compact_scores": "",
-  "rendered": "Delivered relations versus baselines at equal budget, by capability. Errors are mean absolute errors in nats per token; improvement is baseline minus delivered. Group lines give the task, development configuration measurements per capability, and Retrospective for a relation chosen after seeing the result. The baseline was chosen inside the development folds and scored on the same cells. Distillation students: 270 million and 1 billion. Appendix Table~\\ref{tab:main-prediction-candidates} lists each task's pre-specified candidate; Fig.~\\ref{fig:generalization} compares each row with its baseline."
+  "rendered": "Prediction at equal development budget. Test: configurations or states unseen by the relation. Delivered relation: predictor recommended on all evidence; a dagger marks selection after seeing test results. Error: test mean absolute error in nats per token, per capability (QA: question answering). Gain: strongest development baseline error minus delivered error; positive favours the delivered relation. Baselines are chosen inside the development folds and scored on the same cells. $n$, on each method line: development configuration measurements per capability. Appendix Table~\\ref{tab:main-prediction-candidates} names baselines and pre-specified candidates; Fig.~\\ref{fig:generalization} compares each row with its baseline."
 }
 ```
 
@@ -3807,6 +2948,34 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
     "note": "New-state source-free median curve, fixed after test; scores use the same three checkpoints and densities as the frozen candidate.",
     "compact_scores": "",
     "rendered": "Source-free median density curve\\newline Retrospective"
+  },
+  {
+    "table": "tab:main-prediction-candidates",
+    "row": 0,
+    "column": 4,
+    "parts": [
+      {
+        "sources": [
+          "results/v53-prune-dev/register.json#/loso_table/2/candidate",
+          "results/v53-prune-dev/register.json#/loso_table/2/candidate",
+          "results/v53-prune-dev/register.json#/loso_table/5/candidate"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Per-density regression; median for QA",
+        "expected": [
+          "A2",
+          "A2",
+          "median_curve"
+        ]
+      }
+    ],
+    "context": [
+      "results/v53-prune-dev/register.json#/loso_table"
+    ],
+    "note": "Minimum development LOSO MAE excluding power, per capability: per-density regression / per-density regression / development median; no test ranking.",
+    "compact_scores": "",
+    "rendered": "Per-density regression; median for QA"
   },
   {
     "table": "tab:main-prediction-candidates",
@@ -3988,6 +3157,73 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
     "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
     "compact_scores": "",
     "rendered": "Interpolate math and code; use the median for question answering\\newline Retrospective"
+  },
+  {
+    "table": "tab:main-prediction-candidates",
+    "row": 1,
+    "column": 4,
+    "parts": [
+      {
+        "sources": [
+          "results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math",
+          "results/v69-quant-confirm/develop.json#/loso/scores/zero/code",
+          "results/v69-quant-confirm/develop.json#/loso/scores/median/qa"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Bilinear regression; no change; median",
+        "expected": [
+          {
+            "n": 54,
+            "n_states": 6,
+            "state_mae": {
+              "pythia-1.4b@step143000": 0.18035555432620828,
+              "pythia-1.4b@step16000": 0.4042579843558109,
+              "pythia-160m@step143000": 3.3985412467109986,
+              "pythia-160m@step16000": 0.43688672544116214,
+              "pythia-410m@step143000": 0.37784637907436774,
+              "pythia-410m@step16000": 0.2598977837534169
+            },
+            "macro_mae": 0.8429642789436608,
+            "mae": 0.8429642789436608
+          },
+          {
+            "n": 54,
+            "n_states": 6,
+            "state_mae": {
+              "pythia-1.4b@step143000": 0.5143543829067956,
+              "pythia-1.4b@step16000": 0.10937458732799844,
+              "pythia-160m@step143000": 6.2735256054723605,
+              "pythia-160m@step16000": 0.3426432136914666,
+              "pythia-410m@step143000": 1.110008451522595,
+              "pythia-410m@step16000": 0.19481419855795895
+            },
+            "macro_mae": 1.4241200732465291,
+            "mae": 1.4241200732465291
+          },
+          {
+            "n": 54,
+            "n_states": 6,
+            "state_mae": {
+              "pythia-1.4b@step143000": 0.16258053443177,
+              "pythia-1.4b@step16000": 0.2355005016899031,
+              "pythia-160m@step143000": 6.541049456062526,
+              "pythia-160m@step16000": 0.09769750739332464,
+              "pythia-410m@step143000": 0.7294274133924797,
+              "pythia-410m@step16000": 0.15231569497253902
+            },
+            "macro_mae": 1.319761851323757,
+            "mae": 1.3197618513237568
+          }
+        ]
+      }
+    ],
+    "context": [
+      "results/v69-quant-confirm/develop.json#/loso/scores"
+    ],
+    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
+    "compact_scores": "",
+    "rendered": "Bilinear regression; no change; median"
   },
   {
     "table": "tab:main-prediction-candidates",
@@ -4173,6 +3409,73 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
     "note": "Post-test rule on the identical frozen cells, never a test-error minimum. New-state errors pool boundary and interior cells equally per cell.",
     "compact_scores": "",
     "rendered": "Development median\\newline Retrospective"
+  },
+  {
+    "table": "tab:main-prediction-candidates",
+    "row": 2,
+    "column": 4,
+    "parts": [
+      {
+        "sources": [
+          "results/v69-quant-confirm/develop.json#/loso/scores/bilinear/math",
+          "results/v69-quant-confirm/develop.json#/loso/scores/zero/code",
+          "results/v69-quant-confirm/develop.json#/loso/scores/median/qa"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Bilinear regression; no change; median",
+        "expected": [
+          {
+            "n": 54,
+            "n_states": 6,
+            "state_mae": {
+              "pythia-1.4b@step143000": 0.18035555432620828,
+              "pythia-1.4b@step16000": 0.4042579843558109,
+              "pythia-160m@step143000": 3.3985412467109986,
+              "pythia-160m@step16000": 0.43688672544116214,
+              "pythia-410m@step143000": 0.37784637907436774,
+              "pythia-410m@step16000": 0.2598977837534169
+            },
+            "macro_mae": 0.8429642789436608,
+            "mae": 0.8429642789436608
+          },
+          {
+            "n": 54,
+            "n_states": 6,
+            "state_mae": {
+              "pythia-1.4b@step143000": 0.5143543829067956,
+              "pythia-1.4b@step16000": 0.10937458732799844,
+              "pythia-160m@step143000": 6.2735256054723605,
+              "pythia-160m@step16000": 0.3426432136914666,
+              "pythia-410m@step143000": 1.110008451522595,
+              "pythia-410m@step16000": 0.19481419855795895
+            },
+            "macro_mae": 1.4241200732465291,
+            "mae": 1.4241200732465291
+          },
+          {
+            "n": 54,
+            "n_states": 6,
+            "state_mae": {
+              "pythia-1.4b@step143000": 0.16258053443177,
+              "pythia-1.4b@step16000": 0.2355005016899031,
+              "pythia-160m@step143000": 6.541049456062526,
+              "pythia-160m@step16000": 0.09769750739332464,
+              "pythia-410m@step143000": 0.7294274133924797,
+              "pythia-410m@step16000": 0.15231569497253902
+            },
+            "macro_mae": 1.319761851323757,
+            "mae": 1.3197618513237568
+          }
+        ]
+      }
+    ],
+    "context": [
+      "results/v69-quant-confirm/develop.json#/loso/scores"
+    ],
+    "note": "Minimum development LOSO macro MAE excluding the selected candidate, per capability: bilinear regression / no change / development median.",
+    "compact_scores": "",
+    "rendered": "Bilinear regression; no change; median"
   },
   {
     "table": "tab:main-prediction-candidates",
@@ -4636,6 +3939,35 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-candidates",
+    "row": 3,
+    "column": 4,
+    "parts": [
+      {
+        "sources": [
+          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/math/method",
+          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/code/method",
+          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-270m/qa/method"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Budget regression; reuse regression for Code and QA",
+        "expected": [
+          "T-only",
+          "E-only",
+          "E-only"
+        ]
+      }
+    ],
+    "context": [
+      "results/v70-distill-confirm/freeze.json#/baseline_rule",
+      "results/v70-distill-confirm/freeze.json#/strongest_baseline"
+    ],
+    "note": "Development-fixed baseline identities for this student: budget regression / reuse regression / reuse regression.",
+    "compact_scores": "",
+    "rendered": "Budget regression; reuse regression for Code and QA"
+  },
+  {
+    "table": "tab:main-prediction-candidates",
     "row": 4,
     "column": 0,
     "parts": [
@@ -5093,6 +4425,35 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
     "note": "The frozen and delivered forms are identical: one-coefficient zero-anchored reuse for Math/Code, joint budget/pool for QA; fixed before test.",
     "compact_scores": "",
     "rendered": "The same predictor"
+  },
+  {
+    "table": "tab:main-prediction-candidates",
+    "row": 4,
+    "column": 4,
+    "parts": [
+      {
+        "sources": [
+          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/math/method",
+          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/code/method",
+          "results/v70-distill-confirm/freeze.json#/strongest_baseline/gemma3-1b/qa/method"
+        ],
+        "op": "label",
+        "format": null,
+        "label": "Loss regression; reuse regression; size regression",
+        "expected": [
+          "surface:L0",
+          "E-only",
+          "surface:logN"
+        ]
+      }
+    ],
+    "context": [
+      "results/v70-distill-confirm/freeze.json#/baseline_rule",
+      "results/v70-distill-confirm/freeze.json#/strongest_baseline"
+    ],
+    "note": "Development-fixed baseline identities for this student: loss regression / reuse regression / size regression.",
+    "compact_scores": "",
+    "rendered": "Loss regression; reuse regression; size regression"
   }
 ]
 ```
@@ -5103,7 +4464,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
 {
   "table": "tab:main-prediction-candidates",
   "parts": [
-    "Pre-specified candidate of each prediction task in Table~\\ref{tab:main-prediction-v2}, its error on the same cells, and the relation delivered after the test. Errors are mean absolute errors in nats per token, in math, code and question answering order; the two distillation rows are the ",
+    "Pre-specified candidates for Table~\\ref{tab:main-prediction-v2}, their errors on the same cells, delivered relations, and strongest development baselines. Errors are mean absolute errors in nats per token; errors and baseline names follow math, code and question answering order unless qualified. The distillation rows are the ",
     {
       "sources": [
         "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
@@ -5130,87 +4491,53 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   ],
   "note": "",
   "compact_scores": "",
-  "rendered": "Pre-specified candidate of each prediction task in Table~\\ref{tab:main-prediction-v2}, its error on the same cells, and the relation delivered after the test. Errors are mean absolute errors in nats per token, in math, code and question answering order; the two distillation rows are the 270 million and 1 billion students."
+  "rendered": "Pre-specified candidates for Table~\\ref{tab:main-prediction-v2}, their errors on the same cells, delivered relations, and strongest development baselines. Errors are mean absolute errors in nats per token; errors and baseline names follow math, code and question answering order unless qualified. The distillation rows are the 270 million and 1 billion students."
 }
 ```
 
 ## Every printed number
 
-- tab:main-prediction-v2: Cell (0, 0), `Three` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
-- tab:main-prediction-v2: Cell (0, 0), `0.575` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
-- tab:main-prediction-v2: Cell (0, 0), `0.675` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
-- tab:main-prediction-v2: Cell (0, 0), `0.85` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
 - tab:main-prediction-v2: Cell (0, 0), `84` (per_capability): `results/v53-prune-dev/register.json#/n_dev_rows`; `results/v53-prune-dev/register.json#/models`
+- tab:main-prediction-v2: Cell (1, 0), `Three` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
 - tab:main-prediction-v2: Cell (1, 2), `0.277` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/math`
-- tab:main-prediction-v2: Cell (1, 4), `0.230` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math`
+- tab:main-prediction-v2: Cell (1, 3), `0.214` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code`
+- tab:main-prediction-v2: Cell (1, 4), `0.221` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
 - tab:main-prediction-v2: Cell (1, 5), `-0.047` (difference): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/math`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math`
-- tab:main-prediction-v2: Cell (2, 2), `0.214` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code`
-- tab:main-prediction-v2: Cell (2, 4), `0.222` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code`
-- tab:main-prediction-v2: Cell (2, 5), `+0.008` (difference): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code`
-- tab:main-prediction-v2: Cell (3, 2), `0.221` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
-- tab:main-prediction-v2: Cell (3, 4), `0.221` (mean): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
-- tab:main-prediction-v2: Cell (3, 5), `+0.000` (difference): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
-- tab:main-prediction-v2: Cell (4, 0), `410` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
-- tab:main-prediction-v2: Cell (4, 0), `1.4` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
-- tab:main-prediction-v2: Cell (4, 0), `32` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
-- tab:main-prediction-v2: Cell (4, 0), `512` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
-- tab:main-prediction-v2: Cell (4, 0), `3` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
-- tab:main-prediction-v2: Cell (4, 0), `5` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
-- tab:main-prediction-v2: Cell (4, 0), `54` (identity): `results/v69-quant-confirm/develop.json#/n_dev_cells`
-- tab:main-prediction-v2: Cell (5, 2), `0.065` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/math/mae`
-- tab:main-prediction-v2: Cell (5, 4), `0.333` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae`
-- tab:main-prediction-v2: Cell (5, 5), `+0.268` (difference): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae`
-- tab:main-prediction-v2: Cell (6, 2), `0.116` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae`
-- tab:main-prediction-v2: Cell (6, 4), `0.678` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae`
-- tab:main-prediction-v2: Cell (6, 5), `+0.562` (difference): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae`
-- tab:main-prediction-v2: Cell (7, 2), `0.458` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
-- tab:main-prediction-v2: Cell (7, 4), `0.458` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
-- tab:main-prediction-v2: Cell (7, 5), `+0.000` (difference): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
-- tab:main-prediction-v2: Cell (8, 0), `1.4` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
-- tab:main-prediction-v2: Cell (8, 0), `3` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
-- tab:main-prediction-v2: Cell (8, 0), `5` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
-- tab:main-prediction-v2: Cell (8, 0), `32` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
-- tab:main-prediction-v2: Cell (8, 0), `512` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
-- tab:main-prediction-v2: Cell (8, 0), `54` (identity): `results/v69-quant-confirm/develop.json#/n_dev_cells`
-- tab:main-prediction-v2: Cell (9, 2), `0.088` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/n`
-- tab:main-prediction-v2: Cell (9, 4), `0.350` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n`
-- tab:main-prediction-v2: Cell (9, 5), `+0.262` (difference): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n`
-- tab:main-prediction-v2: Cell (10, 2), `0.153` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`
-- tab:main-prediction-v2: Cell (10, 4), `0.563` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n`
-- tab:main-prediction-v2: Cell (10, 5), `+0.410` (difference): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n`
-- tab:main-prediction-v2: Cell (11, 2), `0.141` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
-- tab:main-prediction-v2: Cell (11, 4), `0.141` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
-- tab:main-prediction-v2: Cell (11, 5), `+0.000` (difference): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
-- tab:main-prediction-v2: Cell (12, 0), `270` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students/0`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
-- tab:main-prediction-v2: Cell (12, 0), `six` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students/0`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
-- tab:main-prediction-v2: Cell (12, 0), `50` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students/0`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
-- tab:main-prediction-v2: Cell (12, 0), `200` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students/0`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
-- tab:main-prediction-v2: Cell (12, 0), `100` (identity): `results/v70-distill-confirm/develop.json#/development_structure/n_points`
-- tab:main-prediction-v2: Cell (13, 2), `0.074` (identity): `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`
-- tab:main-prediction-v2: Cell (13, 4), `0.065` (identity): `results/v70-distill-confirm/compare.json#/groups/0/baseline_mae`
-- tab:main-prediction-v2: Cell (13, 5), `-0.009` (difference): `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/0/baseline_mae`
-- tab:main-prediction-v2: Cell (14, 2), `0.019` (identity): `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`
-- tab:main-prediction-v2: Cell (14, 4), `0.023` (identity): `results/v70-distill-confirm/compare.json#/groups/1/baseline_mae`
-- tab:main-prediction-v2: Cell (14, 5), `+0.004` (difference): `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/1/baseline_mae`
-- tab:main-prediction-v2: Cell (15, 2), `0.515` (identity): `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`
-- tab:main-prediction-v2: Cell (15, 4), `0.610` (identity): `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`
-- tab:main-prediction-v2: Cell (15, 5), `+0.095` (difference): `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`
-- tab:main-prediction-v2: Cell (16, 0), `1` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students/1`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
-- tab:main-prediction-v2: Cell (16, 0), `six` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students/1`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
-- tab:main-prediction-v2: Cell (16, 0), `50` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students/1`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
-- tab:main-prediction-v2: Cell (16, 0), `200` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students/1`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
-- tab:main-prediction-v2: Cell (16, 0), `100` (identity): `results/v70-distill-confirm/develop.json#/development_structure/n_points`
-- tab:main-prediction-v2: Cell (17, 2), `0.057` (identity): `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`
-- tab:main-prediction-v2: Cell (17, 4), `0.033` (identity): `results/v70-distill-confirm/compare.json#/groups/3/baseline_mae`
-- tab:main-prediction-v2: Cell (17, 5), `-0.023` (difference): `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/3/baseline_mae`
-- tab:main-prediction-v2: Cell (18, 2), `0.049` (identity): `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`
-- tab:main-prediction-v2: Cell (18, 4), `0.053` (identity): `results/v70-distill-confirm/compare.json#/groups/4/baseline_mae`
-- tab:main-prediction-v2: Cell (18, 5), `+0.005` (difference): `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/4/baseline_mae`
-- tab:main-prediction-v2: Cell (19, 2), `0.463` (identity): `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
-- tab:main-prediction-v2: Cell (19, 4), `0.450` (identity): `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
-- tab:main-prediction-v2: Cell (19, 5), `-0.013` (difference): `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
-- tab:main-prediction-v2: Caption, `270` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`
-- tab:main-prediction-v2: Caption, `1` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students`
+- tab:main-prediction-v2: Cell (1, 6), `+0.008` (difference): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code`
+- tab:main-prediction-v2: Cell (1, 7), `+0.000` (difference): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa`
+- tab:main-prediction-v2: Cell (2, 0), `54` (identity): `results/v69-quant-confirm/develop.json#/n_dev_cells`
+- tab:main-prediction-v2: Cell (3, 0), `32` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
+- tab:main-prediction-v2: Cell (3, 0), `512` (label): `results/v69-quant-confirm/compare.json#/rows/0/state`; `results/v69-quant-confirm/compare.json#/rows/0/config`; `results/v69-quant-confirm/compare.json#/rows/3/config`; `results/v69-quant-confirm/compare.json#/rows/6/config`; `results/v69-quant-confirm/compare.json#/rows/9/config`; `results/v69-quant-confirm/compare.json#/rows/12/config`; `results/v69-quant-confirm/compare.json#/rows/15/config`; `results/v69-quant-confirm/compare.json#/rows/18/state`
+- tab:main-prediction-v2: Cell (3, 2), `0.065` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/math/mae`
+- tab:main-prediction-v2: Cell (3, 3), `0.116` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae`
+- tab:main-prediction-v2: Cell (3, 4), `0.458` (identity): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
+- tab:main-prediction-v2: Cell (3, 5), `+0.268` (difference): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae`
+- tab:main-prediction-v2: Cell (3, 6), `+0.562` (difference): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae`
+- tab:main-prediction-v2: Cell (3, 7), `+0.000` (difference): `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae`
+- tab:main-prediction-v2: Cell (4, 0), `1.4` (label): `results/v69-quant-confirm/compare.json#/rows/36/state`; `results/v69-quant-confirm/compare.json#/rows/36/config`; `results/v69-quant-confirm/compare.json#/rows/39/config`; `results/v69-quant-confirm/compare.json#/rows/42/config`; `results/v69-quant-confirm/compare.json#/rows/45/config`; `results/v69-quant-confirm/compare.json#/rows/48/config`; `results/v69-quant-confirm/compare.json#/rows/51/config`; `results/v69-quant-confirm/compare.json#/rows/54/config`; `results/v69-quant-confirm/compare.json#/rows/57/config`; `results/v69-quant-confirm/compare.json#/rows/60/config`
+- tab:main-prediction-v2: Cell (4, 2), `0.088` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/n`
+- tab:main-prediction-v2: Cell (4, 3), `0.153` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`
+- tab:main-prediction-v2: Cell (4, 4), `0.141` (weighted_mean): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
+- tab:main-prediction-v2: Cell (4, 5), `+0.262` (difference): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n`
+- tab:main-prediction-v2: Cell (4, 6), `+0.410` (difference): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n`
+- tab:main-prediction-v2: Cell (4, 7), `+0.000` (difference): `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae`; `results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n`
+- tab:main-prediction-v2: Cell (5, 0), `100` (identity): `results/v70-distill-confirm/develop.json#/development_structure/n_points`
+- tab:main-prediction-v2: Cell (6, 0), `Six` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students/0`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
+- tab:main-prediction-v2: Cell (6, 0), `270` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students/0`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
+- tab:main-prediction-v2: Cell (6, 2), `0.074` (identity): `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`
+- tab:main-prediction-v2: Cell (6, 3), `0.019` (identity): `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`
+- tab:main-prediction-v2: Cell (6, 4), `0.515` (identity): `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`
+- tab:main-prediction-v2: Cell (6, 5), `-0.009` (difference): `results/v70-distill-confirm/compare.json#/groups/0/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/0/baseline_mae`
+- tab:main-prediction-v2: Cell (6, 6), `+0.004` (difference): `results/v70-distill-confirm/compare.json#/groups/1/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/1/baseline_mae`
+- tab:main-prediction-v2: Cell (6, 7), `+0.095` (difference): `results/v70-distill-confirm/compare.json#/groups/2/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/2/baseline_mae`
+- tab:main-prediction-v2: Cell (7, 0), `Six` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students/1`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
+- tab:main-prediction-v2: Cell (7, 0), `1` (label): `results/v70-distill-confirm/freeze.json#/confirmation_register/students/1`; `results/v70-distill-confirm/freeze.json#/confirmation_register/pools`; `results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned`
+- tab:main-prediction-v2: Cell (7, 2), `0.057` (identity): `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`
+- tab:main-prediction-v2: Cell (7, 3), `0.049` (identity): `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`
+- tab:main-prediction-v2: Cell (7, 4), `0.463` (identity): `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`
+- tab:main-prediction-v2: Cell (7, 5), `-0.023` (difference): `results/v70-distill-confirm/compare.json#/groups/3/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/3/baseline_mae`
+- tab:main-prediction-v2: Cell (7, 6), `+0.005` (difference): `results/v70-distill-confirm/compare.json#/groups/4/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/4/baseline_mae`
+- tab:main-prediction-v2: Cell (7, 7), `-0.013` (difference): `results/v70-distill-confirm/compare.json#/groups/5/candidate_mae`; `results/v70-distill-confirm/compare.json#/groups/5/baseline_mae`
 - tab:main-prediction-candidates: Cell (0, 0), `Three` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
 - tab:main-prediction-candidates: Cell (0, 0), `0.575` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
 - tab:main-prediction-candidates: Cell (0, 0), `0.675` (label): `results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag`; `results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag`; `results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag`; `results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities`
@@ -5261,74 +4588,6 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
     "table": "tab:main-prediction-v2",
     "row": 0,
     "column": 0,
-    "part": 0,
-    "number": "Three",
-    "displayed": "Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85",
-    "op": "label",
-    "sources": [
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities",
-      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag",
-      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 0,
-    "column": 0,
-    "part": 0,
-    "number": "0.575",
-    "displayed": "Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85",
-    "op": "label",
-    "sources": [
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities",
-      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag",
-      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 0,
-    "column": 0,
-    "part": 0,
-    "number": "0.675",
-    "displayed": "Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85",
-    "op": "label",
-    "sources": [
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities",
-      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag",
-      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 0,
-    "column": 0,
-    "part": 0,
-    "number": "0.85",
-    "displayed": "Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85",
-    "op": "label",
-    "sources": [
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities",
-      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag",
-      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 0,
-    "column": 0,
     "part": 2,
     "number": "84",
     "displayed": "84",
@@ -5336,6 +4595,23 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
     "sources": [
       "results/v53-prune-dev/register.json#/n_dev_rows",
       "results/v53-prune-dev/register.json#/models"
+    ]
+  },
+  {
+    "table": "tab:main-prediction-v2",
+    "row": 1,
+    "column": 0,
+    "part": 0,
+    "number": "Three",
+    "displayed": "Three new checkpoints",
+    "op": "label",
+    "sources": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/densities",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/densities",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/tag",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/densities"
     ]
   },
   {
@@ -5355,15 +4631,29 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   {
     "table": "tab:main-prediction-v2",
     "row": 1,
-    "column": 4,
+    "column": 3,
     "part": 0,
-    "number": "0.230",
-    "displayed": "0.230",
+    "number": "0.214",
+    "displayed": "0.214",
     "op": "mean",
     "sources": [
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/math",
-      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/math",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/math"
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code"
+    ]
+  },
+  {
+    "table": "tab:main-prediction-v2",
+    "row": 1,
+    "column": 4,
+    "part": 0,
+    "number": "0.221",
+    "displayed": "0.221",
+    "op": "mean",
+    "sources": [
+      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa",
+      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa",
+      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa"
     ]
   },
   {
@@ -5385,36 +4675,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 2,
-    "column": 2,
-    "part": 0,
-    "number": "0.214",
-    "displayed": "0.214",
-    "op": "mean",
-    "sources": [
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/code",
-      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/code",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/code"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 2,
-    "column": 4,
-    "part": 0,
-    "number": "0.222",
-    "displayed": "0.222",
-    "op": "mean",
-    "sources": [
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/A2/code",
-      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/A2/code",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/A2/code"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 2,
-    "column": 5,
+    "row": 1,
+    "column": 6,
     "part": 0,
     "number": "+0.008",
     "displayed": "+0.008",
@@ -5430,36 +4692,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 3,
-    "column": 2,
-    "part": 0,
-    "number": "0.221",
-    "displayed": "0.221",
-    "op": "mean",
-    "sources": [
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa",
-      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 3,
-    "column": 4,
-    "part": 0,
-    "number": "0.221",
-    "displayed": "0.221",
-    "op": "mean",
-    "sources": [
-      "results/v53-prune-dev/compare_pythia-410m@step48000.json#/mae/median_curve/qa",
-      "results/v53-prune-dev/compare_pythia-1.4b@step112000.json#/mae/median_curve/qa",
-      "results/v53-prune-dev/compare_pythia-6.9b@step80000.json#/mae/median_curve/qa"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 3,
-    "column": 5,
+    "row": 1,
+    "column": 7,
     "part": 0,
     "number": "+0.000",
     "displayed": "+0.000",
@@ -5475,121 +4709,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 4,
-    "column": 0,
-    "part": 0,
-    "number": "410",
-    "displayed": "Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5",
-    "op": "label",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/rows/0/state",
-      "results/v69-quant-confirm/compare.json#/rows/0/config",
-      "results/v69-quant-confirm/compare.json#/rows/3/config",
-      "results/v69-quant-confirm/compare.json#/rows/6/config",
-      "results/v69-quant-confirm/compare.json#/rows/9/config",
-      "results/v69-quant-confirm/compare.json#/rows/12/config",
-      "results/v69-quant-confirm/compare.json#/rows/15/config",
-      "results/v69-quant-confirm/compare.json#/rows/18/state"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 4,
-    "column": 0,
-    "part": 0,
-    "number": "1.4",
-    "displayed": "Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5",
-    "op": "label",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/rows/0/state",
-      "results/v69-quant-confirm/compare.json#/rows/0/config",
-      "results/v69-quant-confirm/compare.json#/rows/3/config",
-      "results/v69-quant-confirm/compare.json#/rows/6/config",
-      "results/v69-quant-confirm/compare.json#/rows/9/config",
-      "results/v69-quant-confirm/compare.json#/rows/12/config",
-      "results/v69-quant-confirm/compare.json#/rows/15/config",
-      "results/v69-quant-confirm/compare.json#/rows/18/state"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 4,
-    "column": 0,
-    "part": 0,
-    "number": "32",
-    "displayed": "Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5",
-    "op": "label",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/rows/0/state",
-      "results/v69-quant-confirm/compare.json#/rows/0/config",
-      "results/v69-quant-confirm/compare.json#/rows/3/config",
-      "results/v69-quant-confirm/compare.json#/rows/6/config",
-      "results/v69-quant-confirm/compare.json#/rows/9/config",
-      "results/v69-quant-confirm/compare.json#/rows/12/config",
-      "results/v69-quant-confirm/compare.json#/rows/15/config",
-      "results/v69-quant-confirm/compare.json#/rows/18/state"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 4,
-    "column": 0,
-    "part": 0,
-    "number": "512",
-    "displayed": "Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5",
-    "op": "label",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/rows/0/state",
-      "results/v69-quant-confirm/compare.json#/rows/0/config",
-      "results/v69-quant-confirm/compare.json#/rows/3/config",
-      "results/v69-quant-confirm/compare.json#/rows/6/config",
-      "results/v69-quant-confirm/compare.json#/rows/9/config",
-      "results/v69-quant-confirm/compare.json#/rows/12/config",
-      "results/v69-quant-confirm/compare.json#/rows/15/config",
-      "results/v69-quant-confirm/compare.json#/rows/18/state"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 4,
-    "column": 0,
-    "part": 0,
-    "number": "3",
-    "displayed": "Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5",
-    "op": "label",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/rows/0/state",
-      "results/v69-quant-confirm/compare.json#/rows/0/config",
-      "results/v69-quant-confirm/compare.json#/rows/3/config",
-      "results/v69-quant-confirm/compare.json#/rows/6/config",
-      "results/v69-quant-confirm/compare.json#/rows/9/config",
-      "results/v69-quant-confirm/compare.json#/rows/12/config",
-      "results/v69-quant-confirm/compare.json#/rows/15/config",
-      "results/v69-quant-confirm/compare.json#/rows/18/state"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 4,
-    "column": 0,
-    "part": 0,
-    "number": "5",
-    "displayed": "Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5",
-    "op": "label",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/rows/0/state",
-      "results/v69-quant-confirm/compare.json#/rows/0/config",
-      "results/v69-quant-confirm/compare.json#/rows/3/config",
-      "results/v69-quant-confirm/compare.json#/rows/6/config",
-      "results/v69-quant-confirm/compare.json#/rows/9/config",
-      "results/v69-quant-confirm/compare.json#/rows/12/config",
-      "results/v69-quant-confirm/compare.json#/rows/15/config",
-      "results/v69-quant-confirm/compare.json#/rows/18/state"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 4,
+    "row": 2,
     "column": 0,
     "part": 2,
     "number": "54",
@@ -5601,7 +4721,45 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 5,
+    "row": 3,
+    "column": 0,
+    "part": 0,
+    "number": "32",
+    "displayed": "Group sizes 32 and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/0/state",
+      "results/v69-quant-confirm/compare.json#/rows/0/config",
+      "results/v69-quant-confirm/compare.json#/rows/3/config",
+      "results/v69-quant-confirm/compare.json#/rows/6/config",
+      "results/v69-quant-confirm/compare.json#/rows/9/config",
+      "results/v69-quant-confirm/compare.json#/rows/12/config",
+      "results/v69-quant-confirm/compare.json#/rows/15/config",
+      "results/v69-quant-confirm/compare.json#/rows/18/state"
+    ]
+  },
+  {
+    "table": "tab:main-prediction-v2",
+    "row": 3,
+    "column": 0,
+    "part": 0,
+    "number": "512",
+    "displayed": "Group sizes 32 and 512",
+    "op": "label",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/rows/0/state",
+      "results/v69-quant-confirm/compare.json#/rows/0/config",
+      "results/v69-quant-confirm/compare.json#/rows/3/config",
+      "results/v69-quant-confirm/compare.json#/rows/6/config",
+      "results/v69-quant-confirm/compare.json#/rows/9/config",
+      "results/v69-quant-confirm/compare.json#/rows/12/config",
+      "results/v69-quant-confirm/compare.json#/rows/15/config",
+      "results/v69-quant-confirm/compare.json#/rows/18/state"
+    ]
+  },
+  {
+    "table": "tab:main-prediction-v2",
+    "row": 3,
     "column": 2,
     "part": 0,
     "number": "0.065",
@@ -5613,19 +4771,31 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 5,
-    "column": 4,
+    "row": 3,
+    "column": 3,
     "part": 0,
-    "number": "0.333",
-    "displayed": "0.333",
+    "number": "0.116",
+    "displayed": "0.116",
     "op": "identity",
     "sources": [
-      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/bilinear/math/mae"
+      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae"
     ]
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 5,
+    "row": 3,
+    "column": 4,
+    "part": 0,
+    "number": "0.458",
+    "displayed": "0.458",
+    "op": "identity",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae"
+    ]
+  },
+  {
+    "table": "tab:main-prediction-v2",
+    "row": 3,
     "column": 5,
     "part": 0,
     "number": "+0.268",
@@ -5638,32 +4808,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 6,
-    "column": 2,
-    "part": 0,
-    "number": "0.116",
-    "displayed": "0.116",
-    "op": "identity",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/same_input_interpolation/code/mae"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 6,
-    "column": 4,
-    "part": 0,
-    "number": "0.678",
-    "displayed": "0.678",
-    "op": "identity",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/zero/code/mae"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 6,
-    "column": 5,
+    "row": 3,
+    "column": 6,
     "part": 0,
     "number": "+0.562",
     "displayed": "+0.562",
@@ -5675,32 +4821,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 7,
-    "column": 2,
-    "part": 0,
-    "number": "0.458",
-    "displayed": "0.458",
-    "op": "identity",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 7,
-    "column": 4,
-    "part": 0,
-    "number": "0.458",
-    "displayed": "0.458",
-    "op": "identity",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/test_sets/development_state_boundary/scores/median/qa/mae"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 7,
-    "column": 5,
+    "row": 3,
+    "column": 7,
     "part": 0,
     "number": "+0.000",
     "displayed": "+0.000",
@@ -5712,11 +4834,11 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 8,
+    "row": 4,
     "column": 0,
     "part": 0,
     "number": "1.4",
-    "displayed": "An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512",
+    "displayed": "A new 1.4 billion stage",
     "op": "label",
     "sources": [
       "results/v69-quant-confirm/compare.json#/rows/36/state",
@@ -5733,103 +4855,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 8,
-    "column": 0,
-    "part": 0,
-    "number": "3",
-    "displayed": "An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512",
-    "op": "label",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/rows/36/state",
-      "results/v69-quant-confirm/compare.json#/rows/36/config",
-      "results/v69-quant-confirm/compare.json#/rows/39/config",
-      "results/v69-quant-confirm/compare.json#/rows/42/config",
-      "results/v69-quant-confirm/compare.json#/rows/45/config",
-      "results/v69-quant-confirm/compare.json#/rows/48/config",
-      "results/v69-quant-confirm/compare.json#/rows/51/config",
-      "results/v69-quant-confirm/compare.json#/rows/54/config",
-      "results/v69-quant-confirm/compare.json#/rows/57/config",
-      "results/v69-quant-confirm/compare.json#/rows/60/config"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 8,
-    "column": 0,
-    "part": 0,
-    "number": "5",
-    "displayed": "An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512",
-    "op": "label",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/rows/36/state",
-      "results/v69-quant-confirm/compare.json#/rows/36/config",
-      "results/v69-quant-confirm/compare.json#/rows/39/config",
-      "results/v69-quant-confirm/compare.json#/rows/42/config",
-      "results/v69-quant-confirm/compare.json#/rows/45/config",
-      "results/v69-quant-confirm/compare.json#/rows/48/config",
-      "results/v69-quant-confirm/compare.json#/rows/51/config",
-      "results/v69-quant-confirm/compare.json#/rows/54/config",
-      "results/v69-quant-confirm/compare.json#/rows/57/config",
-      "results/v69-quant-confirm/compare.json#/rows/60/config"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 8,
-    "column": 0,
-    "part": 0,
-    "number": "32",
-    "displayed": "An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512",
-    "op": "label",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/rows/36/state",
-      "results/v69-quant-confirm/compare.json#/rows/36/config",
-      "results/v69-quant-confirm/compare.json#/rows/39/config",
-      "results/v69-quant-confirm/compare.json#/rows/42/config",
-      "results/v69-quant-confirm/compare.json#/rows/45/config",
-      "results/v69-quant-confirm/compare.json#/rows/48/config",
-      "results/v69-quant-confirm/compare.json#/rows/51/config",
-      "results/v69-quant-confirm/compare.json#/rows/54/config",
-      "results/v69-quant-confirm/compare.json#/rows/57/config",
-      "results/v69-quant-confirm/compare.json#/rows/60/config"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 8,
-    "column": 0,
-    "part": 0,
-    "number": "512",
-    "displayed": "An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512",
-    "op": "label",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/rows/36/state",
-      "results/v69-quant-confirm/compare.json#/rows/36/config",
-      "results/v69-quant-confirm/compare.json#/rows/39/config",
-      "results/v69-quant-confirm/compare.json#/rows/42/config",
-      "results/v69-quant-confirm/compare.json#/rows/45/config",
-      "results/v69-quant-confirm/compare.json#/rows/48/config",
-      "results/v69-quant-confirm/compare.json#/rows/51/config",
-      "results/v69-quant-confirm/compare.json#/rows/54/config",
-      "results/v69-quant-confirm/compare.json#/rows/57/config",
-      "results/v69-quant-confirm/compare.json#/rows/60/config"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 8,
-    "column": 0,
-    "part": 2,
-    "number": "54",
-    "displayed": "54",
-    "op": "identity",
-    "sources": [
-      "results/v69-quant-confirm/develop.json#/n_dev_cells"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 9,
+    "row": 4,
     "column": 2,
     "part": 0,
     "number": "0.088",
@@ -5844,22 +4870,37 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 9,
-    "column": 4,
+    "row": 4,
+    "column": 3,
     "part": 0,
-    "number": "0.350",
-    "displayed": "0.350",
+    "number": "0.153",
+    "displayed": "0.153",
     "op": "weighted_mean",
     "sources": [
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/mae",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/bilinear/math/n",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/mae",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/bilinear/math/n"
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n"
     ]
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 9,
+    "row": 4,
+    "column": 4,
+    "part": 0,
+    "number": "0.141",
+    "displayed": "0.141",
+    "op": "weighted_mean",
+    "sources": [
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae",
+      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n"
+    ]
+  },
+  {
+    "table": "tab:main-prediction-v2",
+    "row": 4,
     "column": 5,
     "part": 0,
     "number": "+0.262",
@@ -5878,38 +4919,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 10,
-    "column": 2,
-    "part": 0,
-    "number": "0.153",
-    "displayed": "0.153",
-    "op": "weighted_mean",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/mae",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/code/n",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/mae",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/code/n"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 10,
-    "column": 4,
-    "part": 0,
-    "number": "0.563",
-    "displayed": "0.563",
-    "op": "weighted_mean",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/mae",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/zero/code/n",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/mae",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/zero/code/n"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 10,
-    "column": 5,
+    "row": 4,
+    "column": 6,
     "part": 0,
     "number": "+0.410",
     "displayed": "+0.410",
@@ -5927,38 +4938,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 11,
-    "column": 2,
-    "part": 0,
-    "number": "0.141",
-    "displayed": "0.141",
-    "op": "weighted_mean",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 11,
-    "column": 4,
-    "part": 0,
-    "number": "0.141",
-    "displayed": "0.141",
-    "op": "weighted_mean",
-    "sources": [
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/mae",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_boundary/scores/median/qa/n",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/mae",
-      "results/v69-quant-confirm/compare.json#/test_sets/new_state_interior/scores/median/qa/n"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 11,
-    "column": 5,
+    "row": 4,
+    "column": 7,
     "part": 0,
     "number": "+0.000",
     "displayed": "+0.000",
@@ -5976,63 +4957,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 12,
-    "column": 0,
-    "part": 0,
-    "number": "270",
-    "displayed": "Gemma 270 million distilled on six new pools at 50 to 200 thousand tokens",
-    "op": "label",
-    "sources": [
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/students/0",
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
-      "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 12,
-    "column": 0,
-    "part": 0,
-    "number": "six",
-    "displayed": "Gemma 270 million distilled on six new pools at 50 to 200 thousand tokens",
-    "op": "label",
-    "sources": [
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/students/0",
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
-      "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 12,
-    "column": 0,
-    "part": 0,
-    "number": "50",
-    "displayed": "Gemma 270 million distilled on six new pools at 50 to 200 thousand tokens",
-    "op": "label",
-    "sources": [
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/students/0",
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
-      "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 12,
-    "column": 0,
-    "part": 0,
-    "number": "200",
-    "displayed": "Gemma 270 million distilled on six new pools at 50 to 200 thousand tokens",
-    "op": "label",
-    "sources": [
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/students/0",
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
-      "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 12,
+    "row": 5,
     "column": 0,
     "part": 2,
     "number": "100",
@@ -6044,7 +4969,35 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 13,
+    "row": 6,
+    "column": 0,
+    "part": 0,
+    "number": "Six",
+    "displayed": "Six new pools, 270 million student",
+    "op": "label",
+    "sources": [
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/students/0",
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
+      "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
+    ]
+  },
+  {
+    "table": "tab:main-prediction-v2",
+    "row": 6,
+    "column": 0,
+    "part": 0,
+    "number": "270",
+    "displayed": "Six new pools, 270 million student",
+    "op": "label",
+    "sources": [
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/students/0",
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
+      "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
+    ]
+  },
+  {
+    "table": "tab:main-prediction-v2",
+    "row": 6,
     "column": 2,
     "part": 0,
     "number": "0.074",
@@ -6056,19 +5009,31 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 13,
-    "column": 4,
+    "row": 6,
+    "column": 3,
     "part": 0,
-    "number": "0.065",
-    "displayed": "0.065",
+    "number": "0.019",
+    "displayed": "0.019",
     "op": "identity",
     "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/0/baseline_mae"
+      "results/v70-distill-confirm/compare.json#/groups/1/candidate_mae"
     ]
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 13,
+    "row": 6,
+    "column": 4,
+    "part": 0,
+    "number": "0.515",
+    "displayed": "0.515",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/2/candidate_mae"
+    ]
+  },
+  {
+    "table": "tab:main-prediction-v2",
+    "row": 6,
     "column": 5,
     "part": 0,
     "number": "-0.009",
@@ -6081,32 +5046,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 14,
-    "column": 2,
-    "part": 0,
-    "number": "0.019",
-    "displayed": "0.019",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/1/candidate_mae"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 14,
-    "column": 4,
-    "part": 0,
-    "number": "0.023",
-    "displayed": "0.023",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/1/baseline_mae"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 14,
-    "column": 5,
+    "row": 6,
+    "column": 6,
     "part": 0,
     "number": "+0.004",
     "displayed": "+0.004",
@@ -6118,32 +5059,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 15,
-    "column": 2,
-    "part": 0,
-    "number": "0.515",
-    "displayed": "0.515",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/2/candidate_mae"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 15,
-    "column": 4,
-    "part": 0,
-    "number": "0.610",
-    "displayed": "0.610",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/2/baseline_mae"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 15,
-    "column": 5,
+    "row": 6,
+    "column": 7,
     "part": 0,
     "number": "+0.095",
     "displayed": "+0.095",
@@ -6155,11 +5072,25 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 16,
+    "row": 7,
+    "column": 0,
+    "part": 0,
+    "number": "Six",
+    "displayed": "Six new pools, 1 billion student",
+    "op": "label",
+    "sources": [
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/students/1",
+      "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
+      "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
+    ]
+  },
+  {
+    "table": "tab:main-prediction-v2",
+    "row": 7,
     "column": 0,
     "part": 0,
     "number": "1",
-    "displayed": "Gemma 1 billion distilled on six new pools at 50 to 200 thousand tokens",
+    "displayed": "Six new pools, 1 billion student",
     "op": "label",
     "sources": [
       "results/v70-distill-confirm/freeze.json#/confirmation_register/students/1",
@@ -6169,61 +5100,7 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 16,
-    "column": 0,
-    "part": 0,
-    "number": "six",
-    "displayed": "Gemma 1 billion distilled on six new pools at 50 to 200 thousand tokens",
-    "op": "label",
-    "sources": [
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/students/1",
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
-      "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 16,
-    "column": 0,
-    "part": 0,
-    "number": "50",
-    "displayed": "Gemma 1 billion distilled on six new pools at 50 to 200 thousand tokens",
-    "op": "label",
-    "sources": [
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/students/1",
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
-      "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 16,
-    "column": 0,
-    "part": 0,
-    "number": "200",
-    "displayed": "Gemma 1 billion distilled on six new pools at 50 to 200 thousand tokens",
-    "op": "label",
-    "sources": [
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/students/1",
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/pools",
-      "results/v70-distill-confirm/compare.json#/groups/0/clusters/0/T_planned"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 16,
-    "column": 0,
-    "part": 2,
-    "number": "100",
-    "displayed": "100",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/develop.json#/development_structure/n_points"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 17,
+    "row": 7,
     "column": 2,
     "part": 0,
     "number": "0.057",
@@ -6235,19 +5112,31 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 17,
-    "column": 4,
+    "row": 7,
+    "column": 3,
     "part": 0,
-    "number": "0.033",
-    "displayed": "0.033",
+    "number": "0.049",
+    "displayed": "0.049",
     "op": "identity",
     "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/3/baseline_mae"
+      "results/v70-distill-confirm/compare.json#/groups/4/candidate_mae"
     ]
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 17,
+    "row": 7,
+    "column": 4,
+    "part": 0,
+    "number": "0.463",
+    "displayed": "0.463",
+    "op": "identity",
+    "sources": [
+      "results/v70-distill-confirm/compare.json#/groups/5/candidate_mae"
+    ]
+  },
+  {
+    "table": "tab:main-prediction-v2",
+    "row": 7,
     "column": 5,
     "part": 0,
     "number": "-0.023",
@@ -6260,32 +5149,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 18,
-    "column": 2,
-    "part": 0,
-    "number": "0.049",
-    "displayed": "0.049",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/4/candidate_mae"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 18,
-    "column": 4,
-    "part": 0,
-    "number": "0.053",
-    "displayed": "0.053",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/4/baseline_mae"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 18,
-    "column": 5,
+    "row": 7,
+    "column": 6,
     "part": 0,
     "number": "+0.005",
     "displayed": "+0.005",
@@ -6297,32 +5162,8 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
   },
   {
     "table": "tab:main-prediction-v2",
-    "row": 19,
-    "column": 2,
-    "part": 0,
-    "number": "0.463",
-    "displayed": "0.463",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/5/candidate_mae"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 19,
-    "column": 4,
-    "part": 0,
-    "number": "0.450",
-    "displayed": "0.450",
-    "op": "identity",
-    "sources": [
-      "results/v70-distill-confirm/compare.json#/groups/5/baseline_mae"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "row": 19,
-    "column": 5,
+    "row": 7,
+    "column": 7,
     "part": 0,
     "number": "-0.013",
     "displayed": "-0.013",
@@ -6330,28 +5171,6 @@ The earlier unseen-bit-width test moves to the candidate-form appendix: its cell
     "sources": [
       "results/v70-distill-confirm/compare.json#/groups/5/candidate_mae",
       "results/v70-distill-confirm/compare.json#/groups/5/baseline_mae"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "location": "caption",
-    "part": 1,
-    "number": "270",
-    "displayed": "270 million and 1 billion",
-    "op": "label",
-    "sources": [
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
-    ]
-  },
-  {
-    "table": "tab:main-prediction-v2",
-    "location": "caption",
-    "part": 1,
-    "number": "1",
-    "displayed": "270 million and 1 billion",
-    "op": "label",
-    "sources": [
-      "results/v70-distill-confirm/freeze.json#/confirmation_register/students"
     ]
   },
   {

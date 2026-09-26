@@ -1,29 +1,33 @@
 Pruning responses on the original nine development states: Pythia
-160M, 410M and 1.4B at steps 16k, 64k and 143k. Light coloured lines are each
-state's measured loss minus its own dense loss, including every saved density.
-Opaque Math/Code lines are the pointwise median of the nine state-conditioned
-V53 power predictions; the opaque QA line is the delivered V53 median curve.
-These summaries evaluate frozen coefficients without fitting. Delivered curves
-are shown only on their [0.6, 0.9] domain. V53's fit used 17 development states;
-the nine states displayed are selected by the original V36 input manifest.
-The register and V6 loss artifacts are the pruning sources used by
-plot_fig1_final.py; no held-out source is presented as a development state.
+160M, 410M and 1.4B at steps 16k, 64k and 143k. Thin faint lines show each
+development state's measured loss change from its own dense loss. A bold line
+with markers shows the pointwise median over the nine states. Both use only
+densities measured in all nine states. Colour identifies Math, Code and QA;
+positive loss change means worse performance. The loss axis is symmetric log
+with a 0.1-nat linear threshold. Every saved measurement remains in the data
+sidecar, including densities without all nine states. The original V36 input
+manifest selects the states; the V53 register verifies the V6 loss artifacts'
+digests. No held-out source is presented as a development state.
 
 Per-output-channel symmetric round-to-nearest quantization on the
-same nine V36 development states. Light lines show each state's per-capability
-loss change from its own dense anchor across every saved bit-width. The full
-loss range is retained, including 3-bit collapse. The inputs are the frozen
+same nine V36 development states. Thin faint lines show each development
+state's measured loss change from its own dense loss. A bold line with markers
+shows the pointwise median over the nine states. Both use only bit-widths
+measured in all nine states. The full loss range is retained, including 3-bit
+collapse, on a symmetric log axis with a 0.1-nat linear threshold. The inputs are the frozen
 V10 quant_losses.json files listed in V36's summary; plot_fig1_final.py does
 not itself read a per-channel panel, so V36 supplies this additional artifact.
 Colour follows Figure 1; positive loss change means worse performance.
 
-Grouped symmetric RTN Math responses for Pythia 410M at step143k.
-Colour and marker identify 3, 4 and 5 bits. Connected markers are measured
-loss changes against group size, with no fitted curve. V69 develop.json supplies
-groups 64, 128 and 256; V69 compare.json supplies groups 32 and 512. The latter
-were unseen group sizes at the V69 freeze. These are the same frozen grouped
-quantization artifacts read by plot_fig1_final.py. All three bit-widths share
-one linear loss axis and a logarithmic group-size axis.
-Three 1.8 x 1.35-inch panels in one 5.5-inch row; fig4_legend.pdf is the shared capability and bit-width key above the panels. Lines are 1.1 pt; markers, where present, are 3.8 pt.
+Grouped symmetric RTN mathematics responses over all six development
+states in V69 develop.json: Pythia 160M, 410M and 1.4B at steps 16k and 143k.
+Colour and marker identify 3, 4 and 5 bits. Thin faint lines show each
+development state's measured loss change from its own dense loss. A bold line
+with markers shows the pointwise median over the six states. Both use group
+sizes 64, 128 and 256, measured in all six states. All 54 measured rows come
+from develop.json; compare.json is excluded. These are the frozen development artifacts
+read by plot_fig1_final.py. Group size uses a base-2 logarithmic axis and loss
+uses a symmetric log axis with a 0.1-nat linear threshold.
+Three 1.8 x 1.35-inch panels in one 5.5-inch row; fig4_legend.pdf is the shared capability, bit-width and one-state key above the panels. State traces are 0.5 pt at alpha 0.3; median lines are 1.5 pt with 3.2-pt markers.
 
 Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

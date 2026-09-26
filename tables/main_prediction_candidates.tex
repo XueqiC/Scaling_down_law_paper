@@ -6,21 +6,21 @@
 \setlength{\abovecaptionskip}{4pt}
 \newcommand{\TableOneErrors}[3]{\setbox0=\hbox{#1 / #2 / #3}%
 \ifdim\wd0>\linewidth #1\newline #2\newline #3\else\box0\fi}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .30\textwidth-1.80\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .28\textwidth-1.68\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .14\textwidth-0.84\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .28\textwidth-1.68\tabcolsep\relax}@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .24\textwidth-1.92\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .22\textwidth-1.76\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .12\textwidth-0.96\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .22\textwidth-1.76\tabcolsep\relax}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr .20\textwidth-1.60\tabcolsep\relax}@{}}
 \toprule
-Prediction task & Pre-specified candidate & Candidate error (nats) & Delivered relation \\
+Prediction task & Pre-specified candidate & Candidate error (nats) & Delivered relation & Strongest development baseline \\
 \midrule
-Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85 & Five-parameter power form & \TableOneErrors{0.243}{0.236}{0.678} & Source-free median density curve\newline Retrospective \\
+Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85 & Five-parameter power form & \TableOneErrors{0.243}{0.236}{0.678} & Source-free median density curve\newline Retrospective & Per-density regression; median for QA \\
 \midrule
-Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5 & Source regression, the median and no change & \TableOneErrors{0.215}{0.557}{0.457} & Interpolate math and code; use the median for question answering\newline Retrospective \\
+Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5 & Source regression, the median and no change & \TableOneErrors{0.215}{0.557}{0.457} & Interpolate math and code; use the median for question answering\newline Retrospective & Bilinear regression; no change; median \\
 \midrule
-An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512 & Source regression, the median and no change & \TableOneErrors{0.303}{0.153}{0.222} & Development median\newline Retrospective \\
+An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512 & Source regression, the median and no change & \TableOneErrors{0.303}{0.153}{0.222} & Development median\newline Retrospective & Bilinear regression; no change; median \\
 \midrule
-Gemma 270 million distilled on six new pools at 50 to 200 thousand tokens & Reuse forms, with a budget and pool form for question answering & \TableOneErrors{0.074}{0.019}{0.515} & The same predictor \\
+Gemma 270 million distilled on six new pools at 50 to 200 thousand tokens & Reuse forms, with a budget and pool form for question answering & \TableOneErrors{0.074}{0.019}{0.515} & The same predictor & Budget regression; reuse regression for Code and QA \\
 \midrule
-Gemma 1 billion distilled on six new pools at 50 to 200 thousand tokens & Reuse forms, with a budget and pool form for question answering & \TableOneErrors{0.057}{0.049}{0.463} & The same predictor \\
+Gemma 1 billion distilled on six new pools at 50 to 200 thousand tokens & Reuse forms, with a budget and pool form for question answering & \TableOneErrors{0.057}{0.049}{0.463} & The same predictor & Loss regression; reuse regression; size regression \\
 \bottomrule
 \end{tabular*}
-\caption{\footnotesize\fontsize{8.5}{10}\selectfont Pre-specified candidate of each prediction task in Table~\ref{tab:main-prediction-v2}, its error on the same cells, and the relation delivered after the test. Errors are mean absolute errors in nats per token, in math, code and question answering order; the two distillation rows are the 270 million and 1 billion students.}
+\caption{\footnotesize\fontsize{8.5}{10}\selectfont Pre-specified candidates for Table~\ref{tab:main-prediction-v2}, their errors on the same cells, delivered relations, and strongest development baselines. Errors are mean absolute errors in nats per token; errors and baseline names follow math, code and question answering order unless qualified. The distillation rows are the 270 million and 1 billion students.}
 \label{tab:main-prediction-candidates}
 \end{table}

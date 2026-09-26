@@ -4,36 +4,24 @@
 \setlength{\tabcolsep}{1.5pt}
 \renewcommand{\arraystretch}{0.88}
 \setlength{\abovecaptionskip}{4pt}
-\caption{\footnotesize\fontsize{8.5}{10}\selectfont Delivered relations versus baselines at equal budget, by capability. Errors are mean absolute errors in nats per token; improvement is baseline minus delivered. Group lines give the task, development configuration measurements per capability, and Retrospective for a relation chosen after seeing the result. The baseline was chosen inside the development folds and scored on the same cells. Distillation students: 270 million and 1 billion. Appendix Table~\ref{tab:main-prediction-candidates} lists each task's pre-specified candidate; Fig.~\ref{fig:generalization} compares each row with its baseline.}
+\caption{\footnotesize\fontsize{8.5}{10}\selectfont Prediction at equal development budget. Test: configurations or states unseen by the relation. Delivered relation: predictor recommended on all evidence; a dagger marks selection after seeing test results. Error: test mean absolute error in nats per token, per capability (QA: question answering). Gain: strongest development baseline error minus delivered error; positive favours the delivered relation. Baselines are chosen inside the development folds and scored on the same cells. $n$, on each method line: development configuration measurements per capability. Appendix Table~\ref{tab:main-prediction-candidates} names baselines and pre-specified candidates; Fig.~\ref{fig:generalization} compares each row with its baseline.}
 \label{tab:main-prediction-v2}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll>{\centering\arraybackslash}p{.075\textwidth}l>{\centering\arraybackslash}p{.075\textwidth}c@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrrrrrr@{}}
 \toprule
-Capability & Delivered relation & Error & Strongest development baseline & Error & Improvement \\
+& & \multicolumn{3}{c}{Error} & \multicolumn{3}{c}{Gain over baseline} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}
+Test & Delivered relation & Math & Code & QA & Math & Code & QA \\
 \midrule
-\multicolumn{6}{@{}>{\raggedright\arraybackslash}p{\dimexpr\textwidth-0pt\relax}@{}}{\textit{Three unseen checkpoints pruned to densities 0.575, 0.675 and 0.85; 84 measurements; Retrospective}} \\
-Mathematics & Source-free median density curve & 0.277 & Per-density regression & 0.230 & $-$0.047 \\
-Code & Source-free median density curve & 0.214 & Per-density regression & 0.222 & $+$0.008 \\
-Question answering & Source-free median density curve & 0.221 & Development median & 0.221 & $+$0.000 \\
+\multicolumn{8}{@{}l@{}}{\textit{Pruning, $n=84$}} \\
+Three new checkpoints & Median density curve$^{\dagger}$ & 0.277 & 0.214 & 0.221 & $-$0.047 & $+$0.008 & $+$0.000 \\
 \midrule
-\multicolumn{6}{@{}>{\raggedright\arraybackslash}p{\dimexpr\textwidth-0pt\relax}@{}}{\textit{Pythia 410 million and 1.4 billion at unseen group sizes 32 and 512, bit widths 3 to 5; 54 measurements; Retrospective}} \\
-Mathematics & Interpolation & 0.065 & Bilinear regression & 0.333 & $+$0.268 \\
-Code & Interpolation & 0.116 & No change & 0.678 & $+$0.562 \\
-Question answering & Development median & 0.458 & Development median & 0.458 & $+$0.000 \\
+\multicolumn{8}{@{}l@{}}{\textit{Quantization, $n=54$}} \\
+Group sizes 32 and 512 & Interpolation; median for QA$^{\dagger}$ & 0.065 & 0.116 & 0.458 & $+$0.268 & $+$0.562 & $+$0.000 \\
+A new 1.4 billion stage & Development median$^{\dagger}$ & 0.088 & 0.153 & 0.141 & $+$0.262 & $+$0.410 & $+$0.000 \\
 \midrule
-\multicolumn{6}{@{}>{\raggedright\arraybackslash}p{\dimexpr\textwidth-0pt\relax}@{}}{\textit{An unseen 1.4 billion stage at bit widths 3 to 5, group sizes 32 to 512; 54 measurements; Retrospective}} \\
-Mathematics & Development median & 0.088 & Bilinear regression & 0.350 & $+$0.262 \\
-Code & Development median & 0.153 & No change & 0.563 & $+$0.410 \\
-Question answering & Development median & 0.141 & Development median & 0.141 & $+$0.000 \\
-\midrule
-\multicolumn{6}{@{}>{\raggedright\arraybackslash}p{\dimexpr\textwidth-0pt\relax}@{}}{\textit{Gemma 270 million distilled on six new pools at 50 to 200 thousand tokens; 100 measurements}} \\
-Mathematics & Reuse form & 0.074 & Budget regression & 0.065 & $-$0.009 \\
-Code & Reuse form & 0.019 & Reuse regression & 0.023 & $+$0.004 \\
-Question answering & Budget and pool form & 0.515 & Reuse regression & 0.610 & $+$0.095 \\
-\midrule
-\multicolumn{6}{@{}>{\raggedright\arraybackslash}p{\dimexpr\textwidth-0pt\relax}@{}}{\textit{Gemma 1 billion distilled on six new pools at 50 to 200 thousand tokens; 100 measurements}} \\
-Mathematics & Reuse form & 0.057 & Loss regression & 0.033 & $-$0.023 \\
-Code & Reuse form & 0.049 & Reuse regression & 0.053 & $+$0.005 \\
-Question answering & Budget and pool form & 0.463 & Size regression & 0.450 & $-$0.013 \\
+\multicolumn{8}{@{}l@{}}{\textit{Distillation, $n=100$}} \\
+Six new pools, 270 million student & Reuse; budget and pool for QA & 0.074 & 0.019 & 0.515 & $-$0.009 & $+$0.004 & $+$0.095 \\
+Six new pools, 1 billion student & Reuse; budget and pool for QA & 0.057 & 0.049 & 0.463 & $-$0.023 & $+$0.005 & $-$0.013 \\
 \bottomrule
 \end{tabular*}
 \end{table*}

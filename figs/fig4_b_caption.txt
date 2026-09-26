@@ -1,10 +1,12 @@
 Per-output-channel symmetric round-to-nearest quantization on the
-same nine V36 development states. Light lines show each state's per-capability
-loss change from its own dense anchor across every saved bit-width. The full
-loss range is retained, including 3-bit collapse. The inputs are the frozen
+same nine V36 development states. Thin faint lines show each development
+state's measured loss change from its own dense loss. A bold line with markers
+shows the pointwise median over the nine states. Both use only bit-widths
+measured in all nine states. The full loss range is retained, including 3-bit
+collapse, on a symmetric log axis with a 0.1-nat linear threshold. The inputs are the frozen
 V10 quant_losses.json files listed in V36's summary; plot_fig1_final.py does
 not itself read a per-channel panel, so V36 supplies this additional artifact.
 Colour follows Figure 1; positive loss change means worse performance.
-Shared key: fig4_legend.pdf above the panels; panels are 1.8 x 1.35 inches in one row. Lines 1.1 pt; markers 3.8 pt.
+Three 1.8 x 1.35-inch panels in one 5.5-inch row; fig4_legend.pdf is the shared capability, bit-width and one-state key above the panels. State traces are 0.5 pt at alpha 0.3; median lines are 1.5 pt with 3.2-pt markers.
 
 Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.

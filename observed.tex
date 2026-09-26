@@ -28,9 +28,9 @@ bits it stays near zero. Both accounts read measurements of the compressed model
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figs/fig8_legend.pdf}\\[1pt]
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig8_a.pdf}\caption{Pruning at $d=0.7$}\end{subfigure}\hfill
-\begin{subfigure}[t]{2.7in}\centering\includegraphics[width=\linewidth]{figs/fig8_b.pdf}\caption{Per-channel int4}\end{subfigure}
-\caption{Capability loss change from each model's dense loss across twelve public models, under (a) pruning to $d=0.7$ and (b) per-channel int4. The ordering of capabilities changes across series and the magnitudes differ by two orders of magnitude at the same setting.}
+\begin{subfigure}[t]{3.0in}\centering\includegraphics[width=\linewidth]{figs/fig8_a.pdf}\caption{Pruning at $d=0.7$}\end{subfigure}\hfill
+\begin{subfigure}[t]{2.45in}\centering\includegraphics[width=\linewidth]{figs/fig8_b.pdf}\caption{Per-channel int4}\end{subfigure}
+\caption{Capability loss change from each model's dense loss across twelve public models, under (a) pruning to $d=0.7$ and (b) per-channel int4, on a symmetric logarithmic axis that is linear within $\pm0.1$ nats; models are grouped by family and a grey bar spans each model's three responses. The ordering of capabilities changes across series and the magnitudes differ by two orders of magnitude at the same setting.}
 \label{fig:heterogeneity}
 \end{figure}
 Model state sets the scale of the pruning response for mathematics and code, and the quantization response depends on the full configuration. On Pythia checkpoints whose size and training stage vary independently, parameter count and
@@ -50,7 +50,7 @@ Section~\ref{sec:efficiency} tests.
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_a.pdf}\caption{Pruning}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_b.pdf}\caption{Per-channel quantization}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_c.pdf}\caption{Grouped quantization}\end{subfigure}
-\caption{Compression responses on the controlled Pythia panel, the structure the predictors of Section~\ref{sec:laws} build on. (a) Loss change against retained density on the nine development states, with the median predictions as heavy lines: mathematics and code rise along one shape with a state-dependent scale. (b) Loss change against bit-width under per-channel round-to-nearest. (c) Loss change against group size at 3, 4 and 5 bits for one state; groups 32 and 512 were unseen when the predictions were pre-specified.}
+\caption{Compression responses on the controlled Pythia panel, the structure the predictors of Section~\ref{sec:laws} build on: thin lines are the development states and bold lines their median, on a symmetric logarithmic axis that is linear within $\pm0.1$ nats. (a) Loss change against retained density on the nine development states: mathematics and code rise along one shape with a state-dependent scale, while question answering follows no shared curve. (b) Loss change against bit-width under per-channel round-to-nearest. (c) Mathematics loss change against group size at 3, 4 and 5 bits on the six grouped-quantization development states.}
 \label{fig:pythia_responses}
 \end{figure}
 

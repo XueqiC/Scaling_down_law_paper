@@ -1,10 +1,12 @@
-Grouped symmetric RTN Math responses for Pythia 410M at step143k.
-Colour and marker identify 3, 4 and 5 bits. Connected markers are measured
-loss changes against group size, with no fitted curve. V69 develop.json supplies
-groups 64, 128 and 256; V69 compare.json supplies groups 32 and 512. The latter
-were unseen group sizes at the V69 freeze. These are the same frozen grouped
-quantization artifacts read by plot_fig1_final.py. All three bit-widths share
-one linear loss axis and a logarithmic group-size axis.
-Shared key: fig4_legend.pdf above the panels; panels are 1.8 x 1.35 inches in one row. Lines 1.1 pt; markers 3.8 pt.
+Grouped symmetric RTN mathematics responses over all six development
+states in V69 develop.json: Pythia 160M, 410M and 1.4B at steps 16k and 143k.
+Colour and marker identify 3, 4 and 5 bits. Thin faint lines show each
+development state's measured loss change from its own dense loss. A bold line
+with markers shows the pointwise median over the six states. Both use group
+sizes 64, 128 and 256, measured in all six states. All 54 measured rows come
+from develop.json; compare.json is excluded. These are the frozen development artifacts
+read by plot_fig1_final.py. Group size uses a base-2 logarithmic axis and loss
+uses a symmetric log axis with a 0.1-nat linear threshold.
+Three 1.8 x 1.35-inch panels in one 5.5-inch row; fig4_legend.pdf is the shared capability, bit-width and one-state key above the panels. State traces are 0.5 pt at alpha 0.3; median lines are 1.5 pt with 3.2-pt markers.
 
 Marker displacement is at most 1.5% of each axis range (also on the displayed scale for nonlinear axes); cluster spread is at most 6%. When bounded dodging cannot retain partial visibility, the cluster stays at its true coordinates with thin white edges and smaller glyphs above larger ones. Coincident neighbours and any hidden markers are documented in the sidecar.
