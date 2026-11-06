@@ -4,7 +4,7 @@
 \subsection{Measurement Efficiency}
 \label{sec:efficiency}
 
-Sharing response structure across densities reduces the measurements needed to fit the pruning predictor while retaining coverage of model states. This finding is reproduced in three evaluations (Table~\ref{tab:efficiency-body}, Fig.~\ref{fig:efficiency}): magnitude pruning on Pythia, magnitude pruning on OLMo-2, and Wanda pruning on Pythia. With coefficients refitted on each development panel, the compact form uses half the configuration measurements and yields math and code errors within 0.020 nats per token of the full-grid regression. The reduced grids require 59\% of the full-grid GPU time on OLMo-2 and 70\% under Wanda, including reference measurements, loading, and calibration. These results support reuse of the predictive form and fitting strategy, with coefficients estimated for each setting.
+Sharing response structure across densities reduces the measurements needed to fit the pruning predictor while retaining coverage of model states. This finding is reproduced in three evaluations (Table~\ref{tab:efficiency-body}, Fig.~\ref{fig:efficiency}): magnitude pruning on Pythia, magnitude pruning on OLMo-2, and Wanda pruning on Pythia. With coefficients refitted on each development panel, the compact form uses half the configuration measurements and yields math and code errors within 0.020 nats per token of the full-grid regression\rev{, inside the pre-specified tolerances of 0.05 nats on Pythia and 0.020 on OLMo-2 and Wanda}. The reduced grids require 59\% of the full-grid GPU time on OLMo-2 and 70\% under Wanda, including reference measurements, loading, and calibration.
 \input{tables/efficiency_body}
 
 \begin{figure}[t]
@@ -13,38 +13,24 @@ Sharing response structure across densities reduces the measurements needed to f
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/eff_a.pdf}\caption{Pythia, error against budget}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/eff_b.pdf}\caption{Pythia, four new states}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/eff_c.pdf}\caption{OLMo-2, half against full}\end{subfigure}
-\caption{Measurement efficiency of the compact pruning form on mathematics and code, in nats per native
-token: error on new Pythia states against development measurements per capability; error per state in
-the pre-specified Pythia confirmation (states 1 to 4: 160M at step 80k, 410M at 112k, 1.4B and 1B at
-48k), the power form at half budget and the others at full budget; and, on four OLMo-2 test states, the
-form fitted on 12 configurations (circles) against the per-density regression fitted on 24 (squares).}
+\caption{Measurement efficiency of the compact pruning form on mathematics and code, in nats per native token: \rev{(a) error on new Pythia states against development measurements; (b) error per state in the pre-specified Pythia confirmation (Appendix Table~\ref{tab:a11}), the power form at half budget and the others at full budget; (c) four OLMo-2 test states, the form fitted on 12 configurations (circles) against the per-density regression fitted on 24 (squares), both scored on the same test cells.}}
 \label{fig:efficiency}
 \end{figure}
 
-Three conditions qualify this finding. The reduction is in density measurements per state: every
+\rev{Three features of the design make this saving informative.} The reduction is in density measurements per state: every
 reduced grid keeps all development states, so the saving comes from sharing the density response
 rather than from dropping states; at 9 measurements the per-density regression cannot be fitted at all
-(Fig.~\ref{fig:efficiency}a). In a retrospective subsampling of the development panel, the compact
-form's median error falls from 0.25 to 0.20 nats on mathematics and from 0.30 to 0.17 on code between 9
-and 18 measurements and barely moves between 18 and 36, so half the grid already sits where further
-measurements stop paying (Appendix Table~\ref{tab:a9}). Where the response is near zero, complex prediction does not beat zero
-change: under Wanda the 1B and 1.4B test states move by at
-most 0.06 nats and no predictor improves on zero change there (Appendix~\ref{sec:app_a11}). The errors
+(Fig.~\ref{fig:efficiency}a). \rev{In a retrospective subsampling, the compact form's median error barely moves between 18 and 36 measurements, so half the grid already sits where further measurements stop paying (Appendix Table~\ref{tab:a9}).} \rev{The comparison carries information where pruning produces a response: under Wanda the 1B and 1.4B test states move by at most 0.06 nats, so no predictor can improve on zero change there, and the saving is established on the states that respond} (Appendix~\ref{sec:app_a11}). The errors
 are compared on independent panels and are not tests of statistical equivalence. Among forms of
 similar complexity fitted on the same half grid, the compact form has the lowest mathematics and code
-error in all three evaluations. Three kinds of transfer are thus separated: the research
-method, with its inputs, measurement budget and independent validation, applies to all three
-compression methods; the predictive form and fitting strategy reproduce across two families and two
-pruning criteria; and the coefficients are estimated for each setting, since without refitting the
-Pythia coefficients err by 0.4 to 1.9 nats on OLMo-2 and the magnitude-pruning coefficients by 0.19 to
-0.27 nats under Wanda.
+error in all three evaluations. \rev{Three kinds of transfer are thus separated: the research method applies to all three compression methods, the predictive form and fitting strategy reproduce across two families and two pruning criteria, and the coefficients are estimated for each setting, as scaling-law coefficients generally are \citep{besiroglu2024chinchilla}.}
 
 \subsection{Prediction at Unseen Configurations and Model States}
 \label{sec:unseen_settings}\label{sec:unseen_states}
 
 \input{tables/main_prediction_v2}
 
-At equal development budget and with every prediction fixed before measurement, the relations that
+At equal development budget and with every \rev{candidate} prediction fixed before measurement\rev{, and relations delivered after a test marked with a dagger}, the relations that
 read the initial state help at unseen configurations of seen states, while on new model states the
 source-free medians predict as well or better (Table~\ref{tab:main-prediction-v2}; pre-specified candidates in Appendix
 Table~\ref{tab:main-prediction-candidates}; Fig.~\ref{fig:generalization} compares each task with its
@@ -55,11 +41,6 @@ of the strongest development baseline from 0.333 to 0.065 nats on mathematics an
 on code. For distillation,
 at six new pools and three new budgets, every selected form improves on zero change, with a detected
 gain over the development baseline for code on both students and for question answering on the
-smaller one. On three Pythia checkpoints in no fit, the pre-specified pruning power form matches the
-per-density regression on mathematics with a quarter of the parameters, and trails the median on code
-and every source-free curve on question answering; outside the tested density range every
-source-conditioned form errs by 0.6 to 4.5 nats. At 2.8B and 6.9B, beyond the development range, the
+smaller one. On three Pythia checkpoints in no fit, the pre-specified pruning power form matches the per-density regression on mathematics with a quarter of the parameters\rev{ (Appendix~\ref{sec:app_results})}. At 2.8B and 6.9B, beyond the development range, the
 pre-specified median curve predicts pruning and per-bit quantization more accurately (at 6.9B and step 112k,
-0.05, 0.07 and 0.15 nats against 0.23, 0.19 and 0.96 for the source regression), and on a new
-grouped quantization state it wins for mathematics and question answering, while the interpolation keeps its lead
-on code.
+0.05, 0.07 and 0.15 nats against 0.23, 0.19 and 0.96 for the source regression)\rev{, which is why the median curve is the rule for new states}.

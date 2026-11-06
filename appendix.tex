@@ -249,6 +249,8 @@ step-size ratio between 4 and 5 bits is $(7/15)^2\approx0.22$
 (Appendix~\ref{sec:app_details}), and a loss ratio would follow only under assumptions about the error distribution and the local response that lie outside the scope of this
 study.
 
+\rev{Read across the two interventions, Tables~\ref{tab:panel_prune}--\ref{tab:wanda-panel} show capability-specific structure that an aggregate loss hides. The ordering of mathematics and code reverses within a model: in Gemma-3-4B code loses more under pruning at $d=0.7$, 1.47 against 0.83 nats, and mathematics more under int4, 0.72 against 0.50, and Gemma-4-31B reverses the same way. Equal averages can hide different damage: on Qwen3-4B, magnitude pruning to $d=0.5$ changes mathematics, code and question answering by $+1.31$, $+0.90$ and $-1.48$ nats and int4 by $+0.13$, $+0.19$ and $+0.39$, so the equally weighted means agree at 0.24 nats while the mathematics loss differs tenfold; the two settings have different nominal storage, and the comparison concerns what the mean conveys, not which setting is better.}
+
 Under distillation, black-box traces from two API teachers, 600 per domain, train Gemma-3 students under a full-trace and an
 answer-only recipe in a paired design. The answer-only recipe increases the math loss about twice as much as the full recipe, while QA improves by 0.6 to 1.4 nats under both; because the recipes differ in supervised tokens and update
 counts, this pairing does not isolate reasoning coverage, and the
@@ -647,7 +649,7 @@ on each target's mildest pruned measurement, the power form's amplitude or the p
 helps neither form on the remaining densities. These forms were fitted after the confirmation.
 \input{tables/a14_baselines}
 
-\paragraph{Prediction of task accuracy.} The pruning law's own endpoint is task accuracy, and
+\paragraph{Prediction of task accuracy.} The \rev{pruning law of \citet{sengupta2025compression}} has task accuracy as its own endpoint, and
 Table~\ref{tab:accuracy-comparison} meets it there: on Gemma 3 1B and 4B and Qwen3 1.7B and 4B
 pruned to densities 0.8, 0.7 and 0.6, with accuracy measured by the protocol of
 Appendix~\ref{sec:app_probes} on 64 probes per capability, the law's form fitted leave-one-model-out
@@ -1025,19 +1027,17 @@ end-of-sequence token appended to every target and supervised, 1,781 extra super
 epoch on the same examples, seed, learning rate and two-epoch schedule: the student of the Pythia
 1.4B reference, on which the loss and generation orderings disagree most, and the student of the
 Gemma 3 1B reference, which reached the 96-token cap on 99 percent of items.
-Table~\ref{tab:eos-control} gives both pairs' readouts on the 384 fresh items. The marker restores
+Table~\ref{tab:eos-control} gives both pairs' readouts on the 384 fresh items\rev{, every 96-token readout scored from the stored generations with the one extraction rule used for all models in Table~\ref{tab:p1-behaviour}; the submitted version of this table carried the original students' 96-token scores from an earlier version of that rule}. The marker restores
 output control on both: the share of generations reaching the cap falls from 0.63 and 0.99 to 0.01
 and 0.00, and the mean generation from 64 and 96 tokens to 5 and 8. It leaves the
 reference-completion loss where it was, $-0.007$ nats [$-0.060$, $+0.047$] on Pythia and $+0.008$
 [$-0.022$, $+0.037$] on Gemma. On generation accuracy the two students differ. The Pythia student's
-exact match is unchanged, $+0.018$ [$-0.010$, $+0.049$] at 32 tokens and $0.000$ [$-0.034$,
-$+0.031$] at 96; it keeps its loss advantage over the quantization-only choice, $-0.45$ nats, with
+exact match is unchanged, $+0.018$ [$-0.010$, $+0.049$] at 32 tokens and \rev{$-0.016$ [$-0.047$, $+0.016$]} at 96; it keeps its loss advantage over the quantization-only choice, $-0.45$ nats, with
 its exact-match deficit, $-0.07$ [$-0.11$, $-0.03$], and the same against its initial student,
-$-0.38$ nats and $-0.10$. The Gemma student, whose untreated generations never stopped, gains
-$+0.120$ [$+0.089$, $+0.154$] at 32 tokens and $+0.044$ [$+0.021$, $+0.068$] at 96, which puts it
-ahead of the quantization-only choice on exact match by $0.086$ [$0.049$, $0.122$] as well as on loss
-by $1.81$ nats, and level with its initial student on exact match, $-0.003$ [$-0.042$, $+0.036$],
-while $1.05$ nats ahead on loss. The missing marker therefore costs generation accuracy where the
+$-0.38$ nats and \rev{$-0.11$}. The Gemma student, whose untreated generations never stopped, gains
+$+0.120$ [$+0.089$, $+0.154$] at 32 tokens\rev{, and $+0.013$ [$-0.005$, $+0.031$] at 96, where the gold-blind extraction already recovers the first sentence of a generation that does not stop}; \rev{with the marker it is} ahead of the quantization-only choice on exact match by $0.086$ [$0.049$, $0.122$] as well as on loss
+by $1.81$ nats, and level with its initial student on exact match, \rev{$-0.005$ [$-0.044$, $+0.034$]},
+while $1.05$ nats ahead on loss. The missing marker therefore costs generation accuracy \rev{under the short readout} where the
 untreated student never terminates and nothing where it sometimes does; in neither case does the
 loss gain over the initial student convert into an exact-match gain, and on Pythia 1.4B the
 disagreement between the loss ordering and the generation ordering stands with the answers properly
