@@ -21,20 +21,19 @@ $M_0$ is the checkpoint before the intervention, and responses are within-model 
 native nats per token: the change in capability loss $\Delta L_c=L_c(\text{compressed})-L_c(M_0)$ for pruning and
 quantization, and for distillation the signed transfer response
 $\delta_c=L_c(S_{\mathrm{KD}})-L_c(S_0)$ of a trained student against the initial student $S_0$ it
-started from, not against the teacher. Absolute levels from different tokenizers are never placed on one scale. We use capability loss to denote reference-completion cross-entropy on an evaluation distribution associated with a capability\rev{. It is computed by teacher forcing, so no answer is generated or parsed; a negative response means that the reference completion has become more probable, and task accuracy and execution success are evaluated separately (Appendices~\ref{sec:app_measure} and~\ref{sec:app_selection}). We call $\Delta L_c$ or $\delta_c$ the \emph{response} of capability $c$, and the quantity a relation predicts its \emph{prediction target}; this continuous target resolves changes where accuracy on small models is near zero.}
-
-\rev{\textbf{What a capability denotes.} Mathematics, code generation and question answering are task categories that define deployment-relevant evaluation distributions. Their losses may be correlated and their responses may share structure; the analysis measures this sharing and tests which capability-specific information a prediction needs, so the categories do not presuppose an independent or exhaustive decomposition of the model's internal abilities. They are kept as separate targets because a capability's primary-benchmark response predicts its response on an independent benchmark better than any other capability's response does, for mathematics and question answering (Appendix~\ref{sec:app_measure}), the ordering of mathematics and code reverses between pruning and quantization in the same model, and gradient signatures group benchmarks by task (Section~\ref{sec:resp_specific}).}
+started from, not against the teacher. Absolute levels from different tokenizers are never placed on one scale. We use capability loss to denote reference-completion cross-entropy on an evaluation distribution associated with a capability; this continuous endpoint supports the study of compression responses and predictive relations, and task accuracy and execution success are evaluated separately.
 
 \subsection{Models and Compression Methods}
 \label{sec:models}
 
-\rev{We study pruning, quantization, and distillation through controlled implementations that expose their intervention variables, weight density, numerical precision and group size, and training data and exposure; Pythia checkpoints \citep{biderman2023pythia} vary model size and training stage separately, and Gemma students support controlled comparisons of data availability and reuse.}
+We study pruning, quantization, and distillation through controlled implementations that expose their main intervention variables: weight density, numerical precision and group size, and training data and exposure. Pythia checkpoints \citep{biderman2023pythia} provide a setting in which model size and training stage can be varied separately, while Gemma students support controlled comparisons of data availability and reuse. We use additional model families, a second pruning criterion, and independent evaluation distributions to examine which findings extend beyond these initial settings.
 
-The implementations are fixed by protocol (Appendix~\ref{sec:app_details}): \rev{global magnitude pruning to a retained density $d$, the fraction of weights kept, as the primary pruning method, with the measurement-efficiency experiment repeated under Wanda \citep{sun2023simple};} symmetric round-to-nearest quantization per output channel at bit-width
+The implementations are fixed by protocol (Appendix~\ref{sec:app_details}): global magnitude pruning
+to a retained density $d$, with Wanda \citep{sun2023simple} as the second criterion; symmetric round-to-nearest quantization per output channel at bit-width
 $b$, or with groups of $g$ weights sharing one scale; and LoRA fine-tuning \citep{hu2022lora} of an
-existing student on teacher traces. \rev{The pruning and quantization relations are fitted on nine Pythia checkpoints, three sizes at three training stages, which we call the development states. Separate Pythia checkpoints up to 6.9B and OLMo-2 checkpoints \citep{olmo2025olmo2} test predictions outside the fitting set. A further panel of twelve public models from 270M to 32B parameters documents how compression responses vary across model families (Section~\ref{sec:observed}); its Qwen3 checkpoints are the post-trained releases, so the panel covers post-trained as well as pretrained models.} The inputs admitted to each predictor are the parameter count $N_0$ of the transformer weight
+existing student on teacher traces. Pythia development states span three sizes at three training stages; held-out Pythia states up to 6.9B and OLMo-2 checkpoints \citep{olmo2025olmo2} test transfer, and a heterogeneous panel of twelve public models from 0.6B to 32B establishes the phenomena of Section~\ref{sec:observed}. The inputs admitted to each predictor are the parameter count $N_0$ of the transformer weight
 matrices of $M_0$, the pretraining token count $D_0$ where disclosed, and the reference capability
-losses $L_{0,c}=L_c(M_0)$ measured once; for distillation the initial student plays this role. \rev{Appendix Table~\ref{tab:notation} lists all symbols.} Each prediction adds a predicted change to the reference loss,
+losses $L_{0,c}=L_c(M_0)$ measured once; for distillation the initial student plays this role. Each prediction adds a predicted change to the reference loss,
 \begin{equation}
 \widehat L_{m,c}\;=\;L^{\mathrm{obs}}_{0,c}\;+\;
 \widehat\Delta_{m,c}(\mathbf x,\boldsymbol\theta_m),\qquad
@@ -42,15 +41,19 @@ losses $L_{0,c}=L_c(M_0)$ measured once; for distillation the initial student pl
 \label{eq:interface}
 \end{equation}
 with $\boldsymbol\theta_m$ the setting of method $m$: density, bit-width and group size, or pool
-and budget. \rev{Here $c\in\{\text{math},\text{code},\text{QA}\}$ indexes the capability and $m$ the compression method, $L^{\mathrm{obs}}_{0,c}$ is the measured loss of the uncompressed reference model, or of the initial student for distillation, and $\widehat\Delta_{m,c}$ is the predicted response of capability $c$ to method $m$.}
+and budget.
 
 \subsection{Fitting and Evaluation}
 \label{sec:eval}
 
 Each relation is fit on development states and settings only and judged on unseen settings and
-states. \rev{For pre-specified tests we fixed the form, the coefficients and the predictions before measuring the test outcomes; comparisons made after a test are labelled retrospective, and every result is reported with its label, including predictions that failed.} Error is the mean absolute error of $\widehat\Delta$ in nats per token per capability\rev{; we select the strongest baseline on development data only and compare it with the relation on the same test cells.}
+states, with forms, coefficients and predictions fixed beforehand; each prediction keeps the
+status it was given, whatever the outcome. Error is the mean absolute error of $\widehat\Delta$ in nats per token per capability on the same
+cells as the same-input alternatives and the source-free references, and the strongest baseline chosen inside the development folds is the comparator.
 Two families of predictor recur: a \emph{source-conditioned} relation reads descriptors of the
 initial model state, a \emph{source-free} one predicts the response from the compression
 configuration alone; both predict a change to which the reference loss $L_{0,c}$ is added, so
 source-free means independent of the initial state, not free of information about it.
-\rev{Separating the two lets Section~\ref{sec:observed} attribute a response to the state or to the configuration; Appendix~\ref{sec:app_registration} lists when each prediction and each baseline was fixed.}
+This design separates variation in the initial model state from variation in the compression
+configuration, which is what lets Section~\ref{sec:observed} attribute a response to one or the other;
+Appendix~\ref{sec:app_registration} lists the revision at which each prediction was fixed, and the fold rules.

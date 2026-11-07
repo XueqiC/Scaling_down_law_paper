@@ -2,8 +2,7 @@
 \label{sec:app_details}
 
 This appendix records the probes, the compression protocols and the controlled panel in the form
-used throughout the paper, so that each later section can be read against them. \rev{Table~\ref{tab:notation} in Appendix~\ref{sec:app_revision} collects the symbols and terms of the main text.}
-
+used throughout the paper, so that each later section can be read against them.
 
 \subsection{Probes and loss computation}
 \label{sec:app_probes}
@@ -249,8 +248,6 @@ that the fixed base does not describe this quantizer; the squared
 step-size ratio between 4 and 5 bits is $(7/15)^2\approx0.22$
 (Appendix~\ref{sec:app_details}), and a loss ratio would follow only under assumptions about the error distribution and the local response that lie outside the scope of this
 study.
-
-\rev{Read across the two interventions, Tables~\ref{tab:panel_prune}--\ref{tab:wanda-panel} show capability-specific structure that an aggregate loss hides. The ordering of mathematics and code reverses within a model: in Gemma-3-4B code loses more under pruning at $d=0.7$, 1.47 against 0.83 nats, and mathematics more under int4, 0.72 against 0.50, and Gemma-4-31B reverses the same way. Equal averages can hide different damage: on Qwen3-4B, magnitude pruning to $d=0.5$ changes mathematics, code and question answering by $+1.31$, $+0.90$ and $-1.48$ nats and int4 by $+0.13$, $+0.19$ and $+0.39$, so the equally weighted means agree at 0.24 nats while the mathematics loss differs tenfold; the two settings have different nominal storage, and the comparison concerns what the mean conveys, not which setting is better.}
 
 Under distillation, black-box traces from two API teachers, 600 per domain, train Gemma-3 students under a full-trace and an
 answer-only recipe in a paired design. The answer-only recipe increases the math loss about twice as much as the full recipe, while QA improves by 0.6 to 1.4 nats under both; because the recipes differ in supervised tokens and update
@@ -650,7 +647,7 @@ on each target's mildest pruned measurement, the power form's amplitude or the p
 helps neither form on the remaining densities. These forms were fitted after the confirmation.
 \input{tables/a14_baselines}
 
-\paragraph{Prediction of task accuracy.} The \rev{pruning law of \citet{sengupta2025compression}} has task accuracy as its own endpoint, and
+\paragraph{Prediction of task accuracy.} The pruning law's own endpoint is task accuracy, and
 Table~\ref{tab:accuracy-comparison} meets it there: on Gemma 3 1B and 4B and Qwen3 1.7B and 4B
 pruned to densities 0.8, 0.7 and 0.6, with accuracy measured by the protocol of
 Appendix~\ref{sec:app_probes} on 64 probes per capability, the law's form fitted leave-one-model-out
@@ -1028,17 +1025,19 @@ end-of-sequence token appended to every target and supervised, 1,781 extra super
 epoch on the same examples, seed, learning rate and two-epoch schedule: the student of the Pythia
 1.4B reference, on which the loss and generation orderings disagree most, and the student of the
 Gemma 3 1B reference, which reached the 96-token cap on 99 percent of items.
-Table~\ref{tab:eos-control} gives both pairs' readouts on the 384 fresh items\rev{, every 96-token readout scored from the stored generations with the one extraction rule used for all models in Table~\ref{tab:p1-behaviour}; the submitted version of this table carried the original students' 96-token scores from an earlier version of that rule}. The marker restores
+Table~\ref{tab:eos-control} gives both pairs' readouts on the 384 fresh items. The marker restores
 output control on both: the share of generations reaching the cap falls from 0.63 and 0.99 to 0.01
 and 0.00, and the mean generation from 64 and 96 tokens to 5 and 8. It leaves the
 reference-completion loss where it was, $-0.007$ nats [$-0.060$, $+0.047$] on Pythia and $+0.008$
 [$-0.022$, $+0.037$] on Gemma. On generation accuracy the two students differ. The Pythia student's
-exact match is unchanged, $+0.018$ [$-0.010$, $+0.049$] at 32 tokens and \rev{$-0.016$ [$-0.047$, $+0.016$]} at 96; it keeps its loss advantage over the quantization-only choice, $-0.45$ nats, with
+exact match is unchanged, $+0.018$ [$-0.010$, $+0.049$] at 32 tokens and $0.000$ [$-0.034$,
+$+0.031$] at 96; it keeps its loss advantage over the quantization-only choice, $-0.45$ nats, with
 its exact-match deficit, $-0.07$ [$-0.11$, $-0.03$], and the same against its initial student,
-$-0.38$ nats and \rev{$-0.11$}. The Gemma student, whose untreated generations never stopped, gains
-$+0.120$ [$+0.089$, $+0.154$] at 32 tokens\rev{, and $+0.013$ [$-0.005$, $+0.031$] at 96, where the gold-blind extraction already recovers the first sentence of a generation that does not stop}; \rev{with the marker it is} ahead of the quantization-only choice on exact match by $0.086$ [$0.049$, $0.122$] as well as on loss
-by $1.81$ nats, and level with its initial student on exact match, \rev{$-0.005$ [$-0.044$, $+0.034$]},
-while $1.05$ nats ahead on loss. The missing marker therefore costs generation accuracy \rev{under the short readout} where the
+$-0.38$ nats and $-0.10$. The Gemma student, whose untreated generations never stopped, gains
+$+0.120$ [$+0.089$, $+0.154$] at 32 tokens and $+0.044$ [$+0.021$, $+0.068$] at 96, which puts it
+ahead of the quantization-only choice on exact match by $0.086$ [$0.049$, $0.122$] as well as on loss
+by $1.81$ nats, and level with its initial student on exact match, $-0.003$ [$-0.042$, $+0.036$],
+while $1.05$ nats ahead on loss. The missing marker therefore costs generation accuracy where the
 untreated student never terminates and nothing where it sometimes does; in neither case does the
 loss gain over the initial student convert into an exact-match gain, and on Pythia 1.4B the
 disagreement between the loss ordering and the generation ordering stands with the answers properly
@@ -1093,54 +1092,3 @@ evaluated distributions, implementations and configuration ranges stated with it
 set to a new compression algorithm, capability or data source is a matter of the same protocol, one
 development panel and one pre-specified test, rather than of a new theory.
 
-\section{\texorpdfstring{\rev{Additions for the Revision}}{Additions for the Revision}}
-\label{sec:app_revision}
-
-\rev{This appendix collects the material added in response to the reviews, so that the numbering of the earlier appendices is unchanged. Each new analysis is labelled as retrospective, a new analysis of recorded results, or as pre-registered, a new measurement whose analysis was fixed before it was run.}
-
-\begin{table}[tb]
-\centering\small
-\caption{\rev{Symbols and terms used in the main text.}}
-\label{tab:notation}
-\rev{\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}p{0.25\textwidth}p{0.70\textwidth}@{}}
-\toprule
-Symbol or term & Meaning \\
-\midrule
-$c$; $m$ & Capability (mathematics, code, question answering); compression method (pruning, quantization, distillation) \\
-$\probeset{c}$; $L_c(w)$ & Fixed probe set of capability $c$ (64 items); its capability loss, the token-weighted teacher-forced cross-entropy of the reference completions (Eq.~\ref{eq:taskloss}) \\
-$M_0$; $S_0$, $S_{\mathrm{KD}}$ & Reference model before compression; initial and distilled student \\
-Response $\Delta L_c$; $\delta_c$ & $L_c(\text{compressed})-L_c(M_0)$ for pruning and quantization; $L_c(S_{\mathrm{KD}})-L_c(S_0)$ for distillation. Negative values mean a more probable reference, not higher accuracy \\
-Prediction target & The quantity a relation predicts; here the capability loss, with accuracy evaluated separately \\
-$N_0$; $D_0$; $L_{0,c}$ & Transformer-matrix parameters of $M_0$; its pretraining tokens; its measured capability loss (the dense anchor) \\
-$d$; $b$; $g$ & Retained density, the fraction of weights kept; bit width; group size, the number of weights sharing one scale \\
-$T$; $D_U$; $E$ & Supervised tokens processed in training; supervised tokens of the pool counted once; reuse ratio $T/D_U$, the mean number of passes over the pool \\
-$A_c(\mathbf x)$, $\gamma_c$, $\beta_c$ & Amplitude (predicted loss change at $d=0.7$), exponent and amplitude coefficients of Eq.~\ref{eq:power} \\
-Development, test states & Checkpoints used to fit and select a relation; checkpoints that enter no fit \\
-Source-conditioned, source-free & A relation that reads descriptors of the initial state; one that predicts the response from the configuration alone (both add the dense anchor) \\
-Pre-specified, retrospective & Predictions fixed before the test outcomes were measured; comparisons defined after them \\
-Opportunity; regret & Loss of the best feasible quantization candidate minus that of the best feasible candidate of any method; loss of a policy's choice minus that best candidate \\
-\bottomrule
-\end{tabular*}}
-\end{table}
-
-
-\subsection{\texorpdfstring{\rev{A smooth post-training-quantization law as a baseline}}{A smooth post-training-quantization law as a baseline}}
-\label{sec:app_kumar}
-
-\rev{The post-training-quantization law of \citet{kumar2024scaling} writes the degradation as $C\,e^{-P/\gamma_{\mathrm{post}}}\,D^{\gamma_D}/N^{\gamma_N}$ for precision $P$, parameters $N$ and pretraining tokens $D$. We refit this form per capability on exactly the development cells of the quantization relations of Section~\ref{sec:law_quant} and score it on the same test cells as Table~\ref{tab:main-prediction-v2} and Section~\ref{sec:unseen_settings}. For grouped quantization the main form has no group-size term, so we multiply it by $g^{\gamma_g}$, an adapted baseline with one extra parameter. Table~\ref{tab:r1-kumar} gives the result. The comparison shows where each form is the right tool. Inside the measured configuration range the delivered relations are more accurate: for mathematics and code at the unseen group sizes of the development states by a factor of four to five, for every capability on the new grouped state, and on the new per-channel states when all nine development states are available. Where a prediction must extrapolate in pretraining tokens, the smooth law's token term helps: with only the six development states at step 64k or below (the second protocol of Appendix~\ref{sec:app_results}), the refit law is more accurate on the later stages than the per-bit median, which has no token axis, and at unseen group sizes it improves on the median for question answering, the cell where the delivered relation falls back to the configuration median. A grid relation inside the measured range and an explicit token term for extrapolation across training stage are therefore complementary. The fitted exponents reproduce the direction of the overtraining finding of \citet{kumar2024scaling} at the capability level: the token exponent is positive in every fit, $\gamma_D=1.40$ for grouped quantization with 98.6\% of development-state resamples above zero and 1.70 and 0.92 for per-channel quantization with all resamples above zero, so at fixed size more pretraining makes a checkpoint more fragile to post-training quantization, as Pythia-160M's int4 mathematics damage of 0.13, 0.22, 0.69 and 2.84 nats at steps 16k, 64k, 96k and 143k illustrates (Table~\ref{tab:panel_quant} and Section~\ref{sec:app_pythia}).}
-
-\input{tables/r1-kumar-baseline}
-
-\subsection{\texorpdfstring{\rev{Which inputs the pruning amplitude needs}}{Which inputs the pruning amplitude needs}}
-\label{sec:app_ablation}
-
-\rev{To test whether the state dependence of the pruning amplitude is a normalization by the dense loss, we refit Eq.~\ref{eq:power} on the three measurement-efficiency confirmations with the amplitude restricted to a constant (shape only), to the dense loss $L_{0,c}$, to parameters and tokens, or given all inputs, with the estimator, exponent grid and development grids of each confirmation unchanged (Table~\ref{tab:r1-ablation}). The dense loss alone does not reproduce the delivered accuracy on any panel, and on the Pythia half grid it is less accurate than the shape alone for mathematics and code; parameters and pretraining tokens carry most of the gain on OLMo-2 and under Wanda; and the delivered combination is the most accurate or within 0.003 nats of the most accurate for mathematics and code on every half grid. The state information is therefore not a rescaling by the baseline loss, and every input it uses is known before compression.}
-
-\input{tables/r1-input-ablation}
-
-\subsection{\texorpdfstring{\rev{When numerical prediction changes a selection}}{When numerical prediction changes a selection}}
-\label{sec:app_selvalue}
-
-\rev{A numerical prediction can change a choice only where the best method differs from the one a fixed priority picks, and it recovers that method when its errors are small against the loss gap between methods: if every error is at most $\epsilon$, a gap larger than $2\epsilon$ is always resolved. Table~\ref{tab:r1-selection} counts both conditions cell by cell. On the independent validation the best method differs from the development priority in 1 to 6 of 65 cells per objective, which is why the priority attains the regret of numerical selection there, and where it does differ, on mathematics for Gemma 3, the medians gain 0.76 nats. On the retrospective held-out Pythia selection maps (Fig.~\ref{fig:selection}; 289 cells per objective), where the preferred method changes more often, the medians gain 0.40, 0.32 and 0.77 nats over the priority in the switching cells for mathematics, code and the largest increase; for question answering, whose predictions resolve the gap in fewer than half of the cells, the priority remains the better policy. The two conditions can be checked on a development panel before relying on numerical selection.}
-
-\input{tables/r1-selection-value}
