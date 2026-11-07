@@ -1,10 +1,7 @@
 \section{Compression Method Selection}
 \label{sec:selection}
 
-How precise must a loss prediction be to change a compression choice? \rev{We separate three sources of value: access to several compression methods, configuration-level numerical estimates, and the extra detail of source-conditioned relations.} We answer this under nominal
-storage constraints by comparing, on the same candidates, selection with parametric predictions (the
-source-conditioned relations of Section~\ref{sec:laws}), with empirical predictions (development
-configuration medians), and with a fixed method priority that uses no numerical prediction. Given a reference model, a capability and a budget, the decision is
+How precise must a loss prediction be to change a compression choice? \rev{We separate three sources of value: access to several compression methods, configuration-level numerical estimates, and the extra detail of source-conditioned relations.} \rev{Under nominal storage constraints and on the same candidates, we compare selection with the source-conditioned relations of Section~\ref{sec:laws}, with development configuration medians, and with a fixed method priority that uses no numerical prediction.} Given a reference model, a capability and a budget, the decision is
 \begin{equation}
 (m^{*},\boldsymbol\theta_m^{*})=\arg\min_{m,\;\boldsymbol\theta_m\in\mathcal F_m(B)}\;
 \widehat L_{m,c}(\mathbf x,\boldsymbol\theta_m),
@@ -32,7 +29,7 @@ A retrospective comparison of the three policies on the same candidates (Appendi
 Table~\ref{tab:s3-ablation}) shows how fine a prediction selection needs. On question answering the
 fixed method priority, the development medians and the final rule reach the same regret, 0.014 nats on
 the Pythia pair and 0.000 on the Gemma pair, against 0.58 and 1.12 for quantization only: the benefit
-rests on a stable difference between methods rather than on fine loss margins. On mathematics the
+rests on a stable difference between methods rather than on fine loss margins. \rev{Numerical prediction pays where the best method changes: on the held-out Pythia maps, the medians gain 0.40 and 0.32 nats over the priority in those cells for mathematics and code (Appendix~\ref{sec:app_selvalue}).} On mathematics the
 medians beat the priority by 0.024 nats on the Gemma pair, the smaller benefit that
 configuration-level estimates add. The medians are read from the development panel alone, so this benefit needs no measurement
 of the target model. The parametric relations improve on neither, so their contribution
