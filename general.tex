@@ -30,7 +30,7 @@ error in all three evaluations. \rev{Three kinds of transfer are thus separated:
 
 \input{tables/main_prediction_v2}
 
-At equal development budget and with every \rev{candidate} prediction fixed before measurement\rev{, and relations delivered after a test marked with a dagger}, the relations that
+At equal development budget\rev{, with every candidate prediction fixed before measurement and the relations delivered after a test marked with a dagger}, the relations that
 read the initial state help at unseen configurations of seen states, while on new model states the
 source-free medians predict as well or better (Table~\ref{tab:main-prediction-v2}; pre-specified candidates in Appendix
 Table~\ref{tab:main-prediction-candidates}; Fig.~\ref{fig:generalization} compares each task with its
@@ -41,6 +41,6 @@ of the strongest development baseline from 0.333 to 0.065 nats on mathematics an
 on code. For distillation,
 at six new pools and three new budgets, every selected form improves on zero change, with a detected
 gain over the development baseline for code on both students and for question answering on the
-smaller one. On three Pythia checkpoints in no fit, the pre-specified pruning power form matches the per-density regression on mathematics with a quarter of the parameters\rev{ (Appendix~\ref{sec:app_results})}. At 2.8B and 6.9B, beyond the development range, the
+smaller one. On three Pythia checkpoints in no fit, the pre-specified pruning power form matches the per-density regression on mathematics with a quarter of the parameters \rev{(Appendix~\ref{sec:app_results})}. At 2.8B and 6.9B, beyond the development range, the
 pre-specified median curve predicts pruning and per-bit quantization more accurately (at 6.9B and step 112k,
 0.05, 0.07 and 0.15 nats against 0.23, 0.19 and 0.96 for the source regression)\rev{, which is why the median curve is the rule for new states}.
