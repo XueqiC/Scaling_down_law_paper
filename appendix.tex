@@ -2,7 +2,32 @@
 \label{sec:app_details}
 
 This appendix records the probes, the compression protocols and the controlled panel in the form
-used throughout the paper, so that each later section can be read against them.
+used throughout the paper, so that each later section can be read against them. \rev{Table~\ref{tab:notation} collects the symbols and terms of the main text.}
+
+\begin{table}[tb]
+\centering\small
+\caption{\rev{Symbols and terms used in the main text.}}
+\label{tab:notation}
+\rev{\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}p{0.25\textwidth}p{0.70\textwidth}@{}}
+\toprule
+Symbol or term & Meaning \\
+\midrule
+$c$; $m$ & Capability (mathematics, code, question answering); compression method (pruning, quantization, distillation) \\
+$\probeset{c}$; $L_c(w)$ & Fixed probe set of capability $c$ (64 items); its capability loss, the token-weighted teacher-forced cross-entropy of the reference completions (Eq.~\ref{eq:taskloss}) \\
+$M_0$; $S_0$, $S_{\mathrm{KD}}$ & Reference model before compression; initial and distilled student \\
+Response $\Delta L_c$; $\delta_c$ & $L_c(\text{compressed})-L_c(M_0)$ for pruning and quantization; $L_c(S_{\mathrm{KD}})-L_c(S_0)$ for distillation. Negative values mean a more probable reference, not higher accuracy \\
+Prediction target & The quantity a relation predicts; here the capability loss, with accuracy evaluated separately \\
+$N_0$; $D_0$; $L_{0,c}$ & Transformer-matrix parameters of $M_0$; its pretraining tokens; its measured capability loss (the dense anchor) \\
+$d$; $b$; $g$ & Retained density, the fraction of weights kept; bit width; group size, the number of weights sharing one scale \\
+$T$; $D_U$; $E$ & Supervised tokens processed in training; supervised tokens of the pool counted once; reuse ratio $T/D_U$, the mean number of passes over the pool \\
+$A_c(\mathbf x)$, $\gamma_c$, $\beta_c$ & Amplitude (predicted loss change at $d=0.7$), exponent and amplitude coefficients of Eq.~\ref{eq:power} \\
+Development, test states & Checkpoints used to fit and select a relation; checkpoints that enter no fit \\
+Source-conditioned, source-free & A relation that reads descriptors of the initial state; one that predicts the response from the configuration alone (both add the dense anchor) \\
+Pre-specified, retrospective & Predictions fixed before the test outcomes were measured; comparisons defined after them \\
+Opportunity; regret & Loss of the best feasible quantization candidate minus that of the best feasible candidate of any method; loss of a policy's choice minus that best candidate \\
+\bottomrule
+\end{tabular*}}
+\end{table}
 
 \subsection{Probes and loss computation}
 \label{sec:app_probes}
