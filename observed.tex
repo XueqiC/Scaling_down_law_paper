@@ -24,7 +24,7 @@ pretraining tokens enter the pruning amplitude for mathematics and code and carr
 entered the fit; the same inputs over-predict question answering, whose density response is not
 proportional to any shared curve. A per-setting regression on parameter count, pretraining tokens and reference loss
 reduces the mean absolute error from 0.41 to 0.25 nats for mathematics and from 0.52 to 0.29
-for code, and raises it from 0.50 to 0.81 for question answering. \rev{This is not a rescaling by the dense loss: the dense loss alone is less accurate than the shape alone on Pythia, and parameters and tokens carry most of the gain on OLMo-2 and Wanda (Appendix~\ref{sec:app_ablation}).} Because the pruning shape is shared across states, a predictor can learn a state's \rev{amplitude}
+for code, and raises it from 0.50 to 0.81 for question answering. \rev{This is not a rescaling by the dense loss: the dense loss alone is less accurate than the shape alone on the Pythia half grid, and parameters and tokens carry most of the gain on OLMo-2 and Wanda (Appendix~\ref{sec:app_ablation}).} Because the pruning shape is shared across states, a predictor can learn a state's \rev{amplitude}
 from a few densities and take the shape from the others, which is the measurement saving that
 Section~\ref{sec:efficiency} tests.
 
