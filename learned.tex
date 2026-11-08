@@ -1,7 +1,7 @@
 \section{Conclusion}
 \label{sec:learned}
 
-In this paper, we present a systematic investigation of capability scaling-down laws for LLM compression across various settings. Through a common framework and controlled experiments, we characterize how capability losses vary with model state, compression configuration, and training data, and identify shared response patterns and capability differences. Building on these findings, we develop predictive relations and demonstrate that compact forms can reduce measurement requirements while maintaining useful predictive accuracy. We further introduce and independently evaluate a compression selection method that compares predicted capability losses under nominal storage constraints. Together, these contributions clarify the information needed to predict compression outcomes and provide an empirical foundation for developing capability scaling-down laws, reducing repeated evaluation, and aligning compression choices with application-specific capability requirements.
+\rev{We present a systematic investigation of capability scaling-down laws for LLM compression. A common framework shows which parts of the response are shared, one pruning density shape across model states, families and criteria, and which are capability-specific, the intervention-dependent sensitivity of mathematics and code and the sign-changing response of question answering. Relations built on the shared structure halve the measurements a pruning predictor needs, and independent selection tests quantify when capability-level predictions change a compression choice.}
 
 
 \phantomsection\label{sec:learned_end}

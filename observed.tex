@@ -1,45 +1,30 @@
 \section{Empirical Analysis of Capability Loss}
 \label{sec:observed}
 
-This section describes the response structure that the predictors of Section~\ref{sec:laws} build
-on, measured on the heterogeneous panel and the controlled Pythia and Gemma panels of
-Section~\ref{sec:models}. Section~\ref{sec:resp_capabilities} shows which response shapes pruning and
-quantization share across capabilities and model states, and Section~\ref{sec:why} shows how training
-data, exposure and the evaluation distribution shape the response to distillation and what that asks
-of its predictors.
+\rev{This section describes the response structure on which the predictors of Section~\ref{sec:laws} are built, measured on the heterogeneous panel and the controlled Pythia and Gemma panels of Section~\ref{sec:models}. Section~\ref{sec:resp_capabilities} identifies the structure that pruning and quantization share across model states, model families and interventions, Section~\ref{sec:resp_specific} the structure that is specific to each capability, and Section~\ref{sec:why} how training data, exposure and the evaluation distribution shape the response to distillation.}
 
-\subsection{Responses to Pruning and Quantization}
+\subsection{\texorpdfstring{\rev{Shared Response Structure}}{Shared Response Structure}}
 \label{sec:resp_capabilities}\label{sec:state_config}
 
-Compression changes capabilities unevenly and in no fixed order (Fig.~\ref{fig:heterogeneity}), which is
-the first structure a predictor has to capture. On the controlled Pythia panel, mathematics and code
-share one shape in density with a capability-specific scale, whereas the question-answering response
-changes sign across density at every state (Fig.~\ref{fig:pythia_responses}). The two
-compression axes also carry different shapes. Under pruning, once the measured first-order alignment
-term is subtracted, the residual before the cliff is a power law in the deleted capability mass, with an
-exponent that transfers across families. Under quantization the response is instead a threshold in bit
+\rev{Pruning shares one density shape across model states. On the controlled Pythia panel, mathematics and code rise along one shape in density whose amplitude, the loss change at a given density, depends on the state (Fig.~\ref{fig:pythia_responses}a). The shape also carries across model families and pruning criteria: Wanda changes the amplitude of the response by an order of magnitude, yet with the exponent pooled from magnitude-pruning cells and only the amplitude refit, it matches the Wanda responses of Qwen3-4B and Gemma-3-4B over seven densities to within 0.08 to 0.29 nats (Appendix~\ref{sec:app_hetero}), and the reduced-grid strategy built on this sharing reproduces on OLMo-2 and under Wanda (Section~\ref{sec:efficiency}).} Under quantization the response is instead a threshold in bit
 width whose position depends on the group size, so an interpolation over the measured grid predicts it
-where a smooth surface does not. Fig.~\ref{fig:pythia_responses} shows both shapes on the development
-states: pruning losses rise steeply once density falls below 0.8, per-channel losses are large at 3 bits
-and small from 4 bits on, and at 3 bits the grouped response grows with the group size while at 4 and 5
-bits it stays near zero. Both accounts read measurements of the compressed model, so they explain rather than predict
-(Appendix~\ref{sec:app_mech}).
+where a smooth surface does not. \rev{On the development states (Fig.~\ref{fig:pythia_responses}b,c), per-channel losses are large at 3 bits and small from 4 bits on, and at 3 bits the grouped response grows with the group size.}
+
+\rev{In common coordinates the shared structure extends across families and interventions. In the deleted capability mass $m_c(d)$, the fraction of a capability's diagonal-Fisher mass carried by the pruned weights, the response left after the first-order alignment term is a power law whose exponent lies in $[1.2,2.2]$ in every family, against $[3.2,8.7]$ in raw sparsity, and is shared across capabilities within a model; one exponent predicts held-out families with 2.17 nats of error against 10.3 for raw sparsity (Appendix~\ref{sec:law}). A coefficient-free second-order expansion of the logit displacement reproduces the loss change of pruning, per-channel and grouped quantization, with a median relative error below 5\% for changes below 0.1 nats that depends on the size of the change rather than on the method (Appendix~\ref{sec:app_disp}). Both accounts read the dense gradient or the compressed logits, which are not among the pre-compression inputs of Section~\ref{sec:models}, so they explain the response, and the relations of Section~\ref{sec:laws} do not use them as inputs.}
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figs/fig8_legend.pdf}\\[1pt]
 \includegraphics[width=\textwidth]{figs/fig8_a.pdf}
-\caption{Capability loss change from each model's dense loss across twelve public models, under pruning to $d=0.7$ (filled markers, left in each model's slot) and per-channel int4 (open markers, right), on a symmetric logarithmic axis that is linear within $\pm0.1$ nats; grey bars span each model's three responses under each method. The ordering of capabilities changes across series, and at the same setting the magnitudes differ by two orders of magnitude across all twelve models.}
+\caption{Capability loss change from each model's dense loss across twelve public models, under pruning to $d=0.7$ (filled markers, left in each model's slot) and per-channel int4 (open markers, right), on a symmetric logarithmic axis that is linear within $\pm0.1$ nats; grey bars span each model's three responses under each method. The ordering of capabilities changes across series, and at the same setting the magnitudes differ by two orders of magnitude across all twelve models. \rev{All values are teacher-forced losses of the reference completion: a negative value means the reference has become more probable, not that generated answers have become more accurate.}}
 \label{fig:heterogeneity}
 \end{figure}
-Model state sets the scale of the pruning response for mathematics and code, and the quantization response depends on the full configuration. On Pythia checkpoints whose size and training stage vary independently, parameter count and
+\rev{The model state determines the amplitude of the pruning response for mathematics and code, and the quantization response depends on the full configuration.} On Pythia checkpoints whose size and training stage vary independently, parameter count and
 pretraining tokens enter the pruning amplitude for mathematics and code and carry those capabilities to unseen densities of states that
 entered the fit; the same inputs over-predict question answering, whose density response is not
 proportional to any shared curve. A per-setting regression on parameter count, pretraining tokens and reference loss
 reduces the mean absolute error from 0.41 to 0.25 nats for mathematics and from 0.52 to 0.29
-for code, and raises it from 0.50 to 0.81 for question answering. Under quantization the configuration acts through two axes at once, the threshold in bit width
-moving with the group size, so a relation needs the configuration in full and the initial state only
-where it helps. Because the pruning shape is shared across states, a predictor can learn a state's scale
+for code, and raises it from 0.50 to 0.81 for question answering. \rev{This is not a rescaling by the dense loss: the dense loss alone is less accurate than the shape alone on the Pythia half grid, and parameters and tokens carry most of the gain on OLMo-2 and Wanda (Appendix~\ref{sec:app_ablation}).} Because the pruning shape is shared across states, a predictor can learn a state's \rev{amplitude}
 from a few densities and take the shape from the others, which is the measurement saving that
 Section~\ref{sec:efficiency} tests.
 
@@ -49,28 +34,24 @@ Section~\ref{sec:efficiency} tests.
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_a.pdf}\caption{Pruning}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_b.pdf}\caption{Per-channel quantization}\end{subfigure}\hfill
 \begin{subfigure}[t]{1.8in}\centering\includegraphics[width=\linewidth]{figs/fig4_c.pdf}\caption{Grouped quantization}\end{subfigure}
-\caption{Compression responses on the controlled Pythia panel, the structure the predictors of Section~\ref{sec:laws} build on: thin lines are the development states and bold lines their median, on a symmetric logarithmic axis that is linear within $\pm0.1$ nats. (a) Loss change against retained density on the nine development states: mathematics and code rise along one shape with a state-dependent scale, while question answering follows no shared curve. (b) Loss change against bit-width under per-channel round-to-nearest. (c) Mathematics loss change against group size at 3, 4 and 5 bits on the six grouped-quantization development states.}
+\caption{\rev{Compression-induced changes in reference-completion loss on the Pythia development checkpoints, the structure on which the predictors of Section~\ref{sec:laws} are built: thin lines show individual checkpoints and bold lines their median,} on a symmetric logarithmic axis that is linear within $\pm0.1$ nats. (a) Loss change against retained density on the nine development states: mathematics and code rise along one shape with a state-dependent \rev{amplitude}, while question answering follows no shared curve. (b) Loss change against bit-width under per-channel round-to-nearest. (c) Mathematics loss change against group size at 3, 4 and 5 bits on the six grouped-quantization development states.}
 \label{fig:pythia_responses}
 \end{figure}
+
+\subsection{\texorpdfstring{\rev{Capability-Specific Structure}}{Capability-Specific Structure}}
+\label{sec:resp_specific}
+
+Compression changes capabilities unevenly and in no fixed order (Fig.~\ref{fig:heterogeneity}), which is
+the first structure a predictor has to capture. \rev{The reordering is not confined to question answering. In Gemma-3-4B, pruning to density 0.7 raises the code loss more than the mathematics loss, by 1.47 against 0.83 nats, whereas int4 raises the mathematics loss more, by 0.72 against 0.50, and Gemma-4-31B shows the same reversal (Appendix Tables~\ref{tab:panel_prune} and~\ref{tab:panel_quant}). Mathematics and code therefore share the pruning shape on the controlled panel without being one response measured at two scales: their relative sensitivity depends on the intervention. Pre-registered item-level tests confirm such reversals and show that the capability labels predict item responses better than random groups (Appendix~\ref{sec:app_items}).} On the controlled Pythia panel the question-answering response changes sign across density at every state (Fig.~\ref{fig:pythia_responses}a). \rev{Its direction is not arbitrary: the first-order alignment $\bar g_c^{\top}\delta w$ between the capability gradient and the pruning weight change is negative for question answering on Qwen3 and OLMo-3-32B, whose loss falls under pruning, and positive on Gemma, whose loss does not, a family-level pattern stated before the measurement (Appendix~\ref{sec:mech}). A lower question-answering loss means a more probable reference answer and does not by itself raise the exact match of generated answers (Appendix~\ref{sec:app_measure}).}
+
+\rev{Gradient signatures give an internal view of the same structure. Among eight task benchmarks and a C4 control, compared through benchmark-conditional diagonal Fisher signatures with the shared component removed, the task partition of the seven task benchmarks other than SVAMP is the most block-structured of all 105 same-size partitions in eight of ten models from five series and among the top three in the other two. Full-solution mathematics aligns with code and away from question answering, mirroring their shared pruning shape, while SVAMP, whose reference is a bare number, aligns with short-answer question answering: the signature reflects the reference completion as well as the task, which is why each capability loss is defined on fixed references (Supplement~S5.1).}
 
 \subsection{Effects of Training Data and Evaluation Distribution}
 \label{sec:why}
 
-The cost of heavy data reuse recurs across question-answering distributions, while the net benefit of
-distillation depends on the evaluation distribution. At a matched budget $T$ near 200k supervised tokens
-(Fig.~\ref{fig:responses_v2}), a reuse ratio $E=T/D_U$ near twelve costs question answering $+0.29$,
-$+2.55$ and $+4.85$ nats on students of 100M, 700M and 3.2B non-embedding parameters, and nine times
+\rev{At the same training budget, heavy data reuse costs the larger students more, and this cost recurs across question-answering distributions, while the net benefit of distillation depends on the evaluation distribution; a pre-registered replication on Qwen3-0.6B and 1.7B students reproduces all three relations (Appendix~\ref{sec:app_reuse_family}). Here $T$ counts the supervised completion tokens processed in training, $D_U$ the supervised tokens of the training pool counted once, and the reuse ratio $E=T/D_U$ the average number of passes over the pool.} At a matched budget $T$ near 200k supervised tokens
+(Fig.~\ref{fig:responses_v2}), a reuse ratio near twelve costs question answering $+0.29$,
+$+2.55$ and $+4.85$ nats on students of 100M, 700M and 3.2B non-embedding parameters\rev{, a cost that grows about seventeenfold across this thirty-two-fold range of student size under one recipe}, and nine times
 more independent data converts the same budget into a gain near one nat on each. Rescored on a fresh
 2Wiki sample, on MuSiQue and on TriviaQA at the same budget, all three distributions worsen at high
-reuse and improve as reuse falls, but only the fresh 2Wiki sample crosses into a gain. The reuse response also fixes an empirical data requirement: in a pre-specified experiment of eighteen
-trajectories on the 1B and 4B students (Appendix Fig.~\ref{fig:dreq}), the independent data at which a
-loss constraint is met lies inside the tested pools on the fresh 2Wiki sample for both students at the
-two larger budgets, and we report it as measured intervals.
-
-The training recipe is a further condition to consider when extending these relations. With every
-other setting held fixed (Appendix Fig.~\ref{fig:lr_pilot}), the loss increase on mathematics and code
-grows by an order of magnitude between learning rates of $5\times10^{-5}$ and $1\times10^{-4}$; at the
-lower rate the 1B student is almost unharmed on those two capabilities and question answering improves
-by $0.79$ nats, so the responses of Fig.~\ref{fig:responses_v2} are measured under one fixed recipe.
-These responses motivate predictors that account jointly for data availability and training exposure,
-with student state and evaluation distribution determining their range of transfer.
+reuse and improve as reuse falls, but only the fresh 2Wiki sample crosses into a gain. \rev{The responses are measured under one fixed recipe, a condition of these relations: between learning rates of $5\times10^{-5}$ and $1\times10^{-4}$, the loss increase on mathematics and code grows tenfold in a pilot with all else fixed (Appendix Fig.~\ref{fig:lr_pilot}).}

@@ -2,7 +2,8 @@
 \label{sec:app_details}
 
 This appendix records the probes, the compression protocols and the controlled panel in the form
-used throughout the paper, so that each later section can be read against them.
+used throughout the paper, so that each later section can be read against them. \rev{Table~\ref{tab:notation} in Appendix~\ref{sec:app_revision} collects the symbols and terms of the main text.}
+
 
 \subsection{Probes and loss computation}
 \label{sec:app_probes}
@@ -248,6 +249,8 @@ that the fixed base does not describe this quantizer; the squared
 step-size ratio between 4 and 5 bits is $(7/15)^2\approx0.22$
 (Appendix~\ref{sec:app_details}), and a loss ratio would follow only under assumptions about the error distribution and the local response that lie outside the scope of this
 study.
+
+\rev{Read across the two interventions, Tables~\ref{tab:panel_prune}--\ref{tab:wanda-panel} show capability-specific structure that an aggregate loss hides. The ordering of mathematics and code reverses within a model: in Gemma-3-4B code loses more under pruning at $d=0.7$, 1.47 against 0.83 nats, and mathematics more under int4, 0.72 against 0.50, and Gemma-4-31B reverses the same way. Equal averages can hide different damage: on Qwen3-4B, magnitude pruning to $d=0.5$ changes mathematics, code and question answering by $+1.31$, $+0.90$ and $-1.48$ nats and int4 by $+0.13$, $+0.19$ and $+0.39$, so the equally weighted means agree at 0.24 nats while the mathematics loss differs tenfold; the two settings have different nominal storage, and the comparison concerns what the mean conveys, not which setting is better.}
 
 Under distillation, black-box traces from two API teachers, 600 per domain, train Gemma-3 students under a full-trace and an
 answer-only recipe in a paired design. The answer-only recipe increases the math loss about twice as much as the full recipe, while QA improves by 0.6 to 1.4 nats under both; because the recipes differ in supervised tokens and update
@@ -647,7 +650,7 @@ on each target's mildest pruned measurement, the power form's amplitude or the p
 helps neither form on the remaining densities. These forms were fitted after the confirmation.
 \input{tables/a14_baselines}
 
-\paragraph{Prediction of task accuracy.} The pruning law's own endpoint is task accuracy, and
+\paragraph{Prediction of task accuracy.} The \rev{pruning law of \citet{sengupta2025compression}} has task accuracy as its own endpoint, and
 Table~\ref{tab:accuracy-comparison} meets it there: on Gemma 3 1B and 4B and Qwen3 1.7B and 4B
 pruned to densities 0.8, 0.7 and 0.6, with accuracy measured by the protocol of
 Appendix~\ref{sec:app_probes} on 64 probes per capability, the law's form fitted leave-one-model-out
@@ -1025,19 +1028,17 @@ end-of-sequence token appended to every target and supervised, 1,781 extra super
 epoch on the same examples, seed, learning rate and two-epoch schedule: the student of the Pythia
 1.4B reference, on which the loss and generation orderings disagree most, and the student of the
 Gemma 3 1B reference, which reached the 96-token cap on 99 percent of items.
-Table~\ref{tab:eos-control} gives both pairs' readouts on the 384 fresh items. The marker restores
+Table~\ref{tab:eos-control} gives both pairs' readouts on the 384 fresh items\rev{, every 96-token readout scored from the stored generations with the one extraction rule used for all models in Table~\ref{tab:p1-behaviour}; the submitted version of this table carried the original students' 96-token scores from an earlier version of that rule}. The marker restores
 output control on both: the share of generations reaching the cap falls from 0.63 and 0.99 to 0.01
 and 0.00, and the mean generation from 64 and 96 tokens to 5 and 8. It leaves the
 reference-completion loss where it was, $-0.007$ nats [$-0.060$, $+0.047$] on Pythia and $+0.008$
 [$-0.022$, $+0.037$] on Gemma. On generation accuracy the two students differ. The Pythia student's
-exact match is unchanged, $+0.018$ [$-0.010$, $+0.049$] at 32 tokens and $0.000$ [$-0.034$,
-$+0.031$] at 96; it keeps its loss advantage over the quantization-only choice, $-0.45$ nats, with
+exact match is unchanged, $+0.018$ [$-0.010$, $+0.049$] at 32 tokens and \rev{$-0.016$ [$-0.047$, $+0.016$]} at 96; it keeps its loss advantage over the quantization-only choice, $-0.45$ nats, with
 its exact-match deficit, $-0.07$ [$-0.11$, $-0.03$], and the same against its initial student,
-$-0.38$ nats and $-0.10$. The Gemma student, whose untreated generations never stopped, gains
-$+0.120$ [$+0.089$, $+0.154$] at 32 tokens and $+0.044$ [$+0.021$, $+0.068$] at 96, which puts it
-ahead of the quantization-only choice on exact match by $0.086$ [$0.049$, $0.122$] as well as on loss
-by $1.81$ nats, and level with its initial student on exact match, $-0.003$ [$-0.042$, $+0.036$],
-while $1.05$ nats ahead on loss. The missing marker therefore costs generation accuracy where the
+$-0.38$ nats and \rev{$-0.11$}. The Gemma student, whose untreated generations never stopped, gains
+$+0.120$ [$+0.089$, $+0.154$] at 32 tokens\rev{, and $+0.013$ [$-0.005$, $+0.031$] at 96, where the gold-blind extraction already recovers the first sentence of a generation that does not stop}; \rev{with the marker it is} ahead of the quantization-only choice on exact match by $0.086$ [$0.049$, $0.122$] as well as on loss
+by $1.81$ nats, and level with its initial student on exact match, \rev{$-0.005$ [$-0.044$, $+0.034$]},
+while $1.05$ nats ahead on loss. The missing marker therefore costs generation accuracy \rev{under the short readout} where the
 untreated student never terminates and nothing where it sometimes does; in neither case does the
 loss gain over the initial student convert into an exact-match gain, and on Pythia 1.4B the
 disagreement between the loss ordering and the generation ordering stands with the answers properly
@@ -1092,3 +1093,104 @@ evaluated distributions, implementations and configuration ranges stated with it
 set to a new compression algorithm, capability or data source is a matter of the same protocol, one
 development panel and one pre-specified test, rather than of a new theory.
 
+\section{\texorpdfstring{\rev{Additions for the Revision}}{Additions for the Revision}}
+\label{sec:app_revision}
+
+\rev{This appendix collects the material added in response to the reviews, so that the numbering of the earlier appendices is unchanged. Each new analysis is labelled as retrospective, a new analysis of recorded results, or as pre-registered, a new measurement whose analysis was fixed before it was run.}
+
+\begin{table}[tb]
+\centering\small
+\caption{\rev{Symbols and terms used in the main text.}}
+\label{tab:notation}
+\rev{\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}p{0.25\textwidth}p{0.70\textwidth}@{}}
+\toprule
+Symbol or term & Meaning \\
+\midrule
+$c$; $m$ & Capability (mathematics, code, question answering); compression method (pruning, quantization, distillation) \\
+$\probeset{c}$; $L_c(w)$ & Fixed probe set of capability $c$ (64 items); its capability loss, the token-weighted teacher-forced cross-entropy of the reference completions (Eq.~\ref{eq:taskloss}) \\
+$M_0$; $S_0$, $S_{\mathrm{KD}}$ & Reference model before compression; initial and distilled student \\
+Response $\Delta L_c$; $\delta_c$ & $L_c(\text{compressed})-L_c(M_0)$ for pruning and quantization; $L_c(S_{\mathrm{KD}})-L_c(S_0)$ for distillation. Negative values mean a more probable reference, not higher accuracy \\
+Prediction target & The quantity a relation predicts; here the capability loss, with accuracy evaluated separately \\
+$N_0$; $D_0$; $L_{0,c}$ & Transformer-matrix parameters of $M_0$; its pretraining tokens; its measured capability loss (the dense anchor) \\
+$d$; $b$; $g$ & Retained density, the fraction of weights kept; bit width; group size, the number of weights sharing one scale \\
+$T$; $D_U$; $E$ & Supervised tokens processed in training; supervised tokens of the pool counted once; reuse ratio $T/D_U$, the mean number of passes over the pool \\
+$A_c(\mathbf x)$, $\gamma_c$, $\beta_c$ & Amplitude (predicted loss change at $d=0.7$), exponent and amplitude coefficients of Eq.~\ref{eq:power} \\
+Development, test states & Checkpoints used to fit and select a relation; checkpoints that enter no fit \\
+Source-conditioned, source-free & A relation that reads descriptors of the initial state; one that predicts the response from the configuration alone (both add the dense anchor) \\
+Pre-specified, retrospective & Predictions fixed before the test outcomes were measured; comparisons defined after them \\
+Opportunity; regret & Loss of the best feasible quantization candidate minus that of the best feasible candidate of any method; loss of a policy's choice minus that best candidate \\
+\bottomrule
+\end{tabular*}}
+\end{table}
+
+
+\subsection{\texorpdfstring{\rev{A smooth post-training-quantization law as a baseline}}{A smooth post-training-quantization law as a baseline}}
+\label{sec:app_kumar}
+
+\rev{The post-training-quantization law of \citet{kumar2024scaling} writes the degradation as $C\,e^{-P/\gamma_{\mathrm{post}}}\,D^{\gamma_D}/N^{\gamma_N}$ for precision $P$, parameters $N$ and pretraining tokens $D$. We refit this form per capability on exactly the development cells of the quantization relations of Section~\ref{sec:law_quant} and score it on the same test cells as Table~\ref{tab:main-prediction-v2} and Section~\ref{sec:unseen_settings}. For grouped quantization the main form has no group-size term, so we multiply it by $g^{\gamma_g}$, an adapted baseline with one extra parameter. Table~\ref{tab:r1-kumar} gives the result. The comparison shows where each form is the right tool. Inside the measured configuration range the delivered relations are more accurate: for mathematics and code at the unseen group sizes of the development states by a factor of four to five, for every capability on the new grouped state, and on the new per-channel states when all nine development states are available. Where a prediction must extrapolate in pretraining tokens, the smooth law's token term helps: with only the six development states at step 64k or below (the second protocol of Appendix~\ref{sec:app_results}), the refit law is more accurate on the later stages than the per-bit median, which has no token axis, and at unseen group sizes it improves on the median for question answering, the cell where the delivered relation falls back to the configuration median. A grid relation inside the measured range and an explicit token term for extrapolation across training stage are therefore complementary. The fitted exponents reproduce the direction of the overtraining finding of \citet{kumar2024scaling} at the capability level: the token exponent is positive in every fit, $\gamma_D=1.40$ for grouped quantization with 98.6\% of development-state resamples above zero and 1.70 and 0.92 for per-channel quantization with all resamples above zero, so at fixed size more pretraining makes a checkpoint more fragile to post-training quantization, as Pythia-160M's int4 mathematics damage of 0.13, 0.22, 0.69 and 2.84 nats at steps 16k, 64k, 96k and 143k illustrates (Table~\ref{tab:panel_quant} and Section~\ref{sec:app_pythia}).}
+
+\input{tables/r1-kumar-baseline}
+
+\subsection{\texorpdfstring{\rev{Which inputs the pruning amplitude needs}}{Which inputs the pruning amplitude needs}}
+\label{sec:app_ablation}
+
+\rev{To test whether the state dependence of the pruning amplitude is a normalization by the dense loss, we refit Eq.~\ref{eq:power} on the three measurement-efficiency confirmations with the amplitude restricted to a constant (shape only), to the dense loss $L_{0,c}$, to parameters and tokens, or given all inputs, with the estimator, exponent grid and development grids of each confirmation unchanged (Table~\ref{tab:r1-ablation}). The dense loss alone does not reproduce the delivered accuracy on any panel, and on the Pythia half grid it is less accurate than the shape alone for mathematics and code; parameters and pretraining tokens carry most of the gain on OLMo-2 and under Wanda; and the delivered combination is the most accurate or within 0.003 nats of the most accurate for mathematics and code on every half grid. The state information is therefore not a rescaling by the baseline loss, and every input it uses is known before compression.}
+
+\input{tables/r1-input-ablation}
+
+\subsection{\texorpdfstring{\rev{When numerical prediction changes a selection}}{When numerical prediction changes a selection}}
+\label{sec:app_selvalue}
+
+\rev{A numerical prediction can change a choice only where the best method differs from the one a fixed priority picks, and it recovers that method when its errors are small against the loss gap between methods: if every error is at most $\epsilon$, a gap larger than $2\epsilon$ is always resolved. Table~\ref{tab:r1-selection} counts both conditions cell by cell. On the independent validation the best method differs from the development priority in 1 to 6 of 65 cells per objective, which is why the priority attains the regret of numerical selection there, and where it does differ, on mathematics for Gemma 3, the medians gain 0.76 nats. On the retrospective held-out Pythia selection maps (Fig.~\ref{fig:selection}; 289 cells per objective), where the preferred method changes more often, the medians gain 0.40, 0.32 and 0.77 nats over the priority in the switching cells for mathematics, code and the largest increase; for question answering, whose predictions resolve the gap in fewer than half of the cells, the priority remains the better policy. The two conditions can be checked on a development panel before relying on numerical selection.}
+
+\input{tables/r1-selection-value}
+
+\subsection{\texorpdfstring{\rev{Item-level structure of the capability responses}}{Item-level structure of the capability responses}}
+\label{sec:app_items}
+
+\rev{To test whether the three capability labels are visible in the responses themselves, we recorded the loss change of every item under ten compressions, global magnitude pruning at densities 0.9 to 0.5 and per-channel round-to-nearest quantization at 8, 6, 5, 4 and 3 bits, on the $3\times64$ probes and on 512 items from eight further benchmarks (GSM8K, MATH-500, SVAMP, HumanEval, MBPP, 2Wiki, HotpotQA and TriviaQA), for 21 checkpoints: the nine Pythia development states, Gemma~3 1B and 4B pretrained and instruction-tuned, and Qwen3 0.6B, 1.7B, 4B and 8B base and post-trained. Every test below and its decision rule was fixed before the measurement (pre-registered, rebuttal round).}
+
+\rev{\emph{Reversals with item-level intervals.} The ordering test compares $r=\Delta L_{\mathrm{math}}-\Delta L_{\mathrm{code}}$ under pruning and at four bits and declares a reversal when the two values have opposite signs with both 95\% bootstrap intervals excluding zero (Table~\ref{tab:r1-reversal-compact}). The ordering reverses in 5 of the 20 checkpoints where the test applies, including the Gemma-3-4B and Qwen3-4B cases of Section~\ref{sec:resp_specific} and the Introduction, whose base model reverses as well, and 33 of the 41 differences have intervals excluding zero. Mathematics and code are therefore two responses whose relative size depends on the intervention, measured with item-level uncertainty, not one response observed at two scales.}
+
+\input{tables/r1-reversal-compact}
+
+\rev{\emph{Variance, clustering and held-out prediction.} Table~\ref{tab:r1-taskstructure-compact} reports the remaining tests per checkpoint. The capability label explains a share of the item-to-item variance above the 95th percentile of random balanced partitions in 20 of 21 checkpoints (155 of 210 checkpoint-configuration cells). Unsupervised spectral clustering of the item profiles agrees with the capability labels beyond a 1,000-permutation null in all 21 checkpoints on pruning profiles ($p\le0.044$), although weakly in absolute terms, with adjusted Rand indices of 0.001 to 0.047: items within one capability differ widely in difficulty and solution path, and the task-level mean that each relation predicts averages this variation out. The silhouette criterion selects two clusters in every checkpoint, and on pruning profiles the grouping of mathematics and code against question answering agrees better with the clusters than the three-way grouping in 21 of 21 (indices of 0.04 to 0.27), the outcome stated in advance and the structure that Eq.~\ref{eq:power} encodes with a shared density term and capability-specific amplitudes; the second half of that statement, that adding quantization columns raises the three-way agreement, held in 9 of 21. The labels matter for prediction: predicting an item's response to a held-out configuration from items of its own capability is more accurate than from a random group of the same size in all 63 checkpoint-capability cells, significantly in 60 (all 21 for mathematics and for code, 18 for question answering), with median error reductions of 31\%, 21\% and 12\%. For mathematics and code, the capability's own items are also more accurate than all items pooled in every checkpoint (median reductions 29\% and 18\%); for question answering the two are on par.}
+
+\input{tables/r1-taskstructure-compact}
+
+\rev{\emph{Benchmark level.} The same-capability transfer of the Fig.~\ref{fig:measurement} design reproduces on this panel for mathematics and code: a primary benchmark predicts a secondary benchmark of its own capability with a mean absolute error of 0.78 and 0.18 nats, against 0.87 and 0.52 from another capability and 0.84 and 0.40 from randomly assigned labels; for question answering the three are close (0.68, 0.66 and 0.66). Across the eight benchmark mean responses, the task partition is not the most block-structured partition in any checkpoint (smallest $p=0.10$ without SVAMP), whereas the partition into worked-solution and short-answer references attains the smallest possible $p$ of $1/35$ in 9 of 21. As with the gradient signatures of Supplement~S5.1, the response reflects the form of the reference completion as well as the task, which is why each capability loss is defined on a fixed reference distribution (Section~\ref{sec:setup}) and each relation is stated for the distribution it was fitted on.}
+
+\rev{Together these tests support the reading of Section~\ref{sec:observed}: the three labels carry information about the responses that random partitions do not, in every checkpoint, and that information improves prediction; mathematics and code share the pruning shape while differing in amplitude and in their ordering across interventions; and the labels are not three disjoint clusters of items, which the relations do not require, since each predicts the mean response of a fixed evaluation distribution.}
+
+\subsection{\texorpdfstring{\rev{Base and post-trained releases}}{Base and post-trained releases}}
+\label{sec:app_posttrain}
+
+\rev{To separate post-training from family and size, the item-level measurements above were taken on matched pairs that share an architecture and a pretraining run: Qwen3 0.6B, 1.7B, 4B and 8B base against post-trained, and Gemma~3 1B and 4B pretrained against instruction-tuned (Table~\ref{tab:r1-posttraining-compact}; pre-registered, rebuttal round). Post-training changes the response without removing its structure. The capability label explains more variance than random partitions in both members of every pair, while the mathematics/code reversal appears or disappears with post-training (Gemma~3 1B). Post-training extends the range of densities over which the question-answering loss falls under pruning in five of the six pairs and leaves it unchanged in the sixth: in Qwen3 1.7B the loss rises at every density down to 0.6 in the base model and falls in the post-trained one, and in Gemma~3 4B it rises in the pretrained model and falls at densities 0.9 and 0.8 after instruction tuning. The falling question-answering loss reported for the post-trained Qwen3 releases is therefore shaped by post-training as well as by the family, which a term computed from the state itself, such as the first-order alignment of Appendix~\ref{sec:mech}, can register and a family label cannot.}
+
+\rev{Post-training also changes the amplitude of the pruning response, and prediction transfers across it once that amplitude is measured. In Qwen3 4B and 8B the post-trained releases' mathematics and code losses change by at most 0.15 and 0.26 nats down to density 0.6, a third or less of their base models' change. The frozen development median, which uses no measurement of either member, is more accurate than predicting no change in the four pairs whose post-trained responses are not flat (all eight mathematics and code cells), and less accurate in Qwen3 4B and 8B, where no change is already within 0.10 nats. Taking the density shape from the base member and recalibrating only the amplitude from one post-trained measurement at density 0.7, the one-point calibration of Appendix~\ref{sec:app_shared}, gives errors of 0.02 to 0.34 nats on the other densities in Qwen3 0.6B, 1.7B and 8B and Gemma~3 1B, within 0.10 nats of a leave-one-density-out refit on the post-trained grid or better than it, and 0.06 and 0.16 nats in Qwen3 4B, whose responses at density 0.7 are within 0.1 nats of zero. The exception is Gemma~3 4B, whose instruction-tuned response is flat to density 0.8 and exceeds one nat at 0.7: a calibration point past this onset cannot transfer a smooth shape, and the refit is also least accurate there. This is the cliff regime of Appendix~\ref{sec:orderparam}, where the response is a threshold crossing rather than a smooth function of density. A post-trained state's amplitude is therefore best measured with that single calibration point rather than carried over from its base model.}
+
+\input{tables/r1-posttraining-compact}
+
+\subsection{\texorpdfstring{\rev{Measurement efficiency with task accuracy as the target}}{Measurement efficiency with task accuracy as the target}}
+\label{sec:app_accuracy}
+
+\rev{To test whether the measurement saving of the OLMo-2 confirmation (Appendix~\ref{sec:app_a11}, Table~\ref{tab:second-family}) holds when the prediction target is task accuracy instead of the capability loss, we repeated that design with accuracy as the label: the same six development and four test states, the same pruning protocol, two measured densities (0.9 and 0.7) against four (0.9 to 0.6), and the same predictors, exponent grid and leave-one-state-out ridge estimator, with the accuracy change in place of the loss change and the dense accuracy in place of the dense loss among the amplitude inputs. The targets are GSM8K exact match, MBPP pass@1 by sandboxed execution and TriviaQA exact match under greedy decoding, on 256 items per capability that appear in no probe, teacher trace or few-shot exemplar of the paper. A gate fixed in advance reports a capability on the 7B states only if its dense accuracy is below 0.05 on every 1B development state; it applied to mathematics (1.6 to 2.7\%) and code (2.7 to 4.7\%). Table~\ref{tab:r1-accuracy-compact} gives the outcome (pre-registered, rebuttal round).}
+
+\rev{Question answering, the one target resolved on all ten states, reproduces the loss result. The compact form measured at two densities errs by 1.43 accuracy points against 1.54 for the per-density regression measured at four (difference $-0.10$ [$-0.82$, $+0.68$]), halves the error of the per-density regression measured at the same two densities, and is the most accurate predictor on two densities; predicting no change errs by 5.11 points, and the accuracy-native pruning law of \citet{sengupta2025compression} by 3.29 on two densities and 4.79 on four. Mathematics meets the pre-specified reading, a difference of $+0.41$ points [$-0.15$, $+0.68$] against the margin of 3, but carries little signal: on the 7B states, whose dense GSM8K accuracy is 4 to 9\%, pruning moves the accuracy by at most four points and without a consistent sign above density 0.6, and predicting no change errs by 0.98 points. Code misses the reading: the compact form on two densities errs by 6.33 points against 2.55, a difference of $+3.78$ [$+2.74$, $+4.91$], so the pre-specified reading is not met.}
+
+\rev{The code miss has an identifiable cause. At density 0.9 the code accuracy of the three 7B development states changes by 0.0, $-0.4$ and $-2.3$ points, within six items of zero, so the two-density fit determines the exponent from one resolved density; it selected $\gamma=6$, the upper end of the grid, and the extrapolation to the test density 0.65, below the measured range, predicts drops of 20 and 23 points where 2.3 and 8.6 were measured. At the test densities 0.85 and 0.75, inside the measured range, its mean error is 1.46 points against 2.40 for the regression on four densities, and the same form measured at four densities is the most accurate of the pre-registered code predictors (1.98 points). Post hoc, at the same number of measurements, placing the two densities so that they bracket the test densities brings code within the margin, $-0.67$ [$-1.19$, $+0.46$] with densities 0.9 and 0.6 and $+0.40$ [$-0.16$, $+1.59$] with 0.8 and 0.6, while mathematics stays within it; question answering, already resolved at 0.9, is less accurate on these grids (2.68 and 1.87 points) and remains within three points of the regression. These two placements are the only alternatives computed.}
+
+\rev{Two densities cost 9,959 GPU seconds and 4.28M generated tokens against 12,382 seconds and 7.10M tokens for four, including dense anchors and model loading: 60\% of the generated tokens but 80\% of the GPU time, against 59\% of the GPU time in the loss confirmation, because loading and the dense anchors take a larger share of an accuracy evaluation. The comparison also shows why each relation of the paper predicts the capability loss (Section~\ref{sec:setup}). On the same 7B states the mathematics probe loss rises with every pruning step, from at most 0.003 nats at density 0.9 to 0.19 to 0.32 nats at 0.6, where the GSM8K accuracy is unresolved, and the loss route, which predicts the loss on two densities and maps it to accuracy through a logistic link (Appendix~\ref{sec:app_measure}), is the most accurate pre-registered code predictor on two densities (2.01 points). On question answering the loss route errs by 12.46 points, because the loss probe (2Wiki) and the accuracy benchmark (TriviaQA) are different distributions, so the link is fitted across two distributions. A measurement saving with accuracy as the target therefore holds where the accuracy change is resolved at the measured densities, as for question answering, and otherwise requires measured densities that bracket the target, whereas the loss change is resolved at every density measured.}
+
+\input{tables/r1-accuracy-compact}
+
+\subsection{\texorpdfstring{\rev{Controlled reuse on a second student family}}{Controlled reuse on a second student family}}
+\label{sec:app_reuse_family}
+
+\rev{To test whether the reuse cost of Section~\ref{sec:why} is specific to the Gemma-3 family, we repeated the uniform-protocol matrix of Fig.~\ref{fig:responses_v2} on two Qwen3 Base students, Qwen3-0.6B-Base and Qwen3-1.7B-Base, with 440M and 1.41B non-embedding parameters, and held everything else fixed: the same full teacher traces, low-rank adaptation of rank 16 and scaling 32 on every attention and MLP projection, AdamW at the protocol learning rate with effective batch 16 and a cosine schedule with 3\% warmup on the same absolute processed-token budget, training seed 0, and pools of $U=66$, 198 and 594 traces per domain drawn with pool seeds 41 and 42 exactly as the Gemma pools were. The checkpoints nearest 50k, 100k and 200k supervised tokens are scored on the mathematics, code and 2Wiki probes and on the three fresh distributions of Fig.~\ref{fig:resp_d}, against each student's own initial state. Three directions were fixed before training: at the 200k budget the 2Wiki-probe response at $U=66$ exceeds that at $U=594$ for each student (H6a); this reuse cost is larger for the larger student (H6b); and on the fresh 2Wiki sample, MuSiQue and TriviaQA the response at $U=66$ exceeds that at $U=594$ for each student (H6c). The optional third student of the registration, Qwen3-4B-Base, was not run, and the one amendment, made before any training, changed only the runner's host check. All 216 seed-level cells were measured (Table~\ref{tab:r1-reuse-compact}; pre-registered, rebuttal round).}
+
+\rev{All three registered directions are observed. At the 200k budget a reuse ratio near twelve costs the 2Wiki probe $+0.86$ and $+0.99$ nats on the two students, while nine times more independent data converts the same budget into gains of 0.91 and 1.17 nats, the pattern of the gain near one nat on each Gemma student. The paired reuse cost is $+1.77$ [$+1.43$, $+2.11$] nats on Qwen3-0.6B and $+2.16$ [$+1.76$, $+2.56$] on Qwen3-1.7B (H6a), larger by 0.39 nats on the larger student (H6b). On the fresh 2Wiki sample, MuSiQue and TriviaQA the response at $U=66$ exceeds that at $U=594$ on both students at all three budgets, in all eighteen comparisons (H6c), and the cost grows with the budget in each of the six student and distribution pairs, from 0.08 to 0.18 nats at 50k to 0.69 to 2.40 at 200k, as the number of passes over the small pool grows. Mathematics and code losses rise in every cell, by 0.01 to 0.23 nats, and at 200k they rise more at $U=66$ than at $U=594$ on both students, for example 0.18 against 0.09 on mathematics and 0.23 against 0.10 on code for Qwen3-0.6B, as in Fig.~\ref{fig:resp_a} and~\ref{fig:resp_b}.}
+
+\rev{Two features differ from Gemma and are reported as measured. First, the level of the cost is family-specific: at a reuse ratio near twelve the 2Wiki-probe response rises from $+0.86$ to $+0.99$ nats across the 3.2-fold size range of the Qwen pair, against $+0.29$, $+2.55$ and $+4.85$ across the three Gemma students, consistent with the scope of the distillation relations of Section~\ref{sec:law_distill}, whose coefficients are fitted and validated within one recipe and student family. Second, the larger-student ordering registered for the 2Wiki probe recurs on the fresh 2Wiki sample ($+2.40$ against $+2.12$ nats) but not on MuSiQue and TriviaQA, where Qwen3-1.7B pays less ($+0.80$ against $+1.24$, and $+0.69$ against $+1.46$) because its high-reuse responses are smaller. The net benefit depends on the evaluation distribution as it does on Gemma: at $U=594$ both 2Wiki samples gain about one nat on both students, whereas MuSiQue and TriviaQA stay above zero on Qwen3-0.6B ($+0.18$ each) and within 0.05 nats of zero on Qwen3-1.7B ($-0.01$ and $-0.05$, with seed ranges that span zero, which the registered strict-sign reading counts as gains). The replication therefore supports the directional claims of Section~\ref{sec:why} on a second family: at a matched budget, high reuse costs question answering, the cost is larger for the larger student on the 2Wiki probe, and it recurs on every fresh distribution at every budget tested.}
+
+\input{tables/r1-reuse-compact}
